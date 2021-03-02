@@ -1,0 +1,198 @@
+{
+  "@odata.context": "https://graph.microsoft.com/beta/$metadata#teams('02bd9fd6-8f93-4758-87c3-1fb73740a315')/members",
+  "@odata.count": 19,
+  "value": [
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyM0OGQzMTg4Ny01ZmFkLTRkNzMtYTlmNS0zYzM1NmU2OGEwMzg=",
+      "roles": [
+        "owner"
+      ],
+      "displayName": "Megan Bowen",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "48d31887-5fad-4d73-a9f5-3c356e68a038",
+      "email": "MeganB@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyNjODkxM2M4Ni1jZWVhLTRkMzktYjFlYS1mNjNhNWI2NzUxNjY=",
+      "roles": [],
+      "displayName": "Henrietta Mueller",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "c8913c86-ceea-4d39-b1ea-f63a5b675166",
+      "email": "HenriettaM@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyNiNjZlY2Y3OS1hMDkzLTRkNTEtODZlMC1lZmNjNDUzMWYzN2E=",
+      "roles": [],
+      "displayName": "Christie Cline",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "b66ecf79-a093-4d51-86e0-efcc4531f37a",
+      "email": "ChristieC@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyM2MjZjYmY4Yy01ZGRlLTQ2YjAtODM4NS05ZTQwZDY0NzM2ZmU=",
+      "roles": [],
+      "displayName": "Johanna Lorenz",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "626cbf8c-5dde-46b0-8385-9e40d64736fe",
+      "email": "JohannaL@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyNkZjA0M2ZmMS00OWQ1LTQxNGUtODZhNC0wYzdmMjM5YzM2Y2Y=",
+      "roles": [],
+      "displayName": "Grady Archie",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "df043ff1-49d5-414e-86a4-0c7f239c36cf",
+      "email": "GradyA@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyM4N2QzNDllZC00NGQ3LTQzZTEtOWE4My01ZjI0MDZkZWU1YmQ=",
+      "roles": [],
+      "displayName": "Adele Vance",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "87d349ed-44d7-43e1-9a83-5f2406dee5bd",
+      "email": "AdeleV@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyMwODlhNmJiOC1lOGNiLTQ5MmMtYWE0MS1jMDc4YWEwYjUxMjA=",
+      "roles": [],
+      "displayName": "Nestor Wilke",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "089a6bb8-e8cb-492c-aa41-c078aa0b5120",
+      "email": "NestorW@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyM4YjIwOWFjOC0wOGZmLTRlZjEtODk2ZC0zYjlmZGUwYmJmMDQ=",
+      "roles": [],
+      "displayName": "Joni Sherman",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "8b209ac8-08ff-4ef1-896d-3b9fde0bbf04",
+      "email": "JoniS@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyMwOGZhMzhlNC1jYmZhLTQ0ODgtOTRlZC1jODM0ZGE2NTM5ZGY=",
+      "roles": [],
+      "displayName": "Miriam Graham",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "08fa38e4-cbfa-4488-94ed-c834da6539df",
+      "email": "MiriamG@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyM0MDA3OTgxOC0zODA4LTQ1ODUtOTAzYi0wMjYwNWYwNjEyMjU=",
+      "roles": [],
+      "displayName": "Patti Fernandez",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "40079818-3808-4585-903b-02605f061225",
+      "email": "PattiF@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyNlM2QwNTEzYi00NDllLTQxOTgtYmE2Zi1iZDk3YWU3Y2FlODU=",
+      "roles": [],
+      "displayName": "Isaiah Langer",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "e3d0513b-449e-4198-ba6f-bd97ae7cae85",
+      "email": "IsaiahL@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyMyZWQwM2RmZC0wMWQ4LTQwMDUtYTllZi1mYThlZTU0NmRjNmM=",
+      "roles": [],
+      "displayName": "Lidia Holloway",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "2ed03dfd-01d8-4005-a9ef-fa8ee546dc6c",
+      "email": "LidiaH@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyM0NzgyZTcyMy1mNGY0LTRhZjMtYTc2ZS0yNWUzYmFiMGQ4OTY=",
+      "roles": [],
+      "displayName": "Alex Wilber",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "4782e723-f4f4-4af3-a76e-25e3bab0d896",
+      "email": "AlexW@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyNlOGEwMmNjNy1kZjRkLTQ3NzgtOTU2ZC03ODRjYzk1MDZlNWE=",
+      "roles": [],
+      "displayName": "Lynne Robbins",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "e8a02cc7-df4d-4778-956d-784cc9506e5a",
+      "email": "LynneR@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyMxNmNmZTcxMC0xNjI1LTQ4MDYtOTk5MC05MWI4ZjBhZmVlMzU=",
+      "roles": [],
+      "displayName": "Enrico Cattaneo",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "16cfe710-1625-4806-9990-91b8f0afee35",
+      "email": "EnricoC@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyMwNzRlNTZlYS0wYjUwLTQ0NjEtODllNS1jNjdhZTE0YTJjMGI=",
+      "roles": [],
+      "displayName": "Lee Gu",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "074e56ea-0b50-4461-89e5-c67ae14a2c0b",
+      "email": "LeeG@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyMyNGZjYmNhMy1jM2UyLTQ4YmYtOWZmYy1jN2Y4MWI4MTQ4M2Q=",
+      "roles": [],
+      "displayName": "Diego Siciliani",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "24fcbca3-c3e2-48bf-9ffc-c7f81b81483d",
+      "email": "DiegoS@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyNlYzYzYzc3OC0yNGUxLTQyNDAtYmVhMy1kMTJhMTY3ZDUyMzI=",
+      "roles": [],
+      "displayName": "Pradeep Gupta",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "ec63c778-24e1-4240-bea3-d12a167d5232",
+      "email": "PradeepG@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    },
+    {
+      "@odata.type": "#microsoft.graph.aadUserConversationMember",
+      "id": "MDJiZDlmZDYtOGY5My00NzU4LTg3YzMtMWZiNzM3NDBhMzE1IyMyODA0YmMwNy0xZTFmLTQ5MzgtOTA4NS1jZTZkNzU2YTMyZDI=",
+      "roles": [],
+      "displayName": "Emily Braun",
+      "visibleHistoryStartDateTime": "0001-01-01T00:00:00Z",
+      "userId": "2804bc07-1e1f-4938-9085-ce6d756a32d2",
+      "email": "EmilyB@M365x214355.onmicrosoft.com",
+      "tenantId": "dcd219dd-bc68-4b9b-bf0b-4a33a796be35"
+    }
+  ]
+}

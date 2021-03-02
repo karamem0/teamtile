@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.8/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.8",
+  "version": "1.0.0",
+  "isFullScreen": true,
+  "id": "bb98adcf-688c-409c-862b-8f546689f241",
+  "packageName": "jp.karamem0.teamtile",
+  "developer": {
+    "name": "karamem0",
+    "websiteUrl": "https://{{DomainName}}",
+    "privacyUrl": "https://{{DomainName}}",
+    "termsOfUseUrl": "https://{{DomainName}}"
+  },
+  "icons": {
+    "color": "icon_color.png",
+    "outline": "icon_outline.png"
+  },
+  "name": {
+    "short": "Teamtile",
+    "full": "Teamtile"
+  },
+  "description": {
+    "short": "Display joined teams in tile view and access quickly.",
+    "full": "Display joined teams in tile view and access quickly."
+  },
+  "accentColor": "#FFFFFF",
+  "staticTabs": [
+    {
+      "entityId": "index",
+      "name": "Teamtile",
+      "contentUrl": "https://{{DomainName}}",
+      "websiteUrl": "https://{{DomainName}}",
+      "scopes": [
+        "personal"
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "{{DomainName}}"
+  ],
+  "webApplicationInfo": {
+    "id": "{{ClientId}}",
+    "resource": "api://{{DomainName}}/{{ClientId}}"
+  }
+}

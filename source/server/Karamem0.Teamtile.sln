@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karamem0.Teamtile", "Karamem0.Teamtile.csproj", "{A51489D9-5703-4616-9DBA-43F155A40DED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A51489D9-5703-4616-9DBA-43F155A40DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A51489D9-5703-4616-9DBA-43F155A40DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A51489D9-5703-4616-9DBA-43F155A40DED}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A51489D9-5703-4616-9DBA-43F155A40DED}.Debug|x64.Build.0 = Debug|Any CPU
+		{A51489D9-5703-4616-9DBA-43F155A40DED}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A51489D9-5703-4616-9DBA-43F155A40DED}.Debug|x86.Build.0 = Debug|Any CPU
+		{A51489D9-5703-4616-9DBA-43F155A40DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A51489D9-5703-4616-9DBA-43F155A40DED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A51489D9-5703-4616-9DBA-43F155A40DED}.Release|x64.ActiveCfg = Release|Any CPU
+		{A51489D9-5703-4616-9DBA-43F155A40DED}.Release|x64.Build.0 = Release|Any CPU
+		{A51489D9-5703-4616-9DBA-43F155A40DED}.Release|x86.ActiveCfg = Release|Any CPU
+		{A51489D9-5703-4616-9DBA-43F155A40DED}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0DDEEC3A-EEB4-4DF4-8254-E66F04ED36E8}
+	EndGlobalSection
+EndGlobal
