@@ -1,0 +1,29 @@
+{
+  "@odata.context": "https://graph.microsoft.com/beta/$metadata#drives/$entity",
+  "createdDateTime": "2017-07-27T02:42:16Z",
+  "description": "",
+  "id": "b!UvZsiQCydEuBEcAT9kQGz_C9gbGAlohJgfeiSu5K_WrNO7djCV5dS4pWDvGiRupe",
+  "lastModifiedDateTime": "2017-07-31T18:58:44Z",
+  "name": "Documents",
+  "webUrl": "https://m365x214355.sharepoint.com/sites/HRTaskforce/Shared%20Documents",
+  "driveType": "documentLibrary",
+  "createdBy": {
+    "user": {
+      "displayName": "System Account"
+    }
+  },
+  "owner": {
+    "group": {
+      "email": "HRTaskforce",
+      "id": "02bd9fd6-8f93-4758-87c3-1fb73740a315",
+      "displayName": "HR Taskforce"
+    }
+  },
+  "quota": {
+    "deleted": 0,
+    "remaining": 27487775600428,
+    "state": "normal",
+    "total": 27487790694400,
+    "used": 9556769
+  }
+}

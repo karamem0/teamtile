@@ -1,0 +1,60 @@
+@import-normalize;
+
+body {
+  font-family: "Segoe UI", system-ui, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  margin: 0;
+}
+
+#root,
+#root > div,
+#root > div > div {
+  min-height: 100vh;
+}
+
+@mixin item {
+  .item-text-button {
+    align-items: normal;
+    border: none;
+    justify-content: left;
+    height: auto;
+    margin: 0;
+    min-width: auto;
+    padding: 0;
+    text-align: left;
+    .item-icon {
+      display: inline-block;
+      height: 16px;
+      width: 16px;
+    }
+    .item-number {
+      display: inline-block;
+      margin-left: 0.25rem;
+      width: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .grid-container {
+    padding: 0.25rem;
+    .grid-item {
+      padding: 0.25rem;
+      @include item();
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .grid-container {
+    padding: 1rem;
+    .grid-item {
+      padding: 0.5rem;
+      @include item();
+    }
+  }
+}
+
+.popup-icon {
+  cursor: pointer;
+  margin: 0.25rem;
+}
