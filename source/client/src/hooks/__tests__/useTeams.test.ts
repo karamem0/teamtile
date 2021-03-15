@@ -1,10 +1,10 @@
 import { renderHook } from '@testing-library/react-hooks';
-import useJoinedTeams from '../useJoinedTeams';
-import json from './useJoinedTeams.test.json';
+import useTeams from '../useTeams';
+import json from './useTeams.test.json';
 
-describe('useJoinedTeams', () => {
+describe('useTeams', () => {
 
-  it('return joined teams', async () => {
+  it('return teams', async () => {
     const params = {
       token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU0VSVkVSVE9LRU4ifQ.VyFNrKBsnkQaLhXMbM-cDlGZMaQEuPmy8I6OCeGGBSQ',
       json: json
@@ -14,7 +14,7 @@ describe('useJoinedTeams', () => {
       json: () => Promise.resolve(params.json)
     } as Response));
     const { result, waitForNextUpdate } = renderHook(
-      useJoinedTeams,
+      useTeams,
       {
         initialProps: {
           token: params.token

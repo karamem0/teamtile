@@ -7,6 +7,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
     "standard"
   ],
@@ -42,8 +43,16 @@
         "afterColon": true
       }
     ],
+    "linebreak-style": [
+      "error",
+      "windows"
+    ],
     "no-use-before-define": "off",
     "padded-blocks": "off",
+    "quotes": [
+      "error",
+      "single"
+    ],
     "semi": [
       "error",
       "always"
@@ -83,10 +92,5 @@
       }
     ],
     "react/prop-types": "off"
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
   }
 }

@@ -4,14 +4,17 @@ import useToken from '../useToken';
 
 describe('useToken', () => {
 
+  beforeEach(() => {
+    jest
+      .spyOn(microsoftTeams, 'initialize')
+      .mockImplementation((callback) => callback && callback());
+  });
+
   it('return token if succeeded single sign-on', async () => {
     const params = {
       clientToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ0xJRU5UVE9LRU4ifQ.ZO9wyYFJTSl-Q9nvS2D3UIDvOBr9rl3CQTxjcUpQ8HA',
       serverToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU0VSVkVSVE9LRU4ifQ.VyFNrKBsnkQaLhXMbM-cDlGZMaQEuPmy8I6OCeGGBSQ'
     };
-    jest
-      .spyOn(microsoftTeams, 'initialize')
-      .mockImplementation((callback) => callback && callback());
     jest
       .spyOn(microsoftTeams.authentication, 'getAuthToken')
       .mockImplementation((authTokenRequest) =>
@@ -35,9 +38,6 @@ describe('useToken', () => {
       clientToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ0xJRU5UVE9LRU4ifQ.ZO9wyYFJTSl-Q9nvS2D3UIDvOBr9rl3CQTxjcUpQ8HA',
       serverToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU0VSVkVSVE9LRU4ifQ.VyFNrKBsnkQaLhXMbM-cDlGZMaQEuPmy8I6OCeGGBSQ'
     };
-    jest
-      .spyOn(microsoftTeams, 'initialize')
-      .mockImplementation((callback) => callback && callback());
     jest
       .spyOn(microsoftTeams.authentication, 'getAuthToken')
       .mockImplementation((authTokenRequest) =>
@@ -67,9 +67,6 @@ describe('useToken', () => {
       error: 'Something went wrong'
     };
     jest
-      .spyOn(microsoftTeams, 'initialize')
-      .mockImplementation((callback) => callback && callback());
-    jest
       .spyOn(microsoftTeams.authentication, 'getAuthToken')
       .mockImplementation((authTokenRequest) =>
         authTokenRequest.failureCallback &&
@@ -87,9 +84,6 @@ describe('useToken', () => {
       clientToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ0xJRU5UVE9LRU4ifQ.ZO9wyYFJTSl-Q9nvS2D3UIDvOBr9rl3CQTxjcUpQ8HA',
       error: 'Something went wrong'
     };
-    jest
-      .spyOn(microsoftTeams, 'initialize')
-      .mockImplementation((callback) => callback && callback());
     jest
       .spyOn(microsoftTeams.authentication, 'getAuthToken')
       .mockImplementation((authTokenRequest) =>
@@ -115,9 +109,6 @@ describe('useToken', () => {
       error: 'Something went wrong'
     };
     jest
-      .spyOn(microsoftTeams, 'initialize')
-      .mockImplementation((callback) => callback && callback());
-    jest
       .spyOn(microsoftTeams.authentication, 'getAuthToken')
       .mockImplementation((authTokenRequest) =>
         authTokenRequest.successCallback &&
@@ -137,9 +128,6 @@ describe('useToken', () => {
       clientToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ0xJRU5UVE9LRU4ifQ.ZO9wyYFJTSl-Q9nvS2D3UIDvOBr9rl3CQTxjcUpQ8HA',
       error: 'Something went wrong'
     };
-    jest
-      .spyOn(microsoftTeams, 'initialize')
-      .mockImplementation((callback) => callback && callback());
     jest
       .spyOn(microsoftTeams.authentication, 'getAuthToken')
       .mockImplementation((authTokenRequest) =>

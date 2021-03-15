@@ -46,7 +46,7 @@ const useTeamChannels = (props: TeamChannelsProps): [TeamChannelResult[] | undef
           })));
       }
     })();
-  }, [ token ]);
+  }, [ token, id ]);
 
   return [ channels ];
 

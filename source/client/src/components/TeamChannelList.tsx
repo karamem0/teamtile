@@ -7,21 +7,19 @@ import {
   Text
 } from '@fluentui/react-northstar';
 import { ContentIcon } from '@fluentui/react-icons-northstar';
-import TokenContext from '../contexts/TokenContext';
+import AppContext from '../contexts/AppContext';
 import useTeamChannels from '../hooks/useTeamChannels';
 import TeamChannelIcon from './TeamChannelIcon';
 
-interface TeamChannelProps {
+interface TeamChannelListProps {
   id?: string;
 }
 
-const TeamChannel: React.FC<TeamChannelProps> = (props: TeamChannelProps) => {
+const TeamChannelList: React.FC<TeamChannelListProps> = (props: TeamChannelListProps) => {
 
   const { id } = props;
-  const [ channels ] = useTeamChannels({
-    token: React.useContext(TokenContext),
-    id: id
-  });
+  const [ token ] = React.useContext(AppContext);
+  const [ channels ] = useTeamChannels({ token, id });
   const [ popupOpen, setPopupOpen ] = React.useState<boolean>();
 
   return (
@@ -29,18 +27,14 @@ const TeamChannel: React.FC<TeamChannelProps> = (props: TeamChannelProps) => {
       content={
         <Grid>
           {
-            popupOpen
-              ? (
-                  channels
-                    ? channels.map((channel) =>
-                      <TeamChannelIcon
-                        key={channel.id}
-                        name={channel.name}
-                        url={channel.url} />
-                    )
-                    : null
-                )
-              : null
+            popupOpen && (
+              channels && channels.map((channel) =>
+                <TeamChannelIcon
+                  key={channel.id}
+                  name={channel.name}
+                  url={channel.url} />
+              )
+            )
           }
         </Grid>
       }
@@ -74,4 +68,4 @@ const TeamChannel: React.FC<TeamChannelProps> = (props: TeamChannelProps) => {
 
 };
 
-export default TeamChannel;
+export default TeamChannelList;

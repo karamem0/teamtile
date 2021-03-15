@@ -1,8 +1,12 @@
 import React from 'react';
 import * as microsoftTeams from '@microsoft/teams-js';
-import { Button, Flex, Text } from '@fluentui/react-northstar';
+import {
+  Button,
+  Flex,
+  Text
+} from '@fluentui/react-northstar';
 import { SharepointLogoIcon } from '@fluentui/react-icons';
-import TokenContext from '../contexts/TokenContext';
+import AppContext from '../contexts/AppContext';
 import useGroupDrive from '../hooks/useGroupDrive';
 
 interface TeamDriveProps {
@@ -12,10 +16,8 @@ interface TeamDriveProps {
 const TeamDrive: React.FC<TeamDriveProps> = (props: TeamDriveProps) => {
 
   const { id } = props;
-  const [ drive ] = useGroupDrive({
-    token: React.useContext(TokenContext),
-    id: id
-  });
+  const [ token ] = React.useContext(AppContext);
+  const [ drive ] = useGroupDrive({ token, id });
 
   return (
     <Button

@@ -79,6 +79,7 @@ Teamtile is a Microsoft Teams App that provides these features to you:
     ||profile|Delegate|
     ||Team.ReadBasic.All|Delegate|
     ||TeamMember.Read.All|Delegate|
+    ||User.Read|Delegate|
     ||User.ReadBasic.All|Delegate|
 
 8. Click \[Expose an API\] and add a scope and client applications.

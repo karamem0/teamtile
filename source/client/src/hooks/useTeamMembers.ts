@@ -46,7 +46,7 @@ const useTeamMembers = (props: TeamMembersProps): [TeamMemberResult[] | undefine
           })));
       }
     })();
-  }, [ token ]);
+  }, [ token, id ]);
 
   return [ members ];
 

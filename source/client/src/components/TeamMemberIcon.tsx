@@ -1,7 +1,7 @@
 import React from 'react';
 import * as microsoftTeams from '@microsoft/teams-js';
 import { Avatar } from '@fluentui/react-northstar';
-import TokenContext from '../contexts/TokenContext';
+import AppContext from '../contexts/AppContext';
 import useUserIcon from '../hooks/useUserIcon';
 
 interface TeamMemberIconProps {
@@ -13,10 +13,8 @@ interface TeamMemberIconProps {
 const TeamMemberIcon: React.FC<TeamMemberIconProps> = (props: TeamMemberIconProps) => {
 
   const { id, name, email } = props;
-  const [ icon ] = useUserIcon({
-    token: React.useContext(TokenContext),
-    id: id
-  });
+  const [ token ] = React.useContext(AppContext);
+  const [ icon ] = useUserIcon({ token, id });
 
   return (
     <Avatar

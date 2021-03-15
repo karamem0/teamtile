@@ -7,21 +7,19 @@ import {
   Text
 } from '@fluentui/react-northstar';
 import { ContactGroupIcon } from '@fluentui/react-icons-northstar';
-import TokenContext from '../contexts/TokenContext';
+import AppContext from '../contexts/AppContext';
 import useTeamMembers from '../hooks/useTeamMembers';
 import TeamMemberIcon from './TeamMemberIcon';
 
-interface TeamMemberProps {
+interface TeamMemberListProps {
   id?: string;
 }
 
-const TeamMember: React.FC<TeamMemberProps> = (props: TeamMemberProps) => {
+const TeamMemberList: React.FC<TeamMemberListProps> = (props: TeamMemberListProps) => {
 
   const { id } = props;
-  const [ members ] = useTeamMembers({
-    token: React.useContext(TokenContext),
-    id: id
-  });
+  const [ token ] = React.useContext(AppContext);
+  const [ members ] = useTeamMembers({ token, id });
   const [ popupOpen, setPopupOpen ] = React.useState<boolean>();
 
   return (
@@ -29,19 +27,15 @@ const TeamMember: React.FC<TeamMemberProps> = (props: TeamMemberProps) => {
       content={
         <Grid>
           {
-            popupOpen
-              ? (
-                  members
-                    ? members.map((member) =>
-                      <TeamMemberIcon
-                        email={member.email}
-                        id={member.id}
-                        key={member.id}
-                        name={member.name} />
-                    )
-                    : null
-                )
-              : null
+            popupOpen && (
+              members && members.map((member) =>
+                <TeamMemberIcon
+                  email={member.email}
+                  id={member.id}
+                  key={member.id}
+                  name={member.name} />
+              )
+            )
           }
         </Grid>
       }
@@ -75,4 +69,4 @@ const TeamMember: React.FC<TeamMemberProps> = (props: TeamMemberProps) => {
 
 };
 
-export default TeamMember;
+export default TeamMemberList;

@@ -28,14 +28,10 @@ const Login: React.FC = () => {
 
   return (
     <Grid
-      className="grid-container"
-      container>
-      <Grid
-        className="grid-item"
-        item
-        xs={12}>
-        <Loader label="Redirecting to consent page..." />
-      </Grid>
+      className="grid-item"
+      item
+      xs={12}>
+      <Loader label="Redirecting to consent page..." />
     </Grid>
   );
 

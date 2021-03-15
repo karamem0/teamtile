@@ -1,76 +1,37 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
-import {
-  Alert,
-  Button,
-  Flex,
-  Loader
-} from '@fluentui/react-northstar';
-import { ExclamationTriangleIcon, RetryIcon } from '@fluentui/react-icons-northstar';
-import TokenContext from '../contexts/TokenContext';
+import AppContext from '../contexts/AppContext';
 import useToken from '../hooks/useToken';
+import Loading from './Loading';
+import Retry from './Retry';
 import TeamList from './TeamList';
 
-const Container: React.FC = () => {
+const Tab: React.FC = () => {
 
+  const [ , setToken, , setError ] = React.useContext(AppContext);
   const [ token, error ] = useToken();
 
+  React.useEffect(() => {
+    if (!setToken) {
+      return;
+    }
+    setToken(token);
+  }, [ setToken, token ]);
+
+  React.useEffect(() => {
+    if (!setError) {
+      return;
+    }
+    setError(error);
+  }, [ setError, error ]);
+
   return (
-    <TokenContext.Provider value={token}>
-      <Grid
-        className="grid-container"
-        container>
-        {
-          error
-            ? (
-              <React.Fragment>
-                <Grid
-                  className="grid-item"
-                  item
-                  xs={12}>
-                  <Alert
-                    content={error}
-                    icon={
-                      <ExclamationTriangleIcon />
-                    }
-                    variables={{ urgent: true }} />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}>
-                  <Flex
-                    hAlign="center"
-                    padding="padding.medium"
-                    vAlign="center">
-                    <div>
-                      <Button
-                        content="Retry"
-                        icon={
-                          <RetryIcon />
-                        }
-                        onClick={() => {
-                          window.location.reload();
-                        }} />
-                    </div>
-                  </Flex>
-                </Grid>
-              </React.Fragment>
-              )
-            : token
-              ? <TeamList />
-              : (
-                <Grid
-                  className="grid-item"
-                  item
-                  xs={12}>
-                  <Loader label="Loading..." />
-                </Grid>
-                )
-        }
-      </Grid>
-    </TokenContext.Provider>
+    error
+      ? <Retry />
+      : token
+        ? <TeamList />
+        : <Loading />
   );
 
 };
 
-export default Container;
+export default Tab;

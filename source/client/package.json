@@ -1,6 +1,6 @@
 {
   "name": "teamtile",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "msteams": {
     "teamsAppId": "a64befd0-068f-482d-b6f6-c87700e2afc1"
   },
@@ -25,14 +25,15 @@
     "@types/react": "^16.14.4",
     "@types/react-dom": "^16.9.11",
     "@types/react-router-dom": "^5.1.7",
-    "@typescript-eslint/eslint-plugin": "^4.15.1",
-    "@typescript-eslint/parser": "^4.15.1",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
     "eslint": "^7.20.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "jest-junit": "^12.0.0",
     "react-test-renderer": "^17.0.1",
     "ts-jest": "^26.5.1"
