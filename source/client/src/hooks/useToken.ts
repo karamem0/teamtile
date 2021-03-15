@@ -6,16 +6,11 @@ const useToken = (): [string | undefined, string | undefined] => {
   const [ token, setToken ] = React.useState<string>();
   const [ error, setError ] = React.useState<string>();
 
-  React.useEffect(() => {
-    microsoftTeams.initialize(() => {
-      microsoftTeams.authentication.getAuthToken({
-        successCallback: handleSuccessSingleSignOn,
-        failureCallback: handleFailureSingleSignOn
-      });
-    });
+  const handleFailureSingleSignOn = React.useCallback((value: string) => {
+    setError(value);
   }, []);
 
-  const handleSuccessSingleSignOn = (value: string) => {
+  const handleSuccessSingleSignOn = React.useCallback((value: string) => {
     (async () => {
       try {
         const response = await fetch(
@@ -45,9 +40,9 @@ const useToken = (): [string | undefined, string | undefined] => {
         handleFailureSingleSignOn(error.toString());
       }
     })();
-  };
+  }, [ handleFailureSingleSignOn ]);
 
-  const handleFailureSingleSignOn = (value: string) => {
+  const handleFailureConsent = (value: string | undefined) => {
     setError(value);
   };
 
@@ -55,9 +50,14 @@ const useToken = (): [string | undefined, string | undefined] => {
     setToken(value);
   };
 
-  const handleFailureConsent = (value: string | undefined) => {
-    setError(value);
-  };
+  React.useEffect(() => {
+    microsoftTeams.initialize(() => {
+      microsoftTeams.authentication.getAuthToken({
+        successCallback: handleSuccessSingleSignOn,
+        failureCallback: handleFailureSingleSignOn
+      });
+    });
+  }, [ handleSuccessSingleSignOn, handleFailureSingleSignOn ]);
 
   return [
     token,

@@ -31,15 +31,14 @@ const useUserIcon = (props: UserIconProps): [ string | undefined ] => {
       if (response.ok) {
         const blob = await response.blob();
         const value = window.URL.createObjectURL(blob);
-        setIcon(value);
+        setIcon((prev) => {
+          if (prev) {
+            window.URL.revokeObjectURL(prev);
+          }
+          return value;
+        });
       }
     })();
-    return () => {
-      if (!icon) {
-        return;
-      }
-      window.URL.revokeObjectURL(icon);
-    };
   }, [ token, id ]);
 
   return [ icon ];

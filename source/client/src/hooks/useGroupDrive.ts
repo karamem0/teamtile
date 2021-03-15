@@ -40,7 +40,7 @@ const useGroupDrive = (props: GroupDriveProps): [GroupDriveResult | undefined] =
         });
       }
     })();
-  }, [ token ]);
+  }, [ token, id ]);
 
   return [ drive ];
 

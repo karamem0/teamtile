@@ -3,15 +3,15 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <PackageId>Teamtile</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <Authors>karamem0</Authors>
     <Company>karamem0</Company>
     <Product>Teamtile</Product>
     <Copyright>Copyright (c) 2021 karamem0</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/karamem0/Teamtile</PackageProjectUrl>
-    <AssemblyVersion>1.0.0</AssemblyVersion>
-    <FileVersion>1.0.0</FileVersion>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
     <RootNamespace>Karamem0.Teamtile</RootNamespace>
   </PropertyGroup>
 

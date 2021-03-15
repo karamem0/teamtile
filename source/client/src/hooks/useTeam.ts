@@ -8,6 +8,7 @@ interface TeamProps {
 
 interface TeamResult {
   id?: string;
+  visibility?: string;
   url?: string;
 }
 
@@ -36,11 +37,12 @@ const useTeam = (props: TeamProps): [TeamResult | undefined] => {
         const value = json as microsoftGraph.Team;
         setTeam({
           id: value.id ?? undefined,
+          visibility: value.visibility ?? undefined,
           url: value.webUrl ?? undefined
         });
       }
     })();
-  }, [ token ]);
+  }, [ token, id ]);
 
   return [ team ];
 
