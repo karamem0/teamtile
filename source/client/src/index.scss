@@ -11,18 +11,25 @@ body {
   min-height: 100vh;
 }
 
-@mixin item {
-  .item-empty {
+@mixin grid-item {
+  .grid-item-empty {
+    color: grey;
     text-align: center;
-    .item-empty-icon {
+    .grid-item-empty-icon {
       height: 4rem;
       width: 4rem;
+      margin: 1rem;
     }
-    .item-empty-text {
+    .grid-item-empty-text {
       display: block;
     }
   }
-  .item-text-button {
+  .grid-item-icon {
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+  }
+  .grid-item-text-button {
     align-items: normal;
     border: none;
     justify-content: left;
@@ -31,16 +38,28 @@ body {
     min-width: auto;
     padding: 0;
     text-align: left;
-    .item-icon {
-      display: inline-block;
-      height: 1rem;
-      width: 1rem;
+  }
+  .grid-item-text-number {
+    display: inline-block;
+    margin-left: 0.25rem;
+    margin-right: 1rem;
+  }
+  .grid-item-menu {
+    background-color: transparent;
+    min-height: auto;
+  }
+  .grid-item-menu-item {
+    border: none;
+    margin: 0;
+    padding: 0;
+    & > span {
+      margin: 0;
+      padding: 0;
     }
-    .item-number {
-      display: inline-block;
-      margin-left: 0.25rem;
-      width: 1.5rem;
-    }
+  }
+  .grid-item-menu-item-view-all {
+    color: grey;
+    text-align: center;
   }
 }
 
@@ -49,7 +68,7 @@ body {
     padding: 0.25rem;
     .grid-item {
       padding: 0.25rem;
-      @include item();
+      @include grid-item();
     }
   }
 }
@@ -59,12 +78,7 @@ body {
     padding: 1rem;
     .grid-item {
       padding: 0.5rem;
-      @include item();
+      @include grid-item();
     }
   }
-}
-
-.popup-icon {
-  cursor: pointer;
-  margin: 0.25rem;
 }

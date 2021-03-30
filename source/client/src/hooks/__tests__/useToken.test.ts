@@ -20,6 +20,9 @@ describe('useToken', () => {
       .mockImplementation((authTokenRequest) =>
         authTokenRequest.successCallback &&
         authTokenRequest.successCallback(params.clientToken));
+    jest
+      .spyOn(microsoftTeams.appInitialization, 'notifySuccess')
+      .mockImplementation(() => undefined);
     global.fetch = jest.fn(() => Promise.resolve({
       ok: true,
       text: () => Promise.resolve(params.serverToken)
@@ -31,6 +34,7 @@ describe('useToken', () => {
     expect(error).toBeUndefined();
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.authentication.getAuthToken).toBeCalled();
+    expect(microsoftTeams.appInitialization.notifySuccess).toBeCalled();
   });
 
   it('return token if succeeded consent', async () => {
@@ -48,6 +52,9 @@ describe('useToken', () => {
       .mockImplementation((authenticateParameters) =>
         authenticateParameters?.successCallback &&
         authenticateParameters?.successCallback(params.serverToken));
+    jest
+      .spyOn(microsoftTeams.appInitialization, 'notifySuccess')
+      .mockImplementation(() => undefined);
     global.fetch = jest.fn(() => Promise.resolve({
       ok: false,
       status: 403
@@ -60,6 +67,7 @@ describe('useToken', () => {
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.authentication.getAuthToken).toBeCalled();
     expect(microsoftTeams.authentication.authenticate).toBeCalled();
+    expect(microsoftTeams.appInitialization.notifySuccess).toBeCalled();
   });
 
   it('return error if failed single sign-on', async () => {
@@ -71,12 +79,16 @@ describe('useToken', () => {
       .mockImplementation((authTokenRequest) =>
         authTokenRequest.failureCallback &&
         authTokenRequest.failureCallback(params.error));
+    jest
+      .spyOn(microsoftTeams.appInitialization, 'notifyFailure')
+      .mockImplementation(() => undefined);
     const { result } = renderHook(() => useToken());
     const [ token, error ] = result.current;
     expect(token).toBeUndefined();
     expect(error).toBe(params.error);
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.authentication.getAuthToken).toBeCalled();
+    expect(microsoftTeams.appInitialization.notifyFailure).toBeCalled();
   });
 
   it('return error if failed token convertion', async () => {
@@ -89,6 +101,9 @@ describe('useToken', () => {
       .mockImplementation((authTokenRequest) =>
         authTokenRequest.successCallback &&
         authTokenRequest.successCallback(params.clientToken));
+    jest
+      .spyOn(microsoftTeams.appInitialization, 'notifyFailure')
+      .mockImplementation(() => undefined);
     global.fetch = jest.fn(() => Promise.resolve({
       ok: false,
       status: 500,
@@ -101,6 +116,7 @@ describe('useToken', () => {
     expect(error).toBe(params.error);
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.authentication.getAuthToken).toBeCalled();
+    expect(microsoftTeams.appInitialization.notifyFailure).toBeCalled();
   });
 
   it('return error if unexpected exception ocurrerd', async () => {
@@ -113,6 +129,9 @@ describe('useToken', () => {
       .mockImplementation((authTokenRequest) =>
         authTokenRequest.successCallback &&
         authTokenRequest.successCallback(params.clientToken));
+    jest
+      .spyOn(microsoftTeams.appInitialization, 'notifyFailure')
+      .mockImplementation(() => undefined);
     global.fetch = jest.fn(() => Promise.reject(params.error));
     const { result, waitForNextUpdate } = renderHook(() => useToken());
     await waitForNextUpdate();
@@ -121,6 +140,7 @@ describe('useToken', () => {
     expect(error).toBe(params.error);
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.authentication.getAuthToken).toBeCalled();
+    expect(microsoftTeams.appInitialization.notifyFailure).toBeCalled();
   });
 
   it('return error if cancelled consent', async () => {
@@ -138,6 +158,9 @@ describe('useToken', () => {
       .mockImplementation((authenticateParameters) =>
         authenticateParameters?.failureCallback &&
         authenticateParameters?.failureCallback(params.error));
+    jest
+      .spyOn(microsoftTeams.appInitialization, 'notifyFailure')
+      .mockImplementation(() => undefined);
     global.fetch = jest.fn(() => Promise.resolve({
       ok: false,
       status: 403
@@ -150,6 +173,7 @@ describe('useToken', () => {
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.authentication.getAuthToken).toBeCalled();
     expect(microsoftTeams.authentication.authenticate).toBeCalled();
+    expect(microsoftTeams.appInitialization.notifyFailure).toBeCalled();
   });
 
 });

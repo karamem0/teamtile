@@ -7,6 +7,10 @@ const useToken = (): [string | undefined, string | undefined] => {
   const [ error, setError ] = React.useState<string>();
 
   const handleFailureSingleSignOn = React.useCallback((value: string) => {
+    microsoftTeams.appInitialization.notifyFailure({
+      reason: microsoftTeams.appInitialization.FailedReason.AuthFailed,
+      message: value
+    });
     setError(value);
   }, []);
 
@@ -22,6 +26,7 @@ const useToken = (): [string | undefined, string | undefined] => {
           }
         );
         if (response.ok) {
+          microsoftTeams.appInitialization.notifySuccess();
           setToken(await response.text());
         } else {
           if (response.status === 403) {
@@ -43,10 +48,15 @@ const useToken = (): [string | undefined, string | undefined] => {
   }, [ handleFailureSingleSignOn ]);
 
   const handleFailureConsent = (value: string | undefined) => {
+    microsoftTeams.appInitialization.notifyFailure({
+      reason: microsoftTeams.appInitialization.FailedReason.AuthFailed,
+      message: value
+    });
     setError(value);
   };
 
   const handleSuccessConsent = (value: string | undefined) => {
+    microsoftTeams.appInitialization.notifySuccess();
     setToken(value);
   };
 

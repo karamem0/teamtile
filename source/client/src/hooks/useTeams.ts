@@ -1,20 +1,19 @@
 import React from 'react';
 import * as microsoftGraph from '@microsoft/microsoft-graph-types';
+import {
+  MicrosoftGraphArrayResponse,
+  MicrosoftGraphErrorResponse
+} from '../types/microsoft-graph';
+import { Team } from '../types';
 
 interface TeamsProps {
   token?: string;
 }
 
-interface TeamsResult {
-  id?: string;
-  name?: string;
-  description?: string;
-}
-
-const useTeams = (props: TeamsProps): [TeamsResult[] | undefined, string | undefined] => {
+const useTeams = (props: TeamsProps): [Team[] | undefined, string | undefined] => {
 
   const { token } = props;
-  const [ teams, setTeams ] = React.useState<TeamsResult[]>();
+  const [ teams, setTeams ] = React.useState<Team[]>();
   const [ error, setError ] = React.useState<string>();
 
   React.useEffect(() => {
@@ -25,9 +24,9 @@ const useTeams = (props: TeamsProps): [TeamsResult[] | undefined, string | undef
       try {
         const response = await fetch(
           'https://graph.microsoft.com/beta/me/memberOf/microsoft.graph.group' +
-        '?$count=true' +
-        '&$filter=resourceProvisioningOptions/any(x:x eq \'Team\')' +
-        '&$orderby=displayName',
+          '?$count=true' +
+          '&$filter=resourceProvisioningOptions/any(x:x eq \'Team\')' +
+          '&$orderby=displayName',
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -38,7 +37,7 @@ const useTeams = (props: TeamsProps): [TeamsResult[] | undefined, string | undef
           }
         );
         if (response.ok) {
-          const json = await response.json();
+          const json = await response.json() as MicrosoftGraphArrayResponse;
           const values = json.value as microsoftGraph.Group[];
           setTeams(values.map(value => ({
             id: value.id ?? undefined,
@@ -46,12 +45,10 @@ const useTeams = (props: TeamsProps): [TeamsResult[] | undefined, string | undef
             description: value.description ?? undefined
           })));
         } else {
-          const json = await response.json();
+          const json = await response.json() as MicrosoftGraphErrorResponse;
           const value = json.error as microsoftGraph.GenericError;
-          if (value.message) {
-            setTeams([]);
-            setError(value.message);
-          }
+          const message = value.message ?? undefined;
+          throw new Error(message);
         }
       } catch (e) {
         setTeams([]);
