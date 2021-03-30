@@ -2,6 +2,9 @@
 
 Display joined teams in tile view and access quickly.
 
+[![Build Status](https://dev.azure.com/karamem0/Teamtile/_apis/build/status/Teamtile?branchName=master)](https://dev.azure.com/karamem0/Teamtile/_build/latest?definitionId=49&branchName=master)
+[![License](https://img.shields.io/github/license/karamem0/teamtile.svg)](https://github.com/karamem0/teamtile/blob/master/LICENSE)
+
 ## Features
 
 Teamtile is a Microsoft Teams App that provides these features to you:

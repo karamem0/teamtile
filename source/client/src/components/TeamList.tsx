@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import { Text } from '@fluentui/react-northstar';
-import { CloudyIcon } from '@fluentui/react-icons';
+import { RainIcon } from '@fluentui/react-icons';
 import AppContext from '../contexts/AppContext';
 import useTeams from '../hooks/useTeams';
 import TeamItem from './TeamItem';
@@ -31,10 +31,10 @@ const TeamList: React.FC = () => {
         className="grid-item"
         item
         xs={12}>
-        <div className="item-empty">
-          <CloudyIcon className="item-empty-icon" />
+        <div className="grid-item-empty">
+          <RainIcon className="grid-item-empty-icon" />
           <Text
-            className="item-empty-text"
+            className="grid-item-empty-text"
             content="No items found." />
         </div>
       </Grid>
@@ -54,10 +54,7 @@ const TeamList: React.FC = () => {
             sm={12}
             xl={3}
             xs={12}>
-            <TeamItem
-              description={team.description}
-              id={team.id}
-              name={team.name} />
+            <TeamItem team={team} />
           </Grid>
         )
       }
