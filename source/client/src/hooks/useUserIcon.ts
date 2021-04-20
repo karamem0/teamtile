@@ -19,7 +19,7 @@ const useUserIcon = (props: UserIconProps): [ string | undefined ] => {
     }
     (async () => {
       const response = await fetch(
-        `https://graph.microsoft.com/beta/users/${id}/photo/$value`,
+        `https://graph.microsoft.com/v1.0/users/${id}/photo/$value`,
         {
           headers: {
             Authorization: `Bearer ${token}`

@@ -1,18 +1,14 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
 import { Alert } from '@fluentui/react-northstar';
 import { ExclamationTriangleIcon } from '@fluentui/react-icons-northstar';
 import AppContext from '../contexts/AppContext';
 
-const Error: React.FC = () => {
+const ErrorBar: React.FC = () => {
 
   const [ , , error, setError ] = React.useContext(AppContext);
 
   return (
-    <Grid
-      className="grid-item"
-      item
-      xs={12}>
+    <div className="error">
       <Alert
         content={error}
         dismissible
@@ -26,9 +22,9 @@ const Error: React.FC = () => {
           }
           setError(undefined);
         }} />
-    </Grid>
+    </div>
   );
 
 };
 
-export default Error;
+export default ErrorBar;

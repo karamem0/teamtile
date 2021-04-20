@@ -1,9 +1,8 @@
 import React from 'react';
 import * as microsoftTeams from '@microsoft/teams-js';
-import { Grid } from '@material-ui/core';
 import { Loader } from '@fluentui/react-northstar';
 
-const Callback: React.FC = () => {
+const CallbackPanel: React.FC = () => {
 
   React.useEffect(() => {
     microsoftTeams.initialize(() => {
@@ -19,20 +18,17 @@ const Callback: React.FC = () => {
       if (token) {
         microsoftTeams.authentication.notifySuccess(token);
       } else {
-        microsoftTeams.authentication.notifyFailure(params['error_description']);
+        microsoftTeams.authentication.notifyFailure(params['error_description'] ?? params.error ?? 'unknown');
       }
     });
   }, []);
 
   return (
-    <Grid
-      className="grid-item"
-      item
-      xs={12}>
+    <div className="panel panel-center">
       <Loader label="Consent flow complete. Please wait..." />
-    </Grid>
+    </div>
   );
 
 };
 
-export default Callback;
+export default CallbackPanel;

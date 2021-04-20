@@ -5,14 +5,12 @@ export interface Team {
   description?: string;
   visibility?: string;
   url?: string;
-  members?: TeamMembers;
-  channels?: TeamChannels;
-  drive?: TeamDrive;
+  icon?: string;
 }
 
 export interface TeamChannels {
   count?: number;
-  hasMore?: boolean;
+  nextLink?: string;
   values?: TeamChannel[];
 }
 
@@ -24,7 +22,7 @@ export interface TeamChannel {
 
 export interface TeamMembers {
   count?: number;
-  hasMore?: boolean;
+  nextLink?: string;
   values?: TeamMember[];
 }
 

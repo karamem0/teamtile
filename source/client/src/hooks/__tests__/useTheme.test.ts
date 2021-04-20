@@ -1,9 +1,9 @@
 import { renderHook } from '@testing-library/react-hooks';
 import * as microsoftTeams from '@microsoft/teams-js';
 import {
-  teamsDarkTheme,
+  teamsDarkV2Theme,
   teamsHighContrastTheme,
-  teamsTheme
+  teamsV2Theme
 } from '@fluentui/react-northstar';
 import useTheme from '../useTheme';
 
@@ -25,7 +25,7 @@ describe('useTheme', () => {
       props => useTheme(props),
       { initialProps: { context: params.context } }
     );
-    expect(result.current[0]).toBe(teamsTheme);
+    expect(result.current[0]).toBe(teamsV2Theme);
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.registerOnThemeChangeHandler).toBeCalled();
   });
@@ -46,7 +46,7 @@ describe('useTheme', () => {
       props => useTheme(props),
       { initialProps: { context: params.context } }
     );
-    expect(result.current[0]).toBe(teamsDarkTheme);
+    expect(result.current[0]).toBe(teamsDarkV2Theme);
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.registerOnThemeChangeHandler).toBeCalled();
   });

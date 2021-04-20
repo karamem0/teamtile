@@ -1,13 +1,13 @@
 import React from 'react';
 import AppContext from '../contexts/AppContext';
 import useToken from '../hooks/useToken';
-import Loading from './Loading';
-import Retry from './Retry';
-import TeamList from './TeamList';
+import LoaderPanel from './LoaderPanel';
+import ErrorPanel from './ErrorPanel';
+import TeamPanel from './TeamPanel';
 
-const Tab: React.FC = () => {
+const Container: React.FC = () => {
 
-  const [ , setToken, , setError ] = React.useContext(AppContext);
+  const [ , setToken ] = React.useContext(AppContext);
   const [ token, error ] = useToken();
 
   React.useEffect(() => {
@@ -17,21 +17,22 @@ const Tab: React.FC = () => {
     setToken(token);
   }, [ setToken, token ]);
 
-  React.useEffect(() => {
-    if (!setError) {
-      return;
-    }
-    setError(error);
-  }, [ setError, error ]);
+  if (error) {
+    return (
+      <ErrorPanel />
+    );
+  }
+
+  if (!token) {
+    return (
+      <LoaderPanel />
+    );
+  }
 
   return (
-    error
-      ? <Retry />
-      : token
-        ? <TeamList />
-        : <Loading />
+    <TeamPanel />
   );
 
 };
 
-export default Tab;
+export default Container;

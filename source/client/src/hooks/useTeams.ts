@@ -1,16 +1,13 @@
 import React from 'react';
 import * as microsoftGraph from '@microsoft/microsoft-graph-types';
-import {
-  MicrosoftGraphArrayResponse,
-  MicrosoftGraphErrorResponse
-} from '../types/microsoft-graph';
+import { MicrosoftGraphArrayResponse, MicrosoftGraphErrorResponse } from '../types/microsoft-graph';
 import { Team } from '../types';
 
 interface TeamsProps {
   token?: string;
 }
 
-const useTeams = (props: TeamsProps): [Team[] | undefined, string | undefined] => {
+const useTeams = (props: TeamsProps): [ Team[] | undefined, string | undefined ] => {
 
   const { token } = props;
   const [ teams, setTeams ] = React.useState<Team[]>();

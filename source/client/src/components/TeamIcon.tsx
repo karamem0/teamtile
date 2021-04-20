@@ -1,18 +1,17 @@
 import React from 'react';
 import { Avatar } from '@fluentui/react-northstar';
-import AppContext from '../contexts/AppContext';
-import useTeamIcon from '../hooks/useTeamIcon';
 
 interface TeamIconProps {
-  id?: string;
   name?: string;
+  icon?: string;
 }
 
 const TeamIcon: React.FC<TeamIconProps> = (props: TeamIconProps) => {
 
-  const { id, name } = props;
-  const [ token ] = React.useContext(AppContext);
-  const [ icon ] = useTeamIcon({ token, id });
+  const {
+    name,
+    icon
+  } = props;
 
   return (
     <Avatar
