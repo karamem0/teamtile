@@ -1,11 +1,10 @@
 import React from 'react';
 import * as microsoftTeams from '@microsoft/teams-js';
-import { Grid } from '@material-ui/core';
 import { Loader } from '@fluentui/react-northstar';
 import crypto from 'crypto';
 import useContext from '../../hooks/useContext';
 
-const Login: React.FC = () => {
+const LoginPanel: React.FC = () => {
 
   const [ context ] = useContext();
 
@@ -27,14 +26,11 @@ const Login: React.FC = () => {
   }, [ context ]);
 
   return (
-    <Grid
-      className="grid-item"
-      item
-      xs={12}>
+    <div className="panel panel-center">
       <Loader label="Redirecting to consent page..." />
-    </Grid>
+    </div>
   );
 
 };
 
-export default Login;
+export default LoginPanel;

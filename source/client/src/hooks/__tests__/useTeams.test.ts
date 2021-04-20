@@ -21,8 +21,9 @@ describe('useTeams', () => {
         }
       });
     await waitForNextUpdate();
-    const [ teams ] = result.current;
-    expect(teams?.length).toBe(params.json.value.length);
+    const [ teams, error ] = result.current;
+    expect(teams).not.toBeUndefined();
+    expect(error).toBeUndefined();
   });
 
 });

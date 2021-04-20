@@ -1,8 +1,8 @@
 import React from 'react';
 import * as microsoftTeams from '@microsoft/teams-js';
 import {
-  teamsTheme,
-  teamsDarkTheme,
+  teamsV2Theme,
+  teamsDarkV2Theme,
   teamsHighContrastTheme
 } from '@fluentui/react-northstar';
 import { ThemePrepared } from '@fluentui/styles';
@@ -11,15 +11,20 @@ interface ThemeProps {
   context?: microsoftTeams.Context;
 }
 
-const useTheme = (props: ThemeProps): [ThemePrepared | undefined] => {
+const useTheme = (props: ThemeProps): [ ThemePrepared | undefined ] => {
 
   const { context } = props;
   const [ theme, setTheme ] = React.useState<ThemePrepared>();
 
   React.useEffect(() => {
+    let initialized = false;
     microsoftTeams.initialize(() => {
       microsoftTeams.registerOnThemeChangeHandler(handleThemeChange);
+      initialized = true;
     });
+    if (!initialized) {
+      handleThemeChange(undefined);
+    }
   }, []);
 
   React.useEffect(() => {
@@ -29,16 +34,16 @@ const useTheme = (props: ThemeProps): [ThemePrepared | undefined] => {
     handleThemeChange(context.theme);
   }, [ context ]);
 
-  const handleThemeChange = (value: string) => {
+  const handleThemeChange = (value: string | undefined) => {
     switch (value) {
       case 'dark':
-        setTheme(teamsDarkTheme);
+        setTheme(teamsDarkV2Theme);
         break;
       case 'contrast':
         setTheme(teamsHighContrastTheme);
         break;
       default:
-        setTheme(teamsTheme);
+        setTheme(teamsV2Theme);
         break;
     }
   };

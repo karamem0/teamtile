@@ -1,7 +1,7 @@
 import React from 'react';
 import * as microsoftTeams from '@microsoft/teams-js';
 
-const useContext = (): [microsoftTeams.Context | undefined] => {
+const useContext = (): [ microsoftTeams.Context | undefined ] => {
 
   const [ context, setContext ] = React.useState<microsoftTeams.Context>();
 

@@ -4,16 +4,14 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import { Grid } from '@material-ui/core';
 import { Provider } from '@fluentui/react-northstar';
-import ScopedCssBaseline from '@material-ui/core/ScopedCssBaseline';
 import AppContext from '../contexts/AppContext';
 import useContext from '../hooks/useContext';
 import useTheme from '../hooks/useTheme';
-import Error from './Error';
+import ErrorBar from './ErrorBar';
 import Container from './Container';
-import Login from './auth/Login';
-import Callback from './auth/Callback';
+import LoginPanel from './auth/LoginPanel';
+import CallbackPanel from './auth/CallbackPanel';
 
 const App: React.FC = () => {
 
@@ -23,41 +21,37 @@ const App: React.FC = () => {
   const [ error, setError ] = React.useState<string>();
 
   return (
-    <ScopedCssBaseline>
-      <Provider theme={theme}>
-        <AppContext.Provider
-          value={[
-            token,
-            setToken,
-            error,
-            setError
-          ]}>
-          <Grid
-            className="grid-container"
-            container>
-            {
-              error && <Error />
-            }
-            <BrowserRouter>
-              <Switch>
-                <Route
-                  component={Container}
-                  exact
-                  path="/" />
-                <Route
-                  component={Login}
-                  exact
-                  path="/auth/login" />
-                <Route
-                  component={Callback}
-                  exact
-                  path="/auth/callback" />
-              </Switch>
-            </BrowserRouter>
-          </Grid>
-        </AppContext.Provider>
-      </Provider>
-    </ScopedCssBaseline>
+    <Provider theme={theme}>
+      <AppContext.Provider
+        value={[
+          token,
+          setToken,
+          error,
+          setError
+        ]}>
+        <div className="container">
+          {
+            error && <ErrorBar />
+          }
+          <BrowserRouter>
+            <Switch>
+              <Route
+                component={Container}
+                exact
+                path="/" />
+              <Route
+                component={LoginPanel}
+                exact
+                path="/auth/login" />
+              <Route
+                component={CallbackPanel}
+                exact
+                path="/auth/callback" />
+            </Switch>
+          </BrowserRouter>
+        </div>
+      </AppContext.Provider>
+    </Provider>
   );
 
 };

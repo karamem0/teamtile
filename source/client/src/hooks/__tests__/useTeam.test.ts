@@ -12,12 +12,14 @@ describe('useTeam', () => {
         displayName: 'HR Taskforce',
         description: 'Welcome to the HR Taskforce team.'
       },
-      json: json
+      json: json,
+      url: 'https://developer.microsoft.com/85003a80-9e86-4d59-a4a9-97553797bbe3'
     };
     global.fetch = jest.fn(() => Promise.resolve({
       ok: true,
       json: () => Promise.resolve(params.json)
     } as Response));
+    global.URL.createObjectURL = jest.fn(() => params.url);
     const { result, waitForNextUpdate } = renderHook(
       useTeam,
       {
@@ -27,11 +29,17 @@ describe('useTeam', () => {
         }
       });
     await waitForNextUpdate();
-    const [ team ] = result.current;
-    expect(team?.id).not.toBeUndefined();
-    expect(team?.channels).not.toBeUndefined();
-    expect(team?.members).not.toBeUndefined();
-    expect(team?.drive).not.toBeUndefined();
+    const [ team,
+      channels,
+      members,
+      drive,
+      error
+    ] = result.current;
+    expect(team).not.toBeUndefined();
+    expect(channels).not.toBeUndefined();
+    expect(members).not.toBeUndefined();
+    expect(drive).not.toBeUndefined();
+    expect(error).toBeUndefined();
   });
 
 });

@@ -1,5 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import * as microsoftTeams from '@microsoft/teams-js';
+import * as tokenCache from '../../utils/TokenCache';
 import useToken from '../useToken';
 
 describe('useToken', () => {
@@ -22,6 +23,12 @@ describe('useToken', () => {
         authTokenRequest.successCallback(params.clientToken));
     jest
       .spyOn(microsoftTeams.appInitialization, 'notifySuccess')
+      .mockImplementation(() => undefined);
+    jest
+      .spyOn(tokenCache, 'getCachedToken')
+      .mockImplementation(() => undefined);
+    jest
+      .spyOn(tokenCache, 'setCachedToken')
       .mockImplementation(() => undefined);
     global.fetch = jest.fn(() => Promise.resolve({
       ok: true,
@@ -55,6 +62,12 @@ describe('useToken', () => {
     jest
       .spyOn(microsoftTeams.appInitialization, 'notifySuccess')
       .mockImplementation(() => undefined);
+    jest
+      .spyOn(tokenCache, 'getCachedToken')
+      .mockImplementation(() => undefined);
+    jest
+      .spyOn(tokenCache, 'setCachedToken')
+      .mockImplementation(() => undefined);
     global.fetch = jest.fn(() => Promise.resolve({
       ok: false,
       status: 403
@@ -82,6 +95,12 @@ describe('useToken', () => {
     jest
       .spyOn(microsoftTeams.appInitialization, 'notifyFailure')
       .mockImplementation(() => undefined);
+    jest
+      .spyOn(tokenCache, 'getCachedToken')
+      .mockImplementation(() => undefined);
+    jest
+      .spyOn(tokenCache, 'setCachedToken')
+      .mockImplementation(() => undefined);
     const { result } = renderHook(() => useToken());
     const [ token, error ] = result.current;
     expect(token).toBeUndefined();
@@ -103,6 +122,12 @@ describe('useToken', () => {
         authTokenRequest.successCallback(params.clientToken));
     jest
       .spyOn(microsoftTeams.appInitialization, 'notifyFailure')
+      .mockImplementation(() => undefined);
+    jest
+      .spyOn(tokenCache, 'getCachedToken')
+      .mockImplementation(() => undefined);
+    jest
+      .spyOn(tokenCache, 'setCachedToken')
       .mockImplementation(() => undefined);
     global.fetch = jest.fn(() => Promise.resolve({
       ok: false,
@@ -132,6 +157,12 @@ describe('useToken', () => {
     jest
       .spyOn(microsoftTeams.appInitialization, 'notifyFailure')
       .mockImplementation(() => undefined);
+    jest
+      .spyOn(tokenCache, 'getCachedToken')
+      .mockImplementation(() => undefined);
+    jest
+      .spyOn(tokenCache, 'setCachedToken')
+      .mockImplementation(() => undefined);
     global.fetch = jest.fn(() => Promise.reject(params.error));
     const { result, waitForNextUpdate } = renderHook(() => useToken());
     await waitForNextUpdate();
@@ -160,6 +191,12 @@ describe('useToken', () => {
         authenticateParameters?.failureCallback(params.error));
     jest
       .spyOn(microsoftTeams.appInitialization, 'notifyFailure')
+      .mockImplementation(() => undefined);
+    jest
+      .spyOn(tokenCache, 'getCachedToken')
+      .mockImplementation(() => undefined);
+    jest
+      .spyOn(tokenCache, 'setCachedToken')
       .mockImplementation(() => undefined);
     global.fetch = jest.fn(() => Promise.resolve({
       ok: false,
