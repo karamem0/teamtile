@@ -1,3 +1,11 @@
+//
+// Copyright (c) 2021 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/master/LICENSE
+//
+
 import { renderHook } from '@testing-library/react-hooks';
 import * as microsoftTeams from '@microsoft/teams-js';
 import useContext from '../useContext';

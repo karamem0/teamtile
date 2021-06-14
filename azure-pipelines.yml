@@ -33,12 +33,12 @@ stages:
               rootFolderOrFile: $(solutionDir)
               archiveFile: $(Build.ArtifactStagingDirectory)/manifest.zip
               includeRootFolder: false
-          - task: PublishBuildArtifacts@1
-            displayName: Publish build artifacts
+          - task: PublishPipelineArtifact@1
+            displayName: Publish artifacts
             inputs:
-              pathToPublish: $(Build.ArtifactStagingDirectory)
-              artifactName: manifest
-              publishLocation: Container
+              targetPath: $(Build.ArtifactStagingDirectory)
+              artifact: manifest
+              publishLocation: pipeline
       - job: BuildServer
         displayName: Build Server
         variables:
@@ -46,17 +46,6 @@ stages:
           solutionDir: source/server
           solutionFile: Karamem0.Teamtile.csproj
         steps:
-          - task: ReplaceTokens@3
-            displayName: Replace tokens
-            inputs:
-              rootDirectory: $(solutionDir)
-              targetFiles: appSettings.json
-              encoding: utf-8
-              writeBOM: false
-              actionOnMissing: fail
-              keepToken: false
-              tokenPrefix: "{{"
-              tokenSuffix: "}}"
           - task: DotNetCoreCLI@2
             displayName: Run dotnet restore
             inputs:
@@ -76,12 +65,12 @@ stages:
               rootFolderOrFile: $(solutionDir)/publish/server
               archiveFile: $(Build.ArtifactStagingDirectory)/server.zip
               includeRootFolder: false
-          - task: PublishBuildArtifacts@1
-            displayName: Publish build artifacts
+          - task: PublishPipelineArtifact@1
+            displayName: Publish artifacts
             inputs:
-              pathToPublish: $(Build.ArtifactStagingDirectory)
-              artifactName: server
-              publishLocation: Container
+              targetPath: $(Build.ArtifactStagingDirectory)
+              artifact: server
+              publishLocation: pipeline
       - job: BuildClient
         displayName: Build Client
         variables:
@@ -101,17 +90,11 @@ stages:
           - task: NodeTool@0
             displayName: Install Node.js
             inputs:
-              versionSpec: 10.x
+              versionSpec: 14.x
           - task: Npm@1
             displayName: Run npm install
             inputs:
               command: install
-              workingDir: $(solutionDir)
-          - task: Npm@1
-            displayName: Run npm run build
-            inputs:
-              command: custom
-              customCommand: run build
               workingDir: $(solutionDir)
           - task: Npm@1
             displayName: Run npm run test
@@ -119,12 +102,18 @@ stages:
               command: custom
               customCommand: run test-ci
               workingDir: $(solutionDir)
+          - task: Npm@1
+            displayName: Run npm run build
+            inputs:
+              command: custom
+              customCommand: run build
+              workingDir: $(solutionDir)
           - task: CopyFiles@2
             displayName: Copy web.config
             inputs:
-              SourceFolder: $(solutionDir)
-              Contents: web.config
-              TargetFolder: $(solutionDir)/build
+              sourceFolder: $(solutionDir)
+              contents: web.config
+              targetFolder: $(solutionDir)/build
           - task: ArchiveFiles@2
             displayName: Archive build files
             inputs:
@@ -136,58 +125,52 @@ stages:
             inputs:
               testResultsFormat: JUnit
               testResultsFiles: $(solutionDir)/junit.xml
-          - task: PublishBuildArtifacts@1
-            displayName: Publish build artifacts
+          - task: PublishPipelineArtifact@1
+            displayName: Publish artifacts
             inputs:
-              pathToPublish: $(Build.ArtifactStagingDirectory)
-              artifactName: client
-              publishLocation: Container
+              targetPath: $(Build.ArtifactStagingDirectory)
+              artifact: client
+              publishLocation: pipeline
   - stage: Deploy
     displayName: Deploy
     dependsOn: Build
     condition: succeeded()
     jobs:
-      - job: DeployServer
-        displayName: Deploy Server
+      - job: Deploy
+        displayName: Deploy
         steps:
           - checkout: none
-          - task: DownloadBuildArtifacts@0
+          - task: DownloadPipelineArtifact@2
             displayName: Download build artifacts
             inputs:
               buildType: current
-              downloadType: single
-              artifactName: server
-              downloadPath: $(System.ArtifactsDirectory)
-          - task: AzureRmWebAppDeployment@4
-            displayName: Deploy server
+              targetPath: $(Build.ArtifactStagingDirectory)
+          - task: ExtractFiles@1
+            displayName: Extract server files
             inputs:
-              ConnectionType: AzureRM
+              archiveFilePatterns: $(Build.ArtifactStagingDirectory)/**/server.zip
+              destinationFolder: $(System.ArtifactsDirectory)/deploy/api
+              cleanDestinationFolder: false
+              overwriteExistingFiles: false
+          - task: ExtractFiles@1
+            displayName: Extract client files
+            inputs:
+              archiveFilePatterns: $(Build.ArtifactStagingDirectory)/**/client.zip
+              destinationFolder: $(System.ArtifactsDirectory)/deploy
+              cleanDestinationFolder: false
+              overwriteExistingFiles: false
+          - task: ArchiveFiles@2
+            displayName: Archive files
+            inputs:
+              rootFolderOrFile: $(System.ArtifactsDirectory)/deploy
+              includeRootFolder: false
+              archiveType: zip
+              archiveFile: $(System.ArtifactsDirectory)/deploy.zip
+              replaceExistingArchive: true
+          - task: AzureWebApp@1
+            displayName: Deploy files
+            inputs:
               azureSubscription: Azure Resource Manager
               appType: webApp
-              WebAppName: teamtile
-              package: $(System.ArtifactsDirectory)/**/server.zip
-              enableCustomDeployment: true
-              deploymentType: webDeploy
-              virtualApplication: /api
-      - job: DeployClient
-        displayName: Deploy Client
-        steps:
-          - checkout: none
-          - task: DownloadBuildArtifacts@0
-            displayName: Download build artifacts
-            inputs:
-              buildType: current
-              downloadType: single
-              artifactName: client
-              downloadPath: $(System.ArtifactsDirectory)
-          - task: AzureRmWebAppDeployment@4
-            displayName: Deploy client
-            inputs:
-              ConnectionType: AzureRM
-              azureSubscription: Azure Resource Manager
-              appType: webApp
-              WebAppName: teamtile
-              package: $(System.ArtifactsDirectory)/**/client.zip
-              enableCustomDeployment: true
-              deploymentType: webDeploy
-              virtualApplication: /
+              appName: teamtile
+              package: $(System.ArtifactsDirectory)/deploy.zip

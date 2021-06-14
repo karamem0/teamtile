@@ -1,5 +1,12 @@
+//
+// Copyright (c) 2021 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/master/LICENSE
+//
+
 import React from 'react';
-import AppContext from '../contexts/AppContext';
 import useTeams from '../hooks/useTeams';
 import LoaderPanel from './LoaderPanel';
 import EmptyPanel from './EmptyPanel';
@@ -7,15 +14,7 @@ import TeamCard from './TeamCard';
 
 const TeamPanel: React.FC = () => {
 
-  const [ token, , , setError ] = React.useContext(AppContext);
-  const [ teams, error ] = useTeams({ token });
-
-  React.useEffect(() => {
-    if (!setError) {
-      return;
-    }
-    setError(error);
-  }, [ setError, error ]);
+  const [ teams ] = useTeams();
 
   if (!teams) {
     return (

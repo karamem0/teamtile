@@ -1,6 +1,14 @@
+//
+// Copyright (c) 2021 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/master/LICENSE
+//
+
 import React from 'react';
 import { Alert } from '@fluentui/react-northstar';
-import { ExclamationTriangleIcon } from '@fluentui/react-icons-northstar';
+import { WarningIcon } from '@fluentui/react-icons-mdl2';
 import AppContext from '../contexts/AppContext';
 
 const ErrorBar: React.FC = () => {
@@ -13,7 +21,7 @@ const ErrorBar: React.FC = () => {
         content={error}
         dismissible
         icon={
-          <ExclamationTriangleIcon />
+          <WarningIcon />
         }
         variables={{ urgent: true }}
         onVisibleChange={() => {
