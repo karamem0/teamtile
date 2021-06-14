@@ -1,19 +1,23 @@
+//
+// Copyright (c) 2021 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/master/LICENSE
+//
+
 import React from 'react';
-import * as microsoftGraph from '@microsoft/microsoft-graph-types';
-import {
-  MicrosoftGraphArrayResponse,
-  MicrosoftGraphBatchResponse,
-  MicrosoftGraphErrorResponse
-} from '../types/microsoft-graph';
+import { BatchRequestContent, BatchResponseContent } from '@microsoft/microsoft-graph-client';
+import * as microsoftclient from '@microsoft/microsoft-graph-types';
 import {
   Team,
   TeamChannels,
   TeamDrive,
   TeamMembers
 } from '../types';
+import AppContext from '../contexts/AppContext';
 
 interface TeamProps {
-  token?: string;
   team?: Team;
 }
 
@@ -21,19 +25,20 @@ const useTeam = (props: TeamProps): [
   Team | undefined,
   TeamChannels | undefined,
   TeamMembers | undefined,
-  TeamDrive | undefined,
-  string | undefined
+  TeamDrive | undefined
 ] => {
 
-  const { token } = props;
+  const [ client, , , setError ] = React.useContext(AppContext);
   const [ team, setTeam ] = React.useState<Team | undefined>(props.team);
   const [ channels, setChannels ] = React.useState<TeamChannels>();
   const [ members, setMembers ] = React.useState<TeamMembers>();
   const [ drive, setDrive ] = React.useState<TeamDrive>();
-  const [ error, setError ] = React.useState<string>();
 
   React.useEffect(() => {
-    if (!token) {
+    if (!client) {
+      return;
+    }
+    if (!setError) {
       return;
     }
     if (!team?.id) {
@@ -41,57 +46,61 @@ const useTeam = (props: TeamProps): [
     }
     (async () => {
       try {
-        const response = await fetch(
-          'https://graph.microsoft.com/v1.0/$batch',
+        const requestContent = new BatchRequestContent([
           {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'application/json'
-            },
-            method: 'POST',
-            mode: 'cors',
-            body: JSON.stringify({
-              requests: [
-                {
-                  id: '1',
-                  method: 'GET',
-                  url: `/teams/${team.id}`
-                },
-                {
-                  id: '2',
-                  method: 'GET',
-                  Url: `/teams/${team.id}/photo/$value`
-                },
-                {
-                  id: '3',
-                  method: 'GET',
-                  url: `/teams/${team.id}/channels`
-                },
-                {
-                  id: '4',
-                  method: 'GET',
-                  url: `/teams/${team.id}/members`
-                },
-                {
-                  id: '5',
-                  method: 'GET',
-                  url: `/groups/${team.id}/drive`
-                }
-              ]
-            })
+            id: '1',
+            request: new Request(
+              `/teams/${team.id}`,
+              {
+                method: 'GET'
+              })
+          },
+          {
+            id: '2',
+            request: new Request(
+              `/teams/${team.id}/photo/$value`,
+              {
+                method: 'GET'
+              })
+          },
+          {
+            id: '3',
+            request: new Request(
+              `/teams/${team.id}/channels`,
+              {
+                method: 'GET'
+              })
+          },
+          {
+            id: '4',
+            request: new Request(
+              `/teams/${team.id}/members`,
+              {
+                method: 'GET'
+              })
+          },
+          {
+            id: '5',
+            request: new Request(
+              `/groups/${team.id}/drive`,
+              {
+                method: 'GET'
+              })
           }
-        );
-        if (response.ok) {
-          const json = await response.json();
-          const responses = json.responses as MicrosoftGraphBatchResponse[];
-          responses.forEach((batch) => {
-            if (batch.status >= 200 && batch.status <= 299) {
-              if (batch.id === '1') {
+        ]);
+        const requestBody = await requestContent.getContent();
+        const responseBody = await client.api('/$batch').post(requestBody);
+        const responseContent = new BatchResponseContent(responseBody);
+        responseContent.getResponses().forEach((item, key) => {
+          if (item.ok) {
+            if (key === '1') {
+              (async () => {
+                const json = await item.json();
+                const body = json as microsoftclient.Team;
                 setTeam((value) => {
                   if (!value) {
                     return value;
                   }
-                  const body = batch.body as microsoftGraph.Team;
                   return {
                     ...value,
                     id: body.id ?? undefined,
@@ -100,79 +109,80 @@ const useTeam = (props: TeamProps): [
                     description: body.description ?? undefined,
                     visibility: body.visibility ?? undefined,
                     url: body.webUrl ?? undefined
-                  };
+                  } as Team;
                 });
-              }
-              if (batch.id === '2') {
+              })();
+            }
+            if (key === '2') {
+              (async () => {
+                const text = await item.text();
+                const bytes = atob(text);
+                const array = new Uint8Array(bytes.length);
+                for (let index = 0; index < bytes.length; index++) {
+                  array[index] = bytes.charCodeAt(index);
+                }
+                const blob = new Blob([ array ]);
                 setTeam((value) => {
                   if (!value) {
                     return value;
                   }
-                  const binary = atob(batch.body as string);
-                  const bytes = new Uint8Array(binary.length);
-                  for (let index = 0; index < binary.length; index++) {
-                    bytes[index] = binary.charCodeAt(index);
-                  }
-                  const blob = new Blob([ bytes ], { type: batch.headers['Content-Type'] });
                   return {
                     ...value,
                     icon: window.URL.createObjectURL(blob)
                   };
                 });
-              }
-              if (batch.id === '3') {
-                const body = batch.body as MicrosoftGraphArrayResponse;
-                const values = body.value as microsoftGraph.Channel[];
+              })();
+            }
+            if (key === '3') {
+              (async () => {
+                const json = await item.json();
+                const values = json.value as microsoftclient.Channel[];
                 setChannels({
-                  count: body['@odata.count'],
-                  nextLink: body['@odata.nextLink'],
+                  count: json['@odata.count'],
+                  nextLink: json['@odata.nextLink'],
                   values: values.map((value) => ({
                     id: value.id ?? undefined,
                     name: value.displayName ?? undefined,
                     url: value.webUrl ?? undefined
                   }))
                 });
-              }
-              if (batch.id === '4') {
-                const body = batch.body as MicrosoftGraphArrayResponse;
-                const values = body.value as microsoftGraph.AadUserConversationMember[];
+              })();
+            }
+            if (key === '4') {
+              (async () => {
+                const json = await item.json();
+                const values = json.value as microsoftclient.AadUserConversationMember[];
                 setMembers({
-                  count: body['@odata.count'],
-                  nextLink: body['@odata.nextLink'],
+                  count: json['@odata.count'],
+                  nextLink: json['@odata.nextLink'],
                   values: values.map((value) => ({
                     id: value.userId ?? undefined,
                     name: value.displayName ?? undefined,
                     email: value.email ?? undefined
                   }))
                 });
-              }
-              if (batch.id === '5') {
-                const body = batch.body as microsoftGraph.Drive;
+              })();
+            }
+            if (key === '5') {
+              (async () => {
+                const json = await item.json();
+                const body = json as microsoftclient.Drive;
                 setDrive({
                   id: body.id ?? undefined,
                   url: body.webUrl ?? undefined
                 });
-              }
-            } else {
-              if (batch.status !== 429) {
-                const body = batch.body as MicrosoftGraphErrorResponse;
-                const message = body.error.message ?? undefined;
-                throw new Error(message);
-              }
+              })();
             }
-          });
-        } else {
-          const json = await response.json();
-          const value = json.error as microsoftGraph.GenericError;
-          const message = value.message ?? undefined;
-          throw new Error(message);
-        }
+          }
+        });
       } catch (e) {
+        console.error(e);
         setError(e.toString());
       }
     })();
   }, [
-    token,
+    client,
+    setError,
     team?.id
   ]);
 
@@ -180,8 +190,7 @@ const useTeam = (props: TeamProps): [
     team,
     channels,
     members,
-    drive,
-    error
+    drive
   ];
 
 };

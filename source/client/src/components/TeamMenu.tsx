@@ -1,3 +1,11 @@
+//
+// Copyright (c) 2021 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/master/LICENSE
+//
+
 import React from 'react';
 import * as microsoftTeams from '@microsoft/teams-js';
 import {
@@ -7,11 +15,8 @@ import {
   Pill,
   Text
 } from '@fluentui/react-northstar';
-import {
-  ContactGroupIcon,
-  ContentIcon
-} from '@fluentui/react-icons-northstar';
-import { FabricNetworkFolderIcon } from '@fluentui/react-icons';
+import { ContextMenuIcon, GroupIcon } from '@fluentui/react-icons-mdl2';
+import { SharepointLogoIcon } from '@fluentui/react-icons-mdl2-branded';
 import {
   Team,
   TeamChannels,
@@ -163,9 +168,7 @@ const TeamMenu: React.FC<TeamMenuProps> = (props: TeamMenuProps) => {
           disabled: !members,
           icon: (
             <Text color="brand">
-              <ContactGroupIcon
-                className="card-menu-icon"
-                outline />
+              <GroupIcon className="card-menu-icon" />
             </Text>
           ),
           indicator: false,
@@ -193,9 +196,7 @@ const TeamMenu: React.FC<TeamMenuProps> = (props: TeamMenuProps) => {
           disabled: !channels,
           icon: (
             <Text color="brand">
-              <ContentIcon
-                className="card-menu-icon"
-                outline />
+              <ContextMenuIcon className="card-menu-icon" />
             </Text>
           ),
           indicator: false,
@@ -207,7 +208,7 @@ const TeamMenu: React.FC<TeamMenuProps> = (props: TeamMenuProps) => {
           disabled: !drive,
           icon: (
             <Text color="brand">
-              <FabricNetworkFolderIcon className="card-menu-icon" />
+              <SharepointLogoIcon className="card-menu-icon" />
             </Text>
           ),
           key: 3,

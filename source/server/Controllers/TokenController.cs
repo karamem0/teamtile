@@ -1,5 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+//
+// Copyright (c) 2021 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/master/LICENSE
+//
+
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Identity.Web;
 using Microsoft.IdentityModel.JsonWebTokens;
 using System;
 using System.Collections.Generic;
@@ -14,24 +24,19 @@ namespace Karamem0.Teamtile.Controllers
 {
 
     [ApiController()]
+    [Authorize()]
     [Route("token")]
     public class TokenController : Controller
     {
 
         private readonly HttpClient httpClient;
 
-        private readonly string authClientId;
-
-        private readonly string authClientSecret;
-
-        private readonly string authScope;
+        private readonly MicrosoftIdentityOptions identityOptions;
 
         public TokenController(IHttpClientFactory httpClientFactory, IConfiguration configuration)
         {
             this.httpClient = httpClientFactory.CreateClient();
-            this.authClientId = configuration.GetValue<string>("Auth:ClientId");
-            this.authClientSecret = configuration.GetValue<string>("Auth:ClientSecret");
-            this.authScope = configuration.GetValue<string>("Auth:Scope");
+            this.identityOptions = configuration.GetSection(Constants.AzureAd).Get<MicrosoftIdentityOptions>();
         }
 
         [HttpPost()]
@@ -47,10 +52,10 @@ namespace Karamem0.Teamtile.Controllers
                 Content = new FormUrlEncodedContent(new Dictionary<string, string>()
                 {
                     ["grant_type"] = "urn:ietf:params:oauth:grant-type:jwt-bearer",
-                    ["client_id"] = this.authClientId,
-                    ["client_secret"] = this.authClientSecret,
+                    ["client_id"] = this.identityOptions.ClientId,
+                    ["client_secret"] = this.identityOptions.ClientSecret,
                     ["assertion"] = clientToken,
-                    ["scope"] = this.authScope,
+                    ["scope"] = string.Join(" ", this.identityOptions.Scope),
                     ["requested_token_use"] = "on_behalf_of",
                 })
             };
@@ -66,7 +71,7 @@ namespace Karamem0.Teamtile.Controllers
             {
                 var errorCode = httpResponseJson["error"].ToString();
                 var errorDescription = httpResponseJson["error_description"].ToString();
-                if (errorCode == "invalid_grant" || errorCode == "interaction_required")
+                if (errorCode is "invalid_grant" or "interaction_required")
                 {
                     return this.StatusCode((int)HttpStatusCode.Forbidden, errorDescription);
                 }

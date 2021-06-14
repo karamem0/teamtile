@@ -1,7 +1,13 @@
+//
+// Copyright (c) 2021 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/master/LICENSE
+//
+
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +22,7 @@ namespace Karamem0.Teamtile
         private static void Main(string[] args)
         {
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                })
+                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>())
                 .Build()
                 .Run();
         }

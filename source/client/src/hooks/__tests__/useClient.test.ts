@@ -1,9 +1,17 @@
+//
+// Copyright (c) 2021 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/master/LICENSE
+//
+
 import { renderHook } from '@testing-library/react-hooks';
 import * as microsoftTeams from '@microsoft/teams-js';
 import * as tokenCache from '../../utils/TokenCache';
-import useToken from '../useToken';
+import useClient from '../useClient';
 
-describe('useToken', () => {
+describe('useClient', () => {
 
   beforeEach(() => {
     jest
@@ -34,10 +42,10 @@ describe('useToken', () => {
       ok: true,
       text: () => Promise.resolve(params.serverToken)
     } as Response));
-    const { result, waitForNextUpdate } = renderHook(() => useToken());
+    const { result, waitForNextUpdate } = renderHook(() => useClient());
     await waitForNextUpdate();
-    const [ token, error ] = result.current;
-    expect(token).toBe(params.serverToken);
+    const [ client, error ] = result.current;
+    expect(client).not.toBeUndefined();
     expect(error).toBeUndefined();
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.authentication.getAuthToken).toBeCalled();
@@ -72,10 +80,10 @@ describe('useToken', () => {
       ok: false,
       status: 403
     } as Response));
-    const { result, waitForNextUpdate } = renderHook(() => useToken());
+    const { result, waitForNextUpdate } = renderHook(() => useClient());
     await waitForNextUpdate();
-    const [ token, error ] = result.current;
-    expect(token).toBe(params.serverToken);
+    const [ client, error ] = result.current;
+    expect(client).not.toBeUndefined();
     expect(error).toBeUndefined();
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.authentication.getAuthToken).toBeCalled();
@@ -101,9 +109,9 @@ describe('useToken', () => {
     jest
       .spyOn(tokenCache, 'setCachedToken')
       .mockImplementation(() => undefined);
-    const { result } = renderHook(() => useToken());
-    const [ token, error ] = result.current;
-    expect(token).toBeUndefined();
+    const { result } = renderHook(() => useClient());
+    const [ client, error ] = result.current;
+    expect(client).toBeUndefined();
     expect(error).toBe(params.error);
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.authentication.getAuthToken).toBeCalled();
@@ -134,10 +142,10 @@ describe('useToken', () => {
       status: 500,
       text: () => Promise.resolve(params.error)
     } as Response));
-    const { result, waitForNextUpdate } = renderHook(() => useToken());
+    const { result, waitForNextUpdate } = renderHook(() => useClient());
     await waitForNextUpdate();
-    const [ token, error ] = result.current;
-    expect(token).toBeUndefined();
+    const [ client, error ] = result.current;
+    expect(client).toBeUndefined();
     expect(error).toBe(params.error);
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.authentication.getAuthToken).toBeCalled();
@@ -164,10 +172,10 @@ describe('useToken', () => {
       .spyOn(tokenCache, 'setCachedToken')
       .mockImplementation(() => undefined);
     global.fetch = jest.fn(() => Promise.reject(params.error));
-    const { result, waitForNextUpdate } = renderHook(() => useToken());
+    const { result, waitForNextUpdate } = renderHook(() => useClient());
     await waitForNextUpdate();
-    const [ token, error ] = result.current;
-    expect(token).toBeUndefined();
+    const [ client, error ] = result.current;
+    expect(client).toBeUndefined();
     expect(error).toBe(params.error);
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.authentication.getAuthToken).toBeCalled();
@@ -202,10 +210,10 @@ describe('useToken', () => {
       ok: false,
       status: 403
     } as Response));
-    const { result, waitForNextUpdate } = renderHook(() => useToken());
+    const { result, waitForNextUpdate } = renderHook(() => useClient());
     await waitForNextUpdate();
-    const [ token, error ] = result.current;
-    expect(token).toBeUndefined();
+    const [ client, error ] = result.current;
+    expect(client).toBeUndefined();
     expect(error).toBe(params.error);
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.authentication.getAuthToken).toBeCalled();

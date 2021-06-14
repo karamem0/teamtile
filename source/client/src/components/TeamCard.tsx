@@ -1,3 +1,11 @@
+//
+// Copyright (c) 2021 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/master/LICENSE
+//
+
 import React from 'react';
 import * as microsoftTeams from '@microsoft/teams-js';
 import {
@@ -5,9 +13,8 @@ import {
   Card,
   Text
 } from '@fluentui/react-northstar';
-import { LockIcon, GlobeIcon } from '@fluentui/react-icons';
+import { LockIcon, GlobeIcon } from '@fluentui/react-icons-mdl2';
 import { Team } from '../types';
-import AppContext from '../contexts/AppContext';
 import useTeam from '../hooks/useTeam';
 import TeamIcon from './TeamIcon';
 import TeamMenu from './TeamMenu';
@@ -18,21 +25,12 @@ interface TeamCardProps {
 
 const TeamCard: React.FC<TeamCardProps> = (props: TeamCardProps) => {
 
-  const [ token, , , setError ] = React.useContext(AppContext);
   const [
     team,
     channels,
     members,
-    drive,
-    error
-  ] = useTeam({ token, team: props.team });
-
-  React.useEffect(() => {
-    if (!setError) {
-      return;
-    }
-    setError(error);
-  }, [ setError, error ]);
+    drive
+  ] = useTeam({ team: props.team });
 
   return (
     <React.Fragment>

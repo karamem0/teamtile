@@ -1,11 +1,17 @@
+//
+// Copyright (c) 2021 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/master/LICENSE
+//
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.Identity.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,34 +32,28 @@ namespace Karamem0.Teamtile
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddHttpClient();
-            services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(builder =>
-                {
-                    builder
-                        .AllowAnyOrigin()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
-                });
-            });
+            _ = services.AddMicrosoftIdentityWebApiAuthentication(this.Configuration);
+            _ = services.AddControllers();
+            _ = services.AddHttpClient();
+            _ = services.AddCors(options =>
+                options.AddDefaultPolicy(builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-                app.UseCors();
+                _ = app.UseDeveloperExceptionPage();
+                _ = app.UseCors();
             }
-            app.UseHttpsRedirection();
-            app.UseRouting();
-            app.UseAuthorization();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            _ = app.UseHttpsRedirection();
+            _ = app.UseRouting();
+            _ = app.UseAuthentication();
+            _ = app.UseAuthorization();
+            _ = app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
 
     }

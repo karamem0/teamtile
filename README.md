@@ -2,7 +2,7 @@
 
 Display joined teams in tile view and access quickly.
 
-[![Build Status](https://dev.azure.com/karamem0/Teamtile/_apis/build/status/Teamtile?branchName=master)](https://dev.azure.com/karamem0/Teamtile/_build/latest?definitionId=49&branchName=master)
+[![.github/workflows/main.yml](https://github.com/karamem0/teamtile/actions/workflows/main.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/main.yml)
 [![License](https://img.shields.io/github/license/karamem0/teamtile.svg)](https://github.com/karamem0/teamtile/blob/master/LICENSE)
 
 ## Features

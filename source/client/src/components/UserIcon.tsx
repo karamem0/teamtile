@@ -1,6 +1,13 @@
+//
+// Copyright (c) 2021 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/master/LICENSE
+//
+
 import React from 'react';
 import { Avatar } from '@fluentui/react-northstar';
-import AppContext from '../contexts/AppContext';
 import useUserIcon from '../hooks/useUserIcon';
 
 interface UserIconProps {
@@ -11,8 +18,7 @@ interface UserIconProps {
 const UserIcon: React.FC<UserIconProps> = (props: UserIconProps) => {
 
   const { id, name } = props;
-  const [ token ] = React.useContext(AppContext);
-  const [ icon ] = useUserIcon({ token, id });
+  const [ icon ] = useUserIcon({ id });
 
   return (
     <Avatar

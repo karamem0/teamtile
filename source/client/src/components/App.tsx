@@ -1,3 +1,11 @@
+//
+// Copyright (c) 2021 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/master/LICENSE
+//
+
 import React from 'react';
 import {
   BrowserRouter,
@@ -5,8 +13,8 @@ import {
   Switch
 } from 'react-router-dom';
 import { Provider } from '@fluentui/react-northstar';
+import { Client } from '@microsoft/microsoft-graph-client';
 import AppContext from '../contexts/AppContext';
-import useContext from '../hooks/useContext';
 import useTheme from '../hooks/useTheme';
 import ErrorBar from './ErrorBar';
 import Container from './Container';
@@ -15,17 +23,16 @@ import CallbackPanel from './auth/CallbackPanel';
 
 const App: React.FC = () => {
 
-  const [ context ] = useContext();
-  const [ theme ] = useTheme({ context });
-  const [ token, setToken ] = React.useState<string>();
+  const [ theme ] = useTheme();
+  const [ client, setClient ] = React.useState<Client>();
   const [ error, setError ] = React.useState<string>();
 
   return (
     <Provider theme={theme}>
       <AppContext.Provider
         value={[
-          token,
-          setToken,
+          client,
+          setClient,
           error,
           setError
         ]}>

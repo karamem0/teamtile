@@ -3,21 +3,14 @@
   "configurations": [
     {
       "name": "Debug Teams (Chrome)",
-      "type": "chrome",
-      "request": "launch",
-      "url": "https://teams.microsoft.com/_#/l/app/6c2797c6-76c3-4047-a792-dda5f06da426?installAppPackage=true",
-      "webRoot": "${workspaceFolder}"
-    },
-    {
-      "name": "Debug Teams (Edge)",
-      "type": "edge",
+      "type": "pwa-chrome",
       "request": "launch",
       "url": "https://teams.microsoft.com/_#/l/app/6c2797c6-76c3-4047-a792-dda5f06da426?installAppPackage=true",
       "webRoot": "${workspaceFolder}"
     },
     {
       "name": "Debug (Chrome)",
-      "type": "chrome",
+      "type": "pwa-chrome",
       "request": "launch",
       "url": "https://localhost:3000",
       "webRoot": "${workspaceFolder}"

@@ -1,10 +1,20 @@
+//
+// Copyright (c) 2021 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/master/LICENSE
+//
+
 import React from 'react';
 import * as microsoftTeams from '@microsoft/teams-js';
+import { Client } from '@microsoft/microsoft-graph-client';
 import { getCachedToken, setCachedToken } from '../utils/TokenCache';
 
-const useToken = (): [ string | undefined, string | undefined ] => {
+const useClient = (): [ Client | undefined, string | undefined ] => {
 
   const [ token, setToken ] = React.useState<string>();
+  const [ client, setClient ] = React.useState<Client>();
   const [ error, setError ] = React.useState<string>();
 
   const handleFailureSingleSignOn = React.useCallback((value: string) => {
@@ -23,6 +33,9 @@ const useToken = (): [ string | undefined, string | undefined ] => {
           {
             method: 'POST',
             body: clientToken,
+            headers: {
+              Authorization: `Bearer ${clientToken}`
+            },
             mode: 'cors'
           }
         );
@@ -82,11 +95,22 @@ const useToken = (): [ string | undefined, string | undefined ] => {
     });
   }, [ handleSuccessSingleSignOn, handleFailureSingleSignOn ]);
 
+  React.useEffect(() => {
+    if (!token) {
+      return;
+    }
+    setClient(Client.initWithMiddleware({
+      authProvider: {
+        getAccessToken: () => Promise.resolve(token)
+      }
+    }));
+  }, [ token ]);
+
   return [
-    token,
+    client,
     error
   ];
 
 };
 
-export default useToken;
+export default useClient;

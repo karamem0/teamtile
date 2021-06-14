@@ -1,21 +1,29 @@
+//
+// Copyright (c) 2021 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/master/LICENSE
+//
+
 import React from 'react';
 import AppContext from '../contexts/AppContext';
-import useToken from '../hooks/useToken';
+import useGraph from '../hooks/useClient';
 import LoaderPanel from './LoaderPanel';
 import ErrorPanel from './ErrorPanel';
 import TeamPanel from './TeamPanel';
 
 const Container: React.FC = () => {
 
-  const [ , setToken ] = React.useContext(AppContext);
-  const [ token, error ] = useToken();
+  const [ , setClient ] = React.useContext(AppContext);
+  const [ client, error ] = useGraph();
 
   React.useEffect(() => {
-    if (!setToken) {
+    if (!setClient) {
       return;
     }
-    setToken(token);
-  }, [ setToken, token ]);
+    setClient(client);
+  }, [ setClient, client ]);
 
   if (error) {
     return (
@@ -23,7 +31,7 @@ const Container: React.FC = () => {
     );
   }
 
-  if (!token) {
+  if (!client) {
     return (
       <LoaderPanel />
     );

@@ -1,22 +1,25 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <PackageId>Teamtile</PackageId>
-    <Version>1.2.0</Version>
+    <Version>1.4.0</Version>
     <Authors>karamem0</Authors>
     <Company>karamem0</Company>
     <Product>Teamtile</Product>
     <Copyright>Copyright (c) 2021 karamem0</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/karamem0/Teamtile</PackageProjectUrl>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
-    <FileVersion>1.1.0</FileVersion>
+    <PackageProjectUrl>https://github.com/karamem0/teamtile</PackageProjectUrl>
+    <AssemblyVersion>1.4.0</AssemblyVersion>
+    <FileVersion>1.4.0</FileVersion>
     <RootNamespace>Karamem0.Teamtile</RootNamespace>
+    <UserSecretsId>752965d3-575a-4e30-a3ba-5c781a02ace1</UserSecretsId>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="1.14.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
   </ItemGroup>
 
 </Project>

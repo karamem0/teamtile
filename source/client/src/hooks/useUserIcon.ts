@@ -1,45 +1,48 @@
+//
+// Copyright (c) 2021 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/master/LICENSE
+//
+
 import React from 'react';
+import AppContext from '../contexts/AppContext';
 
 interface UserIconProps {
-  token?: string;
   id?: string;
 }
 
 const useUserIcon = (props: UserIconProps): [ string | undefined ] => {
 
-  const { token, id } = props;
+  const [ client ] = React.useContext(AppContext);
+  const { id } = props;
   const [ icon, setIcon ] = React.useState<string>();
 
   React.useEffect(() => {
-    if (!token) {
+    if (!client) {
       return;
     }
     if (!id) {
       return;
     }
     (async () => {
-      const response = await fetch(
-        `https://graph.microsoft.com/v1.0/users/${id}/photo/$value`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          },
-          method: 'GET',
-          mode: 'cors'
-        }
-      );
-      if (response.ok) {
-        const blob = await response.blob();
-        const value = window.URL.createObjectURL(blob);
-        setIcon((prev) => {
-          if (prev) {
-            window.URL.revokeObjectURL(prev);
+      try {
+        const blob = await client
+          .api(`/users/${id}/photo/$value`)
+          .get();
+        setIcon((value) => {
+          if (value) {
+            window.URL.revokeObjectURL(value);
           }
-          return value;
+          return window.URL.createObjectURL(blob);
         });
+      } catch (e) {
+        console.info(e);
       }
     })();
-  }, [ token, id ]);
+  },
+  [ client, id ]);
 
   return [ icon ];
 
