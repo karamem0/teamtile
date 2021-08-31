@@ -15,7 +15,7 @@ Teamtile is a Microsoft Teams App that provides these features to you:
 
 ## Screenshot
 
-![screenshot](./img/screenshot.png)
+![screenshot](./screenshot.png)
 
 ## Installation
 
@@ -117,8 +117,10 @@ Teamtile is a Microsoft Teams App that provides these features to you:
 
     |Parameter|Value|
     |-|-|
+    |{{Audience}}|api://`[Domain name of Azure Web App]`/`[Application ID]`|
     |{{ClientId}}|`[Application ID]`|
     |{{ClientSecret}}|`[Application Secret]`|
+    |{{TenantId}}|`[Tenent ID]`|
 
 3. Build application.
 

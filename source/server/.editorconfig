@@ -1,4 +1,7 @@
-# Remove the line below if you want to inherit .editorconfig settings from higher directories
+# Solution files
+[*.sln]
+indent_size = 4
+indent_style = tab
 
 # C# files
 [*.cs]

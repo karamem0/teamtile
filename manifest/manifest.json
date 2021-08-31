@@ -1,11 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
   "manifestVersion": "1.9",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "showLoadingIndicator": true,
   "isFullScreen": true,
   "id": "bb98adcf-688c-409c-862b-8f546689f241",
-  "packageName": "jp.karamem0.teamtile",
+  "packageName": "dev.karamem0.teamtile",
   "developer": {
     "name": "karamem0",
     "websiteUrl": "https://{{DomainName}}",
