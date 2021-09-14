@@ -117,7 +117,7 @@ const useTeam = ({ id }: TeamProps): [ Team | undefined ] => {
         }
         if (requestContent.requests.size > 0) {
           const requestBody = await requestContent.getContent();
-          const responseBody = await client.api('/$batch').post(requestBody);
+          const responseBody = await client.api('/$batch').version('beta').post(requestBody);
           const responseContent = new BatchResponseContent(responseBody);
           for (const [ key, item ] of Array.from(responseContent.getResponses())) {
             if (key === '1') {
@@ -137,18 +137,12 @@ const useTeam = ({ id }: TeamProps): [ Team | undefined ] => {
             }
             if (key === '2') {
               if (item.ok) {
-                const text = await item.text();
-                const bytes = Buffer.from(text, 'base64').toString();
-                const array = new Uint8Array(bytes.length);
-                for (let index = 0; index < bytes.length; index++) {
-                  array[index] = bytes.charCodeAt(index);
-                }
-                const blob = new Blob([ array ]);
+                const data = await item.text();
                 team = {
                   ...team,
                   id: id,
                   icon: {
-                    url: window.URL.createObjectURL(blob)
+                    data: data
                   }
                 };
               } else if (item.status === 404) {
@@ -156,7 +150,7 @@ const useTeam = ({ id }: TeamProps): [ Team | undefined ] => {
                   ...team,
                   id: id,
                   icon: {
-                    url: undefined
+                    data: undefined
                   }
                 };
               }

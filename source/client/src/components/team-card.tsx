@@ -36,7 +36,7 @@ const TeamCard = ({ id }: TeamCardProps): React.ReactElement => {
             <div className="card-column">
               <div className="card-column-item">
                 <TeamIcon
-                  icon={team.icon?.url}
+                  data={team.icon?.data}
                   name={team.name} />
               </div>
               <div className="card-column-item">

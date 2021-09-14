@@ -14,7 +14,7 @@ export interface Team {
   visibility?: string,
   url?: string,
   icon?: {
-    url?: string
+    data?: string
   },
   channels?: {
     id?: string,

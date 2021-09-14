@@ -8,17 +8,20 @@
 
 import React from 'react';
 import { Avatar } from '@fluentui/react-northstar';
+import { useBlobUrl } from '../hooks/use-blob-url';
 
 interface TeamIconProps {
   name?: string,
-  icon?: string
+  data?: string
 }
 
-const TeamIcon = ({ name, icon }: TeamIconProps): React.ReactElement => {
+const TeamIcon = ({ name, data }: TeamIconProps): React.ReactElement => {
+
+  const [ url ] = useBlobUrl(data);
 
   return (
     <Avatar
-      image={icon}
+      image={url}
       name={name}
       size="larger" />
   );

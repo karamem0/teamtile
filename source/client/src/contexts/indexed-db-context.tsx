@@ -25,10 +25,10 @@ const IndexedDbProvider = ({ children }: IndexedDbProviderProps): React.ReactEle
 
   React.useEffect(() => {
     const dexie = new Dexie('teamtile');
-    dexie.version(1).stores({
+    dexie.version(2).stores({
       teams:
         '&id, internalId, name, description, visibility, url,' +
-        ' icon.url,' +
+        ' icon.data,' +
         ' channel.count, channel.nextLink,' +
         ' channel.values.id, channel.values.name, channel.values.url,' +
         ' member.count, member.nextLink,' +

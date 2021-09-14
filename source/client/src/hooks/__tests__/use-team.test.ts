@@ -47,6 +47,7 @@ describe('useTeam', () => {
       .spyOn(microsoftGraph.Client, 'initWithMiddleware')
       .mockReturnValue({
         api: () => ({
+          version: jest.fn().mockReturnThis(),
           post: () => Promise.resolve()
         })
       } as unknown as microsoftGraph.Client);
