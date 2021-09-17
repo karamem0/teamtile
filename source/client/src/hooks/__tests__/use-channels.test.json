@@ -1,0 +1,71 @@
+[
+  [
+    "02bd9fd6-8f93-4758-87c3-1fb73740a315",
+    [
+      {
+        "id": "19:09fc54a3141a45d0bc769cf506d2e079@thread.skype",
+        "displayName": "General",
+        "webUrl": "https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35",
+        "membershipType": "standard"
+      },
+      {
+        "id": "19:d0bba23c2fc8413991125a43a54cc30e@thread.skype",
+        "displayName": "Onboarding",
+        "webUrl": "https://teams.microsoft.com/l/channel/19%3ad0bba23c2fc8413991125a43a54cc30e%40thread.skype/Onboarding?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35",
+        "membershipType": "standard"
+      },
+      {
+        "id": "19:cc89e82c01e349d4998655891d93e12e@thread.skype",
+        "displayName": "Benefits",
+        "webUrl": "https://teams.microsoft.com/l/channel/19%3acc89e82c01e349d4998655891d93e12e%40thread.skype/Benefits?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35",
+        "membershipType": "standard"
+      }
+    ]
+  ],
+  [
+    "13be6971-79db-4f33-9d41-b25589ca25af",
+    [
+      {
+        "id": "19:eb26978bba284dfbb5573890766e9dd3@thread.skype",
+        "displayName": "General",
+        "webUrl": "https://teams.microsoft.com/l/channel/19%3aeb26978bba284dfbb5573890766e9dd3%40thread.skype/General?groupId=13be6971-79db-4f33-9d41-b25589ca25af&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35",
+        "membershipType": "standard"
+      },
+      {
+        "id": "19:798a3087314e45038562ffb363e9c836@thread.skype",
+        "displayName": "Pipeline",
+        "webUrl": "https://teams.microsoft.com/l/channel/19%3a798a3087314e45038562ffb363e9c836%40thread.skype/Pipeline?groupId=13be6971-79db-4f33-9d41-b25589ca25af&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35",
+        "membershipType": "standard"
+      },
+      {
+        "id": "19:600955c0f5664fb884e68db1aa52129c@thread.skype",
+        "displayName": "Knowledge Share",
+        "webUrl": "https://teams.microsoft.com/l/channel/19%3a600955c0f5664fb884e68db1aa52129c%40thread.skype/Knowledge+Share?groupId=13be6971-79db-4f33-9d41-b25589ca25af&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35",
+        "membershipType": "standard"
+      }
+    ]
+  ],
+  [
+    "8090c93e-ba7c-433e-9f39-08c7ba07c0b3",
+    [
+      {
+        "id": "19:a5c6eccad3fb401997756a1501d561aa@thread.skype",
+        "displayName": "General",
+        "webUrl": "https://teams.microsoft.com/l/channel/19%3aa5c6eccad3fb401997756a1501d561aa%40thread.skype/General?groupId=8090c93e-ba7c-433e-9f39-08c7ba07c0b3&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35",
+        "membershipType": "standard"
+      },
+      {
+        "id": "19:6056d198534245f89434e78da2e0d1c8@thread.skype",
+        "displayName": "Design",
+        "webUrl": "https://teams.microsoft.com/l/channel/19%3a6056d198534245f89434e78da2e0d1c8%40thread.skype/Design?groupId=8090c93e-ba7c-433e-9f39-08c7ba07c0b3&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35",
+        "membershipType": "standard"
+      },
+      {
+        "id": "19:c9d87a2a1b174a37a3fcf651607cf696@thread.skype",
+        "displayName": "Digital Assets Web",
+        "webUrl": "https://teams.microsoft.com/l/channel/19%3ac9d87a2a1b174a37a3fcf651607cf696%40thread.skype/Digital+Assets+Web?groupId=8090c93e-ba7c-433e-9f39-08c7ba07c0b3&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35",
+        "membershipType": "standard"
+      }
+    ]
+  ]
+]

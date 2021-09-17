@@ -6,17 +6,21 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// React
 import React from 'react';
+// Microsoft Teams
 import * as microsoftTeams from '@microsoft/teams-js';
+// Microsoft Graph
 import { Client } from '@microsoft/microsoft-graph-client';
+// Utils
 import {
+  getCachedToken,
   getClientToken,
   getServerToken,
-  getCachedToken,
   setCachedToken
 } from '../utils/token-manager';
 
-const useClient = (): [ Client | undefined, string | undefined ] => {
+export const useClient = (): [ Client | undefined, string | undefined ] => {
 
   const [ client, setClient ] = React.useState<Client>();
   const [ error, setError ] = React.useState<string>();
@@ -62,5 +66,3 @@ const useClient = (): [ Client | undefined, string | undefined ] => {
   ];
 
 };
-
-export { useClient };

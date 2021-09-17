@@ -6,11 +6,13 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// React
 import React from 'react';
-import { Text } from '@fluentui/react-northstar';
+// Fluent UI
 import { RainIcon } from '@fluentui/react-icons-mdl2';
+import { Text } from '@fluentui/react-northstar';
 
-const EmptyPanel = (): React.ReactElement => {
+export const EmptyPanel = (): React.ReactElement | null => {
 
   return (
     <div className="panel panel-center">
@@ -24,5 +26,3 @@ const EmptyPanel = (): React.ReactElement => {
   );
 
 };
-
-export default EmptyPanel;

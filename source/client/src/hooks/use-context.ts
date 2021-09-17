@@ -6,10 +6,12 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// React
 import React from 'react';
+// Microsoft Teams
 import * as microsoftTeams from '@microsoft/teams-js';
 
-const useContext = (): [ microsoftTeams.Context | undefined ] => {
+export const useContext = (): [ microsoftTeams.Context | undefined ] => {
 
   const [ context, setContext ] = React.useState<microsoftTeams.Context>();
 
@@ -24,5 +26,3 @@ const useContext = (): [ microsoftTeams.Context | undefined ] => {
   return [ context ];
 
 };
-
-export { useContext };

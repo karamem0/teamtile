@@ -6,9 +6,13 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// React
 import React from 'react';
+// React DOM
 import ReactDOM from 'react-dom';
+// CSS
 import './index.scss';
-import App from './components/app';
+// Components
+import { App } from './components/app';
 
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -6,13 +6,17 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// Testing Library
 import { renderHook } from '@testing-library/react-hooks';
+// Microsoft Teams
 import * as microsoftTeams from '@microsoft/teams-js';
+// Fluent UI
 import {
   teamsDarkV2Theme,
   teamsHighContrastTheme,
   teamsV2Theme
 } from '@fluentui/react-northstar';
+// Hooks
 import { useTheme } from '../use-theme';
 
 beforeEach(() => {

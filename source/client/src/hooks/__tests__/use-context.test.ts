@@ -6,8 +6,11 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// Testing Library
 import { renderHook } from '@testing-library/react-hooks';
+// Microsoft Teams
 import * as microsoftTeams from '@microsoft/teams-js';
+// Hooks
 import { useContext } from '../use-context';
 
 beforeEach(() => {

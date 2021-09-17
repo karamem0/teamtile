@@ -6,18 +6,21 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// React
 import React from 'react';
+// Fluent UI
 import { Avatar } from '@fluentui/react-northstar';
+// Hooks
 import { useBlobUrl } from '../hooks/use-blob-url';
 
-interface TeamIconProps {
-  name?: string,
-  data?: string
+export interface TeamIconProps {
+  icon?: string,
+  name?: string
 }
 
-const TeamIcon = ({ name, data }: TeamIconProps): React.ReactElement => {
+export const TeamIcon = ({ name, icon }: TeamIconProps): React.ReactElement | null => {
 
-  const [ url ] = useBlobUrl(data);
+  const [ url ] = useBlobUrl(icon);
 
   return (
     <Avatar
@@ -27,5 +30,3 @@ const TeamIcon = ({ name, data }: TeamIconProps): React.ReactElement => {
   );
 
 };
-
-export default TeamIcon;

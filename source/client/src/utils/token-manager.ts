@@ -6,10 +6,12 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// Microsoft Teams
 import * as microsoftTeams from '@microsoft/teams-js';
+// Json Web Token
 import { decode } from 'jsonwebtoken';
 
-const getClientToken = (): Promise<string> =>
+export const getClientToken = (): Promise<string> =>
   new Promise<string>((resolve, reject) =>
     microsoftTeams.authentication.getAuthToken({
       successCallback: (token) => resolve(token),
@@ -17,7 +19,7 @@ const getClientToken = (): Promise<string> =>
     })
   );
 
-const getServerToken = async (token: string): Promise<string> =>
+export const getServerToken = async (token: string): Promise<string> =>
   await getServerTokenSilent(token) ??
   await getServerTokenRedirect();
 
@@ -37,7 +39,7 @@ const getServerTokenSilent = async (token: string): Promise<string | undefined> 
     return await response.text();
   }
   if (response.status === 403) {
-    return undefined;
+    return;
   }
   throw await response.text();
 };
@@ -53,7 +55,7 @@ const getServerTokenRedirect = (): Promise<string> =>
     })
   );
 
-const getCachedToken = (): string | undefined => {
+export const getCachedToken = (): string | undefined => {
   const token = sessionStorage.getItem(process.env.REACT_APP_AUTH_CLIENT_ID);
   if (!token) {
     return;
@@ -65,18 +67,11 @@ const getCachedToken = (): string | undefined => {
   const exp = Number.parseInt(jwt.exp);
   const now = Date.now();
   if (now >= exp * 1000) {
-    return undefined;
+    return;
   }
   return token;
 };
 
-const setCachedToken = (token: string): void => {
+export const setCachedToken = (token: string): void => {
   sessionStorage.setItem(process.env.REACT_APP_AUTH_CLIENT_ID, token);
-};
-
-export {
-  getClientToken,
-  getServerToken,
-  getCachedToken,
-  setCachedToken
 };

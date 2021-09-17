@@ -6,14 +6,17 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// React
 import React from 'react';
+// Fluent UI
 import { Alert } from '@fluentui/react-northstar';
 import { WarningIcon } from '@fluentui/react-icons-mdl2';
-import { useAppContext } from '../contexts/app-context';
+// Contexts
+import { useErrorContext } from '../contexts/error-context';
 
-const ErrorBar = (): React.ReactElement => {
+export const ErrorBar = (): React.ReactElement | null => {
 
-  const { error, setError } = useAppContext();
+  const { error, setError } = useErrorContext();
 
   return (
     <div className="error">
@@ -24,15 +27,8 @@ const ErrorBar = (): React.ReactElement => {
           <WarningIcon />
         }
         variables={{ urgent: true }}
-        onVisibleChange={() => {
-          if (!setError) {
-            return;
-          }
-          setError(undefined);
-        }} />
+        onVisibleChange={() => setError && setError(undefined)} />
     </div>
   );
 
 };
-
-export default ErrorBar;

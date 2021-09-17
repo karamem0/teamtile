@@ -1,15 +1,15 @@
 # Teamtile
 
-Display joined teams in tile view and access quickly.
+Display your joined teams in tile view and access quickly.
 
 [![.github/workflows/main.yml](https://github.com/karamem0/teamtile/actions/workflows/main.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/main.yml)
 [![License](https://img.shields.io/github/license/karamem0/teamtile.svg)](https://github.com/karamem0/teamtile/blob/master/LICENSE)
 
 ## Features
 
-Teamtile is a Microsoft Teams App that provides these features to you:
+Are you frustrated with finding a team? Teamtile provides these features to you:
 
-- View joined teams
+- View your joined teams as tiles
 - View team members and channels
 - Link to SharePoint Document Library
 

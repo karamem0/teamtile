@@ -6,77 +6,111 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// React
 import React from 'react';
+// Microsoft Teams
 import * as microsoftTeams from '@microsoft/teams-js';
+// Fluent UI
 import {
-  Button,
   Card,
+  Skeleton,
   Text
 } from '@fluentui/react-northstar';
-import { LockIcon, GlobeIcon } from '@fluentui/react-icons-mdl2';
-import { useTeam } from '../hooks/use-team';
-import TeamIcon from './team-icon';
-import TeamMenu from './team-menu';
+// Components
+import { ChannelMenuItem } from './channel-menu-item';
+import { DriveMenuItem } from './drive-menu-item';
+import { MemberMenuItem } from './member-menu-item';
+import { TeamIcon } from './team-icon';
+import { TeamVisibilityIcon } from './team-visibility-icon';
+// Types
+import {
+  KeyValue,
+  StateKey,
+  StateValue
+} from '../types/reducer';
 
-interface TeamCardProps {
-  id: string
+export interface TeamCardProps {
+  item: KeyValue<StateKey, StateValue | undefined>
 }
 
-const TeamCard = ({ id }: TeamCardProps): React.ReactElement => {
+export const TeamCard = ({ item }: TeamCardProps): React.ReactElement | null => {
 
-  const [ team ] = useTeam({ id });
+  const { key, value } = item;
 
-  return (
-    <React.Fragment>
-      {
-        team &&
-          <Card
-            className="card"
-            fluid>
-            <div className="card-column">
-              <div className="card-column-item">
-                <TeamIcon
-                  data={team.icon?.data}
-                  name={team.name} />
-              </div>
-              <div className="card-column-item">
-                <div className="card-row">
-                  <Button
-                    className="card-name"
-                    content={team.name}
-                    text
-                    onClick={() => {
-                      if (!team.url) {
-                        return;
-                      }
-                      microsoftTeams.executeDeepLink(team.url);
-                    }} />
-                  <Text
-                    className="card-description"
-                    content={team.description}
-                    size="small"
-                    truncated />
-                  <TeamMenu team={team} />
+  const handleClick = React.useCallback(() => {
+    if (!value?.webUrl) {
+      return;
+    }
+    microsoftTeams.executeDeepLink(value.webUrl);
+  }, [ value ]);
+
+  if (!value) {
+    return (
+      <Skeleton animation="wave">
+        <Card
+          className="card"
+          fluid>
+          <div className="card-column">
+            <div className="card-column-item">
+              <Skeleton.Avatar size="larger" />
+            </div>
+            <div className="card-column-item">
+              <div className="card-row">
+                <div className="card-skelton">
+                  <Skeleton.Line width="50%" />
+                </div>
+                <div className="card-skelton">
+                  <Skeleton.Line />
+                </div>
+                <div className="card-skelton">
+                  <Skeleton.Line />
                 </div>
               </div>
-              <div className="card-column-item">
-                <Text color="brand">
-                  {
-                    team.visibility === 'public' &&
-                      <GlobeIcon className="card-menu-icon" />
-                  }
-                  {
-                    team.visibility === 'private' &&
-                      <LockIcon className="card-menu-icon" />
-                  }
-                </Text>
-              </div>
             </div>
-          </Card>
-      }
-    </React.Fragment>
+          </div>
+        </Card>
+      </Skeleton>
+    );
+  }
+
+  return (
+    <Card
+      className="card"
+      fluid
+      role="listitem">
+      <div className="card-column">
+        <div className="card-column-item">
+          <TeamIcon
+            icon={value.icon}
+            name={value.displayName} />
+        </div>
+        <div className="card-column-item">
+          <div className="card-row">
+            <Text
+              className="card-name"
+              role="button"
+              onClick={handleClick}>
+              {value.displayName}
+            </Text>
+            <div className="card-description">
+              <Text
+                size="small"
+                truncated>
+                {value.description}
+              </Text>
+            </div>
+            <div className="card-menu">
+              <ChannelMenuItem item={{ key, value: value.channels }} />
+              <MemberMenuItem item={{ key, value: value.members }} />
+              <DriveMenuItem item={{ key, value: value.drive }} />
+            </div>
+          </div>
+        </div>
+        <div className="card-column-item">
+          <TeamVisibilityIcon visibility={value.visibility} />
+        </div>
+      </div>
+    </Card>
   );
 
 };
-
-export default TeamCard;

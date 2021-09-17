@@ -6,11 +6,13 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// React
 import React from 'react';
-import { Text } from '@fluentui/react-northstar';
+// Fluent UI
 import { ErrorBadgeIcon } from '@fluentui/react-icons-mdl2';
+import { Text } from '@fluentui/react-northstar';
 
-const Error = (): React.ReactElement => {
+export const ErrorPanel = (): React.ReactElement | null => {
 
   return (
     <div className="panel panel-center">
@@ -24,5 +26,3 @@ const Error = (): React.ReactElement => {
   );
 
 };
-
-export default Error;

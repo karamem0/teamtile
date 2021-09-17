@@ -6,9 +6,10 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// React
 import React from 'react';
 
-const useBlobUrl = (data?: string): [string | undefined] => {
+export const useBlobUrl = (data?: string): [string | undefined] => {
 
   const [ url, setUrl ] = React.useState<string>();
 
@@ -36,8 +37,4 @@ const useBlobUrl = (data?: string): [string | undefined] => {
     url
   ];
 
-};
-
-export {
-  useBlobUrl
 };

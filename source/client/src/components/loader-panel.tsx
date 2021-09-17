@@ -6,10 +6,12 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// React
 import React from 'react';
+// Fluent UI
 import { Loader } from '@fluentui/react-northstar';
 
-const LoaderPanel = (): React.ReactElement => {
+export const LoaderPanel = (): React.ReactElement | null => {
 
   return (
     <div className="panel panel-center">
@@ -18,5 +20,3 @@ const LoaderPanel = (): React.ReactElement => {
   );
 
 };
-
-export default LoaderPanel;

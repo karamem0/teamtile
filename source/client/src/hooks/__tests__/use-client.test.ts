@@ -6,11 +6,16 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// Testing Library
 import { renderHook } from '@testing-library/react-hooks';
+// Microsoft Teams
 import * as microsoftTeams from '@microsoft/teams-js';
+// Microsoft Graph
 import * as microsoftGraph from '@microsoft/microsoft-graph-client';
-import * as tokenManager from '../../utils/token-manager';
+// Hooks
 import { useClient } from '../use-client';
+// Urils
+import * as tokenManager from '../../utils/token-manager';
 
 beforeEach(() => {
   jest.restoreAllMocks();
@@ -18,7 +23,7 @@ beforeEach(() => {
 
 describe('useClient', () => {
 
-  it('return client when token is not cached', async () => {
+  it('return client if token is not cached', async () => {
     const params = {
       clientToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ0xJRU5UVE9LRU4ifQ.ZO9wyYFJTSl-Q9nvS2D3UIDvOBr9rl3CQTxjcUpQ8HA',
       serverToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU0VSVkVSVE9LRU4ifQ.VyFNrKBsnkQaLhXMbM-cDlGZMaQEuPmy8I6OCeGGBSQ'
@@ -57,7 +62,7 @@ describe('useClient', () => {
     expect(microsoftTeams.appInitialization.notifyFailure).not.toBeCalled();
   });
 
-  it('return client when token is cached', async () => {
+  it('return client if token is cached', async () => {
     const params = {
       clientToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ0xJRU5UVE9LRU4ifQ.ZO9wyYFJTSl-Q9nvS2D3UIDvOBr9rl3CQTxjcUpQ8HA',
       serverToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU0VSVkVSVE9LRU4ifQ.VyFNrKBsnkQaLhXMbM-cDlGZMaQEuPmy8I6OCeGGBSQ'

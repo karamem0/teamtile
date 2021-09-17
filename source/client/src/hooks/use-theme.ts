@@ -6,16 +6,19 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// React
 import React from 'react';
+// Microsoft Teams
 import * as microsoftTeams from '@microsoft/teams-js';
+// Fluent UI
 import {
-  teamsV2Theme,
   teamsDarkV2Theme,
-  teamsHighContrastTheme
+  teamsHighContrastTheme,
+  teamsV2Theme
 } from '@fluentui/react-northstar';
 import { ThemePrepared } from '@fluentui/styles';
 
-const useTheme = (): [ ThemePrepared | undefined ] => {
+export const useTheme = (): [ ThemePrepared | undefined ] => {
 
   const [ theme, setTheme ] = React.useState<ThemePrepared>(teamsV2Theme);
 
@@ -45,5 +48,3 @@ const useTheme = (): [ ThemePrepared | undefined ] => {
   return [ theme ];
 
 };
-
-export { useTheme };

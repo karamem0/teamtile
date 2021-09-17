@@ -6,10 +6,13 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// React
 import React from 'react';
+// Testing Library
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import TeamIcon from '../team-icon';
+// Components
+import { TeamIcon } from '../team-icon';
+// Hooks
 import * as useBlobUrl from '../../hooks/use-blob-url';
 
 describe('TeamIcon', () => {

@@ -6,41 +6,50 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// React
 import React from 'react';
-import { useAppContext } from '../contexts/app-context';
-import { useClient } from '../hooks/use-client';
-import LoaderPanel from './loader-panel';
-import ErrorPanel from './error-panel';
-import TeamPanel from './team-panel';
+// React Router
+import {
+  BrowserRouter,
+  Route,
+  Switch
+} from 'react-router-dom';
+// Contexts
+import { useErrorContext } from '../contexts/error-context';
+// Components
+import { CallbackPage } from './auth/callback-page';
+import { ErrorBar } from './error-bar';
+import { LoginPage } from './auth/login-page';
+import { MainPage } from './main-page';
 
-const Container = (): React.ReactElement => {
+export const Container = (): React.ReactElement | null => {
 
-  const { setClient } = useAppContext();
-  const [ client, error ] = useClient();
-
-  React.useEffect(() => {
-    if (!setClient) {
-      return;
-    }
-    setClient(client);
-  }, [ setClient, client ]);
-
-  if (error) {
-    return (
-      <ErrorPanel />
-    );
-  }
-
-  if (!client) {
-    return (
-      <LoaderPanel />
-    );
-  }
+  const { error } = useErrorContext();
 
   return (
-    <TeamPanel />
+    <div className="container">
+      {
+        error && (
+          <ErrorBar />
+        )
+      }
+      <BrowserRouter>
+        <Switch>
+          <Route
+            component={MainPage}
+            exact
+            path="/" />
+          <Route
+            component={LoginPage}
+            exact
+            path="/auth/login" />
+          <Route
+            component={CallbackPage}
+            exact
+            path="/auth/callback" />
+        </Switch>
+      </BrowserRouter>
+    </div>
   );
 
 };
-
-export default Container;

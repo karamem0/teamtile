@@ -6,64 +6,33 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+// React
 import React from 'react';
-import {
-  BrowserRouter,
-  Route,
-  Switch
-} from 'react-router-dom';
+// Fluent UI
 import { Provider } from '@fluentui/react-northstar';
-import { Client } from '@microsoft/microsoft-graph-client';
-import { AppContextProvider } from '../contexts/app-context';
-import { IndexedDbProvider } from '../contexts/indexed-db-context';
+// Components
+import { Container } from './container';
+// Contexts
+import { ErrorContextProvider } from '../contexts/error-context';
+import { ReducerContextProvider } from '../contexts/reducer-context';
+import { ServiceContextProvider } from '../contexts/service-context';
+// Hooks
 import { useTheme } from '../hooks/use-theme';
-import ErrorBar from './error-bar';
-import Container from './container';
-import LoginPanel from './auth/login-panel';
-import CallbackPanel from './auth/callback-panel';
 
-const App = (): React.ReactElement => {
+export const App = (): React.ReactElement | null => {
 
   const [ theme ] = useTheme();
-  const [ client, setClient ] = React.useState<Client>();
-  const [ error, setError ] = React.useState<string>();
 
   return (
     <Provider theme={theme}>
-      <AppContextProvider
-        value={{
-          client,
-          setClient,
-          error,
-          setError
-        }}>
-        <IndexedDbProvider>
-          <div className="container">
-            {
-              error && <ErrorBar />
-            }
-            <BrowserRouter>
-              <Switch>
-                <Route
-                  component={Container}
-                  exact
-                  path="/" />
-                <Route
-                  component={LoginPanel}
-                  exact
-                  path="/auth/login" />
-                <Route
-                  component={CallbackPanel}
-                  exact
-                  path="/auth/callback" />
-              </Switch>
-            </BrowserRouter>
-          </div>
-        </IndexedDbProvider>
-      </AppContextProvider>
+      <ErrorContextProvider>
+        <ReducerContextProvider>
+          <ServiceContextProvider>
+            <Container />
+          </ServiceContextProvider>
+        </ReducerContextProvider>
+      </ErrorContextProvider>
     </Provider>
   );
 
 };
-
-export default App;
