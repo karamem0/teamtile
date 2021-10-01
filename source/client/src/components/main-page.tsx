@@ -22,8 +22,10 @@ import { useKeys } from '../hooks/use-keys';
 export const MainPage = (): React.ReactElement | null => {
 
   const { error } = useServiceContext();
-  const { keys } = useReducerContext();
+  const { store } = useReducerContext();
   const [ dispatchKeys ] = useKeys();
+
+  const keys = store?.keys;
 
   React.useEffect(() => {
     (async () => await dispatchKeys())();

@@ -6,18 +6,43 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+/* eslint-disable import/first */
+
+// Microsoft Teams
+const microsoftTeams = {
+  initialize: jest.fn(),
+  appInitialization: {
+    notifySuccess: jest.fn(),
+    notifyFailure: jest.fn(),
+    FailedReason: {
+      AuthFailed: 'AuthFailed'
+    }
+  }
+};
+jest.mock('@microsoft/teams-js', () => ({
+  __esModule: true,
+  ...microsoftTeams
+}));
+// Microsoft Graph
+const microsoftGraph = {
+  Client: {
+    initWithMiddleware: jest.fn()
+  }
+};
+jest.mock('@microsoft/microsoft-graph-client', () => ({
+  __esModule: true,
+  ...microsoftGraph
+}));
+
 // Testing Library
 import { renderHook } from '@testing-library/react-hooks';
-// Microsoft Teams
-import * as microsoftTeams from '@microsoft/teams-js';
-// Microsoft Graph
-import * as microsoftGraph from '@microsoft/microsoft-graph-client';
 // Hooks
 import { useClient } from '../use-client';
 // Urils
 import * as tokenManager from '../../utils/token-manager';
 
 beforeEach(() => {
+  jest.clearAllMocks();
   jest.restoreAllMocks();
 });
 
@@ -28,18 +53,10 @@ describe('useClient', () => {
       clientToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ0xJRU5UVE9LRU4ifQ.ZO9wyYFJTSl-Q9nvS2D3UIDvOBr9rl3CQTxjcUpQ8HA',
       serverToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU0VSVkVSVE9LRU4ifQ.VyFNrKBsnkQaLhXMbM-cDlGZMaQEuPmy8I6OCeGGBSQ'
     };
-    jest
-      .spyOn(microsoftTeams, 'initialize')
+    microsoftTeams.initialize
       .mockImplementation((callback) => callback && callback());
-    jest
-      .spyOn(microsoftTeams.appInitialization, 'notifySuccess')
-      .mockReturnValue();
-    jest
-      .spyOn(microsoftTeams.appInitialization, 'notifyFailure')
-      .mockReturnValue();
-    jest
-      .spyOn(microsoftGraph.Client, 'initWithMiddleware')
-      .mockReturnValue({} as unknown as microsoftGraph.Client);
+    microsoftGraph.Client.initWithMiddleware
+      .mockReturnValue({});
     jest
       .spyOn(tokenManager, 'getClientToken')
       .mockResolvedValue(params.clientToken);
@@ -67,18 +84,10 @@ describe('useClient', () => {
       clientToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ0xJRU5UVE9LRU4ifQ.ZO9wyYFJTSl-Q9nvS2D3UIDvOBr9rl3CQTxjcUpQ8HA',
       serverToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU0VSVkVSVE9LRU4ifQ.VyFNrKBsnkQaLhXMbM-cDlGZMaQEuPmy8I6OCeGGBSQ'
     };
-    jest
-      .spyOn(microsoftTeams, 'initialize')
+    microsoftTeams.initialize
       .mockImplementation((callback) => callback && callback());
-    jest
-      .spyOn(microsoftTeams.appInitialization, 'notifySuccess')
-      .mockReturnValue();
-    jest
-      .spyOn(microsoftTeams.appInitialization, 'notifyFailure')
-      .mockReturnValue();
-    jest
-      .spyOn(microsoftGraph.Client, 'initWithMiddleware')
-      .mockReturnValue({} as unknown as microsoftGraph.Client);
+    microsoftGraph.Client.initWithMiddleware
+      .mockReturnValue({});
     jest
       .spyOn(tokenManager, 'getCachedToken')
       .mockReturnValue(params.clientToken);
@@ -96,18 +105,10 @@ describe('useClient', () => {
     const params = {
       error: 'Something went wrong'
     };
-    jest
-      .spyOn(microsoftTeams, 'initialize')
+    microsoftTeams.initialize
       .mockImplementation((callback) => callback && callback());
-    jest
-      .spyOn(microsoftTeams.appInitialization, 'notifySuccess')
-      .mockReturnValue();
-    jest
-      .spyOn(microsoftTeams.appInitialization, 'notifyFailure')
-      .mockReturnValue();
-    jest
-      .spyOn(microsoftGraph.Client, 'initWithMiddleware')
-      .mockReturnValue({} as unknown as microsoftGraph.Client);
+    microsoftGraph.Client.initWithMiddleware
+      .mockReturnValue({});
     jest
       .spyOn(tokenManager, 'getCachedToken')
       .mockImplementation(() => {

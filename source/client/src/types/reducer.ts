@@ -20,9 +20,9 @@ export interface KeyValue<K, V> {
   value: V
 }
 
-export type StateKey = string;
+export type StoreKey = string;
 
-export type StateValue = (
+export type StoreValue = (
   Team &
   Icon &
   {
@@ -32,10 +32,14 @@ export type StateValue = (
   }
 );
 
+export interface Store {
+  keys: StoreKey[],
+  values: StoreValue[]
+}
+
 export interface State {
   loading?: boolean,
-  keys?: StateKey[],
-  values?: StateValue[]
+  store?: Store
 }
 
 export interface Action {

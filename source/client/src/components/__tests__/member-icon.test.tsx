@@ -15,6 +15,11 @@ import { MemberIcon } from '../member-icon';
 // Hooks
 import * as useBlobUrl from '../../hooks/use-blob-url';
 
+beforeEach(() => {
+  jest.clearAllMocks();
+  jest.restoreAllMocks();
+});
+
 describe('MemberIcon', () => {
 
   it('render without icon', () => {

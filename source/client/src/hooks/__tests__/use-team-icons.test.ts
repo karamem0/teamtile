@@ -23,6 +23,7 @@ import { ServerService } from '../../services/server-service';
 import json from './use-team-icons.test.json';
 
 beforeEach(() => {
+  jest.clearAllMocks();
   jest.restoreAllMocks();
 });
 

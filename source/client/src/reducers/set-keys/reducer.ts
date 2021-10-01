@@ -11,6 +11,8 @@ import { State } from '../../types/reducer';
 
 export const setKeys = (state: State, payload: string[]): State => ({
   ...state,
-  keys: payload,
-  values: new Array(payload.length)
+  store: {
+    keys: payload,
+    values: new Array(payload.length)
+  }
 });

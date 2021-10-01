@@ -11,14 +11,18 @@ import { Member } from '../../types/entity';
 import { State } from '../../types/reducer';
 
 export const setMembers = (state: State, payload: Map<string, Member[]>): State => {
-  const { keys, values } = state;
+  if (!state.store) {
+    return state;
+  }
+  const { keys, values } = state.store;
   return {
     ...state,
-    values: keys && values
-      ? keys.map((key, index) => ({
+    store: {
+      keys: state.store.keys,
+      values: keys.map((key, index) => ({
         ...values[index],
         members: payload.get(key)
       }))
-      : undefined
+    }
   };
 };

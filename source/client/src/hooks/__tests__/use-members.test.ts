@@ -25,6 +25,7 @@ import { Member } from '../../types/entity';
 import json from './use-members.test.json';
 
 beforeEach(() => {
+  jest.clearAllMocks();
   jest.restoreAllMocks();
 });
 

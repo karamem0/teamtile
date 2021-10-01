@@ -11,31 +11,27 @@ import React from 'react';
 // Microsoft Teams
 import * as microsoftTeams from '@microsoft/teams-js';
 // Fluent UI
-import {
-  Card,
-  Skeleton,
-  Text
-} from '@fluentui/react-northstar';
+import { Card, Text } from '@fluentui/react-northstar';
 // Components
 import { ChannelMenuItem } from './channel-menu-item';
 import { DriveMenuItem } from './drive-menu-item';
 import { MemberMenuItem } from './member-menu-item';
 import { TeamIcon } from './team-icon';
 import { TeamVisibilityIcon } from './team-visibility-icon';
+// Contexts
+import { useReducerContext } from '../contexts/reducer-context';
 // Types
-import {
-  KeyValue,
-  StateKey,
-  StateValue
-} from '../types/reducer';
+import { StoreValue } from '../types/reducer';
 
 export interface TeamCardProps {
-  item: KeyValue<StateKey, StateValue | undefined>
+  index: number
 }
 
-export const TeamCard = ({ item }: TeamCardProps): React.ReactElement | null => {
+export const TeamCard = ({ index }: TeamCardProps): React.ReactElement | null => {
 
-  const { key, value } = item;
+  const { store } = useReducerContext();
+
+  const value = store?.values && store.values[index];
 
   const handleClick = React.useCallback(() => {
     if (!value?.webUrl) {
@@ -45,33 +41,29 @@ export const TeamCard = ({ item }: TeamCardProps): React.ReactElement | null => 
   }, [ value ]);
 
   if (!value) {
-    return (
-      <Skeleton animation="wave">
-        <Card
-          className="card"
-          fluid>
-          <div className="card-column">
-            <div className="card-column-item">
-              <Skeleton.Avatar size="larger" />
-            </div>
-            <div className="card-column-item">
-              <div className="card-row">
-                <div className="card-skelton">
-                  <Skeleton.Line width="50%" />
-                </div>
-                <div className="card-skelton">
-                  <Skeleton.Line />
-                </div>
-                <div className="card-skelton">
-                  <Skeleton.Line />
-                </div>
-              </div>
-            </div>
-          </div>
-        </Card>
-      </Skeleton>
-    );
+    return null;
   }
+
+  return (
+    <TeamCardPresenterMemo
+      index={index}
+      value={value}
+      onClick={handleClick} />
+  );
+
+};
+
+interface TeamCardPresenterProps {
+  index: number,
+  value: StoreValue,
+  onClick?: () => void
+}
+
+const TeamCardPresenter = ({
+  index,
+  value,
+  onClick
+}: TeamCardPresenterProps): React.ReactElement | null => {
 
   return (
     <Card
@@ -89,7 +81,7 @@ export const TeamCard = ({ item }: TeamCardProps): React.ReactElement | null => 
             <Text
               className="card-name"
               role="button"
-              onClick={handleClick}>
+              onClick={() => onClick && onClick()}>
               {value.displayName}
             </Text>
             <div className="card-description">
@@ -100,9 +92,9 @@ export const TeamCard = ({ item }: TeamCardProps): React.ReactElement | null => 
               </Text>
             </div>
             <div className="card-menu">
-              <ChannelMenuItem item={{ key, value: value.channels }} />
-              <MemberMenuItem item={{ key, value: value.members }} />
-              <DriveMenuItem item={{ key, value: value.drive }} />
+              <ChannelMenuItem index={index} />
+              <MemberMenuItem index={index} />
+              <DriveMenuItem index={index} />
             </div>
           </div>
         </div>
@@ -114,3 +106,5 @@ export const TeamCard = ({ item }: TeamCardProps): React.ReactElement | null => 
   );
 
 };
+
+const TeamCardPresenterMemo = React.memo(TeamCardPresenter);

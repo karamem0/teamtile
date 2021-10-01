@@ -21,6 +21,7 @@ import { LocalService } from '../../services/local-service';
 import { ServerService } from '../../services/server-service';
 
 beforeEach(() => {
+  jest.clearAllMocks();
   jest.restoreAllMocks();
 });
 

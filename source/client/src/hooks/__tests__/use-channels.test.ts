@@ -25,6 +25,7 @@ import { Channel } from '../../types/entity';
 import json from './use-channels.test.json';
 
 beforeEach(() => {
+  jest.clearAllMocks();
   jest.restoreAllMocks();
 });
 

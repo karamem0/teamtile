@@ -11,14 +11,18 @@ import { Drive } from '../../types/entity';
 import { State } from '../../types/reducer';
 
 export const setDrives = (state: State, payload: Map<string, Drive>): State => {
-  const { keys, values } = state;
+  if (!state.store) {
+    return state;
+  }
+  const { keys, values } = state.store;
   return {
     ...state,
-    values: keys && values
-      ? values.map((value, index) => ({
-        ...value,
-        drive: payload.get(keys[index])
+    store: {
+      keys: state.store.keys,
+      values: keys.map((key, index) => ({
+        ...values[index],
+        drive: payload.get(key)
       }))
-      : undefined
+    }
   };
 };

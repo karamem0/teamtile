@@ -14,57 +14,85 @@ import * as microsoftTeams from '@microsoft/teams-js';
 import {
   List,
   Popup,
-  PopupProps,
   Text
 } from '@fluentui/react-northstar';
 import { GroupIcon } from '@fluentui/react-icons-mdl2';
 // Components
 import { MemberIcon } from './member-icon';
+// Contexts
+import { useReducerContext } from '../contexts/reducer-context';
 // Hooks
 import { useMemberIcons } from '../hooks/use-member-icons';
 // Types
 import { Icon, Member } from '../types/entity';
-import { KeyValue, StateKey } from '../types/reducer';
 
 export interface MemberMenuItemProps {
-  item: KeyValue<StateKey, (Member & Icon)[] | undefined>
+  index: number
 }
 
-export const MemberMenuItem = ({ item }: MemberMenuItemProps): React.ReactElement | null => {
+export const MemberMenuItem = ({ index }: MemberMenuItemProps): React.ReactElement | null => {
 
-  const { key, value } = item;
-  const [ getMemberIcons ] = useMemberIcons();
+  const { store } = useReducerContext();
+  const [ dispatchMemberIcons ] = useMemberIcons();
 
-  const handleClick = React.useCallback((member: Member) => {
-    if (!member.email) {
+  const key = store?.keys && store.keys[index];
+  const values = store?.values && store.values[index].members;
+
+  const handleClick = React.useCallback((value: Member) => {
+    if (!value.email) {
       return;
     }
-    microsoftTeams.executeDeepLink(`https://teams.microsoft.com/l/chat/0/0?users=${member.email}`);
+    microsoftTeams.executeDeepLink(`https://teams.microsoft.com/l/chat/0/0?users=${value.email}`);
   }, []);
 
-  const handleOpenChange = React.useCallback((_, props?: PopupProps) => {
+  const handleOpenChange = React.useCallback((open?: boolean) => {
     if (!key) {
       return;
     }
-    if (!value) {
+    if (!values) {
       return;
     }
-    if (!props?.open) {
+    if (!open) {
       return;
     }
     (async () => {
-      await getMemberIcons(
+      await dispatchMemberIcons(
         key,
-        value
-          .map((member) => member.userId)
+        values
+          .map((value) => value.userId)
           .filter((key): key is Exclude<typeof key, undefined> => Boolean(key))
       );
     })();
   }, [
     key,
-    value,
-    getMemberIcons
+    values,
+    dispatchMemberIcons
   ]);
+
+  if (!values) {
+    return null;
+  }
+
+  return (
+    <MemberMenuItemPresenterMemo
+      values={values}
+      onClick={handleClick}
+      onOpenChange={handleOpenChange} />
+  );
+
+};
+
+interface MemberMenuItemPresenterProps {
+  values: (Member & Icon)[],
+  onClick?: (value: Member) => void,
+  onOpenChange?: (open?: boolean) => void
+}
+
+const MemberMenuItemPresenter = ({
+  values,
+  onClick,
+  onOpenChange
+}: MemberMenuItemPresenterProps): React.ReactElement | null => {
 
   return (
     <div className="card-menu-item">
@@ -73,20 +101,20 @@ export const MemberMenuItem = ({ item }: MemberMenuItemProps): React.ReactElemen
           <div className="card-popup-menu">
             <List
               items={
-                value?.map((member) => ({
-                  key: member.id,
+                values?.map((value, index) => ({
+                  key: index,
                   header: (
                     <Text
                       className="card-popup-menu-item"
                       role="button"
-                      onClick={() => handleClick(member)}>
+                      onClick={() => onClick && onClick(value)}>
                       <MemberIcon
-                        icon={member.icon}
-                        name={member.displayName} />
+                        icon={value.icon}
+                        name={value.displayName} />
                       <Text
                         className="card-popup-menu-item-text"
                         truncated>
-                        {member.displayName}
+                        {value.displayName}
                       </Text>
                     </Text>
                   )
@@ -104,12 +132,14 @@ export const MemberMenuItem = ({ item }: MemberMenuItemProps): React.ReactElemen
             <Text
               className="card-menu-item-text"
               size="small">
-              {value?.length}
+              {values?.length}
             </Text>
           </Text>
         }
-        onOpenChange={handleOpenChange} />
+        onOpenChange={(_, props) => onOpenChange && onOpenChange(props?.open)} />
     </div>
   );
 
 };
+
+const MemberMenuItemPresenterMemo = React.memo(MemberMenuItemPresenter);

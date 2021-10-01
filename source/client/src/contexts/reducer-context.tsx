@@ -11,16 +11,14 @@ import React from 'react';
 // Types
 import {
   Action,
-  StateKey,
-  StateValue
+  Store
 } from '../types/reducer';
 // Reducers
 import { reducer } from '../reducers/reducer';
 
 interface ReducerContextValue {
   loading?: boolean,
-  keys?: StateKey[],
-  values?: StateValue[],
+  store?: Store,
   dispatch?: React.Dispatch<Action>
 }
 
@@ -38,8 +36,7 @@ export const ReducerContextProvider = ({ children }: ReducerContextProviderProps
     <ReducerContext.Provider
       value={{
         loading: state.loading,
-        keys: state.keys,
-        values: state.values,
+        store: state.store,
         dispatch: dispatch
       }}>
       {children}

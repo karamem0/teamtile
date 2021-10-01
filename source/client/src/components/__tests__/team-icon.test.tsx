@@ -15,6 +15,11 @@ import { TeamIcon } from '../team-icon';
 // Hooks
 import * as useBlobUrl from '../../hooks/use-blob-url';
 
+beforeEach(() => {
+  jest.clearAllMocks();
+  jest.restoreAllMocks();
+});
+
 describe('TeamIcon', () => {
 
   it('render without icon', () => {

@@ -10,6 +10,7 @@
 import React from 'react';
 // Components
 import { TeamCard } from './team-card';
+import { TeamCardSkeleton } from './team-card-skeleton';
 // Contexts
 import { useReducerContext } from '../contexts/reducer-context';
 // Hooks
@@ -22,17 +23,15 @@ import { useTeams } from '../hooks/use-teams';
 
 export const TeamPanel = (): React.ReactElement | null => {
 
-  const {
-    loading,
-    keys,
-    values
-  } = useReducerContext();
+  const { loading, store } = useReducerContext();
   const [ dispatchLoading ] = useLoading();
   const [ dispatchTeams ] = useTeams();
   const [ dispatchTeamIcons ] = useTeamIcons();
   const [ dispatchMembers ] = useMembers();
   const [ dispatchChannels ] = useChannels();
   const [ dispatchDrives ] = useDrives();
+
+  const keys = store?.keys;
 
   React.useEffect(() => {
     if (!keys) {
@@ -63,26 +62,20 @@ export const TeamPanel = (): React.ReactElement | null => {
     return null;
   }
 
-  if (!values) {
-    return null;
-  }
-
   return (
     <div
       className="panel panel-grid"
       role="list">
       {
-        keys.map((key, index) => (
+        keys.map((_, index) => (
           loading
             ? (
-              <TeamCard
-                item={{ key, value: undefined }}
-                key={key} />
+              <TeamCardSkeleton key={index} />
               )
             : (
               <TeamCard
-                item={{ key, value: values[index] }}
-                key={key} />
+                index={index}
+                key={index} />
               )
         ))
       }

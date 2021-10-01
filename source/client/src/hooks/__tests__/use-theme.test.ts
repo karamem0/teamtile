@@ -6,10 +6,21 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+/* eslint-disable import/first */
+
+// Microsoft Teams
+const microsoftTeams = {
+  initialize: jest.fn(),
+  getContext: jest.fn(),
+  registerOnThemeChangeHandler: jest.fn()
+};
+jest.mock('@microsoft/teams-js', () => ({
+  __esModule: true,
+  ...microsoftTeams
+}));
+
 // Testing Library
 import { renderHook } from '@testing-library/react-hooks';
-// Microsoft Teams
-import * as microsoftTeams from '@microsoft/teams-js';
 // Fluent UI
 import {
   teamsDarkV2Theme,
@@ -20,26 +31,22 @@ import {
 import { useTheme } from '../use-theme';
 
 beforeEach(() => {
+  jest.clearAllMocks();
   jest.restoreAllMocks();
 });
 
 describe('useTheme', () => {
 
-  it('return default theme', () => {
+  it('return default theme', async () => {
     const params = {
       context: {
         theme: 'default'
-      } as microsoftTeams.Context
+      }
     };
-    jest
-      .spyOn(microsoftTeams, 'initialize')
+    microsoftTeams.initialize
       .mockImplementation((callback) => callback && callback());
-    jest
-      .spyOn(microsoftTeams, 'getContext')
+    microsoftTeams.getContext
       .mockImplementation((callback) => callback && callback(params.context));
-    jest
-      .spyOn(microsoftTeams, 'registerOnThemeChangeHandler')
-      .mockImplementation(jest.fn());
     const { result } = renderHook(useTheme);
     const [ theme ] = result.current;
     expect(theme).toBe(teamsV2Theme);
@@ -48,21 +55,16 @@ describe('useTheme', () => {
     expect(microsoftTeams.registerOnThemeChangeHandler).toBeCalled();
   });
 
-  it('return dark theme', () => {
+  it('return dark theme', async () => {
     const params = {
       context: {
         theme: 'dark'
-      } as microsoftTeams.Context
+      }
     };
-    jest
-      .spyOn(microsoftTeams, 'initialize')
+    microsoftTeams.initialize
       .mockImplementation((callback) => callback && callback());
-    jest
-      .spyOn(microsoftTeams, 'getContext')
+    microsoftTeams.getContext
       .mockImplementation((callback) => callback && callback(params.context));
-    jest
-      .spyOn(microsoftTeams, 'registerOnThemeChangeHandler')
-      .mockImplementation(jest.fn());
     const { result } = renderHook(useTheme);
     const [ theme ] = result.current;
     expect(theme).toBe(teamsDarkV2Theme);
@@ -75,17 +77,12 @@ describe('useTheme', () => {
     const params = {
       context: {
         theme: 'contrast'
-      } as microsoftTeams.Context
+      }
     };
-    jest
-      .spyOn(microsoftTeams, 'initialize')
+    microsoftTeams.initialize
       .mockImplementation((callback) => callback && callback());
-    jest
-      .spyOn(microsoftTeams, 'getContext')
+    microsoftTeams.getContext
       .mockImplementation((callback) => callback && callback(params.context));
-    jest
-      .spyOn(microsoftTeams, 'registerOnThemeChangeHandler')
-      .mockImplementation(jest.fn());
     const { result } = renderHook(useTheme);
     const [ theme ] = result.current;
     expect(theme).toBe(teamsHighContrastTheme);

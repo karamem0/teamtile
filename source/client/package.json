@@ -1,16 +1,16 @@
 {
   "name": "teamtile",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "msteams": {
     "teamsAppId": "6c2797c6-76c3-4047-a792-dda5f06da426"
   },
   "private": true,
   "dependencies": {
-    "@fluentui/react-icons-mdl2": "^1.2.2",
-    "@fluentui/react-icons-mdl2-branded": "^1.1.11",
-    "@fluentui/react-northstar": "^0.58.0",
-    "@microsoft/microsoft-graph-client": "^2.2.1",
-    "@microsoft/teams-js": "^1.10.0",
+    "@fluentui/react-icons-mdl2": "^1.2.3",
+    "@fluentui/react-icons-mdl2-branded": "^1.1.12",
+    "@fluentui/react-northstar": "^0.59.0",
+    "@microsoft/microsoft-graph-client": "^3.0.0",
+    "@microsoft/teams-js": "^1.11.0",
     "dexie": "^3.0.3",
     "jsonwebtoken": "^8.5.1",
     "node-sass": "^5.0.0",
@@ -21,7 +21,7 @@
     "typescript": "^4.3.5"
   },
   "devDependencies": {
-    "@microsoft/microsoft-graph-types": "^2.6.0",
+    "@microsoft/microsoft-graph-types": "^2.7.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/react-hooks": "^5.1.3",
@@ -30,16 +30,15 @@
     "@types/react": "^16.9.56",
     "@types/react-dom": "^16.9.14",
     "@types/react-router-dom": "^5.1.8",
-    "@typescript-eslint/eslint-plugin": "^4.31.1",
-    "@typescript-eslint/parser": "^4.31.1",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "jest-fix-undefined": "^0.1.2",
     "jest-junit": "^12.0.0",
     "react-test-renderer": "^16.9.0",
     "stylelint": "^13.13.1",
@@ -70,15 +69,12 @@
   "jest": {
     "globals": {
       "ts-jest": {
-        "isolatedModules": false
+        "isolatedModules": "disabled"
       }
     },
     "reporters": [
       "default",
       "jest-junit"
-    ],
-    "setupFiles": [
-      "jest-fix-undefined"
     ],
     "testMatch": [
       "**/*.test.ts",

@@ -23,6 +23,7 @@ import { ServerService } from '../../services/server-service';
 import json from './use-member-icons.test.json';
 
 beforeEach(() => {
+  jest.clearAllMocks();
   jest.restoreAllMocks();
 });
 

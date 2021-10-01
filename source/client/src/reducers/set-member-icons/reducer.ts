@@ -10,11 +10,15 @@
 import { KeyValue, State } from '../../types/reducer';
 
 export const setMemberIcons = (state: State, payload: KeyValue<string, Map<string, string>>): State => {
-  const { keys, values } = state;
+  if (!state.store) {
+    return state;
+  }
+  const { keys, values } = state.store;
   return {
     ...state,
-    values: keys && values
-      ? keys.map((key, index) => (
+    store: {
+      keys: state.store.keys,
+      values: keys.map((key, index) => (
         key === payload.key
           ? {
               ...values[index],
@@ -27,6 +31,6 @@ export const setMemberIcons = (state: State, payload: KeyValue<string, Map<strin
             }
           : values[index]
       ))
-      : undefined
+    }
   };
 };

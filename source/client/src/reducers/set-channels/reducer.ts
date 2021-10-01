@@ -11,14 +11,18 @@ import { Channel } from '../../types/entity';
 import { State } from '../../types/reducer';
 
 export const setChannels = (state: State, payload: Map<string, Channel[]>): State => {
-  const { keys, values } = state;
+  if (!state.store) {
+    return state;
+  }
+  const { keys, values } = state.store;
   return {
     ...state,
-    values: keys && values
-      ? values.map((value, index) => ({
-        ...value,
-        channels: payload.get(keys[index])
+    store: {
+      keys: state.store.keys,
+      values: keys.map((key, index) => ({
+        ...values[index],
+        channels: payload.get(key)
       }))
-      : undefined
+    }
   };
 };

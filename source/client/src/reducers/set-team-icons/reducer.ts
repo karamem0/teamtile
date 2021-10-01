@@ -10,14 +10,18 @@
 import { State } from '../../types/reducer';
 
 export const setTeamIcons = (state: State, payload: Map<string, string>): State => {
-  const { keys, values } = state;
+  if (!state.store) {
+    return state;
+  }
+  const { keys, values } = state.store;
   return {
     ...state,
-    values: keys && values
-      ? keys.map((key, index) => ({
+    store: {
+      keys: state.store.keys,
+      values: keys.map((key, index) => ({
         ...values[index],
         icon: payload.get(key)
       }))
-      : undefined
+    }
   };
 };

@@ -15,6 +15,9 @@ body {
 
 #root * {
   box-sizing: border-box;
+}
+
+#root div {
   line-height: 1.25em;
 }
 
@@ -54,7 +57,7 @@ body {
     display: grid;
     grid-template-columns: auto 1fr auto;
     gap: 0.5rem;
-    height: 4.5rem;
+    height: 4rem;
   }
 
   .card-row {
@@ -82,10 +85,12 @@ body {
       .card-menu-item-icon {
         width: 1rem;
         height: 1rem;
+        vertical-align: middle;
       }
 
       .card-menu-item-text {
         margin-left: 0.25rem;
+        vertical-align: middle;
       }
     }
   }

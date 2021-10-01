@@ -17,24 +17,46 @@ import {
   Text
 } from '@fluentui/react-northstar';
 import { ContextMenuIcon } from '@fluentui/react-icons-mdl2';
+// Contexts
+import { useReducerContext } from '../contexts/reducer-context';
 // Types
-import { KeyValue, StateKey } from '../types/reducer';
 import { Channel } from '../types/entity';
 
 export interface ChannelMenuItemProps {
-  item: KeyValue<StateKey, Channel[] | undefined>
+  index: number
 }
 
-export const ChannelMenuItem = ({ item }: ChannelMenuItemProps): React.ReactElement | null => {
+export const ChannelMenuItem = ({ index }: ChannelMenuItemProps): React.ReactElement | null => {
 
-  const { value } = item;
+  const { store } = useReducerContext();
 
-  const handleClick = React.useCallback((channel: Channel) => {
-    if (!channel.webUrl) {
+  const values = store?.values && store.values[index].channels;
+
+  const handleClick = React.useCallback((value: Channel) => {
+    if (!value.webUrl) {
       return;
     }
-    microsoftTeams.executeDeepLink(channel.webUrl);
+    microsoftTeams.executeDeepLink(value.webUrl);
   }, []);
+
+  if (!values) {
+    return null;
+  }
+
+  return (
+    <ChannelMenuItemPresenterMemo
+      values={values}
+      onClick={handleClick} />
+  );
+
+};
+
+interface ChannelMenuItemPresenterProps {
+  values: Channel[],
+  onClick?: (value: Channel) => void
+}
+
+const ChannelMenuItemPresenter = ({ values, onClick }: ChannelMenuItemPresenterProps): React.ReactElement | null => {
 
   return (
     <div className="card-menu-item">
@@ -43,17 +65,17 @@ export const ChannelMenuItem = ({ item }: ChannelMenuItemProps): React.ReactElem
           <div className="card-popup-menu">
             <List
               items={
-                value?.map((channel) => ({
-                  key: channel.id,
+                values.map((value, index) => ({
+                  key: index,
                   header: (
                     <Text
                       className="card-popup-menu-item"
                       role="button"
-                      onClick={() => handleClick(channel)}>
+                      onClick={() => onClick && onClick(value)}>
                       <Text
                         className="card-popup-menu-item-text"
                         truncated>
-                        {channel.displayName}
+                        {value.displayName}
                       </Text>
                     </Text>
                   )
@@ -71,7 +93,7 @@ export const ChannelMenuItem = ({ item }: ChannelMenuItemProps): React.ReactElem
             <Text
               className="card-menu-item-text"
               size="small">
-              {value?.length}
+              {values.length}
             </Text>
           </Text>
         } />
@@ -79,3 +101,5 @@ export const ChannelMenuItem = ({ item }: ChannelMenuItemProps): React.ReactElem
   );
 
 };
+
+const ChannelMenuItemPresenterMemo = React.memo(ChannelMenuItemPresenter);

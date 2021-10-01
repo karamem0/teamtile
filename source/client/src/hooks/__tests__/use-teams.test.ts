@@ -25,6 +25,7 @@ import { Team } from '../../types/entity';
 import json from './use-teams.test.json';
 
 beforeEach(() => {
+  jest.clearAllMocks();
   jest.restoreAllMocks();
 });
 

@@ -20,11 +20,11 @@ export interface MemberIconProps {
 
 export const MemberIcon = ({ icon, name }: MemberIconProps): React.ReactElement | null => {
 
-  const [ url ] = useBlobUrl(icon);
+  const [ image ] = useBlobUrl(icon);
 
   return (
     <Avatar
-      image={url}
+      image={image}
       name={name}
       size="small" />
   );

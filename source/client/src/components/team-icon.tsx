@@ -20,11 +20,11 @@ export interface TeamIconProps {
 
 export const TeamIcon = ({ name, icon }: TeamIconProps): React.ReactElement | null => {
 
-  const [ url ] = useBlobUrl(icon);
+  const [ image ] = useBlobUrl(icon);
 
   return (
     <Avatar
-      image={url}
+      image={image}
       name={name}
       size="larger" />
   );

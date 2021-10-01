@@ -13,17 +13,18 @@ import * as microsoftTeams from '@microsoft/teams-js';
 // Fluent UI
 import { SharepointLogoIcon } from '@fluentui/react-icons-mdl2-branded';
 import { Text } from '@fluentui/react-northstar';
-// Types
-import { KeyValue, StateKey } from '../types/reducer';
-import { Drive } from '../types/entity';
+// Contexts
+import { useReducerContext } from '../contexts/reducer-context';
 
 export interface DriveMenuItemProps {
-  item: KeyValue<StateKey, Drive | undefined>
+  index: number
 }
 
-export const DriveMenuItem = ({ item }: DriveMenuItemProps): React.ReactElement | null => {
+export const DriveMenuItem = ({ index }: DriveMenuItemProps): React.ReactElement | null => {
 
-  const { value } = item;
+  const { store } = useReducerContext();
+
+  const value = store?.values && store.values[index].drive;
 
   const handleClick = React.useCallback(() => {
     if (!value?.webUrl) {
@@ -32,16 +33,34 @@ export const DriveMenuItem = ({ item }: DriveMenuItemProps): React.ReactElement 
     microsoftTeams.executeDeepLink(value.webUrl);
   }, [ value ]);
 
+  if (!value) {
+    return null;
+  }
+
+  return (
+    <DriveMenuItemPresenterMemo onClick={handleClick} />
+  );
+
+};
+
+interface DriveMenuItemPresenterProps {
+  onClick?: () => void
+}
+
+const DriveMenuItemPresenter = ({ onClick }: DriveMenuItemPresenterProps): React.ReactElement | null => {
+
   return (
     <div className="card-menu-item">
       <Text
         className="card-menu-item-content"
         color="brand"
         role="button"
-        onClick={handleClick}>
+        onClick={() => onClick && onClick()}>
         <SharepointLogoIcon className="card-menu-item-icon" />
       </Text>
     </div>
   );
 
 };
+
+const DriveMenuItemPresenterMemo = React.memo(DriveMenuItemPresenter);
