@@ -18,7 +18,7 @@ export const setChannels = (state: State, payload: Map<string, Channel[]>): Stat
   return {
     ...state,
     store: {
-      keys: state.store.keys,
+      keys: keys,
       values: keys.map((key, index) => ({
         ...values[index],
         channels: payload.get(key)

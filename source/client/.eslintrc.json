@@ -43,6 +43,15 @@
       "error",
       "windows"
     ],
+    "no-alert": "error",
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "error"
+        ]
+      }
+    ],
     "no-use-before-define": "off",
     "no-unused-vars": "off",
     "padded-blocks": "off",

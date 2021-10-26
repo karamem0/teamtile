@@ -18,7 +18,7 @@ export const setMembers = (state: State, payload: Map<string, Member[]>): State 
   return {
     ...state,
     store: {
-      keys: state.store.keys,
+      keys: keys,
       values: keys.map((key, index) => ({
         ...values[index],
         members: payload.get(key)

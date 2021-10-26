@@ -44,6 +44,10 @@ export const TeamCard = ({ index }: TeamCardProps): React.ReactElement | null =>
     return null;
   }
 
+  if (!value.enabled) {
+    return null;
+  }
+
   return (
     <TeamCardPresenterMemo
       index={index}
@@ -70,36 +74,38 @@ const TeamCardPresenter = ({
       className="card"
       fluid
       role="listitem">
-      <div className="card-column">
-        <div className="card-column-item">
-          <TeamIcon
-            icon={value.icon}
-            name={value.displayName} />
-        </div>
-        <div className="card-column-item">
-          <div className="card-row">
-            <Text
-              className="card-name"
-              role="button"
-              onClick={() => onClick && onClick()}>
-              {value.displayName}
-            </Text>
-            <div className="card-description">
+      <div className="card-fade-in">
+        <div className="card-column">
+          <div className="card-column-item">
+            <TeamIcon
+              icon={value.icon}
+              name={value.displayName} />
+          </div>
+          <div className="card-column-item">
+            <div className="card-row">
               <Text
-                size="small"
-                truncated>
-                {value.description}
+                className="card-name"
+                role="button"
+                onClick={() => onClick && onClick()}>
+                {value.displayName}
               </Text>
-            </div>
-            <div className="card-menu">
-              <ChannelMenuItem index={index} />
-              <MemberMenuItem index={index} />
-              <DriveMenuItem index={index} />
+              <div className="card-description">
+                <Text
+                  size="small"
+                  truncated>
+                  {value.description}
+                </Text>
+              </div>
+              <div className="card-menu">
+                <ChannelMenuItem index={index} />
+                <MemberMenuItem index={index} />
+                <DriveMenuItem index={index} />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="card-column-item">
-          <TeamVisibilityIcon visibility={value.visibility} />
+          <div className="card-column-item">
+            <TeamVisibilityIcon visibility={value.visibility} />
+          </div>
         </div>
       </div>
     </Card>

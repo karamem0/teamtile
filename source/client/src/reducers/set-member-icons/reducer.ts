@@ -17,7 +17,7 @@ export const setMemberIcons = (state: State, payload: KeyValue<string, Map<strin
   return {
     ...state,
     store: {
-      keys: state.store.keys,
+      keys: keys,
       values: keys.map((key, index) => (
         key === payload.key
           ? {

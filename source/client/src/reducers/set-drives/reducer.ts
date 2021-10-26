@@ -18,7 +18,7 @@ export const setDrives = (state: State, payload: Map<string, Drive>): State => {
   return {
     ...state,
     store: {
-      keys: state.store.keys,
+      keys: keys,
       values: keys.map((key, index) => ({
         ...values[index],
         drive: payload.get(key)

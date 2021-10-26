@@ -29,6 +29,9 @@ export type StoreValue = (
     channels?: Channel[],
     members?: (Member & Icon)[],
     drive?: Drive
+  } &
+  {
+    enabled: boolean
   }
 );
 
@@ -49,6 +52,7 @@ export interface Action {
 
 export enum ActionType {
   SetLoading = 'SetLoading',
+  SetFilter = 'SetFilter',
   SetKeys = 'SetKeys',
   SetTeams = 'SetTeams',
   SetTeamIcons = 'SetTeamIcons',

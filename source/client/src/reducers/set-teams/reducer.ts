@@ -18,7 +18,7 @@ export const setTeams = (state: State, payload: Map<string, Team>): State => {
   return {
     ...state,
     store: {
-      keys: state.store.keys,
+      keys: keys,
       values: keys.map((key, index) => ({
         ...values[index],
         ...payload.get(key)

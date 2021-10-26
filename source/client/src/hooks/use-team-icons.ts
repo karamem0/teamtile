@@ -55,7 +55,6 @@ export const useTeamIcons = (): [ (keys: string[]) => Promise<void> ] => {
       const message = error instanceof Error
         ? error.message
         : Object.prototype.toString.call(error);
-      console.error(message);
       setError(message);
     }
   }, [

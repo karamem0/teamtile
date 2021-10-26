@@ -19,6 +19,7 @@ import {
 import { GroupIcon } from '@fluentui/react-icons-mdl2';
 // Components
 import { MemberIcon } from './member-icon';
+import { MenuItemFilter } from './menu-item-filter';
 // Contexts
 import { useReducerContext } from '../contexts/reducer-context';
 // Hooks
@@ -69,6 +70,10 @@ export const MemberMenuItem = ({ index }: MemberMenuItemProps): React.ReactEleme
     dispatchMemberIcons
   ]);
 
+  if (!key) {
+    return null;
+  }
+
   if (!values) {
     return null;
   }
@@ -99,28 +104,32 @@ const MemberMenuItemPresenter = ({
       <Popup
         content={
           <div className="card-popup-menu">
-            <List
-              items={
-                values?.map((value, index) => ({
-                  key: index,
-                  header: (
-                    <Text
-                      className="card-popup-menu-item"
-                      role="button"
-                      onClick={() => onClick && onClick(value)}>
-                      <MemberIcon
-                        icon={value.icon}
-                        name={value.displayName} />
-                      <Text
-                        className="card-popup-menu-item-text"
-                        truncated>
-                        {value.displayName}
-                      </Text>
-                    </Text>
-                  )
-                }))
-              }
-              navigable />
+            <MenuItemFilter
+              renderer={(values: (Member & Icon)[]) => (
+                <List
+                  items={
+                    values.map((value, index) => ({
+                      key: index,
+                      header: (
+                        <Text
+                          className="card-popup-menu-item"
+                          role="button"
+                          onClick={() => onClick && onClick(value)}>
+                          <MemberIcon
+                            icon={value.icon}
+                            name={value.displayName} />
+                          <Text
+                            className="card-popup-menu-item-text"
+                            truncated>
+                            {value.displayName}
+                          </Text>
+                        </Text>
+                      )
+                    }))
+                  }
+                  navigable />
+              )}
+              values={values} />
           </div>
         }
         trigger={
@@ -132,7 +141,7 @@ const MemberMenuItemPresenter = ({
             <Text
               className="card-menu-item-text"
               size="small">
-              {values?.length}
+              {values.length}
             </Text>
           </Text>
         }

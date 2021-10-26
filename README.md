@@ -35,7 +35,7 @@ Are you frustrated with finding a team? Teamtile provides these features to you:
     |Resource Group|(You can choose)|
     |Name|(You can choose)|
     |Publish|Code|
-    |Runtime stack|.NET 5 (Early Access)|
+    |Runtime stack|.NET 5|
     |Operating System|Windows|
     |Region|(You can choose)|
 
@@ -142,7 +142,6 @@ Compress-Archive -Path ./bin/Release/net5.0/publish/* -DestinationPath ../../ser
 
     |Parameter|Value|
     |-|-|
-    |{{DomainName}}|`[Domain name of Azure Web App]`|
     |{{ClientId}}|`[Application ID]`|
 
 3. Build application.

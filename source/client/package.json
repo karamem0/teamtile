@@ -1,13 +1,13 @@
 {
   "name": "teamtile",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "msteams": {
     "teamsAppId": "6c2797c6-76c3-4047-a792-dda5f06da426"
   },
   "private": true,
   "dependencies": {
-    "@fluentui/react-icons-mdl2": "^1.2.3",
-    "@fluentui/react-icons-mdl2-branded": "^1.1.12",
+    "@fluentui/react-icons-mdl2": "^1.2.4",
+    "@fluentui/react-icons-mdl2-branded": "^1.1.13",
     "@fluentui/react-northstar": "^0.59.0",
     "@microsoft/microsoft-graph-client": "^3.0.0",
     "@microsoft/teams-js": "^1.11.0",

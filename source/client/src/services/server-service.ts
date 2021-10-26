@@ -68,7 +68,7 @@ export class ServerService {
       const requestBody = await requestContent.getContent();
       const responseBody = await this.client
         .api('/$batch')
-        .version('beta')
+        .version('v1.0')
         .post(requestBody);
       const responseContent = new BatchResponseContent(responseBody);
       for (const [ id, response ] of responseContent.getResponses()) {
@@ -91,7 +91,7 @@ export class ServerService {
         keys.slice(chunk, chunk + 20).map((id) => ({
           id: `${id}`,
           request: new Request(
-            `/teams/${id}/photo/$value`,
+            `/groups/${id}/photo/$value`,
             {
               method: 'GET'
             }
@@ -101,7 +101,7 @@ export class ServerService {
       const requestBody = await requestContent.getContent();
       const responseBody = await this.client
         .api('/$batch')
-        .version('beta')
+        .version('v1.0')
         .post(requestBody);
       const responseContent = new BatchResponseContent(responseBody);
       for (const [ id, response ] of Array.from(responseContent.getResponses())) {
@@ -122,7 +122,7 @@ export class ServerService {
           try {
             const response = await this.client
               .api(`/teams/${id}/channels`)
-              .version('beta')
+              .version('v1.0')
               .select([
                 'id',
                 'displayName',
@@ -148,7 +148,7 @@ export class ServerService {
           try {
             const response = await this.client
               .api(`/teams/${id}/members`)
-              .version('beta')
+              .version('v1.0')
               .select([
                 'id',
                 'displayName',
@@ -183,7 +183,7 @@ export class ServerService {
       const requestBody = await requestContent.getContent();
       const responseBody = await this.client
         .api('/$batch')
-        .version('beta')
+        .version('v1.0')
         .post(requestBody);
       const responseContent = new BatchResponseContent(responseBody);
       for (const [ id, response ] of Array.from(responseContent.getResponses())) {
@@ -215,7 +215,7 @@ export class ServerService {
       const requestBody = await requestContent.getContent();
       const responseBody = await this.client
         .api('/$batch')
-        .version('beta')
+        .version('v1.0')
         .post(requestBody);
       const responseContent = new BatchResponseContent(responseBody);
       for (const [ id, response ] of responseContent.getResponses()) {

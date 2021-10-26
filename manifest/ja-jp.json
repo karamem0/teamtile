@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.Localization.schema.json",
+  "name.short": "Teamtile",
+  "name.full": "Teamtile",
+  "description.short": "参加中のチームをタイル状に表示することで素早くアクセスできます。",
+  "description.full": "チームを探すのにイライラしていませんか? Teamtile は以下の機能を提供します。\n- 参加中のチームをタイルで表示\n- チームのメンバーとチャンネルを表示\n- SharePoint ドキュメント ライブラリへのリンク",
+  "staticTabs[0].name": "Teamtile"
+}

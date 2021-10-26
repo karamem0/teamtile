@@ -8,6 +8,7 @@
 
 export * from './set-channels/action';
 export * from './set-drives/action';
+export * from './set-filter/action';
 export * from './set-keys/action';
 export * from './set-loading/action';
 export * from './set-member-icons/action';

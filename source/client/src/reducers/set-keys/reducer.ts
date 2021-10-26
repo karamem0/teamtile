@@ -13,6 +13,8 @@ export const setKeys = (state: State, payload: string[]): State => ({
   ...state,
   store: {
     keys: payload,
-    values: new Array(payload.length)
+    values: payload.map(() => ({
+      enabled: true
+    }))
   }
 });

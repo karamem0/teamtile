@@ -32,12 +32,11 @@ export const useKeys = (): [ () => Promise<void> ] => {
       return;
     }
     try {
-      dispatch(setKeys(await service?.server.getKeys()));
+      dispatch(setKeys(await service.server.getKeys()));
     } catch (error) {
       const message = error instanceof Error
         ? error.message
         : Object.prototype.toString.call(error);
-      console.error(message);
       setError(message);
     }
   }, [

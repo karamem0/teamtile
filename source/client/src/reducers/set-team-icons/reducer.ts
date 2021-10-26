@@ -17,7 +17,7 @@ export const setTeamIcons = (state: State, payload: Map<string, string>): State 
   return {
     ...state,
     store: {
-      keys: state.store.keys,
+      keys: keys,
       values: keys.map((key, index) => ({
         ...values[index],
         icon: payload.get(key)

@@ -24,6 +24,13 @@ export const ErrorContextProvider = ({ children }: ErrorContextProviderProps): R
 
   const [ error, setError ] = React.useState<string>();
 
+  React.useEffect(() => {
+    if (!error) {
+      return;
+    }
+    console.error(error);
+  }, [ error ]);
+
   return (
     <ErrorContext.Provider
       value={{

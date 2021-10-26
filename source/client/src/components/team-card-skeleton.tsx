@@ -17,7 +17,8 @@ export const TeamCardSkeleton = (): React.ReactElement | null => {
     <Skeleton animation="wave">
       <Card
         className="card"
-        fluid>
+        fluid
+        role="listitem">
         <div className="card-column">
           <div className="card-column-item">
             <Skeleton.Avatar size="larger" />

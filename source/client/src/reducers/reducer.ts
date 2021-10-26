@@ -9,6 +9,7 @@
 // Reducers
 import { setChannels } from './set-channels/reducer';
 import { setDrives } from './set-drives/reducer';
+import { setFilter } from './set-filter/reducer';
 import { setKeys } from './set-keys/reducer';
 import { setLoading } from './set-loading/reducer';
 import { setMemberIcons } from './set-member-icons/reducer';
@@ -33,6 +34,8 @@ export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case ActionType.SetLoading:
       return setLoading(state, action.payload as boolean);
+    case ActionType.SetFilter:
+      return setFilter(state, action.payload as string);
     case ActionType.SetKeys:
       return setKeys(state, action.payload as string[]);
     case ActionType.SetTeams:

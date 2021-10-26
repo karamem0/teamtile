@@ -50,7 +50,6 @@ export const useClient = (): [ Client | undefined, string | undefined ] => {
         const message = error instanceof Error
           ? error.message
           : Object.prototype.toString.call(error);
-        console.error(message);
         setError(message);
         microsoftTeams.appInitialization.notifyFailure({
           reason: microsoftTeams.appInitialization.FailedReason.AuthFailed,

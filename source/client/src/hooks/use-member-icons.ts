@@ -55,7 +55,6 @@ export const useMemberIcons = (): [ (key: string, keys: string[]) => Promise<voi
       const message = error instanceof Error
         ? error.message
         : Object.prototype.toString.call(error);
-      console.error(message);
       setError(message);
     }
   }, [

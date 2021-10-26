@@ -16,19 +16,12 @@ jobs:
           node-version: 14.x
       - name: Build client
         env:
-          PUBLIC_URL: ${{secrets.PUBLIC_URL}}
-          REACT_APP_SERVER_URL: ${{secrets.REACT_APP_SERVER_URL}}
+          REACT_APP_AUTH_CLIENT_ID: ${{secrets.APP_CLIENT_ID}}
         run: |
           npm ci
           npm run build
           npm run test
         working-directory: source/client
-      - name: Copy files
-        shell: pwsh
-        run: |
-          New-Item -Type Directory -Path artifact/teamtile
-          Copy-Item -Path source/client/build/* -Destination artifact/teamtile -Recurse
-          Copy-Item -Path source/client/web.config -Destination artifact/teamtile
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
@@ -37,21 +30,46 @@ jobs:
         run: |
           dotnet restore source/server
           dotnet build source/server -c Release
-          dotnet publish source/server -c Release -o artifact/teamtile/api
-      - name: Upload artifact
+          dotnet publish source/server -c Release
+      - name: Copy build file
+        shell: pwsh
+        run: |
+          New-Item -Type Directory -Path artifact/build
+          Copy-Item -Path source/client/build/* -Destination artifact/build -Recurse
+          Copy-Item -Path source/client/web.config -Destination artifact/build
+          New-Item -Type Directory -Path artifact/build/api
+          Copy-Item -Path source/server/bin/Release/net5.0/publish/* -Destination artifact/build/api -Recurse
+      - name: Upload build file
         uses: actions/upload-artifact@v2
         with:
-          name: teamtile
-          path: artifact/teamtile
+          name: teamtile-build
+          path: artifact/build
+      - name: Build manifest file
+        shell: pwsh
+        run: |
+          $content = Get-Content -Path manifest/manifest.json
+          $content = $content -replace "{{ClientId}}", "${{secrets.APP_CLIENT_ID}}"
+          $content = $content -replace "{{DomainName}}", "${{secrets.APP_DOMAIN_NAME}}"
+          Out-File -FilePath manifest/manifest.json -InputObject $content -Encoding UTF8
+      - name: Copy manifest file
+        shell: pwsh
+        run: |
+          New-Item -Type Directory -Path artifact/manifest
+          Copy-Item -Path manifest/* -Destination artifact/manifest -Recurse
+      - name: Upload manifest file
+        uses: actions/upload-artifact@v2
+        with:
+          name: teamtile-manifest
+          path: artifact/manifest
   deploy:
     needs: build
     runs-on: windows-latest
     steps:
-      - name: Download artifact
+      - name: Download build artifact
         uses: actions/download-artifact@v2
         with:
-          name: teamtile
-          path: teamtile
+          name: teamtile-build
+          path: build
       - name: Connect to Azure
         uses: azure/login@v1
         with:
@@ -60,4 +78,4 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: teamtile
-          package: teamtile
+          package: build
