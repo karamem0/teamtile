@@ -1,10 +1,10 @@
-//
-// Copyright (c) 2021 karamem0
-//
-// This software is released under the MIT License.
-//
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
-//
+/*
+ * Copyright (c) 2021 karamem0
+ *
+ * This software is released under the MIT License.
+ *
+ * https://github.com/karamem0/teamtile/blob/master/LICENSE
+ */
 
 @import-normalize;
 
@@ -72,6 +72,12 @@ body {
 
   .card-name {
     cursor: pointer;
+  }
+
+  .card-description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .card-menu {

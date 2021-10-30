@@ -14,8 +14,6 @@ import { Provider } from '@fluentui/react-northstar';
 import { Container } from './container';
 // Contexts
 import { ErrorContextProvider } from '../contexts/error-context';
-import { ReducerContextProvider } from '../contexts/reducer-context';
-import { ServiceContextProvider } from '../contexts/service-context';
 // Hooks
 import { useTheme } from '../hooks/use-theme';
 
@@ -26,11 +24,7 @@ export const App = (): React.ReactElement | null => {
   return (
     <Provider theme={theme}>
       <ErrorContextProvider>
-        <ReducerContextProvider>
-          <ServiceContextProvider>
-            <Container />
-          </ServiceContextProvider>
-        </ReducerContextProvider>
+        <Container />
       </ErrorContextProvider>
     </Provider>
   );

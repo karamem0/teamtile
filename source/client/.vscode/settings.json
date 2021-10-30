@@ -1,18 +1,18 @@
 {
-  "css.validate": false,
+  // ESLint
   "eslint.format.enable": true,
-  "less.validate": false,
-  "scss.validate": false,
-  "stylelint.enable": true,
-  "[scss]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll": true
-    }
-  },
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  }
+  },
+  // Stylelint
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "stylelint.validate": [
+    "css",
+    "scss",
+  ]
 }

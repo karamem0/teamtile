@@ -26,7 +26,7 @@ export const LoginPage = (): React.ReactElement | null => {
       return;
     }
     microsoftTeams.initialize(() => {
-      const url = `https://login.microsoftonline.com/${context.tid}/oauth2/v2.0/authorize`;
+      const url = `https://login.microsoftonline.com/${process.env.REACT_APP_AUTH_TENANT_ID}/oauth2/v2.0/authorize`;
       const params = new URLSearchParams({
         client_id: process.env.REACT_APP_AUTH_CLIENT_ID,
         response_type: 'token',

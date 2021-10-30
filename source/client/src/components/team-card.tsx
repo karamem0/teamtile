@@ -90,9 +90,7 @@ const TeamCardPresenter = ({
                 {value.displayName}
               </Text>
               <div className="card-description">
-                <Text
-                  size="small"
-                  truncated>
+                <Text size="small">
                   {value.description}
                 </Text>
               </div>

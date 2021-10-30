@@ -15,6 +15,8 @@ import {
   Switch
 } from 'react-router-dom';
 // Contexts
+import { ReducerContextProvider } from '../contexts/reducer-context';
+import { ServiceContextProvider } from '../contexts/service-context';
 import { useErrorContext } from '../contexts/error-context';
 // Components
 import { CallbackPage } from './auth/callback-page';
@@ -36,9 +38,14 @@ export const Container = (): React.ReactElement | null => {
       <BrowserRouter>
         <Switch>
           <Route
-            component={MainPage}
             exact
-            path="/" />
+            path="/">
+            <ReducerContextProvider>
+              <ServiceContextProvider>
+                <MainPage />
+              </ServiceContextProvider>
+            </ReducerContextProvider>
+          </Route>
           <Route
             component={LoginPage}
             exact

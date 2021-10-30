@@ -10,12 +10,13 @@ jobs:
     steps:
       - name: Checkout repos
         uses: actions/checkout@v2
-      - name: Setup Node.js 14.x
+      - name: Setup Node.js 16.x
         uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 16.x
       - name: Build client
         env:
+          REACT_APP_AUTH_TENANT_ID: ${{secrets.APP_TENANT_ID}}
           REACT_APP_AUTH_CLIENT_ID: ${{secrets.APP_CLIENT_ID}}
         run: |
           npm ci
