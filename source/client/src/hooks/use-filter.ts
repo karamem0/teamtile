@@ -10,19 +10,26 @@
 import React from 'react';
 // Contexts
 import { useReducerContext } from '../contexts/reducer-context';
+// Hooks
+import { useDebounce } from 'react-use';
 // Reducers
-import { setFilter } from '../reducers/action';
+import { putFilter } from '../reducers/action';
 
 export const useFilter = (): [ (filter?: string) => void ] => {
 
   const { dispatch } = useReducerContext();
+  const [ filter, setFilter ] = React.useState<string>();
 
-  const dispatchFilter = React.useCallback((filter?: string) => {
+  useDebounce(() => {
     if (!dispatch) {
       return;
     }
-    dispatch(setFilter(filter));
-  }, [ dispatch ]);
+    dispatch(putFilter(filter));
+  }, 500, [ dispatch, filter ]);
+
+  const dispatchFilter = React.useCallback((filter?: string) => {
+    setFilter(filter);
+  }, [ ]);
 
   return [
     dispatchFilter

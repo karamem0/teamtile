@@ -15,7 +15,7 @@ import * as ServiceContext from '../../contexts/service-context';
 // Hooks
 import { useMemberIcons } from '../use-member-icons';
 // Reducers
-import { setMemberIcons } from '../../reducers/action';
+import { putMemberIcons } from '../../reducers/action';
 // Services
 import { LocalService } from '../../services/local-service';
 import { ServerService } from '../../services/server-service';
@@ -66,11 +66,10 @@ describe('useMemberIcons', () => {
         }
       });
     await act(async () => {
-      const { result, waitForNextUpdate } = renderHook(useMemberIcons);
-      await waitForNextUpdate();
+      const { result } = renderHook(useMemberIcons);
       const [ dispatchMemberIcons ] = result.current;
       await dispatchMemberIcons(params.key, params.keys);
-      expect(params.dispatch).toBeCalledWith(setMemberIcons({
+      expect(params.dispatch).toBeCalledWith(putMemberIcons({
         key: params.key,
         value: params.json
       }));
@@ -114,11 +113,10 @@ describe('useMemberIcons', () => {
         }
       });
     await act(async () => {
-      const { result, waitForNextUpdate } = renderHook(useMemberIcons);
-      await waitForNextUpdate();
+      const { result } = renderHook(useMemberIcons);
       const [ dispatchMemberIcons ] = result.current;
       await dispatchMemberIcons(params.key, params.keys);
-      expect(params.dispatch).toBeCalledWith(setMemberIcons({
+      expect(params.dispatch).toBeCalledWith(putMemberIcons({
         key: params.key,
         value: params.json
       }));

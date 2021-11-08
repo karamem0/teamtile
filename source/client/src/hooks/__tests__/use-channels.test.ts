@@ -15,7 +15,7 @@ import * as ServiceContext from '../../contexts/service-context';
 // Hooks
 import { useChannels } from '../use-channels';
 // Reducers
-import { setChannels } from '../../reducers/action';
+import { putChannels } from '../../reducers/action';
 // Services
 import { LocalService } from '../../services/local-service';
 import { ServerService } from '../../services/server-service';
@@ -67,11 +67,10 @@ describe('useChannels', () => {
         }
       });
     await act(async () => {
-      const { result, waitForNextUpdate } = renderHook(useChannels);
-      await waitForNextUpdate();
+      const { result } = renderHook(useChannels);
       const [ dispatchChannels ] = result.current;
       await dispatchChannels(params.keys);
-      expect(params.dispatch).toBeCalledWith(setChannels(params.json));
+      expect(params.dispatch).toBeCalledWith(putChannels(params.json));
     });
   });
 
@@ -111,11 +110,10 @@ describe('useChannels', () => {
         }
       });
     await act(async () => {
-      const { result, waitForNextUpdate } = renderHook(useChannels);
-      await waitForNextUpdate();
+      const { result } = renderHook(useChannels);
       const [ dispatchChannels ] = result.current;
       await dispatchChannels(params.keys);
-      expect(params.dispatch).toBeCalledWith(setChannels(params.json));
+      expect(params.dispatch).toBeCalledWith(putChannels(params.json));
     });
   });
 

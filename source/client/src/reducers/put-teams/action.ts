@@ -8,9 +8,9 @@
 
 // Types
 import { Action, ActionType } from '../../types/reducer';
-import { Drive } from '../../types/entity';
+import { Team } from '../../types/entity';
 
-export const setDrives = (payload: Map<string, Drive>): Action => ({
-  type: ActionType.SetDrives,
+export const putTeams = (payload: Map<string, Team>): Action => ({
+  type: ActionType.PutTeams,
   payload: payload
 });

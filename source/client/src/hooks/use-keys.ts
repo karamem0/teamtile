@@ -13,7 +13,7 @@ import { useErrorContext } from '../contexts/error-context';
 import { useReducerContext } from '../contexts/reducer-context';
 import { useServiceContext } from '../contexts/service-context';
 // Reducers
-import { setKeys } from '../reducers/action';
+import { putKeys } from '../reducers/action';
 
 export const useKeys = (): [ () => Promise<void> ] => {
 
@@ -32,7 +32,7 @@ export const useKeys = (): [ () => Promise<void> ] => {
       return;
     }
     try {
-      dispatch(setKeys(await service.server.getKeys()));
+      dispatch(putKeys(await service.server.getKeys()));
     } catch (error) {
       const message = error instanceof Error
         ? error.message

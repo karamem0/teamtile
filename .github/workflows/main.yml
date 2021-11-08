@@ -37,7 +37,6 @@ jobs:
         run: |
           New-Item -Type Directory -Path artifact/build
           Copy-Item -Path source/client/build/* -Destination artifact/build -Recurse
-          Copy-Item -Path source/client/web.config -Destination artifact/build
           New-Item -Type Directory -Path artifact/build/api
           Copy-Item -Path source/server/bin/Release/net5.0/publish/* -Destination artifact/build/api -Recurse
       - name: Upload build file

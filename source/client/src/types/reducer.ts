@@ -51,13 +51,13 @@ export interface Action {
 }
 
 export enum ActionType {
-  SetLoading = 'SetLoading',
-  SetFilter = 'SetFilter',
-  SetKeys = 'SetKeys',
-  SetTeams = 'SetTeams',
-  SetTeamIcons = 'SetTeamIcons',
-  SetChannels = 'SetChannels',
-  SetMembers = 'SetMembers',
-  SetMemberIcons = 'SetMemberIcons',
-  SetDrives = 'SetDrives',
+  PutLoading = 'PutLoading',
+  PutFilter = 'PutFilter',
+  PutKeys = 'PutKeys',
+  PutTeams = 'PutTeams',
+  PutTeamIcons = 'PutTeamIcons',
+  PutChannels = 'PutChannels',
+  PutMembers = 'PutMembers',
+  PutMemberIcons = 'PutMemberIcons',
+  PutDrives = 'PutDrives',
 }

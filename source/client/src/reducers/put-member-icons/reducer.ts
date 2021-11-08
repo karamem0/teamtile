@@ -9,7 +9,7 @@
 // Types
 import { KeyValue, State } from '../../types/reducer';
 
-export const setMemberIcons = (state: State, payload: KeyValue<string, Map<string, string>>): State => {
+export const putMemberIcons = (state: State, payload: KeyValue<string, Map<string, string>>): State => {
   if (!state.store) {
     return state;
   }

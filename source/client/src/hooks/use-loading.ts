@@ -11,7 +11,7 @@ import React from 'react';
 // Contexts
 import { useReducerContext } from '../contexts/reducer-context';
 // Reducers
-import { setLoading } from '../reducers/action';
+import { putLoading } from '../reducers/action';
 
 export const useLoading = (): [ (loading: boolean) => void ] => {
 
@@ -21,7 +21,7 @@ export const useLoading = (): [ (loading: boolean) => void ] => {
     if (!dispatch) {
       return;
     }
-    dispatch(setLoading(loading));
+    dispatch(putLoading(loading));
   }, [ dispatch ]);
 
   return [

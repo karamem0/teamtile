@@ -8,9 +8,8 @@
 
 // Types
 import { Action, ActionType } from '../../types/reducer';
-import { Team } from '../../types/entity';
 
-export const setTeams = (payload: Map<string, Team>): Action => ({
-  type: ActionType.SetTeams,
+export const putFilter = (payload?: string): Action => ({
+  type: ActionType.PutFilter,
   payload: payload
 });

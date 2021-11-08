@@ -32,7 +32,7 @@ namespace Karamem0.Teamtile
 
         public void ConfigureServices(IServiceCollection services)
         {
-            _ = services.AddMicrosoftIdentityWebApiAuthentication(this.Configuration);
+            _ = services.AddMicrosoftIdentityWebApiAuthentication(this.Configuration, "AzureAD");
             _ = services.AddControllers();
             _ = services.AddHttpClient();
             _ = services.AddCors(options =>

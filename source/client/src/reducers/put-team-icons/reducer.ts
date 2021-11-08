@@ -8,9 +8,8 @@
 
 // Types
 import { State } from '../../types/reducer';
-import { Team } from '../../types/entity';
 
-export const setTeams = (state: State, payload: Map<string, Team>): State => {
+export const putTeamIcons = (state: State, payload: Map<string, string>): State => {
   if (!state.store) {
     return state;
   }
@@ -21,7 +20,7 @@ export const setTeams = (state: State, payload: Map<string, Team>): State => {
       keys: keys,
       values: keys.map((key, index) => ({
         ...values[index],
-        ...payload.get(key)
+        icon: payload.get(key)
       }))
     }
   };

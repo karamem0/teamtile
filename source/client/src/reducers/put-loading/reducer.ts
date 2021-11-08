@@ -9,7 +9,7 @@
 // Types
 import { State } from '../../types/reducer';
 
-export const setLoading = (state: State, payload: boolean): State => ({
+export const putLoading = (state: State, payload: boolean): State => ({
   ...state,
   loading: payload
 });

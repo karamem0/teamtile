@@ -1,0 +1,14 @@
+{
+  "globals": {
+    "ts-jest": {
+      "isolatedModules": "disabled"
+    }
+  },
+  "testMatch": [
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ],
+  "transform": {
+    "^.+\\.(ts|tsx)$": "ts-jest"
+  }
+}

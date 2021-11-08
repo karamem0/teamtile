@@ -9,7 +9,7 @@
 // Types
 import { Action, ActionType } from '../../types/reducer';
 
-export const setTeamIcons = (payload: Map<string, string>): Action => ({
-  type: ActionType.SetTeamIcons,
+export const putTeamIcons = (payload: Map<string, string>): Action => ({
+  type: ActionType.PutTeamIcons,
   payload: payload
 });

@@ -13,7 +13,7 @@ import { useErrorContext } from '../contexts/error-context';
 import { useReducerContext } from '../contexts/reducer-context';
 import { useServiceContext } from '../contexts/service-context';
 // Reducers
-import { setMemberIcons } from '../reducers/action';
+import { putMemberIcons } from '../reducers/action';
 
 export const useMemberIcons = (): [ (key: string, keys: string[]) => Promise<void> ] => {
 
@@ -50,7 +50,7 @@ export const useMemberIcons = (): [ (key: string, keys: string[]) => Promise<voi
           payload.set(key, local);
         }
       });
-      dispatch(setMemberIcons({ key, value: payload }));
+      dispatch(putMemberIcons({ key, value: payload }));
     } catch (error) {
       const message = error instanceof Error
         ? error.message

@@ -13,7 +13,7 @@ import { useErrorContext } from '../contexts/error-context';
 import { useReducerContext } from '../contexts/reducer-context';
 import { useServiceContext } from '../contexts/service-context';
 // Reducers
-import { setTeams } from '../reducers/action';
+import { putTeams } from '../reducers/action';
 // Types
 import { Team, VisibilityType } from '../types/entity';
 
@@ -60,7 +60,7 @@ export const useTeams = (): [ (keys: string[]) => Promise<void> ] => {
           payload.set(key, local);
         }
       });
-      dispatch(setTeams(payload));
+      dispatch(putTeams(payload));
     } catch (error) {
       const message = error instanceof Error
         ? error.message

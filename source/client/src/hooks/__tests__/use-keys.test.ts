@@ -15,7 +15,7 @@ import * as ServiceContext from '../../contexts/service-context';
 // Hooks
 import { useKeys } from '../use-keys';
 // Reducers
-import { setKeys } from '../../reducers/action';
+import { putKeys } from '../../reducers/action';
 // Services
 import { LocalService } from '../../services/local-service';
 import { ServerService } from '../../services/server-service';
@@ -57,11 +57,10 @@ describe('useKeys', () => {
         }
       });
     await act(async () => {
-      const { result, waitForNextUpdate } = renderHook(useKeys);
-      await waitForNextUpdate();
+      const { result } = renderHook(useKeys);
       const [ getKeys ] = result.current;
       await getKeys();
-      expect(params.dispatch).toBeCalledWith(setKeys(params.keys));
+      expect(params.dispatch).toBeCalledWith(putKeys(params.keys));
     });
   });
 
@@ -94,8 +93,7 @@ describe('useKeys', () => {
         }
       });
     await act(async () => {
-      const { result, waitForNextUpdate } = renderHook(useKeys);
-      await waitForNextUpdate();
+      const { result } = renderHook(useKeys);
       const [ getKeys ] = result.current;
       await getKeys();
       expect(params.setError).toBeCalled();

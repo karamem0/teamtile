@@ -15,7 +15,7 @@ import * as ServiceContext from '../../contexts/service-context';
 // Hooks
 import { useTeams } from '../use-teams';
 // Reducers
-import { setTeams } from '../../reducers/action';
+import { putTeams } from '../../reducers/action';
 // Services
 import { LocalService } from '../../services/local-service';
 import { ServerService } from '../../services/server-service';
@@ -67,11 +67,10 @@ describe('useTeams', () => {
         }
       });
     await act(async () => {
-      const { result, waitForNextUpdate } = renderHook(useTeams);
-      await waitForNextUpdate();
+      const { result } = renderHook(useTeams);
       const [ dispatchTeams ] = result.current;
       await dispatchTeams(params.keys);
-      expect(params.dispatch).toBeCalledWith(setTeams(params.json));
+      expect(params.dispatch).toBeCalledWith(putTeams(params.json));
     });
   });
 
@@ -111,11 +110,10 @@ describe('useTeams', () => {
         }
       });
     await act(async () => {
-      const { result, waitForNextUpdate } = renderHook(useTeams);
-      await waitForNextUpdate();
+      const { result } = renderHook(useTeams);
       const [ dispatchTeams ] = result.current;
       await dispatchTeams(params.keys);
-      expect(params.dispatch).toBeCalledWith(setTeams(params.json));
+      expect(params.dispatch).toBeCalledWith(putTeams(params.json));
     });
   });
 

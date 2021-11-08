@@ -11,6 +11,10 @@
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
+  "stylelint.snippet": [
+    "css",
+    "scss",
+  ],
   "stylelint.validate": [
     "css",
     "scss",

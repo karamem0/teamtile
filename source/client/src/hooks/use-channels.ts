@@ -13,7 +13,7 @@ import { useErrorContext } from '../contexts/error-context';
 import { useReducerContext } from '../contexts/reducer-context';
 import { useServiceContext } from '../contexts/service-context';
 // Reducers
-import { setChannels } from '../reducers/action';
+import { putChannels } from '../reducers/action';
 // Types
 import { Channel, MembershipType } from '../types/entity';
 
@@ -57,7 +57,7 @@ export const useChannels = (): [ (keys: string[]) => Promise<void> ] => {
           payload.set(id, local);
         }
       });
-      dispatch(setChannels(payload));
+      dispatch(putChannels(payload));
     } catch (error) {
       const message = error instanceof Error
         ? error.message

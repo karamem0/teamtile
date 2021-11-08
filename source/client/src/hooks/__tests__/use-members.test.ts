@@ -15,7 +15,7 @@ import * as ServiceContext from '../../contexts/service-context';
 // Hooks
 import { useMembers } from '../use-members';
 // Reducers
-import { setMembers } from '../../reducers/action';
+import { putMembers } from '../../reducers/action';
 // Services
 import { LocalService } from '../../services/local-service';
 import { ServerService } from '../../services/server-service';
@@ -67,11 +67,10 @@ describe('useMembers', () => {
         }
       });
     await act(async () => {
-      const { result, waitForNextUpdate } = renderHook(useMembers);
-      await waitForNextUpdate();
+      const { result } = renderHook(useMembers);
       const [ dispatchMembers ] = result.current;
       await dispatchMembers(params.keys);
-      expect(params.dispatch).toBeCalledWith(setMembers(params.json));
+      expect(params.dispatch).toBeCalledWith(putMembers(params.json));
     });
   });
 
@@ -111,11 +110,10 @@ describe('useMembers', () => {
         }
       });
     await act(async () => {
-      const { result, waitForNextUpdate } = renderHook(useMembers);
-      await waitForNextUpdate();
+      const { result } = renderHook(useMembers);
       const [ dispatchMembers ] = result.current;
       await dispatchMembers(params.keys);
-      expect(params.dispatch).toBeCalledWith(setMembers(params.json));
+      expect(params.dispatch).toBeCalledWith(putMembers(params.json));
     });
   });
 

@@ -10,7 +10,7 @@
 import { Drive } from '../../types/entity';
 import { State } from '../../types/reducer';
 
-export const setDrives = (state: State, payload: Map<string, Drive>): State => {
+export const putDrives = (state: State, payload: Map<string, Drive>): State => {
   if (!state.store) {
     return state;
   }

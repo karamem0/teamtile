@@ -7,10 +7,10 @@
 //
 
 // Types
-import { Member } from '../../types/entity';
+import { Channel } from '../../types/entity';
 import { State } from '../../types/reducer';
 
-export const setMembers = (state: State, payload: Map<string, Member[]>): State => {
+export const putChannels = (state: State, payload: Map<string, Channel[]>): State => {
   if (!state.store) {
     return state;
   }
@@ -21,7 +21,7 @@ export const setMembers = (state: State, payload: Map<string, Member[]>): State 
       keys: keys,
       values: keys.map((key, index) => ({
         ...values[index],
-        members: payload.get(key)
+        channels: payload.get(key)
       }))
     }
   };

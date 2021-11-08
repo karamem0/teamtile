@@ -10,6 +10,8 @@
 
 // React
 import React from 'react';
+// Hooks
+import { useDebounce } from 'react-use';
 // Fluent UI
 import { Input } from '@fluentui/react-northstar';
 import { SearchIcon } from '@fluentui/react-icons-mdl2';
@@ -21,29 +23,31 @@ export interface MenuItemFilterProps {
 
 export const MenuItemFilter = ({ renderer, values }: MenuItemFilterProps): React.ReactElement | null => {
 
-  const [ filter, setFilter ] = React.useState(values);
+  const [ results, setResults ] = React.useState(values);
+  const [ filter, setFilter ] = React.useState<string>();
 
-  const handleChange = React.useCallback((filter?: string) => {
-    const handle = setTimeout(() => {
-      if (!filter) {
-        setFilter(values);
-        return;
-      }
-      setFilter(values.filter((item) => {
-        const pair = item as { [ key: string ]: any };
-        for (const key in pair) {
-          const value = pair[key];
-          if (typeof value === 'string') {
-            if (value.search(new RegExp(filter, 'i')) >= 0) {
-              return true;
-            }
+  useDebounce(() => {
+    if (!filter) {
+      setResults(values);
+      return;
+    }
+    setResults(values.filter((item) => {
+      const pair = item as { [ key: string ]: any };
+      for (const key in pair) {
+        const value = pair[key];
+        if (typeof value === 'string') {
+          if (value.search(new RegExp(filter, 'i')) >= 0) {
+            return true;
           }
         }
-        return false;
-      }));
-    }, 500);
-    return () => clearTimeout(handle);
-  }, [ values ]);
+      }
+      return false;
+    }));
+  }, 500, [ values, filter ]);
+
+  const handleChange = React.useCallback((filter?: string) => {
+    setFilter(filter);
+  }, []);
 
   return (
     <div className="menu-item-filter">
@@ -54,7 +58,7 @@ export const MenuItemFilter = ({ renderer, values }: MenuItemFilterProps): React
         icon={<SearchIcon />}
         onChange={(_, props) => handleChange(props?.value)} />
       <div className="menu-item-filter-content">
-        {renderer(filter)}
+        {renderer(results)}
       </div>
     </div>
   );

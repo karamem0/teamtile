@@ -15,7 +15,7 @@ import * as ServiceContext from '../../contexts/service-context';
 // Hooks
 import { useTeamIcons } from '../use-team-icons';
 // Reducers
-import { setTeamIcons } from '../../reducers/action';
+import { putTeamIcons } from '../../reducers/action';
 // Services
 import { LocalService } from '../../services/local-service';
 import { ServerService } from '../../services/server-service';
@@ -65,11 +65,10 @@ describe('useTeamIcons', () => {
         }
       });
     await act(async () => {
-      const { result, waitForNextUpdate } = renderHook(useTeamIcons);
-      await waitForNextUpdate();
+      const { result } = renderHook(useTeamIcons);
       const [ dispatchTeamIcons ] = result.current;
       await dispatchTeamIcons(params.keys);
-      expect(params.dispatch).toBeCalledWith(setTeamIcons(params.json));
+      expect(params.dispatch).toBeCalledWith(putTeamIcons(params.json));
     });
   });
 
@@ -109,11 +108,10 @@ describe('useTeamIcons', () => {
         }
       });
     await act(async () => {
-      const { result, waitForNextUpdate } = renderHook(useTeamIcons);
-      await waitForNextUpdate();
+      const { result } = renderHook(useTeamIcons);
       const [ dispatchTeamIcons ] = result.current;
       await dispatchTeamIcons(params.keys);
-      expect(params.dispatch).toBeCalledWith(setTeamIcons(params.json));
+      expect(params.dispatch).toBeCalledWith(putTeamIcons(params.json));
     });
   });
 

@@ -8,9 +8,8 @@
 
 // Types
 import { Action, ActionType } from '../../types/reducer';
-import { Member } from '../../types/entity';
 
-export const setMembers = (payload: Map<string, Member[]>): Action => ({
-  type: ActionType.SetMembers,
+export const putLoading = (payload: boolean): Action => ({
+  type: ActionType.PutLoading,
   payload: payload
 });

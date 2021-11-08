@@ -8,8 +8,9 @@
 
 // Types
 import { Action, ActionType } from '../../types/reducer';
+import { Drive } from '../../types/entity';
 
-export const setLoading = (payload: boolean): Action => ({
-  type: ActionType.SetLoading,
+export const putDrives = (payload: Map<string, Drive>): Action => ({
+  type: ActionType.PutDrives,
   payload: payload
 });

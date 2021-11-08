@@ -9,7 +9,7 @@
 // Types
 import { State } from '../../types/reducer';
 
-export const setFilter = (state: State, payload?: string): State => {
+export const putFilter = (state: State, payload?: string): State => {
   if (!state.store) {
     return state;
   }

@@ -13,7 +13,7 @@ import {
   KeyValue
 } from '../../types/reducer';
 
-export const setMemberIcons = (payload: KeyValue<string, Map<string, string>>): Action => ({
-  type: ActionType.SetMemberIcons,
+export const putMemberIcons = (payload: KeyValue<string, Map<string, string>>): Action => ({
+  type: ActionType.PutMemberIcons,
   payload: payload
 });

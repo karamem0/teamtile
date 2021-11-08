@@ -9,7 +9,7 @@
 // Types
 import { State } from '../../types/reducer';
 
-export const setKeys = (state: State, payload: string[]): State => ({
+export const putKeys = (state: State, payload: string[]): State => ({
   ...state,
   store: {
     keys: payload,

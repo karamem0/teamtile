@@ -7,9 +7,10 @@
 //
 
 // Types
+import { Member } from '../../types/entity';
 import { State } from '../../types/reducer';
 
-export const setTeamIcons = (state: State, payload: Map<string, string>): State => {
+export const putMembers = (state: State, payload: Map<string, Member[]>): State => {
   if (!state.store) {
     return state;
   }
@@ -20,7 +21,7 @@ export const setTeamIcons = (state: State, payload: Map<string, string>): State 
       keys: keys,
       values: keys.map((key, index) => ({
         ...values[index],
-        icon: payload.get(key)
+        members: payload.get(key)
       }))
     }
   };

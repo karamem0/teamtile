@@ -13,7 +13,7 @@ import { useErrorContext } from '../contexts/error-context';
 import { useReducerContext } from '../contexts/reducer-context';
 import { useServiceContext } from '../contexts/service-context';
 // Reducers
-import { setTeamIcons } from '../reducers/action';
+import { putTeamIcons } from '../reducers/action';
 
 export const useTeamIcons = (): [ (keys: string[]) => Promise<void> ] => {
 
@@ -50,7 +50,7 @@ export const useTeamIcons = (): [ (keys: string[]) => Promise<void> ] => {
           payload.set(key, local);
         }
       });
-      dispatch(setTeamIcons(payload));
+      dispatch(putTeamIcons(payload));
     } catch (error) {
       const message = error instanceof Error
         ? error.message

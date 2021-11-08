@@ -8,9 +8,8 @@
 
 // Types
 import { Action, ActionType } from '../../types/reducer';
-import { Channel } from '../../types/entity';
 
-export const setChannels = (payload: Map<string, Channel[]>): Action => ({
-  type: ActionType.SetChannels,
+export const putKeys = (payload: string[]): Action => ({
+  type: ActionType.PutKeys,
   payload: payload
 });

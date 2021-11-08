@@ -13,7 +13,7 @@ import { useErrorContext } from '../contexts/error-context';
 import { useReducerContext } from '../contexts/reducer-context';
 import { useServiceContext } from '../contexts/service-context';
 // Reducers
-import { setMembers } from '../reducers/action';
+import { putMembers } from '../reducers/action';
 // Types
 import { Member } from '../types/entity';
 
@@ -58,7 +58,7 @@ export const useMembers = (): [ (keys: string[]) => Promise<void> ] => {
           payload.set(id, local);
         }
       });
-      dispatch(setMembers(payload));
+      dispatch(putMembers(payload));
     } catch (error) {
       const message = error instanceof Error
         ? error.message

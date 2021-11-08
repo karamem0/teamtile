@@ -13,7 +13,7 @@ import { useErrorContext } from '../contexts/error-context';
 import { useReducerContext } from '../contexts/reducer-context';
 import { useServiceContext } from '../contexts/service-context';
 // Reducers
-import { setDrives } from '../reducers/action';
+import { putDrives } from '../reducers/action';
 // Types
 import { Drive } from '../types/entity';
 
@@ -56,7 +56,7 @@ export const useDrives = (): [ (keys: string[]) => Promise<void> ] => {
           payload.set(id, local);
         }
       });
-      dispatch(setDrives(payload));
+      dispatch(putDrives(payload));
     } catch (error) {
       const message = error instanceof Error
         ? error.message
