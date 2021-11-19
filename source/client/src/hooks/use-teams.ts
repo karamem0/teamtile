@@ -17,24 +17,24 @@ import { putTeams } from '../reducers/action';
 // Types
 import { Team, VisibilityType } from '../types/entity';
 
-export const useTeams = (): [ (keys: string[]) => Promise<void> ] => {
+export const useTeams = (): [
+  (keys: string[]) => Promise<Map<string, Team> | undefined>,
+  (values: Map<string, Team>) => Promise<void>
+] => {
 
   const { setError } = useErrorContext();
   const { dispatch } = useReducerContext();
   const { service } = useServiceContext();
 
-  const dispatchTeams = React.useCallback(async (keys: string[]) => {
+  const getTeams = React.useCallback(async (keys: string[]) => {
     if (!setError) {
-      return;
-    }
-    if (!dispatch) {
       return;
     }
     if (!service) {
       return;
     }
     try {
-      const payload = new Map<string, Team>();
+      const table = new Map<string, Team>();
       const locals = await service.local.getTeams(keys);
       const servers = await service.server.getTeams(
         Array
@@ -44,23 +44,25 @@ export const useTeams = (): [ (keys: string[]) => Promise<void> ] => {
       keys.forEach(async (key) => {
         const server = servers.get(key);
         if (server) {
-          const value = {
-            id: server.id,
-            displayName: server.displayName ?? undefined,
-            description: server.description ?? undefined,
-            internalId: server.internalId ?? undefined,
-            visibility: server.visibility as VisibilityType ?? undefined,
-            webUrl: server.webUrl ?? undefined
-          };
-          payload.set(key, value);
-          await service.local.putTeam(key, value);
+          if (server.id) {
+            const value = {
+              id: server.id,
+              displayName: server.displayName ?? null,
+              description: server.description ?? null,
+              internalId: server.internalId ?? null,
+              visibility: server.visibility as VisibilityType ?? null,
+              webUrl: server.webUrl ?? null
+            };
+            table.set(key, value);
+            await service.local.putTeam(key, value);
+          }
         }
         const local = locals.get(key);
         if (local) {
-          payload.set(key, local);
+          table.set(key, local);
         }
       });
-      dispatch(putTeams(payload));
+      return table;
     } catch (error) {
       const message = error instanceof Error
         ? error.message
@@ -69,11 +71,31 @@ export const useTeams = (): [ (keys: string[]) => Promise<void> ] => {
     }
   }, [
     setError,
-    dispatch,
     service
   ]);
 
+  const dispatchTeams = React.useCallback(async (values: Map<string, Team>) => {
+    if (!setError) {
+      return;
+    }
+    if (!dispatch) {
+      return;
+    }
+    try {
+      dispatch(putTeams(values));
+    } catch (error) {
+      const message = error instanceof Error
+        ? error.message
+        : Object.prototype.toString.call(error);
+      setError(message);
+    }
+  }, [
+    setError,
+    dispatch
+  ]);
+
   return [
+    getTeams,
     dispatchTeams
   ];
 

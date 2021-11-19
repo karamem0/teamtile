@@ -9,9 +9,9 @@
 // React
 import React from 'react';
 
-export const useBlobUrl = (data?: string): [string | undefined] => {
+export const useBlobUrl = (data: string | null | undefined): [string | null] => {
 
-  const [ url, setUrl ] = React.useState<string>();
+  const [ url, setUrl ] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     if (!data) {

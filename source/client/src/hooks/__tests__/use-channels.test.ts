@@ -31,90 +31,179 @@ beforeEach(() => {
 
 describe('useChannels', () => {
 
-  it('return channels from local', async () => {
-    const params = {
-      keys: [
-        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-        '13be6971-79db-4f33-9d41-b25589ca25af',
-        '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
-      ],
-      dispatch: jest.fn(),
-      json: new Map<string, Channel[]>(json as [[ string, Channel[] ]])
-    };
-    jest
-      .spyOn(ReducerContext, 'useReducerContext')
-      .mockReturnValue({
-        dispatch: params.dispatch
-      });
-    jest
-      .spyOn(ErrorContext, 'useErrorContext')
-      .mockReturnValue({
+  describe('getChannels', () => {
+
+    it('return channels from local', async () => {
+      const params = {
+        keys: [
+          '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+          '13be6971-79db-4f33-9d41-b25589ca25af',
+          '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
+        ],
+        json: new Map<string, Channel[]>(json as [[ string, Channel[] ]]),
         setError: jest.fn()
+      };
+      jest
+        .spyOn(ErrorContext, 'useErrorContext')
+        .mockReturnValue({
+          setError: params.setError
+        });
+      jest
+        .spyOn(ServiceContext, 'useServiceContext')
+        .mockReturnValue({
+          service: {
+            local: {
+              getChannels: () => Promise.resolve(params.json),
+              putChannels: jest.fn()
+            } as unknown as LocalService,
+            server: {
+              getChannels: () => Promise.resolve(new Map<string, Channel[] | undefined>(
+                params.keys.map((id) => [ id, undefined ])
+              ))
+            } as unknown as ServerService
+          }
+        });
+      await act(async () => {
+        const { result } = renderHook(useChannels);
+        const [ getChannels ] = result.current;
+        const channels = await getChannels(params.keys);
+        expect(channels).toEqual(params.json);
+        expect(params.setError).not.toBeCalled();
       });
-    jest
-      .spyOn(ServiceContext, 'useServiceContext')
-      .mockReturnValue({
-        service: {
-          local: {
-            getChannels: () => Promise.resolve(params.json),
-            putChannels: jest.fn()
-          } as unknown as LocalService,
-          server: {
-            getChannels: () => Promise.resolve(new Map<string, Channel[] | undefined>(
-              params.keys.map((id) => [ id, undefined ])
-            ))
-          } as unknown as ServerService
-        }
-      });
-    await act(async () => {
-      const { result } = renderHook(useChannels);
-      const [ dispatchChannels ] = result.current;
-      await dispatchChannels(params.keys);
-      expect(params.dispatch).toBeCalledWith(putChannels(params.json));
     });
+
+    it('return channels from server', async () => {
+      const params = {
+        keys: [
+          '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+          '13be6971-79db-4f33-9d41-b25589ca25af',
+          '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
+        ],
+        json: new Map<string, Channel[]>(json as [[ string, Channel[] ]]),
+        setError: jest.fn()
+      };
+      jest
+        .spyOn(ErrorContext, 'useErrorContext')
+        .mockReturnValue({
+          setError: params.setError
+        });
+      jest
+        .spyOn(ServiceContext, 'useServiceContext')
+        .mockReturnValue({
+          service: {
+            local: {
+              getChannels: () => Promise.resolve(new Map<string, Channel[] | undefined>(
+                params.keys.map((id) => [ id, undefined ])
+              )),
+              putChannels: jest.fn()
+            } as unknown as LocalService,
+            server: {
+              getChannels: () => Promise.resolve(params.json)
+            } as unknown as ServerService
+          }
+        });
+      await act(async () => {
+        const { result } = renderHook(useChannels);
+        const [ getChannels ] = result.current;
+        const channels = await getChannels(params.keys);
+        expect(channels).toEqual(params.json);
+        expect(params.setError).not.toBeCalled();
+      });
+    });
+
+    it('return error if failed', async () => {
+      const params = {
+        keys: [
+          '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+          '13be6971-79db-4f33-9d41-b25589ca25af',
+          '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
+        ],
+        error: 'Something went wrong',
+        setError: jest.fn()
+      };
+      jest
+        .spyOn(ErrorContext, 'useErrorContext')
+        .mockReturnValue({
+          setError: params.setError
+        });
+      jest
+        .spyOn(ServiceContext, 'useServiceContext')
+        .mockReturnValue({
+          service: {
+            local: {
+              getChannels: () => {
+                throw new Error(params.error);
+              },
+              putChannels: jest.fn()
+            } as unknown as LocalService,
+            server: {
+              getChannels: jest.fn()
+            } as unknown as ServerService
+          }
+        });
+      await act(async () => {
+        const { result } = renderHook(useChannels);
+        const [ getChannels ] = result.current;
+        await getChannels(params.keys);
+        expect(params.setError).toBeCalled();
+      });
+    });
+
   });
 
-  it('return channels from server', async () => {
-    const params = {
-      keys: [
-        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-        '13be6971-79db-4f33-9d41-b25589ca25af',
-        '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
-      ],
-      dispatch: jest.fn(),
-      json: new Map<string, Channel[]>(json as [[ string, Channel[] ]])
-    };
-    jest
-      .spyOn(ErrorContext, 'useErrorContext')
-      .mockReturnValue({
-        setError: jest.fn()
+  describe('dispatchChannels', () => {
+
+    it('dispatch channels if succeeded', async () => {
+      const params = {
+        json: new Map<string, Channel[]>(json as [[ string, Channel[] ]]),
+        setError: jest.fn(),
+        dispatch: jest.fn()
+      };
+      jest
+        .spyOn(ErrorContext, 'useErrorContext')
+        .mockReturnValue({
+          setError: params.setError
+        });
+      jest
+        .spyOn(ReducerContext, 'useReducerContext')
+        .mockReturnValue({
+          dispatch: params.dispatch
+        });
+      await act(async () => {
+        const { result } = renderHook(useChannels);
+        const [ , dispatchChannels ] = result.current;
+        await dispatchChannels(params.json);
+        expect(params.dispatch).toBeCalledWith(putChannels(params.json));
+        expect(params.setError).not.toBeCalled();
       });
-    jest
-      .spyOn(ReducerContext, 'useReducerContext')
-      .mockReturnValue({
-        dispatch: params.dispatch
-      });
-    jest
-      .spyOn(ServiceContext, 'useServiceContext')
-      .mockReturnValue({
-        service: {
-          local: {
-            getChannels: () => Promise.resolve(new Map<string, Channel[] | undefined>(
-              params.keys.map((id) => [ id, undefined ])
-            )),
-            putChannels: jest.fn()
-          } as unknown as LocalService,
-          server: {
-            getChannels: () => Promise.resolve(params.json)
-          } as unknown as ServerService
-        }
-      });
-    await act(async () => {
-      const { result } = renderHook(useChannels);
-      const [ dispatchChannels ] = result.current;
-      await dispatchChannels(params.keys);
-      expect(params.dispatch).toBeCalledWith(putChannels(params.json));
     });
+
+    it('return error if failed', async () => {
+      const params = {
+        json: new Map<string, Channel[]>(json as [[ string, Channel[] ]]),
+        error: 'Something went wrong',
+        setError: jest.fn()
+      };
+      jest
+        .spyOn(ErrorContext, 'useErrorContext')
+        .mockReturnValue({
+          setError: params.setError
+        });
+      jest
+        .spyOn(ReducerContext, 'useReducerContext')
+        .mockReturnValue({
+          dispatch: () => {
+            throw new Error(params.error);
+          }
+        });
+      await act(async () => {
+        const { result } = renderHook(useChannels);
+        const [ , dispatchChannels ] = result.current;
+        await dispatchChannels(params.json);
+        expect(params.setError).toBeCalled();
+      });
+    });
+
   });
 
 });

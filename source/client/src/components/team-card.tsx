@@ -18,54 +18,52 @@ import { DriveMenuItem } from './drive-menu-item';
 import { MemberMenuItem } from './member-menu-item';
 import { TeamIcon } from './team-icon';
 import { TeamVisibilityIcon } from './team-visibility-icon';
-// Contexts
-import { useReducerContext } from '../contexts/reducer-context';
 // Types
-import { StoreValue } from '../types/reducer';
+import {
+  Item,
+  ItemKey,
+  ItemValue
+} from '../types/reducer';
 
 export interface TeamCardProps {
-  index: number
+  item: Item
 }
 
-export const TeamCard = ({ index }: TeamCardProps): React.ReactElement | null => {
+export const TeamCard = ({ item: { key, value, visible } }: TeamCardProps): React.ReactElement | null => {
 
-  const { store } = useReducerContext();
-
-  const value = store?.values && store.values[index];
-
-  const handleClick = React.useCallback(() => {
-    if (!value?.webUrl) {
+  const handleClick = React.useCallback((value: string | null | undefined) => {
+    if (!value) {
       return;
     }
-    microsoftTeams.executeDeepLink(value.webUrl);
-  }, [ value ]);
+    microsoftTeams.executeDeepLink(value);
+  }, []);
 
   if (!value) {
     return null;
   }
 
-  if (!value.enabled) {
+  if (!visible) {
     return null;
   }
 
   return (
     <TeamCardPresenterMemo
-      index={index}
-      value={value}
+      itemKey={key}
+      itemValue={value}
       onClick={handleClick} />
   );
 
 };
 
 interface TeamCardPresenterProps {
-  index: number,
-  value: StoreValue,
-  onClick?: () => void
+  itemKey: ItemKey,
+  itemValue: ItemValue,
+  onClick?: (value: string | null | undefined) => void
 }
 
 const TeamCardPresenter = ({
-  index,
-  value,
+  itemKey,
+  itemValue,
   onClick
 }: TeamCardPresenterProps): React.ReactElement | null => {
 
@@ -78,31 +76,37 @@ const TeamCardPresenter = ({
         <div className="card-column">
           <div className="card-column-item">
             <TeamIcon
-              icon={value.icon}
-              name={value.displayName} />
+              icon={itemValue.icon}
+              name={itemValue.displayName} />
           </div>
           <div className="card-column-item">
             <div className="card-row">
               <Text
                 className="card-name"
                 role="button"
-                onClick={() => onClick && onClick()}>
-                {value.displayName}
+                onClick={() => onClick && onClick(itemValue.webUrl)}>
+                {itemValue.displayName}
               </Text>
               <div className="card-description">
                 <Text size="small">
-                  {value.description}
+                  {itemValue.description}
                 </Text>
               </div>
               <div className="card-menu">
-                <ChannelMenuItem index={index} />
-                <MemberMenuItem index={index} />
-                <DriveMenuItem index={index} />
+                <ChannelMenuItem
+                  itemKey={itemKey}
+                  itemValue={itemValue} />
+                <MemberMenuItem
+                  itemKey={itemKey}
+                  itemValue={itemValue} />
+                <DriveMenuItem
+                  itemKey={itemKey}
+                  itemValue={itemValue} />
               </div>
             </div>
           </div>
           <div className="card-column-item">
-            <TeamVisibilityIcon visibility={value.visibility} />
+            <TeamVisibilityIcon visibility={itemValue.visibility} />
           </div>
         </div>
       </div>

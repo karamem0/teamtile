@@ -14,8 +14,8 @@ import { Avatar } from '@fluentui/react-northstar';
 import { useBlobUrl } from '../hooks/use-blob-url';
 
 export interface TeamIconProps {
-  icon?: string,
-  name?: string
+  icon: string | null | undefined,
+  name: string | null | undefined
 }
 
 export const TeamIcon = ({ name, icon }: TeamIconProps): React.ReactElement | null => {
@@ -25,7 +25,7 @@ export const TeamIcon = ({ name, icon }: TeamIconProps): React.ReactElement | nu
   return (
     <Avatar
       image={image}
-      name={name}
+      name={name || undefined}
       size="larger" />
   );
 

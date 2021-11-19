@@ -20,20 +20,23 @@ interface ServiceLocator {
 }
 
 interface ServiceContextValue {
-  service?: ServiceLocator,
-  error?: string
+  service: ServiceLocator | null,
+  error: string | null
 }
 
-const ServiceContext = React.createContext<ServiceContextValue>({});
+const ServiceContext = React.createContext<ServiceContextValue>({
+  service: null,
+  error: null
+});
 
 interface ServiceContextProviderProps {
-  children?: React.ReactNode
+  children: React.ReactNode
 }
 
 export const ServiceContextProvider = ({ children }: ServiceContextProviderProps): React.ReactElement | null => {
 
   const [ client, error ] = useClient();
-  const [ service, setService ] = React.useState<ServiceLocator>();
+  const [ service, setService ] = React.useState<ServiceLocator | null>(null);
 
   React.useEffect(() => {
     if (!client) {

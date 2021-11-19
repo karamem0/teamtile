@@ -23,7 +23,7 @@ export const getServerToken = async (token: string): Promise<string> =>
   await getServerTokenSilent(token) ??
   await getServerTokenRedirect();
 
-const getServerTokenSilent = async (token: string): Promise<string | undefined> => {
+const getServerTokenSilent = async (token: string): Promise<string | null> => {
   const response = await fetch(
   `${process.env.REACT_APP_SERVER_URL}/token`,
   {
@@ -39,7 +39,7 @@ const getServerTokenSilent = async (token: string): Promise<string | undefined> 
     return await response.text();
   }
   if (response.status === 403) {
-    return;
+    return null;
   }
   throw await response.text();
 };
@@ -55,19 +55,19 @@ const getServerTokenRedirect = (): Promise<string> =>
     })
   );
 
-export const getCachedToken = (): string | undefined => {
+export const getCachedToken = (): string | null => {
   const token = sessionStorage.getItem(process.env.REACT_APP_AUTH_CLIENT_ID);
   if (!token) {
-    return;
+    return null;
   }
   const jwt = decode(token) as { [key: string]: string };
   if (!jwt) {
-    return;
+    return null;
   }
   const exp = Number.parseInt(jwt.exp);
   const now = Date.now();
   if (now >= exp * 1000) {
-    return;
+    return null;
   }
   return token;
 };

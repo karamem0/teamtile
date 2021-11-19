@@ -25,51 +25,102 @@ import { useLoading } from '../hooks/use-loading';
 import { useMembers } from '../hooks/use-members';
 import { useTeamIcons } from '../hooks/use-team-icons';
 import { useTeams } from '../hooks/use-teams';
+// Types
+import { ItemKey } from '../types/reducer';
 
 export const MainPage = (): React.ReactElement | null => {
 
   const { error } = useServiceContext();
-  const { store } = useReducerContext();
-  const [ dispatchKeys ] = useKeys();
+  const { state } = useReducerContext();
   const [ dispatchLoading ] = useLoading();
-  const [ dispatchTeams ] = useTeams();
-  const [ dispatchTeamIcons ] = useTeamIcons();
-  const [ dispatchMembers ] = useMembers();
-  const [ dispatchChannels ] = useChannels();
-  const [ dispatchDrives ] = useDrives();
+  const [ getKeys, dispatchKeys ] = useKeys();
+  const [ getTeams, dispatchTeams ] = useTeams();
+  const [ getTeamIcons, dispatchTeamIcons ] = useTeamIcons();
+  const [ getMembers, dispatchMembers ] = useMembers();
+  const [ getChannels, dispatchChannels ] = useChannels();
+  const [ getDrives, dispatchDrives ] = useDrives();
 
-  const keys = store?.keys;
-  const values = store?.values;
-
-  React.useEffect(() => {
-    (async () => {
-      await dispatchKeys();
-    })();
-  }, [ dispatchKeys ]);
-
-  React.useEffect(() => {
-    if (!keys) {
+  const putTeams = React.useCallback(async (keys: ItemKey[]) => {
+    const values = await getTeams(keys);
+    if (!values) {
       return;
     }
+    await dispatchTeams(values);
+  }, [
+    getTeams,
+    dispatchTeams
+  ]);
+
+  const putTeamIcons = React.useCallback(async (keys: ItemKey[]) => {
+    const values = await getTeamIcons(keys);
+    if (!values) {
+      return;
+    }
+    await dispatchTeamIcons(values);
+  }, [
+    getTeamIcons,
+    dispatchTeamIcons
+  ]);
+
+  const putChannels = React.useCallback(async (keys: ItemKey[]) => {
+    const values = await getChannels(keys);
+    if (!values) {
+      return;
+    }
+    await dispatchChannels(values);
+  }, [
+    getChannels,
+    dispatchChannels
+  ]);
+
+  const putMembers = React.useCallback(async (keys: ItemKey[]) => {
+    const values = await getMembers(keys);
+    if (!values) {
+      return;
+    }
+    await dispatchMembers(values);
+  }, [
+    getMembers,
+    dispatchMembers
+  ]);
+
+  const putDrives = React.useCallback(async (keys: ItemKey[]) => {
+    const values = await getDrives(keys);
+    if (!values) {
+      return;
+    }
+    await dispatchDrives(values);
+  }, [
+    getDrives,
+    dispatchDrives
+  ]);
+
+  React.useEffect(() => {
     (async () => {
       dispatchLoading(true);
+      const keys = await getKeys();
+      if (!keys) {
+        return;
+      }
+      await dispatchKeys(keys);
       await Promise.all([
-        dispatchTeams(keys),
-        dispatchTeamIcons(keys),
-        dispatchMembers(keys),
-        dispatchChannels(keys),
-        dispatchDrives(keys)
+        putTeams(keys),
+        putTeamIcons(keys),
+        putChannels(keys),
+        putMembers(keys),
+        putDrives(keys)
       ]);
       dispatchLoading(false);
     })();
   }, [
-    keys,
     dispatchLoading,
-    dispatchTeams,
-    dispatchTeamIcons,
-    dispatchMembers,
-    dispatchChannels,
-    dispatchDrives
+    getKeys,
+    dispatchKeys,
+    putTeams,
+    putTeamIcons,
+    putMembers,
+    putChannels,
+    putDrives
   ]);
 
   if (error) {
@@ -78,31 +129,19 @@ export const MainPage = (): React.ReactElement | null => {
     );
   }
 
-  if (!keys) {
+  if (!state) {
     return (
       <LoaderPanel />
     );
   }
 
-  if (!keys.length) {
-    return (
-      <EmptyPanel />
-    );
-  }
-
-  if (!values) {
+  if (!state.items.some((item) => Boolean(item.value))) {
     return (
       <LoaderPanel />
     );
   }
 
-  if (!values.some(Boolean)) {
-    return (
-      <LoaderPanel />
-    );
-  }
-
-  if (!values.some(value => value.enabled)) {
+  if (!state.items.some((item) => item.visible)) {
     return (
       <TeamFilter>
         <EmptyPanel />

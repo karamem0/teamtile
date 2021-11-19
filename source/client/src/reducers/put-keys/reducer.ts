@@ -7,14 +7,13 @@
 //
 
 // Types
-import { State } from '../../types/reducer';
+import { ItemKey, State } from '../../types/reducer';
 
-export const putKeys = (state: State, payload: string[]): State => ({
+export const putKeys = (state: State, payload: ItemKey[]): State => ({
   ...state,
-  store: {
-    keys: payload,
-    values: payload.map(() => ({
-      enabled: true
-    }))
-  }
+  items: payload.map((key) => ({
+    key,
+    value: null,
+    visible: true
+  }))
 });

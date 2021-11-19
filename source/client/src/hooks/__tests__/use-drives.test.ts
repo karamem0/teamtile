@@ -3,7 +3,7 @@
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/channeltile/blob/master/LICENSE
 //
 
 // Testing Library
@@ -13,32 +13,34 @@ import * as ErrorContext from '../../contexts/error-context';
 import * as ReducerContext from '../../contexts/reducer-context';
 import * as ServiceContext from '../../contexts/service-context';
 // Hooks
-import { useTeamIcons } from '../use-team-icons';
+import { useDrives } from '../use-drives';
 // Reducers
-import { putTeamIcons } from '../../reducers/action';
+import { putDrives } from '../../reducers/action';
 // Services
 import { LocalService } from '../../services/local-service';
 import { ServerService } from '../../services/server-service';
+// Types
+import { Drive } from '../../types/entity';
 // JSON
-import json from './use-team-icons.test.json';
+import json from './use-drives.test.json';
 
 beforeEach(() => {
   jest.clearAllMocks();
   jest.restoreAllMocks();
 });
 
-describe('useTeamIcons', () => {
+describe('useDrives', () => {
 
-  describe('getTeamIcons', () => {
+  describe('getDrives', () => {
 
-    it('return icons from local', async () => {
+    it('return drives from local', async () => {
       const params = {
         keys: [
           '02bd9fd6-8f93-4758-87c3-1fb73740a315',
           '13be6971-79db-4f33-9d41-b25589ca25af',
           '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
         ],
-        json: new Map<string, string>(json as [[ string, string ]]),
+        json: new Map<string, Drive>(json as [[ string, Drive ]]),
         setError: jest.fn()
       };
       jest
@@ -51,33 +53,33 @@ describe('useTeamIcons', () => {
         .mockReturnValue({
           service: {
             local: {
-              getIcons: () => Promise.resolve(params.json),
-              putIcon: jest.fn()
+              getDrives: () => Promise.resolve(params.json),
+              putDrive: jest.fn()
             } as unknown as LocalService,
             server: {
-              getTeamIcons: () => Promise.resolve(new Map<string, string | null>(
+              getDrives: () => Promise.resolve(new Map<string, Drive | undefined>(
                 params.keys.map((id) => [ id, undefined ])
               ))
             } as unknown as ServerService
           }
         });
       await act(async () => {
-        const { result } = renderHook(useTeamIcons);
-        const [ getTeamIcons ] = result.current;
-        const icons = await getTeamIcons(params.keys);
-        expect(icons).toEqual(params.json);
+        const { result } = renderHook(useDrives);
+        const [ getDrives ] = result.current;
+        const drives = await getDrives(params.keys);
+        expect(drives).toEqual(params.json);
         expect(params.setError).not.toBeCalled();
       });
     });
 
-    it('return icons from server', async () => {
+    it('return drives from server', async () => {
       const params = {
         keys: [
           '02bd9fd6-8f93-4758-87c3-1fb73740a315',
           '13be6971-79db-4f33-9d41-b25589ca25af',
           '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
         ],
-        json: new Map<string, string>(json as [[ string, string ]]),
+        json: new Map<string, Drive>(json as [[ string, Drive ]]),
         setError: jest.fn()
       };
       jest
@@ -90,21 +92,21 @@ describe('useTeamIcons', () => {
         .mockReturnValue({
           service: {
             local: {
-              getIcons: () => Promise.resolve(new Map<string, string | null>(
+              getDrives: () => Promise.resolve(new Map<string, Drive | undefined>(
                 params.keys.map((id) => [ id, undefined ])
               )),
-              putIcon: jest.fn()
+              putDrive: jest.fn()
             } as unknown as LocalService,
             server: {
-              getTeamIcons: () => Promise.resolve(params.json)
+              getDrives: () => Promise.resolve(params.json)
             } as unknown as ServerService
           }
         });
       await act(async () => {
-        const { result } = renderHook(useTeamIcons);
-        const [ getTeamIcons ] = result.current;
-        const icons = await getTeamIcons(params.keys);
-        expect(icons).toEqual(params.json);
+        const { result } = renderHook(useDrives);
+        const [ getDrives ] = result.current;
+        const drives = await getDrives(params.keys);
+        expect(drives).toEqual(params.json);
         expect(params.setError).not.toBeCalled();
       });
     });
@@ -129,31 +131,31 @@ describe('useTeamIcons', () => {
         .mockReturnValue({
           service: {
             local: {
-              getIcons: () => {
+              getDrives: () => {
                 throw new Error(params.error);
               },
-              putIcon: jest.fn()
+              putDrives: jest.fn()
             } as unknown as LocalService,
             server: {
-              getTeamIcons: () => jest.fn()
+              getDrives: jest.fn()
             } as unknown as ServerService
           }
         });
       await act(async () => {
-        const { result } = renderHook(useTeamIcons);
-        const [ getTeamIcons ] = result.current;
-        await getTeamIcons(params.keys);
+        const { result } = renderHook(useDrives);
+        const [ getDrives ] = result.current;
+        await getDrives(params.keys);
         expect(params.setError).toBeCalled();
       });
     });
 
   });
 
-  describe('dispatchTeamIcons', () => {
+  describe('dispatchDrives', () => {
 
-    it('dispatch icons if succeeded', async () => {
+    it('dispatch drives if succeeded', async () => {
       const params = {
-        json: new Map<string, string>(json as [[ string, string ]]),
+        json: new Map<string, Drive>(json as [[ string, Drive ]]),
         setError: jest.fn(),
         dispatch: jest.fn()
       };
@@ -168,16 +170,17 @@ describe('useTeamIcons', () => {
           dispatch: params.dispatch
         });
       await act(async () => {
-        const { result } = renderHook(useTeamIcons);
-        const [ , dispatchTeamIcons ] = result.current;
-        await dispatchTeamIcons(params.json);
-        expect(params.dispatch).toBeCalledWith(putTeamIcons(params.json));
+        const { result } = renderHook(useDrives);
+        const [ , dispatchDrives ] = result.current;
+        await dispatchDrives(params.json);
+        expect(params.dispatch).toBeCalledWith(putDrives(params.json));
+        expect(params.setError).not.toBeCalled();
       });
     });
 
     it('return error if failed', async () => {
       const params = {
-        json: new Map<string, string>(json as [[ string, string ]]),
+        json: new Map<string, Drive>(json as [[ string, Drive ]]),
         error: 'Something went wrong',
         setError: jest.fn()
       };
@@ -194,9 +197,9 @@ describe('useTeamIcons', () => {
           }
         });
       await act(async () => {
-        const { result } = renderHook(useTeamIcons);
-        const [ , dispatchTeamIcons ] = result.current;
-        await dispatchTeamIcons(params.json);
+        const { result } = renderHook(useDrives);
+        const [ , dispatchDrives ] = result.current;
+        await dispatchDrives(params.json);
         expect(params.setError).toBeCalled();
       });
     });

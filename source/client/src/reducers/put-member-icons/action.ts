@@ -10,10 +10,11 @@
 import {
   Action,
   ActionType,
+  ItemKey,
   KeyValue
 } from '../../types/reducer';
 
-export const putMemberIcons = (payload: KeyValue<string, Map<string, string>>): Action => ({
+export const putMemberIcons = (payload: KeyValue<ItemKey, Map<string, string>>): Action => ({
   type: ActionType.PutMemberIcons,
   payload: payload
 });

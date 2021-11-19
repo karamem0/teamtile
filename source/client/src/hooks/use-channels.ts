@@ -16,25 +16,26 @@ import { useServiceContext } from '../contexts/service-context';
 import { putChannels } from '../reducers/action';
 // Types
 import { Channel, MembershipType } from '../types/entity';
+import { ItemKey } from '../types/reducer';
 
-export const useChannels = (): [ (keys: string[]) => Promise<void> ] => {
+export const useChannels = (): [
+  (keys: ItemKey[]) => Promise<Map<ItemKey, Channel[]> | undefined>,
+  (values: Map<ItemKey, Channel[]>) => Promise<void>
+] => {
 
   const { setError } = useErrorContext();
   const { dispatch } = useReducerContext();
   const { service } = useServiceContext();
 
-  const dispatchChannels = React.useCallback(async (keys: string[]) => {
+  const getChannels = React.useCallback(async (keys: ItemKey[]) => {
     if (!setError) {
-      return;
-    }
-    if (!dispatch) {
       return;
     }
     if (!service) {
       return;
     }
     try {
-      const payload = new Map<string, Channel[]>();
+      const table = new Map<ItemKey, Channel[]>();
       const locals = await service.local.getChannels(keys);
       const servers = await service.server.getChannels(
         Array
@@ -43,21 +44,27 @@ export const useChannels = (): [ (keys: string[]) => Promise<void> ] => {
       keys.forEach(async (id) => {
         const server = servers.get(id);
         if (server) {
-          const values = server.map((value) => ({
-            id: value.id,
-            displayName: value.displayName ?? undefined,
-            webUrl: value.webUrl ?? undefined,
-            membershipType: value.membershipType as MembershipType ?? undefined
-          }));
-          payload.set(id, values);
+          const values = server
+            .map((value) => (
+              value.id
+                ? {
+                    id: value.id,
+                    displayName: value.displayName ?? null,
+                    webUrl: value.webUrl ?? null,
+                    membershipType: value.membershipType as MembershipType ?? null
+                  }
+                : undefined
+            ))
+            .filter((value): value is Exclude<typeof value, undefined> => Boolean(value));
+          table.set(id, values);
           await service.local.putChannels(id, values);
         }
         const local = locals.get(id);
         if (local) {
-          payload.set(id, local);
+          table.set(id, local);
         }
       });
-      dispatch(putChannels(payload));
+      return table;
     } catch (error) {
       const message = error instanceof Error
         ? error.message
@@ -66,11 +73,31 @@ export const useChannels = (): [ (keys: string[]) => Promise<void> ] => {
     }
   }, [
     setError,
-    dispatch,
     service
   ]);
 
+  const dispatchChannels = React.useCallback(async (values: Map<ItemKey, Channel[]>) => {
+    if (!setError) {
+      return;
+    }
+    if (!dispatch) {
+      return;
+    }
+    try {
+      dispatch(putChannels(values));
+    } catch (error) {
+      const message = error instanceof Error
+        ? error.message
+        : Object.prototype.toString.call(error);
+      setError(message);
+    }
+  }, [
+    setError,
+    dispatch
+  ]);
+
   return [
+    getChannels,
     dispatchChannels
   ];
 

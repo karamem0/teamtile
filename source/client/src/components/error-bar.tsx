@@ -27,7 +27,7 @@ export const ErrorBar = (): React.ReactElement | null => {
           <WarningIcon />
         }
         variables={{ urgent: true }}
-        onVisibleChange={() => setError && setError(undefined)} />
+        onVisibleChange={() => setError && setError(null)} />
     </div>
   );
 

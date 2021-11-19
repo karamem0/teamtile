@@ -20,10 +20,10 @@ import {
   setCachedToken
 } from '../utils/token-manager';
 
-export const useClient = (): [ Client | undefined, string | undefined ] => {
+export const useClient = (): [ Client | null, string | null ] => {
 
-  const [ client, setClient ] = React.useState<Client>();
-  const [ error, setError ] = React.useState<string>();
+  const [ client, setClient ] = React.useState<Client | null>(null);
+  const [ error, setError ] = React.useState<string | null>(null);
 
   const getAccessToken = React.useCallback(async () => {
     let token = getCachedToken();

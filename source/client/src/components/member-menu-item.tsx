@@ -20,67 +20,55 @@ import { GroupIcon } from '@fluentui/react-icons-mdl2';
 // Components
 import { MemberIcon } from './member-icon';
 import { MenuItemFilter } from './menu-item-filter';
-// Contexts
-import { useReducerContext } from '../contexts/reducer-context';
 // Hooks
 import { useMemberIcons } from '../hooks/use-member-icons';
 // Types
 import { Icon, Member } from '../types/entity';
+import { ItemKey, ItemValue } from '../types/reducer';
 
 export interface MemberMenuItemProps {
-  index: number
+  itemKey: ItemKey,
+  itemValue: ItemValue
 }
 
-export const MemberMenuItem = ({ index }: MemberMenuItemProps): React.ReactElement | null => {
+export const MemberMenuItem = ({ itemKey, itemValue }: MemberMenuItemProps): React.ReactElement | null => {
 
-  const { store } = useReducerContext();
-  const [ dispatchMemberIcons ] = useMemberIcons();
+  const [ getMemberIcons, dispatchMemberIcons ] = useMemberIcons();
 
-  const key = store?.keys && store.keys[index];
-  const values = store?.values && store.values[index].members;
-
-  const handleClick = React.useCallback((value: Member) => {
-    if (!value.email) {
+  const handleClick = React.useCallback((value: string | null | undefined) => {
+    if (!value) {
       return;
     }
-    microsoftTeams.executeDeepLink(`https://teams.microsoft.com/l/chat/0/0?users=${value.email}`);
+    microsoftTeams.executeDeepLink(`https://teams.microsoft.com/l/chat/0/0?users=${value}`);
   }, []);
 
-  const handleOpenChange = React.useCallback((open?: boolean) => {
-    if (!key) {
-      return;
-    }
-    if (!values) {
-      return;
-    }
-    if (!open) {
-      return;
-    }
+  const handleOpenChange = React.useCallback(() => {
     (async () => {
-      await dispatchMemberIcons(
-        key,
-        values
-          .map((value) => value.userId)
-          .filter((key): key is Exclude<typeof key, undefined> => Boolean(key))
-      );
+      if (!itemValue?.members) {
+        return;
+      }
+      const icons = await getMemberIcons(itemValue.members
+        .map(member => member.userId)
+        .filter((key): key is Exclude<typeof key, null | undefined> => Boolean(key)));
+      if (!icons) {
+        return;
+      }
+      await dispatchMemberIcons(itemKey, icons);
     })();
   }, [
-    key,
-    values,
+    itemKey,
+    itemValue,
+    getMemberIcons,
     dispatchMemberIcons
   ]);
 
-  if (!key) {
-    return null;
-  }
-
-  if (!values) {
+  if (!itemValue?.members) {
     return null;
   }
 
   return (
     <MemberMenuItemPresenterMemo
-      values={values}
+      members={itemValue.members}
       onClick={handleClick}
       onOpenChange={handleOpenChange} />
   );
@@ -88,13 +76,13 @@ export const MemberMenuItem = ({ index }: MemberMenuItemProps): React.ReactEleme
 };
 
 interface MemberMenuItemPresenterProps {
-  values: (Member & Icon)[],
-  onClick?: (value: Member) => void,
-  onOpenChange?: (open?: boolean) => void
+  members: Member[],
+  onClick?: (value: string | null | undefined) => void,
+  onOpenChange?: () => void
 }
 
 const MemberMenuItemPresenter = ({
-  values,
+  members,
   onClick,
   onOpenChange
 }: MemberMenuItemPresenterProps): React.ReactElement | null => {
@@ -105,16 +93,16 @@ const MemberMenuItemPresenter = ({
         content={
           <div className="card-popup-menu">
             <MenuItemFilter
-              renderer={(values: (Member & Icon)[]) => (
+              renderer={(members: (Member & Icon)[]) => (
                 <List
                   items={
-                    values.map((value, index) => ({
-                      key: index,
+                    members.map((value) => ({
+                      key: value.id,
                       header: (
                         <Text
                           className="card-popup-menu-item"
                           role="button"
-                          onClick={() => onClick && onClick(value)}>
+                          onClick={() => onClick && onClick(value.email)}>
                           <MemberIcon
                             icon={value.icon}
                             name={value.displayName} />
@@ -129,7 +117,7 @@ const MemberMenuItemPresenter = ({
                   }
                   navigable />
               )}
-              values={values} />
+              values={members} />
           </div>
         }
         trigger={
@@ -141,11 +129,14 @@ const MemberMenuItemPresenter = ({
             <Text
               className="card-menu-item-text"
               size="small">
-              {values.length}
+              {members.length}
             </Text>
           </Text>
         }
-        onOpenChange={(_, props) => onOpenChange && onOpenChange(props?.open)} />
+        onOpenChange={(_, props) =>
+          props?.open &&
+          onOpenChange &&
+          onOpenChange()} />
     </div>
   );
 

@@ -7,22 +7,23 @@
 //
 
 // Types
+import {
+  ItemKey,
+  ItemValue,
+  State
+} from '../../types/reducer';
 import { Drive } from '../../types/entity';
-import { State } from '../../types/reducer';
 
-export const putDrives = (state: State, payload: Map<string, Drive>): State => {
-  if (!state.store) {
-    return state;
-  }
-  const { keys, values } = state.store;
+export const putDrives = (state: State, payload: Map<ItemKey, Drive>): State => {
+  const { items } = state;
   return {
     ...state,
-    store: {
-      keys: keys,
-      values: keys.map((key, index) => ({
-        ...values[index],
-        drive: payload.get(key)
-      }))
-    }
+    items: items.map((item) => ({
+      ...item,
+      value: {
+        ...item.value,
+        drive: payload.get(item.key)
+      } as ItemValue
+    }))
   };
 };

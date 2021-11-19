@@ -20,34 +20,33 @@ export interface KeyValue<K, V> {
   value: V
 }
 
-export type StoreKey = string;
+export type ItemKey = string;
 
-export type StoreValue = (
+export type ItemValue = (
   Team &
   Icon &
   {
-    channels?: Channel[],
-    members?: (Member & Icon)[],
-    drive?: Drive
-  } &
-  {
-    enabled: boolean
+    channels: Channel[] | undefined,
+    members: (Member & Icon)[] | undefined,
+    drive: Drive | undefined
   }
 );
 
-export interface Store {
-  keys: StoreKey[],
-  values: StoreValue[]
-}
+export type Item = (
+  KeyValue<ItemKey, ItemValue | null> &
+  {
+    visible: boolean | undefined
+  }
+);
 
 export interface State {
-  loading?: boolean,
-  store?: Store
+  loading: boolean,
+  items: Item[]
 }
 
 export interface Action {
   type: ActionType,
-  payload?: unknown
+  payload: unknown
 }
 
 export enum ActionType {

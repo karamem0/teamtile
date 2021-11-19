@@ -19,46 +19,45 @@ import {
 import { ContextMenuIcon } from '@fluentui/react-icons-mdl2';
 // Components
 import { MenuItemFilter } from './menu-item-filter';
-// Contexts
-import { useReducerContext } from '../contexts/reducer-context';
 // Types
+import { ItemKey, ItemValue } from '../types/reducer';
 import { Channel } from '../types/entity';
 
 export interface ChannelMenuItemProps {
-  index: number
+  itemKey: ItemKey,
+  itemValue: ItemValue
 }
 
-export const ChannelMenuItem = ({ index }: ChannelMenuItemProps): React.ReactElement | null => {
+export const ChannelMenuItem = ({ itemValue }: ChannelMenuItemProps): React.ReactElement | null => {
 
-  const { store } = useReducerContext();
-
-  const values = store?.values && store.values[index].channels;
-
-  const handleClick = React.useCallback((value: Channel) => {
-    if (!value.webUrl) {
+  const handleClick = React.useCallback((value: string | null | undefined) => {
+    if (!value) {
       return;
     }
-    microsoftTeams.executeDeepLink(value.webUrl);
+    microsoftTeams.executeDeepLink(value);
   }, []);
 
-  if (!values) {
+  if (!itemValue?.channels) {
     return null;
   }
 
   return (
     <ChannelMenuItemPresenterMemo
-      values={values}
+      channels={itemValue.channels}
       onClick={handleClick} />
   );
 
 };
 
 interface ChannelMenuItemPresenterProps {
-  values: Channel[],
-  onClick?: (value: Channel) => void
+  channels: Channel[],
+  onClick?: (value: string | null | undefined) => void
 }
 
-const ChannelMenuItemPresenter = ({ values, onClick }: ChannelMenuItemPresenterProps): React.ReactElement | null => {
+const ChannelMenuItemPresenter = ({
+  channels,
+  onClick
+}: ChannelMenuItemPresenterProps): React.ReactElement | null => {
 
   return (
     <div className="card-menu-item">
@@ -66,16 +65,16 @@ const ChannelMenuItemPresenter = ({ values, onClick }: ChannelMenuItemPresenterP
         content={
           <div className="card-popup-menu">
             <MenuItemFilter
-              renderer={(values: Channel[]) => (
+              renderer={(channels: Channel[]) => (
                 <List
                   items={
-                    values.map((value, index) => ({
-                      key: index,
+                    channels.map((value) => ({
+                      key: value.id,
                       header: (
                         <Text
                           className="card-popup-menu-item"
                           role="button"
-                          onClick={() => onClick && onClick(value)}>
+                          onClick={() => onClick && onClick(value.webUrl)}>
                           <Text
                             className="card-popup-menu-item-text"
                             truncated>
@@ -87,7 +86,7 @@ const ChannelMenuItemPresenter = ({ values, onClick }: ChannelMenuItemPresenterP
                   }
                   navigable />
               )}
-              values={values} />
+              values={channels} />
           </div>
         }
         trigger={
@@ -99,7 +98,7 @@ const ChannelMenuItemPresenter = ({ values, onClick }: ChannelMenuItemPresenterP
             <Text
               className="card-menu-item-text"
               size="small">
-              {values.length}
+              {channels.length}
             </Text>
           </Text>
         } />

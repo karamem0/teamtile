@@ -14,25 +14,27 @@ import { useReducerContext } from '../contexts/reducer-context';
 import { useServiceContext } from '../contexts/service-context';
 // Reducers
 import { putMemberIcons } from '../reducers/action';
+// Types
+import { ItemKey } from '../types/reducer';
 
-export const useMemberIcons = (): [ (key: string, keys: string[]) => Promise<void> ] => {
+export const useMemberIcons = (): [
+  (keys: string[]) => Promise<Map<string, string> | undefined>,
+  (key: ItemKey, values: Map<string, string>) => Promise<void>
+] => {
 
   const { setError } = useErrorContext();
   const { dispatch } = useReducerContext();
   const { service } = useServiceContext();
 
-  const dispatchMemberIcons = React.useCallback(async (key: string, keys: string[]) => {
+  const getMemberIcons = React.useCallback(async (keys: string[]) => {
     if (!setError) {
-      return;
-    }
-    if (!dispatch) {
       return;
     }
     if (!service) {
       return;
     }
     try {
-      const payload = new Map<string, string>();
+      const table = new Map<string, string>();
       const locals = await service.local.getIcons(keys);
       const servers = await service.server.getMemberIcons(
         Array
@@ -42,15 +44,15 @@ export const useMemberIcons = (): [ (key: string, keys: string[]) => Promise<voi
       keys.forEach(async (key) => {
         const server = servers.get(key);
         if (server) {
-          payload.set(key, server);
+          table.set(key, server);
           await service.local.putIcon(key, server);
         }
         const local = locals.get(key);
         if (local) {
-          payload.set(key, local);
+          table.set(key, local);
         }
       });
-      dispatch(putMemberIcons({ key, value: payload }));
+      return table;
     } catch (error) {
       const message = error instanceof Error
         ? error.message
@@ -59,11 +61,34 @@ export const useMemberIcons = (): [ (key: string, keys: string[]) => Promise<voi
     }
   }, [
     setError,
-    dispatch,
     service
   ]);
 
+  const dispatchMemberIcons = React.useCallback(async (key: ItemKey, values: Map<string, string>) => {
+    if (!setError) {
+      return;
+    }
+    if (!dispatch) {
+      return;
+    }
+    try {
+      dispatch(putMemberIcons({
+        key,
+        value: values
+      }));
+    } catch (error) {
+      const message = error instanceof Error
+        ? error.message
+        : Object.prototype.toString.call(error);
+      setError(message);
+    }
+  }, [
+    setError,
+    dispatch
+  ]);
+
   return [
+    getMemberIcons,
     dispatchMemberIcons
   ];
 

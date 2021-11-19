@@ -7,10 +7,14 @@
 //
 
 // Types
-import { Action, ActionType } from '../../types/reducer';
+import {
+  Action,
+  ActionType,
+  ItemKey
+} from '../../types/reducer';
 import { Team } from '../../types/entity';
 
-export const putTeams = (payload: Map<string, Team>): Action => ({
+export const putTeams = (payload: Map<ItemKey, Team>): Action => ({
   type: ActionType.PutTeams,
   payload: payload
 });

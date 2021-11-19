@@ -65,15 +65,15 @@ describe('useClient', () => {
       .mockResolvedValue(params.serverToken);
     jest
       .spyOn(tokenManager, 'getCachedToken')
-      .mockReturnValue(undefined);
+      .mockReturnValue(null);
     jest
       .spyOn(tokenManager, 'setCachedToken')
       .mockReturnValue();
     const { result, waitForNextUpdate } = renderHook(() => useClient());
     await waitForNextUpdate();
     const [ client, error ] = result.current;
-    expect(client).not.toBeUndefined();
-    expect(error).toBeUndefined();
+    expect(client).not.toBeNull();
+    expect(error).toBeNull();
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.appInitialization.notifySuccess).toBeCalled();
     expect(microsoftTeams.appInitialization.notifyFailure).not.toBeCalled();
@@ -94,8 +94,8 @@ describe('useClient', () => {
     const { result, waitForNextUpdate } = renderHook(() => useClient());
     await waitForNextUpdate();
     const [ client, error ] = result.current;
-    expect(client).not.toBeUndefined();
-    expect(error).toBeUndefined();
+    expect(client).not.toBeNull();
+    expect(error).toBeNull();
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.appInitialization.notifySuccess).toBeCalled();
     expect(microsoftTeams.appInitialization.notifyFailure).not.toBeCalled();
@@ -117,8 +117,8 @@ describe('useClient', () => {
     const { result, waitForNextUpdate } = renderHook(() => useClient());
     await waitForNextUpdate();
     const [ client, error ] = result.current;
-    expect(client).toBeUndefined();
-    expect(error).not.toBeUndefined();
+    expect(client).toBeNull();
+    expect(error).not.toBeNull();
     expect(microsoftTeams.initialize).toBeCalled();
     expect(microsoftTeams.appInitialization.notifySuccess).not.toBeCalled();
     expect(microsoftTeams.appInitialization.notifyFailure).toBeCalled();

@@ -20,6 +20,7 @@ import { putTeams } from './put-teams/reducer';
 import {
   Action,
   ActionType,
+  ItemKey,
   KeyValue,
   State
 } from '../types/reducer';
@@ -39,17 +40,17 @@ export const reducer = (state: State, action: Action): State => {
     case ActionType.PutKeys:
       return putKeys(state, action.payload as string[]);
     case ActionType.PutTeams:
-      return putTeams(state, action.payload as Map<string, Team>);
+      return putTeams(state, action.payload as Map<ItemKey, Team>);
     case ActionType.PutTeamIcons:
-      return putTeamIcons(state, action.payload as Map<string, string>);
+      return putTeamIcons(state, action.payload as Map<ItemKey, string>);
     case ActionType.PutChannels:
-      return putChannels(state, action.payload as Map<string, Channel[]>);
+      return putChannels(state, action.payload as Map<ItemKey, Channel[]>);
     case ActionType.PutMembers:
-      return putMembers(state, action.payload as Map<string, Member[]>);
+      return putMembers(state, action.payload as Map<ItemKey, Member[]>);
     case ActionType.PutMemberIcons:
-      return putMemberIcons(state, action.payload as KeyValue<string, Map<string, string>>);
+      return putMemberIcons(state, action.payload as KeyValue<ItemKey, Map<string, string>>);
     case ActionType.PutDrives:
-      return putDrives(state, action.payload as Map<string, Drive>);
+      return putDrives(state, action.payload as Map<ItemKey, Drive>);
     default:
       return state;
   }

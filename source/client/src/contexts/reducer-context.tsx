@@ -9,34 +9,37 @@
 // React
 import React from 'react';
 // Types
-import {
-  Action,
-  Store
-} from '../types/reducer';
+import { Action, State } from '../types/reducer';
 // Reducers
 import { reducer } from '../reducers/reducer';
 
 interface ReducerContextValue {
-  loading?: boolean,
-  store?: Store,
-  dispatch?: React.Dispatch<Action>
+  state: State | null,
+  dispatch: React.Dispatch<Action> | null
 }
 
-const ReducerContext = React.createContext<ReducerContextValue>({});
+const ReducerContext = React.createContext<ReducerContextValue>({
+  state: null,
+  dispatch: null
+});
 
 interface ReducerContextProviderProps {
-  children?: React.ReactNode
+  children: React.ReactNode
 }
+
+const initialState = {
+  loading: false,
+  items: []
+};
 
 export const ReducerContextProvider = ({ children }: ReducerContextProviderProps): React.ReactElement | null => {
 
-  const [ state, dispatch ] = React.useReducer(reducer, {});
+  const [ state, dispatch ] = React.useReducer(reducer, initialState);
 
   return (
     <ReducerContext.Provider
       value={{
-        loading: state.loading,
-        store: state.store,
+        state: state,
         dispatch: dispatch
       }}>
       {children}

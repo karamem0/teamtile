@@ -7,22 +7,23 @@
 //
 
 // Types
+import {
+  ItemKey,
+  ItemValue,
+  State
+} from '../../types/reducer';
 import { Member } from '../../types/entity';
-import { State } from '../../types/reducer';
 
-export const putMembers = (state: State, payload: Map<string, Member[]>): State => {
-  if (!state.store) {
-    return state;
-  }
-  const { keys, values } = state.store;
+export const putMembers = (state: State, payload: Map<ItemKey, Member[]>): State => {
+  const { items } = state;
   return {
     ...state,
-    store: {
-      keys: keys,
-      values: keys.map((key, index) => ({
-        ...values[index],
-        members: payload.get(key)
-      }))
-    }
+    items: items.map((item) => ({
+      ...item,
+      value: {
+        ...item.value,
+        members: payload.get(item.key)
+      } as ItemValue
+    }))
   };
 };

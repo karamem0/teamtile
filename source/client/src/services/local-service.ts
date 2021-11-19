@@ -19,15 +19,15 @@ import {
 import { compare } from '../utils/compare';
 
 interface ValueEntity<T> {
-  id?: string,
-  expired?: number,
-  value?: T
+  id: string,
+  expired: number,
+  value: T
 }
 
 interface ArrayEntity<T> {
-  id?: string,
-  expired?: number,
-  values?: T[]
+  id: string,
+  expired: number,
+  values: T[]
 }
 
 export class LocalService {
@@ -47,14 +47,19 @@ export class LocalService {
     });
   }
 
-  async getTeams (keys: string[]): Promise<Map<string, Team | undefined>> {
+  async getTeams (keys: string[]): Promise<Map<string, Team | null>> {
     return new Map(
       await Promise.all(keys.map(async (id) => {
         const value = await this.database.table<ValueEntity<Team>>('teams')
           .where({ id: id })
           .filter((value) => Number(value.expired) > Date.now())
           .first();
-        return [ id, value?.value ] as [ string, Team | undefined ];
+        return [
+          id,
+          value
+            ? value.value
+            : null
+        ] as [ string, Team | null ];
       }))
     );
   }
@@ -67,7 +72,7 @@ export class LocalService {
     });
   }
 
-  async getChannels (keys: string[]): Promise<Map<string, Channel[] | undefined>> {
+  async getChannels (keys: string[]): Promise<Map<string, Channel[] | null>> {
     return new Map(
       await Promise.all(keys.map(async (id) => {
         const value = await this.database.table<ArrayEntity<Channel>>('channels')
@@ -76,8 +81,10 @@ export class LocalService {
           .first();
         return [
           id,
-          value?.values?.sort((a, b) => compare(a.displayName, b.displayName))
-        ] as [ string, Channel[] | undefined ];
+          value
+            ? value.values.sort((a, b) => compare(a.displayName, b.displayName))
+            : null
+        ] as [ string, Channel[] | null ];
       }))
     );
   }
@@ -90,7 +97,7 @@ export class LocalService {
     });
   }
 
-  async getMembers (keys: string[]): Promise<Map<string, Member[] | undefined>> {
+  async getMembers (keys: string[]): Promise<Map<string, Member[] | null>> {
     return new Map(
       await Promise.all(keys.map(async (id) => {
         const value = await this.database.table<ArrayEntity<Member>>('members')
@@ -99,8 +106,10 @@ export class LocalService {
           .first();
         return [
           id,
-          value?.values?.sort((a, b) => compare(a.displayName, b.displayName))
-        ] as [ string, Member[] | undefined ];
+          value
+            ? value.values.sort((a, b) => compare(a.displayName, b.displayName))
+            : null
+        ] as [ string, Member[] | null ];
       }))
     );
   }
@@ -113,14 +122,19 @@ export class LocalService {
     });
   }
 
-  async getDrives (keys: string[]): Promise<Map<string, Drive | undefined>> {
+  async getDrives (keys: string[]): Promise<Map<string, Drive | null>> {
     return new Map(
       await Promise.all(keys.map(async (id) => {
         const value = await this.database.table<ValueEntity<Drive>>('drives')
           .where({ id: id })
           .filter((value) => Number(value.expired) > Date.now())
           .first();
-        return [ id, value?.value ] as [ string, Drive | undefined ];
+        return [
+          id,
+          value
+            ? value.value
+            : null
+        ] as [ string, Drive | null ];
       }))
     );
   }
@@ -133,14 +147,19 @@ export class LocalService {
     });
   }
 
-  async getIcons (keys: string[]): Promise<Map<string, string | undefined>> {
+  async getIcons (keys: string[]): Promise<Map<string, string | null>> {
     return new Map(
       await Promise.all(keys.map(async (id) => {
         const value = await this.database.table<ValueEntity<string>>('icons')
           .where({ id: id })
           .filter((value) => Number(value.expired) > Date.now())
           .first();
-        return [ id, value?.value ] as [ string, string | undefined ];
+        return [
+          id,
+          value
+            ? value.value
+            : null
+        ] as [ string, string | null ];
       }))
     );
   }

@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.11/MicrosoftTeams.schema.json",
   "manifestVersion": "1.11",
-  "version": "1.7.1",
+  "version": "1.7.4",
   "showLoadingIndicator": true,
   "isFullScreen": true,
   "id": "bb98adcf-688c-409c-862b-8f546689f241",
   "packageName": "dev.karamem0.teamtile",
   "developer": {
     "name": "karamem0",
-    "websiteUrl": "https://{{DomainName}}",
-    "privacyUrl": "https://{{DomainName}}",
-    "termsOfUseUrl": "https://{{DomainName}}"
+    "websiteUrl": "https://github.com/karamem0/teamtile",
+    "privacyUrl": "https://github.com/karamem0/teamtile",
+    "termsOfUseUrl": "https://github.com/karamem0/teamtile"
   },
   "icons": {
     "color": "icon_color.png",

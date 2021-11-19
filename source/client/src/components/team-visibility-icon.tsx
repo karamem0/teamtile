@@ -15,7 +15,7 @@ import { Text } from '@fluentui/react-northstar';
 import { VisibilityType } from '../types/entity';
 
 export interface TeamVisibilityIconProps {
-  visibility?: VisibilityType
+  visibility: VisibilityType | null | undefined
 }
 
 export const TeamVisibilityIcon = ({ visibility }: TeamVisibilityIconProps): React.ReactElement | null => {

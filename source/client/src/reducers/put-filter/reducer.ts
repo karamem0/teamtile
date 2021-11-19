@@ -10,42 +10,39 @@
 import { State } from '../../types/reducer';
 
 export const putFilter = (state: State, payload?: string): State => {
-  if (!state.store) {
-    return state;
-  }
-  const { keys, values } = state.store;
   return {
     ...state,
-    store: {
-      keys: keys,
-      values: values.map((value) => {
-        if (!payload) {
+    items: state.items.map((item) => {
+      const { value } = item;
+      if (!value) {
+        return item;
+      }
+      if (!payload) {
+        return {
+          ...item,
+          visible: true
+        };
+      }
+      if (value.displayName) {
+        if (value.displayName.search(new RegExp(payload, 'i')) >= 0) {
           return {
-            ...value,
-            enabled: true
+            ...item,
+            visible: true
           };
         }
-        if (value?.displayName) {
-          if (value.displayName.search(new RegExp(payload, 'i')) >= 0) {
-            return {
-              ...value,
-              enabled: true
-            };
-          }
+      }
+      if (value.description) {
+        if (value.description.search(new RegExp(payload, 'i')) >= 0) {
+          return {
+            ...item,
+            visible: true
+          };
         }
-        if (value?.description) {
-          if (value.description.search(new RegExp(payload, 'i')) >= 0) {
-            return {
-              ...value,
-              enabled: true
-            };
-          }
-        }
-        return {
-          ...value,
-          enabled: false
-        };
-      })
-    }
+      }
+      return {
+        ...item,
+        visible: false
+      };
+    })
   };
 };

@@ -10,19 +10,22 @@
 import React from 'react';
 
 interface ErrorContextValue {
-  error?: string,
-  setError?: React.Dispatch<React.SetStateAction<string | undefined>>
+  error: string | null,
+  setError: React.Dispatch<React.SetStateAction<string | null>> | null
 }
 
-const ErrorContext = React.createContext<ErrorContextValue>({});
+const ErrorContext = React.createContext<ErrorContextValue>({
+  error: null,
+  setError: null
+});
 
 interface ErrorContextProviderProps {
-  children?: React.ReactNode
+  children: React.ReactNode
 }
 
 export const ErrorContextProvider = ({ children }: ErrorContextProviderProps): React.ReactElement | null => {
 
-  const [ error, setError ] = React.useState<string>();
+  const [ error, setError ] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     if (!error) {

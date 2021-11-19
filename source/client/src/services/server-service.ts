@@ -84,8 +84,8 @@ export class ServerService {
     return values;
   }
 
-  async getTeamIcons (keys: string[]): Promise<Map<string, string | undefined>> {
-    const values = new Map<string, string | undefined>();
+  async getTeamIcons (keys: string[]): Promise<Map<string, string | null>> {
+    const values = new Map<string, string | null>();
     for (let chunk = 0; chunk < keys.length; chunk += 20) {
       const requestContent = new BatchRequestContent(
         keys.slice(chunk, chunk + 20).map((id) => ({
@@ -108,16 +108,16 @@ export class ServerService {
         if (response.ok) {
           values.set(id, await response.text());
         } else {
-          values.set(id, undefined);
+          values.set(id, null);
         }
       }
     }
     return values;
   }
 
-  async getChannels (keys: string[]): Promise<Map<string, Channel[] | undefined>> {
+  async getChannels (keys: string[]): Promise<Map<string, Channel[]>> {
     return new Map(await Promise.all(
-      keys.map<Promise<[string, Channel[] | undefined]>>(
+      keys.map<Promise<[string, Channel[]]>>(
         async (id) => {
           try {
             const response = await this.client
@@ -136,14 +136,14 @@ export class ServerService {
             await iterator.iterate();
             return [ id, items.sort((a, b) => compare(a.displayName, b.displayName)) ];
           } catch {
-            return [ id, undefined ];
+            return [ id, []];
           }
         })));
   }
 
-  async getMembers (keys: string[]): Promise<Map<string, AadUserConversationMember[] | undefined>> {
+  async getMembers (keys: string[]): Promise<Map<string, AadUserConversationMember[]>> {
     return new Map(await Promise.all(
-      keys.map<Promise<[string, AadUserConversationMember[] | undefined]>>(
+      keys.map<Promise<[string, AadUserConversationMember[]]>>(
         async (id) => {
           try {
             const response = await this.client
@@ -161,13 +161,13 @@ export class ServerService {
             await iterator.iterate();
             return [ id, items.sort((a, b) => compare(a.displayName, b.displayName)) ];
           } catch {
-            return [ id, undefined ];
+            return [ id, []];
           }
         })));
   }
 
-  async getMemberIcons (keys: string[]): Promise<Map<string, string | undefined>> {
-    const values = new Map<string, string | undefined>();
+  async getMemberIcons (keys: string[]): Promise<Map<string, string | null>> {
+    const values = new Map<string, string | null>();
     for (let chunk = 0; chunk < keys.length; chunk += 20) {
       const requestContent = new BatchRequestContent(
         keys.slice(chunk, chunk + 20).map((id) => ({
@@ -190,15 +190,15 @@ export class ServerService {
         if (response.ok) {
           values.set(id, await response.text());
         } else {
-          values.set(id, undefined);
+          values.set(id, null);
         }
       }
     }
     return values;
   }
 
-  async getDrives (keys: string[]): Promise<Map<string, Drive | undefined>> {
-    const values = new Map<string, Drive | undefined>();
+  async getDrives (keys: string[]): Promise<Map<string, Drive | null>> {
+    const values = new Map<string, Drive | null>();
     for (let chunk = 0; chunk < keys.length; chunk += 20) {
       const requestContent = new BatchRequestContent(
         keys.slice(chunk, chunk + 20).map((id) => ({
@@ -224,7 +224,7 @@ export class ServerService {
           const value = json as Drive;
           values.set(id, value);
         } else {
-          values.set(id, undefined);
+          values.set(id, null);
         }
       }
     }

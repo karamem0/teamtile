@@ -7,21 +7,22 @@
 //
 
 // Types
-import { State } from '../../types/reducer';
+import {
+  ItemKey,
+  ItemValue,
+  State
+} from '../../types/reducer';
 
-export const putTeamIcons = (state: State, payload: Map<string, string>): State => {
-  if (!state.store) {
-    return state;
-  }
-  const { keys, values } = state.store;
+export const putTeamIcons = (state: State, payload: Map<ItemKey, string>): State => {
+  const { items } = state;
   return {
     ...state,
-    store: {
-      keys: keys,
-      values: keys.map((key, index) => ({
-        ...values[index],
-        icon: payload.get(key)
-      }))
-    }
+    items: items.map((item) => ({
+      ...item,
+      value: {
+        ...item.value,
+        icon: payload.get(item.key)
+      } as ItemValue
+    }))
   };
 };

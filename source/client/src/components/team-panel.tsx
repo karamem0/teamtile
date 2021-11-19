@@ -16,28 +16,28 @@ import { useReducerContext } from '../contexts/reducer-context';
 
 export const TeamPanel = (): React.ReactElement | null => {
 
-  const { loading, store } = useReducerContext();
+  const { state } = useReducerContext();
 
-  const keys = store?.keys;
-
-  if (!keys) {
+  if (!state) {
     return null;
   }
+
+  const { loading, items } = state;
 
   return (
     <div
       className="panel panel-grid"
       role="list">
       {
-        keys.map((_, index) => (
+        items.map((item) => (
           loading
             ? (
-              <TeamCardSkeleton key={index} />
+              <TeamCardSkeleton key={item.key} />
               )
             : (
               <TeamCard
-                index={index}
-                key={index} />
+                item={item}
+                key={item.key} />
               )
         ))
       }

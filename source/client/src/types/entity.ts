@@ -7,35 +7,35 @@
 //
 
 export interface Team {
-  id?: string,
-  displayName?: string,
-  description?: string,
-  internalId?: string,
-  visibility?: VisibilityType,
-  webUrl?: string
+  id: string | undefined,
+  displayName: string | null | undefined,
+  description: string | null | undefined,
+  internalId: string | null | undefined,
+  visibility: VisibilityType | null | undefined,
+  webUrl: string | null | undefined
 }
 
 export interface Channel {
-  id?: string,
-  displayName?: string,
-  webUrl?: string,
-  membershipType?: MembershipType
+  id: string | undefined,
+  displayName: string | null | undefined,
+  webUrl: string | null | undefined,
+  membershipType: MembershipType | null | undefined
 }
 
 export interface Member {
-  id?: string,
-  displayName?: string,
-  userId?: string,
-  email?: string
+  id: string | undefined,
+  displayName: string | null | undefined,
+  userId: string | null | undefined,
+  email: string | null | undefined
 }
 
 export interface Drive {
-  id?: string,
-  webUrl?: string
+  id: string | undefined,
+  webUrl: string | null | undefined
 }
 
 export interface Icon {
-  icon?: string
+  icon: string | null | undefined
 }
 
 export enum VisibilityType {

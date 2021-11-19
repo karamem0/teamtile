@@ -14,24 +14,28 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
+      - name: Restore client
+        run: npm ci
+        working-directory: source/client
       - name: Build client
         env:
           REACT_APP_AUTH_TENANT_ID: ${{secrets.APP_TENANT_ID}}
           REACT_APP_AUTH_CLIENT_ID: ${{secrets.APP_CLIENT_ID}}
-        run: |
-          npm ci
-          npm run build
-          npm run test
+        run: npm run build
+        working-directory: source/client
+      - name: Test client
+        run: npm run test
         working-directory: source/client
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 5.x
+      - name: Restore server
+        run: dotnet restore source/server
       - name: Build server
-        run: |
-          dotnet restore source/server
-          dotnet build source/server -c Release
-          dotnet publish source/server -c Release
+        run: dotnet build source/server -c Release
+      - name: Publish server
+        run: dotnet publish source/server -c Release
       - name: Copy build file
         shell: pwsh
         run: |

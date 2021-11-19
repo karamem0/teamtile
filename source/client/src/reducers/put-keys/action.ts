@@ -7,9 +7,13 @@
 //
 
 // Types
-import { Action, ActionType } from '../../types/reducer';
+import {
+  Action,
+  ActionType,
+  ItemKey
+} from '../../types/reducer';
 
-export const putKeys = (payload: string[]): Action => ({
+export const putKeys = (payload: ItemKey[]): Action => ({
   type: ActionType.PutKeys,
   payload: payload
 });

@@ -15,24 +15,24 @@ import { useServiceContext } from '../contexts/service-context';
 // Reducers
 import { putTeamIcons } from '../reducers/action';
 
-export const useTeamIcons = (): [ (keys: string[]) => Promise<void> ] => {
+export const useTeamIcons = (): [
+  (keys: string[]) => Promise<Map<string, string> | undefined>,
+  (values: Map<string, string>) => Promise<void>
+] => {
 
   const { setError } = useErrorContext();
   const { dispatch } = useReducerContext();
   const { service } = useServiceContext();
 
-  const dispatchTeamIcons = React.useCallback(async (keys: string[]) => {
+  const getTeamIcons = React.useCallback(async (keys: string[]) => {
     if (!setError) {
-      return;
-    }
-    if (!dispatch) {
       return;
     }
     if (!service) {
       return;
     }
     try {
-      const payload = new Map<string, string>();
+      const table = new Map<string, string>();
       const locals = await service.local.getIcons(keys);
       const servers = await service.server.getTeamIcons(
         Array
@@ -42,15 +42,15 @@ export const useTeamIcons = (): [ (keys: string[]) => Promise<void> ] => {
       keys.forEach(async (key) => {
         const server = servers.get(key);
         if (server) {
-          payload.set(key, server);
+          table.set(key, server);
           await service.local.putIcon(key, server);
         }
         const local = locals.get(key);
         if (local) {
-          payload.set(key, local);
+          table.set(key, local);
         }
       });
-      dispatch(putTeamIcons(payload));
+      return table;
     } catch (error) {
       const message = error instanceof Error
         ? error.message
@@ -59,11 +59,31 @@ export const useTeamIcons = (): [ (keys: string[]) => Promise<void> ] => {
     }
   }, [
     setError,
-    dispatch,
     service
   ]);
 
+  const dispatchTeamIcons = React.useCallback(async (values: Map<string, string>) => {
+    if (!setError) {
+      return;
+    }
+    if (!dispatch) {
+      return;
+    }
+    try {
+      dispatch(putTeamIcons(values));
+    } catch (error) {
+      const message = error instanceof Error
+        ? error.message
+        : Object.prototype.toString.call(error);
+      setError(message);
+    }
+  }, [
+    setError,
+    dispatch
+  ]);
+
   return [
+    getTeamIcons,
     dispatchTeamIcons
   ];
 

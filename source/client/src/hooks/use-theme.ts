@@ -18,7 +18,7 @@ import {
 } from '@fluentui/react-northstar';
 import { ThemePrepared } from '@fluentui/styles';
 
-export const useTheme = (): [ ThemePrepared | undefined ] => {
+export const useTheme = (): [ ThemePrepared ] => {
 
   const [ theme, setTheme ] = React.useState<ThemePrepared>(teamsV2Theme);
 

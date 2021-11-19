@@ -16,25 +16,26 @@ import { useServiceContext } from '../contexts/service-context';
 import { putDrives } from '../reducers/action';
 // Types
 import { Drive } from '../types/entity';
+import { ItemKey } from '../types/reducer';
 
-export const useDrives = (): [ (keys: string[]) => Promise<void> ] => {
+export const useDrives = (): [
+  (keys: ItemKey[]) => Promise<Map<ItemKey, Drive> | undefined>,
+  (values: Map<ItemKey, Drive>) => Promise<void>
+] => {
 
   const { setError } = useErrorContext();
   const { dispatch } = useReducerContext();
   const { service } = useServiceContext();
 
-  const dispatchDrives = React.useCallback(async (keys: string[]) => {
+  const getDrives = React.useCallback(async (keys: ItemKey[]) => {
     if (!setError) {
-      return;
-    }
-    if (!dispatch) {
       return;
     }
     if (!service) {
       return;
     }
     try {
-      const payload = new Map<string, Drive>();
+      const table = new Map<ItemKey, Drive>();
       const locals = await service.local.getDrives(keys);
       const servers = await service.server.getDrives(
         Array
@@ -44,19 +45,21 @@ export const useDrives = (): [ (keys: string[]) => Promise<void> ] => {
       keys.forEach(async (id) => {
         const server = servers.get(id);
         if (server) {
-          const value = {
-            id: server.id,
-            webUrl: server.webUrl ?? undefined
-          };
-          payload.set(id, value);
-          await service.local.putDrive(id, value);
+          if (server.id) {
+            const value = {
+              id: server.id,
+              webUrl: server.webUrl ?? null
+            };
+            table.set(id, value);
+            await service.local.putDrive(id, value);
+          }
         }
         const local = locals.get(id);
         if (local) {
-          payload.set(id, local);
+          table.set(id, local);
         }
       });
-      dispatch(putDrives(payload));
+      return table;
     } catch (error) {
       const message = error instanceof Error
         ? error.message
@@ -65,11 +68,31 @@ export const useDrives = (): [ (keys: string[]) => Promise<void> ] => {
     }
   }, [
     setError,
-    dispatch,
     service
   ]);
 
+  const dispatchDrives = React.useCallback(async (values: Map<string, Drive>) => {
+    if (!setError) {
+      return;
+    }
+    if (!dispatch) {
+      return;
+    }
+    try {
+      dispatch(putDrives(values));
+    } catch (error) {
+      const message = error instanceof Error
+        ? error.message
+        : Object.prototype.toString.call(error);
+      setError(message);
+    }
+  }, [
+    setError,
+    dispatch
+  ]);
+
   return [
+    getDrives,
     dispatchDrives
   ];
 

@@ -7,30 +7,34 @@
 //
 
 // Types
-import { KeyValue, State } from '../../types/reducer';
+import {
+  ItemKey,
+  ItemValue,
+  KeyValue,
+  State
+} from '../../types/reducer';
 
-export const putMemberIcons = (state: State, payload: KeyValue<string, Map<string, string>>): State => {
-  if (!state.store) {
-    return state;
-  }
-  const { keys, values } = state.store;
+export const putMemberIcons = (state: State, payload: KeyValue<ItemKey, Map<string, string>>): State => {
+  const { items } = state;
   return {
     ...state,
-    store: {
-      keys: keys,
-      values: keys.map((key, index) => (
-        key === payload.key
-          ? {
-              ...values[index],
-              members: values[index].members?.map((member) => ({
-                ...member,
-                icon: member.userId
-                  ? payload.value.get(member.userId)
-                  : undefined
-              }))
-            }
-          : values[index]
-      ))
-    }
+    items: items.map((item) => {
+      if (item.key === payload.key) {
+        return {
+          ...item,
+          value: {
+            ...item.value,
+            members: item.value?.members?.map((member) => ({
+              ...member,
+              icon: member.userId
+                ? payload.value.get(member.userId)
+                : undefined
+            }))
+          } as ItemValue
+        };
+      } else {
+        return item;
+      }
+    })
   };
 };
