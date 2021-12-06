@@ -8,11 +8,12 @@
 
 // React
 import React from 'react';
+import { useDebounce } from 'react-use';
 // Fluent UI
 import { Input } from '@fluentui/react-northstar';
 import { SearchIcon } from '@fluentui/react-icons-mdl2';
-// Hooks
-import { useFilter } from '../hooks/use-filter';
+// Contexts
+import { useReducerContext } from '../contexts/reducer-context';
 
 export interface MenuItemFilterProps {
   children?: React.ReactNode
@@ -20,14 +21,19 @@ export interface MenuItemFilterProps {
 
 export const TeamFilter = ({ children }: MenuItemFilterProps): React.ReactElement | null => {
 
-  const [ dispatchFilter ] = useFilter();
+  const [ filter, setFilter ] = React.useState<string | null>(null);
+  const { dispatchFilter } = useReducerContext();
 
-  const handleChange = React.useCallback((filter?: string) => {
-    const handle = setTimeout(() => {
-      dispatchFilter(filter);
-    }, 500);
-    return () => clearTimeout(handle);
-  }, [ dispatchFilter ]);
+  useDebounce(() => {
+    dispatchFilter(filter);
+  }, 500, [
+    filter,
+    dispatchFilter
+  ]);
+
+  const handleChange = React.useCallback((filter: string | null) => {
+    setFilter(filter);
+  }, []);
 
   return (
     <div className="panel">
@@ -37,7 +43,7 @@ export const TeamFilter = ({ children }: MenuItemFilterProps): React.ReactElemen
           clearable
           fluid
           icon={<SearchIcon />}
-          onChange={(_, props) => handleChange(props?.value)} />
+          onChange={(_, props) => handleChange(props ? props.value : null)} />
         <div className="team-filter-content">
           {children}
         </div>

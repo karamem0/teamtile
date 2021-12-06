@@ -6,6 +6,7 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
+using Karamem0.Teamtile.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -36,14 +37,14 @@ namespace Karamem0.Teamtile.Controllers
         public TokenController(IHttpClientFactory httpClientFactory, IConfiguration configuration)
         {
             this.httpClient = httpClientFactory.CreateClient();
-            this.identityOptions = configuration.GetSection(Constants.AzureAd).Get<MicrosoftIdentityOptions>();
+            this.identityOptions = configuration.GetSection("AzureAD").Get<MicrosoftIdentityOptions>();
         }
 
         [HttpPost()]
-        public async Task<IActionResult> PostAsync()
+        public async Task<IActionResult> PostAsync([FromBody] TokenRequest request)
         {
-            using var bodyStream = new StreamReader(this.Request.Body);
-            var clientToken = await bodyStream.ReadToEndAsync();
+            var authorizationHeader = this.Request.Headers["Authorization"].ToString().Split(" ");
+            var clientToken = authorizationHeader[1];
             var jwtToken = new JsonWebToken(clientToken);
             var tenantId = jwtToken.GetPayloadValue<string>("tid");
             var httpRequestUri = $"https://login.microsoft.com/{tenantId}/oauth2/v2.0/token";
@@ -55,7 +56,7 @@ namespace Karamem0.Teamtile.Controllers
                     ["client_id"] = this.identityOptions.ClientId,
                     ["client_secret"] = this.identityOptions.ClientSecret,
                     ["assertion"] = clientToken,
-                    ["scope"] = string.Join(" ", this.identityOptions.Scope),
+                    ["scope"] = request.Scope,
                     ["requested_token_use"] = "on_behalf_of",
                 })
             };
@@ -65,7 +66,10 @@ namespace Karamem0.Teamtile.Controllers
             if (httpResponseMessage.IsSuccessStatusCode)
             {
                 var serverToken = httpResponseJson["access_token"].ToString();
-                return this.Ok(serverToken);
+                return this.Ok(new TokenResponse()
+                {
+                    Token = serverToken,
+                });
             }
             else
             {
@@ -73,11 +77,21 @@ namespace Karamem0.Teamtile.Controllers
                 var errorDescription = httpResponseJson["error_description"].ToString();
                 if (errorCode is "invalid_grant" or "interaction_required")
                 {
-                    return this.StatusCode((int)HttpStatusCode.Forbidden, errorDescription);
+                    return this.StatusCode(
+                        (int)HttpStatusCode.Forbidden,
+                        new TokenResponse()
+                        {
+                            Error = errorDescription,
+                        });
                 }
                 else
                 {
-                    return this.StatusCode((int)HttpStatusCode.InternalServerError, errorDescription);
+                    return this.StatusCode(
+                        (int)HttpStatusCode.InternalServerError,
+                        new TokenResponse()
+                        {
+                            Error = errorDescription,
+                        });
                 }
             }
         }

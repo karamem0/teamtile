@@ -9,14 +9,15 @@
 // React
 import React from 'react';
 // Microsoft Teams
-import * as microsoftTeams from '@microsoft/teams-js';
+import { app, authentication } from '@microsoft/teams-js';
 // Fluent UI
 import { Loader } from '@fluentui/react-northstar';
 
 export const CallbackPage = (): React.ReactElement | null => {
 
   React.useEffect(() => {
-    microsoftTeams.initialize(() => {
+    (async () => {
+      await app.initialize();
       const params = (() => {
         const params: { [key: string]: string } = {};
         window.location.hash.substr(1).split('&').forEach((item) => {
@@ -27,11 +28,11 @@ export const CallbackPage = (): React.ReactElement | null => {
       })();
       const token = params['access_token'];
       if (token) {
-        microsoftTeams.authentication.notifySuccess(token);
+        authentication.notifySuccess(token);
       } else {
-        microsoftTeams.authentication.notifyFailure(params['error_description'] ?? params.error ?? 'unknown');
+        authentication.notifyFailure(params['error_description'] ?? params.error ?? 'unknown');
       }
-    });
+    })();
   }, []);
 
   return (

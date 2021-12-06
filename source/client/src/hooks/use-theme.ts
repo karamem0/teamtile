@@ -9,7 +9,7 @@
 // React
 import React from 'react';
 // Microsoft Teams
-import * as microsoftTeams from '@microsoft/teams-js';
+import { app } from '@microsoft/teams-js';
 // Fluent UI
 import {
   teamsDarkV2Theme,
@@ -37,12 +37,12 @@ export const useTheme = (): [ ThemePrepared ] => {
   };
 
   React.useEffect(() => {
-    microsoftTeams.initialize(() => {
-      microsoftTeams.registerOnThemeChangeHandler(handleThemeChange);
-      microsoftTeams.getContext((context) => {
-        handleThemeChange(context.theme);
-      });
-    });
+    (async () => {
+      await app.initialize();
+      const context = await app.getContext();
+      handleThemeChange(context.app.theme);
+      app.registerOnThemeChangeHandler(handleThemeChange);
+    })();
   }, []);
 
   return [ theme ];

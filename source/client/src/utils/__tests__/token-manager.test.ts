@@ -39,11 +39,7 @@ describe('getClientToken', () => {
       token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ0xJRU5UVE9LRU4ifQ.ZO9wyYFJTSl-Q9nvS2D3UIDvOBr9rl3CQTxjcUpQ8HA'
     };
     microsoftTeams.authentication.getAuthToken
-      .mockImplementation((authTokenRequest) => {
-        if (authTokenRequest.successCallback) {
-          authTokenRequest.successCallback(params.token);
-        }
-      });
+      .mockResolvedValue(params.token);
     await expect(getClientToken()).resolves.toBe(params.token);
   });
 
@@ -52,11 +48,7 @@ describe('getClientToken', () => {
       error: 'Something went wrong'
     };
     microsoftTeams.authentication.getAuthToken
-      .mockImplementation((authTokenRequest) => {
-        if (authTokenRequest.failureCallback) {
-          authTokenRequest.failureCallback(params.error);
-        }
-      });
+      .mockRejectedValue(params.error);
     await expect(getClientToken()).rejects.toBe(params.error);
   });
 

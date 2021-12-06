@@ -9,96 +9,43 @@
 // React
 import React from 'react';
 // Contexts
-import { useErrorContext } from '../contexts/error-context';
-import { useReducerContext } from '../contexts/reducer-context';
 import { useServiceContext } from '../contexts/service-context';
-// Reducers
-import { putChannels } from '../reducers/action';
 // Types
 import { Channel, MembershipType } from '../types/entity';
-import { ItemKey } from '../types/reducer';
+import { ItemKey } from '../types/state';
 
 export const useChannels = (): [
-  (keys: ItemKey[]) => Promise<Map<ItemKey, Channel[]> | undefined>,
-  (values: Map<ItemKey, Channel[]>) => Promise<void>
+  (keys: ItemKey[]) => Promise<Map<ItemKey, Channel[]>>
 ] => {
 
-  const { setError } = useErrorContext();
-  const { dispatch } = useReducerContext();
-  const { service } = useServiceContext();
+  const { services } = useServiceContext();
 
   const getChannels = React.useCallback(async (keys: ItemKey[]) => {
-    if (!setError) {
-      return;
-    }
-    if (!service) {
-      return;
-    }
-    try {
-      const table = new Map<ItemKey, Channel[]>();
-      const locals = await service.local.getChannels(keys);
-      const servers = await service.server.getChannels(
-        Array
-          .from(locals)
-          .flatMap(([ key, value ]) => value ? [] : [ key ]));
-      keys.forEach(async (id) => {
-        const server = servers.get(id);
-        if (server) {
-          const values = server
-            .map((value) => (
-              value.id
-                ? {
-                    id: value.id,
-                    displayName: value.displayName ?? null,
-                    webUrl: value.webUrl ?? null,
-                    membershipType: value.membershipType as MembershipType ?? null
-                  }
-                : undefined
-            ))
-            .filter((value): value is Exclude<typeof value, undefined> => Boolean(value));
-          table.set(id, values);
-          await service.local.putChannels(id, values);
-        }
-        const local = locals.get(id);
-        if (local) {
-          table.set(id, local);
-        }
-      });
-      return table;
-    } catch (error) {
-      const message = error instanceof Error
-        ? error.message
-        : Object.prototype.toString.call(error);
-      setError(message);
-    }
+    const cache = await services.cache.getChannels(keys);
+    const graph = await services.graph
+      .getChannels(keys.filter((key) => !cache.has(key)))
+      .then((map) => new Map(Array.from(map)
+        .map<[string, Channel[]]>(([ key, values ]) => ([
+          key,
+          values.map((value) => ({
+            id: value.id,
+            displayName: value.displayName ?? null,
+            webUrl: value.webUrl ?? null,
+            membershipType: value.membershipType as MembershipType ?? null
+          }))
+        ]))));
+    Array.from(graph)
+      .forEach(([ key, values ]) => services.cache.setChannels(key, values));
+    return new Map<string, Channel[]>([
+      ...Array.from(cache),
+      ...Array.from(graph)
+    ]);
   }, [
-    setError,
-    service
-  ]);
-
-  const dispatchChannels = React.useCallback(async (values: Map<ItemKey, Channel[]>) => {
-    if (!setError) {
-      return;
-    }
-    if (!dispatch) {
-      return;
-    }
-    try {
-      dispatch(putChannels(values));
-    } catch (error) {
-      const message = error instanceof Error
-        ? error.message
-        : Object.prototype.toString.call(error);
-      setError(message);
-    }
-  }, [
-    setError,
-    dispatch
+    services
   ]);
 
   return [
-    getChannels,
-    dispatchChannels
+    getChannels
   ];
 
 };

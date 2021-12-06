@@ -11,23 +11,19 @@ import React from 'react';
 // Hooks
 import { useClient } from '../hooks/use-client';
 // Services
-import { LocalService } from '../services/local-service';
-import { ServerService } from '../services/server-service';
+import { CacheService } from '../services/cache-service';
+import { GraphService } from '../services/graph-service';
 
 interface ServiceLocator {
-  local: LocalService,
-  server: ServerService
+  cache: CacheService,
+  graph: GraphService
 }
 
 interface ServiceContextValue {
-  service: ServiceLocator | null,
-  error: string | null
+  services: ServiceLocator
 }
 
-const ServiceContext = React.createContext<ServiceContextValue>({
-  service: null,
-  error: null
-});
+const ServiceContext = React.createContext<ServiceContextValue | null>(null);
 
 interface ServiceContextProviderProps {
   children: React.ReactNode
@@ -35,43 +31,36 @@ interface ServiceContextProviderProps {
 
 export const ServiceContextProvider = ({ children }: ServiceContextProviderProps): React.ReactElement | null => {
 
-  const [ client, error ] = useClient();
-  const [ service, setService ] = React.useState<ServiceLocator | null>(null);
+  const [ client ] = useClient();
+  const [ services, setServices ] = React.useState<ServiceLocator | null>(null);
 
   React.useEffect(() => {
     if (!client) {
       return;
     }
-    setService({
-      local: new LocalService(),
-      server: new ServerService(client)
+    setServices({
+      cache: new CacheService(),
+      graph: new GraphService(client)
     });
   }, [ client ]);
 
+  if (!services) {
+    return null;
+  }
+
   return (
     <ServiceContext.Provider
-      value={{
-        service: service,
-        error: error
-      }}>
+      value={{ services }}>
       {children}
     </ServiceContext.Provider>
   );
 
 };
 
-interface ServiceContextConsumerProps {
-  children: (value: ServiceContextValue) => React.ReactNode
-}
-
-export const ServiceContextConsumer = ({ children }: ServiceContextConsumerProps): React.ReactElement | null => {
-
-  return (
-    <ServiceContext.Consumer>
-      {children}
-    </ServiceContext.Consumer>
-  );
-
+export const useServiceContext = (): ServiceContextValue => {
+  const value = React.useContext(ServiceContext);
+  if (!value) {
+    throw new Error('The context is not initialzed: ServiceContext');
+  }
+  return value;
 };
-
-export const useServiceContext = (): ServiceContextValue => React.useContext(ServiceContext);

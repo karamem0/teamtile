@@ -10,8 +10,8 @@
 
 // Microsoft Teams
 const microsoftTeams = {
-  initialize: jest.fn(),
-  appInitialization: {
+  app: {
+    initialize: jest.fn(),
     notifySuccess: jest.fn(),
     notifyFailure: jest.fn(),
     FailedReason: {
@@ -53,8 +53,6 @@ describe('useClient', () => {
       clientToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ0xJRU5UVE9LRU4ifQ.ZO9wyYFJTSl-Q9nvS2D3UIDvOBr9rl3CQTxjcUpQ8HA',
       serverToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU0VSVkVSVE9LRU4ifQ.VyFNrKBsnkQaLhXMbM-cDlGZMaQEuPmy8I6OCeGGBSQ'
     };
-    microsoftTeams.initialize
-      .mockImplementation((callback) => callback && callback());
     microsoftGraph.Client.initWithMiddleware
       .mockReturnValue({});
     jest
@@ -74,9 +72,9 @@ describe('useClient', () => {
     const [ client, error ] = result.current;
     expect(client).not.toBeNull();
     expect(error).toBeNull();
-    expect(microsoftTeams.initialize).toBeCalled();
-    expect(microsoftTeams.appInitialization.notifySuccess).toBeCalled();
-    expect(microsoftTeams.appInitialization.notifyFailure).not.toBeCalled();
+    expect(microsoftTeams.app.initialize).toBeCalled();
+    expect(microsoftTeams.app.notifySuccess).toBeCalled();
+    expect(microsoftTeams.app.notifyFailure).not.toBeCalled();
   });
 
   it('return client if token is cached', async () => {
@@ -84,8 +82,6 @@ describe('useClient', () => {
       clientToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ0xJRU5UVE9LRU4ifQ.ZO9wyYFJTSl-Q9nvS2D3UIDvOBr9rl3CQTxjcUpQ8HA',
       serverToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU0VSVkVSVE9LRU4ifQ.VyFNrKBsnkQaLhXMbM-cDlGZMaQEuPmy8I6OCeGGBSQ'
     };
-    microsoftTeams.initialize
-      .mockImplementation((callback) => callback && callback());
     microsoftGraph.Client.initWithMiddleware
       .mockReturnValue({});
     jest
@@ -96,17 +92,15 @@ describe('useClient', () => {
     const [ client, error ] = result.current;
     expect(client).not.toBeNull();
     expect(error).toBeNull();
-    expect(microsoftTeams.initialize).toBeCalled();
-    expect(microsoftTeams.appInitialization.notifySuccess).toBeCalled();
-    expect(microsoftTeams.appInitialization.notifyFailure).not.toBeCalled();
+    expect(microsoftTeams.app.initialize).toBeCalled();
+    expect(microsoftTeams.app.notifySuccess).toBeCalled();
+    expect(microsoftTeams.app.notifyFailure).not.toBeCalled();
   });
 
   it('return error if failed', async () => {
     const params = {
       error: 'Something went wrong'
     };
-    microsoftTeams.initialize
-      .mockImplementation((callback) => callback && callback());
     microsoftGraph.Client.initWithMiddleware
       .mockReturnValue({});
     jest
@@ -119,9 +113,9 @@ describe('useClient', () => {
     const [ client, error ] = result.current;
     expect(client).toBeNull();
     expect(error).not.toBeNull();
-    expect(microsoftTeams.initialize).toBeCalled();
-    expect(microsoftTeams.appInitialization.notifySuccess).not.toBeCalled();
-    expect(microsoftTeams.appInitialization.notifyFailure).toBeCalled();
+    expect(microsoftTeams.app.initialize).toBeCalled();
+    expect(microsoftTeams.app.notifySuccess).not.toBeCalled();
+    expect(microsoftTeams.app.notifyFailure).toBeCalled();
   });
 
 });

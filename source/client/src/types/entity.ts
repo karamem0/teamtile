@@ -39,11 +39,11 @@ export interface Icon {
 }
 
 export enum VisibilityType {
-  Public = 'public',
-  Private = 'private'
+  public = 'public',
+  private = 'private'
 }
 
 export enum MembershipType {
-  Standard = 'standard',
-  Private= 'private'
+  standard = 'standard',
+  private= 'private'
 }

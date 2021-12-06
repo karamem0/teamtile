@@ -14,7 +14,7 @@ import * as microsoftTeams from '@microsoft/teams-js';
 import { SharepointLogoIcon } from '@fluentui/react-icons-mdl2-branded';
 import { Text } from '@fluentui/react-northstar';
 // Types
-import { ItemKey, ItemValue } from '../types/reducer';
+import { ItemKey, ItemValue } from '../types/state';
 import { Drive } from '../types/entity';
 
 export interface DriveMenuItemProps {

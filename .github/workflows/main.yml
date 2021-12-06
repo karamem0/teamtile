@@ -2,7 +2,6 @@ on:
   push:
     branches:
       - main
-      - develop
 
 jobs:
   build:
@@ -19,8 +18,8 @@ jobs:
         working-directory: source/client
       - name: Build client
         env:
-          REACT_APP_AUTH_TENANT_ID: ${{secrets.APP_TENANT_ID}}
-          REACT_APP_AUTH_CLIENT_ID: ${{secrets.APP_CLIENT_ID}}
+          REACT_APP_AUTH_TENANT_ID: ${{secrets.PRD_TENANT_ID}}
+          REACT_APP_AUTH_CLIENT_ID: ${{secrets.PRD_CLIENT_ID}}
         run: npm run build
         working-directory: source/client
       - name: Test client
@@ -52,8 +51,9 @@ jobs:
         shell: pwsh
         run: |
           $content = Get-Content -Path manifest/manifest.json
-          $content = $content -replace "{{ClientId}}", "${{secrets.APP_CLIENT_ID}}"
-          $content = $content -replace "{{DomainName}}", "${{secrets.APP_DOMAIN_NAME}}"
+          $content = $content -replace "{{AppId}}", "${{secrets.PRD_APP_ID}}"
+          $content = $content -replace "{{ClientId}}", "${{secrets.PRD_CLIENT_ID}}"
+          $content = $content -replace "{{DomainName}}", "${{secrets.PRD_DOMAIN_NAME}}"
           Out-File -FilePath manifest/manifest.json -InputObject $content -Encoding UTF8
       - name: Copy manifest file
         shell: pwsh
@@ -81,5 +81,5 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: teamtile
+          app-name: ${{secrets.PRD_APP_NAME}}
           package: build

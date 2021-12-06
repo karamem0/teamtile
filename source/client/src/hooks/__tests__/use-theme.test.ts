@@ -10,9 +10,11 @@
 
 // Microsoft Teams
 const microsoftTeams = {
-  initialize: jest.fn(),
-  getContext: jest.fn(),
-  registerOnThemeChangeHandler: jest.fn()
+  app: {
+    initialize: jest.fn(),
+    getContext: jest.fn(),
+    registerOnThemeChangeHandler: jest.fn()
+  }
 };
 jest.mock('@microsoft/teams-js', () => ({
   __esModule: true,
@@ -20,7 +22,7 @@ jest.mock('@microsoft/teams-js', () => ({
 }));
 
 // Testing Library
-import { renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
 // Fluent UI
 import {
   teamsDarkV2Theme,
@@ -37,58 +39,63 @@ beforeEach(() => {
 
 describe('useTheme', () => {
 
-  it('return default theme', async () => {
+  it('return default theme', () => {
     const params = {
       context: {
-        theme: 'default'
+        app: {
+          theme: 'default'
+        }
       }
     };
-    microsoftTeams.initialize
-      .mockImplementation((callback) => callback && callback());
-    microsoftTeams.getContext
-      .mockImplementation((callback) => callback && callback(params.context));
-    const { result } = renderHook(useTheme);
-    const [ theme ] = result.current;
-    expect(theme).toBe(teamsV2Theme);
-    expect(microsoftTeams.initialize).toBeCalled();
-    expect(microsoftTeams.getContext).toBeCalled();
-    expect(microsoftTeams.registerOnThemeChangeHandler).toBeCalled();
+    microsoftTeams.app.getContext
+      .mockResolvedValue(params.context);
+    act(() => {
+      const { result } = renderHook(useTheme);
+      const [ theme ] = result.current;
+      expect(theme).toBe(teamsV2Theme);
+    });
   });
 
   it('return dark theme', async () => {
     const params = {
       context: {
-        theme: 'dark'
+        app: {
+          theme: 'dark'
+        }
       }
     };
-    microsoftTeams.initialize
-      .mockImplementation((callback) => callback && callback());
-    microsoftTeams.getContext
-      .mockImplementation((callback) => callback && callback(params.context));
-    const { result } = renderHook(useTheme);
-    const [ theme ] = result.current;
-    expect(theme).toBe(teamsDarkV2Theme);
-    expect(microsoftTeams.initialize).toBeCalled();
-    expect(microsoftTeams.getContext).toBeCalled();
-    expect(microsoftTeams.registerOnThemeChangeHandler).toBeCalled();
+    microsoftTeams.app.getContext
+      .mockResolvedValue(params.context);
+    await act(async () => {
+      const { result, waitForNextUpdate } = renderHook(useTheme);
+      await waitForNextUpdate();
+      const [ theme ] = result.current;
+      expect(theme).toBe(teamsDarkV2Theme);
+      expect(microsoftTeams.app.initialize).toBeCalled();
+      expect(microsoftTeams.app.getContext).toBeCalled();
+      expect(microsoftTeams.app.registerOnThemeChangeHandler).toBeCalled();
+    });
   });
 
-  it('return high contrast theme', () => {
+  it('return high contrast theme', async () => {
     const params = {
       context: {
-        theme: 'contrast'
+        app: {
+          theme: 'contrast'
+        }
       }
     };
-    microsoftTeams.initialize
-      .mockImplementation((callback) => callback && callback());
-    microsoftTeams.getContext
-      .mockImplementation((callback) => callback && callback(params.context));
-    const { result } = renderHook(useTheme);
-    const [ theme ] = result.current;
-    expect(theme).toBe(teamsHighContrastTheme);
-    expect(microsoftTeams.initialize).toBeCalled();
-    expect(microsoftTeams.getContext).toBeCalled();
-    expect(microsoftTeams.registerOnThemeChangeHandler).toBeCalled();
+    microsoftTeams.app.getContext
+      .mockResolvedValue(params.context);
+    await act(async () => {
+      const { result, waitForNextUpdate } = renderHook(useTheme);
+      await waitForNextUpdate();
+      const [ theme ] = result.current;
+      expect(theme).toBe(teamsHighContrastTheme);
+      expect(microsoftTeams.app.initialize).toBeCalled();
+      expect(microsoftTeams.app.getContext).toBeCalled();
+      expect(microsoftTeams.app.registerOnThemeChangeHandler).toBeCalled();
+    });
   });
 
 });

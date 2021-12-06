@@ -6,12 +6,12 @@
 // https://github.com/karamem0/teamtile/blob/master/LICENSE
 //
 
-export * from './put-channels/action';
-export * from './put-drives/action';
-export * from './put-filter/action';
-export * from './put-keys/action';
-export * from './put-loading/action';
-export * from './put-member-icons/action';
-export * from './put-members/action';
-export * from './put-team-icons/action';
-export * from './put-teams/action';
+export * from './set-channels/action';
+export * from './set-drives/action';
+export * from './set-filter/action';
+export * from './set-keys/action';
+export * from './set-loading/action';
+export * from './set-member-icons/action';
+export * from './set-members/action';
+export * from './set-team-icons/action';
+export * from './set-teams/action';

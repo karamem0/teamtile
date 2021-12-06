@@ -20,22 +20,21 @@ export interface TeamVisibilityIconProps {
 
 export const TeamVisibilityIcon = ({ visibility }: TeamVisibilityIconProps): React.ReactElement | null => {
 
-  if (visibility === VisibilityType.Public) {
-    return (
-      <Text color="brand">
-        <GlobeIcon className="card-visibility-icon" />
-      </Text>
-    );
+  switch (visibility) {
+    case VisibilityType.public:
+      return (
+        <Text color="brand">
+          <GlobeIcon className="card-visibility-icon" />
+        </Text>
+      );
+    case VisibilityType.private:
+      return (
+        <Text color="brand">
+          <LockIcon className="card-visibility-icon" />
+        </Text>
+      );
+    default:
+      return null;
   }
-
-  if (visibility === VisibilityType.Private) {
-    return (
-      <Text color="brand">
-        <LockIcon className="card-visibility-icon" />
-      </Text>
-    );
-  }
-
-  return null;
 
 };

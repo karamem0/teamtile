@@ -9,7 +9,7 @@
 // React
 import React from 'react';
 // Microsoft Teams
-import * as microsoftTeams from '@microsoft/teams-js';
+import { core } from '@microsoft/teams-js';
 // Fluent UI
 import {
   List,
@@ -19,56 +19,58 @@ import {
 import { GroupIcon } from '@fluentui/react-icons-mdl2';
 // Components
 import { MemberIcon } from './member-icon';
-import { MenuItemFilter } from './menu-item-filter';
+import { MemberMenuItemFilter } from './member-menu-item-filter';
+// Contexts
+import { useReducerContext } from '../contexts/reducer-context';
 // Hooks
 import { useMemberIcons } from '../hooks/use-member-icons';
 // Types
 import { Icon, Member } from '../types/entity';
-import { ItemKey, ItemValue } from '../types/reducer';
+import { ItemKey, ItemValue } from '../types/state';
 
 export interface MemberMenuItemProps {
   itemKey: ItemKey,
   itemValue: ItemValue
 }
 
-export const MemberMenuItem = ({ itemKey, itemValue }: MemberMenuItemProps): React.ReactElement | null => {
+export const MemberMenuItem = ({ itemKey, itemValue: { members } }: MemberMenuItemProps): React.ReactElement | null => {
 
-  const [ getMemberIcons, dispatchMemberIcons ] = useMemberIcons();
+  const { dispatchMemberIcons } = useReducerContext();
+  const [ getMemberIcons ] = useMemberIcons();
 
   const handleClick = React.useCallback((value: string | null | undefined) => {
     if (!value) {
       return;
     }
-    microsoftTeams.executeDeepLink(`https://teams.microsoft.com/l/chat/0/0?users=${value}`);
+    core.executeDeepLink(`https://teams.microsoft.com/l/chat/0/0?users=${value}`);
   }, []);
 
   const handleOpenChange = React.useCallback(() => {
+    if (!members) {
+      return;
+    }
     (async () => {
-      if (!itemValue?.members) {
-        return;
-      }
-      const icons = await getMemberIcons(itemValue.members
-        .map(member => member.userId)
-        .filter((key): key is Exclude<typeof key, null | undefined> => Boolean(key)));
-      if (!icons) {
-        return;
-      }
-      await dispatchMemberIcons(itemKey, icons);
+      dispatchMemberIcons({
+        key: itemKey,
+        value: await getMemberIcons(members
+          .map(member => member.userId)
+          .filter((key): key is Exclude<typeof key, null | undefined> => Boolean(key)))
+      });
     })();
   }, [
     itemKey,
-    itemValue,
+    members,
     getMemberIcons,
     dispatchMemberIcons
   ]);
 
-  if (!itemValue?.members) {
+  if (!members) {
     return null;
   }
 
   return (
     <MemberMenuItemPresenterMemo
-      members={itemValue.members}
+      members={members}
       onClick={handleClick}
       onOpenChange={handleOpenChange} />
   );
@@ -76,7 +78,7 @@ export const MemberMenuItem = ({ itemKey, itemValue }: MemberMenuItemProps): Rea
 };
 
 interface MemberMenuItemPresenterProps {
-  members: Member[],
+  members: (Member & Icon)[],
   onClick?: (value: string | null | undefined) => void,
   onOpenChange?: () => void
 }
@@ -92,7 +94,7 @@ const MemberMenuItemPresenter = ({
       <Popup
         content={
           <div className="card-popup-menu">
-            <MenuItemFilter
+            <MemberMenuItemFilter
               renderer={(members: (Member & Icon)[]) => (
                 <List
                   items={
