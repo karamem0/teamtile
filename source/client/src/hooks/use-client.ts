@@ -9,7 +9,7 @@
 // React
 import React from 'react';
 // Microsoft Teams
-import * as microsoftTeams from '@microsoft/teams-js';
+import { app } from '@microsoft/teams-js';
 // Microsoft Graph
 import { Client } from '@microsoft/microsoft-graph-client';
 // Utils
@@ -37,7 +37,8 @@ export const useClient = (): [ Client | null, string | null ] => {
   }, []);
 
   React.useEffect(() => {
-    microsoftTeams.initialize(async () => {
+    (async () => {
+      await app.initialize();
       try {
         await getAccessToken();
         setClient(Client.initWithMiddleware({
@@ -45,18 +46,18 @@ export const useClient = (): [ Client | null, string | null ] => {
             getAccessToken: getAccessToken
           }
         }));
-        microsoftTeams.appInitialization.notifySuccess();
+        app.notifySuccess();
       } catch (error) {
         const message = error instanceof Error
           ? error.message
           : Object.prototype.toString.call(error);
         setError(message);
-        microsoftTeams.appInitialization.notifyFailure({
-          reason: microsoftTeams.appInitialization.FailedReason.AuthFailed,
+        app.notifyFailure({
+          reason: app.FailedReason.AuthFailed,
           message: message
         });
       }
-    });
+    })();
   }, [ getAccessToken ]);
 
   return [

@@ -9,96 +9,43 @@
 // React
 import React from 'react';
 // Contexts
-import { useErrorContext } from '../contexts/error-context';
-import { useReducerContext } from '../contexts/reducer-context';
 import { useServiceContext } from '../contexts/service-context';
-// Reducers
-import { putMembers } from '../reducers/action';
 // Types
-import { ItemKey } from '../types/reducer';
+import { ItemKey } from '../types/state';
 import { Member } from '../types/entity';
 
 export const useMembers = (): [
-  (keys: ItemKey[]) => Promise<Map<ItemKey, Member[]> | undefined>,
-  (values: Map<ItemKey, Member[]>) => Promise<void>
+  (keys: ItemKey[]) => Promise<Map<ItemKey, Member[]>>
 ] => {
 
-  const { setError } = useErrorContext();
-  const { dispatch } = useReducerContext();
-  const { service } = useServiceContext();
+  const { services } = useServiceContext();
 
   const getMembers = React.useCallback(async (keys: ItemKey[]) => {
-    if (!setError) {
-      return;
-    }
-    if (!service) {
-      return;
-    }
-    try {
-      const table = new Map<ItemKey, Member[]>();
-      const locals = await service.local.getMembers(keys);
-      const servers = await service.server.getMembers(
-        Array
-          .from(locals)
-          .flatMap(([ key, value ]) => value ? [] : [ key ])
-      );
-      keys.forEach(async (id) => {
-        const server = servers.get(id);
-        if (server) {
-          const values = server
-            .map((value) => (
-              value.id
-                ? {
-                    id: value.id,
-                    displayName: value.displayName ?? null,
-                    userId: value.userId ?? null,
-                    email: value.email ?? null
-                  }
-                : undefined))
-            .filter((value): value is Exclude<typeof value, undefined> => Boolean(value));
-          table.set(id, values);
-          await service.local.putMembers(id, values);
-        }
-        const local = locals.get(id);
-        if (local) {
-          table.set(id, local);
-        }
-      });
-      return table;
-    } catch (error) {
-      const message = error instanceof Error
-        ? error.message
-        : Object.prototype.toString.call(error);
-      setError(message);
-    }
+    const cache = await services.cache.getMembers(keys);
+    const graph = await services.graph
+      .getMembers(keys.filter((key) => !cache.has(key)))
+      .then((map) => new Map(Array.from(map)
+        .map<[string, Member[]]>(([ key, value ]) => ([
+          key,
+          value.map((value) => ({
+            id: value.id,
+            displayName: value.displayName ?? null,
+            userId: value.userId ?? null,
+            email: value.email ?? null
+          }))
+        ]))));
+    Array.from(graph)
+      .forEach(([ key, values ]) => services.cache.setMembers(key, values));
+    return new Map<string, Member[]>([
+      ...Array.from(cache),
+      ...Array.from(graph)
+    ]);
   }, [
-    setError,
-    service
-  ]);
-
-  const dispatchMembers = React.useCallback(async (values: Map<ItemKey, Member[]>) => {
-    if (!setError) {
-      return;
-    }
-    if (!dispatch) {
-      return;
-    }
-    try {
-      dispatch(putMembers(values));
-    } catch (error) {
-      const message = error instanceof Error
-        ? error.message
-        : Object.prototype.toString.call(error);
-      setError(message);
-    }
-  }, [
-    setError,
-    dispatch
+    services
   ]);
 
   return [
-    getMembers,
-    dispatchMembers
+    getMembers
   ];
 
 };

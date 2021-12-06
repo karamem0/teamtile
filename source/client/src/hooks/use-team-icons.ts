@@ -9,82 +9,35 @@
 // React
 import React from 'react';
 // Contexts
-import { useErrorContext } from '../contexts/error-context';
-import { useReducerContext } from '../contexts/reducer-context';
 import { useServiceContext } from '../contexts/service-context';
-// Reducers
-import { putTeamIcons } from '../reducers/action';
 
 export const useTeamIcons = (): [
-  (keys: string[]) => Promise<Map<string, string> | undefined>,
-  (values: Map<string, string>) => Promise<void>
+  (keys: string[]) => Promise<Map<string, string | null>>
 ] => {
 
-  const { setError } = useErrorContext();
-  const { dispatch } = useReducerContext();
-  const { service } = useServiceContext();
+  const { services } = useServiceContext();
 
   const getTeamIcons = React.useCallback(async (keys: string[]) => {
-    if (!setError) {
-      return;
-    }
-    if (!service) {
-      return;
-    }
-    try {
-      const table = new Map<string, string>();
-      const locals = await service.local.getIcons(keys);
-      const servers = await service.server.getTeamIcons(
-        Array
-          .from(locals)
-          .flatMap(([ key, value ]) => value ? [] : [ key ])
-      );
-      keys.forEach(async (key) => {
-        const server = servers.get(key);
-        if (server) {
-          table.set(key, server);
-          await service.local.putIcon(key, server);
-        }
-        const local = locals.get(key);
-        if (local) {
-          table.set(key, local);
-        }
-      });
-      return table;
-    } catch (error) {
-      const message = error instanceof Error
-        ? error.message
-        : Object.prototype.toString.call(error);
-      setError(message);
-    }
+    const cache = await services.cache.getIcons(keys);
+    const graph = await services.graph
+      .getTeamIcons(keys.filter((key) => !cache.has(key)))
+      .then((map) => new Map(Array.from(map)
+        .map(([ key, value ]) => ([
+          key,
+          value
+        ]))));
+    Array.from(graph)
+      .forEach(([ key, value ]) => services.cache.setIcon(key, value));
+    return new Map<string, string | null>([
+      ...Array.from(cache),
+      ...Array.from(graph)
+    ]);
   }, [
-    setError,
-    service
-  ]);
-
-  const dispatchTeamIcons = React.useCallback(async (values: Map<string, string>) => {
-    if (!setError) {
-      return;
-    }
-    if (!dispatch) {
-      return;
-    }
-    try {
-      dispatch(putTeamIcons(values));
-    } catch (error) {
-      const message = error instanceof Error
-        ? error.message
-        : Object.prototype.toString.call(error);
-      setError(message);
-    }
-  }, [
-    setError,
-    dispatch
+    services
   ]);
 
   return [
-    getTeamIcons,
-    dispatchTeamIcons
+    getTeamIcons
   ];
 
 };

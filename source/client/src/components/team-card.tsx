@@ -23,7 +23,7 @@ import {
   Item,
   ItemKey,
   ItemValue
-} from '../types/reducer';
+} from '../types/state';
 
 export interface TeamCardProps {
   item: Item

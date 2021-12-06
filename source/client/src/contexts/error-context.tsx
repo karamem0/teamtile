@@ -11,13 +11,10 @@ import React from 'react';
 
 interface ErrorContextValue {
   error: string | null,
-  setError: React.Dispatch<React.SetStateAction<string | null>> | null
+  setError: React.Dispatch<React.SetStateAction<string | null>>
 }
 
-const ErrorContext = React.createContext<ErrorContextValue>({
-  error: null,
-  setError: null
-});
+const ErrorContext = React.createContext<ErrorContextValue | null>(null);
 
 interface ErrorContextProviderProps {
   children: React.ReactNode
@@ -46,18 +43,10 @@ export const ErrorContextProvider = ({ children }: ErrorContextProviderProps): R
 
 };
 
-interface ErrorContextConsumerProps {
-  children: (value: ErrorContextValue) => React.ReactNode
-}
-
-export const ErrorContextConsumer = ({ children }: ErrorContextConsumerProps): React.ReactElement | null => {
-
-  return (
-    <ErrorContext.Consumer>
-      {children}
-    </ErrorContext.Consumer>
-  );
-
+export const useErrorContext = (): ErrorContextValue => {
+  const value = React.useContext(ErrorContext);
+  if (!value) {
+    throw new Error('The context is not initialzed: ErrorContext');
+  }
+  return value;
 };
-
-export const useErrorContext = (): ErrorContextValue => React.useContext(ErrorContext);

@@ -9,16 +9,12 @@
 // Testing Library
 import { act, renderHook } from '@testing-library/react-hooks';
 // Contexts
-import * as ErrorContext from '../../contexts/error-context';
-import * as ReducerContext from '../../contexts/reducer-context';
 import * as ServiceContext from '../../contexts/service-context';
 // Hooks
 import { useKeys } from '../use-keys';
-// Reducers
-import { putKeys } from '../../reducers/action';
 // Services
-import { LocalService } from '../../services/local-service';
-import { ServerService } from '../../services/server-service';
+import { CacheService } from '../../services/cache-service';
+import { GraphService } from '../../services/graph-service';
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -35,22 +31,16 @@ describe('useKeys', () => {
           '02bd9fd6-8f93-4758-87c3-1fb73740a315',
           '13be6971-79db-4f33-9d41-b25589ca25af',
           '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
-        ],
-        setError: jest.fn()
+        ]
       };
-      jest
-        .spyOn(ErrorContext, 'useErrorContext')
-        .mockReturnValue({
-          setError: params.setError
-        });
       jest
         .spyOn(ServiceContext, 'useServiceContext')
         .mockReturnValue({
-          service: {
-            local: {} as LocalService,
-            server: {
+          services: {
+            cache: {} as CacheService,
+            graph: {
               getKeys: () => Promise.resolve(params.keys)
-            } as unknown as ServerService
+            } as unknown as GraphService
           }
         });
       await act(async () => {
@@ -58,100 +48,29 @@ describe('useKeys', () => {
         const [ getKeys ] = result.current;
         const keys = await getKeys();
         expect(keys).toEqual(params.keys);
-        expect(params.setError).not.toBeCalled();
       });
     });
 
     it('return error if failed', async () => {
       const params = {
-        error: 'Something went wrong',
-        setError: jest.fn()
+        error: 'Something went wrong'
       };
-      jest
-        .spyOn(ErrorContext, 'useErrorContext')
-        .mockReturnValue({
-          setError: params.setError
-        });
       jest
         .spyOn(ServiceContext, 'useServiceContext')
         .mockReturnValue({
-          service: {
-            local: {} as LocalService,
-            server: {
+          services: {
+            cache: {} as CacheService,
+            graph: {
               getKeys: () => {
                 throw new Error(params.error);
               }
-            } as unknown as ServerService
+            } as unknown as GraphService
           }
         });
-      await act(async () => {
+      act(() => {
         const { result } = renderHook(useKeys);
         const [ getKeys ] = result.current;
-        await getKeys();
-        expect(params.setError).toBeCalled();
-      });
-    });
-
-  });
-
-  describe('dispatchKeys', () => {
-
-    it('dispatch keys if succeeded', async () => {
-      const params = {
-        keys: [
-          '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-          '13be6971-79db-4f33-9d41-b25589ca25af',
-          '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
-        ],
-        setError: jest.fn(),
-        dispatch: jest.fn()
-      };
-      jest
-        .spyOn(ErrorContext, 'useErrorContext')
-        .mockReturnValue({
-          setError: params.setError
-        });
-      jest
-        .spyOn(ReducerContext, 'useReducerContext')
-        .mockReturnValue({
-          dispatch: params.dispatch
-        });
-      await act(async () => {
-        const { result } = renderHook(useKeys);
-        const [ , dispatchKeys ] = result.current;
-        await dispatchKeys(params.keys);
-        expect(params.dispatch).toBeCalledWith(putKeys(params.keys));
-        expect(params.setError).not.toBeCalled();
-      });
-    });
-
-    it('return error if failed', async () => {
-      const params = {
-        keys: [
-          '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-          '13be6971-79db-4f33-9d41-b25589ca25af',
-          '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
-        ],
-        error: 'Something went wrong',
-        setError: jest.fn()
-      };
-      jest
-        .spyOn(ErrorContext, 'useErrorContext')
-        .mockReturnValue({
-          setError: params.setError
-        });
-      jest
-        .spyOn(ReducerContext, 'useReducerContext')
-        .mockReturnValue({
-          dispatch: () => {
-            throw new Error(params.error);
-          }
-        });
-      await act(async () => {
-        const { result } = renderHook(useKeys);
-        const [ , dispatchKeys ] = result.current;
-        await dispatchKeys(params.keys);
-        expect(params.setError).toBeCalled();
+        expect(getKeys).rejects.toThrow(params.error);
       });
     });
 

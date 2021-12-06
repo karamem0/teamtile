@@ -9,7 +9,7 @@
 // React
 import React from 'react';
 // Microsoft Teams
-import * as microsoftTeams from '@microsoft/teams-js';
+import { core } from '@microsoft/teams-js';
 // Fluent UI
 import {
   List,
@@ -18,9 +18,9 @@ import {
 } from '@fluentui/react-northstar';
 import { ContextMenuIcon } from '@fluentui/react-icons-mdl2';
 // Components
-import { MenuItemFilter } from './menu-item-filter';
+import { ChannelMenuItemFilter } from './channel-menu-item-filter';
 // Types
-import { ItemKey, ItemValue } from '../types/reducer';
+import { ItemKey, ItemValue } from '../types/state';
 import { Channel } from '../types/entity';
 
 export interface ChannelMenuItemProps {
@@ -28,22 +28,22 @@ export interface ChannelMenuItemProps {
   itemValue: ItemValue
 }
 
-export const ChannelMenuItem = ({ itemValue }: ChannelMenuItemProps): React.ReactElement | null => {
+export const ChannelMenuItem = ({ itemValue: { channels } }: ChannelMenuItemProps): React.ReactElement | null => {
 
   const handleClick = React.useCallback((value: string | null | undefined) => {
     if (!value) {
       return;
     }
-    microsoftTeams.executeDeepLink(value);
+    core.executeDeepLink(value);
   }, []);
 
-  if (!itemValue?.channels) {
+  if (!channels) {
     return null;
   }
 
   return (
     <ChannelMenuItemPresenterMemo
-      channels={itemValue.channels}
+      channels={channels}
       onClick={handleClick} />
   );
 
@@ -64,7 +64,7 @@ const ChannelMenuItemPresenter = ({
       <Popup
         content={
           <div className="card-popup-menu">
-            <MenuItemFilter
+            <ChannelMenuItemFilter
               renderer={(channels: Channel[]) => (
                 <List
                   items={
