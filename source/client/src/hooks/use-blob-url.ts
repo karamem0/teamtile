@@ -1,15 +1,18 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// React
 import React from 'react';
 
-export const useBlobUrl = (data: string | null | undefined): [string | null] => {
+interface BlobUrlValue {
+  url: string | null
+}
+
+export const useBlobUrl = (data: string | null | undefined): BlobUrlValue => {
 
   const [ url, setUrl ] = React.useState<string | null>(null);
 
@@ -17,9 +20,9 @@ export const useBlobUrl = (data: string | null | undefined): [string | null] => 
     if (!data) {
       return;
     }
-    const bytes = Buffer.from(data, 'base64').toString('binary');
-    const array = new Uint8Array(bytes.length);
-    for (let index = 0; index < bytes.length; index++) {
+    const bytes = window.atob(data);
+    const array = Uint8Array.from(bytes, c => c.charCodeAt(0));
+    for (let index = 0; index < array.length; index++) {
       array[index] = bytes.charCodeAt(index);
     }
     const blob = new Blob([ array ]);
@@ -31,10 +34,12 @@ export const useBlobUrl = (data: string | null | undefined): [string | null] => 
       }
       URL.revokeObjectURL(url);
     };
-  }, [ data ]);
+  }, [
+    data
+  ]);
 
-  return [
+  return {
     url
-  ];
+  };
 
 };

@@ -2,11 +2,24 @@ on:
   push:
     branches:
       - main
+      - develop
 
 jobs:
   build:
     runs-on: windows-latest
     steps:
+      - name: Set environment variables
+        if: contains(github.ref, 'refs/heads/main')
+        run: |
+          ConvertFrom-Json -InputObject '${{secrets.PRD_GITHUB_ENV}}' `
+            | %{ $_.PSObject.Properties } `
+            | %{ Add-Content -Path $env:GITHUB_ENV -Value ($_.Name + '=' + $_.Value) }
+      - name: Set environment variables
+        if: contains(github.ref, 'refs/heads/develop')
+        run: |
+          ConvertFrom-Json -InputObject '${{secrets.DEV_GITHUB_ENV}}' `
+            | %{ $_.PSObject.Properties } `
+            | %{ Add-Content -Path $env:GITHUB_ENV -Value ($_.Name + '=' + $_.Value) }
       - name: Checkout repos
         uses: actions/checkout@v2
       - name: Setup Node.js 16.x
@@ -18,13 +31,20 @@ jobs:
         working-directory: source/client
       - name: Build client
         env:
-          REACT_APP_AUTH_TENANT_ID: ${{secrets.PRD_TENANT_ID}}
-          REACT_APP_AUTH_CLIENT_ID: ${{secrets.PRD_CLIENT_ID}}
+          REACT_APP_AUTH_TENANT_ID: ${{env.TENANT_ID}}
+          REACT_APP_AUTH_APP_ID: ${{env.APP_ID}}
+          REACT_APP_APP_INSIGHTS_INSTRUMENTATION_KEY: ${{env.APP_INSIGHTS_INSTRUMENTATION_KEY}}
         run: npm run build
         working-directory: source/client
       - name: Test client
-        run: npm run test
+        run: npm run test-ci
         working-directory: source/client
+      - name: Publish test results
+        uses: enricomi/publish-unit-test-result-action/composite@v1
+        if: always()
+        with:
+          files: source/client/coverage/junit.xml
+          check_name: test results
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
@@ -32,44 +52,46 @@ jobs:
       - name: Restore server
         run: dotnet restore source/server
       - name: Build server
-        run: dotnet build source/server -c Release
-      - name: Publish server
         run: dotnet publish source/server -c Release
-      - name: Copy build file
-        shell: pwsh
+      - name: Copy build files
         run: |
           New-Item -Type Directory -Path artifact/build
           Copy-Item -Path source/client/build/* -Destination artifact/build -Recurse
           New-Item -Type Directory -Path artifact/build/api
-          Copy-Item -Path source/server/bin/Release/net5.0/publish/* -Destination artifact/build/api -Recurse
-      - name: Upload build file
+          Copy-Item -Path source/server/bin/Release/net6.0/publish/* -Destination artifact/build/api -Recurse
+      - name: Upload build files
         uses: actions/upload-artifact@v2
         with:
           name: teamtile-build
           path: artifact/build
-      - name: Build manifest file
-        shell: pwsh
+      - name: Rewrite manifest.json
         run: |
           $content = Get-Content -Path manifest/manifest.json
-          $content = $content -replace "{{AppId}}", "${{secrets.PRD_APP_ID}}"
-          $content = $content -replace "{{ClientId}}", "${{secrets.PRD_CLIENT_ID}}"
-          $content = $content -replace "{{DomainName}}", "${{secrets.PRD_DOMAIN_NAME}}"
+          $content = $content -replace "{{AppId}}", "${{env.APP_ID}}"
+          $content = $content -replace "{{AppDomain}}", "${{env.APP_DOMAIN}}"
           Out-File -FilePath manifest/manifest.json -InputObject $content -Encoding UTF8
-      - name: Copy manifest file
-        shell: pwsh
-        run: |
-          New-Item -Type Directory -Path artifact/manifest
-          Copy-Item -Path manifest/* -Destination artifact/manifest -Recurse
-      - name: Upload manifest file
+      - name: Upload manifest files
         uses: actions/upload-artifact@v2
         with:
           name: teamtile-manifest
-          path: artifact/manifest
+          path: manifest
   deploy:
     needs: build
     runs-on: windows-latest
     steps:
-      - name: Download build artifact
+      - name: Set environment variables
+        if: contains(github.ref, 'refs/heads/main')
+        run: |
+          ConvertFrom-Json -InputObject '${{secrets.PRD_GITHUB_ENV}}' `
+            | %{ $_.PSObject.Properties } `
+            | %{ Add-Content -Path $env:GITHUB_ENV -Value ($_.Name + '=' + $_.Value) }
+      - name: Set environment variables
+        if: contains(github.ref, 'refs/heads/develop')
+        run: |
+          ConvertFrom-Json -InputObject '${{secrets.DEV_GITHUB_ENV}}' `
+            | %{ $_.PSObject.Properties } `
+            | %{ Add-Content -Path $env:GITHUB_ENV -Value ($_.Name + '=' + $_.Value) }
+      - name: Download build artifacts
         uses: actions/download-artifact@v2
         with:
           name: teamtile-build
@@ -81,5 +103,5 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{secrets.PRD_APP_NAME}}
+          app-name: ${{env.APP_NAME}}
           package: build

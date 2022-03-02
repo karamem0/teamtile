@@ -1,41 +1,46 @@
 {
-  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.11/MicrosoftTeams.schema.json",
-  "manifestVersion": "1.11",
-  "version": "1.7.5",
-  "showLoadingIndicator": true,
-  "isFullScreen": true,
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.12/MicrosoftTeams.schema.json",
+  "version": "1.8.0",
+  "manifestVersion": "1.12",
   "id": "{{AppId}}",
   "packageName": "dev.karamem0.teamtile",
-  "developer": {
-    "name": "karamem0",
-    "websiteUrl": "https://github.com/karamem0/teamtile",
-    "privacyUrl": "https://github.com/karamem0/teamtile",
-    "termsOfUseUrl": "https://github.com/karamem0/teamtile"
-  },
-  "icons": {
-    "color": "icon_color.png",
-    "outline": "icon_outline.png"
-  },
   "name": {
     "short": "Teamtile",
     "full": "Teamtile"
   },
+  "developer": {
+    "name": "karamem0",
+    "websiteUrl": "https://github.com/karamem0/teamtile",
+    "privacyUrl": "https://github.com/karamem0/teamtile/blob/main/PRIVACY.md",
+    "termsOfUseUrl": "https://github.com/karamem0/teamtile/blob/main/TERMS_OF_USE.md"
+  },
   "description": {
-    "short": "Display your joined teams in tile view and access quickly.",
-    "full": "Are you frustrated with finding a team? Teamtile provides these features to you:\n- View your joined teams as tiles\n- View team members and channels\n- Link to SharePoint Document Library"
+    "short": "Tile your teams for quick access.",
+    "full": "Are you frustrated with finding a team? Teamtile provides these features to you:\n- View your joined teams as tiles\n- View team members and channels\n- Link to SharePoint Document Library\n- Filter teams, channels, members"
+  },
+  "icons": {
+    "outline": "icon_outline.png",
+    "color": "icon_color.png"
   },
   "accentColor": "#FFFFFF",
   "staticTabs": [
     {
       "entityId": "index",
       "name": "Teamtile",
-      "contentUrl": "https://{{DomainName}}",
-      "websiteUrl": "https://{{DomainName}}",
+      "contentUrl": "https://{{AppDomain}}",
+      "websiteUrl": "https://{{AppDomain}}",
       "scopes": [
         "personal"
       ]
     }
   ],
+  "validDomains": [
+    "{{AppDomain}}"
+  ],
+  "webApplicationInfo": {
+    "id": "{{AppId}}",
+    "resource": "api://{{AppDomain}}/{{AppId}}"
+  },
   "localizationInfo": {
     "defaultLanguageTag": "en-us",
     "additionalLanguages": [
@@ -45,11 +50,6 @@
       }
     ]
   },
-  "validDomains": [
-    "{{DomainName}}"
-  ],
-  "webApplicationInfo": {
-    "id": "{{ClientId}}",
-    "resource": "api://{{DomainName}}/{{ClientId}}"
-  }
+  "showLoadingIndicator": true,
+  "isFullScreen": true
 }

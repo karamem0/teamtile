@@ -1,12 +1,17 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// Microsoft Graph
+import {
+  BatchRequestContent,
+  BatchResponseContent,
+  Client,
+  PageIterator
+} from '@microsoft/microsoft-graph-client';
 import {
   AadUserConversationMember,
   Channel,
@@ -14,13 +19,7 @@ import {
   Group,
   Team
 } from '@microsoft/microsoft-graph-types';
-import {
-  BatchRequestContent,
-  BatchResponseContent,
-  Client,
-  PageIterator
-} from '@microsoft/microsoft-graph-client';
-// Utils
+
 import { compare } from '../utils/compare';
 
 export class GraphService {
@@ -37,7 +36,7 @@ export class GraphService {
     const values: string[] = [];
     const response = await this.client
       .api('/me/memberOf/microsoft.graph.group')
-      .version('beta')
+      .version('v1.0')
       .count(true)
       .select('id')
       .filter('resourceProvisioningOptions/any(x:x eq \'Team\')')

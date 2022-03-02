@@ -1,16 +1,15 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// React
 import React from 'react';
-// Fluent UI
+
 import { Avatar } from '@fluentui/react-northstar';
-// Hooks
+
 import { useBlobUrl } from '../hooks/use-blob-url';
 
 export interface MemberIconProps {
@@ -20,11 +19,11 @@ export interface MemberIconProps {
 
 export const MemberIcon = ({ icon, name }: MemberIconProps): React.ReactElement | null => {
 
-  const [ image ] = useBlobUrl(icon);
+  const { url } = useBlobUrl(icon);
 
   return (
     <Avatar
-      image={image}
+      image={url}
       name={name || undefined}
       size="small" />
   );

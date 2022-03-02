@@ -1,14 +1,11 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-/* eslint-disable import/first */
-
-// Microsoft Teams
 const microsoftTeams = {
   app: {
     initialize: jest.fn(),
@@ -20,10 +17,9 @@ const microsoftTeams = {
   }
 };
 jest.mock('@microsoft/teams-js', () => ({
-  __esModule: true,
   ...microsoftTeams
 }));
-// Microsoft Graph
+
 const microsoftGraph = {
   Client: {
     initWithMiddleware: jest.fn()
@@ -34,12 +30,10 @@ jest.mock('@microsoft/microsoft-graph-client', () => ({
   ...microsoftGraph
 }));
 
-// Testing Library
 import { renderHook } from '@testing-library/react-hooks';
-// Hooks
-import { useClient } from '../use-client';
-// Urils
+
 import * as tokenManager from '../../utils/token-manager';
+import { useClient } from '../use-client';
 
 beforeEach(() => {
   jest.clearAllMocks();

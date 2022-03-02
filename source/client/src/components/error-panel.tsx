@@ -1,28 +1,41 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// React
 import React from 'react';
-// Fluent UI
+
 import { ErrorBadgeIcon } from '@fluentui/react-icons-mdl2';
 import { Text } from '@fluentui/react-northstar';
+
+import { css } from '@emotion/react';
+
+import { CenterLayout } from './center-layout';
 
 export const ErrorPanel = (): React.ReactElement | null => {
 
   return (
-    <div className="panel panel-center">
-      <div className="center">
-        <ErrorBadgeIcon className="panel-center-icon" />
+    <CenterLayout>
+      <div
+        css={css`
+          text-align: center;
+        `}>
+        <ErrorBadgeIcon
+          css={css`
+            width: 2rem;
+            height: 2rem;
+            margin: 0.5rem;
+          `} />
         <Text
-          className="panel-center-text"
-          content="Something went wrong." />
+          content="Something went wrong."
+          css={css`
+            display: block;
+          `} />
       </div>
-    </div>
+    </CenterLayout>
   );
 
 };

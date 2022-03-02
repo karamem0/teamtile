@@ -1,18 +1,17 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// Types
+import { KeyValue } from '../../types/common';
 import {
   ItemKey,
   ItemValue,
   State
 } from '../../types/state';
-import { KeyValue } from '../../types/common';
 
 export const setMemberIcons = (state: State, payload: KeyValue<ItemKey, Map<string, string | null>>): State => {
   const { items } = state;

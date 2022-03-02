@@ -1,51 +1,44 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// React
 import React from 'react';
-// Microsoft Teams
-import * as microsoftTeams from '@microsoft/teams-js';
-// Fluent UI
+
 import { SharepointLogoIcon } from '@fluentui/react-icons-mdl2-branded';
-import { Text } from '@fluentui/react-northstar';
-// Types
-import { ItemKey, ItemValue } from '../types/state';
+
+import { app } from '@microsoft/teams-js';
+
+import { KeyValue } from '../types/common';
 import { Drive } from '../types/entity';
+import { ItemKey, ItemValue } from '../types/state';
+
+import { CardMenuItem } from './card-menu-item';
 
 export interface DriveMenuItemProps {
-  itemKey: ItemKey,
-  itemValue: ItemValue
+  item: KeyValue<ItemKey, ItemValue>
 }
 
-export const DriveMenuItem = ({ itemValue }: DriveMenuItemProps): React.ReactElement | null => {
+export const DriveMenuItem = ({ item }: DriveMenuItemProps): React.ReactElement | null => {
 
-  const handleClick = React.useCallback((value: string | null | undefined) => {
-    if (!value) {
-      return;
-    }
-    microsoftTeams.executeDeepLink(value);
-  }, []);
-
-  if (!itemValue?.drive) {
+  if (!item.value.drive) {
     return null;
   }
 
   return (
     <DriveMenuItemPresenterMemo
-      drive={itemValue.drive}
-      onClick={handleClick} />
+      drive={item.value.drive}
+      onClick={(value) => app.openLink(value)} />
   );
 
 };
 
 interface DriveMenuItemPresenterProps {
   drive: Drive,
-  onClick?: (value: string | null | undefined) => void
+  onClick: (value: string) => void
 }
 
 const DriveMenuItemPresenter = ({
@@ -54,15 +47,9 @@ const DriveMenuItemPresenter = ({
 }: DriveMenuItemPresenterProps): React.ReactElement | null => {
 
   return (
-    <div className="card-menu-item">
-      <Text
-        className="card-menu-item-content"
-        color="brand"
-        role="button"
-        onClick={() => onClick && onClick(drive.webUrl)}>
-        <SharepointLogoIcon className="card-menu-item-icon" />
-      </Text>
-    </div>
+    <CardMenuItem
+      icon={<SharepointLogoIcon />}
+      onClick={() => drive.webUrl && onClick(drive.webUrl)} />
   );
 
 };

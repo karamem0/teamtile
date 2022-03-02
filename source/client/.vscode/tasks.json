@@ -18,8 +18,8 @@
           ],
           "background": {
             "activeOnStart": true,
-            "beginsPattern": "^Starting.*$",
-            "endsPattern": "^Compiled.*$"
+            "beginsPattern": "vite v[0-9\\.]+ dev server running at:",
+            "endsPattern": "ready in [0-9]+ms\\.$"
           }
         }
       ]

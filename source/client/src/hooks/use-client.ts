@@ -1,18 +1,16 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// React
 import React from 'react';
-// Microsoft Teams
-import { app } from '@microsoft/teams-js';
-// Microsoft Graph
+
 import { Client } from '@microsoft/microsoft-graph-client';
-// Utils
+import { app } from '@microsoft/teams-js';
+
 import {
   getCachedToken,
   getClientToken,
@@ -58,7 +56,9 @@ export const useClient = (): [ Client | null, string | null ] => {
         });
       }
     })();
-  }, [ getAccessToken ]);
+  }, [
+    getAccessToken
+  ]);
 
   return [
     client,

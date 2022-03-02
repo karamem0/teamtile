@@ -1,62 +1,82 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// React
 import React from 'react';
-// React Router
 import {
   BrowserRouter,
   Route,
   Switch
 } from 'react-router-dom';
-// Contexts
+
+import { css } from '@emotion/react';
+
+import { useErrorContext } from '../contexts/error-context';
 import { ReducerContextProvider } from '../contexts/reducer-context';
 import { ServiceContextProvider } from '../contexts/service-context';
-import { useErrorContext } from '../contexts/error-context';
-// Components
+import { useInTeams } from '../hooks/use-in-teams';
+
 import { CallbackPage } from './auth/callback-page';
-import { ErrorBar } from './error-bar';
 import { LoginPage } from './auth/login-page';
+import { ErrorBar } from './error-bar';
+import { HomePage } from './home-page';
 import { MainPage } from './main-page';
 
 export const Container = (): React.ReactElement | null => {
 
   const { error } = useErrorContext();
+  const { inTeams } = useInTeams();
 
-  return (
-    <div className="container">
-      {
-        error && (
-          <ErrorBar />
-        )
-      }
-      <BrowserRouter>
-        <Switch>
-          <Route
-            exact
-            path="/">
-            <ReducerContextProvider>
-              <ServiceContextProvider>
-                <MainPage />
-              </ServiceContextProvider>
-            </ReducerContextProvider>
-          </Route>
-          <Route
-            component={LoginPage}
-            exact
-            path="/auth/login" />
-          <Route
-            component={CallbackPage}
-            exact
-            path="/auth/callback" />
-        </Switch>
-      </BrowserRouter>
-    </div>
-  );
+  switch (inTeams) {
+    case true:
+      return (
+        <div
+          css={css`
+            @media (max-width: 599px) {
+              padding: 0.5rem;
+            }
+            @media (min-width: 600px) {
+              padding: 1rem;
+            }
+          `}>
+          {
+            error && (
+              <ErrorBar />
+            )
+          }
+          <ReducerContextProvider>
+            <ServiceContextProvider>
+              <MainPage />
+            </ServiceContextProvider>
+          </ReducerContextProvider>
+        </div>
+      );
+    case false:
+      return (
+        <BrowserRouter>
+          <Switch>
+            <Route
+              exact
+              path="/">
+              <HomePage />
+            </Route>
+            <Route
+              component={LoginPage}
+              exact
+              path="/auth/login" />
+            <Route
+              component={CallbackPage}
+              exact
+              path="/auth/callback" />
+          </Switch>
+        </BrowserRouter>
+      );
+    case null:
+      return null;
+  }
 
 };

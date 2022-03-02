@@ -1,86 +1,57 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// React
 import React from 'react';
-// Microsoft Teams
-import { core } from '@microsoft/teams-js';
-// Fluent UI
+
+import { GroupIcon } from '@fluentui/react-icons-mdl2';
 import {
   List,
-  Popup,
   Text
 } from '@fluentui/react-northstar';
-import { GroupIcon } from '@fluentui/react-icons-mdl2';
-// Components
-import { MemberIcon } from './member-icon';
-import { MemberMenuItemFilter } from './member-menu-item-filter';
-// Contexts
-import { useReducerContext } from '../contexts/reducer-context';
-// Hooks
-import { useMemberIcons } from '../hooks/use-member-icons';
-// Types
+
+import { app } from '@microsoft/teams-js';
+
+import { css } from '@emotion/react';
+
+import { useItemLoader } from '../hooks/use-item-loader';
+import { KeyValue } from '../types/common';
 import { Icon, Member } from '../types/entity';
 import { ItemKey, ItemValue } from '../types/state';
 
+import { CardMenuItem } from './card-menu-item';
+import { CardPopup } from './card-popup';
+import { MemberIcon } from './member-icon';
+
 export interface MemberMenuItemProps {
-  itemKey: ItemKey,
-  itemValue: ItemValue
+  item: KeyValue<ItemKey, ItemValue>
 }
 
-export const MemberMenuItem = ({ itemKey, itemValue: { members } }: MemberMenuItemProps): React.ReactElement | null => {
+export const MemberMenuItem = ({ item }: MemberMenuItemProps): React.ReactElement | null => {
 
-  const { dispatchMemberIcons } = useReducerContext();
-  const [ getMemberIcons ] = useMemberIcons();
+  const { loadMemberIcons } = useItemLoader();
 
-  const handleClick = React.useCallback((value: string | null | undefined) => {
-    if (!value) {
-      return;
-    }
-    core.executeDeepLink(`https://teams.microsoft.com/l/chat/0/0?users=${value}`);
-  }, []);
-
-  const handleOpenChange = React.useCallback(() => {
-    if (!members) {
-      return;
-    }
-    (async () => {
-      dispatchMemberIcons({
-        key: itemKey,
-        value: await getMemberIcons(members
-          .map(member => member.userId)
-          .filter((key): key is Exclude<typeof key, null | undefined> => Boolean(key)))
-      });
-    })();
-  }, [
-    itemKey,
-    members,
-    getMemberIcons,
-    dispatchMemberIcons
-  ]);
-
-  if (!members) {
+  if (!item.value.members) {
     return null;
   }
 
   return (
     <MemberMenuItemPresenterMemo
-      members={members}
-      onClick={handleClick}
-      onOpenChange={handleOpenChange} />
+      members={item.value.members}
+      onClick={(value) => app.openLink(`https://teams.microsoft.com/l/chat/0/0?users=${value}`)}
+      onOpenChange={() => loadMemberIcons(item)} />
   );
 
 };
 
 interface MemberMenuItemPresenterProps {
   members: (Member & Icon)[],
-  onClick?: (value: string | null | undefined) => void,
-  onOpenChange?: () => void
+  onClick: (value: string) => void,
+  onOpenChange: () => void
 }
 
 const MemberMenuItemPresenter = ({
@@ -90,56 +61,51 @@ const MemberMenuItemPresenter = ({
 }: MemberMenuItemPresenterProps): React.ReactElement | null => {
 
   return (
-    <div className="card-menu-item">
-      <Popup
-        content={
-          <div className="card-popup-menu">
-            <MemberMenuItemFilter
-              renderer={(members: (Member & Icon)[]) => (
-                <List
-                  items={
-                    members.map((value) => ({
-                      key: value.id,
-                      header: (
-                        <Text
-                          className="card-popup-menu-item"
-                          role="button"
-                          onClick={() => onClick && onClick(value.email)}>
-                          <MemberIcon
-                            icon={value.icon}
-                            name={value.displayName} />
-                          <Text
-                            className="card-popup-menu-item-text"
-                            truncated>
-                            {value.displayName}
-                          </Text>
-                        </Text>
-                      )
-                    }))
-                  }
-                  navigable />
-              )}
-              values={members} />
-          </div>
+    <CardPopup
+      predicate={(filter, value) => {
+        if (value.displayName) {
+          if (value.displayName.search(new RegExp(filter, 'i')) >= 0) {
+            return true;
+          }
         }
-        trigger={
-          <Text
-            className="card-menu-item-content"
-            color="brand"
-            role="button">
-            <GroupIcon className="card-menu-item-icon" />
-            <Text
-              className="card-menu-item-text"
-              size="small">
-              {members.length}
-            </Text>
-          </Text>
-        }
-        onOpenChange={(_, props) =>
-          props?.open &&
-          onOpenChange &&
-          onOpenChange()} />
-    </div>
+        return false;
+      }}
+      renderer={(values) => (
+        <List
+          items={
+            values.map((value) => ({
+              key: value.id,
+              header: (
+                <Text
+                  css={css`
+                    display: grid;
+                    grid-template-columns: auto auto;
+                    gap: 0.25rem;
+                    align-items: center;
+                    justify-content: left;
+                    margin: 0 -0.5rem 0 -0.5rem;
+                  `}
+                  role="button"
+                  onClick={() => value.email && onClick(value.email)}>
+                  <MemberIcon
+                    icon={value.icon}
+                    name={value.displayName} />
+                  <Text truncated>
+                    {value.displayName}
+                  </Text>
+                </Text>
+              )
+            }))
+          }
+          navigable />
+      )}
+      trigger={
+        <CardMenuItem
+          content={members.length}
+          icon={<GroupIcon />} />
+      }
+      values={members}
+      onOpenChange={(_, props) => props?.open && onOpenChange()} />
   );
 
 };

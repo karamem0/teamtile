@@ -1,57 +1,52 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// React
 import React from 'react';
-// Microsoft Teams
-import { core } from '@microsoft/teams-js';
-// Fluent UI
+
+import { ContextMenuIcon } from '@fluentui/react-icons-mdl2';
 import {
   List,
-  Popup,
   Text
 } from '@fluentui/react-northstar';
-import { ContextMenuIcon } from '@fluentui/react-icons-mdl2';
-// Components
-import { ChannelMenuItemFilter } from './channel-menu-item-filter';
-// Types
-import { ItemKey, ItemValue } from '../types/state';
+
+import { app } from '@microsoft/teams-js';
+
+import { css } from '@emotion/react';
+
+import { KeyValue } from '../types/common';
 import { Channel } from '../types/entity';
+import { ItemKey, ItemValue } from '../types/state';
+
+import { CardMenuItem } from './card-menu-item';
+import { CardPopup } from './card-popup';
+import { MembershipIcon } from './membership-icon';
 
 export interface ChannelMenuItemProps {
-  itemKey: ItemKey,
-  itemValue: ItemValue
+  item: KeyValue<ItemKey, ItemValue>
 }
 
-export const ChannelMenuItem = ({ itemValue: { channels } }: ChannelMenuItemProps): React.ReactElement | null => {
+export const ChannelMenuItem = ({ item }: ChannelMenuItemProps): React.ReactElement | null => {
 
-  const handleClick = React.useCallback((value: string | null | undefined) => {
-    if (!value) {
-      return;
-    }
-    core.executeDeepLink(value);
-  }, []);
-
-  if (!channels) {
+  if (!item.value.channels) {
     return null;
   }
 
   return (
     <ChannelMenuItemPresenterMemo
-      channels={channels}
-      onClick={handleClick} />
+      channels={item.value.channels}
+      onClick={(value) => app.openLink(value)} />
   );
 
 };
 
 interface ChannelMenuItemPresenterProps {
   channels: Channel[],
-  onClick?: (value: string | null | undefined) => void
+  onClick: (value: string) => void
 }
 
 const ChannelMenuItemPresenter = ({
@@ -60,49 +55,48 @@ const ChannelMenuItemPresenter = ({
 }: ChannelMenuItemPresenterProps): React.ReactElement | null => {
 
   return (
-    <div className="card-menu-item">
-      <Popup
-        content={
-          <div className="card-popup-menu">
-            <ChannelMenuItemFilter
-              renderer={(channels: Channel[]) => (
-                <List
-                  items={
-                    channels.map((value) => ({
-                      key: value.id,
-                      header: (
-                        <Text
-                          className="card-popup-menu-item"
-                          role="button"
-                          onClick={() => onClick && onClick(value.webUrl)}>
-                          <Text
-                            className="card-popup-menu-item-text"
-                            truncated>
-                            {value.displayName}
-                          </Text>
-                        </Text>
-                      )
-                    }))
-                  }
-                  navigable />
-              )}
-              values={channels} />
-          </div>
+    <CardPopup
+      predicate={(filter, value) => {
+        if (value.displayName) {
+          if (value.displayName.search(new RegExp(filter, 'i')) >= 0) {
+            return true;
+          }
         }
-        trigger={
-          <Text
-            className="card-menu-item-content"
-            color="brand"
-            role="button">
-            <ContextMenuIcon className="card-menu-item-icon" />
-            <Text
-              className="card-menu-item-text"
-              size="small">
-              {channels.length}
-            </Text>
-          </Text>
-        } />
-    </div>
+        return false;
+      }}
+      renderer={(values) => (
+        <List
+          items={
+            values.map((value) => ({
+              key: value.id,
+              header: (
+                <Text
+                  css={css`
+                    display: grid;
+                    grid-template-columns: auto auto;
+                    gap: 0.25rem;
+                    align-items: center;
+                    justify-content: left;
+                    margin: 0 -0.5rem 0 -0.5rem;
+                  `}
+                  role="button"
+                  onClick={() => value.webUrl && onClick(value.webUrl)}>
+                  <Text truncated>
+                    {value.displayName}
+                  </Text>
+                  <MembershipIcon membership={value.membershipType} />
+                </Text>
+              )
+            }))
+          }
+          navigable />
+      )}
+      trigger={
+        <CardMenuItem
+          content={channels.length}
+          icon={<ContextMenuIcon />} />
+      }
+      values={channels} />
   );
 
 };

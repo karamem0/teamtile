@@ -1,9 +1,9 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
 using Microsoft.AspNetCore.Builder;
@@ -33,6 +33,7 @@ namespace Karamem0.Teamtile
         public void ConfigureServices(IServiceCollection services)
         {
             _ = services.AddMicrosoftIdentityWebApiAuthentication(this.Configuration, "AzureAD");
+            _ = services.AddApplicationInsightsTelemetry();
             _ = services.AddControllers();
             _ = services.AddHttpClient();
             _ = services.AddCors(options =>

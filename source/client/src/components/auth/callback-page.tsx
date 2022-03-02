@@ -1,17 +1,18 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// React
 import React from 'react';
-// Microsoft Teams
-import { app, authentication } from '@microsoft/teams-js';
-// Fluent UI
+
 import { Loader } from '@fluentui/react-northstar';
+
+import { app, authentication } from '@microsoft/teams-js';
+
+import { CenterLayout } from '../center-layout';
 
 export const CallbackPage = (): React.ReactElement | null => {
 
@@ -20,7 +21,7 @@ export const CallbackPage = (): React.ReactElement | null => {
       await app.initialize();
       const params = (() => {
         const params: { [key: string]: string } = {};
-        window.location.hash.substr(1).split('&').forEach((item) => {
+        window.location.hash.substring(1).split('&').forEach((item) => {
           const [ key, value ] = item.split('=');
           params[key] = decodeURIComponent(value.replace(/\+/g, '%20'));
         });
@@ -36,8 +37,10 @@ export const CallbackPage = (): React.ReactElement | null => {
   }, []);
 
   return (
-    <div className="panel panel-center">
-      <Loader label="Consent flow complete. Please wait..." />
+    <div>
+      <CenterLayout>
+        <Loader label="Consent flow complete. Please wait..." />
+      </CenterLayout>
     </div>
   );
 

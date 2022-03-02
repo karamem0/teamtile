@@ -1,114 +1,122 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// React
 import React from 'react';
-// Microsoft Teams
-import * as microsoftTeams from '@microsoft/teams-js';
-// Fluent UI
+
 import { Card, Text } from '@fluentui/react-northstar';
-// Components
-import { ChannelMenuItem } from './channel-menu-item';
-import { DriveMenuItem } from './drive-menu-item';
-import { MemberMenuItem } from './member-menu-item';
-import { TeamIcon } from './team-icon';
-import { TeamVisibilityIcon } from './team-visibility-icon';
-// Types
+
+import { app } from '@microsoft/teams-js';
+
+import { css } from '@emotion/react';
+
+import { KeyValue } from '../types/common';
 import {
   Item,
   ItemKey,
   ItemValue
 } from '../types/state';
 
+import { ChannelMenuItem } from './channel-menu-item';
+import { DriveMenuItem } from './drive-menu-item';
+import { MemberMenuItem } from './member-menu-item';
+import { TeamIcon } from './team-icon';
+import { VisibilityIcon } from './visibility-icon';
+
 export interface TeamCardProps {
   item: Item
 }
 
-export const TeamCard = ({ item: { key, value, visible } }: TeamCardProps): React.ReactElement | null => {
+export const TeamCard = ({ item }: TeamCardProps): React.ReactElement | null => {
 
-  const handleClick = React.useCallback((value: string | null | undefined) => {
-    if (!value) {
-      return;
-    }
-    microsoftTeams.executeDeepLink(value);
-  }, []);
-
-  if (!value) {
+  if (!item.value) {
     return null;
   }
 
-  if (!visible) {
+  if (!item.visible) {
     return null;
   }
 
   return (
     <TeamCardPresenterMemo
-      itemKey={key}
-      itemValue={value}
-      onClick={handleClick} />
+      item={{
+        key: item.key,
+        value: item.value
+      }}
+      onClick={(value) => app.openLink(value)} />
   );
 
 };
 
 interface TeamCardPresenterProps {
-  itemKey: ItemKey,
-  itemValue: ItemValue,
-  onClick?: (value: string | null | undefined) => void
+  item: KeyValue<ItemKey, ItemValue>,
+  onClick: (value: string) => void
 }
 
 const TeamCardPresenter = ({
-  itemKey,
-  itemValue,
+  item,
   onClick
 }: TeamCardPresenterProps): React.ReactElement | null => {
 
   return (
     <Card
-      className="card"
       fluid
       role="listitem">
-      <div className="card-fade-in">
-        <div className="card-column">
-          <div className="card-column-item">
-            <TeamIcon
-              icon={itemValue.icon}
-              name={itemValue.displayName} />
+      <div
+        css={css`
+          display: grid;
+          grid-template-columns: auto 1fr auto;
+          grid-template-rows: auto;
+          gap: 0.5rem;
+          height: 4rem;
+        `}>
+        <TeamIcon
+          icon={item.value.icon}
+          name={item.value.displayName} />
+        <div
+          css={css`
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto;
+            gap: 0.25rem;
+          `}>
+          <Text
+            css={css`
+              cursor: pointer;
+            `}
+            role="button"
+            onClick={() => item.value.webUrl && onClick(item.value.webUrl)}>
+            {item.value.displayName}
+          </Text>
+          <div
+            css={css`
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+          `}>
+            <Text size="small">
+              {item.value.description}
+            </Text>
           </div>
-          <div className="card-column-item">
-            <div className="card-row">
-              <Text
-                className="card-name"
-                role="button"
-                onClick={() => onClick && onClick(itemValue.webUrl)}>
-                {itemValue.displayName}
-              </Text>
-              <div className="card-description">
-                <Text size="small">
-                  {itemValue.description}
-                </Text>
-              </div>
-              <div className="card-menu">
-                <ChannelMenuItem
-                  itemKey={itemKey}
-                  itemValue={itemValue} />
-                <MemberMenuItem
-                  itemKey={itemKey}
-                  itemValue={itemValue} />
-                <DriveMenuItem
-                  itemKey={itemKey}
-                  itemValue={itemValue} />
-              </div>
-            </div>
-          </div>
-          <div className="card-column-item">
-            <TeamVisibilityIcon visibility={itemValue.visibility} />
+          <div
+            css={css`
+              display: grid;
+              grid-template-columns: auto auto auto;
+              grid-template-rows: auto;
+              gap: 1rem;
+              align-items: center;
+              justify-content: left;
+          `}>
+            <ChannelMenuItem item={item} />
+            <MemberMenuItem item={item} />
+            <DriveMenuItem item={item} />
           </div>
         </div>
+        <VisibilityIcon visibility={item.value.visibility} />
       </div>
     </Card>
   );

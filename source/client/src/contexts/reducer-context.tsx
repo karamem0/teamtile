@@ -1,26 +1,13 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// React
 import React from 'react';
-// Types
-import { ItemKey, State } from '../types/state';
-import { DispatchAction } from '../types/reducer';
-import { KeyValue } from '../types/common';
-// Reducers
-import { reducer } from '../reducers/reducer';
-// Reducers
-import {
-  Channel,
-  Drive,
-  Member,
-  Team
-} from '../types/entity';
+
 import {
   setChannels,
   setDrives,
@@ -32,18 +19,34 @@ import {
   setTeamIcons,
   setTeams
 } from '../reducers/action';
+import { reducer } from '../reducers/reducer';
+import { KeyValue } from '../types/common';
+import {
+  Channel,
+  Drive,
+  Member,
+  Team
+} from '../types/entity';
+import { DispatchAction } from '../types/reducer';
+import {
+  ItemKey,
+  Loading,
+  State
+} from '../types/state';
 
 interface ReducerContextValue {
   state: State,
-  dispatchChannels: DispatchAction<Map<ItemKey, Channel[]>>,
-  dispatchDrives: DispatchAction<Map<ItemKey, Drive>>,
-  dispatchFilter: DispatchAction<string | null>,
-  dispatchKeys: DispatchAction<ItemKey[]>,
-  dispatchLoading: DispatchAction<boolean>,
-  dispatchMemberIcons: DispatchAction<KeyValue<ItemKey, Map<string, string | null>>>,
-  dispatchMembers: DispatchAction<Map<ItemKey, Member[]>>,
-  dispatchTeamIcons: DispatchAction<Map<ItemKey, string | null>>,
-  dispatchTeams: DispatchAction<Map<ItemKey, Team>>
+  dispatchers: {
+    dispatchChannels: DispatchAction<Map<ItemKey, Channel[]>>,
+    dispatchDrives: DispatchAction<Map<ItemKey, Drive>>,
+    dispatchFilter: DispatchAction<string | null>,
+    dispatchKeys: DispatchAction<ItemKey[]>,
+    dispatchLoading: DispatchAction<Loading>,
+    dispatchMemberIcons: DispatchAction<KeyValue<ItemKey, Map<string, string | null>>>,
+    dispatchMembers: DispatchAction<Map<ItemKey, Member[]>>,
+    dispatchTeamIcons: DispatchAction<Map<ItemKey, string | null>>,
+    dispatchTeams: DispatchAction<Map<ItemKey, Team>>
+  }
 }
 
 const ReducerContext = React.createContext<ReducerContextValue | null>(null);
@@ -53,7 +56,8 @@ interface ReducerContextProviderProps {
 }
 
 const initialState = {
-  loading: false,
+  loading: Loading.none,
+  itemFilter: null,
   items: []
 };
 
@@ -61,55 +65,23 @@ export const ReducerContextProvider = ({ children }: ReducerContextProviderProps
 
   const [ state, dispatch ] = React.useReducer(reducer, initialState);
 
-  const dispatchChannels = React.useCallback((payload: Map<ItemKey, Channel[]>) => {
-    dispatch(setChannels(payload));
-  }, []);
-
-  const dispatchDrives = React.useCallback((payload: Map<string, Drive>) => {
-    dispatch(setDrives(payload));
-  }, []);
-
-  const dispatchFilter = React.useCallback((payload: string | null) => {
-    dispatch(setFilter(payload));
-  }, []);
-
-  const dispatchKeys = React.useCallback((payload: ItemKey[]) => {
-    dispatch(setKeys(payload));
-  }, []);
-
-  const dispatchLoading = React.useCallback((payload: boolean) => {
-    dispatch(setLoading(payload));
-  }, []);
-
-  const dispatchMemberIcons = React.useCallback((payload: KeyValue<ItemKey, Map<string, string | null>>) => {
-    dispatch(setMemberIcons(payload));
-  }, []);
-
-  const dispatchMembers = React.useCallback((payload: Map<ItemKey, Member[]>) => {
-    dispatch(setMembers(payload));
-  }, []);
-
-  const dispatchTeamIcons = React.useCallback((payload: Map<string, string | null>) => {
-    dispatch(setTeamIcons(payload));
-  }, []);
-
-  const dispatchTeams = React.useCallback((payload: Map<string, Team>) => {
-    dispatch(setTeams(payload));
-  }, []);
+  const dispatchers = React.useMemo(() => ({
+    dispatchChannels: (payload: Map<ItemKey, Channel[]>) => dispatch(setChannels(payload)),
+    dispatchDrives: (payload: Map<string, Drive>) => dispatch(setDrives(payload)),
+    dispatchFilter: (payload: string | null) => dispatch(setFilter(payload)),
+    dispatchKeys: (payload: ItemKey[]) => dispatch(setKeys(payload)),
+    dispatchLoading: (payload: Loading) => dispatch(setLoading(payload)),
+    dispatchMemberIcons: (payload: KeyValue<ItemKey, Map<string, string | null>>) => dispatch(setMemberIcons(payload)),
+    dispatchMembers: (payload: Map<ItemKey, Member[]>) => dispatch(setMembers(payload)),
+    dispatchTeamIcons: (payload: Map<string, string | null>) => dispatch(setTeamIcons(payload)),
+    dispatchTeams: (payload: Map<string, Team>) => dispatch(setTeams(payload))
+  }), []);
 
   return (
     <ReducerContext.Provider
       value={{
         state,
-        dispatchChannels,
-        dispatchDrives,
-        dispatchFilter,
-        dispatchKeys,
-        dispatchLoading,
-        dispatchMemberIcons,
-        dispatchMembers,
-        dispatchTeamIcons,
-        dispatchTeams
+        dispatchers
       }}>
       {children}
     </ReducerContext.Provider>

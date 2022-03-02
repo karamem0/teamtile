@@ -1,26 +1,18 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// React
 import React from 'react';
-// Hooks
-import { useClient } from '../hooks/use-client';
-// Services
-import { CacheService } from '../services/cache-service';
-import { GraphService } from '../services/graph-service';
 
-interface ServiceLocator {
-  cache: CacheService,
-  graph: GraphService
-}
+import { useClient } from '../hooks/use-client';
+import { ServiceProvider } from '../services/service-provider';
 
 interface ServiceContextValue {
-  services: ServiceLocator
+  services: ServiceProvider
 }
 
 const ServiceContext = React.createContext<ServiceContextValue | null>(null);
@@ -32,16 +24,13 @@ interface ServiceContextProviderProps {
 export const ServiceContextProvider = ({ children }: ServiceContextProviderProps): React.ReactElement | null => {
 
   const [ client ] = useClient();
-  const [ services, setServices ] = React.useState<ServiceLocator | null>(null);
+  const [ services, setServices ] = React.useState<ServiceProvider | null>(null);
 
   React.useEffect(() => {
     if (!client) {
       return;
     }
-    setServices({
-      cache: new CacheService(),
-      graph: new GraphService(client)
-    });
+    setServices(new ServiceProvider(client));
   }, [ client ]);
 
   if (!services) {

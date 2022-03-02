@@ -1,0 +1,22 @@
+{
+  "members": [
+    {
+      "id": "87d349ed-44d7-43e1-9a83-5f2406dee5bd",
+      "displayName": "Adele Vance",
+      "userId": "87d349ed-44d7-43e1-9a83-5f2406dee5bd",
+      "email": "AdeleV@M365x214355.onmicrosoft.com"
+    },
+    {
+      "id": "626cbf8c-5dde-46b0-8385-9e40d64736fe",
+      "displayName": "Johanna Lorenz",
+      "userId": "626cbf8c-5dde-46b0-8385-9e40d64736fe",
+      "email": "JohannaL@M365x214355.onmicrosoft.com"
+    },
+    {
+      "id": "074e56ea-0b50-4461-89e5-c67ae14a2c0b",
+      "displayName": "Lee Gu",
+      "userId": "074e56ea-0b50-4461-89e5-c67ae14a2c0b",
+      "email": "LeeG@M365x214355.onmicrosoft.com"
+    }
+  ]
+}

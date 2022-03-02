@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeamIcon create shapshot when icon is not null 1`] = `
+<body>
+  <div>
+    <div
+      class="ui-avatar"
+      data-uses-unhanded-props="true"
+    >
+      <img
+        aria-hidden="true"
+        class="ui-image"
+        data-aa-class="AvatarImage"
+        data-uses-unhanded-props="true"
+        src="https://developer.microsoft.com/a58b2c26-9c78-4c9a-a47d-a48bbcd12258"
+        title="HR Taskforce"
+      />
+    </div>
+  </div>
+</body>
+`;
+
+exports[`TeamIcon create shapshot when icon is null 1`] = `
+<body>
+  <div>
+    <div
+      class="ui-avatar"
+      data-uses-unhanded-props="true"
+    >
+      <span
+        class="ui-label"
+        data-uses-unhanded-props="true"
+        title="HR Taskforce"
+      >
+        HT
+      </span>
+    </div>
+  </div>
+</body>
+`;

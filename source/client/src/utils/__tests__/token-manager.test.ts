@@ -1,27 +1,22 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-/* eslint-disable import/first */
-
-// Global
 global.fetch = jest.fn();
-// Microsoft Teams
+
 const microsoftTeams = {
   authentication: {
     getAuthToken: jest.fn()
   }
 };
 jest.mock('@microsoft/teams-js', () => ({
-  __esModule: true,
   ...microsoftTeams
 }));
 
-// Utils
 import {
   getClientToken,
   getServerToken

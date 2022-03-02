@@ -1,17 +1,18 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// React
 import React from 'react';
-// Fluent UI
-import { Alert } from '@fluentui/react-northstar';
+
 import { WarningIcon } from '@fluentui/react-icons-mdl2';
-// Contexts
+import { Alert } from '@fluentui/react-northstar';
+
+import { css } from '@emotion/react';
+
 import { useErrorContext } from '../contexts/error-context';
 
 export const ErrorBar = (): React.ReactElement | null => {
@@ -19,7 +20,10 @@ export const ErrorBar = (): React.ReactElement | null => {
   const { error, setError } = useErrorContext();
 
   return (
-    <div className="error">
+    <div
+      css={css`
+        margin-bottom: 1rem;
+      `}>
       <Alert
         content={error}
         dismissible

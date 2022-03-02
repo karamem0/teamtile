@@ -1,32 +1,29 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// React
 import React from 'react';
-// Fluent UI
-import { Provider } from '@fluentui/react-northstar';
-// Components
-import { Container } from './container';
-// Contexts
+
 import { ErrorContextProvider } from '../contexts/error-context';
-// Hooks
-import { useTheme } from '../hooks/use-theme';
+import { ThemeProvider } from '../providers/theme-provider';
+
+import { AppInsights } from './app-insights';
+import { Container } from './container';
 
 export const App = (): React.ReactElement | null => {
 
-  const [ theme ] = useTheme();
-
   return (
-    <Provider theme={theme}>
-      <ErrorContextProvider>
-        <Container />
-      </ErrorContextProvider>
-    </Provider>
+    <AppInsights>
+      <ThemeProvider>
+        <ErrorContextProvider>
+          <Container />
+        </ErrorContextProvider>
+      </ThemeProvider>
+    </AppInsights>
   );
 
 };

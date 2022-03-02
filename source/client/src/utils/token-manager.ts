@@ -1,15 +1,14 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// Microsoft Teams
 import { authentication } from '@microsoft/teams-js';
-// Json Web Token
-import { decode } from 'jsonwebtoken';
+
+import decode from 'jwt-decode';
 
 export const getClientToken = (): Promise<string> =>
   authentication.getAuthToken({});
@@ -44,7 +43,7 @@ export const getServerToken = async (token: string): Promise<string> => {
 };
 
 export const getCachedToken = (): string | null => {
-  const token = sessionStorage.getItem(process.env.REACT_APP_AUTH_CLIENT_ID);
+  const token = sessionStorage.getItem(process.env.REACT_APP_AUTH_APP_ID);
   if (!token) {
     return null;
   }
@@ -61,5 +60,5 @@ export const getCachedToken = (): string | null => {
 };
 
 export const setCachedToken = (token: string): void => {
-  sessionStorage.setItem(process.env.REACT_APP_AUTH_CLIENT_ID, token);
+  sessionStorage.setItem(process.env.REACT_APP_AUTH_APP_ID, token);
 };

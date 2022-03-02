@@ -1,18 +1,17 @@
 //
-// Copyright (c) 2021 karamem0
+// Copyright (c) 2022 karamem0
 //
 // This software is released under the MIT License.
 //
-// https://github.com/karamem0/teamtile/blob/master/LICENSE
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-// Types
+import { Member } from '../../types/entity';
 import {
   Action,
   ActionType
 } from '../../types/reducer';
 import { ItemKey } from '../../types/state';
-import { Member } from '../../types/entity';
 
 export const setMembers = (payload: Map<ItemKey, Member[]>): Action => ({
   type: ActionType.setMembers,

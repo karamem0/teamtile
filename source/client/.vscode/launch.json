@@ -5,8 +5,11 @@
       "name": "Debug Teams (Chrome)",
       "type": "pwa-chrome",
       "request": "launch",
-      "url": "https://teams.microsoft.com/_#/l/app/6c2797c6-76c3-4047-a792-dda5f06da426?installAppPackage=true",
+      "url": "https://teams.microsoft.com/_#/l/app/{{AppId}}?installAppPackage=true",
       "webRoot": "${workspaceFolder}",
+      "runtimeArgs": [
+        "-incognito"
+      ],
       "preLaunchTask": "react-start",
       "postDebugTask": "terminate-react-start"
     },
@@ -16,6 +19,9 @@
       "request": "launch",
       "url": "https://localhost:3000",
       "webRoot": "${workspaceFolder}",
+      "runtimeArgs": [
+        "-incognito"
+      ],
       "preLaunchTask": "react-start",
       "postDebugTask": "terminate-react-start"
     }
