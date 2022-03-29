@@ -14,9 +14,10 @@ export interface Action {
 export enum ActionType {
   setChannels = 'setChannels',
   setDrives = 'setDrives',
-  setFilter = 'setFilter',
+  setItemFilter = 'setItemFilter',
   setKeys = 'setKeys',
-  setLoading = 'setLoading',
+  setLoadingKeys = 'setLoadingKeys',
+  setLoadingValues = 'setLoadingValues',
   setMemberIcons = 'setMemberIcons',
   setMembers = 'setMembers',
   setTeamIcons = 'setTeamIcons',

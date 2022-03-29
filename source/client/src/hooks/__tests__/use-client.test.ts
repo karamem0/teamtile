@@ -93,7 +93,7 @@ describe('useClient', () => {
 
   it('return error if failed', async () => {
     const params = {
-      error: 'Something went wrong'
+      error: 'Something went wrong.'
     };
     microsoftGraph.Client.initWithMiddleware
       .mockReturnValue({});

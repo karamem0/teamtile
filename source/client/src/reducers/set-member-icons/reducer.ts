@@ -7,13 +7,14 @@
 //
 
 import { KeyValue } from '../../types/common';
+import { Icon } from '../../types/entity';
 import {
   ItemKey,
   ItemValue,
   State
 } from '../../types/state';
 
-export const setMemberIcons = (state: State, payload: KeyValue<ItemKey, Map<string, string | null>>): State => {
+export const setMemberIcons = (state: State, payload: KeyValue<ItemKey, Map<string, Icon | null>>): State => {
   const { items } = state;
   return {
     ...state,
@@ -26,7 +27,9 @@ export const setMemberIcons = (state: State, payload: KeyValue<ItemKey, Map<stri
             members: item.value?.members?.map((member) => ({
               ...member,
               icon: member.userId
-                ? payload.value.get(member.userId) || null
+                ? payload.value.has(member.userId)
+                  ? payload.value.get(member.userId)
+                  : member.icon
                 : undefined
             }))
           } as ItemValue

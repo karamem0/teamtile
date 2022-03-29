@@ -1,0 +1,373 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MemberMenuItem create shapshot when menu item is not open 1`] = `
+.emotion-0 {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  grid-gap: 0.25rem;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.emotion-1 {
+  line-height: 1rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.emotion-2 {
+  line-height: 0.75rem;
+}
+
+<body>
+  <div>
+    <span
+      class="ui-text emotion-0"
+      data-uses-unhanded-props="true"
+      role="button"
+    >
+      <span
+        class="emotion-1"
+      >
+        <span
+          aria-hidden="true"
+          class="root_dd790ee3"
+        >
+          <svg
+            class="svg_dd790ee3"
+            focusable="false"
+            viewBox="0 0 2048 2048"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1850 688q45 25 82 61t62 80 40 93 14 102h-128q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99q0 91-41 173t-115 136q65 33 117 81t90 108 57 128 20 142h-128q0-79-30-149t-83-122-122-82-149-31q-79 0-149 30t-122 83-82 122-31 149H512q0-73 20-141t57-128 89-108 118-82q-73-54-114-136t-42-173q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99H0q0-52 14-101t39-93 63-80 82-62q-33-35-51-81t-19-95q0-52 20-99t55-81 81-55 100-21q52 0 99 20t81 55 55 82 21 99q0 49-18 95t-52 81q82 45 134 124 54-80 138-126t182-46q97 0 181 46t139 126q52-79 134-124-33-35-51-81t-19-95q0-52 20-99t55-81 81-55 100-21q52 0 99 20t81 55 55 82 21 99q0 49-18 95t-52 81zM256 512q0 27 10 50t27 40 41 28 50 10q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50zm768 768q52 0 99-20t81-55 55-81 21-100q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99q0 53 20 99t55 81 81 55 100 21zm512-768q0 27 10 50t27 40 41 28 50 10q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50z"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="ui-text emotion-2"
+        data-uses-unhanded-props="true"
+      >
+        3
+      </span>
+    </span>
+  </div>
+</body>
+`;
+
+exports[`MemberMenuItem create shapshot when menu item is open 1`] = `
+.emotion-0 {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  grid-gap: 0.25rem;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.emotion-1 {
+  line-height: 1rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.emotion-2 {
+  line-height: 0.75rem;
+}
+
+.emotion-3 {
+  width: 12rem;
+  max-height: 24rem;
+  margin: -0.5rem;
+  overflow: auto;
+}
+
+.emotion-4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: column;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  gap: 0.25rem;
+}
+
+.emotion-5 {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0.25rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: left;
+  -ms-flex-pack: left;
+  -webkit-justify-content: left;
+  justify-content: left;
+  margin: 0 -0.5rem 0 -0.5rem;
+}
+
+<body>
+  <div>
+    <span
+      class="ui-text emotion-0"
+      data-uses-unhanded-props="true"
+      role="button"
+    >
+      <span
+        class="emotion-1"
+      >
+        <span
+          aria-hidden="true"
+          class="root_dd790ee3"
+        >
+          <svg
+            class="svg_dd790ee3"
+            focusable="false"
+            viewBox="0 0 2048 2048"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1850 688q45 25 82 61t62 80 40 93 14 102h-128q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99q0 91-41 173t-115 136q65 33 117 81t90 108 57 128 20 142h-128q0-79-30-149t-83-122-122-82-149-31q-79 0-149 30t-122 83-82 122-31 149H512q0-73 20-141t57-128 89-108 118-82q-73-54-114-136t-42-173q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99H0q0-52 14-101t39-93 63-80 82-62q-33-35-51-81t-19-95q0-52 20-99t55-81 81-55 100-21q52 0 99 20t81 55 55 82 21 99q0 49-18 95t-52 81q82 45 134 124 54-80 138-126t182-46q97 0 181 46t139 126q52-79 134-124-33-35-51-81t-19-95q0-52 20-99t55-81 81-55 100-21q52 0 99 20t81 55 55 82 21 99q0 49-18 95t-52 81zM256 512q0 27 10 50t27 40 41 28 50 10q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50zm768 768q52 0 99-20t81-55 55-81 21-100q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99q0 53 20 99t55 81 81 55 100 21zm512-768q0 27 10 50t27 40 41 28 50 10q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50z"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="ui-text emotion-2"
+        data-uses-unhanded-props="true"
+      >
+        3
+      </span>
+    </span>
+  </div>
+  <div
+    class="ui-popup__content ui-animation"
+    data-aa-class="Popup__popup"
+    data-uses-unhanded-props="true"
+    role="complementary"
+    style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+  >
+    <div
+      class="ui-popup__content__content"
+    >
+      <div
+        class="emotion-3"
+      >
+        <div
+          class="emotion-4"
+        >
+          <div
+            class="ui-box ui-input"
+            data-uses-unhanded-props="true"
+          >
+            <div
+              class="ui-box"
+              data-uses-unhanded-props="true"
+            >
+              <input
+                class="ui-box ui-input__input"
+                data-aa-class="Input__input"
+                data-uses-unhanded-props="true"
+                id="ui-input-1"
+                type="text"
+                value=""
+              />
+              <div
+                class="ui-box ui-input__icon"
+                data-uses-unhanded-props="true"
+              >
+                <span
+                  aria-hidden="true"
+                  class="root_dd790ee3"
+                >
+                  <svg
+                    class="svg_dd790ee3"
+                    focusable="false"
+                    viewBox="0 0 2048 2048"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1344 0q97 0 187 25t168 71 142 110 111 143 71 168 25 187q0 97-25 187t-71 168-110 142-143 111-168 71-187 25q-125 0-239-42t-211-121l-785 784q-19 19-45 19t-45-19-19-45q0-26 19-45l784-785q-79-96-121-210t-42-240q0-97 25-187t71-168 110-142T989 96t168-71 187-25zm0 1280q119 0 224-45t183-124 123-183 46-224q0-119-45-224t-124-183-183-123-224-46q-119 0-224 45T937 297 814 480t-46 224q0 119 45 224t124 183 183 123 224 46z"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+          <ul
+            class="ms-FocusZone ui-list"
+            data-aa-class="List"
+            data-focuszone-id="FocusZone2"
+            data-uses-unhanded-props="true"
+            role="menu"
+          >
+            <li
+              class="ui-list__item"
+              data-aa-class="ListItem"
+              data-is-focusable="true"
+              data-uses-unhanded-props="true"
+              role="menuitem"
+              tabindex="0"
+            >
+              <div
+                class="ui-list__item__main"
+              >
+                <div
+                  class="ui-list__item__headerWrapper"
+                >
+                  <div
+                    class="ui-list__itemheader"
+                    data-uses-unhanded-props="true"
+                  >
+                    <span
+                      class="ui-text emotion-5"
+                      data-uses-unhanded-props="true"
+                      role="button"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="ui-avatar"
+                        data-uses-unhanded-props="true"
+                      >
+                        <span
+                          class="ui-label"
+                          data-uses-unhanded-props="true"
+                          title="Adele Vance"
+                        >
+                          AV
+                        </span>
+                      </div>
+                      <span
+                        class="ui-text"
+                        data-uses-unhanded-props="true"
+                        dir="auto"
+                      >
+                        Adele Vance
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li
+              class="ui-list__item"
+              data-aa-class="ListItem"
+              data-is-focusable="true"
+              data-uses-unhanded-props="true"
+              role="menuitem"
+              tabindex="-1"
+            >
+              <div
+                class="ui-list__item__main"
+              >
+                <div
+                  class="ui-list__item__headerWrapper"
+                >
+                  <div
+                    class="ui-list__itemheader"
+                    data-uses-unhanded-props="true"
+                  >
+                    <span
+                      class="ui-text emotion-5"
+                      data-uses-unhanded-props="true"
+                      role="button"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="ui-avatar"
+                        data-uses-unhanded-props="true"
+                      >
+                        <span
+                          class="ui-label"
+                          data-uses-unhanded-props="true"
+                          title="Johanna Lorenz"
+                        >
+                          JL
+                        </span>
+                      </div>
+                      <span
+                        class="ui-text"
+                        data-uses-unhanded-props="true"
+                        dir="auto"
+                      >
+                        Johanna Lorenz
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li
+              class="ui-list__item"
+              data-aa-class="ListItem"
+              data-is-focusable="true"
+              data-uses-unhanded-props="true"
+              role="menuitem"
+              tabindex="-1"
+            >
+              <div
+                class="ui-list__item__main"
+              >
+                <div
+                  class="ui-list__item__headerWrapper"
+                >
+                  <div
+                    class="ui-list__itemheader"
+                    data-uses-unhanded-props="true"
+                  >
+                    <span
+                      class="ui-text emotion-5"
+                      data-uses-unhanded-props="true"
+                      role="button"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="ui-avatar"
+                        data-uses-unhanded-props="true"
+                      >
+                        <span
+                          class="ui-label"
+                          data-uses-unhanded-props="true"
+                          title="Lee Gu"
+                        >
+                          LG
+                        </span>
+                      </div>
+                      <span
+                        class="ui-text"
+                        data-uses-unhanded-props="true"
+                        dir="auto"
+                      >
+                        Lee Gu
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

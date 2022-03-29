@@ -11,9 +11,10 @@ import React from 'react';
 import {
   setChannels,
   setDrives,
-  setFilter,
+  setItemFilter,
   setKeys,
-  setLoading,
+  setLoadingKeys,
+  setLoadingValues,
   setMemberIcons,
   setMembers,
   setTeamIcons,
@@ -24,27 +25,25 @@ import { KeyValue } from '../types/common';
 import {
   Channel,
   Drive,
+  Icon,
   Member,
   Team
 } from '../types/entity';
 import { DispatchAction } from '../types/reducer';
-import {
-  ItemKey,
-  Loading,
-  State
-} from '../types/state';
+import { ItemKey, State } from '../types/state';
 
 interface ReducerContextValue {
   state: State,
   dispatchers: {
     dispatchChannels: DispatchAction<Map<ItemKey, Channel[]>>,
     dispatchDrives: DispatchAction<Map<ItemKey, Drive>>,
-    dispatchFilter: DispatchAction<string | null>,
+    dispatchItemFilter: DispatchAction<string | null>,
     dispatchKeys: DispatchAction<ItemKey[]>,
-    dispatchLoading: DispatchAction<Loading>,
-    dispatchMemberIcons: DispatchAction<KeyValue<ItemKey, Map<string, string | null>>>,
+    dispatchLoadingKeys: DispatchAction<boolean>,
+    dispatchLoadingValues: DispatchAction<Map<ItemKey, boolean>>,
+    dispatchMemberIcons: DispatchAction<KeyValue<ItemKey, Map<string, Icon | null>>>,
     dispatchMembers: DispatchAction<Map<ItemKey, Member[]>>,
-    dispatchTeamIcons: DispatchAction<Map<ItemKey, string | null>>,
+    dispatchTeamIcons: DispatchAction<Map<ItemKey, Icon | null>>,
     dispatchTeams: DispatchAction<Map<ItemKey, Team>>
   }
 }
@@ -56,7 +55,7 @@ interface ReducerContextProviderProps {
 }
 
 const initialState = {
-  loading: Loading.none,
+  loading: true,
   itemFilter: null,
   items: []
 };
@@ -68,12 +67,13 @@ export const ReducerContextProvider = ({ children }: ReducerContextProviderProps
   const dispatchers = React.useMemo(() => ({
     dispatchChannels: (payload: Map<ItemKey, Channel[]>) => dispatch(setChannels(payload)),
     dispatchDrives: (payload: Map<string, Drive>) => dispatch(setDrives(payload)),
-    dispatchFilter: (payload: string | null) => dispatch(setFilter(payload)),
+    dispatchItemFilter: (payload: string | null) => dispatch(setItemFilter(payload)),
     dispatchKeys: (payload: ItemKey[]) => dispatch(setKeys(payload)),
-    dispatchLoading: (payload: Loading) => dispatch(setLoading(payload)),
-    dispatchMemberIcons: (payload: KeyValue<ItemKey, Map<string, string | null>>) => dispatch(setMemberIcons(payload)),
+    dispatchLoadingKeys: (payload: boolean) => dispatch(setLoadingKeys(payload)),
+    dispatchLoadingValues: (payload: Map<ItemKey, boolean>) => dispatch(setLoadingValues(payload)),
+    dispatchMemberIcons: (payload: KeyValue<ItemKey, Map<string, Icon | null>>) => dispatch(setMemberIcons(payload)),
     dispatchMembers: (payload: Map<ItemKey, Member[]>) => dispatch(setMembers(payload)),
-    dispatchTeamIcons: (payload: Map<string, string | null>) => dispatch(setTeamIcons(payload)),
+    dispatchTeamIcons: (payload: Map<string, Icon | null>) => dispatch(setTeamIcons(payload)),
     dispatchTeams: (payload: Map<string, Team>) => dispatch(setTeams(payload))
   }), []);
 

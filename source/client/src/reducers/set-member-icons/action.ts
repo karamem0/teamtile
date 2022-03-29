@@ -7,13 +7,14 @@
 //
 
 import { KeyValue } from '../../types/common';
+import { Icon } from '../../types/entity';
 import {
   Action,
   ActionType
 } from '../../types/reducer';
 import { ItemKey } from '../../types/state';
 
-export const setMemberIcons = (payload: KeyValue<ItemKey, Map<string, string | null>>): Action => ({
+export const setMemberIcons = (payload: KeyValue<ItemKey, Map<string, Icon | null>>): Action => ({
   type: ActionType.setMemberIcons,
   payload: payload
 });

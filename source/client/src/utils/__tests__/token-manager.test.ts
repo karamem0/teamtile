@@ -40,7 +40,7 @@ describe('getClientToken', () => {
 
   it('throw error if failed', async () => {
     const params = {
-      error: 'Something went wrong'
+      error: 'Something went wrong.'
     };
     microsoftTeams.authentication.getAuthToken
       .mockRejectedValue(params.error);
@@ -54,7 +54,7 @@ describe('getServerToken', () => {
   it('throw error if failed', async () => {
     const params = {
       token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ0xJRU5UVE9LRU4ifQ.ZO9wyYFJTSl-Q9nvS2D3UIDvOBr9rl3CQTxjcUpQ8HA',
-      error: 'Something went wrong'
+      error: 'Something went wrong.'
     };
     global.fetch = jest.fn()
       .mockRejectedValue(params.error);

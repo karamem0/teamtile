@@ -67,7 +67,7 @@
 
     |項目|値|
     |-|-|
-    |種類|Web|
+    |種類|シングル ページ アプリケーション|
     |リダイレクト URL|`[Azure Web アプリの URL]`/auth/callback|
     |アクセス トークン|チェックする|
     |ID トークン|チェックす津|
@@ -80,8 +80,6 @@
     |-|-|-|
     |Microsoft Graph|Channel.ReadBasic.All|委任されたアクセス許可|
     ||Group.Read.All|委任されたアクセス許可|
-    ||openid|委任されたアクセス許可|
-    ||profile|委任されたアクセス許可|
     ||Team.ReadBasic.All|委任されたアクセス許可|
     ||TeamMember.Read.All|委任されたアクセス許可|
     ||User.Read|委任されたアクセス許可|
@@ -155,7 +153,7 @@ dotnet publish --configuration Release
 4. `publish` フォルダーの中身を圧縮します。
 
 ```
-Compress-Archive -Path ./bin/Release/net5.0/publish/* -DestinationPath ../../server.zip
+Compress-Archive -Path ./bin/Release/net6.0/publish/* -DestinationPath ../../server.zip
 ```
 
 ### クライアント

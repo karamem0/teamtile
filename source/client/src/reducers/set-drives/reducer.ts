@@ -21,7 +21,9 @@ export const setDrives = (state: State, payload: Map<ItemKey, Drive>): State => 
       ...item,
       value: {
         ...item.value,
-        drive: payload.get(item.key)
+        drive: payload.has(item.key)
+          ? payload.get(item.key)
+          : item.value?.drive
       } as ItemValue
     }))
   };

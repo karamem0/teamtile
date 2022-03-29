@@ -21,7 +21,9 @@ export const setChannels = (state: State, payload: Map<ItemKey, Channel[]>): Sta
       ...item,
       value: {
         ...item.value,
-        channels: payload.get(item.key)
+        channels: payload.has(item.key)
+          ? payload.get(item.key)
+          : item.value?.channels
       } as ItemValue
     }))
   };

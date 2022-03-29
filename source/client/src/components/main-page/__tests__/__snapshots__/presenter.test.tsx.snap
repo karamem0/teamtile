@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainPage create shapshot when error has occurred 1`] = `
+<body>
+  <div>
+    <div
+      data-testid="ErrorPanel"
+    />
+  </div>
+</body>
+`;
+
+exports[`MainPage create shapshot when item is empty 1`] = `
+<body>
+  <div>
+    <div
+      data-testid="EmptyPanel"
+    />
+  </div>
+</body>
+`;
+
+exports[`MainPage create shapshot when item is not found 1`] = `
+<body>
+  <div>
+    <div
+      data-testid="TeamPanel"
+    >
+      <div
+        data-testid="TeamNotFound"
+      />
+    </div>
+  </div>
+</body>
+`;
+
+exports[`MainPage create shapshot when loaded 1`] = `
+<body>
+  <div>
+    <div
+      data-testid="TeamPanel"
+    >
+      <div
+        data-testid="TeamContent"
+      />
+    </div>
+  </div>
+</body>
+`;
+
+exports[`MainPage create shapshot when loading 1`] = `
+<body>
+  <div>
+    <div
+      data-testid="LoaderPanel"
+    />
+  </div>
+</body>
+`;

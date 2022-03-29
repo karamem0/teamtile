@@ -10,12 +10,13 @@ import { authentication } from '@microsoft/teams-js';
 
 import decode from 'jwt-decode';
 
-export const getClientToken = (): Promise<string> =>
-  authentication.getAuthToken({});
+export function getClientToken (): Promise<string> {
+  return authentication.getAuthToken({});
+}
 
-export const getServerToken = async (token: string): Promise<string> => {
+export async function getServerToken (token: string): Promise<string> {
   const response = await fetch(
-    `${process.env.REACT_APP_SERVER_URL}/token`,
+    `${process.env.REACT_APP_AUTH_SERVER_URL}/token`,
     {
       method: 'POST',
       body: JSON.stringify({
@@ -40,9 +41,9 @@ export const getServerToken = async (token: string): Promise<string> => {
     });
   }
   throw new Error(json.error);
-};
+}
 
-export const getCachedToken = (): string | null => {
+export function getCachedToken (): string | null {
   const token = sessionStorage.getItem(process.env.REACT_APP_AUTH_APP_ID);
   if (!token) {
     return null;
@@ -57,8 +58,8 @@ export const getCachedToken = (): string | null => {
     return null;
   }
   return token;
-};
+}
 
-export const setCachedToken = (token: string): void => {
+export function setCachedToken (token: string): void {
   sessionStorage.setItem(process.env.REACT_APP_AUTH_APP_ID, token);
-};
+}

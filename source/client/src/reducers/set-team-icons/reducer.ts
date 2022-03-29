@@ -6,13 +6,14 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import { Icon } from '../../types/entity';
 import {
   ItemKey,
   ItemValue,
   State
 } from '../../types/state';
 
-export const setTeamIcons = (state: State, payload: Map<ItemKey, string | null>): State => {
+export const setTeamIcons = (state: State, payload: Map<ItemKey, Icon | null>): State => {
   const { items } = state;
   return {
     ...state,
@@ -20,7 +21,9 @@ export const setTeamIcons = (state: State, payload: Map<ItemKey, string | null>)
       ...item,
       value: {
         ...item.value,
-        icon: payload.get(item.key) || null
+        icon: payload.has(item.key)
+          ? payload.get(item.key)
+          : item.value?.icon
       } as ItemValue
     }))
   };

@@ -13,7 +13,7 @@ import { useReducerContext } from '../contexts/reducer-context';
 
 interface ItemFilterValue {
   filter: string | null | undefined,
-  setFilter: (filter: string) => void
+  setFilter: (filter: string | null | undefined) => void
 }
 
 export const useItemFilter = (): ItemFilterValue => {
@@ -22,7 +22,7 @@ export const useItemFilter = (): ItemFilterValue => {
   const [ filter, setFilter ] = React.useState(state.itemFilter);
 
   useDebounce(() => {
-    dispatchers.dispatchFilter(filter || null);
+    dispatchers.dispatchItemFilter(filter || null);
   }, 500, [
     filter,
     dispatchers

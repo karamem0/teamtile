@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeamContent create shapshot 1`] = `
+.emotion-0 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+}
+
+@media (max-width: 599px) {
+  .emotion-0 {
+    gap: 0.5rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .emotion-0 {
+    gap: 1rem;
+  }
+}
+
+<body>
+  <div>
+    <div
+      class="emotion-0"
+      role="list"
+    />
+  </div>
+</body>
+`;

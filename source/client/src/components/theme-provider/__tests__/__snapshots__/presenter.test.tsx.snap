@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThemeProvider create shapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="ui-provider a b c d e f g h i j k l m n o p q r s t u v w x y z ab ac ae af ag ah ai aj ak al am an"
+      data-uses-unhanded-props="true"
+      dir="ltr"
+    />
+  </div>
+</body>
+`;

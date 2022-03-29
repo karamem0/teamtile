@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Router create shapshot if app is in teams 1`] = `
+@media (max-width: 599px) {
+  .emotion-0 {
+    padding: 0.5rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .emotion-0 {
+    padding: 1rem;
+  }
+}
+
+<body>
+  <div>
+    <div
+      class="emotion-0"
+    >
+      <div
+        data-testid="ReducerContextProvider"
+      >
+        <div
+          data-testid="ServiceContextProvider"
+        >
+          <div
+            data-testid="MainPage"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Router create shapshot if app is not in teams 1`] = `
+<body>
+  <div>
+    <div
+      data-testid="HomePage"
+    />
+  </div>
+</body>
+`;

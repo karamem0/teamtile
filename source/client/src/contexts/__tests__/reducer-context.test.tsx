@@ -13,11 +13,12 @@ import { render } from '@testing-library/react';
 import {
   Channel,
   Drive,
+  Icon,
   Member,
   Team
 } from '../../types/entity';
 import { ActionType } from '../../types/reducer';
-import { ItemKey, Loading } from '../../types/state';
+import { ItemKey } from '../../types/state';
 import { ReducerContextProvider, useReducerContext } from '../reducer-context';
 
 beforeEach(() => {
@@ -95,9 +96,9 @@ describe('dispatchDrives', () => {
 
 });
 
-describe('dispatchFilter', () => {
+describe('dispatchItemFilter', () => {
 
-  it('dispatch filter', () => {
+  it('dispatch item filter', () => {
     const params = {
       dispatch: jest.fn(),
       payload: null
@@ -109,11 +110,11 @@ describe('dispatchFilter', () => {
         params.dispatch
       ]);
     const Mock = (): React.ReactElement | null => {
-      const { dispatchers: { dispatchFilter } } = useReducerContext();
+      const { dispatchers: { dispatchItemFilter } } = useReducerContext();
       React.useEffect(() => {
-        dispatchFilter(params.payload);
+        dispatchItemFilter(params.payload);
       }, [
-        dispatchFilter
+        dispatchItemFilter
       ]);
       return null;
     };
@@ -123,7 +124,7 @@ describe('dispatchFilter', () => {
       </ReducerContextProvider>
     );
     expect(params.dispatch).toBeCalledWith({
-      type: ActionType.setFilter,
+      type: ActionType.setItemFilter,
       payload: params.payload
     });
   });
@@ -165,12 +166,12 @@ describe('dispatchKeys', () => {
 
 });
 
-describe('dispatchLoading', () => {
+describe('dispatchLoadingKeys', () => {
 
-  it('dispatch loading', () => {
+  it('dispatch loading keys', () => {
     const params = {
       dispatch: jest.fn(),
-      payload: Loading.none
+      payload: true
     };
     jest
       .spyOn(React, 'useReducer')
@@ -179,11 +180,11 @@ describe('dispatchLoading', () => {
         params.dispatch
       ]);
     const Mock = (): React.ReactElement | null => {
-      const { dispatchers: { dispatchLoading } } = useReducerContext();
+      const { dispatchers: { dispatchLoadingKeys } } = useReducerContext();
       React.useEffect(() => {
-        dispatchLoading(params.payload);
+        dispatchLoadingKeys(params.payload);
       }, [
-        dispatchLoading
+        dispatchLoadingKeys
       ]);
       return null;
     };
@@ -193,7 +194,42 @@ describe('dispatchLoading', () => {
       </ReducerContextProvider>
     );
     expect(params.dispatch).toBeCalledWith({
-      type: ActionType.setLoading,
+      type: ActionType.setLoadingKeys,
+      payload: params.payload
+    });
+  });
+
+});
+
+describe('dispatchLoadingValues', () => {
+
+  it('dispatch loading items', () => {
+    const params = {
+      dispatch: jest.fn(),
+      payload: new Map<ItemKey, boolean>()
+    };
+    jest
+      .spyOn(React, 'useReducer')
+      .mockReturnValue([
+        null,
+        params.dispatch
+      ]);
+    const Mock = (): React.ReactElement | null => {
+      const { dispatchers: { dispatchLoadingValues } } = useReducerContext();
+      React.useEffect(() => {
+        dispatchLoadingValues(params.payload);
+      }, [
+        dispatchLoadingValues
+      ]);
+      return null;
+    };
+    render(
+      <ReducerContextProvider>
+        <Mock />
+      </ReducerContextProvider>
+    );
+    expect(params.dispatch).toBeCalledWith({
+      type: ActionType.setLoadingValues,
       payload: params.payload
     });
   });
@@ -207,7 +243,7 @@ describe('dispatchMemberIcons', () => {
       dispatch: jest.fn(),
       payload: {
         key: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-        value: new Map<string, string>()
+        value: new Map<string, Icon | null>()
       }
     };
     jest
@@ -278,7 +314,7 @@ describe('dispatchTeamIcons', () => {
   it('dispatch team icons', () => {
     const params = {
       dispatch: jest.fn(),
-      payload: new Map<ItemKey, string>()
+      payload: new Map<ItemKey, Icon | null>()
     };
     jest
       .spyOn(React, 'useReducer')

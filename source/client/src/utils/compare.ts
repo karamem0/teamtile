@@ -6,7 +6,7 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-export const compare = (a?: string | null, b?: string | null): number => {
+export function compare (a?: string | null, b?: string | null): number {
   if (a === b) {
     return 0;
   }
@@ -17,4 +17,4 @@ export const compare = (a?: string | null, b?: string | null): number => {
     return -1;
   }
   return String.prototype.localeCompare.call(a, b);
-};
+}

@@ -13,6 +13,7 @@ export const setKeys = (state: State, payload: ItemKey[]): State => ({
   items: payload.map((key) => ({
     key,
     value: null,
+    loading: true,
     visible: true
   }))
 });

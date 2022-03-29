@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeamNotFound create shapshot 1`] = `
+.emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  color: gray;
+}
+
+@media (max-width: 599px) {
+  .emotion-0 {
+    min-height: calc(100vh - 3.25rem);
+  }
+}
+
+@media (min-width: 600px) {
+  .emotion-0 {
+    min-height: calc(100vh - 4.75rem);
+  }
+}
+
+.emotion-1 {
+  text-align: center;
+}
+
+.emotion-2 {
+  color: #e8ebfa;
+  width: 4rem;
+  height: 4rem;
+  margin: 0.5rem;
+}
+
+.emotion-3 {
+  display: block;
+}
+
+<body>
+  <div>
+    <div
+      class="emotion-0"
+    >
+      <div
+        class="emotion-1"
+      >
+        <span
+          aria-hidden="true"
+          class="root_dd790ee3 emotion-2"
+        >
+          <svg
+            class="svg_dd790ee3"
+            focusable="false"
+            viewBox="0 0 2048 2048"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2048 128v219l-768 768v805H768v-805L0 347V128h2048zm-128 128H128v37l768 768v731h256v-731l768-768v-37z"
+            />
+          </svg>
+        </span>
+        <span
+          class="ui-text emotion-3"
+          data-uses-unhanded-props="true"
+          dir="auto"
+        >
+          No items found.
+        </span>
+      </div>
+    </div>
+  </div>
+</body>
+`;

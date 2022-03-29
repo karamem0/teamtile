@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyPanel create shapshot 1`] = `
+.emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  color: gray;
+}
+
+@media (max-width: 599px) {
+  .emotion-0 {
+    min-height: calc(100vh - 0.5rem);
+  }
+}
+
+@media (min-width: 600px) {
+  .emotion-0 {
+    min-height: calc(100vh - 2rem);
+  }
+}
+
+.emotion-1 {
+  text-align: center;
+}
+
+.emotion-2 {
+  color: #e8ebfa;
+  width: 4rem;
+  height: 4rem;
+  margin: 0.5rem;
+}
+
+.emotion-3 {
+  display: block;
+}
+
+.emotion-4 {
+  margin: 1rem;
+}
+
+<body>
+  <div>
+    <div
+      class="emotion-0"
+    >
+      <div
+        class="emotion-1"
+      >
+        <span
+          aria-hidden="true"
+          class="root_dd790ee3 emotion-2"
+        >
+          <svg
+            class="svg_dd790ee3"
+            focusable="false"
+            viewBox="0 0 2048 2048"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1408 592q-26 0-45-19t-19-45q0-51 19-98t56-83l79-80q38-38 38-91 0-26 19-45t45-19q26 0 45 19t19 45q0 51-19 98t-56 83l-79 80q-38 38-38 91 0 26-19 45t-45 19zm-384 0q-26 0-45-19t-19-45q0-51 19-98t56-83l79-80q38-38 38-91 0-26 19-45t45-19q26 0 45 19t19 45q0 51-19 98t-56 83l-79 80q-38 38-38 91 0 26-19 45t-45 19zm832 176q40 0 75 15t61 41 41 61 15 75v384q0 40-15 75t-41 61-61 41-75 15h-57q-2 7-3 13t-4 12v39q0 66-25 124t-69 102-102 69-124 25h-384q-78 0-144-35t-110-93H334q-66 0-124-25t-102-68-69-102-25-125v-64h256q0-79 30-149t83-122 122-83 149-30q30 0 58 5t56 14V640h1024v128h64zM654 1152q-53 0-99 20t-82 55-55 81-20 100h370v-228q-26-13-54-20t-60-8zm-320 512h441q-7-29-7-64v-64H153q10 28 28 51t41 41 52 26 60 10zm463 67v1l1 2v-1l-1-2zm867-131V768H896v832q0 40 15 75t41 61 61 41 75 15h384q40 0 75-15t61-41 41-61 15-75zm256-256V960q0-26-19-45t-45-19h-64v512h64q26 0 45-19t19-45z"
+            />
+          </svg>
+        </span>
+        <span
+          class="ui-text emotion-3"
+          data-uses-unhanded-props="true"
+          dir="auto"
+        >
+          It looks like you are not a member of any teams.
+        </span>
+        <button
+          class="ui-button emotion-4"
+          data-aa-class="Button"
+          data-uses-unhanded-props="true"
+        >
+          <div
+            class="ui-box"
+            data-uses-unhanded-props="true"
+          >
+            <span
+              aria-hidden="true"
+              class="root_dd790ee3"
+            >
+              <svg
+                class="svg_dd790ee3"
+                focusable="false"
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1297 38q166 45 304 140t237 226 155 289 55 331q0 141-36 272t-103 245-160 207-208 160-245 103-272 37q-141 0-272-36t-245-103-207-160-160-208-103-244-37-273q0-140 37-272t105-248 167-212 221-164H256V0h512v512H640V215q-117 56-211 140T267 545 164 773t-36 251q0 123 32 237t90 214 141 182 181 140 214 91 238 32q123 0 237-32t214-90 182-141 140-181 91-214 32-238q0-150-48-289t-136-253-207-197-266-124l34-123z"
+                />
+              </svg>
+            </span>
+          </div>
+          <span
+            class="ui-button__content"
+            data-uses-unhanded-props="true"
+            dir="auto"
+          >
+            Retry
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+`;

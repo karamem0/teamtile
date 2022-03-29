@@ -67,7 +67,7 @@ Are you frustrated with finding a team? Teamtile provides these features to you:
 
     |Parameter|Value|
     |-|-|
-    |Type|Web|
+    |Type|Single-page application|
     |Redirect URL|`[URL of Azure Web App]`/auth/callback|
     |Access tokens|Checked|
     |ID tokens|Checked|
@@ -80,8 +80,6 @@ Are you frustrated with finding a team? Teamtile provides these features to you:
     |-|-|-|
     |Microsoft Graph|Channel.ReadBasic.All|Delegate|
     ||Group.Read.All|Delegate|
-    ||openid|Delegate|
-    ||profile|Delegate|
     ||Team.ReadBasic.All|Delegate|
     ||TeamMember.Read.All|Delegate|
     ||User.Read|Delegate|
@@ -155,7 +153,7 @@ dotnet publish --configuration Release
 4. Compress contents of `publish` folder.
 
 ```
-Compress-Archive -Path ./bin/Release/net5.0/publish/* -DestinationPath ../../server.zip
+Compress-Archive -Path ./bin/Release/net6.0/publish/* -DestinationPath ../../server.zip
 ```
 
 ### Client

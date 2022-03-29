@@ -19,10 +19,10 @@ const cacheService = {
   getMembers: jest.fn(),
   getTeams: jest.fn(),
   setChannels: jest.fn(),
-  setDrive: jest.fn(),
-  setIcon: jest.fn(),
+  setDrives: jest.fn(),
+  setIcons: jest.fn(),
   setMembers: jest.fn(),
-  setTeam: jest.fn()
+  setTeams: jest.fn()
 };
 jest.mock('../cache-service', () => ({
   CacheService: jest.fn().mockReturnValue(cacheService)
@@ -46,6 +46,7 @@ import { Client } from '@microsoft/microsoft-graph-client';
 import {
   Channel,
   Drive,
+  Icon,
   Member,
   Team
 } from '../../types/entity';
@@ -56,10 +57,10 @@ beforeEach(() => {
   jest.restoreAllMocks();
 });
 
-describe('getChannels', () => {
+describe('getChannelsFromCache', () => {
 
   it('return channels from cache', async () => {
-    const json = await import('./__jsons__/get-channels.json');
+    const json = await import('./__jsons__/channels.test.json');
     const params = {
       keys: [
         '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -69,13 +70,30 @@ describe('getChannels', () => {
       json: new Map<string, Channel[]>(json.default as [[ string, Channel[] ]])
     };
     cacheService.getChannels.mockResolvedValue(params.json);
-    graphService.getChannels.mockResolvedValue(new Map());
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getChannels(params.keys)).resolves.toEqual(params.json);
+    expect(target.getChannelsFromCache(params.keys)).resolves.toEqual(params.json);
   });
 
+  it('throw error if failed', () => {
+    const params = {
+      keys: [
+        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        '13be6971-79db-4f33-9d41-b25589ca25af',
+        '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
+      ],
+      error: 'Something went wrong.'
+    };
+    cacheService.getChannels.mockRejectedValue(new Error(params.error));
+    const target = new ServiceProvider(Client.initWithMiddleware({}));
+    expect(target.getChannelsFromCache(params.keys)).rejects.toThrow(params.error);
+  });
+
+});
+
+describe('getChannelsFromGraph', () => {
+
   it('return channels from graph', async () => {
-    const json = await import('./__jsons__/get-channels.json');
+    const json = await import('./__jsons__/channels.test.json');
     const params = {
       keys: [
         '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -87,7 +105,7 @@ describe('getChannels', () => {
     cacheService.getChannels.mockResolvedValue(new Map());
     graphService.getChannels.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getChannels(params.keys)).resolves.toEqual(params.json);
+    expect(target.getChannelsFromGraph(params.keys)).resolves.toEqual(params.json);
   });
 
   it('throw error if failed', () => {
@@ -97,19 +115,19 @@ describe('getChannels', () => {
         '13be6971-79db-4f33-9d41-b25589ca25af',
         '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
       ],
-      error: 'Something went wrong'
+      error: 'Something went wrong.'
     };
-    cacheService.getChannels.mockRejectedValue(new Error(params.error));
+    graphService.getChannels.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getChannels(params.keys)).rejects.toThrow(params.error);
+    expect(target.getChannelsFromGraph(params.keys)).rejects.toThrow(params.error);
   });
 
 });
 
-describe('getDrives', () => {
+describe('getDrivesFromCache', () => {
 
   it('return drives from cache', async () => {
-    const json = await import('./__jsons__/get-drives.json');
+    const json = await import('./__jsons__/drives.test.json');
     const params = {
       keys: [
         '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -119,13 +137,30 @@ describe('getDrives', () => {
       json: new Map<string, Drive>(json.default as [[ string, Drive ]])
     };
     cacheService.getDrives.mockResolvedValue(params.json);
-    graphService.getDrives.mockResolvedValue(new Map());
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getDrives(params.keys)).resolves.toEqual(params.json);
+    expect(target.getDrivesFromCache(params.keys)).resolves.toEqual(params.json);
   });
 
+  it('throw error if failed', () => {
+    const params = {
+      keys: [
+        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        '13be6971-79db-4f33-9d41-b25589ca25af',
+        '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
+      ],
+      error: 'Something went wrong.'
+    };
+    cacheService.getDrives.mockRejectedValue(new Error(params.error));
+    const target = new ServiceProvider(Client.initWithMiddleware({}));
+    expect(target.getDrivesFromCache(params.keys)).rejects.toThrow(params.error);
+  });
+
+});
+
+describe('getDrivesFromGraph', () => {
+
   it('return drives from graph', async () => {
-    const json = await import('./__jsons__/get-drives.json');
+    const json = await import('./__jsons__/drives.test.json');
     const params = {
       keys: [
         '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -137,7 +172,7 @@ describe('getDrives', () => {
     cacheService.getDrives.mockResolvedValue(new Map());
     graphService.getDrives.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getDrives(params.keys)).resolves.toEqual(params.json);
+    expect(target.getDrivesFromGraph(params.keys)).resolves.toEqual(params.json);
   });
 
   it('throw error if failed', () => {
@@ -147,11 +182,11 @@ describe('getDrives', () => {
         '13be6971-79db-4f33-9d41-b25589ca25af',
         '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
       ],
-      error: 'Something went wrong'
+      error: 'Something went wrong.'
     };
-    cacheService.getDrives.mockRejectedValue(new Error(params.error));
+    graphService.getDrives.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getDrives(params.keys)).rejects.toThrow(params.error);
+    expect(target.getDrivesFromGraph(params.keys)).rejects.toThrow(params.error);
   });
 
 });
@@ -173,7 +208,7 @@ describe('getKeys', () => {
 
   it('return error if failed', () => {
     const params = {
-      error: 'Something went wrong'
+      error: 'Something went wrong.'
     };
     graphService.getKeys.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
@@ -182,38 +217,21 @@ describe('getKeys', () => {
 
 });
 
-describe('getMemberIcons', () => {
+describe('getMemberIconsFromCache', () => {
 
   it('return member icons from cache', async () => {
-    const json = await import('./__jsons__/get-member-icons.json');
+    const json = await import('./__jsons__/member-icons.test.json');
     const params = {
       keys: [
-        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-        '13be6971-79db-4f33-9d41-b25589ca25af',
-        '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
+        '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+        '626cbf8c-5dde-46b0-8385-9e40d64736fe',
+        '074e56ea-0b50-4461-89e5-c67ae14a2c0b'
       ],
-      json: new Map<string, string | null>(json.default as [[ string, string | null ]])
+      json: new Map<string, Icon | null>(json.default as [[ string, Icon | null ]])
     };
     cacheService.getIcons.mockResolvedValue(params.json);
-    graphService.getMemberIcons.mockResolvedValue(new Map());
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getMemberIcons(params.keys)).resolves.toEqual(params.json);
-  });
-
-  it('return member icons from graph', async () => {
-    const json = await import('./__jsons__/get-member-icons.json');
-    const params = {
-      keys: [
-        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-        '13be6971-79db-4f33-9d41-b25589ca25af',
-        '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
-      ],
-      json: new Map<string, string | null>(json.default as [[ string, string | null ]])
-    };
-    cacheService.getIcons.mockResolvedValue(new Map());
-    graphService.getMemberIcons.mockResolvedValue(params.json);
-    const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getMemberIcons(params.keys)).resolves.toEqual(params.json);
+    expect(target.getMemberIconsFromCache(params.keys)).resolves.toEqual(params.json);
   });
 
   it('throw error if failed', () => {
@@ -223,19 +241,53 @@ describe('getMemberIcons', () => {
         '13be6971-79db-4f33-9d41-b25589ca25af',
         '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
       ],
-      error: 'Something went wrong'
+      error: 'Something went wrong.'
     };
     cacheService.getIcons.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getMemberIcons(params.keys)).rejects.toThrow(params.error);
+    expect(target.getMemberIconsFromCache(params.keys)).rejects.toThrow(params.error);
   });
 
 });
 
-describe('getMembers', () => {
+describe('getMemberIconsFromGraph', () => {
+
+  it('return member icons from graph', async () => {
+    const json = await import('./__jsons__/member-icons.test.json');
+    const params = {
+      keys: [
+        '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+        '626cbf8c-5dde-46b0-8385-9e40d64736fe',
+        '074e56ea-0b50-4461-89e5-c67ae14a2c0b'
+      ],
+      json: new Map<string, Icon | null>(json.default as [[ string, Icon | null ]])
+    };
+    cacheService.getIcons.mockResolvedValue(new Map());
+    graphService.getMemberIcons.mockResolvedValue(params.json);
+    const target = new ServiceProvider(Client.initWithMiddleware({}));
+    expect(target.getMemberIconsFromGraph(params.keys)).resolves.toEqual(params.json);
+  });
+
+  it('throw error if failed', () => {
+    const params = {
+      keys: [
+        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        '13be6971-79db-4f33-9d41-b25589ca25af',
+        '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
+      ],
+      error: 'Something went wrong.'
+    };
+    graphService.getMemberIcons.mockRejectedValue(new Error(params.error));
+    const target = new ServiceProvider(Client.initWithMiddleware({}));
+    expect(target.getMemberIconsFromGraph(params.keys)).rejects.toThrow(params.error);
+  });
+
+});
+
+describe('getMembersFromCache', () => {
 
   it('return members from cache', async () => {
-    const json = await import('./__jsons__/get-members.json');
+    const json = await import('./__jsons__/members.test.json');
     const params = {
       keys: [
         '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -245,13 +297,30 @@ describe('getMembers', () => {
       json: new Map<string, Member[]>(json.default as [[ string, Member[] ]])
     };
     cacheService.getMembers.mockResolvedValue(params.json);
-    graphService.getMembers.mockResolvedValue(new Map());
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getMembers(params.keys)).resolves.toEqual(params.json);
+    expect(target.getMembersFromCache(params.keys)).resolves.toEqual(params.json);
   });
 
+  it('throw error if failed', () => {
+    const params = {
+      keys: [
+        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        '13be6971-79db-4f33-9d41-b25589ca25af',
+        '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
+      ],
+      error: 'Something went wrong.'
+    };
+    cacheService.getMembers.mockRejectedValue(new Error(params.error));
+    const target = new ServiceProvider(Client.initWithMiddleware({}));
+    expect(target.getMembersFromCache(params.keys)).rejects.toThrow(params.error);
+  });
+
+});
+
+describe('getMembersFromGraph', () => {
+
   it('return members from graph', async () => {
-    const json = await import('./__jsons__/get-members.json');
+    const json = await import('./__jsons__/members.test.json');
     const params = {
       keys: [
         '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -263,7 +332,7 @@ describe('getMembers', () => {
     cacheService.getMembers.mockResolvedValue(new Map());
     graphService.getMembers.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getMembers(params.keys)).resolves.toEqual(params.json);
+    expect(target.getMembersFromGraph(params.keys)).resolves.toEqual(params.json);
   });
 
   it('throw error if failed', () => {
@@ -273,11 +342,11 @@ describe('getMembers', () => {
         '13be6971-79db-4f33-9d41-b25589ca25af',
         '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
       ],
-      error: 'Something went wrong'
+      error: 'Something went wrong.'
     };
-    cacheService.getMembers.mockRejectedValue(new Error(params.error));
+    graphService.getMembers.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getMembers(params.keys)).rejects.toThrow(params.error);
+    expect(target.getMembersFromGraph(params.keys)).rejects.toThrow(params.error);
   });
 
 });
@@ -285,35 +354,18 @@ describe('getMembers', () => {
 describe('getTeamIcons', () => {
 
   it('return team icons from cache', async () => {
-    const json = await import('./__jsons__/get-team-icons.json');
+    const json = await import('./__jsons__/team-icons.test.json');
     const params = {
       keys: [
         '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         '13be6971-79db-4f33-9d41-b25589ca25af',
         '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
       ],
-      json: new Map<string, string>(json.default as [[ string, string ]])
+      json: new Map<string, Icon>(json.default as [[ string, Icon ]])
     };
     cacheService.getIcons.mockResolvedValue(params.json);
-    graphService.getTeamIcons.mockResolvedValue(new Map());
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getTeamIcons(params.keys)).resolves.toEqual(params.json);
-  });
-
-  it('return team icons from graph', async () => {
-    const json = await import('./__jsons__/get-team-icons.json');
-    const params = {
-      keys: [
-        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-        '13be6971-79db-4f33-9d41-b25589ca25af',
-        '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
-      ],
-      json: new Map<string, string>(json.default as [[ string, string ]])
-    };
-    cacheService.getIcons.mockResolvedValue(new Map());
-    graphService.getTeamIcons.mockResolvedValue(params.json);
-    const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getTeamIcons(params.keys)).resolves.toEqual(params.json);
+    expect(target.getTeamIconsFromCache(params.keys)).resolves.toEqual(params.json);
   });
 
   it('return error if failed', async () => {
@@ -323,19 +375,53 @@ describe('getTeamIcons', () => {
         '13be6971-79db-4f33-9d41-b25589ca25af',
         '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
       ],
-      error: 'Something went wrong'
+      error: 'Something went wrong.'
     };
     cacheService.getIcons.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getTeamIcons(params.keys)).rejects.toThrow(params.error);
+    expect(target.getTeamIconsFromCache(params.keys)).rejects.toThrow(params.error);
   });
 
 });
 
-describe('getTeams', () => {
+describe('getTeamIconsFromGraph', () => {
+
+  it('return team icons from graph', async () => {
+    const json = await import('./__jsons__/team-icons.test.json');
+    const params = {
+      keys: [
+        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        '13be6971-79db-4f33-9d41-b25589ca25af',
+        '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
+      ],
+      json: new Map<string, Icon>(json.default as [[ string, Icon ]])
+    };
+    cacheService.getIcons.mockResolvedValue(new Map());
+    graphService.getTeamIcons.mockResolvedValue(params.json);
+    const target = new ServiceProvider(Client.initWithMiddleware({}));
+    expect(target.getTeamIconsFromGraph(params.keys)).resolves.toEqual(params.json);
+  });
+
+  it('return error if failed', async () => {
+    const params = {
+      keys: [
+        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        '13be6971-79db-4f33-9d41-b25589ca25af',
+        '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
+      ],
+      error: 'Something went wrong.'
+    };
+    graphService.getTeamIcons.mockRejectedValue(new Error(params.error));
+    const target = new ServiceProvider(Client.initWithMiddleware({}));
+    expect(target.getTeamIconsFromGraph(params.keys)).rejects.toThrow(params.error);
+  });
+
+});
+
+describe('getTeamsFromCache', () => {
 
   it('return teams from cache', async () => {
-    const json = await import('./__jsons__/get-teams.json');
+    const json = await import('./__jsons__/teams.test.json');
     const params = {
       keys: [
         '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -345,13 +431,30 @@ describe('getTeams', () => {
       json: new Map<string, Team>(json.default as [[ string, Team ]])
     };
     cacheService.getTeams.mockResolvedValue(params.json);
-    graphService.getTeams.mockResolvedValue(new Map());
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getTeams(params.keys)).resolves.toEqual(params.json);
+    expect(target.getTeamsFromCache(params.keys)).resolves.toEqual(params.json);
   });
 
+  it('throw error if failed', () => {
+    const params = {
+      keys: [
+        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        '13be6971-79db-4f33-9d41-b25589ca25af',
+        '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
+      ],
+      error: 'Something went wrong.'
+    };
+    cacheService.getTeams.mockRejectedValue(new Error(params.error));
+    const target = new ServiceProvider(Client.initWithMiddleware({}));
+    expect(target.getTeamsFromCache(params.keys)).rejects.toThrow(params.error);
+  });
+
+});
+
+describe('getTeamsFromGraph', () => {
+
   it('return teams from graph', async () => {
-    const json = await import('./__jsons__/get-teams.json');
+    const json = await import('./__jsons__/teams.test.json');
     const params = {
       keys: [
         '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -363,7 +466,7 @@ describe('getTeams', () => {
     cacheService.getTeams.mockResolvedValue(new Map());
     graphService.getTeams.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getTeams(params.keys)).resolves.toEqual(params.json);
+    expect(target.getTeamsFromGraph(params.keys)).resolves.toEqual(params.json);
   });
 
   it('throw error if failed', () => {
@@ -373,11 +476,11 @@ describe('getTeams', () => {
         '13be6971-79db-4f33-9d41-b25589ca25af',
         '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
       ],
-      error: 'Something went wrong'
+      error: 'Something went wrong.'
     };
-    cacheService.getTeams.mockRejectedValue(new Error(params.error));
+    graphService.getTeams.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getTeams(params.keys)).rejects.toThrow(params.error);
+    expect(target.getTeamsFromGraph(params.keys)).rejects.toThrow(params.error);
   });
 
 });

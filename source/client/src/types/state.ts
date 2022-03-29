@@ -10,39 +10,31 @@ import { KeyValue } from './common';
 import {
   Channel,
   Drive,
-  Icon,
-  Member,
-  Team
+  MemberWithIcon,
+  TeamWithIcon
 } from './entity';
-
-export type ItemKey = string;
-
-export type ItemValue = (
-  Team &
-  Icon &
-  {
-    channels: Channel[] | undefined,
-    members: (Member & Icon)[] | undefined,
-    drive: Drive | undefined
-  }
-);
 
 export type Item = (
   KeyValue<ItemKey, ItemValue | null> &
   {
+    loading: boolean | undefined,
     visible: boolean | undefined
+  }
+)
+
+export type ItemKey = string;
+
+export type ItemValue = (
+  TeamWithIcon &
+  {
+    channels: Channel[] | undefined,
+    drive: Drive | undefined,
+    members: MemberWithIcon[] | undefined
   }
 );
 
-export enum Loading {
-  none = 0,
-  keys = 1,
-  values = 2,
-  done = 255,
-}
-
 export interface State {
-  loading: Loading,
   itemFilter: string | null | undefined,
-  items: Item[]
+  items: Item[],
+  loading: boolean | undefined
 }

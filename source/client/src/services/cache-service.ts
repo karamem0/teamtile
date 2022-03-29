@@ -11,6 +11,7 @@ import Dexie from 'dexie';
 import {
   Channel,
   Drive,
+  Icon,
   Member,
   Team
 } from '../types/entity';
@@ -32,135 +33,216 @@ export class CacheService {
 
   readonly database: Dexie;
 
+  readonly timeout: number;
+
   constructor (
-    database?: Dexie
+    database?: Dexie,
+    timeout?: number
   ) {
-    this.database = database ?? new Dexie('teamtile');
-    this.database.version(3).stores({
-      teams: '&id, expired, value.id, value.displayName, value.description, value.internalId, value.visibility, value.webUrl',
-      channels: '&id, expired, values.id, values.displayName, values.webUrl',
-      members: '&id, expired, values.displayName, values.userId, values.email',
+    this.database = database || new Dexie('teamtile');
+    this.database.version(5).stores({
+      channels: '&id, expired, values.displayName, values.id, values.webUrl',
       drives: '&id, expired, value.id, value.webUrl',
-      icons: '&id, expired, value'
+      icons: '&id, expired, value.data, value.type',
+      members: '&id, expired, values.displayName, values.email, values.userId',
+      teams: '&id, expired, value.description, value.displayName, value.id, value.internalId, value.visibility, value.webUrl'
     });
+    this.timeout = timeout || 3600;
   }
 
-  async getTeams (keys: string[]): Promise<Map<string, Team>> {
+  async clear (): Promise<void> {
+    await Promise.all(this.database.tables.map((table) => table.clear()));
+  }
+
+  async getChannels (
+    keys: string[],
+    expired?: boolean | undefined,
+    timestamp: number = Date.now()
+  ): Promise<Map<string, Channel[]>> {
     return new Map(
-      await Promise.all(
-        await this.database.table<ValueEntity<Team>>('teams')
-          .filter((value) => keys.indexOf(value.id) >= 0)
-          .filter((value) => Number(value.expired) > Date.now())
-          .toArray()
-          .then<[string, Team][]>((values) => values.map((value) => ([
-            value.id,
-            value.value
-          ])))
-      )
-    );
-  }
-
-  async setTeam (id: string, value: Team): Promise<void> {
-    await this.database.table<ValueEntity<Team>>('teams').put({
-      id: id,
-      expired: Date.now() + (3600 * 1000),
-      value: value
-    });
-  }
-
-  async getChannels (keys: string[]): Promise<Map<string, Channel[]>> {
-    return new Map(
-      await Promise.all(
+      await Promise.all<[string, Channel[]][]>(
         await this.database.table<ArrayEntity<Channel>>('channels')
-          .filter((value) => keys.indexOf(value.id) >= 0)
-          .filter((value) => Number(value.expired) > Date.now())
+          .filter((entity) => keys.indexOf(entity.id) >= 0)
+          .filter((entity) => {
+            switch (expired) {
+              case true:
+                return entity.expired < timestamp;
+              case false:
+                return entity.expired >= timestamp;
+              default:
+                return true;
+            }
+          })
           .toArray()
-          .then<[string, Channel[]][]>((values) => values.map((value) => ([
-            value.id,
-            value.values.sort((a, b) => compare(a.displayName, b.displayName))
+          .then((entities) => entities.map((entity) => ([
+            entity.id,
+            entity.values.sort((a, b) => compare(a.displayName, b.displayName))
           ])))
       )
     );
   }
 
-  async setChannels (id: string, values: Channel[]): Promise<void> {
-    await this.database.table<ArrayEntity<Channel>>('channels').put({
-      id: id,
-      expired: Date.now() + (3600 * 1000),
-      values: values
-    });
+  async setChannels (
+    entities: Map<string, Channel[]>,
+    timestamp: number = Date.now()
+  ): Promise<void> {
+    entities.forEach(async (values, key) =>
+      await this.database.table<ArrayEntity<Channel>>('channels').put({
+        expired: timestamp + (this.timeout * 1000),
+        id: key,
+        values: values
+      }));
   }
 
-  async getMembers (keys: string[]): Promise<Map<string, Member[]>> {
+  async getDrives (
+    keys: string[],
+    expired?: boolean | undefined,
+    timestamp: number = Date.now()
+  ): Promise<Map<string, Drive>> {
     return new Map(
-      await Promise.all(
-        await this.database.table<ArrayEntity<Member>>('members')
-          .filter((value) => keys.indexOf(value.id) >= 0)
-          .filter((value) => Number(value.expired) > Date.now())
-          .toArray()
-          .then<[string, Member[]][]>((values) => values
-            .map((value) => ([
-              value.id,
-              value.values.sort((a, b) => compare(a.displayName, b.displayName))
-            ])))
-      )
-    );
-  }
-
-  async setMembers (id: string, values: Member[]): Promise<void> {
-    await this.database.table<ArrayEntity<Member>>('members').put({
-      id: id,
-      expired: Date.now() + (3600 * 1000),
-      values: values
-    });
-  }
-
-  async getDrives (keys: string[]): Promise<Map<string, Drive>> {
-    return new Map(
-      await Promise.all(
+      await Promise.all<[string, Drive][]>(
         await this.database.table<ValueEntity<Drive>>('drives')
-          .filter((value) => keys.indexOf(value.id) >= 0)
-          .filter((value) => Number(value.expired) > Date.now())
+          .filter((entity) => keys.indexOf(entity.id) >= 0)
+          .filter((entity) => {
+            switch (expired) {
+              case true:
+                return entity.expired < timestamp;
+              case false:
+                return entity.expired >= timestamp;
+              default:
+                return true;
+            }
+          })
           .toArray()
-          .then<[string, Drive][]>((values) => values
-            .map((value) => ([
-              value.id,
-              value.value
-            ])))
+          .then((entities) => entities.map((entity) => ([ entity.id, entity.value ])))
       )
     );
   }
 
-  async setDrive (id: string, value: Drive): Promise<void> {
-    await this.database.table<ValueEntity<Drive>>('drives').put({
-      id: id,
-      expired: Date.now() + (3600 * 1000),
-      value: value
-    });
+  async setDrives (
+    entities: Map<string, Drive>,
+    timestamp: number = Date.now()
+  ): Promise<void> {
+    entities.forEach(async (value, key) =>
+      await this.database.table<ValueEntity<Drive>>('drives').put({
+        expired: timestamp + (this.timeout * 1000),
+        id: key,
+        value: value
+      }));
   }
 
-  async getIcons (keys: string[]): Promise<Map<string, string | null>> {
+  async getIcons (
+    keys: string[],
+    expired?: boolean | undefined,
+    timestamp: number = Date.now()
+  ): Promise<Map<string, Icon | null>> {
     return new Map(
-      await Promise.all(
-        await this.database.table<ValueEntity<string | null>>('icons')
-          .filter((value) => keys.indexOf(value.id) >= 0)
-          .filter((value) => Number(value.expired) > Date.now())
+      await Promise.all<[string, Icon | null][]>(
+        await this.database.table<ValueEntity<Icon | null>>('icons')
+          .filter((entity) => keys.indexOf(entity.id) >= 0)
+          .filter((entity) => {
+            switch (expired) {
+              case true:
+                return entity.expired < timestamp;
+              case false:
+                return entity.expired >= timestamp;
+              default:
+                return true;
+            }
+          })
           .toArray()
-          .then<[string, string | null][]>((values) => values
-            .map((value) => ([
-              value.id,
-              value.value
-            ])))
+          .then((entities) => entities.map((entity) => ([ entity.id, entity.value ])))
       )
     );
   }
 
-  async setIcon (id: string, value: string | null): Promise<void> {
-    await this.database.table<ValueEntity<string | null>>('icons').put({
-      id: id,
-      expired: Date.now() + (3600 * 1000),
-      value: value
-    });
+  async setIcons (
+    entities: Map<string, Icon | null>,
+    timestamp: number = Date.now()
+  ): Promise<void> {
+    entities.forEach(async (value, key) =>
+      await this.database.table<ValueEntity<Icon | null>>('icons').put({
+        expired: timestamp + (this.timeout * 1000),
+        id: key,
+        value: value
+      }));
+  }
+
+  async getMembers (
+    keys: string[],
+    expired?: boolean | undefined,
+    timestamp: number = Date.now()
+  ): Promise<Map<string, Member[]>> {
+    return new Map(
+      await Promise.all<[string, Member[]][]>(
+        await this.database.table<ArrayEntity<Member>>('members')
+          .filter((entity) => keys.indexOf(entity.id) >= 0)
+          .filter((entity) => {
+            switch (expired) {
+              case true:
+                return entity.expired < timestamp;
+              case false:
+                return entity.expired >= timestamp;
+              default:
+                return true;
+            }
+          })
+          .toArray()
+          .then((entities) => entities.map((entity) => ([
+            entity.id,
+            entity.values.sort((a, b) => compare(a.displayName, b.displayName))
+          ])))
+      )
+    );
+  }
+
+  async setMembers (
+    entities: Map<string, Member[]>,
+    timestamp: number = Date.now()
+  ): Promise<void> {
+    entities.forEach(async (values, key) =>
+      await this.database.table<ArrayEntity<Member>>('members').put({
+        expired: timestamp + (this.timeout * 1000),
+        id: key,
+        values: values
+      }));
+  }
+
+  async getTeams (
+    keys: string[],
+    expired?: boolean | undefined,
+    timestamp: number = Date.now()
+  ): Promise<Map<string, Team>> {
+    return new Map(
+      await Promise.all<[string, Team][]>(
+        await this.database.table<ValueEntity<Team>>('teams')
+          .filter((entity) => keys.indexOf(entity.id) >= 0)
+          .filter((entity) => {
+            switch (expired) {
+              case true:
+                return entity.expired < timestamp;
+              case false:
+                return entity.expired >= timestamp;
+              default:
+                return true;
+            }
+          })
+          .toArray()
+          .then((entities) => entities.map((entity) => ([ entity.id, entity.value ])))
+      )
+    );
+  }
+
+  async setTeams (
+    entities: Map<string, Team>,
+    timestamp: number = Date.now()
+  ): Promise<void> {
+    entities.forEach(async (value, key) =>
+      await this.database.table<ValueEntity<Team>>('teams').put({
+        expired: timestamp + (this.timeout * 1000),
+        id: key,
+        value: value
+      }));
   }
 
 }

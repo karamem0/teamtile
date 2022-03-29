@@ -21,7 +21,9 @@ export const setMembers = (state: State, payload: Map<ItemKey, Member[]>): State
       ...item,
       value: {
         ...item.value,
-        members: payload.get(item.key)
+        members: payload.has(item.key)
+          ? payload.get(item.key)
+          : item.value?.members
       } as ItemValue
     }))
   };

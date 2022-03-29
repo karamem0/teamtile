@@ -6,27 +6,11 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-export interface Team {
-  id: string | undefined,
-  displayName: string | null | undefined,
-  description: string | null | undefined,
-  internalId: string | null | undefined,
-  visibility: VisibilityType | null | undefined,
-  webUrl: string | null | undefined
-}
-
 export interface Channel {
-  id: string | undefined,
   displayName: string | null | undefined,
-  webUrl: string | null | undefined,
-  membershipType: MembershipType | null | undefined
-}
-
-export interface Member {
   id: string | undefined,
-  displayName: string | null | undefined,
-  userId: string | null | undefined,
-  email: string | null | undefined
+  membershipType: MembershipType | null | undefined,
+  webUrl: string | null | undefined
 }
 
 export interface Drive {
@@ -35,15 +19,44 @@ export interface Drive {
 }
 
 export interface Icon {
-  icon: string | null | undefined
+  data: string | null | undefined,
+  type: string | null | undefined
+}
+
+export interface Member {
+  displayName: string | null | undefined,
+  email: string | null | undefined,
+  id: string | undefined,
+  userId: string | null | undefined
+}
+
+export type MemberWithIcon = (
+  Member & {
+     icon: Icon | undefined
+  }
+)
+
+export interface Team {
+  description: string | null | undefined,
+  displayName: string | null | undefined,
+  id: string | undefined,
+  internalId: string | null | undefined,
+  visibility: VisibilityType | null | undefined,
+  webUrl: string | null | undefined
+}
+
+export type TeamWithIcon = (
+  Team & {
+     icon: Icon | undefined
+  }
+)
+
+export enum MembershipType {
+  private = 'private',
+  standard = 'standard'
 }
 
 export enum VisibilityType {
-  public = 'public',
-  private = 'private'
-}
-
-export enum MembershipType {
-  standard = 'standard',
-  private= 'private'
+  private = 'private',
+  public = 'public'
 }
