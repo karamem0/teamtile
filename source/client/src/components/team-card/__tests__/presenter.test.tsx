@@ -34,8 +34,7 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import { KeyValue } from '../../../types/common';
-import { ItemKey, ItemValue } from '../../../types/state';
+import { Item } from '../../../types/state';
 import TeamCard from '../presenter';
 
 beforeEach(() => {
@@ -48,7 +47,7 @@ describe('TeamCard', () => {
   it('create shapshot', async () => {
     const json = await import('./__jsons__/presenter.test.json');
     const params = {
-      item: json.default as KeyValue<ItemKey, ItemValue>
+      item: json.default as Item
     };
     render(<TeamCard {...params} />);
     expect(screen.queryAllByText(/^.*$/)[0]).toMatchSnapshot();

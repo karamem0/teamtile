@@ -58,6 +58,8 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
+import { PublicClientApplication } from '@azure/msal-browser';
+
 import App from '../presenter';
 
 beforeEach(() => {
@@ -68,7 +70,14 @@ beforeEach(() => {
 describe('App', () => {
 
   it('create shapshot', () => {
-    render(<App />);
+    const params = {
+      instance: new PublicClientApplication({
+        auth: {
+          clientId: '00000000-0000-0000-0000-000000000000'
+        }
+      })
+    };
+    render(<App {...params} />);
     expect(screen.queryAllByText(/^.*$/)[0]).toMatchSnapshot();
   });
 

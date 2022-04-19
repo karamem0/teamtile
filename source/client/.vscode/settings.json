@@ -14,6 +14,7 @@
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
+  "stylelint.configFile": "./stylelint.config.js",
   "stylelint.snippet": [
     "css",
     "scss",
@@ -21,5 +22,17 @@
   "stylelint.validate": [
     "css",
     "scss",
-  ]
+  ],
+  "[css]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true
+    }
+  },
+  "[scss]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true
+    }
+  }
 }

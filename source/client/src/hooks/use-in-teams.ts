@@ -17,7 +17,9 @@ export const useInTeams = (): InTeamsValue => {
   const [ inTeams, setInTeams ] = React.useState<boolean | null>(null);
 
   React.useEffect(() => {
-    if (window.name === 'embedded-page-container' ||
+    if ((window.parent === window.self && Object.prototype.hasOwnProperty.call(window, 'nativeInterface')) ||
+        window.navigator.userAgent.includes('Teams/') ||
+        window.name === 'embedded-page-container' ||
         window.name === 'extension-tab-frame') {
       setInTeams(true);
     } else {
