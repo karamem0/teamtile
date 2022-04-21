@@ -4,6 +4,7 @@ exports[`GridLayout create shapshot 1`] = `
 .emotion-0 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-rows: auto;
 }
 
 @media (max-width: 599px) {

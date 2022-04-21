@@ -1,7 +1,197 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TeamCard create shapshot 1`] = `
+exports[`TeamCard create shapshot when item is loaded 1`] = `
+.emotion-0 {
+  height: 6rem;
+}
+
+.emotion-1 {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto;
+  gap: 0.5rem;
+}
+
+.emotion-2 {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  gap: 0.25rem;
+}
+
+.emotion-3 {
+  cursor: pointer;
+}
+
+.emotion-4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.emotion-5 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+  gap: 1rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: left;
+  -ms-flex-pack: left;
+  -webkit-justify-content: left;
+  justify-content: left;
+}
+
+.emotion-6 {
+  width: 1rem;
+  height: 1rem;
+  vertical-align: top;
+}
+
 <body>
-  <div />
+  <div>
+    <div
+      class="ui-card emotion-0"
+      data-aa-class="Card"
+      data-uses-unhanded-props="true"
+      role="listitem"
+    >
+      <div
+        class="emotion-1"
+      >
+        <div
+          class="ui-avatar"
+          data-uses-unhanded-props="true"
+        >
+          <span
+            class="ui-label"
+            data-uses-unhanded-props="true"
+            title="HR Taskforce"
+          >
+            HT
+          </span>
+        </div>
+        <div
+          class="emotion-2"
+        >
+          <span
+            class="ui-text emotion-3"
+            data-uses-unhanded-props="true"
+            dir="auto"
+            role="button"
+          >
+            HR Taskforce
+          </span>
+          <div
+            class="emotion-4"
+          >
+            <span
+              class="ui-text"
+              data-uses-unhanded-props="true"
+              dir="auto"
+            >
+              Welcome to the HR Taskforce team.
+            </span>
+          </div>
+          <div
+            class="emotion-5"
+          >
+            <div
+              data-testid="ChannelMenuItem"
+            />
+            <div
+              data-testid="MemberMenuItem"
+            />
+            <div
+              data-testid="DriveMenuItem"
+            />
+          </div>
+        </div>
+        <span
+          class="ui-text"
+          data-uses-unhanded-props="true"
+        >
+          <span
+            aria-hidden="true"
+            class="root_dd790ee3 emotion-6"
+          >
+            <svg
+              class="svg_dd790ee3"
+              focusable="false"
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1792 896v1152H256V896h256V522q0-108 39-203t108-166T821 41t203-41q109 0 202 41t163 112 108 166 39 203v374h256zm-1152 0h768V522q0-81-29-152t-80-126-122-85-153-31q-82 0-152 31t-122 85-81 125-29 153v374zm1024 128H384v896h1280v-896z"
+              />
+            </svg>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`TeamCard create shapshot when item is loading 1`] = `
+.emotion-0 {
+  height: 6rem;
+}
+
+.emotion-1 {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto;
+  gap: 0.5rem;
+}
+
+.emotion-2 {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  gap: 0.25rem;
+}
+
+<body>
+  <div>
+    <div
+      class="ui-card emotion-0"
+      data-aa-class="Card"
+      data-uses-unhanded-props="true"
+      role="listitem"
+    >
+      <div
+        class="ui-skeleton"
+        data-uses-unhanded-props="true"
+      >
+        <div
+          class="emotion-1"
+        >
+          <span
+            class="ui-skeleton__avatar"
+            data-uses-unhanded-props="true"
+          />
+          <div
+            class="emotion-2"
+          >
+            <span
+              class="ui-skeleton__line"
+              data-uses-unhanded-props="true"
+            />
+            <span
+              class="ui-skeleton__line"
+              data-uses-unhanded-props="true"
+            />
+            <span
+              class="ui-skeleton__line"
+              data-uses-unhanded-props="true"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 `;

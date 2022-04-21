@@ -41,17 +41,19 @@ export default React.memo(function TeamCard ({
   switch (item.loading) {
     case true:
       return (
-        <Skeleton animation="wave">
-          <Card
-            fluid
-            role="listitem">
+        <Card
+          css={css`
+            height: 6rem;
+          `}
+          fluid
+          role="listitem">
+          <Skeleton animation="wave">
             <div
               css={css`
                 display: grid;
                 grid-template-columns: auto 1fr auto;
                 grid-template-rows: auto;
                 gap: 0.5rem;
-                height: 4rem;
               `}>
               <Skeleton.Avatar size="larger" />
               <div
@@ -66,8 +68,8 @@ export default React.memo(function TeamCard ({
                 <Skeleton.Line />
               </div>
             </div>
-          </Card>
-        </Skeleton>
+          </Skeleton>
+        </Card>
       );
     case false: {
       if (!item.value) {
@@ -75,6 +77,9 @@ export default React.memo(function TeamCard ({
       }
       return (
         <Card
+          css={css`
+            height: 6rem;
+          `}
           fluid
           role="listitem">
           <div
@@ -83,7 +88,6 @@ export default React.memo(function TeamCard ({
               grid-template-columns: auto 1fr auto;
               grid-template-rows: auto;
               gap: 0.5rem;
-              height: 4rem;
             `}>
             <AvatarIcon
               icon={item.value.icon}

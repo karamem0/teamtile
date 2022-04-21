@@ -44,10 +44,23 @@ beforeEach(() => {
 
 describe('TeamCard', () => {
 
-  it('create shapshot', async () => {
+  it('create shapshot when item is loaded', async () => {
     const json = await import('./__jsons__/presenter.test.json');
     const params = {
       item: json.default as Item
+    };
+    render(<TeamCard {...params} />);
+    expect(screen.queryAllByText(/^.*$/)[0]).toMatchSnapshot();
+  });
+
+  it('create shapshot when item is loading', () => {
+    const params = {
+      item: {
+        key: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        value: null,
+        loading: true,
+        visible: true
+      }
     };
     render(<TeamCard {...params} />);
     expect(screen.queryAllByText(/^.*$/)[0]).toMatchSnapshot();
