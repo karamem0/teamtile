@@ -39,13 +39,13 @@ export default React.memo(function HomePage ({
       <header
         css={css`
           display: grid;
-          grid-template-columns: auto;
           grid-template-rows: auto;
+          grid-template-columns: auto;
           align-items: center;
           justify-content: flex-end;
           width: 100%;
           height: 2rem;
-          padding: 0 1rem 0 1rem;
+          padding: 0 1rem;
         `}>
         <Button
           content="GitHub"
@@ -56,30 +56,31 @@ export default React.memo(function HomePage ({
       <section
         css={css`
           display: grid;
-          grid-template-columns: auto;
           grid-template-rows: auto;
+          grid-template-columns: auto;
           align-items: center;
           justify-content: center;
-          background-color: #90d0f0;
           width: 100%;
+          background-color: #90d0f0;
           @media (max-width: 959px) {
-            padding: 2rem 2rem 2rem 2rem;
+            padding: 2rem;
           }
           @media (min-width: 960px) {
-            padding: 4rem 2rem 4rem 2rem;
+            padding: 4rem 2rem;
           }
         `}>
         <div
           css={css`
             display: grid;
             @media (max-width: 959px) {
-              grid-template-columns: auto;
               grid-template-rows: auto;
+              grid-template-columns: auto;
             }
             @media (min-width: 960px) {
-              grid-template-columns: 1fr 1fr;
               grid-template-rows: auto;
+              grid-template-columns: 1fr 1fr;
             }
+
             align-items: center;
             justify-content: center;
           `}>
@@ -93,17 +94,17 @@ export default React.memo(function HomePage ({
               as="h1"
               content="Teamtile"
               css={css`
-                color: #ffffff;
                 font-size: 3rem;
                 line-height: 3rem;
+                color: #fff;
                 text-align: center;
               `} />
             <Text
               content="Tile your teams for quick access."
               css={css`
-              color: #ffffff;
               font-size: 1rem;
               line-height: 1rem;
+              color: #fff;
               text-align: center;
             `} />
           </div>
@@ -131,9 +132,9 @@ export default React.memo(function HomePage ({
           css={css`
             display: flex;
             flex-flow: column;
+            gap: 0.5rem;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
           `}
           size="large">
           <Text content="View your joined teams as tiles" />
@@ -148,7 +149,7 @@ export default React.memo(function HomePage ({
           flex-flow: row;
           align-items: center;
           justify-content: center;
-          padding: 2rem 0 2rem 0;
+          padding: 2rem 0;
         `}>
         <Button
           content="Terms of Use"

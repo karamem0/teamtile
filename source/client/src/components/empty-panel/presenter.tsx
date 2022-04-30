@@ -32,10 +32,10 @@ export default React.memo(function EmptyPanel ({
         `}>
         <BreakfastIcon
           css={css`
-            color: #e8ebfa;
             width: 4rem;
             height: 4rem;
             margin: 0.5rem;
+            color: #e8ebfa;
           `} />
         <Text
           content="It looks like you are not a member of any teams."

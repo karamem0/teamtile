@@ -8,8 +8,8 @@ exports[`MembershipIcon create shapshot when MembershipType is null 1`] = `
 
 exports[`MembershipIcon create shapshot when MembershipType is private 1`] = `
 .emotion-0 {
-  width: '0.75rem';
-  height: '0.75rem';
+  width: 0.75rem;
+  height: 0.75rem;
 }
 
 <body>

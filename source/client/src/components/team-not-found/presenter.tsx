@@ -35,10 +35,10 @@ export default React.memo(function TeamNotFoundContent (): React.ReactElement | 
         `}>
         <FilterIcon
           css={css`
-            color: #e8ebfa;
             width: 4rem;
             height: 4rem;
             margin: 0.5rem;
+            color: #e8ebfa;
           `} />
         <Text
           content="No items found."

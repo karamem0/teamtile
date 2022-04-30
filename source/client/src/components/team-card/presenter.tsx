@@ -51,16 +51,16 @@ export default React.memo(function TeamCard ({
             <div
               css={css`
                 display: grid;
-                grid-template-columns: auto 1fr auto;
                 grid-template-rows: auto;
+                grid-template-columns: auto 1fr auto;
                 gap: 0.5rem;
               `}>
               <Skeleton.Avatar size="larger" />
               <div
                 css={css`
                   display: grid;
-                  grid-template-columns: auto;
                   grid-template-rows: auto;
+                  grid-template-columns: auto;
                   gap: 0.25rem;
                 `}>
                 <Skeleton.Line width="50%" />
@@ -85,8 +85,8 @@ export default React.memo(function TeamCard ({
           <div
             css={css`
               display: grid;
-              grid-template-columns: auto 1fr auto;
               grid-template-rows: auto;
+              grid-template-columns: auto 1fr auto;
               gap: 0.5rem;
             `}>
             <AvatarIcon
@@ -96,8 +96,8 @@ export default React.memo(function TeamCard ({
             <div
               css={css`
                 display: grid;
-                grid-template-columns: auto;
                 grid-template-rows: auto;
+                grid-template-columns: auto;
                 gap: 0.25rem;
               `}>
               <Text
@@ -121,8 +121,8 @@ export default React.memo(function TeamCard ({
               <div
                 css={css`
                   display: grid;
-                  grid-template-columns: auto auto auto;
                   grid-template-rows: auto;
+                  grid-template-columns: auto auto auto;
                   gap: 1rem;
                   align-items: center;
                   justify-content: left;

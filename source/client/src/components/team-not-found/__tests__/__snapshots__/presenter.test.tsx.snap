@@ -34,10 +34,10 @@ exports[`TeamNotFound create shapshot 1`] = `
 }
 
 .emotion-2 {
-  color: #e8ebfa;
   width: 4rem;
   height: 4rem;
   margin: 0.5rem;
+  color: #e8ebfa;
 }
 
 .emotion-3 {

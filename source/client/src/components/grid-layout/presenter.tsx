@@ -22,8 +22,8 @@ export default React.memo(function GridLayout ({
     <div
       css={css`
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
         grid-template-rows: auto;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
         @media (max-width: 599px) {
           gap: 0.5rem;
         }

@@ -12,6 +12,11 @@
     "plugin:testing-library/react",
     "standard"
   ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "rules": {
     "array-bracket-spacing": [
       "error",

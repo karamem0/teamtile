@@ -7,15 +7,15 @@ exports[`TeamCard create shapshot when item is loaded 1`] = `
 
 .emotion-1 {
   display: grid;
-  grid-template-columns: auto 1fr auto;
   grid-template-rows: auto;
+  grid-template-columns: auto 1fr auto;
   gap: 0.5rem;
 }
 
 .emotion-2 {
   display: grid;
-  grid-template-columns: auto;
   grid-template-rows: auto;
+  grid-template-columns: auto;
   gap: 0.25rem;
 }
 
@@ -31,8 +31,8 @@ exports[`TeamCard create shapshot when item is loaded 1`] = `
 
 .emotion-5 {
   display: grid;
-  grid-template-columns: auto auto auto;
   grid-template-rows: auto;
+  grid-template-columns: auto auto auto;
   gap: 1rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -142,15 +142,15 @@ exports[`TeamCard create shapshot when item is loading 1`] = `
 
 .emotion-1 {
   display: grid;
-  grid-template-columns: auto 1fr auto;
   grid-template-rows: auto;
+  grid-template-columns: auto 1fr auto;
   gap: 0.5rem;
 }
 
 .emotion-2 {
   display: grid;
-  grid-template-columns: auto;
   grid-template-rows: auto;
+  grid-template-columns: auto;
   gap: 0.25rem;
 }
 

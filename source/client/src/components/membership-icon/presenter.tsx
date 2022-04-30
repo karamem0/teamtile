@@ -27,8 +27,8 @@ export default React.memo(function MembershipIcon ({
       return (
         <LockIcon
           css={css`
-            width: '0.75rem';
-            height: '0.75rem';
+            width: 0.75rem;
+            height: 0.75rem;
           `} />
       );
     default:

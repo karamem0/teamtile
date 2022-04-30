@@ -59,7 +59,7 @@ export default React.memo(function MemberMenuItem ({
                     gap: 0.25rem;
                     align-items: center;
                     justify-content: left;
-                    margin: 0 -0.5rem 0 -0.5rem;
+                    margin: 0 -0.5rem;
                   `}
                   role="button"
                   onClick={(event: React.SyntheticEvent) => onClick && onClick(event, item)}>

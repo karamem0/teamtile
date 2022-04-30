@@ -44,8 +44,8 @@ export default React.memo(function TeamPanel ({
       <div
         css={css`
           display: grid;
-          grid-template-columns: 1fr auto;
           grid-template-rows: auto;
+          grid-template-columns: 1fr auto;
           gap: 0.25rem;
         `}>
         <Input
