@@ -1,10 +1,4 @@
 module.exports = {
-  testEnvironment: 'jsdom',
-  globals: {
-    'ts-jest': {
-      isolatedModules: 'disabled'
-    }
-  },
   reporters: [
     'default',
     [
@@ -17,11 +11,9 @@ module.exports = {
   snapshotSerializers: [
     '@emotion/jest/serializer'
   ],
+  testEnvironment: 'jsdom',
   testMatch: [
     '**/*.test.ts',
     '**/*.test.tsx'
-  ],
-  transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest'
-  }
+  ]
 };

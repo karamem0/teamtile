@@ -19,7 +19,7 @@ export default defineConfig({
       }
     }),
     env({
-      prefix: 'REACT_APP'
+      prefix: 'APP'
     })
   ],
   server: {

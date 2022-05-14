@@ -59,18 +59,22 @@ export class GraphService {
         })));
   }
 
-  async getKeys (): Promise<string[]> {
-    const values: string[] = [];
+  async getGroups (): Promise<Map<string, Group>> {
+    const values = new Map<string, Group>();
     const response = await this.client
       .api('/me/memberOf/microsoft.graph.group')
       .version('v1.0')
       .count(true)
-      .select('id')
+      .select([
+        'assignedLabels',
+        'id',
+        'mail'
+      ])
       .filter('resourceProvisioningOptions/any(x:x eq \'Team\')')
       .orderby('displayName')
       .header('ConsistencyLevel', 'eventual')
       .get();
-    const callback = (value: Group) => Boolean(value.id && values.push(value.id));
+    const callback = (value: Group) => Boolean(value.id && values.set(value.id, value));
     const iterator = new PageIterator(this.client, response, callback);
     await iterator.iterate();
     return values;
@@ -158,10 +162,11 @@ export class GraphService {
               .api(`/teams/${key}/members`)
               .version('v1.0')
               .select([
-                'id',
                 'displayName',
+                'id',
                 'microsoft.graph.aadUserConversationMember/userId',
-                'microsoft.graph.aadUserConversationMember/email' ])
+                'microsoft.graph.aadUserConversationMember/email'
+              ])
               .get();
             const items: AadUserConversationMember[] = [];
             const callback = (value: AadUserConversationMember) => Boolean(items.push(value));
@@ -221,7 +226,7 @@ export class GraphService {
           id: `${key}`,
           request: new Request(
             `/teams/${key}` +
-            '?$select=id,displayName,description,internalId,visibility,webUrl',
+            '?$select=description,displayName,id,internalId,visibility,webUrl',
             {
               method: 'GET'
             }

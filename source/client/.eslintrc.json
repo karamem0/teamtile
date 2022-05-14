@@ -160,16 +160,5 @@
       }
     ],
     "react/prop-types": "off"
-  },
-  "overrides": [
-    {
-      "files": [
-        "**/*.test.ts",
-        "**/*.test.tsx"
-      ],
-      "rules": {
-        "import/first": "off"
-      }
-    }
-  ]
+  }
 }

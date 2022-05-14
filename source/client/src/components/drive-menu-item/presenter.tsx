@@ -19,7 +19,7 @@ interface DriveMenuItemProps {
   onClick?: EventHandler<Drive> | undefined
 }
 
-export default React.memo(function DriveMenuItemPresenter ({
+export default React.memo(function DriveMenuItem ({
   drive,
   onClick
 }: DriveMenuItemProps): React.ReactElement | null {

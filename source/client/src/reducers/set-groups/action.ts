@@ -6,13 +6,14 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import { Group } from '../../types/entity';
 import {
   Action,
   ActionType
 } from '../../types/reducer';
 import { ItemKey } from '../../types/state';
 
-export const setKeys = (payload: ItemKey[]): Action => ({
-  type: ActionType.setKeys,
+export const setGroups = (payload: Map<ItemKey, Group>): Action => ({
+  type: ActionType.setGroups,
   payload: payload
 });

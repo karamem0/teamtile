@@ -15,7 +15,7 @@ import { css } from '@emotion/react';
 
 import { VisibilityType } from '../../types/entity';
 
-export interface VisibilityIconProps {
+interface VisibilityIconProps {
   visibility: VisibilityType | null | undefined
 }
 

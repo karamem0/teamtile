@@ -16,11 +16,11 @@ export function getClientToken (): Promise<string> {
 
 export async function getServerToken (token: string): Promise<string> {
   const response = await fetch(
-    `${process.env.REACT_APP_AUTH_SERVER_URL}/token`,
+    `${process.env.APP_AUTH_SERVER_URL}/token`,
     {
       method: 'POST',
       body: JSON.stringify({
-        scope: process.env.REACT_APP_AUTH_SCOPE
+        scope: process.env.APP_AUTH_SCOPE
       }),
       headers: {
         Authorization: `Bearer ${token}`,
@@ -44,7 +44,7 @@ export async function getServerToken (token: string): Promise<string> {
 }
 
 export function getCachedToken (): string | null {
-  const token = sessionStorage.getItem(process.env.REACT_APP_AUTH_APP_ID);
+  const token = sessionStorage.getItem(process.env.APP_AUTH_APP_ID);
   if (!token) {
     return null;
   }
@@ -61,5 +61,5 @@ export function getCachedToken (): string | null {
 }
 
 export function setCachedToken (token: string): void {
-  sessionStorage.setItem(process.env.REACT_APP_AUTH_APP_ID, token);
+  sessionStorage.setItem(process.env.APP_AUTH_APP_ID, token);
 }

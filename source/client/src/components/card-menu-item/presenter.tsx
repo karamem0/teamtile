@@ -33,9 +33,8 @@ export default React.memo(function CardMenuItem ({
         display: grid;
         grid-template-rows: auto;
         grid-template-columns: auto auto;
-        grid-gap: 0.25rem;
-        align-items: flex-end;
-        justify-content: flex-end;
+        align-items: center;
+        justify-content: flex-start;
         cursor: pointer;
       `}
       role="button"
@@ -45,20 +44,29 @@ export default React.memo(function CardMenuItem ({
         (
           <span
             css={css`
-            width: 1rem;
-            height: 1rem;
-            line-height: 1rem;
+              line-height: 1em;
+              span {
+                display: grid;
+                align-items: center;
+                justify-content: center;
+              }
           `}>
             {icon}
           </span>
         )
       }
-      <Text
-        content={content}
-        css={css`
-          line-height: 0.75rem;
-        `}
-        size="small" />
+      {
+        content &&
+        (
+          <Text
+            content={content}
+            css={css`
+              margin-left: 0.25rem;
+              line-height: 0.75rem;
+            `}
+            size="small" />
+        )
+      }
     </Text>
   );
 

@@ -12,7 +12,7 @@ import { VisibilityType } from '../../types/entity';
 
 import Presenter from './presenter';
 
-export interface VisibilityIconProps {
+interface VisibilityIconProps {
   visibility: VisibilityType | null | undefined
 }
 

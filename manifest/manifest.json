@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.12/MicrosoftTeams.schema.json",
-  "version": "1.9.3",
-  "manifestVersion": "1.12",
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.13/MicrosoftTeams.schema.json",
+  "version": "1.10.0",
+  "manifestVersion": "1.13",
   "id": "{{AppId}}",
   "packageName": "dev.karamem0.teamtile",
   "name": {
     "short": "Teamtile",
-    "full": "Teamtile"
+    "full": ""
   },
   "developer": {
     "name": "karamem0",
@@ -16,16 +16,16 @@
   },
   "description": {
     "short": "Tile your teams for quick access.",
-    "full": "Are you frustrated with finding a team? Teamtile provides these features to you:\n- View your joined teams as tiles\n- View team members and channels\n- Link to SharePoint Document Library\n- Filter teams, channels, members"
+    "full": "Are you frustrated with finding a team? Teamtile provides these features to you:\n- View your joined teams as tiles\n- View team members and channels\n- Link to SharePoint Document Library\n- Link to Microsoft 365 Group Calendar\n- Filter teams, channels, members"
   },
   "icons": {
     "outline": "icon_outline.png",
     "color": "icon_color.png"
   },
-  "accentColor": "#FFFFFF",
+  "accentColor": "#90d0f0",
   "staticTabs": [
     {
-      "entityId": "index",
+      "entityId": "87082f5a-0cc1-4eb1-81b4-b48a566a0854",
       "name": "Teamtile",
       "contentUrl": "https://{{AppDomain}}",
       "websiteUrl": "https://{{AppDomain}}",

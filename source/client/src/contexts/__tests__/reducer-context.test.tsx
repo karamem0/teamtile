@@ -13,6 +13,7 @@ import { render } from '@testing-library/react';
 import {
   Channel,
   Drive,
+  Group,
   Icon,
   Member,
   Team
@@ -96,6 +97,41 @@ describe('dispatchDrives', () => {
 
 });
 
+describe('dispatchGroups', () => {
+
+  it('dispatch keys', () => {
+    const params = {
+      dispatch: jest.fn(),
+      payload: new Map<ItemKey, Group>()
+    };
+    jest
+      .spyOn(React, 'useReducer')
+      .mockReturnValue([
+        null,
+        params.dispatch
+      ]);
+    const Mock = (): React.ReactElement | null => {
+      const { dispatchers: { dispatchGroups } } = useReducerContext();
+      React.useEffect(() => {
+        dispatchGroups(params.payload);
+      }, [
+        dispatchGroups
+      ]);
+      return null;
+    };
+    render(
+      <ReducerContextProvider>
+        <Mock />
+      </ReducerContextProvider>
+    );
+    expect(params.dispatch).toBeCalledWith({
+      type: ActionType.setGroups,
+      payload: params.payload
+    });
+  });
+
+});
+
 describe('dispatchItemFilter', () => {
 
   it('dispatch item filter', () => {
@@ -125,41 +161,6 @@ describe('dispatchItemFilter', () => {
     );
     expect(params.dispatch).toBeCalledWith({
       type: ActionType.setItemFilter,
-      payload: params.payload
-    });
-  });
-
-});
-
-describe('dispatchKeys', () => {
-
-  it('dispatch keys', () => {
-    const params = {
-      dispatch: jest.fn(),
-      payload: []
-    };
-    jest
-      .spyOn(React, 'useReducer')
-      .mockReturnValue([
-        null,
-        params.dispatch
-      ]);
-    const Mock = (): React.ReactElement | null => {
-      const { dispatchers: { dispatchKeys } } = useReducerContext();
-      React.useEffect(() => {
-        dispatchKeys(params.payload);
-      }, [
-        dispatchKeys
-      ]);
-      return null;
-    };
-    render(
-      <ReducerContextProvider>
-        <Mock />
-      </ReducerContextProvider>
-    );
-    expect(params.dispatch).toBeCalledWith({
-      type: ActionType.setKeys,
       payload: params.payload
     });
   });

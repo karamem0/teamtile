@@ -13,6 +13,12 @@ export interface Channel {
   webUrl: string | null | undefined
 }
 
+export interface Group {
+  id: string | undefined,
+  mail: string | null | undefined,
+  sensitivityLabel: string | null | undefined
+}
+
 export interface Drive {
   id: string | undefined,
   webUrl: string | null | undefined

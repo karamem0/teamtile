@@ -6,21 +6,20 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-global.fetch = jest.fn();
-
-const microsoftTeams = {
-  authentication: {
-    getAuthToken: jest.fn()
-  }
-};
-jest.mock('@microsoft/teams-js', () => ({
-  ...microsoftTeams
-}));
+import { authentication } from '@microsoft/teams-js';
 
 import {
   getClientToken,
   getServerToken
 } from '../token-manager';
+
+global.fetch = jest.fn();
+
+jest.mock('@microsoft/teams-js', () => ({
+  authentication: {
+    getAuthToken: jest.fn()
+  }
+}));
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -33,8 +32,8 @@ describe('getClientToken', () => {
     const params = {
       token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ0xJRU5UVE9LRU4ifQ.ZO9wyYFJTSl-Q9nvS2D3UIDvOBr9rl3CQTxjcUpQ8HA'
     };
-    microsoftTeams.authentication.getAuthToken
-      .mockResolvedValue(params.token);
+    const getAuthToken = authentication.getAuthToken as jest.Mock;
+    getAuthToken.mockResolvedValue(params.token);
     await expect(getClientToken()).resolves.toBe(params.token);
   });
 
@@ -42,8 +41,8 @@ describe('getClientToken', () => {
     const params = {
       error: 'Something went wrong.'
     };
-    microsoftTeams.authentication.getAuthToken
-      .mockRejectedValue(params.error);
+    const getAuthToken = authentication.getAuthToken as jest.Mock;
+    getAuthToken.mockRejectedValue(params.error);
     await expect(getClientToken()).rejects.toBe(params.error);
   });
 

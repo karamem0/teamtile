@@ -1,0 +1,28 @@
+[
+  [
+    "02bd9fd6-8f93-4758-87c3-1fb73740a315",
+    {
+      "id": "02bd9fd6-8f93-4758-87c3-1fb73740a315",
+      "mail": "HRTaskforce@M365x214355.onmicrosoft.com",
+      "assignedLabels": [
+        "Restricted"
+      ]
+    }
+  ],
+  [
+    "13be6971-79db-4f33-9d41-b25589ca25af",
+    {
+      "id": "13be6971-79db-4f33-9d41-b25589ca25af",
+      "mail": "BusinessDevelopment@M365x214355.onmicrosoft.com",
+      "assignedLabels": []
+    }
+  ],
+  [
+    "8090c93e-ba7c-433e-9f39-08c7ba07c0b3",
+    {
+      "id": "8090c93e-ba7c-433e-9f39-08c7ba07c0b3",
+      "mail": "X1050LaunchTeam@M365x214355.onmicrosoft.com",
+      "assignedLabels": []
+    }
+  ]
+]

@@ -11,6 +11,7 @@ import { Client } from '@microsoft/microsoft-graph-client';
 import {
   Channel,
   Drive,
+  Group,
   Icon,
   Member,
   MembershipType,
@@ -32,7 +33,7 @@ export class ServiceProvider {
     client: Client
   ) {
     this.graphService = new GraphService(client);
-    this.cacheService = new CacheService(undefined, process.env.REACT_APP_CACHE_TIMEOUT);
+    this.cacheService = new CacheService(undefined, process.env.APP_CACHE_TIMEOUT);
   }
 
   async clearCache (): Promise<void> {
@@ -85,8 +86,20 @@ export class ServiceProvider {
     return graph;
   }
 
-  async getKeys (): Promise<ItemKey[]> {
-    return await this.graphService.getKeys();
+  async getGroupsFromGraph (): Promise<Map<string, Group>> {
+    return await this.graphService
+      .getGroups()
+      .then((map) => new Map(Array.from(map)
+        .map<[string, Group]>(([ key, value ]) => ([
+          key,
+          {
+            id: value.id,
+            mail: value.mail,
+            sensitivityLabel: (value.assignedLabels && value.assignedLabels.length > 0)
+              ? value.assignedLabels[0].displayName
+              : null
+          }
+        ]))));
   }
 
   async getMemberIconsFromCache (keys: string[]): Promise<Map<string, Icon | null>> {

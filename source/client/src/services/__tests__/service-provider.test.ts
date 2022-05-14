@@ -6,51 +6,52 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import { Client } from '@microsoft/microsoft-graph-client';
+
+import {
+  Channel,
+  Drive,
+  Group,
+  Icon,
+  Member,
+  Team
+} from '../../types/entity';
+import { CacheService } from '../cache-service';
+import { GraphService } from '../graph-service';
+import { ServiceProvider } from '../service-provider';
+
 jest.mock('@microsoft/microsoft-graph-client', () => ({
   Client: {
     initWithMiddleware: jest.fn().mockReturnValue({})
   }
 }));
 
-const cacheService = {
-  getChannels: jest.fn(),
-  getDrives: jest.fn(),
-  getIcons: jest.fn(),
-  getMembers: jest.fn(),
-  getTeams: jest.fn(),
-  setChannels: jest.fn(),
-  setDrives: jest.fn(),
-  setIcons: jest.fn(),
-  setMembers: jest.fn(),
-  setTeams: jest.fn()
-};
 jest.mock('../cache-service', () => ({
-  CacheService: jest.fn().mockReturnValue(cacheService)
+  CacheService: jest.fn().mockReturnValue({
+    getChannels: jest.fn(),
+    getDrives: jest.fn(),
+    getIcons: jest.fn(),
+    getMembers: jest.fn(),
+    getTeams: jest.fn(),
+    setChannels: jest.fn(),
+    setDrives: jest.fn(),
+    setIcons: jest.fn(),
+    setMembers: jest.fn(),
+    setTeams: jest.fn()
+  })
 }));
 
-const graphService = {
-  getChannels: jest.fn(),
-  getDrives: jest.fn(),
-  getKeys: jest.fn(),
-  getMemberIcons: jest.fn(),
-  getMembers: jest.fn(),
-  getTeamIcons: jest.fn(),
-  getTeams: jest.fn()
-};
 jest.mock('../graph-service', () => ({
-  GraphService: jest.fn().mockReturnValue(graphService)
+  GraphService: jest.fn().mockReturnValue({
+    getChannels: jest.fn(),
+    getDrives: jest.fn(),
+    getGroups: jest.fn(),
+    getMemberIcons: jest.fn(),
+    getMembers: jest.fn(),
+    getTeamIcons: jest.fn(),
+    getTeams: jest.fn()
+  })
 }));
-
-import { Client } from '@microsoft/microsoft-graph-client';
-
-import {
-  Channel,
-  Drive,
-  Icon,
-  Member,
-  Team
-} from '../../types/entity';
-import { ServiceProvider } from '../service-provider';
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -69,7 +70,9 @@ describe('getChannelsFromCache', () => {
       ],
       json: new Map<string, Channel[]>(json.default as [[ string, Channel[] ]])
     };
-    cacheService.getChannels.mockResolvedValue(params.json);
+    const cacheService = new CacheService();
+    const cacheGetChannels = cacheService.getChannels as jest.Mock;
+    cacheGetChannels.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getChannelsFromCache(params.keys)).resolves.toEqual(params.json);
   });
@@ -83,7 +86,9 @@ describe('getChannelsFromCache', () => {
       ],
       error: 'Something went wrong.'
     };
-    cacheService.getChannels.mockRejectedValue(new Error(params.error));
+    const cacheService = new CacheService();
+    const cacheGetChannels = cacheService.getChannels as jest.Mock;
+    cacheGetChannels.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getChannelsFromCache(params.keys)).rejects.toThrow(params.error);
   });
@@ -102,8 +107,12 @@ describe('getChannelsFromGraph', () => {
       ],
       json: new Map<string, Channel[]>(json.default as [[ string, Channel[] ]])
     };
-    cacheService.getChannels.mockResolvedValue(new Map());
-    graphService.getChannels.mockResolvedValue(params.json);
+    const cacheService = new CacheService();
+    const cacheGetChannels = cacheService.getChannels as jest.Mock;
+    cacheGetChannels.mockResolvedValue(new Map());
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetChannels = graphService.getChannels as jest.Mock;
+    graphGetChannels.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getChannelsFromGraph(params.keys)).resolves.toEqual(params.json);
   });
@@ -117,7 +126,9 @@ describe('getChannelsFromGraph', () => {
       ],
       error: 'Something went wrong.'
     };
-    graphService.getChannels.mockRejectedValue(new Error(params.error));
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetChannels = graphService.getChannels as jest.Mock;
+    graphGetChannels.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getChannelsFromGraph(params.keys)).rejects.toThrow(params.error);
   });
@@ -136,7 +147,9 @@ describe('getDrivesFromCache', () => {
       ],
       json: new Map<string, Drive>(json.default as [[ string, Drive ]])
     };
-    cacheService.getDrives.mockResolvedValue(params.json);
+    const cacheService = new CacheService();
+    const cacheGetDrives = cacheService.getDrives as jest.Mock;
+    cacheGetDrives.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getDrivesFromCache(params.keys)).resolves.toEqual(params.json);
   });
@@ -150,7 +163,9 @@ describe('getDrivesFromCache', () => {
       ],
       error: 'Something went wrong.'
     };
-    cacheService.getDrives.mockRejectedValue(new Error(params.error));
+    const cacheService = new CacheService();
+    const cacheGetDrives = cacheService.getDrives as jest.Mock;
+    cacheGetDrives.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getDrivesFromCache(params.keys)).rejects.toThrow(params.error);
   });
@@ -169,8 +184,12 @@ describe('getDrivesFromGraph', () => {
       ],
       json: new Map<string, Drive>(json.default as [[ string, Drive ]])
     };
-    cacheService.getDrives.mockResolvedValue(new Map());
-    graphService.getDrives.mockResolvedValue(params.json);
+    const cacheService = new CacheService();
+    const cacheGetDrives = cacheService.getDrives as jest.Mock;
+    cacheGetDrives.mockResolvedValue(new Map());
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetDrives = graphService.getDrives as jest.Mock;
+    graphGetDrives.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getDrivesFromGraph(params.keys)).resolves.toEqual(params.json);
   });
@@ -184,35 +203,38 @@ describe('getDrivesFromGraph', () => {
       ],
       error: 'Something went wrong.'
     };
-    graphService.getDrives.mockRejectedValue(new Error(params.error));
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetDrives = graphService.getDrives as jest.Mock;
+    graphGetDrives.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getDrivesFromGraph(params.keys)).rejects.toThrow(params.error);
   });
 
 });
 
-describe('getKeys', () => {
+describe('getGroupsFromGraph', () => {
 
-  it('return keys if succeeded', () => {
+  it('return groups if succeeded', async () => {
+    const json = await import('./__jsons__/groups.test.json');
     const params = {
-      keys: [
-        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-        '13be6971-79db-4f33-9d41-b25589ca25af',
-        '8090c93e-ba7c-433e-9f39-08c7ba07c0b3'
-      ]
+      json: new Map<string, Group>(json.default as [[ string, Group ]])
     };
-    graphService.getKeys.mockResolvedValue(params.keys);
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetGroups = graphService.getGroups as jest.Mock;
+    graphGetGroups.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getKeys()).resolves.toEqual(params.keys);
+    expect(target.getGroupsFromGraph()).resolves.not.toThrow();
   });
 
   it('return error if failed', () => {
     const params = {
       error: 'Something went wrong.'
     };
-    graphService.getKeys.mockRejectedValue(new Error(params.error));
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetGroups = graphService.getGroups as jest.Mock;
+    graphGetGroups.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
-    expect(target.getKeys()).rejects.toThrow(params.error);
+    expect(target.getGroupsFromGraph()).rejects.toThrow(params.error);
   });
 
 });
@@ -229,7 +251,9 @@ describe('getMemberIconsFromCache', () => {
       ],
       json: new Map<string, Icon | null>(json.default as [[ string, Icon | null ]])
     };
-    cacheService.getIcons.mockResolvedValue(params.json);
+    const cacheService = new CacheService();
+    const cacheGetIcons = cacheService.getIcons as jest.Mock;
+    cacheGetIcons.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getMemberIconsFromCache(params.keys)).resolves.toEqual(params.json);
   });
@@ -243,7 +267,9 @@ describe('getMemberIconsFromCache', () => {
       ],
       error: 'Something went wrong.'
     };
-    cacheService.getIcons.mockRejectedValue(new Error(params.error));
+    const cacheService = new CacheService();
+    const cacheGetIcons = cacheService.getIcons as jest.Mock;
+    cacheGetIcons.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getMemberIconsFromCache(params.keys)).rejects.toThrow(params.error);
   });
@@ -262,8 +288,12 @@ describe('getMemberIconsFromGraph', () => {
       ],
       json: new Map<string, Icon | null>(json.default as [[ string, Icon | null ]])
     };
-    cacheService.getIcons.mockResolvedValue(new Map());
-    graphService.getMemberIcons.mockResolvedValue(params.json);
+    const cacheService = new CacheService();
+    const cacheGetIcons = cacheService.getIcons as jest.Mock;
+    cacheGetIcons.mockResolvedValue(new Map());
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetIcons = graphService.getMemberIcons as jest.Mock;
+    graphGetIcons.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getMemberIconsFromGraph(params.keys)).resolves.toEqual(params.json);
   });
@@ -277,7 +307,9 @@ describe('getMemberIconsFromGraph', () => {
       ],
       error: 'Something went wrong.'
     };
-    graphService.getMemberIcons.mockRejectedValue(new Error(params.error));
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetIcons = graphService.getMemberIcons as jest.Mock;
+    graphGetIcons.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getMemberIconsFromGraph(params.keys)).rejects.toThrow(params.error);
   });
@@ -296,7 +328,9 @@ describe('getMembersFromCache', () => {
       ],
       json: new Map<string, Member[]>(json.default as [[ string, Member[] ]])
     };
-    cacheService.getMembers.mockResolvedValue(params.json);
+    const cacheService = new CacheService();
+    const cacheGetMembers = cacheService.getMembers as jest.Mock;
+    cacheGetMembers.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getMembersFromCache(params.keys)).resolves.toEqual(params.json);
   });
@@ -310,7 +344,9 @@ describe('getMembersFromCache', () => {
       ],
       error: 'Something went wrong.'
     };
-    cacheService.getMembers.mockRejectedValue(new Error(params.error));
+    const cacheService = new CacheService();
+    const cacheGetMembers = cacheService.getMembers as jest.Mock;
+    cacheGetMembers.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getMembersFromCache(params.keys)).rejects.toThrow(params.error);
   });
@@ -329,8 +365,12 @@ describe('getMembersFromGraph', () => {
       ],
       json: new Map<string, Member[]>(json.default as [[ string, Member[] ]])
     };
-    cacheService.getMembers.mockResolvedValue(new Map());
-    graphService.getMembers.mockResolvedValue(params.json);
+    const cacheService = new CacheService();
+    const cacheGetMembers = cacheService.getMembers as jest.Mock;
+    cacheGetMembers.mockResolvedValue(new Map());
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetMembers = graphService.getMembers as jest.Mock;
+    graphGetMembers.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getMembersFromGraph(params.keys)).resolves.toEqual(params.json);
   });
@@ -344,7 +384,9 @@ describe('getMembersFromGraph', () => {
       ],
       error: 'Something went wrong.'
     };
-    graphService.getMembers.mockRejectedValue(new Error(params.error));
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetMembers = graphService.getMembers as jest.Mock;
+    graphGetMembers.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getMembersFromGraph(params.keys)).rejects.toThrow(params.error);
   });
@@ -363,7 +405,9 @@ describe('getTeamIcons', () => {
       ],
       json: new Map<string, Icon>(json.default as [[ string, Icon ]])
     };
-    cacheService.getIcons.mockResolvedValue(params.json);
+    const cacheService = new CacheService();
+    const cacheGetIcons = cacheService.getIcons as jest.Mock;
+    cacheGetIcons.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getTeamIconsFromCache(params.keys)).resolves.toEqual(params.json);
   });
@@ -377,7 +421,9 @@ describe('getTeamIcons', () => {
       ],
       error: 'Something went wrong.'
     };
-    cacheService.getIcons.mockRejectedValue(new Error(params.error));
+    const cacheService = new CacheService();
+    const cacheGetIcons = cacheService.getIcons as jest.Mock;
+    cacheGetIcons.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getTeamIconsFromCache(params.keys)).rejects.toThrow(params.error);
   });
@@ -396,8 +442,12 @@ describe('getTeamIconsFromGraph', () => {
       ],
       json: new Map<string, Icon>(json.default as [[ string, Icon ]])
     };
-    cacheService.getIcons.mockResolvedValue(new Map());
-    graphService.getTeamIcons.mockResolvedValue(params.json);
+    const cacheService = new CacheService();
+    const cacheGetIcons = cacheService.getIcons as jest.Mock;
+    cacheGetIcons.mockResolvedValue(new Map());
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetIcons = graphService.getTeamIcons as jest.Mock;
+    graphGetIcons.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getTeamIconsFromGraph(params.keys)).resolves.toEqual(params.json);
   });
@@ -411,7 +461,9 @@ describe('getTeamIconsFromGraph', () => {
       ],
       error: 'Something went wrong.'
     };
-    graphService.getTeamIcons.mockRejectedValue(new Error(params.error));
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetIcons = graphService.getTeamIcons as jest.Mock;
+    graphGetIcons.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getTeamIconsFromGraph(params.keys)).rejects.toThrow(params.error);
   });
@@ -430,7 +482,9 @@ describe('getTeamsFromCache', () => {
       ],
       json: new Map<string, Team>(json.default as [[ string, Team ]])
     };
-    cacheService.getTeams.mockResolvedValue(params.json);
+    const cacheService = new CacheService();
+    const cacheGetTeams = cacheService.getTeams as jest.Mock;
+    cacheGetTeams.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getTeamsFromCache(params.keys)).resolves.toEqual(params.json);
   });
@@ -444,7 +498,9 @@ describe('getTeamsFromCache', () => {
       ],
       error: 'Something went wrong.'
     };
-    cacheService.getTeams.mockRejectedValue(new Error(params.error));
+    const cacheService = new CacheService();
+    const cacheGetTeams = cacheService.getTeams as jest.Mock;
+    cacheGetTeams.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getTeamsFromCache(params.keys)).rejects.toThrow(params.error);
   });
@@ -463,8 +519,12 @@ describe('getTeamsFromGraph', () => {
       ],
       json: new Map<string, Team>(json.default as [[ string, Team ]])
     };
-    cacheService.getTeams.mockResolvedValue(new Map());
-    graphService.getTeams.mockResolvedValue(params.json);
+    const cacheService = new CacheService();
+    const cacheGetTeams = cacheService.getTeams as jest.Mock;
+    cacheGetTeams.mockResolvedValue(new Map());
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetTeams = graphService.getTeams as jest.Mock;
+    graphGetTeams.mockResolvedValue(params.json);
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getTeamsFromGraph(params.keys)).resolves.toEqual(params.json);
   });
@@ -478,7 +538,9 @@ describe('getTeamsFromGraph', () => {
       ],
       error: 'Something went wrong.'
     };
-    graphService.getTeams.mockRejectedValue(new Error(params.error));
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetTeams = graphService.getTeams as jest.Mock;
+    graphGetTeams.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getTeamsFromGraph(params.keys)).rejects.toThrow(params.error);
   });

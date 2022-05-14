@@ -12,7 +12,7 @@ import {
   setChannels,
   setDrives,
   setItemFilter,
-  setKeys,
+  setGroups,
   setLoadingKeys,
   setLoadingValues,
   setMemberIcons,
@@ -25,6 +25,7 @@ import { KeyValue } from '../types/common';
 import {
   Channel,
   Drive,
+  Group,
   Icon,
   Member,
   Team
@@ -37,8 +38,8 @@ interface ReducerContextValue {
   dispatchers: {
     dispatchChannels: DispatchAction<Map<ItemKey, Channel[]>>,
     dispatchDrives: DispatchAction<Map<ItemKey, Drive>>,
+    dispatchGroups: DispatchAction<Map<ItemKey, Group>>,
     dispatchItemFilter: DispatchAction<string | null>,
-    dispatchKeys: DispatchAction<ItemKey[]>,
     dispatchLoadingKeys: DispatchAction<boolean>,
     dispatchLoadingValues: DispatchAction<Map<ItemKey, boolean>>,
     dispatchMemberIcons: DispatchAction<KeyValue<ItemKey, Map<string, Icon | null>>>,
@@ -66,15 +67,15 @@ export const ReducerContextProvider = ({ children }: ReducerContextProviderProps
 
   const dispatchers = React.useMemo(() => ({
     dispatchChannels: (payload: Map<ItemKey, Channel[]>) => dispatch(setChannels(payload)),
-    dispatchDrives: (payload: Map<string, Drive>) => dispatch(setDrives(payload)),
+    dispatchDrives: (payload: Map<ItemKey, Drive>) => dispatch(setDrives(payload)),
+    dispatchGroups: (payload: Map<ItemKey, Group>) => dispatch(setGroups(payload)),
     dispatchItemFilter: (payload: string | null) => dispatch(setItemFilter(payload)),
-    dispatchKeys: (payload: ItemKey[]) => dispatch(setKeys(payload)),
     dispatchLoadingKeys: (payload: boolean) => dispatch(setLoadingKeys(payload)),
     dispatchLoadingValues: (payload: Map<ItemKey, boolean>) => dispatch(setLoadingValues(payload)),
     dispatchMemberIcons: (payload: KeyValue<ItemKey, Map<string, Icon | null>>) => dispatch(setMemberIcons(payload)),
     dispatchMembers: (payload: Map<ItemKey, Member[]>) => dispatch(setMembers(payload)),
-    dispatchTeamIcons: (payload: Map<string, Icon | null>) => dispatch(setTeamIcons(payload)),
-    dispatchTeams: (payload: Map<string, Team>) => dispatch(setTeams(payload))
+    dispatchTeamIcons: (payload: Map<ItemKey, Icon | null>) => dispatch(setTeamIcons(payload)),
+    dispatchTeams: (payload: Map<ItemKey, Team>) => dispatch(setTeams(payload))
   }), []);
 
   return (

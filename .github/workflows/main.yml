@@ -29,15 +29,18 @@ jobs:
       - name: Restore client
         run: npm ci
         working-directory: source/client
+      - name: Audit client
+        run: npm audit
+        working-directory: source/client
       - name: Build client
         env:
-          REACT_APP_AUTH_TENANT_ID: ${{env.TENANT_ID}}
-          REACT_APP_AUTH_APP_ID: ${{env.APP_ID}}
-          REACT_APP_APP_INSIGHTS_INSTRUMENTATION_KEY: ${{env.APP_INSIGHTS_INSTRUMENTATION_KEY}}
+          APP_AUTH_TENANT_ID: ${{env.TENANT_ID}}
+          APP_AUTH_APP_ID: ${{env.APP_ID}}
+          APP_INSIGHTS_INSTRUMENTATION_KEY: ${{env.APP_INSIGHTS_INSTRUMENTATION_KEY}}
         run: npm run build
         working-directory: source/client
       - name: Test client
-        run: npm run test-ci
+        run: npm run test:ci
         working-directory: source/client
       - name: Publish test results
         uses: enricomi/publish-unit-test-result-action/composite@v1

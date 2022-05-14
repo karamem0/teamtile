@@ -19,9 +19,11 @@ import { css } from '@emotion/react';
 import { EventHandler } from '../../types/common';
 import { Item, ItemValue } from '../../types/state';
 import { AvatarIcon } from '../avatar-icon';
+import { CalendarMenuItem } from '../calendar-menu-item';
 import { ChannelMenuItem } from '../channel-menu-item';
 import { DriveMenuItem } from '../drive-menu-item';
 import { MemberMenuItem } from '../member-menu-item';
+import { SensitivityLabel } from '../sensitivity-label';
 import { VisibilityIcon } from '../visibility-icon';
 
 interface TeamCardProps {
@@ -86,7 +88,7 @@ export default React.memo(function TeamCard ({
             css={css`
               display: grid;
               grid-template-rows: auto;
-              grid-template-columns: auto 1fr auto;
+              grid-template-columns: auto 1fr;
               gap: 0.5rem;
             `}>
             <AvatarIcon
@@ -96,18 +98,34 @@ export default React.memo(function TeamCard ({
             <div
               css={css`
                 display: grid;
-                grid-template-rows: auto;
-                grid-template-columns: auto;
                 gap: 0.25rem;
               `}>
-              <Text
+              <div
                 css={css`
-                  cursor: pointer;
-                `}
-                role="button"
-                onClick={(event: React.SyntheticEvent) => onClick && onClick(event, item.value)}>
-                {item.value.displayName}
-              </Text>
+                display: grid;
+                grid-template-rows: auto;
+                grid-template-columns: 1fr auto auto;
+                gap: 0.25rem;
+                align-items: flex-end;
+              `}>
+                <div
+                  css={css`
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  `}>
+                  <Text
+                    css={css`
+                      cursor: pointer;
+                    `}
+                    role="button"
+                    onClick={(event: React.SyntheticEvent) => onClick && onClick(event, item.value)}>
+                    {item.value.displayName}
+                  </Text>
+                </div>
+                <SensitivityLabel sensitivityLabel={item.value.sensitivityLabel} />
+                <VisibilityIcon visibility={item.value.visibility} />
+              </div>
               <div
                 css={css`
                   overflow: hidden;
@@ -122,7 +140,7 @@ export default React.memo(function TeamCard ({
                 css={css`
                   display: grid;
                   grid-template-rows: auto;
-                  grid-template-columns: auto auto auto;
+                  grid-template-columns: auto auto auto auto;
                   gap: 1rem;
                   align-items: center;
                   justify-content: left;
@@ -136,9 +154,11 @@ export default React.memo(function TeamCard ({
                 <DriveMenuItem
                   itemKey={item.key}
                   itemValue={item.value} />
+                <CalendarMenuItem
+                  itemKey={item.key}
+                  itemValue={item.value} />
               </div>
             </div>
-            <VisibilityIcon visibility={item.value.visibility} />
           </div>
         </Card>
       );

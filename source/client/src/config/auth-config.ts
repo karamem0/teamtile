@@ -2,10 +2,10 @@ import { BrowserCacheLocation } from '@azure/msal-browser';
 
 export const authConfig = {
   auth: {
-    clientId: process.env.REACT_APP_AUTH_APP_ID,
-    authority: `https://login.microsoftonline.com/${process.env.REACT_APP_AUTH_TENANT_ID}`,
+    clientId: process.env.APP_AUTH_APP_ID,
+    authority: `https://login.microsoftonline.com/${process.env.APP_AUTH_TENANT_ID}`,
     knownAuthorities: [
-      `https://login.microsoftonline.com/${process.env.REACT_APP_AUTH_TENANT_ID}`
+      `https://login.microsoftonline.com/${process.env.APP_AUTH_TENANT_ID}`
     ],
     redirectUri: `${window.location.origin}/auth/callback`
   },
@@ -15,5 +15,5 @@ export const authConfig = {
 };
 
 export const loginConfig = {
-  scopes: [ process.env.REACT_APP_AUTH_SCOPE ]
+  scopes: [ process.env.APP_AUTH_SCOPE ]
 };

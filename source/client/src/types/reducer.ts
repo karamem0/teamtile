@@ -15,7 +15,7 @@ export enum ActionType {
   setChannels = 'setChannels',
   setDrives = 'setDrives',
   setItemFilter = 'setItemFilter',
-  setKeys = 'setKeys',
+  setGroups = 'setGroups',
   setLoadingKeys = 'setLoadingKeys',
   setLoadingValues = 'setLoadingValues',
   setMemberIcons = 'setMemberIcons',

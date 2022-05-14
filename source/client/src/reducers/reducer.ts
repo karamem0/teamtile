@@ -10,6 +10,7 @@ import { KeyValue } from '../types/common';
 import {
   Channel,
   Drive,
+  Group,
   Icon,
   Member,
   Team
@@ -25,8 +26,8 @@ import {
 
 import { setChannels } from './set-channels/reducer';
 import { setDrives } from './set-drives/reducer';
+import { setGroups } from './set-groups/reducer';
 import { setItemFilter } from './set-item-filter/reducer';
-import { setKeys } from './set-keys/reducer';
 import { setLoadingKeys } from './set-loading-keys/reducer';
 import { setLoadingValues } from './set-loading-values/reducer';
 import { setMemberIcons } from './set-member-icons/reducer';
@@ -42,8 +43,8 @@ export const reducer = (state: State, action: Action): State => {
       return setDrives(state, action.payload as Map<ItemKey, Drive>);
     case ActionType.setItemFilter:
       return setItemFilter(state, action.payload as string | null);
-    case ActionType.setKeys:
-      return setKeys(state, action.payload as string[]);
+    case ActionType.setGroups:
+      return setGroups(state, action.payload as Map<ItemKey, Group>);
     case ActionType.setLoadingKeys:
       return setLoadingKeys(state, action.payload as boolean);
     case ActionType.setLoadingValues:

@@ -10,6 +10,7 @@ import { KeyValue } from './common';
 import {
   Channel,
   Drive,
+  Group,
   MemberWithIcon,
   TeamWithIcon
 } from './entity';
@@ -26,6 +27,7 @@ export type ItemKey = string;
 
 export type ItemValue = (
   TeamWithIcon &
+  Group &
   {
     channels: Channel[] | undefined,
     drive: Drive | undefined,

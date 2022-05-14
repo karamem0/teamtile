@@ -10,23 +10,23 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import { Drive } from '../../../types/entity';
-import DriveMenuItem from '../presenter';
+import { Group } from '../../../types/entity';
+import CalendarMenuItem from '../presenter';
 
 beforeEach(() => {
   jest.clearAllMocks();
   jest.restoreAllMocks();
 });
 
-describe('DriveMenuItem', () => {
+describe('CalendarMenuItem', () => {
 
   it('create shapshot', async () => {
     const json = await import('./__jsons__/presenter.test.json');
     const params = {
-      drive: json.default as Drive,
+      group: json.default as Group,
       onClick: jest.fn()
     };
-    render(<DriveMenuItem {...params} />);
+    render(<CalendarMenuItem {...params} />);
     expect(screen.queryAllByText(/^.*$/)[0]).toMatchSnapshot();
   });
 

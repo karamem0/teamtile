@@ -31,8 +31,9 @@ export const useItemLoader = (): ItemLoaderValue => {
       if (force) {
         await services.clearCache();
       }
-      const keys = await services.getKeys();
-      dispatchers.dispatchKeys(keys);
+      const groups = await services.getGroupsFromGraph();
+      const keys = Array.from(groups.keys());
+      dispatchers.dispatchGroups(groups);
       dispatchers.dispatchLoadingKeys(false);
       const [
         cacheTeams,
