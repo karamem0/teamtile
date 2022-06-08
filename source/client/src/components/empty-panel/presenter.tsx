@@ -8,8 +8,7 @@
 
 import React from 'react';
 
-import { RefreshIcon, BreakfastIcon } from '@fluentui/react-icons-mdl2';
-import { Button, Text } from '@fluentui/react-northstar';
+import { Communication, CommunicationOptions } from '@fluentui/react-teams';
 
 import { css } from '@emotion/react';
 
@@ -28,28 +27,17 @@ export default React.memo(function EmptyPanel ({
     <CenterLayout>
       <div
         css={css`
-          text-align: center;
-        `}>
-        <BreakfastIcon
-          css={css`
-            width: 4rem;
-            height: 4rem;
-            margin: 0.5rem;
-            color: #e8ebfa;
-          `} />
-        <Text
-          content="It looks like you are not a member of any teams."
-          css={css`
-            display: block;
-          `} />
-        <Button
-          content="Retry"
-          css={css`
-            margin: 1rem;
-          `}
-          icon={<RefreshIcon />}
-          primary
-          onClick={(event: React.SyntheticEvent) => onClick && onClick(event)} />
+        & > div {
+          flex-basis: auto;
+        }
+      `}>
+        <Communication
+          fields={{
+            title: 'No items found',
+            desc: 'It looks like you are not a member of any teams.'
+          }}
+          option={CommunicationOptions.Empty}
+          onInteraction={() => onClick && onClick} />
       </div>
     </CenterLayout>
   );

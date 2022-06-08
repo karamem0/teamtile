@@ -10,6 +10,8 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
+import { Provider, themeNames } from '@fluentui/react-teams';
+
 import ErrorPanel from '../presenter';
 
 beforeEach(() => {
@@ -20,7 +22,16 @@ beforeEach(() => {
 describe('ErrorPanel', () => {
 
   it('create shapshot', () => {
-    render(<ErrorPanel />);
+    const params = {
+      error: 'Something went wrong.'
+    };
+    render(
+      <Provider
+        lang="en-US"
+        themeName={themeNames.Default}>
+        <ErrorPanel {...params} />
+      </Provider>
+    );
     expect(screen.queryAllByText(/^.*$/)[0]).toMatchSnapshot();
   });
 

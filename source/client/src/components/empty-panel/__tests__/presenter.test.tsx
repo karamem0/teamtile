@@ -10,6 +10,8 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
+import { Provider, themeNames } from '@fluentui/react-teams';
+
 import EmptyPanel from '../presenter';
 
 beforeEach(() => {
@@ -23,7 +25,12 @@ describe('EmptyPanel', () => {
     const params = {
       onClick: jest.fn()
     };
-    render(<EmptyPanel {...params} />);
+    render(
+      <Provider
+        lang="en-US"
+        themeName={themeNames.Default}>
+        <EmptyPanel {...params} />
+      </Provider>);
     expect(screen.queryAllByText(/^.*$/)[0]).toMatchSnapshot();
   });
 

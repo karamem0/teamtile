@@ -40,7 +40,7 @@ export class CacheService {
     timeout?: number
   ) {
     this.database = database || new Dexie('teamtile');
-    this.database.version(5).stores({
+    this.database.version(6).stores({
       channels: '&id, expired, values.displayName, values.id, values.webUrl',
       drives: '&id, expired, value.id, value.webUrl',
       icons: '&id, expired, value.data, value.type',

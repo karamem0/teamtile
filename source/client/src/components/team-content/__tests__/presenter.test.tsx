@@ -6,6 +6,12 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import React from 'react';
+
+import { render, screen } from '@testing-library/react';
+
+import TeamContent from '../presenter';
+
 jest.mock('../../team-card', () => ({
   TeamCard: ({ children }: React.PropsWithChildren<unknown>) => (
     <div data-testid="TeamCard">
@@ -13,12 +19,6 @@ jest.mock('../../team-card', () => ({
     </div>
   )
 }));
-
-import React from 'react';
-
-import { render, screen } from '@testing-library/react';
-
-import TeamContent from '../presenter';
 
 beforeEach(() => {
   jest.clearAllMocks();

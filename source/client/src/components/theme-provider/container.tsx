@@ -8,12 +8,7 @@
 
 import React from 'react';
 
-import {
-  teamsDarkV2Theme,
-  teamsHighContrastTheme,
-  teamsV2Theme
-} from '@fluentui/react-northstar';
-import { ThemePrepared } from '@fluentui/styles';
+import { themeNames } from '@fluentui/react-teams';
 
 import { app } from '@microsoft/teams-js';
 
@@ -29,19 +24,20 @@ export default function ThemeProvider ({
   children
 }: ThemeProviderProps): React.ReactElement | null {
 
-  const [ theme, setTheme ] = React.useState<ThemePrepared>(teamsV2Theme);
+  const [ lang, setLang ] = React.useState<string>('en-US');
+  const [ themeName, setThemeName ] = React.useState<themeNames>(themeNames.Default);
   const { inTeams } = useInTeams();
 
   const handleThemeChange = (value: string) => {
     switch (value) {
       case 'dark':
-        setTheme(teamsDarkV2Theme);
+        setThemeName(themeNames.Dark);
         break;
       case 'contrast':
-        setTheme(teamsHighContrastTheme);
+        setThemeName(themeNames.HighContrast);
         break;
       default:
-        setTheme(teamsV2Theme);
+        setThemeName(themeNames.Default);
         break;
     }
   };
@@ -51,6 +47,7 @@ export default function ThemeProvider ({
       if (inTeams) {
         await app.initialize();
         const context = await app.getContext();
+        setLang(context.app.locale);
         handleThemeChange(context.app.theme);
         app.registerOnThemeChangeHandler(handleThemeChange);
       }
@@ -60,7 +57,9 @@ export default function ThemeProvider ({
   ]);
 
   return (
-    <Presenter theme={theme}>
+    <Presenter
+      lang={lang}
+      themeName={themeName}>
       {children}
     </Presenter>
   );

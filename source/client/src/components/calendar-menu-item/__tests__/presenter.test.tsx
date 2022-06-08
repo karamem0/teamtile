@@ -10,7 +10,7 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import { Group } from '../../../types/entity';
+import { TeamWithMail } from '../../../types/entity';
 import CalendarMenuItem from '../presenter';
 
 beforeEach(() => {
@@ -23,7 +23,8 @@ describe('CalendarMenuItem', () => {
   it('create shapshot', async () => {
     const json = await import('./__jsons__/presenter.test.json');
     const params = {
-      group: json.default as Group,
+      team: json.default as TeamWithMail,
+      loading: false,
       onClick: jest.fn()
     };
     render(<CalendarMenuItem {...params} />);

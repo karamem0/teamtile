@@ -15,5 +15,8 @@ module.exports = {
   testMatch: [
     '**/*.test.ts',
     '**/*.test.tsx'
+  ],
+  transformIgnorePatterns: [
+    'node_modules/@fluentui/react-teams/'
   ]
 };

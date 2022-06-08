@@ -10,7 +10,9 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import TeamNotFoundContent from '../presenter';
+import { Provider, themeNames } from '@fluentui/react-teams';
+
+import TeamNotFound from '../presenter';
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -20,7 +22,13 @@ beforeEach(() => {
 describe('TeamNotFound', () => {
 
   it('create shapshot', () => {
-    render(<TeamNotFoundContent />);
+    render(
+      <Provider
+        lang="en-US"
+        themeName={themeNames.Default}>
+        <TeamNotFound />
+      </Provider>
+    );
     expect(screen.queryAllByText(/^.*$/)[0]).toMatchSnapshot();
   });
 

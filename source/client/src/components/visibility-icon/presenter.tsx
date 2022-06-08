@@ -29,10 +29,10 @@ export default React.memo(function VisibilityIcon ({
         <Text color="brand">
           <GlobeIcon
             css={css`
-            width: 1rem;
-            height: 1rem;
-            vertical-align: top;
-          `} />
+              width: 1rem;
+              height: 1rem;
+              vertical-align: top;
+            `} />
         </Text>
       );
     case VisibilityType.private:
@@ -40,10 +40,10 @@ export default React.memo(function VisibilityIcon ({
         <Text color="brand">
           <LockIcon
             css={css`
-            width: 1rem;
-            height: 1rem;
-            vertical-align: top;
-          `} />
+              width: 1rem;
+              height: 1rem;
+              vertical-align: top;
+            `} />
         </Text>
       );
     default:

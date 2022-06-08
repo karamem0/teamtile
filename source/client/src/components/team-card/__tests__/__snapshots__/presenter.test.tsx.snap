@@ -22,10 +22,10 @@ exports[`TeamCard create shapshot when item is loaded 1`] = `
   grid-template-rows: auto;
   grid-template-columns: 1fr auto auto;
   gap: 0.25rem;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
+  -webkit-align-items: end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: end;
 }
 
 .emotion-4 {
@@ -147,6 +147,9 @@ exports[`TeamCard create shapshot when item is loaded 1`] = `
             />
             <div
               data-testid="DriveMenuItem"
+            />
+            <div
+              data-testid="CalendarMenuItem"
             />
           </div>
         </div>

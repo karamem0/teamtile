@@ -17,7 +17,8 @@ import {
   Channel,
   Drive,
   Group,
-  Team
+  Team,
+  TeamsTab
 } from '@microsoft/microsoft-graph-types';
 
 import { Icon } from '../types/entity';
@@ -33,13 +34,13 @@ export class GraphService {
     this.client = client;
   }
 
-  async getChannels (keys: string[]): Promise<Map<string, Channel[]>> {
+  async getChannels (teamIds: string[]): Promise<Map<string, Channel[]>> {
     return new Map(await Promise.all(
-      keys.map<Promise<[string, Channel[]]>>(
-        async (key) => {
+      teamIds.map<Promise<[string, Channel[]]>>(
+        async (teamId) => {
           try {
             const response = await this.client
-              .api(`/teams/${key}/channels`)
+              .api(`/teams/${teamId}/channels`)
               .version('v1.0')
               .select([
                 'id',
@@ -52,9 +53,9 @@ export class GraphService {
             const callback = (value: Channel) => Boolean(items.push(value));
             const iterator = new PageIterator(this.client, response, callback);
             await iterator.iterate();
-            return [ key, items.sort((a, b) => compare(a.displayName, b.displayName)) ];
+            return [ teamId, items.sort((a, b) => compare(a.displayName, b.displayName)) ];
           } catch {
-            return [ key, []];
+            return [ teamId, []];
           }
         })));
   }
@@ -80,14 +81,14 @@ export class GraphService {
     return values;
   }
 
-  async getDrives (keys: string[]): Promise<Map<string, Drive>> {
+  async getDrives (teamIds: string[]): Promise<Map<string, Drive>> {
     const values = new Map<string, Drive>();
-    for (let chunk = 0; chunk < keys.length; chunk += 20) {
+    for (let chunk = 0; chunk < teamIds.length; chunk += 20) {
       const requestContent = new BatchRequestContent(
-        keys.slice(chunk, chunk + 20).map((key) => ({
-          id: `${key}`,
+        teamIds.slice(chunk, chunk + 20).map((teamId) => ({
+          id: `${teamId}`,
           request: new Request(
-            `/groups/${key}/drive` +
+            `/groups/${teamId}/drive` +
             '?$select=id,webUrl',
             {
               method: 'GET'
@@ -114,14 +115,14 @@ export class GraphService {
     return values;
   }
 
-  async getMemberIcons (keys: string[]): Promise<Map<string, Icon | null>> {
+  async getMemberIcons (userIds: string[]): Promise<Map<string, Icon | null>> {
     const values = new Map<string, Icon | null>();
-    for (let chunk = 0; chunk < keys.length; chunk += 20) {
+    for (let chunk = 0; chunk < userIds.length; chunk += 20) {
       const requestContent = new BatchRequestContent(
-        keys.slice(chunk, chunk + 20).map((key) => ({
-          id: `${key}`,
+        userIds.slice(chunk, chunk + 20).map((userId) => ({
+          id: `${userId}`,
           request: new Request(
-            `/users/${key}/photo/$value`,
+            `/users/${userId}/photo/$value`,
             {
               method: 'GET'
             }
@@ -134,7 +135,7 @@ export class GraphService {
         .version('v1.0')
         .post(requestBody);
       const responseContent = new BatchResponseContent(responseBody);
-      for (const [ key, response ] of Array.from(responseContent.getResponses())) {
+      for (const [ requestId, response ] of Array.from(responseContent.getResponses())) {
         if (response.ok) {
           const data = await response.text();
           const type = response.headers.get('Content-Type');
@@ -144,22 +145,22 @@ export class GraphService {
                 type: type
               }
             : null;
-          values.set(key, icon);
+          values.set(requestId, icon);
         } else {
-          values.set(key, null);
+          values.set(requestId, null);
         }
       }
     }
     return values;
   }
 
-  async getMembers (keys: string[]): Promise<Map<string, AadUserConversationMember[]>> {
+  async getMembers (teamIds: string[]): Promise<Map<string, AadUserConversationMember[]>> {
     return new Map(await Promise.all(
-      keys.map<Promise<[string, AadUserConversationMember[]]>>(
-        async (key) => {
+      teamIds.map<Promise<[string, AadUserConversationMember[]]>>(
+        async (teamId) => {
           try {
             const response = await this.client
-              .api(`/teams/${key}/members`)
+              .api(`/teams/${teamId}/members`)
               .version('v1.0')
               .select([
                 'displayName',
@@ -172,21 +173,42 @@ export class GraphService {
             const callback = (value: AadUserConversationMember) => Boolean(items.push(value));
             const iterator = new PageIterator(this.client, response, callback);
             await iterator.iterate();
-            return [ key, items.sort((a, b) => compare(a.displayName, b.displayName)) ];
+            return [ teamId, items.sort((a, b) => compare(a.displayName, b.displayName)) ];
           } catch {
-            return [ key, []];
+            return [ teamId, []];
           }
         })));
   }
 
-  async getTeamIcons (keys: string[]): Promise<Map<string, Icon | null>> {
+  async getTabs (teamId: string, channelId: string): Promise<TeamsTab[]> {
+    try {
+      const response = await this.client
+        .api(`/teams/${teamId}/channels/${channelId}/tabs?$expand=teamsApp`)
+        .version('v1.0')
+        .select([
+          'displayName',
+          'id',
+          'webUrl'
+        ])
+        .get();
+      const items: TeamsTab[] = [];
+      const callback = (value: TeamsTab) => Boolean(items.push(value));
+      const iterator = new PageIterator(this.client, response, callback);
+      await iterator.iterate();
+      return items;
+    } catch {
+      return [];
+    }
+  }
+
+  async getTeamIcons (teamIds: string[]): Promise<Map<string, Icon | null>> {
     const values = new Map<string, Icon | null>();
-    for (let chunk = 0; chunk < keys.length; chunk += 20) {
+    for (let chunk = 0; chunk < teamIds.length; chunk += 20) {
       const requestContent = new BatchRequestContent(
-        keys.slice(chunk, chunk + 20).map((key) => ({
-          id: `${key}`,
+        teamIds.slice(chunk, chunk + 20).map((teamId) => ({
+          id: `${teamId}`,
           request: new Request(
-            `/groups/${key}/photo/$value`,
+            `/groups/${teamId}/photo/$value`,
             {
               method: 'GET'
             }
@@ -199,7 +221,7 @@ export class GraphService {
         .version('v1.0')
         .post(requestBody);
       const responseContent = new BatchResponseContent(responseBody);
-      for (const [ key, response ] of Array.from(responseContent.getResponses())) {
+      for (const [ requestId, response ] of Array.from(responseContent.getResponses())) {
         if (response.ok) {
           const data = await response.text();
           const type = response.headers.get('Content-Type');
@@ -209,23 +231,23 @@ export class GraphService {
                 type: type
               }
             : null;
-          values.set(key, icon);
+          values.set(requestId, icon);
         } else {
-          values.set(key, null);
+          values.set(requestId, null);
         }
       }
     }
     return values;
   }
 
-  async getTeams (keys: string[]): Promise<Map<string, Team>> {
+  async getTeams (teamIds: string[]): Promise<Map<string, Team>> {
     const values = new Map<string, Team>();
-    for (let chunk = 0; chunk < keys.length; chunk += 20) {
+    for (let chunk = 0; chunk < teamIds.length; chunk += 20) {
       const requestContent = new BatchRequestContent(
-        keys.slice(chunk, chunk + 20).map((key) => ({
-          id: `${key}`,
+        teamIds.slice(chunk, chunk + 20).map((teamId) => ({
+          id: `${teamId}`,
           request: new Request(
-            `/teams/${key}` +
+            `/teams/${teamId}` +
             '?$select=description,displayName,id,internalId,visibility,webUrl',
             {
               method: 'GET'
@@ -239,11 +261,11 @@ export class GraphService {
         .version('v1.0')
         .post(requestBody);
       const responseContent = new BatchResponseContent(responseBody);
-      for (const [ key, response ] of responseContent.getResponses()) {
+      for (const [ requestId, response ] of responseContent.getResponses()) {
         if (response.ok) {
           const json = await response.json();
           const value = json as Team;
-          values.set(key, value);
+          values.set(requestId, value);
         } else if (response.status !== 404) {
           throw new Error(response.statusText);
         }

@@ -6,6 +6,12 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import React from 'react';
+
+import { render, screen } from '@testing-library/react';
+
+import MainPage from '../presenter';
+
 jest.mock('../../empty-panel', () => ({
   EmptyPanel: ({ children }: React.PropsWithChildren<unknown>) => (
     <div data-testid="EmptyPanel">
@@ -53,12 +59,6 @@ jest.mock('../../team-not-found', () => ({
     </div>
   )
 }));
-
-import React from 'react';
-
-import { render, screen } from '@testing-library/react';
-
-import MainPage from '../presenter';
 
 beforeEach(() => {
   jest.clearAllMocks();

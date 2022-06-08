@@ -10,10 +10,16 @@ import React from 'react';
 
 import Presenter from './presenter';
 
-export default function ErrorPanel (): React.ReactElement | null {
+interface ErrorPanelProps {
+  error: string
+}
+
+export default function ErrorPanel ({
+  error
+}: ErrorPanelProps): React.ReactElement | null {
 
   return (
-    <Presenter />
+    <Presenter error={error} />
   );
 
 }

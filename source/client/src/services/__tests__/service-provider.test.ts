@@ -14,6 +14,7 @@ import {
   Group,
   Icon,
   Member,
+  Tab,
   Team
 } from '../../types/entity';
 import { CacheService } from '../cache-service';
@@ -49,6 +50,7 @@ jest.mock('../graph-service', () => ({
     getMemberIcons: jest.fn(),
     getMembers: jest.fn(),
     getTeamIcons: jest.fn(),
+    getTabs: jest.fn(),
     getTeams: jest.fn()
   })
 }));
@@ -466,6 +468,37 @@ describe('getTeamIconsFromGraph', () => {
     graphGetIcons.mockRejectedValue(new Error(params.error));
     const target = new ServiceProvider(Client.initWithMiddleware({}));
     expect(target.getTeamIconsFromGraph(params.keys)).rejects.toThrow(params.error);
+  });
+
+});
+
+describe('getTabs', () => {
+
+  it('return tabs', async () => {
+    const json = await import('./__jsons__/tabs.test.json');
+    const params = {
+      itemKey: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      channelKey: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
+      json: json.default as Tab[]
+    };
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetTabs = graphService.getTabs as jest.Mock;
+    graphGetTabs.mockResolvedValue(params.json);
+    const target = new ServiceProvider(Client.initWithMiddleware({}));
+    expect(target.getTabs(params.itemKey, params.channelKey)).resolves.not.toThrow();
+  });
+
+  it('throw error if failed', () => {
+    const params = {
+      itemKey: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      channelKey: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
+      error: 'Something went wrong.'
+    };
+    const graphService = new GraphService(Client.initWithMiddleware({}));
+    const graphGetTabs = graphService.getTabs as jest.Mock;
+    graphGetTabs.mockRejectedValue(new Error(params.error));
+    const target = new ServiceProvider(Client.initWithMiddleware({}));
+    expect(target.getTabs(params.itemKey, params.channelKey)).rejects.toThrow(params.error);
   });
 
 });

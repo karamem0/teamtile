@@ -8,32 +8,34 @@
 
 import React from 'react';
 
-import { ErrorBadgeIcon } from '@fluentui/react-icons-mdl2';
-import { Text } from '@fluentui/react-northstar';
+import { Communication, CommunicationOptions } from '@fluentui/react-teams';
 
 import { css } from '@emotion/react';
 
 import { CenterLayout } from '../center-layout';
 
-export default React.memo(function ErrorPanel (): React.ReactElement | null {
+interface ErrorPanelProps {
+  error: string
+}
+
+export default React.memo(function ErrorPanel ({
+  error
+}: ErrorPanelProps): React.ReactElement | null {
 
   return (
     <CenterLayout>
       <div
         css={css`
-          text-align: center;
-        `}>
-        <ErrorBadgeIcon
-          css={css`
-            width: 2rem;
-            height: 2rem;
-            margin: 0.5rem;
-          `} />
-        <Text
-          content="Something went wrong."
-          css={css`
-            display: block;
-          `} />
+        & > div {
+          flex-basis: auto;
+        }
+      `}>
+        <Communication
+          fields={{
+            title: 'Something went wrong',
+            desc: error
+          }}
+          option={CommunicationOptions.Empty} />
       </div>
     </CenterLayout>
   );

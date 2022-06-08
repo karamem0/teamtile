@@ -9,26 +9,54 @@
 import React from 'react';
 
 import { CalendarIcon } from '@fluentui/react-icons-mdl2';
+import { Loader } from '@fluentui/react-northstar';
+
+import { css } from '@emotion/react';
 
 import { EventHandler } from '../../types/common';
-import { Group } from '../../types/entity';
+import { TeamWithMail } from '../../types/entity';
 import { CardMenuItem } from '../card-menu-item';
 
 interface CalendarMenuItemProps {
-  group: Group,
-  onClick?: EventHandler<Group> | undefined
+  team: TeamWithMail,
+  loading: boolean,
+  onClick?: EventHandler<TeamWithMail> | undefined
 }
 
 export default React.memo(function CalendarMenuItem ({
-  group,
+  team,
+  loading,
   onClick
 }: CalendarMenuItemProps): React.ReactElement | null {
 
   return (
     <CardMenuItem
       content={undefined}
-      icon={<CalendarIcon />}
-      onClick={(event) => onClick && onClick(event, group)} />
+      icon={
+        loading
+          ? (
+            <Loader
+              css={css`
+                & > div {
+                  width: 1rem;
+                  height: 1rem;
+                }
+                & > div > div::before {
+                  animation-timing-function: steps(90);
+                  width: 1rem;
+                }
+              `}
+              size="smallest" />
+            )
+          : (
+            <CalendarIcon
+              css={css`
+                width: 1rem;
+                height: 1rem;
+              `} />
+            )
+        }
+      onClick={(event) => onClick && onClick(event, team)} />
   );
 
 });

@@ -15,10 +15,15 @@ import {
   Icon,
   Member,
   MembershipType,
+  Tab,
   Team,
   VisibilityType
 } from '../types/entity';
-import { ItemKey } from '../types/state';
+import {
+  ChannelKey,
+  ItemKey,
+  MemberKey
+} from '../types/state';
 
 import { CacheService } from './cache-service';
 import { GraphService } from './graph-service';
@@ -40,18 +45,18 @@ export class ServiceProvider {
     await this.cacheService.clear();
   }
 
-  async getChannelsFromCache (keys: ItemKey[]): Promise<Map<string, Channel[]>> {
+  async getChannelsFromCache (keys: ItemKey[]): Promise<Map<ItemKey, Channel[]>> {
     return await this.cacheService.getChannels(keys);
   }
 
-  async getChannelsFromGraph (keys: ItemKey[]): Promise<Map<string, Channel[]>> {
+  async getChannelsFromGraph (keys: ItemKey[]): Promise<Map<ItemKey, Channel[]>> {
     const cache = Array.from(await this.cacheService
       .getChannels(keys, false)
       .then((map) => map.keys()));
     const graph = await this.graphService
       .getChannels(keys.filter((key) => cache.indexOf(key) < 0))
       .then((map) => new Map(Array.from(map)
-        .map<[string, Channel[]]>(([ key, values ]) => ([
+        .map<[ItemKey, Channel[]]>(([ key, values ]) => ([
           key,
           values.map((value) => ({
             id: value.id,
@@ -64,18 +69,18 @@ export class ServiceProvider {
     return graph;
   }
 
-  async getDrivesFromCache (keys: ItemKey[]): Promise<Map<string, Drive>> {
+  async getDrivesFromCache (keys: ItemKey[]): Promise<Map<ItemKey, Drive>> {
     return await this.cacheService.getDrives(keys);
   }
 
-  async getDrivesFromGraph (keys: ItemKey[]): Promise<Map<string, Drive>> {
+  async getDrivesFromGraph (keys: ItemKey[]): Promise<Map<ItemKey, Drive>> {
     const cache = Array.from(await this.cacheService
       .getDrives(keys, false)
       .then((map) => map.keys()));
     const graph = await this.graphService
       .getDrives(keys.filter((key) => cache.indexOf(key) < 0))
       .then((map) => new Map(Array.from(map)
-        .map<[string, Drive]>(([ key, value ]) => ([
+        .map<[ItemKey, Drive]>(([ key, value ]) => ([
           key,
           {
             id: value.id,
@@ -86,11 +91,11 @@ export class ServiceProvider {
     return graph;
   }
 
-  async getGroupsFromGraph (): Promise<Map<string, Group>> {
+  async getGroupsFromGraph (): Promise<Map<ItemKey, Group>> {
     return await this.graphService
       .getGroups()
       .then((map) => new Map(Array.from(map)
-        .map<[string, Group]>(([ key, value ]) => ([
+        .map<[ItemKey, Group]>(([ key, value ]) => ([
           key,
           {
             id: value.id,
@@ -102,11 +107,11 @@ export class ServiceProvider {
         ]))));
   }
 
-  async getMemberIconsFromCache (keys: string[]): Promise<Map<string, Icon | null>> {
+  async getMemberIconsFromCache (keys: MemberKey[]): Promise<Map<MemberKey, Icon | null>> {
     return await this.cacheService.getIcons(keys);
   }
 
-  async getMemberIconsFromGraph (keys: string[]): Promise<Map<string, Icon | null>> {
+  async getMemberIconsFromGraph (keys: MemberKey[]): Promise<Map<MemberKey, Icon | null>> {
     const cache = Array.from(await this.cacheService
       .getIcons(keys, false)
       .then((map) => map.keys()));
@@ -121,18 +126,18 @@ export class ServiceProvider {
     return graph;
   }
 
-  async getMembersFromCache (keys: ItemKey[]): Promise<Map<string, Member[]>> {
+  async getMembersFromCache (keys: ItemKey[]): Promise<Map<ItemKey, Member[]>> {
     return await this.cacheService.getMembers(keys);
   }
 
-  async getMembersFromGraph (keys: ItemKey[]): Promise<Map<string, Member[]>> {
+  async getMembersFromGraph (keys: ItemKey[]): Promise<Map<ItemKey, Member[]>> {
     const cache = Array.from(await this.cacheService
       .getMembers(keys, false)
       .then((map) => map.keys()));
     const graph = await this.graphService
       .getMembers(keys.filter((key) => cache.indexOf(key) < 0))
       .then((map) => new Map(Array.from(map)
-        .map<[string, Member[]]>(([ key, value ]) => ([
+        .map<[ItemKey, Member[]]>(([ key, value ]) => ([
           key,
           value.map((value) => ({
             displayName: value.displayName,
@@ -145,11 +150,11 @@ export class ServiceProvider {
     return graph;
   }
 
-  async getTeamIconsFromCache (keys: string[]): Promise<Map<string, Icon | null>> {
+  async getTeamIconsFromCache (keys: ItemKey[]): Promise<Map<ItemKey, Icon | null>> {
     return await this.cacheService.getIcons(keys);
   }
 
-  async getTeamIconsFromGraph (keys: string[]): Promise<Map<string, Icon | null>> {
+  async getTeamIconsFromGraph (keys: ItemKey[]): Promise<Map<ItemKey, Icon | null>> {
     const cache = Array.from(await this.cacheService
       .getIcons(keys, false)
       .then((map) => map.keys()));
@@ -164,18 +169,29 @@ export class ServiceProvider {
     return graph;
   }
 
-  async getTeamsFromCache (keys: string[]): Promise<Map<string, Team>> {
+  async getTabs (itemKey: ItemKey, channelKey: ChannelKey): Promise<Tab[]> {
+    return await this.graphService
+      .getTabs(itemKey, channelKey)
+      .then((values) => values.map((value) => ({
+        appId: value.teamsApp?.id,
+        displayName: value.teamsApp?.displayName,
+        id: value.id,
+        webUrl: value.webUrl
+      })));
+  }
+
+  async getTeamsFromCache (keys: ItemKey[]): Promise<Map<ItemKey, Team>> {
     return await this.cacheService.getTeams(keys);
   }
 
-  async getTeamsFromGraph (keys: string[]): Promise<Map<string, Team>> {
+  async getTeamsFromGraph (keys: ItemKey[]): Promise<Map<ItemKey, Team>> {
     const cache = Array.from(await this.cacheService
       .getTeams(keys, false)
       .then((map) => map.keys()));
     const graph = await this.graphService
       .getTeams(keys.filter((key) => cache.indexOf(key) < 0))
       .then((map) => new Map(Array.from(map)
-        .map<[string, Team]>(([ key, value ]) => ([
+        .map<[ItemKey, Team]>(([ key, value ]) => ([
           key,
           {
             description: value.description,

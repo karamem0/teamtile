@@ -73,7 +73,13 @@ export default React.memo(function ChannelMenuItem ({
       trigger={
         <CardMenuItem
           content={channels.length}
-          icon={<ContextMenuIcon />} />
+          icon={
+            <ContextMenuIcon
+              css={css`
+                width: 1rem;
+                height: 1rem;
+              `} />
+          } />
       } />
   );
 

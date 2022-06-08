@@ -8,20 +8,24 @@
 
 import React from 'react';
 
-import { Provider, ThemePrepared } from '@fluentui/react-northstar';
+import { Provider, themeNames } from '@fluentui/react-teams';
 
 interface ThemeProviderProps {
   children: React.ReactNode,
-  theme: ThemePrepared
+  lang: string,
+  themeName: themeNames
 }
 
 export default React.memo(function ThemeProvider ({
   children,
-  theme
+  lang,
+  themeName
 }: ThemeProviderProps): React.ReactElement | null {
 
   return (
-    <Provider theme={theme}>
+    <Provider
+      lang={lang}
+      themeName={themeName}>
       {children}
     </Provider>
   );

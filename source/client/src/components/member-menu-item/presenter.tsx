@@ -79,7 +79,13 @@ export default React.memo(function MemberMenuItem ({
       trigger={
         <CardMenuItem
           content={members.length}
-          icon={<GroupIcon />} />
+          icon={
+            <GroupIcon
+              css={css`
+                width: 1rem;
+                height: 1rem;
+            `} />
+          } />
       }
       onOpenChange={onOpenChange} />
   );

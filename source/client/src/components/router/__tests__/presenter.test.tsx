@@ -6,6 +6,12 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import React from 'react';
+
+import { render, screen } from '@testing-library/react';
+
+import Router from '../presenter';
+
 jest.mock('../../home-page', () => ({
   HomePage: ({ children }: React.PropsWithChildren<unknown>) => (
     <div data-testid="HomePage">
@@ -37,12 +43,6 @@ jest.mock('../../../contexts/service-context', () => ({
     </div>
   )
 }));
-
-import React from 'react';
-
-import { render, screen } from '@testing-library/react';
-
-import Router from '../presenter';
 
 beforeEach(() => {
   jest.clearAllMocks();

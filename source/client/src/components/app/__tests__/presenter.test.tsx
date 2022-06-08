@@ -6,6 +6,14 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import React from 'react';
+
+import { render, screen } from '@testing-library/react';
+
+import { PublicClientApplication } from '@azure/msal-browser';
+
+import App from '../presenter';
+
 jest.mock('@azure/msal-browser', () => ({
   PublicClientApplication: jest.fn()
 }));
@@ -53,14 +61,6 @@ jest.mock('../../theme-provider', () => ({
     </div>
   )
 }));
-
-import React from 'react';
-
-import { render, screen } from '@testing-library/react';
-
-import { PublicClientApplication } from '@azure/msal-browser';
-
-import App from '../presenter';
 
 beforeEach(() => {
   jest.clearAllMocks();

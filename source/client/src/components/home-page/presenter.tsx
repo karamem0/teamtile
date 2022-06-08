@@ -42,7 +42,7 @@ export default React.memo(function HomePage ({
           grid-template-rows: auto;
           grid-template-columns: auto;
           align-items: center;
-          justify-content: flex-end;
+          justify-content: end;
           width: 100%;
           height: 2rem;
           padding: 0 1rem;

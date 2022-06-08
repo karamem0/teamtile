@@ -35,6 +35,10 @@ export type ItemValue = (
   }
 );
 
+export type ChannelKey = string;
+
+export type MemberKey = string;
+
 export interface State {
   itemFilter: string | null | undefined,
   items: Item[],

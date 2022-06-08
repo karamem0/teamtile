@@ -42,6 +42,13 @@ export type MemberWithIcon = (
   }
 )
 
+export interface Tab {
+  appId: string | null | undefined,
+  displayName: string | null | undefined,
+  id: string | undefined,
+  webUrl: string | null | undefined
+}
+
 export interface Team {
   description: string | null | undefined,
   displayName: string | null | undefined,
@@ -50,6 +57,12 @@ export interface Team {
   visibility: VisibilityType | null | undefined,
   webUrl: string | null | undefined
 }
+
+export type TeamWithMail = (
+  Team & {
+     mail: string | null | undefined
+  }
+)
 
 export type TeamWithIcon = (
   Team & {

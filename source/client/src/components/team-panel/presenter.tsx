@@ -44,20 +44,29 @@ export default React.memo(function TeamPanel ({
       <div
         css={css`
           display: grid;
-          grid-template-rows: auto;
           grid-template-columns: 1fr auto;
+          grid-template-rows: auto;
           gap: 0.25rem;
         `}>
         <Input
           clearable
           css={css`
             min-height: 2.25rem;
+            input {
+              background-color: #ffffff
+            }
+            @media (min-width: 600px) {
+              max-width: 20rem;
+            }
           `}
           fluid
           icon={<SearchIcon />}
           value={filter || undefined}
           onChange={(event, data) => onInputChange && onInputChange(event, data)} />
         <Button
+          css={css`
+            justify-content: end;
+          `}
           icon={<RefreshIcon />}
           iconOnly
           text

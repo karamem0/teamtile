@@ -10,6 +10,8 @@ import React from 'react';
 
 import { SharepointLogoIcon } from '@fluentui/react-icons-mdl2-branded';
 
+import { css } from '@emotion/react';
+
 import { EventHandler } from '../../types/common';
 import { Drive } from '../../types/entity';
 import { CardMenuItem } from '../card-menu-item';
@@ -27,7 +29,13 @@ export default React.memo(function DriveMenuItem ({
   return (
     <CardMenuItem
       content={undefined}
-      icon={<SharepointLogoIcon />}
+      icon={
+        <SharepointLogoIcon
+          css={css`
+            width: 1rem;
+            height: 1rem;
+          `} />
+      }
       onClick={(event) => onClick && onClick(event, drive)} />
   );
 

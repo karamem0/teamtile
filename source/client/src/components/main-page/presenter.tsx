@@ -28,7 +28,7 @@ export default React.memo(function MainPage ({
 
   if (error) {
     return (
-      <ErrorPanel />
+      <ErrorPanel error={error} />
     );
   }
 
@@ -58,7 +58,7 @@ export default React.memo(function MainPage ({
     }
     default:
       return (
-        <ErrorPanel />
+        <ErrorPanel error="" />
       );
   }
 

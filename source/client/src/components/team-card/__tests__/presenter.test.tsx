@@ -6,6 +6,21 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import React from 'react';
+
+import { render, screen } from '@testing-library/react';
+
+import { Item } from '../../../types/state';
+import TeamCard from '../presenter';
+
+jest.mock('../../calendar-menu-item', () => ({
+  CalendarMenuItem: ({ children }: React.PropsWithChildren<unknown>) => (
+    <div data-testid="CalendarMenuItem">
+      {children}
+    </div>
+  )
+}));
+
 jest.mock('../../channel-menu-item', () => ({
   ChannelMenuItem: ({ children }: React.PropsWithChildren<unknown>) => (
     <div data-testid="ChannelMenuItem">
@@ -29,13 +44,6 @@ jest.mock('../../member-menu-item', () => ({
     </div>
   )
 }));
-
-import React from 'react';
-
-import { render, screen } from '@testing-library/react';
-
-import { Item } from '../../../types/state';
-import TeamCard from '../presenter';
 
 beforeEach(() => {
   jest.clearAllMocks();

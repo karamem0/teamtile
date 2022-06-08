@@ -10,7 +10,7 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import { teamsV2Theme } from '@fluentui/react-northstar';
+import { themeNames } from '@fluentui/react-teams';
 
 import ThemeProvider from '../presenter';
 
@@ -24,7 +24,8 @@ describe('ThemeProvider', () => {
   it('create shapshot', async () => {
     const params = {
       children: <React.Fragment />,
-      theme: teamsV2Theme
+      lang: 'en-US',
+      themeName: themeNames.Default
     };
     render(<ThemeProvider {...params} />);
     expect(screen.queryAllByText(/^.*$/)[0]).toMatchSnapshot();

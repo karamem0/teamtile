@@ -5,36 +5,25 @@ exports[`MemberMenuItem create shapshot when menu item is not open 1`] = `
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto auto;
+  gap: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: start;
   -ms-flex-pack: start;
-  -webkit-justify-content: flex-start;
-  justify-content: flex-start;
+  -webkit-justify-content: start;
+  justify-content: start;
   cursor: pointer;
 }
 
 .emotion-1 {
-  line-height: 1em;
-}
-
-.emotion-1 span {
-  display: grid;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
+  line-height: 1rem;
 }
 
 .emotion-2 {
-  margin-left: 0.25rem;
-  line-height: 0.75rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 <body>
@@ -49,7 +38,7 @@ exports[`MemberMenuItem create shapshot when menu item is not open 1`] = `
       >
         <span
           aria-hidden="true"
-          class="root_dd790ee3"
+          class="root_dd790ee3 emotion-2"
         >
           <svg
             class="svg_dd790ee3"
@@ -64,7 +53,7 @@ exports[`MemberMenuItem create shapshot when menu item is not open 1`] = `
         </span>
       </span>
       <span
-        class="ui-text emotion-2"
+        class="ui-text emotion-1"
         data-uses-unhanded-props="true"
       >
         3
@@ -79,46 +68,35 @@ exports[`MemberMenuItem create shapshot when menu item is open 1`] = `
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto auto;
+  gap: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: start;
   -ms-flex-pack: start;
-  -webkit-justify-content: flex-start;
-  justify-content: flex-start;
+  -webkit-justify-content: start;
+  justify-content: start;
   cursor: pointer;
 }
 
 .emotion-1 {
-  line-height: 1em;
-}
-
-.emotion-1 span {
-  display: grid;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
+  line-height: 1rem;
 }
 
 .emotion-2 {
-  margin-left: 0.25rem;
-  line-height: 0.75rem;
+  width: 1rem;
+  height: 1rem;
 }
 
-.emotion-3 {
+.emotion-4 {
   width: 12rem;
   max-height: 24rem;
   margin: -0.5rem;
   overflow: auto;
 }
 
-.emotion-4 {
+.emotion-5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -130,7 +108,7 @@ exports[`MemberMenuItem create shapshot when menu item is open 1`] = `
   gap: 0.25rem;
 }
 
-.emotion-5 {
+.emotion-6 {
   display: grid;
   grid-template-columns: auto auto;
   gap: 0.25rem;
@@ -157,7 +135,7 @@ exports[`MemberMenuItem create shapshot when menu item is open 1`] = `
       >
         <span
           aria-hidden="true"
-          class="root_dd790ee3"
+          class="root_dd790ee3 emotion-2"
         >
           <svg
             class="svg_dd790ee3"
@@ -172,7 +150,7 @@ exports[`MemberMenuItem create shapshot when menu item is open 1`] = `
         </span>
       </span>
       <span
-        class="ui-text emotion-2"
+        class="ui-text emotion-1"
         data-uses-unhanded-props="true"
       >
         3
@@ -190,10 +168,10 @@ exports[`MemberMenuItem create shapshot when menu item is open 1`] = `
       class="ui-popup__content__content"
     >
       <div
-        class="emotion-3"
+        class="emotion-4"
       >
         <div
-          class="emotion-4"
+          class="emotion-5"
         >
           <div
             class="ui-box ui-input"
@@ -259,7 +237,7 @@ exports[`MemberMenuItem create shapshot when menu item is open 1`] = `
                     data-uses-unhanded-props="true"
                   >
                     <span
-                      class="ui-text emotion-5"
+                      class="ui-text emotion-6"
                       data-uses-unhanded-props="true"
                       role="button"
                       tabindex="-1"
@@ -307,7 +285,7 @@ exports[`MemberMenuItem create shapshot when menu item is open 1`] = `
                     data-uses-unhanded-props="true"
                   >
                     <span
-                      class="ui-text emotion-5"
+                      class="ui-text emotion-6"
                       data-uses-unhanded-props="true"
                       role="button"
                       tabindex="-1"
@@ -355,7 +333,7 @@ exports[`MemberMenuItem create shapshot when menu item is open 1`] = `
                     data-uses-unhanded-props="true"
                   >
                     <span
-                      class="ui-text emotion-5"
+                      class="ui-text emotion-6"
                       data-uses-unhanded-props="true"
                       role="button"
                       tabindex="-1"

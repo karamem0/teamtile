@@ -15,13 +15,30 @@ exports[`TeamPanel create shapshot 1`] = `
 
 .emotion-1 {
   display: grid;
-  grid-template-rows: auto;
   grid-template-columns: 1fr auto;
+  grid-template-rows: auto;
   gap: 0.25rem;
 }
 
 .emotion-2 {
   min-height: 2.25rem;
+}
+
+.emotion-2 input {
+  background-color: #ffffff;
+}
+
+@media (min-width: 600px) {
+  .emotion-2 {
+    max-width: 20rem;
+  }
+}
+
+.emotion-3 {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: end;
+  justify-content: end;
 }
 
 <body>
@@ -71,7 +88,7 @@ exports[`TeamPanel create shapshot 1`] = `
           </div>
         </div>
         <button
-          class="ui-button"
+          class="ui-button emotion-3"
           data-aa-class="Button"
           data-uses-unhanded-props="true"
         >

@@ -102,12 +102,12 @@ export default React.memo(function TeamCard ({
               `}>
               <div
                 css={css`
-                display: grid;
-                grid-template-rows: auto;
-                grid-template-columns: 1fr auto auto;
-                gap: 0.25rem;
-                align-items: flex-end;
-              `}>
+                  display: grid;
+                  grid-template-rows: auto;
+                  grid-template-columns: 1fr auto auto;
+                  gap: 0.25rem;
+                  align-items: end;
+                `}>
                 <div
                   css={css`
                     overflow: hidden;
@@ -119,6 +119,7 @@ export default React.memo(function TeamCard ({
                       cursor: pointer;
                     `}
                     role="button"
+                    weight="semibold"
                     onClick={(event: React.SyntheticEvent) => onClick && onClick(event, item.value)}>
                     {item.value.displayName}
                   </Text>
@@ -132,7 +133,7 @@ export default React.memo(function TeamCard ({
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 `}>
-                <Text size="small">
+                <Text>
                   {item.value.description}
                 </Text>
               </div>
