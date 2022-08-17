@@ -51,6 +51,8 @@ namespace Karamem0.Teamtile
                 _ = app.UseCors();
             }
             _ = app.UseHttpsRedirection();
+            _ = app.UseDefaultFiles();
+            _ = app.UseStaticFiles();
             _ = app.UseRouting();
             _ = app.UseAuthentication();
             _ = app.UseAuthorization();

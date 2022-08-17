@@ -25,7 +25,7 @@ namespace Karamem0.Teamtile.Controllers
 
     [ApiController()]
     [Authorize()]
-    [Route("token")]
+    [Route("api/token")]
     public class TokenController : Controller
     {
 

@@ -42,12 +42,6 @@ Are you frustrated with finding a team? Teamtile provides these features to you:
 
 5. Click **Create** and wait until creation is completed.
 
-6. Click **Configuration** - **Path mappings** and add a virtual application.
-
-    |Virtual path|Physical path|Type|
-    |-|-|-|
-    |/api|site\wwwroot\api|Application|
-
 ### Register Azure AD Application
 
 1. Go to [Azure Portal](https://portal.azure.com).
@@ -130,7 +124,7 @@ Are you frustrated with finding a team? Teamtile provides these features to you:
 
 ### Build Application
 
-#### Server
+### Application
 
 1. Go to `source/server` folder.
 
@@ -153,32 +147,7 @@ dotnet publish --configuration Release
 4. Compress contents of `publish` folder.
 
 ```
-Compress-Archive -Path ./bin/Release/net6.0/publish/* -DestinationPath ../../server.zip
-```
-
-### Client
-
-1. Go to `source/client` folder.
-
-2. Edit `.env` file.
-
-    |Parameter|Value|Required|
-    |-|-|-|
-    |{{AppId}}|`[Application ID]`|true|
-    |{{TenantId}}|`[Tenent ID]`|true|
-    |{{InstrumentationKey}}|`[Instrumentation Key]`|false|
-
-3. Build application.
-
-```
-npm install
-npm run build
-```
-
-4. Compress contents of `build` folder.
-
-```
-Compress-Archive -Path ./build/* -DestinationPath ../../client.zip
+Compress-Archive -Path ./bin/Release/net6.0/publish/* -DestinationPath ../../build.zip
 ```
 
 ### Manifest
@@ -212,13 +181,7 @@ Compress-Archive -Path ./* -DestinationPath ../manifest.zip
 
 5. Go to `site\wwwroot` folder.
 
-6. Upload `client.zip` file (Drag the file into the browser).
-
-7. Click **+** - **New folder** and add `api` folder.
-
-8. Go to `api` folder.
-
-9. Upload `server.zip` file (Drag the file into the browser).
+6. Upload `build.zip` file (Drag the file into the browser).
 
 ### Microsoft Teams App
 

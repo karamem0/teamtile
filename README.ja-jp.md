@@ -42,12 +42,6 @@
 
 5. **作成** をクリックして操作が完了するまで待機します。
 
-6. **構成** - **パスのマッピング** をクリックして仮想アプリケーションを追加します。
-
-    |仮想パス|物理パス|種類|
-    |-|-|-|
-    |/api|site\wwwroot\api|アプリケーション|
-
 ### Azure AD アプリケーションの登録
 
 1. [Azure ポータル](https://portal.azure.com) に移動します。
@@ -130,7 +124,7 @@
 
 ### アプリケーションのビルド
 
-#### サーバー
+#### アプリケーション
 
 1. `source/server` フォルダーに移動します。
 
@@ -153,32 +147,7 @@ dotnet publish --configuration Release
 4. `publish` フォルダーの中身を圧縮します。
 
 ```
-Compress-Archive -Path ./bin/Release/net6.0/publish/* -DestinationPath ../../server.zip
-```
-
-### クライアント
-
-1. `source/client` フォルダーに移動します。
-
-2. `.env` ファイルを編集します。
-
-    |項目|値|必須|
-    |-|-|-|
-    |{{AppId}}|`[アプリケーション ID]`|はい|
-    |{{TenantId}}|`[テナント ID]`|はい|
-    |{{InstrumentationKey}}|`[インストルメンテーション キー]`|いいえ|
-
-3. アプリケーションをビルドします。
-
-```
-npm install
-npm run build
-```
-
-4. `build` フォルダーの中身を圧縮します。
-
-```
-Compress-Archive -Path ./build/* -DestinationPath ../../client.zip
+Compress-Archive -Path ./bin/Release/net6.0/publish/* -DestinationPath ../../build.zip
 ```
 
 ### マニフェスト
@@ -212,13 +181,7 @@ Compress-Archive -Path ./* -DestinationPath ../manifest.zip
 
 5. `site\wwwroot` フォルダーに移動します。
 
-6. `client.zip` ファイルをアップロードします (ブラウザーにドラッグ & ドロップします)。
-
-7. **+** - **New folder** をクリックして `api` フォルダーを追加します。
-
-8. `api` フォルダーに移動します。
-
-9. `server.zip` ファイルをアップロードします (ブラウザーにドラッグ & ドロップします)。
+6. `build.zip` ファイルをアップロードします (ブラウザーにドラッグ & ドロップします)。
 
 ### Microsoft Teams アプリ
 

@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.13/MicrosoftTeams.schema.json",
-  "version": "1.10.1",
+  "version": "1.10.2",
   "manifestVersion": "1.13",
   "id": "{{AppId}}",
   "packageName": "dev.karamem0.teamtile",

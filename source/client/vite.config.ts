@@ -6,7 +6,7 @@ import env from 'vite-plugin-env-compatible';
 
 export default defineConfig({
   build: {
-    outDir: 'build',
+    outDir: 'dist',
     sourcemap: true
   },
   plugins: [
