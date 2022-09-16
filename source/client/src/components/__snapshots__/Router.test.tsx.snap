@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create shapshot of when app is in teams 1`] = `
+@media (max-width: 599px) {
+  .emotion-0 {
+    padding: 0.5rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .emotion-0 {
+    padding: 1rem;
+  }
+}
+
+<body>
+  <div>
+    <div
+      class="emotion-0"
+    >
+      <div
+        data-testid="ReducerProvider"
+      >
+        <div
+          data-testid="SnackbarProvider"
+        >
+          <div
+            data-testid="Snackbar"
+          />
+          <div
+            data-testid="AppLoader"
+          >
+            <div
+              data-testid="TeamPage"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`create shapshot of when app is not in teams 1`] = `
+<body>
+  <div>
+    <div
+      data-testid="HomePage"
+    />
+  </div>
+</body>
+`;

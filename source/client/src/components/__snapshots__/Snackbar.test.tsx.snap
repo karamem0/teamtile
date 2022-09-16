@@ -1,0 +1,220 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create shapshot of when text is undefined 1`] = `
+<body>
+  <div />
+</body>
+`;
+
+exports[`create shapshot of when type is danger 1`] = `
+.emotion-0 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1001;
+  margin-bottom: 1rem;
+}
+
+<body>
+  <div>
+    <div
+      class="emotion-0"
+    >
+      <div
+        class="ui-alert"
+        data-uses-unhanded-props="true"
+      >
+        <div
+          class="ui-box ui-alert__icon"
+          data-uses-unhanded-props="true"
+        >
+          <span
+            aria-hidden="true"
+            class="root_dd790ee3"
+          >
+            <svg
+              class="svg_dd790ee3"
+              focusable="false"
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1024 0q141 0 272 36t244 104 207 160 161 207 103 245 37 272q0 141-36 272t-104 244-160 207-207 161-245 103-272 37q-141 0-272-36t-244-104-207-160-161-207-103-245-37-272q0-141 36-272t104-244 160-207 207-161T752 37t272-37zm0 1920q124 0 238-32t214-90 181-140 140-181 91-214 32-239q0-124-32-238t-90-214-140-181-181-140-214-91-239-32q-124 0-238 32t-214 90-181 140-140 181-91 214-32 239q0 124 32 238t90 214 140 181 181 140 214 91 239 32zm443-1249l-352 353 352 353-90 90-353-352-353 352-90-90 352-353-352-353 90-90 353 352 353-352 90 90z"
+              />
+            </svg>
+          </span>
+        </div>
+        <div
+          aria-live="polite"
+          class="ui-box ui-alert__body"
+          data-aa-class="Alert__body"
+          data-uses-unhanded-props="true"
+          id="alert-body-1"
+          role="alert"
+        >
+          <div
+            class="ui-box ui-alert__content"
+            data-uses-unhanded-props="true"
+            dir="auto"
+          >
+            danger
+          </div>
+        </div>
+        <button
+          aria-describedby="alert-body-1"
+          class="ui-alert__dismissaction"
+          data-aa-class="Alert__dismissAction"
+          data-uses-unhanded-props="true"
+        >
+          <span
+            class="ui-box ui-alert__dismissaction__content"
+            data-uses-unhanded-props="true"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`create shapshot of when type is success 1`] = `
+.emotion-0 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1001;
+  margin-bottom: 1rem;
+}
+
+<body>
+  <div>
+    <div
+      class="emotion-0"
+    >
+      <div
+        class="ui-alert"
+        data-uses-unhanded-props="true"
+      >
+        <div
+          class="ui-box ui-alert__icon"
+          data-uses-unhanded-props="true"
+        >
+          <span
+            aria-hidden="true"
+            class="root_dd790ee3"
+          >
+            <svg
+              class="svg_dd790ee3"
+              focusable="false"
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M960 1920q-133 0-255-34t-230-96-194-150-150-195-97-229T0 960q0-133 34-255t96-230 150-194 195-150 229-97T960 0q133 0 255 34t230 96 194 150 150 195 97 229 34 256q0 133-34 255t-96 230-150 194-195 150-229 97-256 34zm0-1792q-115 0-221 30t-198 84-169 130-130 168-84 199-30 221q0 114 30 220t84 199 130 169 168 130 199 84 221 30q114 0 220-30t199-84 169-130 130-168 84-199 30-221q0-114-30-220t-84-199-130-169-168-130-199-84-221-30zm-64 640h128v640H896V768zm0-256h128v128H896V512z"
+              />
+            </svg>
+          </span>
+        </div>
+        <div
+          class="ui-box ui-alert__body"
+          data-uses-unhanded-props="true"
+          id="alert-body-3"
+        >
+          <div
+            class="ui-box ui-alert__content"
+            data-uses-unhanded-props="true"
+            dir="auto"
+          >
+            success
+          </div>
+        </div>
+        <button
+          aria-describedby="alert-body-3"
+          class="ui-alert__dismissaction"
+          data-aa-class="Alert__dismissAction"
+          data-uses-unhanded-props="true"
+        >
+          <span
+            class="ui-box ui-alert__dismissaction__content"
+            data-uses-unhanded-props="true"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`create shapshot of when type is warning 1`] = `
+.emotion-0 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1001;
+  margin-bottom: 1rem;
+}
+
+<body>
+  <div>
+    <div
+      class="emotion-0"
+    >
+      <div
+        class="ui-alert"
+        data-uses-unhanded-props="true"
+      >
+        <div
+          class="ui-box ui-alert__icon"
+          data-uses-unhanded-props="true"
+        >
+          <span
+            aria-hidden="true"
+            class="root_dd790ee3"
+          >
+            <svg
+              class="svg_dd790ee3"
+              focusable="false"
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1920 1920H0L960 0l960 1920zM207 1792h1506L960 286 207 1792zm817-1024v640H896V768h128zm-128 768h128v128H896v-128z"
+              />
+            </svg>
+          </span>
+        </div>
+        <div
+          aria-live="polite"
+          class="ui-box ui-alert__body"
+          data-aa-class="Alert__body"
+          data-uses-unhanded-props="true"
+          id="alert-body-2"
+          role="alert"
+        >
+          <div
+            class="ui-box ui-alert__content"
+            data-uses-unhanded-props="true"
+            dir="auto"
+          >
+            warning
+          </div>
+        </div>
+        <button
+          aria-describedby="alert-body-2"
+          class="ui-alert__dismissaction"
+          data-aa-class="Alert__dismissAction"
+          data-uses-unhanded-props="true"
+        >
+          <span
+            class="ui-box ui-alert__dismissaction__content"
+            data-uses-unhanded-props="true"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+`;

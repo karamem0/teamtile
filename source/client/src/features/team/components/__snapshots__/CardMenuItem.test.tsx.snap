@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create shapshot 1`] = `
+.emotion-0 {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto auto;
+  gap: 0.25rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  -webkit-justify-content: start;
+  justify-content: start;
+  cursor: pointer;
+}
+
+.emotion-1 {
+  line-height: 1rem;
+}
+
+<body>
+  <div>
+    <span
+      class="ui-text emotion-0"
+      data-aa-class="Undefined__trigger"
+      data-uses-unhanded-props="true"
+      role="button"
+    >
+      <span
+        class="emotion-1"
+      >
+        <div
+          data-testid="Icon"
+        />
+      </span>
+      <span
+        class="ui-text emotion-1"
+        data-uses-unhanded-props="true"
+      >
+        <div
+          data-testid="Content"
+        />
+      </span>
+    </span>
+  </div>
+</body>
+`;

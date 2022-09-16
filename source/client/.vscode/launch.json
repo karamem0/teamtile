@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "Debug Teams (Chrome)",
-      "type": "pwa-chrome",
+      "type": "chrome",
       "request": "launch",
       "url": "https://teams.microsoft.com/_#/l/app/{{AppId}}?installAppPackage=true",
       "webRoot": "${workspaceFolder}",
@@ -15,7 +15,7 @@
     },
     {
       "name": "Debug (Chrome)",
-      "type": "pwa-chrome",
+      "type": "chrome",
       "request": "launch",
       "url": "https://localhost:3000",
       "webRoot": "${workspaceFolder}",

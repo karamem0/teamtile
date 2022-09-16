@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create shapshot of when SensitivityLabel is not null 1`] = `
+<body>
+  <div>
+    <span
+      class="ui-text"
+      data-uses-unhanded-props="true"
+    >
+      <span
+        class="ui-label"
+        data-uses-unhanded-props="true"
+      >
+        <span
+          class="ui-text"
+          data-uses-unhanded-props="true"
+          dir="auto"
+        >
+          Restricted
+        </span>
+      </span>
+    </span>
+  </div>
+</body>
+`;
+
+exports[`create shapshot of when SensitivityLabel is undefined 1`] = `
+<body>
+  <div>
+    <span
+      class="ui-text"
+      data-uses-unhanded-props="true"
+    />
+  </div>
+</body>
+`;

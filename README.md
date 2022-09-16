@@ -126,9 +126,19 @@ Are you frustrated with finding a team? Teamtile provides these features to you:
 
 ### Application
 
-1. Go to `source/server` folder.
+1. Go to `source/client` folder.
 
-2. Edit `appsettings.json` file.
+2. Edit `.env` file.
+
+    |Parameter|Value|Required|
+    |-|-|-|
+    |{{AppId}}|`[Application ID]`|true|
+    |{{TenantId}}|`[Tenent ID]`|true|
+    |{{InstrumentationKey}}|`[Instrumentation Key]`|false|
+
+3. Go to `source/server` folder.
+
+4. Edit `appsettings.json` file.
 
     |Parameter|Value|Required|
     |-|-|-|
@@ -138,7 +148,7 @@ Are you frustrated with finding a team? Teamtile provides these features to you:
     |{{TenantId}}|`[Tenent ID]`|true|
     |{{InstrumentationKey}}|`[Instrumentation Key]`|false|
 
-3. Build application.
+5. Build application.
 
 ```
 dotnet publish --configuration Release

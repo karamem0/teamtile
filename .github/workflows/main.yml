@@ -2,30 +2,26 @@ on:
   push:
     branches:
       - main
-      - develop
 
 jobs:
   build:
     runs-on: windows-latest
+    environment:
+      name: production
     steps:
-      - name: Set environment variables
-        if: contains(github.ref, 'refs/heads/main')
-        run: |
-          ConvertFrom-Json -InputObject '${{secrets.PRD_GITHUB_ENV}}' `
-            | %{ $_.PSObject.Properties } `
-            | %{ Add-Content -Path $env:GITHUB_ENV -Value ($_.Name + '=' + $_.Value) }
-      - name: Set environment variables
-        if: contains(github.ref, 'refs/heads/develop')
-        run: |
-          ConvertFrom-Json -InputObject '${{secrets.DEV_GITHUB_ENV}}' `
-            | %{ $_.PSObject.Properties } `
-            | %{ Add-Content -Path $env:GITHUB_ENV -Value ($_.Name + '=' + $_.Value) }
       - name: Checkout repos
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup Node.js 16.x
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 16.x
+      - name: Rewrite .env
+        run: |
+          $content = Get-Content -Path source/client/.env
+          $content = $content -replace "{{AppId}}", "${{secrets.APP_CLIENT_ID}}"
+          $content = $content -replace "{{TenantId}}", "${{secrets.APP_TENANT_ID}}"
+          $content = $content -replace "{{InstrumentationKey}}", "${{secrets.APPLICATIONINSIGHTS_INSTRUMENTATION_KEY}}"
+          Out-File -FilePath source/client/.env -InputObject $content -Encoding UTF8
       - name: Restore client
         run: npm ci
         working-directory: source/client
@@ -33,23 +29,19 @@ jobs:
         run: npm audit
         working-directory: source/client
       - name: Build client
-        env:
-          APP_AUTH_TENANT_ID: ${{env.TENANT_ID}}
-          APP_AUTH_APP_ID: ${{env.APP_ID}}
-          APP_INSIGHTS_INSTRUMENTATION_KEY: ${{env.APP_INSIGHTS_INSTRUMENTATION_KEY}}
         run: npm run build
         working-directory: source/client
       - name: Test client
         run: npm run test:ci
         working-directory: source/client
       - name: Publish test results
-        uses: enricomi/publish-unit-test-result-action/composite@v1
+        uses: enricomi/publish-unit-test-result-action/composite@v2
         if: always()
         with:
           files: source/client/coverage/junit.xml
           check_name: test results
       - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 6.x
       - name: Restore server
@@ -57,39 +49,29 @@ jobs:
       - name: Build server
         run: dotnet publish source/server -c Release -o build
       - name: Upload build files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: teamtile-build
           path: build
       - name: Rewrite manifest.json
         run: |
           $content = Get-Content -Path manifest/manifest.json
-          $content = $content -replace "{{AppId}}", "${{env.APP_ID}}"
-          $content = $content -replace "{{AppDomain}}", "${{env.APP_DOMAIN}}"
+          $content = $content -replace "{{AppId}}", "${{secrets.APP_CLIENT_ID}}"
+          $content = $content -replace "{{AppDomain}}", "${{secrets.APP_DOMAIN}}"
           Out-File -FilePath manifest/manifest.json -InputObject $content -Encoding UTF8
       - name: Upload manifest files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: teamtile-manifest
           path: manifest
   deploy:
     needs: build
     runs-on: windows-latest
+    environment:
+      name: production
     steps:
-      - name: Set environment variables
-        if: contains(github.ref, 'refs/heads/main')
-        run: |
-          ConvertFrom-Json -InputObject '${{secrets.PRD_GITHUB_ENV}}' `
-            | %{ $_.PSObject.Properties } `
-            | %{ Add-Content -Path $env:GITHUB_ENV -Value ($_.Name + '=' + $_.Value) }
-      - name: Set environment variables
-        if: contains(github.ref, 'refs/heads/develop')
-        run: |
-          ConvertFrom-Json -InputObject '${{secrets.DEV_GITHUB_ENV}}' `
-            | %{ $_.PSObject.Properties } `
-            | %{ Add-Content -Path $env:GITHUB_ENV -Value ($_.Name + '=' + $_.Value) }
       - name: Download build artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: teamtile-build
           path: build
@@ -100,5 +82,5 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{env.APP_NAME}}
+          app-name: ${{secrets.APP_NAME}}
           package: build

@@ -1,3 +1,11 @@
+//
+// Copyright (c) 2022 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
+//
+
 import fs from 'fs';
 
 import react from '@vitejs/plugin-react';
@@ -19,14 +27,20 @@ export default defineConfig({
       }
     }),
     env({
-      prefix: 'APP'
+      prefix: 'VITE'
     })
   ],
   server: {
-    open: false,
     https: {
       cert: fs.readFileSync('./cert/localhost.crt'),
       key: fs.readFileSync('./cert/localhost.key')
+    },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+        secure: false
+      }
     }
   }
 });

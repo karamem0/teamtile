@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create shapshot 1`] = `
+.emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: column;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+}
+
+.emotion-1 {
+  font-size: 3rem;
+  line-height: 3rem;
+  text-align: center;
+}
+
+<body>
+  <div>
+    <div
+      class="emotion-0"
+    >
+      <h1
+        class="ui-header emotion-1"
+        data-uses-unhanded-props="true"
+      >
+        <span
+          dir="auto"
+        >
+          404
+        </span>
+        <p
+          class="ui-header__description"
+          data-uses-unhanded-props="true"
+          dir="auto"
+        >
+          page not found
+        </p>
+      </h1>
+    </div>
+  </div>
+</body>
+`;

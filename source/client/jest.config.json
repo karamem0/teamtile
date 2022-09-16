@@ -1,0 +1,26 @@
+{
+  "automock": false,
+  "reporters": [
+    "default",
+    [
+      "jest-junit",
+      {
+        "outputDirectory": "coverage"
+      }
+    ]
+  ],
+  "setupFiles": [
+    "./jest.setup.ts"
+  ],
+  "snapshotSerializers": [
+    "@emotion/jest/serializer"
+  ],
+  "testEnvironment": "jsdom",
+  "testMatch": [
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ],
+  "transformIgnorePatterns": [
+    "node_modules/@fluentui/react-teams/"
+  ]
+}

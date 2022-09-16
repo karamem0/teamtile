@@ -9,13 +9,11 @@
 declare namespace NodeJS {
 
   interface ProcessEnv {
-    APP_AUTH_APP_ID: string,
-    APP_AUTH_SCOPE: string,
-    APP_AUTH_SERVER_URL: string,
-    APP_AUTH_TENANT_ID: string,
-    APP_CACHE_TIMEOUT: number,
-    APP_CHANNEL_CALENDAR_APP_ID: string,
-    APP_INSIGHTS_INSTRUMENTATION_KEY: string
+    VITE_APPLICATIONINSIGHTS_INSTRUMENTATION_KEY: string,
+    VITE_AUTH_CLIENT_ID: string,
+    VITE_AUTH_TENANT_ID: string,
+    VITE_CACHE_TIMEOUT: number,
+    VITE_CALENDAR_APP_ID: string
   }
 
 }

@@ -126,9 +126,19 @@
 
 #### アプリケーション
 
-1. `source/server` フォルダーに移動します。
+1. `source/client` フォルダーに移動します。
 
-2. `appsettings.json` ファイルを編集します。
+2. `.env` ファイルを編集します。
+
+    |項目|値|必須|
+    |-|-|-|
+    |{{AppId}}|`[アプリケーション ID]`|はい|
+    |{{TenantId}}|`[テナント ID]`|はい|
+    |{{InstrumentationKey}}|`[インストルメンテーション キー]`|いいえ|
+
+3. `source/server` フォルダーに移動します。
+
+4. `appsettings.json` ファイルを編集します。
 
     |項目|値|必須|
     |-|-|-|
@@ -138,7 +148,7 @@
     |{{TenantId}}|`[テナント ID]`|はい|
     |{{InstrumentationKey}}|`[インストルメンテーション キー]`|いいえ|
 
-3. アプリケーションをビルドします。
+5. アプリケーションをビルドします。
 
 ```
 dotnet publish --configuration Release
