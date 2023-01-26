@@ -26,8 +26,8 @@
           ],
           "background": {
             "activeOnStart": true,
-            "beginsPattern": "vite v[0-9\\.]+ dev server running at:",
-            "endsPattern": "ready in [0-9]+ms\\.$"
+            "beginsPattern": "^VITE v[0-9\\.]+  ready in [0-9]+ms$",
+            "endsPattern": "https://(localhost|127.0.0.1):[0-9]+/$"
           }
         }
       ],
@@ -36,7 +36,7 @@
       ]
     },
     {
-      "label": "terminate-react-start",
+      "label": "react-terminate",
       "type": "shell",
       "command": "${input:terminate}",
       "problemMatcher": []
