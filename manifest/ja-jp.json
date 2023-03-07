@@ -4,5 +4,5 @@
   "name.full": "Teamtile",
   "description.short": "参加中のチームをタイルで表示することで素早くアクセスできます。",
   "description.full": "チームを探すのにイライラしていませんか? Teamtile は以下の機能を提供します。\n- 参加中のチームをタイルで表示\n- チームのメンバーとチャンネルを表示\n- SharePoint ドキュメント ライブラリへのリンク\n- Microsoft 365 グループ予定表へのリンク\n- チーム、チャネル、メンバーのフィルター",
-  "staticTabs[0].name": "Teamtile"
+  "staticTabs[0].name": "ホーム"
 }

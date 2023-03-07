@@ -3,6 +3,7 @@
 参加中のチームをタイルで表示することで素早くアクセスできます。
 
 [![.github/workflows/main.yml](https://github.com/karamem0/teamtile/actions/workflows/main.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/main.yml)
+[![.github/workflows/develop.yml](https://github.com/karamem0/teamtile/actions/workflows/develop.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/develop.yml)
 [![License](https://img.shields.io/github/license/karamem0/teamtile.svg)](https://github.com/karamem0/teamtile/blob/main/LICENSE)
 
 ## 機能

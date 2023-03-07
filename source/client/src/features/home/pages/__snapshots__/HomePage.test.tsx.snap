@@ -97,7 +97,7 @@ exports[`create shapshot 1`] = `
 
 .emotion-5 {
   font-size: 3rem;
-  line-height: 3rem;
+  line-height: calc(3rem * 1.25);
   color: #fff;
   text-align: center;
 }
@@ -110,6 +110,7 @@ exports[`create shapshot 1`] = `
 }
 
 .emotion-7 {
+  padding: 2rem 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -118,6 +119,7 @@ exports[`create shapshot 1`] = `
   -webkit-flex-flow: column;
   -ms-flex-flow: column;
   flex-flow: column;
+  grid-gap: 1rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -130,7 +132,7 @@ exports[`create shapshot 1`] = `
 
 .emotion-8 {
   font-size: 2rem;
-  line-height: 2rem;
+  line-height: calc(2rem * 1.25);
   text-align: center;
 }
 

@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2022 karamem0
+// Copyright (c) 2023 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -20,7 +20,7 @@ const instrumentationKey = process.env.VITE_APPLICATIONINSIGHTS_INSTRUMENTATION_
 if (instrumentationKey) {
   const appInsights = new ApplicationInsights({
     config: {
-      instrumentationKey: instrumentationKey,
+      instrumentationKey,
       extensions: [ reactPlugin ],
       extensionConfig: {
         [reactPlugin.identifier]: { history: browserHistory }

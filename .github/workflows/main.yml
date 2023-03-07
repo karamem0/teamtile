@@ -47,12 +47,12 @@ jobs:
       - name: Restore server
         run: dotnet restore source/server
       - name: Build server
-        run: dotnet publish source/server -c Release -o build
+        run: dotnet publish source/server -c Release -p:PublishDir=build
       - name: Upload build files
         uses: actions/upload-artifact@v3
         with:
           name: teamtile-build
-          path: build
+          path: source/server/build
       - name: Rewrite manifest.json
         run: |
           $content = Get-Content -Path manifest/manifest.json

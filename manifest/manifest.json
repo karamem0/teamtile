@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.13/MicrosoftTeams.schema.json",
-  "version": "1.11.0",
+  "version": "1.11.3",
   "manifestVersion": "1.13",
   "id": "{{AppId}}",
   "packageName": "dev.karamem0.teamtile",
   "name": {
     "short": "Teamtile",
-    "full": ""
+    "full": "Teamtile"
   },
   "developer": {
     "name": "karamem0",
@@ -26,7 +26,7 @@
   "staticTabs": [
     {
       "entityId": "87082f5a-0cc1-4eb1-81b4-b48a566a0854",
-      "name": "Teamtile",
+      "name": "Home",
       "contentUrl": "https://{{AppDomain}}",
       "websiteUrl": "https://{{AppDomain}}",
       "scopes": [

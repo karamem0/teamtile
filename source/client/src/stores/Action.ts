@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2022 karamem0
+// Copyright (c) 2023 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -14,15 +14,15 @@ import {
 
 export const setFilter = (payload?: string): Action => ({
   type: ActionType.setFilter,
-  payload: payload
+  payload
 });
 
 export const setItems = (payload?: Item[]): Action => ({
   type: ActionType.setItems,
-  payload: payload
+  payload
 });
 
 export const setLoading = (payload?: boolean): Action => ({
   type: ActionType.setLoading,
-  payload: payload
+  payload
 });

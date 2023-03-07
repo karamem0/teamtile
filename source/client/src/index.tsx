@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2022 karamem0
+// Copyright (c) 2023 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -12,5 +12,6 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 
 import './index.scss';
+import 'ress';
 
 ReactDOM.render(<App />, document.getElementById('root'));

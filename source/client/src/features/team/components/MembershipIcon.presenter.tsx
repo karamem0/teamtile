@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2022 karamem0
+// Copyright (c) 2023 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -9,7 +9,7 @@
 import React from 'react';
 
 import { LockIcon } from '@fluentui/react-icons-mdl2';
-import { Tooltip } from '@fluentui/react-northstar';
+import { Text, Tooltip } from '@fluentui/react-northstar';
 
 import { css } from '@emotion/react';
 
@@ -29,11 +29,13 @@ function MembershipIcon(props: MembershipIconProps) {
         <Tooltip
           content="Private"
           trigger={(
-            <LockIcon
-              css={css`
-                width: 0.75rem;
-                height: 0.75rem;
-              `} />
+            <Text>
+              <LockIcon
+                css={css`
+                  width: 0.75rem;
+                  height: 0.75rem;
+                `} />
+            </Text>
         )} />
       );
     default:

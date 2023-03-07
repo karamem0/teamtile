@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2022 karamem0
+// Copyright (c) 2023 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -57,7 +57,7 @@ function CalendarMenuItem(props: CalendarMenuItemProps) {
       if (appTab?.webUrl) {
         return await app.openLink(appTab.webUrl);
       } else if (appInstallDialog.isSupported()) {
-        return await appInstallDialog.openAppInstallDialog({ appId: appId });
+        return await appInstallDialog.openAppInstallDialog({ appId });
       }
     }
     setSnackbar({

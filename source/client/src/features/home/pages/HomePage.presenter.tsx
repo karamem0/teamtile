@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2022 karamem0
+// Copyright (c) 2023 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -70,6 +70,8 @@ function HomePage(props: HomePageProps) {
         <div
           css={css`
             display: grid;
+            align-items: center;
+            justify-content: center;
             @media (max-width: 959px) {
               grid-template-rows: auto;
               grid-template-columns: auto;
@@ -78,8 +80,6 @@ function HomePage(props: HomePageProps) {
               grid-template-rows: auto;
               grid-template-columns: 1fr 1fr;
             }
-            align-items: center;
-            justify-content: center;
           `}>
           <div
             css={css`
@@ -92,7 +92,7 @@ function HomePage(props: HomePageProps) {
               content="Teamtile"
               css={css`
                 font-size: 3rem;
-                line-height: 3rem;
+                line-height: calc(3rem * 1.25);
                 color: #fff;
                 text-align: center;
               `} />
@@ -112,8 +112,10 @@ function HomePage(props: HomePageProps) {
       </section>
       <section
         css={css`
+          padding: 2rem 0;
           display: flex;
           flex-flow: column;
+          grid-gap: 1rem;
           align-items: center;
           justify-content: center;
         `}>
@@ -122,7 +124,7 @@ function HomePage(props: HomePageProps) {
           content="Features"
           css={css`
             font-size: 2rem;
-            line-height: 2rem;
+            line-height: calc(2rem * 1.25);
             text-align: center;
           `} />
         <Text

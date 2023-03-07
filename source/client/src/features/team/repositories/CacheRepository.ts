@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2022 karamem0
+// Copyright (c) 2023 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -50,9 +50,9 @@ export async function getChannels(id: string, expired?: boolean, timestamp = Dat
 export async function setChannels(id: string, values: Channel[], timestamp = Date.now()): Promise<void> {
   const { database, timeout } = getConfig();
   await database.table<ArrayEntity<Channel>>('channels').put({
-    id: id,
+    id,
     expired: timestamp + (timeout * 1000),
-    values: values
+    values
   });
 }
 
@@ -85,9 +85,9 @@ export async function getDrive(id: string, expired?: boolean, timestamp = Date.n
 export async function setDrive(id: string, value: Drive, timestamp = Date.now()): Promise<void> {
   const { database, timeout } = getConfig();
   await database.table<ValueEntity<Drive>>('drives').put({
-    id: id,
+    id,
     expired: timestamp + (timeout * 1000),
-    value: value
+    value
   });
 }
 
@@ -121,9 +121,9 @@ export async function getIcon(id: string, expired?: boolean, timestamp = Date.no
 export async function setIcon(id: string, value: Icon, timestamp = Date.now()): Promise<void> {
   const { database, timeout } = getConfig();
   await database.table<ValueEntity<Icon | undefined>>('icons').put({
-    id: id,
+    id,
     expired: timestamp + (timeout * 1000),
-    value: value
+    value
   });
 }
 
@@ -156,9 +156,9 @@ export async function getMembers(id: string, expired?: boolean, timestamp = Date
 export async function setMembers(id: string, values: Member[], timestamp = Date.now()): Promise<void> {
   const { database, timeout } = getConfig();
   await database.table<ArrayEntity<Member>>('members').put({
-    id: id,
+    id,
     expired: timestamp + (timeout * 1000),
-    values: values
+    values
   });
 }
 
@@ -191,8 +191,8 @@ export async function getTeam(id: string, expired?: boolean, timestamp = Date.no
 export async function setTeam(id: string, value: Team, timestamp = Date.now()): Promise<void> {
   const { database, timeout } = getConfig();
   await database.table<ValueEntity<Team>>('teams').put({
-    id: id,
+    id,
     expired: timestamp + (timeout * 1000),
-    value: value
+    value
   });
 }

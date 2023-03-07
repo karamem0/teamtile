@@ -8,13 +8,11 @@
     {
       "customSyntax": "@stylelint/postcss-css-in-js",
       "files": [
-        "src/**/*.{js,ts,jsx,tsx}"
+        "src/**/*.{jsx,tsx}"
       ],
       "rules": {
         "at-rule-empty-line-before": "never",
-        "no-empty-first-line": null,
-        "no-eol-whitespace": null,
-        "no-missing-end-of-source-newline": null
+        "rule-empty-line-before": "never"
       }
     }
   ],
