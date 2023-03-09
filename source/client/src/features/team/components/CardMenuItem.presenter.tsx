@@ -48,24 +48,24 @@ function CardMenuItem(props: CardMenuItemProps) {
         `}
           onClick={onClick}>
           {
-          icon ? (
-            <span
-              css={css`
-                line-height: 1rem;
-              `}>
-              {icon}
-            </span>
-          ) : null
-        }
+            icon ? (
+              <span
+                css={css`
+                  line-height: 1rem;
+                `}>
+                {icon}
+              </span>
+            ) : null
+          }
           {
-          content ? (
-            <Text
-              content={content}
-              css={css`
-                line-height: 1rem;
-              `} />
-          ) : null
-        }
+            content ? (
+              <Text
+                content={content}
+                css={css`
+                  line-height: 1rem;
+                `} />
+            ) : null
+          }
         </Text>
     )} />
   );

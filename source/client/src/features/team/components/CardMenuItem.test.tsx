@@ -10,6 +10,8 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
+import IntlProvider from '../../../providers/IntlProvider';
+
 import CardMenuItem from './CardMenuItem.presenter';
 
 test('create shapshot', async () => {
@@ -17,6 +19,10 @@ test('create shapshot', async () => {
     content: <div data-testid="Content" />,
     icon: <div data-testid="Icon" />
   };
-  render(<CardMenuItem {...params} />);
+  render(
+    <IntlProvider>
+      <CardMenuItem {...params} />
+    </IntlProvider>
+  );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });

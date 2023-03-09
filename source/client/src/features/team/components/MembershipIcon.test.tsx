@@ -10,6 +10,7 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
+import IntlProvider from '../../../providers/IntlProvider';
 import { MembershipType } from '../../../types/Entity';
 
 import MembershipIcon from './MembershipIcon.presenter';
@@ -18,7 +19,11 @@ test('create shapshot of when MembershipType is standard', async () => {
   const params = {
     value: MembershipType.standard
   };
-  render(<MembershipIcon {...params} />);
+  render(
+    <IntlProvider>
+      <MembershipIcon {...params} />
+    </IntlProvider>
+  );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });
 
@@ -26,7 +31,11 @@ test('create shapshot of when MembershipType is private', async () => {
   const params = {
     value: MembershipType.private
   };
-  render(<MembershipIcon {...params} />);
+  render(
+    <IntlProvider>
+      <MembershipIcon {...params} />
+    </IntlProvider>
+  );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });
 
@@ -34,6 +43,10 @@ test('create shapshot of when MembershipType is undefined', async () => {
   const params = {
     value: undefined
   };
-  render(<MembershipIcon {...params} />);
+  render(
+    <IntlProvider>
+      <MembershipIcon {...params} />
+    </IntlProvider>
+  );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });

@@ -10,7 +10,7 @@ import React from 'react';
 
 import { app } from '@microsoft/teams-js';
 
-import { getAccessToken } from '../managers/TokenManager';
+import { getAccessToken } from '../../managers/TokenManager';
 
 import Presenter from './AppLoader.presenter';
 

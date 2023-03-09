@@ -10,6 +10,7 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
+import IntlProvider from '../../../providers/IntlProvider';
 import { MembershipType } from '../../../types/Entity';
 
 import ChannelMenuItem from './ChannelMenuItem.presenter';
@@ -25,6 +26,10 @@ test('create shapshot', async () => {
       }
     ]
   };
-  render(<ChannelMenuItem {...params} />);
+  render(
+    <IntlProvider>
+      <ChannelMenuItem {...params} />
+    </IntlProvider>
+  );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });

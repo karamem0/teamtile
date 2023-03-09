@@ -7,6 +7,7 @@
 //
 
 import React from 'react';
+import { useIntl } from 'react-intl';
 
 import { CalendarIcon } from '@fluentui/react-icons-mdl2';
 import { Loader } from '@fluentui/react-northstar';
@@ -14,6 +15,7 @@ import { Loader } from '@fluentui/react-northstar';
 import { css } from '@emotion/react';
 
 import { EventHandler } from '../../../types/Event';
+import messages from '../messages';
 
 import CardMenuItem from './CardMenuItem';
 
@@ -29,9 +31,11 @@ function CalendarMenuItem(props: CalendarMenuItemProps) {
     onClick
   } = props;
 
+  const intl = useIntl();
+
   return (
     <CardMenuItem
-      tooltip="Open channel calendar"
+      tooltip={intl.formatMessage(messages.OpenChannelCalendar)}
       icon={
         loading ? (
           <Loader

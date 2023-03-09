@@ -10,13 +10,19 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
+import IntlProvider from '../../../providers/IntlProvider';
+
 import CalendarMenuItem from './CalendarMenuItem.presenter';
 
 test('create shapshot of when loading is true', async () => {
   const params = {
     loading: true
   };
-  render(<CalendarMenuItem {...params} />);
+  render(
+    <IntlProvider>
+      <CalendarMenuItem {...params} />
+    </IntlProvider>
+  );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });
 
@@ -24,6 +30,10 @@ test('create shapshot of when loading is false', async () => {
   const params = {
     loading: false
   };
-  render(<CalendarMenuItem {...params} />);
+  render(
+    <IntlProvider>
+      <CalendarMenuItem {...params} />
+    </IntlProvider>
+  );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });

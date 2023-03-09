@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { EventHandler } from '../types/Event';
+import { EventHandler } from '../../types/Event';
 
 import Presenter from './SidePanel.presenter';
 

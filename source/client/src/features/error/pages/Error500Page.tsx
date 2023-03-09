@@ -8,13 +8,13 @@
 
 import React from 'react';
 
-import Presenter from './ErrorPage.presenter';
+import Presenter from './Error500Page.presenter';
 
-interface ErrorPageProps {
+interface Error500PageProps {
   error?: Error
 }
 
-function ErrorPage(props: ErrorPageProps) {
+function Error500Page(props: Error500PageProps) {
 
   const { error } = props;
 
@@ -24,4 +24,4 @@ function ErrorPage(props: ErrorPageProps) {
 
 }
 
-export default ErrorPage;
+export default Error500Page;

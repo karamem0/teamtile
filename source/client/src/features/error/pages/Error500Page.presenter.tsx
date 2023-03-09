@@ -7,20 +7,24 @@
 //
 
 import React from 'react';
+import { useIntl } from 'react-intl';
 
 import { Communication, CommunicationOptions } from '@fluentui/react-teams';
 
 import { css } from '@emotion/react';
 
-import CenterLayout from '../components/CenterLayout';
+import CenterLayout from '../../../common/components/CenterLayout';
+import messages from '../messages';
 
-interface ErrorPageProps {
+interface Error500PageProps {
   error?: string
 }
 
-function ErrorPage(props: ErrorPageProps) {
+function Error500Page(props: Error500PageProps) {
 
   const { error } = props;
+
+  const intl = useIntl();
 
   return (
     <CenterLayout>
@@ -33,7 +37,7 @@ function ErrorPage(props: ErrorPageProps) {
         <Communication
           option={CommunicationOptions.Empty}
           fields={{
-            title: 'Something went wrong',
+            title: intl.formatMessage(messages.Error500Description),
             desc: error
           }} />
       </div>
@@ -42,4 +46,4 @@ function ErrorPage(props: ErrorPageProps) {
 
 }
 
-export default React.memo(ErrorPage);
+export default React.memo(Error500Page);

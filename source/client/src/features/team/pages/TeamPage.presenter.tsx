@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import LoaderPanal from '../../../components/LoaderPanel';
+import LoaderPanal from '../../../common/components/LoaderPanel';
 import { Item } from '../../../types/Store';
 import EmptyPanel from '../components/EmptyPanel';
 import TeamPanel from '../components/TeamPanel';

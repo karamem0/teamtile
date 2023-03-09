@@ -10,17 +10,19 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import { Provider, themeNames } from '@fluentui/react-teams';
+import IntlProvider from '../../../providers/IntlProvider';
+import ThemeProvider from '../../../providers/ThemeProvider';
 
-import ErrorPanel from './ErrorPage.presenter';
+import Error500Page from './Error500Page.presenter';
 
 test('create shapshot', async () => {
   const params = {};
   render(
-    <Provider
-      lang="en-US"
-      themeName={themeNames.Default}>
-      <ErrorPanel {...params} />
-    </Provider>);
+    <IntlProvider>
+      <ThemeProvider>
+        <Error500Page {...params} />
+      </ThemeProvider>
+    </IntlProvider>
+  );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });

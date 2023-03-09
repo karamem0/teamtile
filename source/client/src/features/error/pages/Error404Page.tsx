@@ -8,16 +8,14 @@
 
 import React from 'react';
 
-import { inTeams } from '../utils/Teams';
+import Presenter from './Error404Page.presenter';
 
-import Presenter from './Router.presenter';
-
-function Router() {
+function Error404Page() {
 
   return (
-    <Presenter inTeams={inTeams()} />
+    <Presenter />
   );
 
 }
 
-export default Router;
+export default Error404Page;

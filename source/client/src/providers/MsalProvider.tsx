@@ -9,17 +9,20 @@
 import React from 'react';
 
 import { PublicClientApplication } from '@azure/msal-browser';
+import { MsalProvider as Provider } from '@azure/msal-react';
 
 import { msalConfig } from '../config/MsalConfig';
 
-import Presenter from './App.presenter';
+function MsalProvider(props: React.PropsWithChildren<unknown>) {
 
-function App() {
+  const { children } = props;
 
   return (
-    <Presenter msal={new PublicClientApplication(msalConfig)} />
+    <Provider instance={new PublicClientApplication(msalConfig)}>
+      {children}
+    </Provider>
   );
 
 }
 
-export default App;
+export default MsalProvider;

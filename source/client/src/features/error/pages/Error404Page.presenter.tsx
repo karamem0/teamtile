@@ -7,12 +7,17 @@
 //
 
 import React from 'react';
+import { useIntl } from 'react-intl';
 
 import { Header } from '@fluentui/react-northstar';
 
 import { css } from '@emotion/react';
 
-function NotFoundPage() {
+import messages from '../messages';
+
+function Error404Page() {
+
+  const intl = useIntl();
 
   return (
     <div
@@ -22,11 +27,11 @@ function NotFoundPage() {
       `}>
       <Header
         as="h1"
-        content="404"
-        description="page not found"
+        content={intl.formatMessage(messages.Error404Title)}
+        description={intl.formatMessage(messages.Error404Description)}
         css={css`
           font-size: 3rem;
-          line-height: 3rem;
+          line-height: calc(3rem * 1.25);
           text-align: center;
         `} />
     </div>
@@ -34,4 +39,4 @@ function NotFoundPage() {
 
 }
 
-export default React.memo(NotFoundPage);
+export default React.memo(Error404Page);

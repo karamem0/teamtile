@@ -1,0 +1,102 @@
+{
+  "/5YGkc": {
+    "defaultMessage": "再読み込み",
+    "description": "Reload"
+  },
+  "1QqCOc": {
+    "defaultMessage": "SharePoint で開く",
+    "description": "OpenInSharePoint"
+  },
+  "59GDNx": {
+    "defaultMessage": "メンバー",
+    "description": "Members"
+  },
+  "5yP2gi": {
+    "defaultMessage": "404",
+    "description": "Error404Title"
+  },
+  "CTTWxy": {
+    "defaultMessage": "利用規約",
+    "description": "TermsOfUseTitle"
+  },
+  "CaQF1k": {
+    "defaultMessage": "チームのメンバーとチャンネルを表示",
+    "description": "FeaturesDescription2"
+  },
+  "Dn5cvf": {
+    "defaultMessage": "キーワードに一致するアイテムは見つかりませんでした。",
+    "description": "NoItemsFoundDescription2"
+  },
+  "JZWGCy": {
+    "defaultMessage": "GitHub",
+    "description": "GitHubTitle"
+  },
+  "Jz+1RB": {
+    "defaultMessage": "どのチームにも参加していないようです。",
+    "description": "NoItemsFoundDescription1"
+  },
+  "L10lG7": {
+    "defaultMessage": "アイテムが見つかりません",
+    "description": "NoItemsFoundTitle"
+  },
+  "LfuVfx": {
+    "defaultMessage": "チャネル",
+    "description": "Channels"
+  },
+  "MO/YuC": {
+    "defaultMessage": "Teamtile",
+    "description": "AppTitle"
+  },
+  "OM8ta/": {
+    "defaultMessage": "パブリック",
+    "description": "Public"
+  },
+  "SwQHFs": {
+    "defaultMessage": "プライバシー ポリシー",
+    "description": "PrivacyPolicyTitle"
+  },
+  "XqD2tS": {
+    "defaultMessage": "メンバーを表示",
+    "description": "ViewMembers"
+  },
+  "YILsmv": {
+    "defaultMessage": "チャネルを表示",
+    "description": "ViewChannels"
+  },
+  "ZutcoC": {
+    "defaultMessage": "プライベート",
+    "description": "Private"
+  },
+  "e1ZvxM": {
+    "defaultMessage": "SharePoint ドキュメント ライブラリへのリンク",
+    "description": "FeaturesDescription3"
+  },
+  "ec1cJA": {
+    "defaultMessage": "チャネル カレンダーを開く",
+    "description": "OpenChannelCalendar"
+  },
+  "iGO4vU": {
+    "defaultMessage": "予期しない問題が発生しました",
+    "description": "Error500Description"
+  },
+  "o7SIdW": {
+    "defaultMessage": "機能",
+    "description": "FeaturesTitle"
+  },
+  "oSGg3S": {
+    "defaultMessage": "参加中のチームをタイルで表示",
+    "description": "FeaturesDescription1"
+  },
+  "qlPYIr": {
+    "defaultMessage": "チーム、チャネル、メンバーのフィルター",
+    "description": "FeaturesDescription4"
+  },
+  "u9HWaz": {
+    "defaultMessage": "タイル状に表示された参加中のチームに素早くアクセスします。",
+    "description": "AppDescription"
+  },
+  "v0gUxP": {
+    "defaultMessage": "ページが見つかりません",
+    "description": "Error404Description"
+  }
+}

@@ -1,5 +1,8 @@
 {
   "automock": false,
+  "moduleNameMapper": {
+    "^dexie$": "<rootDir>/node_modules/dexie"
+  },
   "reporters": [
     "default",
     [
@@ -20,7 +23,10 @@
     "**/*.test.ts",
     "**/*.test.tsx"
   ],
+  "transform": {
+    "^.+\\.[tj]sx?$": "babel-jest"
+  },
   "transformIgnorePatterns": [
-    "node_modules/@fluentui/react-teams/"
+    "/node_modules/(?!@fluentui)"
   ]
 }

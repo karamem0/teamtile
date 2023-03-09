@@ -13,7 +13,7 @@ import { Button, Text } from '@fluentui/react-northstar';
 
 import { css } from '@emotion/react';
 
-import { EventHandler } from '../types/Event';
+import { EventHandler } from '../../types/Event';
 
 interface SidePanelProps {
   content?: React.ReactNode,

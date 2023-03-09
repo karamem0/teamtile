@@ -7,12 +7,14 @@
 //
 
 import React from 'react';
+import { useIntl } from 'react-intl';
 
 import { SharepointLogoIcon } from '@fluentui/react-icons-mdl2-branded';
 
 import { css } from '@emotion/react';
 
 import { EventHandler } from '../../../types/Event';
+import messages from '../messages';
 
 import CardMenuItem from './CardMenuItem';
 
@@ -24,9 +26,11 @@ function DriveMenuItem(props: DriveMenuItemProps) {
 
   const { onClick } = props;
 
+  const intl = useIntl();
+
   return (
     <CardMenuItem
-      tooltip="Open in SharePoint"
+      tooltip={intl.formatMessage(messages.OpenInSharePoint)}
       icon={
         <SharepointLogoIcon
           css={css`

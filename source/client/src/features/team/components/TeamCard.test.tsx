@@ -14,6 +14,15 @@ import { VisibilityType } from '../../../types/Entity';
 
 import TeamCard from './TeamCard.presenter';
 
+jest.mock('./AvatarIcon', () =>
+  function AvatarIcon({ children }: React.PropsWithChildren<unknown>) {
+    return (
+      <div data-testid="AvatarIcon">
+        {children}
+      </div>
+    );
+  });
+
 jest.mock('./CalendarMenuItem', () =>
   function CalendarMenuItem({ children }: React.PropsWithChildren<unknown>) {
     return (
@@ -45,6 +54,24 @@ jest.mock('./MemberMenuItem', () =>
   function MemberMenuItem({ children }: React.PropsWithChildren<unknown>) {
     return (
       <div data-testid="MemberMenuItem">
+        {children}
+      </div>
+    );
+  });
+
+jest.mock('./SensitivityLabel', () =>
+  function SensitivityLabel({ children }: React.PropsWithChildren<unknown>) {
+    return (
+      <div data-testid="SensitivityLabel">
+        {children}
+      </div>
+    );
+  });
+
+jest.mock('./VisibilityIcon', () =>
+  function VisibilityIcon({ children }: React.PropsWithChildren<unknown>) {
+    return (
+      <div data-testid="VisibilityIcon">
         {children}
       </div>
     );

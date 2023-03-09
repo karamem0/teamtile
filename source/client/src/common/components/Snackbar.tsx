@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { useSnackbar } from '../providers/SnackbarProvider';
+import { useSnackbar } from '../../providers/SnackbarProvider';
 
 import Presenter from './Snackbar.presenter';
 

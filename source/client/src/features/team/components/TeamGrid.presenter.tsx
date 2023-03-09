@@ -7,6 +7,7 @@
 //
 
 import React from 'react';
+import { useIntl } from 'react-intl';
 
 import {
   Communication,
@@ -15,8 +16,9 @@ import {
 
 import { css } from '@emotion/react';
 
-import GridLayout from '../../../components/GridLayout';
+import GridLayout from '../../../common/components/GridLayout';
 import { Item } from '../../../types/Store';
+import messages from '../messages';
 
 import TeamCard from './TeamCard';
 
@@ -27,6 +29,8 @@ interface TeamGridProps {
 function TeamGrid(props: TeamGridProps) {
 
   const { items } = props;
+
+  const intl = useIntl();
 
   return items ? (
     items.some((item) => item.visible) ? (
@@ -49,8 +53,8 @@ function TeamGrid(props: TeamGridProps) {
         <Communication
           option={CommunicationOptions.Empty}
           fields={{
-            title: 'No items found',
-            desc: 'There are no items matching the keyword.'
+            title: intl.formatMessage(messages.NoItemsFoundTitle),
+            desc: intl.formatMessage(messages.NoItemsFoundDescription2)
           }} />
       </div>
     )

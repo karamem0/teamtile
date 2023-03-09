@@ -22,7 +22,14 @@ export default defineConfig({
       jsxImportSource: '@emotion/react',
       babel: {
         plugins: [
-          '@emotion/babel-plugin'
+          '@emotion/babel-plugin',
+          [
+            'formatjs',
+            {
+              idInterpolationPattern: '[sha512:contenthash:base64:6]',
+              ast: true
+            }
+          ]
         ]
       }
     }),

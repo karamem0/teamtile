@@ -20,8 +20,8 @@ import {
 
 import { css } from '@emotion/react';
 
-import { EventHandler } from '../types/Event';
-import { SnackbarType } from '../types/Snackbar';
+import { EventHandler } from '../../types/Event';
+import { SnackbarType } from '../../types/Snackbar';
 
 interface SnackbarProps {
   text?: string,

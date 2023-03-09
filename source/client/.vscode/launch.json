@@ -5,7 +5,7 @@
       "name": "Debug Teams (Chrome)",
       "type": "chrome",
       "request": "launch",
-      "url": "https://teams.microsoft.com/_#/l/app/2984fc54-f371-41dd-bcf7-946fd8d9a65c?installAppPackage=true",
+      "url": "https://teams.microsoft.com/_#/l/app/{{AppId}}?installAppPackage=true",
       "webRoot": "${workspaceFolder}",
       "runtimeArgs": [
         "-incognito"

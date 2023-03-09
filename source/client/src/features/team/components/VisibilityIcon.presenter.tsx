@@ -7,6 +7,7 @@
 //
 
 import React from 'react';
+import { useIntl } from 'react-intl';
 
 import { GlobeIcon, LockIcon } from '@fluentui/react-icons-mdl2';
 import { Text, Tooltip } from '@fluentui/react-northstar';
@@ -14,6 +15,7 @@ import { Text, Tooltip } from '@fluentui/react-northstar';
 import { css } from '@emotion/react';
 
 import { VisibilityType } from '../../../types/Entity';
+import messages from '../messages';
 
 interface VisibilityIconProps {
   value?: VisibilityType
@@ -23,11 +25,13 @@ function VisibilityIcon(props: VisibilityIconProps) {
 
   const { value } = props;
 
+  const intl = useIntl();
+
   switch (value) {
     case VisibilityType.public:
       return (
         <Tooltip
-          content="Public"
+          content={intl.formatMessage(messages.Public)}
           trigger={(
             <Text color="brand">
               <GlobeIcon
@@ -42,7 +46,7 @@ function VisibilityIcon(props: VisibilityIconProps) {
     case VisibilityType.private:
       return (
         <Tooltip
-          content="Private"
+          content={intl.formatMessage(messages.Private)}
           trigger={(
             <Text color="brand">
               <LockIcon

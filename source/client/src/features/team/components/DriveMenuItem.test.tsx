@@ -10,10 +10,16 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
+import IntlProvider from '../../../providers/IntlProvider';
+
 import DriveMenuItem from './DriveMenuItem.presenter';
 
 test('create shapshot', async () => {
   const params = {};
-  render(<DriveMenuItem {...params} />);
+  render(
+    <IntlProvider>
+      <DriveMenuItem {...params} />
+    </IntlProvider>
+  );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });

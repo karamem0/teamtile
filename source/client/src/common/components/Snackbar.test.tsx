@@ -10,7 +10,7 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import { SnackbarType } from '../types/Snackbar';
+import { SnackbarType } from '../../types/Snackbar';
 
 import Snackbar from './Snackbar.presenter';
 

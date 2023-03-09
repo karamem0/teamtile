@@ -7,13 +7,15 @@
 //
 
 import React from 'react';
+import { useIntl } from 'react-intl';
 
 import { Communication, CommunicationOptions } from '@fluentui/react-teams';
 
 import { css } from '@emotion/react';
 
-import CenterLayout from '../../../components/CenterLayout';
+import CenterLayout from '../../../common/components/CenterLayout';
 import { EventHandler } from '../../../types/Event';
+import messages from '../messages';
 
 interface EmptyPanelProps {
   onClick?: EventHandler
@@ -23,22 +25,24 @@ function EmptyPanel(props: EmptyPanelProps) {
 
   const { onClick } = props;
 
+  const intl = useIntl();
+
   return (
     <CenterLayout>
       <div
         css={css`
-        & > div {
-          flex-basis: auto;
-        }
-      `}>
+          & > div {
+            flex-basis: auto;
+          }
+        `}>
         <Communication
           option={CommunicationOptions.Empty}
           fields={{
-            title: 'No items found',
-            desc: 'It looks like you are not a member of any teams.',
+            title: intl.formatMessage(messages.NoItemsFoundTitle),
+            desc: intl.formatMessage(messages.NoItemsFoundDescription1),
             actions: {
               primary: {
-                label: 'Reload',
+                label: intl.formatMessage(messages.Reload),
                 target: 'Reload'
               }
             }

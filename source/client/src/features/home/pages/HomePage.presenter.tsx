@@ -7,6 +7,7 @@
 //
 
 import React from 'react';
+import { useIntl } from 'react-intl';
 
 import { GitHubLogoIcon } from '@fluentui/react-icons-mdl2';
 import {
@@ -19,6 +20,7 @@ import {
 import { css } from '@emotion/react';
 
 import { EventHandler } from '../../../types/Event';
+import messages from '../messages';
 
 interface HomePageProps {
   onLinkClick?: EventHandler<string>
@@ -27,6 +29,8 @@ interface HomePageProps {
 function HomePage(props: HomePageProps) {
 
   const { onLinkClick } = props;
+
+  const intl = useIntl();
 
   return (
     <div
@@ -46,7 +50,7 @@ function HomePage(props: HomePageProps) {
           padding: 0 1rem;
         `}>
         <Button
-          content="GitHub"
+          content={intl.formatMessage(messages.GitHubTitle)}
           icon={<GitHubLogoIcon />}
           text
           onClick={(event) => onLinkClick?.(event, 'GitHub')} />
@@ -89,7 +93,7 @@ function HomePage(props: HomePageProps) {
             `}>
             <Header
               as="h1"
-              content="Teamtile"
+              content={intl.formatMessage(messages.AppTitle)}
               css={css`
                 font-size: 3rem;
                 line-height: calc(3rem * 1.25);
@@ -97,7 +101,7 @@ function HomePage(props: HomePageProps) {
                 text-align: center;
               `} />
             <Text
-              content="Tile your teams for quick access."
+              content={intl.formatMessage(messages.AppDescription)}
               css={css`
                 font-size: 1rem;
                 line-height: 1rem;
@@ -121,7 +125,7 @@ function HomePage(props: HomePageProps) {
         `}>
         <Header
           as="h2"
-          content="Features"
+          content={intl.formatMessage(messages.FeaturesTitle)}
           css={css`
             font-size: 2rem;
             line-height: calc(2rem * 1.25);
@@ -136,10 +140,10 @@ function HomePage(props: HomePageProps) {
             align-items: center;
             justify-content: center;
           `}>
-          <Text content="View your joined teams as tiles" />
-          <Text content="View team members and channels" />
-          <Text content="Link to SharePoint Document Library" />
-          <Text content="Filter teams, channels, members" />
+          <Text content={intl.formatMessage(messages.FeaturesDescription1)} />
+          <Text content={intl.formatMessage(messages.FeaturesDescription2)} />
+          <Text content={intl.formatMessage(messages.FeaturesDescription3)} />
+          <Text content={intl.formatMessage(messages.FeaturesDescription4)} />
         </Text>
       </section>
       <footer
@@ -151,12 +155,12 @@ function HomePage(props: HomePageProps) {
           padding: 2rem 0;
         `}>
         <Button
-          content="Terms of Use"
+          content={intl.formatMessage(messages.TermsOfUseTitle)}
           text
           onClick={(event) => onLinkClick?.(event, 'TermsOfUse')} />
         <Text content="|" />
         <Button
-          content="Privacy Policy"
+          content={intl.formatMessage(messages.PrivacyPolicyTitle)}
           text
           onClick={(event) => onLinkClick?.(event, 'PrivacyPolicy')} />
       </footer>

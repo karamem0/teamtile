@@ -7,6 +7,7 @@
 //
 
 import React from 'react';
+import { useIntl } from 'react-intl';
 
 import { LockIcon } from '@fluentui/react-icons-mdl2';
 import { Text, Tooltip } from '@fluentui/react-northstar';
@@ -14,6 +15,7 @@ import { Text, Tooltip } from '@fluentui/react-northstar';
 import { css } from '@emotion/react';
 
 import { MembershipType } from '../../../types/Entity';
+import messages from '../messages';
 
 export interface MembershipIconProps {
   value?: MembershipType
@@ -23,11 +25,13 @@ function MembershipIcon(props: MembershipIconProps) {
 
   const { value } = props;
 
+  const intl = useIntl();
+
   switch (value) {
     case MembershipType.private:
       return (
         <Tooltip
-          content="Private"
+          content={intl.formatMessage(messages.Private)}
           trigger={(
             <Text>
               <LockIcon

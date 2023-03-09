@@ -7,6 +7,7 @@
 //
 
 import React from 'react';
+import { useIntl } from 'react-intl';
 
 import { ContextMenuIcon, SearchIcon } from '@fluentui/react-icons-mdl2';
 import {
@@ -19,9 +20,10 @@ import {
 
 import { css } from '@emotion/react';
 
-import SidePanel from '../../../components/SidePanel';
+import SidePanel from '../../../common/components/SidePanel';
 import { Channel } from '../../../types/Entity';
 import { Event, EventHandler } from '../../../types/Event';
+import messages from '../messages';
 
 import CardMenuItem from './CardMenuItem';
 import MembershipIcon from './MembershipIcon';
@@ -44,15 +46,22 @@ function ChannelMenuItem(props: ChannelMenuItemProps) {
     onOpenChange
   } = props;
 
+  const intl = useIntl();
+
   return (
     <SidePanel
-      title="Channels"
+      title={intl.formatMessage(messages.Channels)}
       content={
         loading ? (
           <Loader />
         ) : (
           items ? (
-            <React.Fragment>
+            <div
+              css={css`
+                display: flex;
+                flex-flow: column;
+                gap: 0.5rem;
+              `}>
               <Input
                 clearable
                 fluid
@@ -83,13 +92,13 @@ function ChannelMenuItem(props: ChannelMenuItemProps) {
                   )
                 }))
               } />
-            </React.Fragment>
+            </div>
           ) : null
         )
       }
       trigger={(
         <CardMenuItem
-          tooltip="View channels"
+          tooltip={intl.formatMessage(messages.ViewChannels)}
           icon={(
             <ContextMenuIcon
               css={css`

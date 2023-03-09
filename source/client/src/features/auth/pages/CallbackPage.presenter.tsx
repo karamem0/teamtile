@@ -10,7 +10,7 @@ import React from 'react';
 
 import { Loader } from '@fluentui/react-northstar';
 
-import CenterLayout from '../../../components/CenterLayout';
+import CenterLayout from '../../../common/components/CenterLayout';
 
 function CallbackPage() {
 

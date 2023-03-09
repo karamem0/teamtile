@@ -14,7 +14,7 @@ exports[`create shapshot 1`] = `
 
 .emotion-1 {
   font-size: 3rem;
-  line-height: 3rem;
+  line-height: calc(3rem * 1.25);
   text-align: center;
 }
 
@@ -37,7 +37,7 @@ exports[`create shapshot 1`] = `
           data-uses-unhanded-props="true"
           dir="auto"
         >
-          page not found
+          Page not found
         </p>
       </h1>
     </div>

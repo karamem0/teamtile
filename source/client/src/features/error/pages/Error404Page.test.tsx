@@ -10,10 +10,16 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import NotFoundPage from './NotFoundPage.presenter';
+import IntlProvider from '../../../providers/IntlProvider';
+
+import Error404Page from './Error404Page.presenter';
 
 test('create shapshot', async () => {
   const params = {};
-  render(<NotFoundPage {...params} />);
+  render(
+    <IntlProvider>
+      <Error404Page {...params} />
+    </IntlProvider>
+  );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });

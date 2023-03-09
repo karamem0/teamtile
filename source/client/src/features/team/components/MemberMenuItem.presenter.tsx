@@ -7,6 +7,7 @@
 //
 
 import React from 'react';
+import { useIntl } from 'react-intl';
 
 import { GroupIcon, SearchIcon } from '@fluentui/react-icons-mdl2';
 import {
@@ -19,9 +20,10 @@ import {
 
 import { css } from '@emotion/react';
 
-import SidePanel from '../../../components/SidePanel';
+import SidePanel from '../../../common/components/SidePanel';
 import { Member } from '../../../types/Entity';
 import { Event, EventHandler } from '../../../types/Event';
+import messages from '../messages';
 
 import AvatarIcon from './AvatarIcon';
 import CardMenuItem from './CardMenuItem';
@@ -44,15 +46,22 @@ function MemberMenuItem(props: MemberMenuItemProps) {
     onOpenChange
   } = props;
 
+  const intl = useIntl();
+
   return (
     <SidePanel
-      title="Members"
+      title={intl.formatMessage(messages.Members)}
       content={
         loading ? (
           <Loader />
         ) : (
           items ? (
-            <React.Fragment>
+            <div
+              css={css`
+                display: flex;
+                flex-flow: column;
+                gap: 0.5rem;
+              `}>
               <Input
                 clearable
                 fluid
@@ -85,13 +94,13 @@ function MemberMenuItem(props: MemberMenuItemProps) {
                   )
                 }))
               } />
-            </React.Fragment>
+            </div>
           ) : null
         )
       }
       trigger={(
         <CardMenuItem
-          tooltip="View members"
+          tooltip={intl.formatMessage(messages.ViewMembers)}
           icon={(
             <GroupIcon
               css={css`

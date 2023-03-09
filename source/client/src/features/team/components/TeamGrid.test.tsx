@@ -10,6 +10,7 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
+import IntlProvider from '../../../providers/IntlProvider';
 import { VisibilityType } from '../../../types/Entity';
 
 import TeamGrid from './TeamGrid.presenter';
@@ -42,6 +43,10 @@ test('create shapshot', async () => {
       }
     ]
   };
-  render(<TeamGrid {...params} />);
+  render(
+    <IntlProvider>
+      <TeamGrid {...params} />
+    </IntlProvider>
+  );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });
