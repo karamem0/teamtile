@@ -10,10 +10,16 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import LoginPage from './LoginPage.presenter';
+import IntlProvider from '../../../providers/IntlProvider';
+
+import LoginRedirectPage from './LoginRedirectPage.presenter';
 
 test('create shapshot', async () => {
   const params = {};
-  render(<LoginPage {...params} />);
+  render(
+    <IntlProvider>
+      <LoginRedirectPage {...params} />
+    </IntlProvider>
+  );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });

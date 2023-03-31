@@ -8,45 +8,42 @@
 
 import React from 'react';
 
-import { CloseIcon } from '@fluentui/react-icons-northstar';
-import { Button, Text } from '@fluentui/react-northstar';
+import { Button, Text } from '@fluentui/react-components';
+import { CancelIcon } from '@fluentui/react-icons-mdl2';
 
 import { css } from '@emotion/react';
 
 import { EventHandler } from '../../types/Event';
 
 interface SidePanelProps {
+  children?: React.ReactNode,
   content?: React.ReactNode,
   open?: boolean,
   title?: React.ReactNode,
-  trigger?: React.ReactNode,
   onOpenChange?: EventHandler<boolean>
 }
 
 function SidePanel(props: SidePanelProps) {
 
   const {
+    children,
     content,
     open,
     title,
-    trigger,
     onOpenChange
   } = props;
 
   return (
     <React.Fragment>
-      <div onClick={(event) => onOpenChange?.(event, true)}>
-        {trigger}
+      <div onClick={(e) => onOpenChange?.(e, true)}>
+        {children}
       </div>
       {
         open ? (
           <div
             css={css`
               position: fixed;
-              top: 0;
-              right: 0;
-              bottom: 0;
-              left: 0;
+              inset: 0;
               z-index: 1000;
               display: grid;
               grid-template-rows: auto;
@@ -57,7 +54,7 @@ function SidePanel(props: SidePanelProps) {
               css={css`
                 cursor: pointer;
               `}
-              onClick={(event) => onOpenChange?.(event, false)} />
+              onClick={(e) => onOpenChange?.(e, false)} />
             <div
               css={css`
                 width: 20rem;
@@ -70,27 +67,32 @@ function SidePanel(props: SidePanelProps) {
                   display: grid;
                   grid-template-rows: auto;
                   grid-template-columns: 1fr auto;
-                  gap: 0.5rem;
+                  grid-gap: 0.5rem;
                   align-items: center;
                   height: 2rem;
                   margin: 1rem;
                 `}>
                 <Text
-                  size="large"
-                  weight="bold">
+                  css={css`
+                    font-weight: 700;
+                  `}>
                   {title}
                 </Text>
                 <Button
-                  icon={<CloseIcon />}
-                  iconOnly
-                  text
-                  onClick={(event) => onOpenChange?.(event, false)} />
+                  appearance="transparent"
+                  icon={(
+                    <CancelIcon
+                      css={css`
+                        width: 1rem;
+                        height: 1rem;
+                      `}
+                      onClick={(e) => onOpenChange?.(e, false)} />
+                  )} />
               </div>
               <div
                 css={css`
                   height: calc(100vh - 5rem);
                   margin: 1rem;
-                  overflow: auto;
                 `}>
                 {content}
               </div>

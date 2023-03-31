@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { Label, Text } from '@fluentui/react-northstar';
+import { Badge } from '@fluentui/react-components';
 
 interface SensitivityLabelProps {
   value?: string
@@ -19,17 +19,11 @@ function SensitivityLabel(props: SensitivityLabelProps) {
   const { value } = props;
 
   return (
-    <Text>
-      {
-        value ? (
-          <Label>
-            <Text
-              content={value}
-              size="small" />
-          </Label>
-        ) : null
-      }
-    </Text>
+    value ? (
+      <Badge appearance="tint">
+        {value}
+      </Badge>
+    ) : null
   );
 
 }

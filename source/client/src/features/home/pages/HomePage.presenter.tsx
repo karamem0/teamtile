@@ -7,15 +7,16 @@
 //
 
 import React from 'react';
-import { useIntl } from 'react-intl';
 
-import { GitHubLogoIcon } from '@fluentui/react-icons-mdl2';
+import { FormattedMessage } from 'react-intl';
+
 import {
   Button,
-  Header,
   Image,
+  Link,
   Text
-} from '@fluentui/react-northstar';
+} from '@fluentui/react-components';
+import { GitHubLogoIcon } from '@fluentui/react-icons-mdl2';
 
 import { css } from '@emotion/react';
 
@@ -29,8 +30,6 @@ interface HomePageProps {
 function HomePage(props: HomePageProps) {
 
   const { onLinkClick } = props;
-
-  const intl = useIntl();
 
   return (
     <div
@@ -50,10 +49,18 @@ function HomePage(props: HomePageProps) {
           padding: 0 1rem;
         `}>
         <Button
-          content={intl.formatMessage(messages.GitHubTitle)}
-          icon={<GitHubLogoIcon />}
-          text
-          onClick={(event) => onLinkClick?.(event, 'GitHub')} />
+          appearance="transparent"
+          as="a"
+          icon={(
+            <GitHubLogoIcon
+              css={css`
+                width: 1rem;
+                height: 1rem;
+              `} />
+          )}
+          onClick={(e) => onLinkClick?.(e, 'GitHub')}>
+          <FormattedMessage {...messages.GitHubTitle} />
+        </Button>
       </header>
       <section
         css={css`
@@ -91,60 +98,69 @@ function HomePage(props: HomePageProps) {
               align-items: center;
               justify-content: center;
             `}>
-            <Header
+            <Text
               as="h1"
-              content={intl.formatMessage(messages.AppTitle)}
               css={css`
                 font-size: 3rem;
+                font-weight: 700;
                 line-height: calc(3rem * 1.25);
                 color: #fff;
                 text-align: center;
-              `} />
+              `}>
+              <FormattedMessage {...messages.AppTitle} />
+            </Text>
             <Text
-              content={intl.formatMessage(messages.AppDescription)}
               css={css`
-                font-size: 1rem;
-                line-height: 1rem;
                 color: #fff;
-                text-align: center;
-              `} />
+              `}>
+              <FormattedMessage {...messages.AppDescription} />
+            </Text>
           </div>
           <Image
-            fluid
+            fit="contain"
             src="/assets/screenshot.png" />
         </div>
       </section>
       <section
         css={css`
-          padding: 2rem 0;
           display: flex;
           flex-flow: column;
           grid-gap: 1rem;
           align-items: center;
           justify-content: center;
+          padding: 2rem 0;
         `}>
-        <Header
+        <Text
           as="h2"
-          content={intl.formatMessage(messages.FeaturesTitle)}
           css={css`
             font-size: 2rem;
+            font-weight: 700;
             line-height: calc(2rem * 1.25);
             text-align: center;
-          `} />
-        <Text
-          size="large"
+          `}>
+          <FormattedMessage {...messages.FeaturesTitle} />
+        </Text>
+        <div
           css={css`
             display: flex;
             flex-flow: column;
-            gap: 0.5rem;
+            grid-gap: 0.5rem;
             align-items: center;
             justify-content: center;
           `}>
-          <Text content={intl.formatMessage(messages.FeaturesDescription1)} />
-          <Text content={intl.formatMessage(messages.FeaturesDescription2)} />
-          <Text content={intl.formatMessage(messages.FeaturesDescription3)} />
-          <Text content={intl.formatMessage(messages.FeaturesDescription4)} />
-        </Text>
+          <Text>
+            <FormattedMessage {...messages.FeaturesDescription1} />
+          </Text>
+          <Text>
+            <FormattedMessage {...messages.FeaturesDescription2} />
+          </Text>
+          <Text>
+            <FormattedMessage {...messages.FeaturesDescription3} />
+          </Text>
+          <Text>
+            <FormattedMessage {...messages.FeaturesDescription4} />
+          </Text>
+        </div>
       </section>
       <footer
         css={css`
@@ -154,15 +170,22 @@ function HomePage(props: HomePageProps) {
           justify-content: center;
           padding: 2rem 0;
         `}>
-        <Button
-          content={intl.formatMessage(messages.TermsOfUseTitle)}
-          text
-          onClick={(event) => onLinkClick?.(event, 'TermsOfUse')} />
-        <Text content="|" />
-        <Button
-          content={intl.formatMessage(messages.PrivacyPolicyTitle)}
-          text
-          onClick={(event) => onLinkClick?.(event, 'PrivacyPolicy')} />
+        <Link
+          as="button"
+          onClick={(e) => onLinkClick?.(e, 'TermsOfUse')}>
+          <FormattedMessage {...messages.TermsOfUseTitle} />
+        </Link>
+        <Text
+          css={css`
+            padding: 0 0.25rem;
+          `}>
+          |
+        </Text>
+        <Link
+          as="button"
+          onClick={(e) => onLinkClick?.(e, 'PrivacyPolicy')}>
+          <FormattedMessage {...messages.PrivacyPolicyTitle} />
+        </Link>
       </footer>
     </div>
   );

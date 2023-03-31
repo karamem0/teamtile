@@ -3,34 +3,17 @@
 exports[`create shapshot of when SensitivityLabel is not null 1`] = `
 <body>
   <div>
-    <span
-      class="ui-text"
-      data-uses-unhanded-props="true"
+    <div
+      class="fui-Badge r1iycov ___172bkpj_b7iz950 f16xkysk faj9fo0 f161y7kd f1c8dzaj f1619yhw f1sl6hi9"
     >
-      <span
-        class="ui-label"
-        data-uses-unhanded-props="true"
-      >
-        <span
-          class="ui-text"
-          data-uses-unhanded-props="true"
-          dir="auto"
-        >
-          Restricted
-        </span>
-      </span>
-    </span>
+      Restricted
+    </div>
   </div>
 </body>
 `;
 
 exports[`create shapshot of when SensitivityLabel is undefined 1`] = `
 <body>
-  <div>
-    <span
-      class="ui-text"
-      data-uses-unhanded-props="true"
-    />
-  </div>
+  <div />
 </body>
 `;

@@ -7,13 +7,15 @@
 //
 
 import React from 'react';
+
 import { useIntl } from 'react-intl';
 
+import { Text, Tooltip } from '@fluentui/react-components';
 import { GlobeIcon, LockIcon } from '@fluentui/react-icons-mdl2';
-import { Text, Tooltip } from '@fluentui/react-northstar';
 
 import { css } from '@emotion/react';
 
+import { useTheme } from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
 import messages from '../messages';
 
@@ -25,6 +27,7 @@ function VisibilityIcon(props: VisibilityIconProps) {
 
   const { value } = props;
 
+  const { theme } = useTheme();
   const intl = useIntl();
 
   switch (value) {
@@ -32,31 +35,41 @@ function VisibilityIcon(props: VisibilityIconProps) {
       return (
         <Tooltip
           content={intl.formatMessage(messages.Public)}
-          trigger={(
-            <Text color="brand">
-              <GlobeIcon
-                css={css`
-                  width: 1rem;
-                  height: 1rem;
-                  vertical-align: top;
-                `} />
-            </Text>
-        )} />
+          relationship="label">
+          <Text
+            role="button"
+            css={css`
+              line-height: 1rem;
+              color: ${theme.colorBrandForeground1};
+              vertical-align: baseline;
+            `}>
+            <GlobeIcon
+              css={css`
+                width: 1rem;
+                height: 1rem;
+              `} />
+          </Text>
+        </Tooltip>
       );
     case VisibilityType.private:
       return (
         <Tooltip
           content={intl.formatMessage(messages.Private)}
-          trigger={(
-            <Text color="brand">
-              <LockIcon
-                css={css`
-                  width: 1rem;
-                  height: 1rem;
-                  vertical-align: top;
-                `} />
-            </Text>
-        )} />
+          relationship="label">
+          <Text
+            role="button"
+            css={css`
+              line-height: 1rem;
+              color: ${theme.colorBrandForeground1};
+              vertical-align: baseline;
+            `}>
+            <LockIcon
+              css={css`
+                width: 1rem;
+                height: 1rem;
+              `} />
+          </Text>
+        </Tooltip>
       );
     default:
       return null;

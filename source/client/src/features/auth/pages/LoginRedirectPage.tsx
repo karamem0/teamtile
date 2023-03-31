@@ -14,9 +14,9 @@ import { useMsal } from '@azure/msal-react';
 
 import { loginParams } from '../../../config/MsalConfig';
 
-import Presenter from './LoginPage.presenter';
+import Presenter from './LoginRedirectPage.presenter';
 
-function LoginPage() {
+function LoginRedirectPage() {
 
   const { instance } = useMsal();
 
@@ -46,4 +46,4 @@ function LoginPage() {
 
 }
 
-export default LoginPage;
+export default LoginRedirectPage;

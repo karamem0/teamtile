@@ -7,17 +7,17 @@
 //
 
 import React from 'react';
+
 import {
   useAsyncFn,
   useDebounce,
   useError
 } from 'react-use';
 
-import { InputProps } from '@fluentui/react-northstar';
-
 import { app } from '@microsoft/teams-js';
 
 import { Member } from '../../../types/Entity';
+import { Event } from '../../../types/Event';
 import { Item } from '../../../types/Store';
 import { search } from '../../../utils/String';
 import { getMembers } from '../managers/TeamManager';
@@ -55,18 +55,18 @@ function MemberMenuItem(props: MemberMenuItemProps) {
     filter
   ]);
 
-  const handleClick = React.useCallback((_, data?: Member) => {
+  const handleClick = React.useCallback((_?: Event, data?: Member) => {
     if (!data?.email) {
       return;
     }
     app.openLink(`https://teams.microsoft.com/l/chat/0/0?users=${data.email}`);
   }, []);
 
-  const handleFilterChange = React.useCallback((_, data?: InputProps & { value: string }) => {
-    setFilter(data?.value);
+  const handleFilterChange = React.useCallback((_?: Event, data?: string) => {
+    setFilter(data);
   }, []);
 
-  const handleOpenChange = React.useCallback(async (_, data?: boolean) => {
+  const handleOpenChange = React.useCallback(async (_?: Event, data?: boolean) => {
     if (!data) {
       return;
     }

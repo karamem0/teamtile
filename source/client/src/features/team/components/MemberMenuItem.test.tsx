@@ -11,6 +11,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import IntlProvider from '../../../providers/IntlProvider';
+import ThemeProvider from '../../../providers/ThemeProvider';
 
 import MemberMenuItem from './MemberMenuItem.presenter';
 
@@ -27,7 +28,9 @@ test('create shapshot', async () => {
   };
   render(
     <IntlProvider>
-      <MemberMenuItem {...params} />
+      <ThemeProvider>
+        <MemberMenuItem {...params} />
+      </ThemeProvider>
     </IntlProvider>
   );
   expect(screen.queryAllByText(/^.*$/)[0]).toMatchSnapshot();

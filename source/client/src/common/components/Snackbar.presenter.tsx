@@ -8,25 +8,21 @@
 
 import React from 'react';
 
-import {
-  ErrorBadgeIcon,
-  InfoIcon,
-  WarningIcon
-} from '@fluentui/react-icons-mdl2';
-import {
-  Alert,
-  AlertProps
-} from '@fluentui/react-northstar';
+import { useIntl } from 'react-intl';
+
+import { Alert } from '@fluentui/react-components/unstable';
+import { ErrorBadgeIcon } from '@fluentui/react-icons-mdl2';
 
 import { css } from '@emotion/react';
 
 import { EventHandler } from '../../types/Event';
 import { SnackbarType } from '../../types/Snackbar';
+import messages from '../messages';
 
 interface SnackbarProps {
   text?: string,
   type?: SnackbarType,
-  onVisibleChange?: EventHandler<AlertProps>
+  onDismiss?: EventHandler
 }
 
 function Snackbar(props: SnackbarProps) {
@@ -34,8 +30,10 @@ function Snackbar(props: SnackbarProps) {
   const {
     text,
     type,
-    onVisibleChange
+    onDismiss
   } = props;
+
+  const intl = useIntl();
 
   return text ? (
     <div
@@ -45,58 +43,23 @@ function Snackbar(props: SnackbarProps) {
         right: 0;
         left: 0;
         z-index: 1001;
-        margin-bottom: 1rem;
+        margin: 0.5rem;
       `}>
-      {
-        (() => {
-          switch (type) {
-            case SnackbarType.danger:
-              return (
-                <Alert
-                  content={text}
-                  danger
-                  dismissible
-                  icon={
-                    <ErrorBadgeIcon />
-                }
-                  onVisibleChange={onVisibleChange} />
-              );
-            case SnackbarType.warning:
-              return (
-                <Alert
-                  content={text}
-                  dismissible
-                  warning
-                  icon={
-                    <WarningIcon />
-                  }
-                  onVisibleChange={onVisibleChange} />
-              );
-            case SnackbarType.success:
-              return (
-                <Alert
-                  content={text}
-                  dismissible
-                  success
-                  icon={
-                    <InfoIcon />
-                    }
-                  onVisibleChange={onVisibleChange} />
-              );
-            default:
-              return (
-                <Alert
-                  content={text}
-                  dismissible
-                  info
-                  icon={
-                    <InfoIcon />
-                    }
-                  onVisibleChange={onVisibleChange} />
-              );
-          }
-        })()
-      }
+      <Alert
+        intent={type}
+        action={{
+          title: intl.formatMessage(messages.Dismiss),
+          icon: (
+            <ErrorBadgeIcon
+              css={css`
+                width: 1rem;
+                height: 1rem;
+              `} />
+          ),
+          onClick: onDismiss
+        }}>
+        {text}
+      </Alert>
     </div>
   ) : null;
 

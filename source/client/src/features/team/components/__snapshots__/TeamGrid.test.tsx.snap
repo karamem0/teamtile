@@ -2,32 +2,47 @@
 
 exports[`create shapshot 1`] = `
 .emotion-0 {
+  min-height: 100vh;
+  line-height: 1.25em;
+  background-color: #f5f5f5;
+}
+
+.emotion-1 {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: repeat(auto-fill, minmax(22.5rem, 1fr));
 }
 
 @media (max-width: 599px) {
-  .emotion-0 {
-    gap: 0.5rem;
+  .emotion-1 {
+    grid-gap: 0.5rem;
   }
 }
 
 @media (min-width: 600px) {
-  .emotion-0 {
-    gap: 1rem;
+  .emotion-1 {
+    grid-gap: 1rem;
   }
 }
 
 <body>
   <div>
     <div
-      class="emotion-0"
-      role="list"
+      class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+      dir="ltr"
     >
       <div
-        data-testid="TeamCard"
-      />
+        class="emotion-0"
+      >
+        <div
+          class="emotion-1"
+          role="list"
+        >
+          <div
+            data-testid="TeamCard"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </body>

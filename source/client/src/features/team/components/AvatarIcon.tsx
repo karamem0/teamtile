@@ -8,14 +8,14 @@
 
 import React from 'react';
 
-import { SizeValue } from '@fluentui/react-northstar';
+import { AvatarSize } from '@fluentui/react-components';
 
 import Presenter from './AvatarIcon.presenter';
 
 interface AvatarIconProps {
   icon?: string,
   name?: string,
-  size?: SizeValue
+  size?: AvatarSize
 }
 
 function AvatarIcon(props: AvatarIconProps) {

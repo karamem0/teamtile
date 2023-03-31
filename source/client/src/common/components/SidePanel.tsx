@@ -8,31 +8,31 @@
 
 import React from 'react';
 
-import { EventHandler } from '../../types/Event';
+import { Event, EventHandler } from '../../types/Event';
 
 import Presenter from './SidePanel.presenter';
 
 interface SidePanelProps {
+  children?: React.ReactNode,
   content?: React.ReactNode,
   title?: React.ReactNode,
-  trigger?: React.ReactNode,
   onOpenChange?: EventHandler<boolean>
 }
 
 function SidePanel(props: SidePanelProps) {
 
   const {
+    children,
     content,
     title,
-    trigger,
     onOpenChange
   } = props;
 
   const [ open, setOpen ] = React.useState<boolean>(false);
 
-  const handleOpenChange = React.useCallback((event, data?: boolean) => {
+  const handleOpenChange = React.useCallback((e?: Event, data?: boolean) => {
     setOpen(data || false);
-    onOpenChange?.(event, data);
+    onOpenChange?.(e, data);
   }, [ onOpenChange ]);
 
   return (
@@ -40,8 +40,9 @@ function SidePanel(props: SidePanelProps) {
       content={content}
       open={open}
       title={title}
-      trigger={trigger}
-      onOpenChange={handleOpenChange} />
+      onOpenChange={handleOpenChange}>
+      {children}
+    </Presenter>
   );
 
 }

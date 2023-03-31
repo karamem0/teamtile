@@ -7,8 +7,10 @@
 //
 
 import React from 'react';
+
 import { useIntl } from 'react-intl';
 
+import { Button } from '@fluentui/react-components';
 import { SharepointLogoIcon } from '@fluentui/react-icons-mdl2-branded';
 
 import { css } from '@emotion/react';
@@ -31,14 +33,17 @@ function DriveMenuItem(props: DriveMenuItemProps) {
   return (
     <CardMenuItem
       tooltip={intl.formatMessage(messages.OpenInSharePoint)}
-      icon={
-        <SharepointLogoIcon
-          css={css`
-            width: 1rem;
-            height: 1rem;
-          `} />
-      }
-      onClick={onClick} />
+      onClick={onClick}>
+      <Button
+        appearance="transparent"
+        icon={(
+          <SharepointLogoIcon
+            css={css`
+              width: 1rem;
+              height: 1rem;
+            `} />
+          )} />
+    </CardMenuItem>
   );
 
 }

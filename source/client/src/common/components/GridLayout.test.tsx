@@ -10,19 +10,12 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import IntlProvider from '../../../providers/IntlProvider';
-import ThemeProvider from '../../../providers/ThemeProvider';
-
-import Error404Page from './Error404Page.presenter';
+import GridLayout from './GridLayout.presenter';
 
 test('create shapshot', async () => {
-  const params = {};
-  render(
-    <IntlProvider>
-      <ThemeProvider>
-        <Error404Page {...params} />
-      </ThemeProvider>
-    </IntlProvider>
-  );
+  const params = {
+    children: <React.Fragment />
+  };
+  render(<GridLayout {...params} />);
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });

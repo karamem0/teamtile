@@ -10,10 +10,16 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import CallbackPage from './CallbackPage.presenter';
+import IntlProvider from '../../../providers/IntlProvider';
+
+import LoginCallbackPage from './LoginCallbackPage.presenter';
 
 test('create shapshot', async () => {
   const params = {};
-  render(<CallbackPage {...params} />);
+  render(
+    <IntlProvider>
+      <LoginCallbackPage {...params} />
+    </IntlProvider>
+  );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });

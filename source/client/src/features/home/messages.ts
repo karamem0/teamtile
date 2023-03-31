@@ -9,46 +9,16 @@
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-  AppDescription: {
-    defaultMessage: 'Tile your teams for quick access.',
-    description: 'AppDescription'
-  },
-  AppTitle: {
-    defaultMessage: 'Teamtile',
-    description: 'AppTitle'
-  },
-  FeaturesDescription1: {
-    defaultMessage: 'View your joined teams as tiles',
-    description: 'FeaturesDescription1'
-  },
-  FeaturesDescription2: {
-    defaultMessage: 'View team members and channels',
-    description: 'FeaturesDescription2'
-  },
-  FeaturesDescription3: {
-    defaultMessage: 'Link to SharePoint Document Library',
-    description: 'FeaturesDescription3'
-  },
-  FeaturesDescription4: {
-    defaultMessage: 'Filter teams, channels, members',
-    description: 'FeaturesDescription4'
-  },
-  FeaturesTitle: {
-    defaultMessage: 'Features',
-    description: 'FeaturesTitle'
-  },
-  GitHubTitle: {
-    defaultMessage: 'GitHub',
-    description: 'GitHubTitle'
-  },
-  PrivacyPolicyTitle: {
-    defaultMessage: 'Privacy Policy',
-    description: 'PrivacyPolicyTitle'
-  },
-  TermsOfUseTitle: {
-    defaultMessage: 'Terms of Use',
-    description: 'TermsOfUseTitle'
-  }
+  AppDescription: { defaultMessage: 'Tile your teams for quick access.' },
+  AppTitle: { defaultMessage: 'Teamtile' },
+  FeaturesDescription1: { defaultMessage: 'View your joined teams as tiles' },
+  FeaturesDescription2: { defaultMessage: 'View team members and channels' },
+  FeaturesDescription3: { defaultMessage: 'Open SharePoint Document Library directly' },
+  FeaturesDescription4: { defaultMessage: 'Filter teams, channels, members' },
+  FeaturesTitle: { defaultMessage: 'Features' },
+  GitHubTitle: { defaultMessage: 'GitHub' },
+  PrivacyPolicyTitle: { defaultMessage: 'Privacy Policy' },
+  TermsOfUseTitle: { defaultMessage: 'Terms of Use' }
 });
 
 export default messages;

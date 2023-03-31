@@ -20,7 +20,7 @@ jobs:
           $content = Get-Content -Path source/client/.env
           $content = $content -replace "{{AppId}}", "${{secrets.APP_CLIENT_ID}}"
           $content = $content -replace "{{TenantId}}", "${{secrets.APP_TENANT_ID}}"
-          $content = $content -replace "{{InstrumentationKey}}", "${{secrets.APPLICATIONINSIGHTS_INSTRUMENTATION_KEY}}"
+          $content = $content -replace "{{ConnectionString}}", "${{secrets.APPLICATIONINSIGHTS_CONNECTION_STRING}}"
           Out-File -FilePath source/client/.env -InputObject $content -Encoding UTF8
       - name: Restore client
         run: npm ci
@@ -43,7 +43,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.x
+          dotnet-version: 7.x
       - name: Restore server
         run: dotnet restore source/server
       - name: Build server

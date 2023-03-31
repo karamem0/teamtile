@@ -3,10 +3,7 @@
 exports[`create shapshot 1`] = `
 .emotion-0 {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   z-index: 1000;
   display: grid;
   grid-template-rows: auto;
@@ -29,7 +26,7 @@ exports[`create shapshot 1`] = `
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: 1fr auto;
-  gap: 0.5rem;
+  grid-gap: 0.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -39,9 +36,17 @@ exports[`create shapshot 1`] = `
 }
 
 .emotion-4 {
+  font-weight: 700;
+}
+
+.emotion-5 {
+  width: 1rem;
+  height: 1rem;
+}
+
+.emotion-6 {
   height: calc(100vh - 5rem);
   margin: 1rem;
-  overflow: auto;
 }
 
 <body>
@@ -60,47 +65,39 @@ exports[`create shapshot 1`] = `
           class="emotion-3"
         >
           <span
-            class="ui-text"
-            data-uses-unhanded-props="true"
+            class="fui-Text emotion-4 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
           >
             <div
               data-testid="Title"
             />
           </span>
           <button
-            class="ui-button"
-            data-aa-class="Button"
-            data-uses-unhanded-props="true"
+            class="fui-Button rsawnvh ___91x5cg0_tj6h1h0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk fwiuce9 fdghr9 f15vdbe4 fwbmr0d f44c6la"
+            type="button"
           >
-            <div
-              class="ui-box"
-              data-uses-unhanded-props="true"
+            <span
+              class="fui-Button__icon rywnvv2"
             >
               <span
                 aria-hidden="true"
-                class="ui-icon"
-                role="img"
+                class="root_dd790ee3 emotion-5"
               >
                 <svg
+                  class="svg_dd790ee3"
                   focusable="false"
-                  role="presentation"
-                  viewBox="2 2 16 16"
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    class="ui-icon__outline"
-                    d="M4.08859 4.21569L4.14645 4.14645C4.32001 3.97288 4.58944 3.9536 4.78431 4.08859L4.85355 4.14645L10 9.293L15.1464 4.14645C15.32 3.97288 15.5894 3.9536 15.7843 4.08859L15.8536 4.14645C16.0271 4.32001 16.0464 4.58944 15.9114 4.78431L15.8536 4.85355L10.707 10L15.8536 15.1464C16.0271 15.32 16.0464 15.5894 15.9114 15.7843L15.8536 15.8536C15.68 16.0271 15.4106 16.0464 15.2157 15.9114L15.1464 15.8536L10 10.707L4.85355 15.8536C4.67999 16.0271 4.41056 16.0464 4.21569 15.9114L4.14645 15.8536C3.97288 15.68 3.9536 15.4106 4.08859 15.2157L4.14645 15.1464L9.293 10L4.14645 4.85355C3.97288 4.67999 3.9536 4.41056 4.08859 4.21569L4.14645 4.14645L4.08859 4.21569Z"
-                  />
-                  <path
-                    class="ui-icon__filled"
-                    d="M3.89705 4.05379L3.96967 3.96967C4.23594 3.7034 4.6526 3.6792 4.94621 3.89705L5.03033 3.96967L10 8.939L14.9697 3.96967C15.2359 3.7034 15.6526 3.6792 15.9462 3.89705L16.0303 3.96967C16.2966 4.23594 16.3208 4.6526 16.1029 4.94621L16.0303 5.03033L11.061 10L16.0303 14.9697C16.2966 15.2359 16.3208 15.6526 16.1029 15.9462L16.0303 16.0303C15.7641 16.2966 15.3474 16.3208 15.0538 16.1029L14.9697 16.0303L10 11.061L5.03033 16.0303C4.76406 16.2966 4.3474 16.3208 4.05379 16.1029L3.96967 16.0303C3.7034 15.7641 3.6792 15.3474 3.89705 15.0538L3.96967 14.9697L8.939 10L3.96967 5.03033C3.7034 4.76406 3.6792 4.3474 3.89705 4.05379L3.96967 3.96967L3.89705 4.05379Z"
+                    d="M1115 1024l690 691-90 90-691-690-691 690-90-90 690-691-690-691 90-90 691 690 691-690 90 90-690 691z"
                   />
                 </svg>
               </span>
-            </div>
+            </span>
           </button>
         </div>
         <div
-          class="emotion-4"
+          class="emotion-6"
         >
           <div
             data-testid="Content"

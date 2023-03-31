@@ -12,9 +12,9 @@ import { app } from '@microsoft/teams-js';
 
 import { useMsal } from '@azure/msal-react';
 
-import Presenter from './CallbackPage.presenter';
+import Presenter from './LoginCallbackPage.presenter';
 
-function CallbackPage() {
+function LoginCallbackPage() {
 
   const { instance } = useMsal();
 
@@ -33,4 +33,4 @@ function CallbackPage() {
 
 }
 
-export default CallbackPage;
+export default LoginCallbackPage;

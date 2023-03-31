@@ -30,6 +30,11 @@ exports[`create shapshot 1`] = `
 }
 
 .emotion-2 {
+  width: 1rem;
+  height: 1rem;
+}
+
+.emotion-3 {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto;
@@ -46,40 +51,14 @@ exports[`create shapshot 1`] = `
 }
 
 @media (max-width: 959px) {
-  .emotion-2 {
+  .emotion-3 {
     padding: 2rem;
   }
 }
 
 @media (min-width: 960px) {
-  .emotion-2 {
+  .emotion-3 {
     padding: 4rem 2rem;
-  }
-}
-
-.emotion-3 {
-  display: grid;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-}
-
-@media (max-width: 959px) {
-  .emotion-3 {
-    grid-template-rows: auto;
-    grid-template-columns: auto;
-  }
-}
-
-@media (min-width: 960px) {
-  .emotion-3 {
-    grid-template-rows: auto;
-    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -95,22 +74,45 @@ exports[`create shapshot 1`] = `
   justify-content: center;
 }
 
+@media (max-width: 959px) {
+  .emotion-4 {
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+  }
+}
+
+@media (min-width: 960px) {
+  .emotion-4 {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .emotion-5 {
+  display: grid;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.emotion-6 {
   font-size: 3rem;
+  font-weight: 700;
   line-height: calc(3rem * 1.25);
   color: #fff;
   text-align: center;
 }
 
-.emotion-6 {
-  font-size: 1rem;
-  line-height: 1rem;
+.emotion-7 {
   color: #fff;
-  text-align: center;
 }
 
-.emotion-7 {
-  padding: 2rem 0;
+.emotion-8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -128,15 +130,17 @@ exports[`create shapshot 1`] = `
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
+  padding: 2rem 0;
 }
 
-.emotion-8 {
+.emotion-9 {
   font-size: 2rem;
+  font-weight: 700;
   line-height: calc(2rem * 1.25);
   text-align: center;
 }
 
-.emotion-9 {
+.emotion-10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -145,7 +149,7 @@ exports[`create shapshot 1`] = `
   -webkit-flex-flow: column;
   -ms-flex-flow: column;
   flex-flow: column;
-  gap: 0.5rem;
+  grid-gap: 0.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -156,7 +160,7 @@ exports[`create shapshot 1`] = `
   justify-content: center;
 }
 
-.emotion-10 {
+.emotion-11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -176,6 +180,10 @@ exports[`create shapshot 1`] = `
   padding: 2rem 0;
 }
 
+.emotion-12 {
+  padding: 0 0.25rem;
+}
+
 <body>
   <div>
     <div
@@ -184,18 +192,18 @@ exports[`create shapshot 1`] = `
       <header
         class="emotion-1"
       >
-        <button
-          class="ui-button"
-          data-aa-class="Button"
-          data-uses-unhanded-props="true"
+        <a
+          class="fui-Button rsawnvh ___19t63va_ymmw4k0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m"
+          role="button"
+          tabindex="0"
+          type="button"
         >
-          <div
-            class="ui-box"
-            data-uses-unhanded-props="true"
+          <span
+            class="fui-Button__icon rywnvv2 ___963sj20_1qpm2bl f1nizpg2"
           >
             <span
               aria-hidden="true"
-              class="root_dd790ee3"
+              class="root_dd790ee3 emotion-2"
             >
               <svg
                 class="svg_dd790ee3"
@@ -208,128 +216,88 @@ exports[`create shapshot 1`] = `
                 />
               </svg>
             </span>
-          </div>
-          <span
-            class="ui-button__content"
-            data-uses-unhanded-props="true"
-            dir="auto"
-          >
-            GitHub
           </span>
-        </button>
+          GitHub
+        </a>
       </header>
       <section
-        class="emotion-2"
+        class="emotion-3"
       >
         <div
-          class="emotion-3"
+          class="emotion-4"
         >
           <div
-            class="emotion-4"
+            class="emotion-5"
           >
             <h1
-              class="ui-header emotion-5"
-              data-uses-unhanded-props="true"
-              dir="auto"
+              class="fui-Text emotion-6 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
             >
               Teamtile
             </h1>
             <span
-              class="ui-text emotion-6"
-              data-uses-unhanded-props="true"
-              dir="auto"
+              class="fui-Text emotion-7 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
             >
               Tile your teams for quick access.
             </span>
           </div>
           <img
-            aria-hidden="true"
-            class="ui-image"
-            data-aa-class="Image"
-            data-uses-unhanded-props="true"
+            class="fui-Image ___6naqpy0_1l1fxem fj3muxo f1akhkt f1aperda f1lxtadh fzi6hpg fyowgf4 f3fg2lr f13av6d4 f1ewtqcl f14t3ns0 f1kle4es f14xojzb f1l02sjl fly5x3f"
             src="/assets/screenshot.png"
           />
         </div>
       </section>
       <section
-        class="emotion-7"
+        class="emotion-8"
       >
         <h2
-          class="ui-header emotion-8"
-          data-uses-unhanded-props="true"
-          dir="auto"
+          class="fui-Text emotion-9 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
         >
           Features
         </h2>
-        <span
-          class="ui-text emotion-9"
-          data-uses-unhanded-props="true"
+        <div
+          class="emotion-10"
         >
           <span
-            class="ui-text"
-            data-uses-unhanded-props="true"
-            dir="auto"
+            class="fui-Text ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
           >
             View your joined teams as tiles
           </span>
           <span
-            class="ui-text"
-            data-uses-unhanded-props="true"
-            dir="auto"
+            class="fui-Text ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
           >
             View team members and channels
           </span>
           <span
-            class="ui-text"
-            data-uses-unhanded-props="true"
-            dir="auto"
+            class="fui-Text ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
           >
-            Link to SharePoint Document Library
+            Open SharePoint Document Library directly
           </span>
           <span
-            class="ui-text"
-            data-uses-unhanded-props="true"
-            dir="auto"
+            class="fui-Text ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
           >
             Filter teams, channels, members
           </span>
-        </span>
+        </div>
       </section>
       <footer
-        class="emotion-10"
+        class="emotion-11"
       >
         <button
-          class="ui-button"
-          data-aa-class="Button"
-          data-uses-unhanded-props="true"
+          class="fui-Link ___hrsc1m0_1r9p467 f3rmtva f1ewtqcl fyind8e f1k6fduh f1w7gpdv fk6fouc fkhj508 figsok6 f1hu3pq6 f11qmguv f19f4twv f1tyq0we f1g0x7ka fhxju0i f1qch9an f1cnd47f fqv5qza f1vmzxwi f1o700av f1iuv45f f1cmlufx f9n3di6 f1ids18y f1tx3yz7 f1deo86v f1eh06m1 f1iescvh ftqa4ok f2hkw1w fhgqx19 f1olyrje f1p93eir f1ern45e f1n71otn f1h8hb77 f1deefiw"
+          type="button"
         >
-          <span
-            class="ui-button__content"
-            data-uses-unhanded-props="true"
-            dir="auto"
-          >
-            Terms of Use
-          </span>
+          Terms of Use
         </button>
         <span
-          class="ui-text"
-          data-uses-unhanded-props="true"
-          dir="auto"
+          class="fui-Text emotion-12 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
         >
           |
         </span>
         <button
-          class="ui-button"
-          data-aa-class="Button"
-          data-uses-unhanded-props="true"
+          class="fui-Link ___hrsc1m0_1r9p467 f3rmtva f1ewtqcl fyind8e f1k6fduh f1w7gpdv fk6fouc fkhj508 figsok6 f1hu3pq6 f11qmguv f19f4twv f1tyq0we f1g0x7ka fhxju0i f1qch9an f1cnd47f fqv5qza f1vmzxwi f1o700av f1iuv45f f1cmlufx f9n3di6 f1ids18y f1tx3yz7 f1deo86v f1eh06m1 f1iescvh ftqa4ok f2hkw1w fhgqx19 f1olyrje f1p93eir f1ern45e f1n71otn f1h8hb77 f1deefiw"
+          type="button"
         >
-          <span
-            class="ui-button__content"
-            data-uses-unhanded-props="true"
-            dir="auto"
-          >
-            Privacy Policy
-          </span>
+          Privacy Policy
         </button>
       </footer>
     </div>

@@ -7,34 +7,48 @@
 //
 
 import React from 'react';
-import { useIntl } from 'react-intl';
 
-import { Header } from '@fluentui/react-northstar';
+import { FormattedMessage } from 'react-intl';
+
+import { Text } from '@fluentui/react-components';
 
 import { css } from '@emotion/react';
 
+import CenterLayout from '../../../common/components/CenterLayout';
+import { useTheme } from '../../../providers/ThemeProvider';
 import messages from '../messages';
 
 function Error404Page() {
 
-  const intl = useIntl();
+  const { theme } = useTheme();
 
   return (
-    <div
-      css={css`
-        display: flex;
-        flex-flow: column;
-      `}>
-      <Header
-        as="h1"
-        content={intl.formatMessage(messages.Error404Title)}
-        description={intl.formatMessage(messages.Error404Description)}
+    <CenterLayout>
+      <div
         css={css`
-          font-size: 3rem;
-          line-height: calc(3rem * 1.25);
-          text-align: center;
-        `} />
-    </div>
+          display: flex;
+          flex-direction: column;
+          grid-gap: 0.5rem;
+          align-items: center;
+          justify-content: center;
+        `}>
+        <Text
+          as="h1"
+          css={css`
+            font-size: 3rem;
+            line-height: calc(3rem * 1.25);
+            color: ${theme.colorNeutralForegroundDisabled};
+          `}>
+          <FormattedMessage {...messages.Error404Title} />
+        </Text>
+        <Text
+          css={css`
+            color: ${theme.colorNeutralForegroundDisabled};
+          `}>
+          <FormattedMessage {...messages.Error404Description} />
+        </Text>
+      </div>
+    </CenterLayout>
   );
 
 }

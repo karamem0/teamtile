@@ -8,66 +8,45 @@
 
 import React from 'react';
 
-import { Text, Tooltip } from '@fluentui/react-northstar';
+import { Text, Tooltip } from '@fluentui/react-components';
 
 import { css } from '@emotion/react';
 
 import { EventHandler } from '../../../types/Event';
 
 interface CardMenuItemProps {
-  content?: React.ReactNode,
-  icon?: React.ReactNode,
-  tooltip?: React.ReactNode,
+  children?: React.ReactNode,
+  tooltip?: string,
   onClick?: EventHandler
 }
 
 function CardMenuItem(props: CardMenuItemProps) {
 
   const {
-    content,
-    icon,
+    children,
     tooltip,
     onClick
   } = props;
 
   return (
     <Tooltip
-      content={tooltip}
-      trigger={(
-        <Text
-          color="brand"
-          role="button"
-          css={css`
+      content={tooltip || ''}
+      relationship="label">
+      <Text
+        role="button"
+        css={css`
           display: grid;
           grid-template-rows: auto;
           grid-template-columns: auto auto;
-          gap: 0.25rem;
+          grid-gap: 0.25rem;
           align-items: center;
           justify-content: start;
           cursor: pointer;
         `}
-          onClick={onClick}>
-          {
-            icon ? (
-              <span
-                css={css`
-                  line-height: 1rem;
-                `}>
-                {icon}
-              </span>
-            ) : null
-          }
-          {
-            content ? (
-              <Text
-                content={content}
-                css={css`
-                  line-height: 1rem;
-                `} />
-            ) : null
-          }
-        </Text>
-    )} />
+        onClick={onClick}>
+        {children}
+      </Text>
+    </Tooltip>
   );
 
 }

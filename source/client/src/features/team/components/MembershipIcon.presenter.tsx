@@ -7,10 +7,11 @@
 //
 
 import React from 'react';
+
 import { useIntl } from 'react-intl';
 
+import { Text, Tooltip } from '@fluentui/react-components';
 import { LockIcon } from '@fluentui/react-icons-mdl2';
-import { Text, Tooltip } from '@fluentui/react-northstar';
 
 import { css } from '@emotion/react';
 
@@ -32,15 +33,15 @@ function MembershipIcon(props: MembershipIconProps) {
       return (
         <Tooltip
           content={intl.formatMessage(messages.Private)}
-          trigger={(
-            <Text>
-              <LockIcon
-                css={css`
-                  width: 0.75rem;
-                  height: 0.75rem;
-                `} />
-            </Text>
-        )} />
+          relationship="label">
+          <Text>
+            <LockIcon
+              css={css`
+                width: 0.75rem;
+                height: 0.75rem;
+              `} />
+          </Text>
+        </Tooltip>
       );
     default:
       return null;

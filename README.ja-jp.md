@@ -37,7 +37,7 @@
     |リソース グループ|(選択可能)|
     |名前|(選択可能)|
     |公開|コード|
-    |ランタイム スタック|.NET 6|
+    |ランタイム スタック|.NET 7|
     |オペレーティング システム|Windows|
     |地域|(選択可能)|
 
@@ -135,7 +135,7 @@
     |-|-|-|
     |{{AppId}}|`[アプリケーション ID]`|はい|
     |{{TenantId}}|`[テナント ID]`|はい|
-    |{{InstrumentationKey}}|`[インストルメンテーション キー]`|いいえ|
+    |{{ConnectionString}}|`[Application Insights の接続文字列]`|いいえ|
 
 3. `source/server` フォルダーに移動します。
 
@@ -147,7 +147,7 @@
     |{{AppId}}|`[アプリケーション ID]`|はい|
     |{{AppSecret}}|`[アプリケーション シークレット]`|はい|
     |{{TenantId}}|`[テナント ID]`|はい|
-    |{{InstrumentationKey}}|`[インストルメンテーション キー]`|いいえ|
+    |{{ConnectionString}}|`[Application Insights の接続文字列]`|いいえ|
 
 5. アプリケーションをビルドします。
 
@@ -158,7 +158,7 @@ dotnet publish --configuration Release
 4. `publish` フォルダーの中身を圧縮します。
 
 ```
-Compress-Archive -Path ./bin/Release/net6.0/publish/* -DestinationPath ../../build.zip
+Compress-Archive -Path ./bin/Release/net7.0/publish/* -DestinationPath ../../build.zip
 ```
 
 ### マニフェスト

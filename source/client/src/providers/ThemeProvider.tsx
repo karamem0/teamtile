@@ -8,11 +8,33 @@
 
 import React from 'react';
 
-import { Provider, themeNames } from '@fluentui/react-teams';
+import {
+  FluentProvider as Provider,
+  teamsDarkTheme,
+  teamsHighContrastTheme,
+  teamsLightTheme,
+  Theme
+} from '@fluentui/react-components';
 
 import { app } from '@microsoft/teams-js';
 
+import { css } from '@emotion/react';
+
 import { inTeams } from '../utils/Teams';
+
+interface ThemeContextProps {
+  theme: Theme
+}
+
+const ThemeContext = React.createContext<ThemeContextProps | undefined>(undefined);
+
+export const useTheme = (): ThemeContextProps => {
+  const value = React.useContext(ThemeContext);
+  if (!value) {
+    throw new Error('The context is not initialzed: ThemeContext');
+  }
+  return value;
+};
 
 interface ThemeProviderProps {
   children?: React.ReactNode
@@ -22,19 +44,18 @@ function ThemeProvider(props: ThemeProviderProps) {
 
   const { children } = props;
 
-  const [ lang, setLang ] = React.useState<string>('en-US');
-  const [ themeName, setThemeName ] = React.useState<themeNames>(themeNames.Default);
+  const [ theme, setTheme ] = React.useState<Theme>(teamsLightTheme);
 
   const handleThemeChange = (value: string) => {
     switch (value) {
       case 'dark':
-        setThemeName(themeNames.Dark);
+        setTheme(teamsDarkTheme);
         break;
       case 'contrast':
-        setThemeName(themeNames.HighContrast);
+        setTheme(teamsHighContrastTheme);
         break;
       default:
-        setThemeName(themeNames.Default);
+        setTheme(teamsLightTheme);
         break;
     }
   };
@@ -46,18 +67,24 @@ function ThemeProvider(props: ThemeProviderProps) {
     (async () => {
       await app.initialize();
       const context = await app.getContext();
-      setLang(context.app.locale);
       handleThemeChange(context.app.theme);
       app.registerOnThemeChangeHandler(handleThemeChange);
     })();
   }, []);
 
   return (
-    <Provider
-      lang={lang}
-      themeName={themeName}>
-      {children}
-    </Provider>
+    <ThemeContext.Provider value={{ theme }}>
+      <Provider theme={theme}>
+        <div
+          css={css`
+            min-height: 100vh;
+            line-height: 1.25em;
+            background-color: ${theme.colorNeutralBackground3};
+          `}>
+          {children}
+        </div>
+      </Provider>
+    </ThemeContext.Provider>
   );
 
 }

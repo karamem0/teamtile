@@ -9,10 +9,8 @@
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-  Error404Description: { defaultMessage: 'Page not found' },
-  Error404Title: { defaultMessage: '404' },
-  Error500Description: { defaultMessage: 'Something went wrong' },
-  Error500Title: { defaultMessage: '500' }
+  LoginCallback: { defaultMessage: 'Consent flow complete. Please wait...' },
+  LoginRedirect: { defaultMessage: 'Redirecting to consent page...' }
 });
 
 export default messages;

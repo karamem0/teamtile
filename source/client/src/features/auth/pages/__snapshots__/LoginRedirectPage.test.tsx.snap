@@ -1,16 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`create shapshot of when loading is false 1`] = `
-<body>
-  <div>
-    <div
-      data-testid="Children"
-    />
-  </div>
-</body>
-`;
-
-exports[`create shapshot of when loading is true 1`] = `
+exports[`create shapshot 1`] = `
 .emotion-0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -47,6 +37,7 @@ exports[`create shapshot of when loading is true 1`] = `
       class="emotion-0"
     >
       <div
+        aria-labelledby="spinnerr0"
         class="fui-Spinner ___p104zz0_oywd6f0 f22iagw f122n59 f4d9j23 fez10in f4px1ci fn67r4l f1063pyq"
         role="progressbar"
       >
@@ -64,6 +55,12 @@ exports[`create shapshot of when loading is true 1`] = `
             />
           </svg>
         </span>
+        <label
+          class="fui-Label fui-Spinner__label ___qwq3bl0_b1t5ty0 fk6fouc f19n0e5 fod5ikn faaz57k fl43uef"
+          id="spinnerr0"
+        >
+          Redirecting to consent page...
+        </label>
       </div>
     </div>
   </div>

@@ -7,7 +7,9 @@
 //
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+
+import ReactDOM from 'react-dom/client';
+
 import { ErrorBoundary } from 'react-error-boundary';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -16,8 +18,8 @@ import ress from 'ress';
 
 import AppLoader from './common/components/AppLoader';
 import Snackbar from './common/components/Snackbar';
-import CallbackPage from './features/auth/pages/CallbackPage';
-import LoginPage from './features/auth/pages/LoginPage';
+import LoginCallbackPage from './features/auth/pages/LoginCallbackPage';
+import LoginRedirectPage from './features/auth/pages/LoginRedirectPage';
 import Error404Page from './features/error/pages/Error404Page';
 import Error500Page from './features/error/pages/Error500Page';
 import HomePage from './features/home/pages/HomePage';
@@ -30,23 +32,11 @@ import TelemetryProvider from './providers/TelemetryProvider';
 import ThemeProvider from './providers/ThemeProvider';
 import { inTeams } from './utils/Teams';
 
-ReactDOM.render(
+const element = document.getElementById('root') as HTMLElement;
+const root = ReactDOM.createRoot(element);
+root.render(
   <React.Fragment>
     <Global styles={ress} />
-    <Global
-      styles={css`
-        #root div {
-          line-height: 1.25em;
-        }
-        #root,
-        #root > div,
-        #root > div > div {
-          min-height: 100vh;
-        }
-        #root .ui-provider > svg {
-          display: none;
-        }
-      `} />
     <BrowserRouter>
       <TelemetryProvider>
         <IntlProvider>
@@ -85,10 +75,10 @@ ReactDOM.render(
                     )
                   }
                   <Route
-                    element={<LoginPage />}
+                    element={<LoginRedirectPage />}
                     path="/auth/login" />
                   <Route
-                    element={<CallbackPage />}
+                    element={<LoginCallbackPage />}
                     path="/auth/callback" />
                   <Route
                     element={<Error404Page />}
@@ -100,5 +90,5 @@ ReactDOM.render(
         </IntlProvider>
       </TelemetryProvider>
     </BrowserRouter>
-  </React.Fragment>,
-  document.getElementById('root'));
+  </React.Fragment>
+);

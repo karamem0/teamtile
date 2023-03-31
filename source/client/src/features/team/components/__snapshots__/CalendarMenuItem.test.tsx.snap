@@ -5,7 +5,7 @@ exports[`create shapshot of when loading is false 1`] = `
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto auto;
-  gap: 0.25rem;
+  grid-gap: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -18,10 +18,6 @@ exports[`create shapshot of when loading is false 1`] = `
 }
 
 .emotion-1 {
-  line-height: 1rem;
-}
-
-.emotion-2 {
   width: 1rem;
   height: 1rem;
 }
@@ -29,45 +25,35 @@ exports[`create shapshot of when loading is false 1`] = `
 <body>
   <div>
     <span
-      aria-labelledby="tooltip-content-2"
-      class="ui-text emotion-0"
-      data-aa-class="Undefined__trigger"
-      data-uses-unhanded-props="true"
+      aria-label="Open channel calendar"
+      class="fui-Text emotion-0 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
       role="button"
     >
-      <span
-        class="emotion-1"
+      <button
+        class="fui-Button rsawnvh ___91x5cg0_tj6h1h0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk fwiuce9 fdghr9 f15vdbe4 fwbmr0d f44c6la"
+        type="button"
       >
         <span
-          aria-hidden="true"
-          class="root_dd790ee3 emotion-2"
+          class="fui-Button__icon rywnvv2"
         >
-          <svg
-            class="svg_dd790ee3"
-            focusable="false"
-            viewBox="0 0 2048 2048"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            aria-hidden="true"
+            class="root_dd790ee3 emotion-1"
           >
-            <path
-              d="M768 768h128v128H768V768zm384 768h128v128h-128v-128zm384-768h128v128h-128V768zm-384 0h128v128h-128V768zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zm1152 0h128v128h-128v-128zm-384 0h128v128h-128v-128zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zm1152 0h128v128h-128v-128zm-384 0h128v128h-128v-128zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zM2048 128v1792H0V128h384V0h128v128h1024V0h128v128h384zM128 256v256h1792V256h-256v128h-128V256H512v128H384V256H128zm1792 1536V640H128v1152h1792z"
-            />
-          </svg>
+            <svg
+              class="svg_dd790ee3"
+              focusable="false"
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M768 768h128v128H768V768zm384 768h128v128h-128v-128zm384-768h128v128h-128V768zm-384 0h128v128h-128V768zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zm1152 0h128v128h-128v-128zm-384 0h128v128h-128v-128zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zm1152 0h128v128h-128v-128zm-384 0h128v128h-128v-128zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zM2048 128v1792H0V128h384V0h128v128h1024V0h128v128h384zM128 256v256h1792V256h-256v128h-128V256H512v128H384V256H128zm1792 1536V640H128v1152h1792z"
+              />
+            </svg>
+          </span>
         </span>
-      </span>
+      </button>
     </span>
-  </div>
-  <div
-    aria-hidden="true"
-    class="ui-tooltip__content"
-    data-aa-class="Undefined__tooltip"
-    data-uses-unhanded-props="true"
-    dir="auto"
-    id="tooltip-content-2"
-    role="tooltip"
-  >
-    <div>
-      Open channel calendar
-    </div>
   </div>
 </body>
 `;
@@ -77,7 +63,7 @@ exports[`create shapshot of when loading is true 1`] = `
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto auto;
-  gap: 0.25rem;
+  grid-gap: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -90,63 +76,42 @@ exports[`create shapshot of when loading is true 1`] = `
 }
 
 .emotion-1 {
-  line-height: 1rem;
-}
-
-.emotion-2>div {
   width: 1rem;
   height: 1rem;
-}
-
-.emotion-2>div>div::before {
-  width: 1rem;
-  -webkit-animation-timing-function: steps(90);
-  animation-timing-function: steps(90);
 }
 
 <body>
   <div>
     <span
-      aria-labelledby="tooltip-content-1"
-      class="ui-text emotion-0"
-      data-aa-class="Undefined__trigger"
-      data-uses-unhanded-props="true"
+      aria-label="Open channel calendar"
+      class="fui-Text emotion-0 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
       role="button"
     >
-      <span
-        class="emotion-1"
+      <button
+        class="fui-Button rsawnvh ___91x5cg0_tj6h1h0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk fwiuce9 fdghr9 f15vdbe4 fwbmr0d f44c6la"
+        type="button"
       >
-        <div
-          class="ui-loader emotion-2"
-          data-aa-class="Loader"
-          data-uses-unhanded-props="true"
-          role="progressbar"
+        <span
+          class="fui-Button__icon rywnvv2"
         >
-          <div
-            class="ui-box ui-loader__indicator"
-            data-uses-unhanded-props="true"
+          <span
+            aria-hidden="true"
+            class="root_dd790ee3 emotion-1"
           >
-            <div
-              class="ui-box ui-loader__svg"
-              data-uses-unhanded-props="true"
-            />
-          </div>
-        </div>
-      </span>
+            <svg
+              class="svg_dd790ee3"
+              focusable="false"
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M768 768h128v128H768V768zm384 768h128v128h-128v-128zm384-768h128v128h-128V768zm-384 0h128v128h-128V768zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zm1152 0h128v128h-128v-128zm-384 0h128v128h-128v-128zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zm1152 0h128v128h-128v-128zm-384 0h128v128h-128v-128zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zM2048 128v1792H0V128h384V0h128v128h1024V0h128v128h384zM128 256v256h1792V256h-256v128h-128V256H512v128H384V256H128zm1792 1536V640H128v1152h1792z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
     </span>
-  </div>
-  <div
-    aria-hidden="true"
-    class="ui-tooltip__content"
-    data-aa-class="Undefined__tooltip"
-    data-uses-unhanded-props="true"
-    dir="auto"
-    id="tooltip-content-1"
-    role="tooltip"
-  >
-    <div>
-      Open channel calendar
-    </div>
   </div>
 </body>
 `;

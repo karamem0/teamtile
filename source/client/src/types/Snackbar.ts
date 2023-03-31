@@ -7,7 +7,8 @@
 //
 
 export enum SnackbarType {
-  danger = 'danger',
-  warning = 'warning',
-  success = 'success'
+  error = 'error',
+  info = 'info',
+  success = 'success',
+  warning = 'warning'
 }

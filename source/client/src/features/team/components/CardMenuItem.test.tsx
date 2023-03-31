@@ -16,7 +16,7 @@ import CardMenuItem from './CardMenuItem.presenter';
 
 test('create shapshot', async () => {
   const params = {
-    content: <div data-testid="Content" />,
+    children: <div data-testid="Children" />,
     icon: <div data-testid="Icon" />
   };
   render(

@@ -11,7 +11,7 @@ declare module 'ress';
 declare namespace NodeJS {
 
   interface ProcessEnv {
-    VITE_APPLICATIONINSIGHTS_INSTRUMENTATION_KEY: string,
+    VITE_APPLICATIONINSIGHTS_CONNECTION_STRING: string,
     VITE_AUTH_CLIENT_ID: string,
     VITE_AUTH_TENANT_ID: string,
     VITE_CACHE_TIMEOUT: number,

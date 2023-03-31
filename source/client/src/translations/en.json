@@ -1,102 +1,32 @@
 {
-  "/5YGkc": {
-    "defaultMessage": "Reload",
-    "description": "Reload"
-  },
-  "1QqCOc": {
-    "defaultMessage": "Open in SharePoint",
-    "description": "OpenInSharePoint"
-  },
-  "59GDNx": {
-    "defaultMessage": "Members",
-    "description": "Members"
-  },
-  "5yP2gi": {
-    "defaultMessage": "404",
-    "description": "Error404Title"
-  },
-  "CTTWxy": {
-    "defaultMessage": "Terms of Use",
-    "description": "TermsOfUseTitle"
-  },
-  "CaQF1k": {
-    "defaultMessage": "View team members and channels",
-    "description": "FeaturesDescription2"
-  },
-  "Dn5cvf": {
-    "defaultMessage": "There are no items matching the keyword.",
-    "description": "NoItemsFoundDescription2"
-  },
-  "JZWGCy": {
-    "defaultMessage": "GitHub",
-    "description": "GitHubTitle"
-  },
-  "Jz+1RB": {
-    "defaultMessage": "It looks like you are not a member of any teams.",
-    "description": "NoItemsFoundDescription1"
-  },
-  "L10lG7": {
-    "defaultMessage": "No items found",
-    "description": "NoItemsFoundTitle"
-  },
-  "LfuVfx": {
-    "defaultMessage": "Channels",
-    "description": "Channels"
-  },
-  "MO/YuC": {
-    "defaultMessage": "Teamtile",
-    "description": "AppTitle"
-  },
-  "OM8ta/": {
-    "defaultMessage": "Public",
-    "description": "Public"
-  },
-  "SwQHFs": {
-    "defaultMessage": "Privacy Policy",
-    "description": "PrivacyPolicyTitle"
-  },
-  "XqD2tS": {
-    "defaultMessage": "View members",
-    "description": "ViewMembers"
-  },
-  "YILsmv": {
-    "defaultMessage": "View channels",
-    "description": "ViewChannels"
-  },
-  "ZutcoC": {
-    "defaultMessage": "Private",
-    "description": "Private"
-  },
-  "e1ZvxM": {
-    "defaultMessage": "Link to SharePoint Document Library",
-    "description": "FeaturesDescription3"
-  },
-  "ec1cJA": {
-    "defaultMessage": "Open channel calendar",
-    "description": "OpenChannelCalendar"
-  },
-  "iGO4vU": {
-    "defaultMessage": "Something went wrong",
-    "description": "Error500Description"
-  },
-  "o7SIdW": {
-    "defaultMessage": "Features",
-    "description": "FeaturesTitle"
-  },
-  "oSGg3S": {
-    "defaultMessage": "View your joined teams as tiles",
-    "description": "FeaturesDescription1"
-  },
-  "qlPYIr": {
-    "defaultMessage": "Filter teams, channels, members",
-    "description": "FeaturesDescription4"
-  },
-  "u9HWaz": {
-    "defaultMessage": "Tile your teams for quick access.",
-    "description": "AppDescription"
-  },
-  "v0gUxP": {
-    "defaultMessage": "Page not found",
-    "description": "Error404Description"
-  }
+  "+a+2ug": "Members",
+  "2g59dV": "Open in SharePoint",
+  "3/bzO0": "Open channel calendar",
+  "3stSl5": "View team members and channels",
+  "4mCpgV": "It looks like you are not a member of any teams.",
+  "9cQLm9": "500",
+  "BgQuJf": "Tile your teams for quick access.",
+  "DRXWXB": "404",
+  "G5aLa5": "View your joined teams as tiles",
+  "HMHJK0": "Redirecting to consent page...",
+  "JqiqNj": "Something went wrong",
+  "LUrJwE": "Channels",
+  "QRccCM": "Page not found",
+  "RNKP0a": "View members",
+  "T8ySab": "View channels",
+  "TDaF6J": "Dismiss",
+  "UhkSyx": "Terms of Use",
+  "WSCjCg": "No items found",
+  "WxG1v5": "There are no items matching the keyword.",
+  "Yi/1ky": "Consent flow complete. Please wait...",
+  "ZXp0z1": "Features",
+  "awtRIX": "Filter teams, channels, members",
+  "fdCS5/": "Reload",
+  "lPzUBp": "This operation is not supported on this device.",
+  "uLLWFz": "Open SharePoint Document Library directly",
+  "uhu5aG": "Public",
+  "viXE32": "Private",
+  "vx0nkZ": "Privacy Policy",
+  "wO9wb5": "GitHub",
+  "xWjtDB": "Teamtile"
 }

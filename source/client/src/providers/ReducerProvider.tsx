@@ -27,21 +27,23 @@ interface ReducerContextProps {
 
 const ReducerContext = React.createContext<ReducerContextProps | undefined>(undefined);
 
+export const useReducer = (): ReducerContextProps => {
+  const value = React.useContext(ReducerContext);
+  if (!value) {
+    throw new Error('The context is not initialzed: ReducerContext');
+  }
+  return value;
+};
+
 interface ReducerProviderProps {
   children?: React.ReactNode
 }
-
-const initialState = {
-  filter: undefined,
-  items: undefined,
-  loading: undefined
-};
 
 function ReducerProvider(props: ReducerProviderProps) {
 
   const { children } = props;
 
-  const [ state, dispatch ] = React.useReducer(reducer, initialState);
+  const [ state, dispatch ] = React.useReducer(reducer, {});
 
   const dispatchers = React.useMemo(() => ({
     setFilter: (payload?: string) => dispatch(setFilter(payload)),
@@ -62,11 +64,3 @@ function ReducerProvider(props: ReducerProviderProps) {
 }
 
 export default ReducerProvider;
-
-export const useReducer = (): ReducerContextProps => {
-  const value = React.useContext(ReducerContext);
-  if (!value) {
-    throw new Error('The context is not initialzed: ReducerContext');
-  }
-  return value;
-};

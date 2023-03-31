@@ -3,19 +3,26 @@
 exports[`create shapshot of when url is not undefined 1`] = `
 <body>
   <div>
-    <div
-      class="ui-avatar"
-      data-uses-unhanded-props="true"
+    <span
+      aria-label="HR Taskforce"
+      class="fui-Avatar rz243wu ___1osyt9h_13rrzcx f11d4kpn f18f03hv f1uuiafn"
+      id="avatar-r1"
+      role="img"
     >
+      <span
+        class="fui-Avatar__initials rip04v"
+        id="avatar-r1__initials"
+      >
+        HT
+      </span>
       <img
+        alt=""
         aria-hidden="true"
-        class="ui-image"
-        data-aa-class="AvatarImage"
-        data-uses-unhanded-props="true"
+        class="fui-Avatar__image r136dc0n"
+        role="presentation"
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII="
-        title="HR Taskforce"
       />
-    </div>
+    </span>
   </div>
 </body>
 `;
@@ -23,18 +30,25 @@ exports[`create shapshot of when url is not undefined 1`] = `
 exports[`create shapshot of when url is undefined 1`] = `
 <body>
   <div>
-    <div
-      class="ui-avatar"
-      data-uses-unhanded-props="true"
+    <span
+      aria-label="HR Taskforce"
+      class="fui-Avatar rz243wu ___1osyt9h_13rrzcx f11d4kpn f18f03hv f1uuiafn"
+      id="avatar-r0"
+      role="img"
     >
       <span
-        class="ui-label"
-        data-uses-unhanded-props="true"
-        title="HR Taskforce"
+        class="fui-Avatar__initials rip04v"
+        id="avatar-r0__initials"
       >
         HT
       </span>
-    </div>
+      <img
+        alt=""
+        aria-hidden="true"
+        class="fui-Avatar__image r136dc0n"
+        role="presentation"
+      />
+    </span>
   </div>
 </body>
 `;

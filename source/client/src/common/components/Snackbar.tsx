@@ -16,7 +16,7 @@ function Snackbar() {
 
   const { snackbar, setSnackbar } = useSnackbar();
 
-  const handleVisibleChange = React.useCallback(() => {
+  const handleDismiss = React.useCallback(() => {
     setSnackbar(undefined);
   }, [ setSnackbar ]);
 
@@ -24,7 +24,7 @@ function Snackbar() {
     <Presenter
       text={snackbar?.text}
       type={snackbar?.type}
-      onVisibleChange={handleVisibleChange} />
+      onDismiss={handleDismiss} />
   );
 
 }

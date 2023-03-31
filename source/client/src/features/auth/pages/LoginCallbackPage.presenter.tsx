@@ -8,18 +8,23 @@
 
 import React from 'react';
 
-import { Loader } from '@fluentui/react-northstar';
+import { useIntl } from 'react-intl';
+
+import { Spinner } from '@fluentui/react-components';
 
 import CenterLayout from '../../../common/components/CenterLayout';
+import messages from '../messages';
 
-function LoginPage() {
+function LoginCallbackPage() {
+
+  const intl = useIntl();
 
   return (
     <CenterLayout>
-      <Loader label="Redirecting to consent page..." />
+      <Spinner label={intl.formatMessage(messages.LoginCallback)} />
     </CenterLayout>
   );
 
 }
 
-export default React.memo(LoginPage);
+export default React.memo(LoginCallbackPage);

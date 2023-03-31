@@ -26,10 +26,10 @@ function GridLayout(props: GridLayoutProps) {
         grid-template-rows: auto;
         grid-template-columns: repeat(auto-fill, minmax(22.5rem, 1fr));
         @media (max-width: 599px) {
-          gap: 0.5rem;
+          grid-gap: 0.5rem;
         }
         @media (min-width: 600px) {
-          gap: 1rem;
+          grid-gap: 1rem;
         }
       `}>
       {children}

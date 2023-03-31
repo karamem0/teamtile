@@ -10,6 +10,7 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
+import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
 
 import TeamCard from './TeamCard.presenter';
@@ -94,7 +95,11 @@ test('create shapshot of when item loading is true', async () => {
       visible: true
     }
   };
-  render(<TeamCard {...params} />);
+  render(
+    <ThemeProvider>
+      <TeamCard {...params} />
+    </ThemeProvider>
+  );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });
 
@@ -115,6 +120,10 @@ test('create shapshot of when item loading is false', async () => {
       visible: true
     }
   };
-  render(<TeamCard {...params} />);
+  render(
+    <ThemeProvider>
+      <TeamCard {...params} />
+    </ThemeProvider>
+  );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
 });

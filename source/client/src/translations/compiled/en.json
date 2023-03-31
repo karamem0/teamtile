@@ -1,152 +1,182 @@
 {
-  "/5YGkc": [
-    {
-      "type": 0,
-      "value": "Reload"
-    }
-  ],
-  "1QqCOc": [
-    {
-      "type": 0,
-      "value": "Open in SharePoint"
-    }
-  ],
-  "59GDNx": [
+  "+a+2ug": [
     {
       "type": 0,
       "value": "Members"
     }
   ],
-  "5yP2gi": [
+  "2g59dV": [
     {
       "type": 0,
-      "value": "404"
+      "value": "Open in SharePoint"
     }
   ],
-  "CTTWxy": [
-    {
-      "type": 0,
-      "value": "Terms of Use"
-    }
-  ],
-  "CaQF1k": [
-    {
-      "type": 0,
-      "value": "View team members and channels"
-    }
-  ],
-  "Dn5cvf": [
-    {
-      "type": 0,
-      "value": "There are no items matching the keyword."
-    }
-  ],
-  "JZWGCy": [
-    {
-      "type": 0,
-      "value": "GitHub"
-    }
-  ],
-  "Jz+1RB": [
-    {
-      "type": 0,
-      "value": "It looks like you are not a member of any teams."
-    }
-  ],
-  "L10lG7": [
-    {
-      "type": 0,
-      "value": "No items found"
-    }
-  ],
-  "LfuVfx": [
-    {
-      "type": 0,
-      "value": "Channels"
-    }
-  ],
-  "MO/YuC": [
-    {
-      "type": 0,
-      "value": "Teamtile"
-    }
-  ],
-  "OM8ta/": [
-    {
-      "type": 0,
-      "value": "Public"
-    }
-  ],
-  "SwQHFs": [
-    {
-      "type": 0,
-      "value": "Privacy Policy"
-    }
-  ],
-  "XqD2tS": [
-    {
-      "type": 0,
-      "value": "View members"
-    }
-  ],
-  "YILsmv": [
-    {
-      "type": 0,
-      "value": "View channels"
-    }
-  ],
-  "ZutcoC": [
-    {
-      "type": 0,
-      "value": "Private"
-    }
-  ],
-  "e1ZvxM": [
-    {
-      "type": 0,
-      "value": "Link to SharePoint Document Library"
-    }
-  ],
-  "ec1cJA": [
+  "3/bzO0": [
     {
       "type": 0,
       "value": "Open channel calendar"
     }
   ],
-  "iGO4vU": [
+  "3stSl5": [
     {
       "type": 0,
-      "value": "Something went wrong"
+      "value": "View team members and channels"
     }
   ],
-  "o7SIdW": [
+  "4mCpgV": [
     {
       "type": 0,
-      "value": "Features"
+      "value": "It looks like you are not a member of any teams."
     }
   ],
-  "oSGg3S": [
+  "9cQLm9": [
     {
       "type": 0,
-      "value": "View your joined teams as tiles"
+      "value": "500"
     }
   ],
-  "qlPYIr": [
-    {
-      "type": 0,
-      "value": "Filter teams, channels, members"
-    }
-  ],
-  "u9HWaz": [
+  "BgQuJf": [
     {
       "type": 0,
       "value": "Tile your teams for quick access."
     }
   ],
-  "v0gUxP": [
+  "DRXWXB": [
+    {
+      "type": 0,
+      "value": "404"
+    }
+  ],
+  "G5aLa5": [
+    {
+      "type": 0,
+      "value": "View your joined teams as tiles"
+    }
+  ],
+  "HMHJK0": [
+    {
+      "type": 0,
+      "value": "Redirecting to consent page..."
+    }
+  ],
+  "JqiqNj": [
+    {
+      "type": 0,
+      "value": "Something went wrong"
+    }
+  ],
+  "LUrJwE": [
+    {
+      "type": 0,
+      "value": "Channels"
+    }
+  ],
+  "QRccCM": [
     {
       "type": 0,
       "value": "Page not found"
+    }
+  ],
+  "RNKP0a": [
+    {
+      "type": 0,
+      "value": "View members"
+    }
+  ],
+  "T8ySab": [
+    {
+      "type": 0,
+      "value": "View channels"
+    }
+  ],
+  "TDaF6J": [
+    {
+      "type": 0,
+      "value": "Dismiss"
+    }
+  ],
+  "UhkSyx": [
+    {
+      "type": 0,
+      "value": "Terms of Use"
+    }
+  ],
+  "WSCjCg": [
+    {
+      "type": 0,
+      "value": "No items found"
+    }
+  ],
+  "WxG1v5": [
+    {
+      "type": 0,
+      "value": "There are no items matching the keyword."
+    }
+  ],
+  "Yi/1ky": [
+    {
+      "type": 0,
+      "value": "Consent flow complete. Please wait..."
+    }
+  ],
+  "ZXp0z1": [
+    {
+      "type": 0,
+      "value": "Features"
+    }
+  ],
+  "awtRIX": [
+    {
+      "type": 0,
+      "value": "Filter teams, channels, members"
+    }
+  ],
+  "fdCS5/": [
+    {
+      "type": 0,
+      "value": "Reload"
+    }
+  ],
+  "lPzUBp": [
+    {
+      "type": 0,
+      "value": "This operation is not supported on this device."
+    }
+  ],
+  "uLLWFz": [
+    {
+      "type": 0,
+      "value": "Open SharePoint Document Library directly"
+    }
+  ],
+  "uhu5aG": [
+    {
+      "type": 0,
+      "value": "Public"
+    }
+  ],
+  "viXE32": [
+    {
+      "type": 0,
+      "value": "Private"
+    }
+  ],
+  "vx0nkZ": [
+    {
+      "type": 0,
+      "value": "Privacy Policy"
+    }
+  ],
+  "wO9wb5": [
+    {
+      "type": 0,
+      "value": "GitHub"
+    }
+  ],
+  "xWjtDB": [
+    {
+      "type": 0,
+      "value": "Teamtile"
     }
   ]
 }

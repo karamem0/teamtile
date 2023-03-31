@@ -5,7 +5,7 @@ exports[`create shapshot 1`] = `
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto auto;
-  gap: 0.25rem;
+  grid-gap: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -17,33 +17,16 @@ exports[`create shapshot 1`] = `
   cursor: pointer;
 }
 
-.emotion-1 {
-  line-height: 1rem;
-}
-
 <body>
   <div>
     <span
-      class="ui-text emotion-0"
-      data-aa-class="Undefined__trigger"
-      data-uses-unhanded-props="true"
+      aria-label=""
+      class="fui-Text emotion-0 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
       role="button"
     >
-      <span
-        class="emotion-1"
-      >
-        <div
-          data-testid="Icon"
-        />
-      </span>
-      <span
-        class="ui-text emotion-1"
-        data-uses-unhanded-props="true"
-      >
-        <div
-          data-testid="Content"
-        />
-      </span>
+      <div
+        data-testid="Children"
+      />
     </span>
   </div>
 </body>

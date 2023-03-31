@@ -7,6 +7,8 @@
 //
 
 import React from 'react';
+
+import { useIntl } from 'react-intl';
 import { useAsyncFn, useError } from 'react-use';
 
 import {
@@ -19,6 +21,7 @@ import { SnackbarType } from '../../../types/Snackbar';
 import { Item } from '../../../types/Store';
 import { isPC } from '../../../utils/Teams';
 import { getTab } from '../managers/TeamManager';
+import messages from '../messages';
 
 import Presenter from './CalendarMenuItem.presenter';
 
@@ -33,6 +36,7 @@ function CalendarMenuItem(props: CalendarMenuItemProps) {
   const { setSnackbar } = useSnackbar();
   const dispatchError = useError();
   const [ state, fetch ] = useAsyncFn((teamId: string, channelId: string, appId: string) => getTab(teamId, channelId, appId));
+  const intl = useIntl();
 
   React.useEffect(() => {
     if (!state.error) {
@@ -61,11 +65,12 @@ function CalendarMenuItem(props: CalendarMenuItemProps) {
       }
     }
     setSnackbar({
-      text: 'This operation is not supported on this device.',
+      text: intl.formatMessage(messages.OperationNotSupported),
       type: SnackbarType.warning
     });
   }, [
     fetch,
+    intl,
     item,
     setSnackbar
   ]);

@@ -11,7 +11,7 @@ import merge from 'deepmerge';
 import { Member } from '../types/Entity';
 import { Item } from '../types/Store';
 
-export function mergeItems(source: Item[], target: Item[], options: merge.Options) {
+export function mergeItems(source: Item[], target: Item[], options?: merge.Options) {
   const items = [ ...source ];
   source.forEach((sourceItem, sourceIndex) => {
     const targetIndex = target.findIndex((targetItem) => targetItem.id === sourceItem.id);
@@ -22,7 +22,7 @@ export function mergeItems(source: Item[], target: Item[], options: merge.Option
   return items;
 }
 
-export function mergeMembers(source: Member[], target: Member[], options: merge.Options) {
+export function mergeMembers(source: Member[], target: Member[], options?: merge.Options) {
   const items = [ ...source ];
   source.forEach((sourceItem, sourceIndex) => {
     const targetIndex = target.findIndex((targetItem) => targetItem.userId === sourceItem.userId);

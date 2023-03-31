@@ -107,6 +107,16 @@
       {
         "pathGroups": [
           {
+            "pattern": "react",
+            "group": "builtin",
+            "position": "before"
+          },
+          {
+            "pattern": "react-dom/**",
+            "group": "builtin",
+            "position": "before"
+          },
+          {
             "pattern": "react**",
             "group": "builtin",
             "position": "before"
@@ -138,6 +148,8 @@
           }
         ],
         "pathGroupsExcludedImportTypes": [
+          "react",
+          "react-dom/**",
           "react**",
           "@testing-library/**",
           "@automapper/**",

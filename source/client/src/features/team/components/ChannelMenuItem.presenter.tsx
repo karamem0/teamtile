@@ -7,20 +7,21 @@
 //
 
 import React from 'react';
+
 import { useIntl } from 'react-intl';
 
-import { ContextMenuIcon, SearchIcon } from '@fluentui/react-icons-mdl2';
 import {
+  Button,
   Input,
-  InputProps,
-  List,
-  Loader,
+  Spinner,
   Text
-} from '@fluentui/react-northstar';
+} from '@fluentui/react-components';
+import { ContextMenuIcon, SearchIcon } from '@fluentui/react-icons-mdl2';
 
 import { css } from '@emotion/react';
 
 import SidePanel from '../../../common/components/SidePanel';
+import { useTheme } from '../../../providers/ThemeProvider';
 import { Channel } from '../../../types/Entity';
 import { Event, EventHandler } from '../../../types/Event';
 import messages from '../messages';
@@ -32,7 +33,7 @@ interface ChannelMenuItemProps {
   items?: Channel[],
   loading?: boolean,
   onClick?: EventHandler<Channel>,
-  onFilterChange?: EventHandler<InputProps & { value: string }>,
+  onFilterChange?: EventHandler<string>,
   onOpenChange?: EventHandler<boolean>
 }
 
@@ -47,67 +48,76 @@ function ChannelMenuItem(props: ChannelMenuItemProps) {
   } = props;
 
   const intl = useIntl();
+  const { theme } = useTheme();
 
   return (
     <SidePanel
       title={intl.formatMessage(messages.Channels)}
       content={
         loading ? (
-          <Loader />
+          <Spinner />
         ) : (
           items ? (
             <div
               css={css`
                 display: flex;
                 flex-flow: column;
-                gap: 0.5rem;
+                grid-gap: 0.5rem;
               `}>
               <Input
-                clearable
-                fluid
-                icon={<SearchIcon />}
-                onChange={onFilterChange} />
-              <List
-                navigable
-                items={
-                items.map((item) => ({
-                  key: item.id,
-                  header: (
+                contentBefore={<SearchIcon />}
+                onChange={(e, data) => onFilterChange?.(e, data.value)} />
+              <div
+                css={css`
+                  display: flex;
+                  flex-flow: column;
+                  grid-gap: 0.5rem;
+                  height: calc(100vh - 8rem);
+                  overflow: auto;
+                `}>
+                {
+                  items.map((item) => (
                     <Text
+                      key={item.id}
                       role="button"
                       css={css`
                         display: grid;
                         grid-template-rows: auto;
                         grid-template-columns: auto auto;
-                        gap: 0.25rem;
+                        grid-gap: 0.5rem;
                         align-items: center;
                         justify-content: left;
+                        padding: 0.5rem;
+                        &:hover {
+                          background-color: ${theme.colorNeutralBackground1Hover};
+                        }
                       `}
-                      onClick={(event: Event) => onClick?.(event, item)}>
-                      <Text truncated>
+                      onClick={(e: Event) => onClick?.(e, item)}>
+                      <Text truncate>
                         {item.displayName}
                       </Text>
                       <MembershipIcon value={item.membershipType} />
                     </Text>
-                  )
-                }))
-              } />
+                  ))
+                }
+              </div>
             </div>
           ) : null
         )
       }
-      trigger={(
-        <CardMenuItem
-          tooltip={intl.formatMessage(messages.ViewChannels)}
+      onOpenChange={onOpenChange}>
+      <CardMenuItem tooltip={intl.formatMessage(messages.ViewChannels)}>
+        <Button
+          appearance="transparent"
           icon={(
             <ContextMenuIcon
               css={css`
-                width: 1rem;
-                height: 1rem;
-              `} />
+              width: 1rem;
+              height: 1rem;
+            `} />
           )} />
-      )}
-      onOpenChange={onOpenChange} />
+      </CardMenuItem>
+    </SidePanel>
   );
 
 }

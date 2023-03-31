@@ -11,6 +11,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import IntlProvider from '../../../providers/IntlProvider';
+import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
 
 import VisibilityIcon from './VisibilityIcon.presenter';
@@ -21,7 +22,9 @@ test('create shapshot of when VisibilityType is public', async () => {
   };
   render(
     <IntlProvider>
-      <VisibilityIcon {...params} />
+      <ThemeProvider>
+        <VisibilityIcon {...params} />
+      </ThemeProvider>
     </IntlProvider>
   );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
@@ -33,7 +36,9 @@ test('create shapshot of when VisibilityType is private', async () => {
   };
   render(
     <IntlProvider>
-      <VisibilityIcon {...params} />
+      <ThemeProvider>
+        <VisibilityIcon {...params} />
+      </ThemeProvider>
     </IntlProvider>
   );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
@@ -45,7 +50,9 @@ test('create shapshot of when VisibilityType is undefined', async () => {
   };
   render(
     <IntlProvider>
-      <VisibilityIcon {...params} />
+      <ThemeProvider>
+        <VisibilityIcon {...params} />
+      </ThemeProvider>
     </IntlProvider>
   );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();

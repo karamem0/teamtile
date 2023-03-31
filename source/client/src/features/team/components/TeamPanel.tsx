@@ -7,9 +7,8 @@
 //
 
 import React from 'react';
-import { useDebounce } from 'react-use';
 
-import { InputProps } from '@fluentui/react-northstar';
+import { useDebounce } from 'react-use';
 
 import { useReducer } from '../../../providers/ReducerProvider';
 import { Event } from '../../../types/Event';
@@ -32,12 +31,12 @@ function TeamPanel() {
     filter
   ]);
 
-  const handleFilterChange = React.useCallback((_, data?: InputProps & { value: string }) => {
-    setFilter(data?.value);
+  const handleFilterChange = React.useCallback((_?: Event, data?: string) => {
+    setFilter(data);
   }, []);
 
-  const handleRefreshClick = React.useCallback(async (event?: Event) => {
-    if ((event as React.KeyboardEvent)?.shiftKey) {
+  const handleRefreshClick = React.useCallback(async (e?: Event) => {
+    if ((e as React.KeyboardEvent)?.shiftKey) {
       await clearCache();
     }
     dispatchers.setLoading(true);

@@ -6,6 +6,8 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+#pragma warning disable CA1852
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -41,10 +43,9 @@ _ = app.UseStaticFiles();
 _ = app.UseRouting();
 _ = app.UseAuthentication();
 _ = app.UseAuthorization();
-_ = app.UseEndpoints(endpoints =>
-{
-    _ = endpoints.MapControllers();
-    _ = endpoints.MapFallbackToFile("/index.html");
-});
+_ = app.MapControllers();
+_ = app.MapFallbackToFile("/index.html");
 
 app.Run();
+
+#pragma warning restore CA1852

@@ -37,7 +37,7 @@ Are you frustrated with finding a team? Teamtile provides these features to you:
     |Resource Group|(You can choose)|
     |Name|(You can choose)|
     |Publish|Code|
-    |Runtime stack|.NET 6|
+    |Runtime stack|.NET 7|
     |Operating System|Windows|
     |Region|(You can choose)|
 
@@ -135,7 +135,7 @@ Are you frustrated with finding a team? Teamtile provides these features to you:
     |-|-|-|
     |{{AppId}}|`[Application ID]`|true|
     |{{TenantId}}|`[Tenent ID]`|true|
-    |{{InstrumentationKey}}|`[Instrumentation Key]`|false|
+    |{{ConnectionString}}|`[Connection String of Application Insights]`|false|
 
 3. Go to `source/server` folder.
 
@@ -147,7 +147,7 @@ Are you frustrated with finding a team? Teamtile provides these features to you:
     |{{AppId}}|`[Application ID]`|true|
     |{{AppSecret}}|`[Application Secret]`|true|
     |{{TenantId}}|`[Tenent ID]`|true|
-    |{{InstrumentationKey}}|`[Instrumentation Key]`|false|
+    |{{ConnectionString}}|`[Connection String of Application Insights]`|false|
 
 5. Build application.
 
@@ -158,7 +158,7 @@ dotnet publish --configuration Release
 4. Compress contents of `publish` folder.
 
 ```
-Compress-Archive -Path ./bin/Release/net6.0/publish/* -DestinationPath ../../build.zip
+Compress-Archive -Path ./bin/Release/net7.0/publish/* -DestinationPath ../../build.zip
 ```
 
 ### Manifest

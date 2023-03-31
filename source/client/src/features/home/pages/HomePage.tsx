@@ -8,11 +8,13 @@
 
 import React from 'react';
 
+import { Event } from '../../../types/Event';
+
 import Presenter from './HomePage.presenter';
 
 function HomePage() {
 
-  const handleLinkClick = React.useCallback((_, data?: string) => {
+  const handleLinkClick = React.useCallback((_?: Event, data?: string) => {
     switch (data) {
       case 'GitHub':
         window.open('https://github.com/karamem0/teamtile', '_blank');

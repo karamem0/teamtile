@@ -9,54 +9,19 @@
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-  Channels: {
-    defaultMessage: 'Channels',
-    description: 'Channels'
-  },
-  Members: {
-    defaultMessage: 'Members',
-    description: 'Members'
-  },
-  NoItemsFoundDescription1: {
-    defaultMessage: 'It looks like you are not a member of any teams.',
-    description: 'NoItemsFoundDescription1'
-  },
-  NoItemsFoundDescription2: {
-    defaultMessage: 'There are no items matching the keyword.',
-    description: 'NoItemsFoundDescription2'
-  },
-  NoItemsFoundTitle: {
-    defaultMessage: 'No items found',
-    description: 'NoItemsFoundTitle'
-  },
-  OpenChannelCalendar: {
-    defaultMessage: 'Open channel calendar',
-    description: 'OpenChannelCalendar'
-  },
-  OpenInSharePoint: {
-    defaultMessage: 'Open in SharePoint',
-    description: 'OpenInSharePoint'
-  },
-  Private: {
-    defaultMessage: 'Private',
-    description: 'Private'
-  },
-  Public: {
-    defaultMessage: 'Public',
-    description: 'Public'
-  },
-  Reload: {
-    defaultMessage: 'Reload',
-    description: 'Reload'
-  },
-  ViewChannels: {
-    defaultMessage: 'View channels',
-    description: 'ViewChannels'
-  },
-  ViewMembers: {
-    defaultMessage: 'View members',
-    description: 'ViewMembers'
-  }
+  Channels: { defaultMessage: 'Channels' },
+  Members: { defaultMessage: 'Members' },
+  NoItemsFoundDescription1: { defaultMessage: 'It looks like you are not a member of any teams.' },
+  NoItemsFoundDescription2: { defaultMessage: 'There are no items matching the keyword.' },
+  NoItemsFoundTitle: { defaultMessage: 'No items found' },
+  OpenChannelCalendar: { defaultMessage: 'Open channel calendar' },
+  OpenInSharePoint: { defaultMessage: 'Open in SharePoint' },
+  OperationNotSupported: { defaultMessage: 'This operation is not supported on this device.' },
+  Private: { defaultMessage: 'Private' },
+  Public: { defaultMessage: 'Public' },
+  Reload: { defaultMessage: 'Reload' },
+  ViewChannels: { defaultMessage: 'View channels' },
+  ViewMembers: { defaultMessage: 'View members' }
 });
 
 export default messages;

@@ -11,6 +11,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import IntlProvider from '../../../providers/IntlProvider';
+import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
 
 import TeamGrid from './TeamGrid.presenter';
@@ -45,7 +46,9 @@ test('create shapshot', async () => {
   };
   render(
     <IntlProvider>
-      <TeamGrid {...params} />
+      <ThemeProvider>
+        <TeamGrid {...params} />
+      </ThemeProvider>
     </IntlProvider>
   );
   expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();

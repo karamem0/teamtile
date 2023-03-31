@@ -8,13 +8,8 @@
 
 import React from 'react';
 
+import { Button, Input } from '@fluentui/react-components';
 import { RefreshIcon, SearchIcon } from '@fluentui/react-icons-mdl2';
-import {
-  Button,
-  ButtonProps,
-  Input,
-  InputProps
-} from '@fluentui/react-northstar';
 
 import { css } from '@emotion/react';
 
@@ -23,8 +18,8 @@ import { EventHandler } from '../../../types/Event';
 import TeamGrid from './TeamGrid';
 
 interface TeamPanelProps {
-  onFilterChange?: EventHandler<InputProps & { value: string }>,
-  onRefreshClick?: EventHandler<ButtonProps>
+  onFilterChange?: EventHandler<string>,
+  onRefreshClick?: EventHandler
 }
 
 function TeamPanel(props: TeamPanelProps) {
@@ -39,33 +34,33 @@ function TeamPanel(props: TeamPanelProps) {
       css={css`
         display: flex;
         flex-flow: column;
-        gap: 0.5rem;
+        grid-gap: 0.5rem;
       `}>
       <div
         css={css`
           display: grid;
           grid-template-rows: auto;
           grid-template-columns: 1fr auto;
-          gap: 0.25rem;
+          grid-gap: 0.25rem;
         `}>
         <Input
-          clearable
-          fluid
-          icon={<SearchIcon />}
+          contentBefore={<SearchIcon />}
           css={css`
             min-height: 2.25rem;
-            input {
-              background-color: #fff;
-            }
             @media (min-width: 600px) {
               max-width: 20rem;
             }
           `}
-          onChange={onFilterChange} />
+          onChange={(e, data) => onFilterChange?.(e, data.value)} />
         <Button
-          icon={<RefreshIcon />}
-          iconOnly
-          text
+          appearance="transparent"
+          icon={(
+            <RefreshIcon
+              css={css`
+                width: 1rem;
+                height: 1rem;
+              `} />
+          )}
           onClick={onRefreshClick} />
       </div>
       <TeamGrid />

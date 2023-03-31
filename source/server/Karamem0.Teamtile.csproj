@@ -1,18 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <PackageId>Teamtile</PackageId>
-    <Version>1.11.4</Version>
+    <Version>2.0.0</Version>
     <Authors>karamem0</Authors>
     <Company>karamem0</Company>
     <Product>Teamtile</Product>
     <Copyright>Copyright (c) 2023 karamem0</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/karamem0/teamtile</PackageProjectUrl>
-    <AssemblyVersion>1.11.4</AssemblyVersion>
-    <FileVersion>1.11.4</FileVersion>
+    <AssemblyVersion>2.0.0</AssemblyVersion>
+    <FileVersion>2.0.0</FileVersion>
     <RootNamespace>Karamem0.Teamtile</RootNamespace>
     <UserSecretsId>752965d3-575a-4e30-a3ba-5c781a02ace1</UserSecretsId>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
-    <PackageReference Include="Microsoft.Identity.Web" Version="1.23.1" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="2.7.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.27.0" />
   </ItemGroup>
 

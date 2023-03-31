@@ -6,14 +6,19 @@ exports[`create shapshot of when text is undefined 1`] = `
 </body>
 `;
 
-exports[`create shapshot of when type is danger 1`] = `
+exports[`create shapshot of when type is error 1`] = `
 .emotion-0 {
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: 1001;
-  margin-bottom: 1rem;
+  margin: 0.5rem;
+}
+
+.emotion-1 {
+  width: 1rem;
+  height: 1rem;
 }
 
 <body>
@@ -22,55 +27,52 @@ exports[`create shapshot of when type is danger 1`] = `
       class="emotion-0"
     >
       <div
-        class="ui-alert"
-        data-uses-unhanded-props="true"
+        class="fui-Alert ___co0mdz0_q48w6e0 f22iagw f122n59 f5pgtk9 f1g0x7ka f11qrl6u f1qch9an fjlbh76 fff7au0 f1bjk9e1 fwsfkhu f8wkphi f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z fghlq4f f1gn591s fb073pr fjscplz fz58gqq fkhj508 fl43uef f19n0e5 fxugw4r"
+        role="alert"
       >
-        <div
-          class="ui-box ui-alert__icon"
-          data-uses-unhanded-props="true"
+        <span
+          class="fui-Alert__icon ___1l1smhh_k5ukh20 fd461yt f4ybsrx f1g0x7ka f19lj068 f1qch9an f1cnd47f f1whyuy6"
         >
-          <span
+          <svg
             aria-hidden="true"
-            class="root_dd790ee3"
+            class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 20 20"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              class="svg_dd790ee3"
-              focusable="false"
-              viewBox="0 0 2048 2048"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1024 0q141 0 272 36t244 104 207 160 161 207 103 245 37 272q0 141-36 272t-104 244-160 207-207 161-245 103-272 37q-141 0-272-36t-244-104-207-160-161-207-103-245-37-272q0-141 36-272t104-244 160-207 207-161T752 37t272-37zm0 1920q124 0 238-32t214-90 181-140 140-181 91-214 32-239q0-124-32-238t-90-214-140-181-181-140-214-91-239-32q-124 0-238 32t-214 90-181 140-140 181-91 214-32 239q0 124 32 238t90 214 140 181 181 140 214 91 239 32zm443-1249l-352 353 352 353-90 90-353-352-353 352-90-90 352-353-352-353 90-90 353 352 353-352 90 90z"
-              />
-            </svg>
-          </span>
-        </div>
-        <div
-          aria-live="polite"
-          class="ui-box ui-alert__body"
-          data-aa-class="Alert__body"
-          data-uses-unhanded-props="true"
-          id="alert-body-1"
-          role="alert"
-        >
-          <div
-            class="ui-box ui-alert__content"
-            data-uses-unhanded-props="true"
-            dir="auto"
-          >
-            danger
-          </div>
-        </div>
+            <path
+              d="M10 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16ZM7.8 7.11a.5.5 0 0 0-.63.06l-.06.07a.5.5 0 0 0 .06.64L9.3 10l-2.12 2.12-.06.07a.5.5 0 0 0 .06.64l.07.06c.2.13.47.11.64-.06L10 10.7l2.12 2.12.07.06c.2.13.46.11.64-.06l.06-.07a.5.5 0 0 0-.06-.64L10.7 10l2.12-2.12.06-.07a.5.5 0 0 0-.06-.64l-.07-.06a.5.5 0 0 0-.64.06L10 9.3 7.88 7.17l-.07-.06Z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        error
         <button
-          aria-describedby="alert-body-1"
-          class="ui-alert__dismissaction"
-          data-aa-class="Alert__dismissAction"
-          data-uses-unhanded-props="true"
+          class="fui-Button rsawnvh fui-Alert__action ___14wq5io_1te16yn f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
+          title="Dismiss"
+          type="button"
         >
           <span
-            class="ui-box ui-alert__dismissaction__content"
-            data-uses-unhanded-props="true"
-          />
+            class="fui-Button__icon rywnvv2"
+          >
+            <span
+              aria-hidden="true"
+              class="root_dd790ee3 emotion-1"
+            >
+              <svg
+                class="svg_dd790ee3"
+                focusable="false"
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1024 0q141 0 272 36t244 104 207 160 161 207 103 245 37 272q0 141-36 272t-104 244-160 207-207 161-245 103-272 37q-141 0-272-36t-244-104-207-160-161-207-103-245-37-272q0-141 36-272t104-244 160-207 207-161T752 37t272-37zm0 1920q124 0 238-32t214-90 181-140 140-181 91-214 32-239q0-124-32-238t-90-214-140-181-181-140-214-91-239-32q-124 0-238 32t-214 90-181 140-140 181-91 214-32 239q0 124 32 238t90 214 140 181 181 140 214 91 239 32zm443-1249l-352 353 352 353-90 90-353-352-353 352-90-90 352-353-352-353 90-90 353 352 353-352 90 90z"
+                />
+              </svg>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -85,7 +87,12 @@ exports[`create shapshot of when type is success 1`] = `
   right: 0;
   left: 0;
   z-index: 1001;
-  margin-bottom: 1rem;
+  margin: 0.5rem;
+}
+
+.emotion-1 {
+  width: 1rem;
+  height: 1rem;
 }
 
 <body>
@@ -94,52 +101,52 @@ exports[`create shapshot of when type is success 1`] = `
       class="emotion-0"
     >
       <div
-        class="ui-alert"
-        data-uses-unhanded-props="true"
+        class="fui-Alert ___co0mdz0_q48w6e0 f22iagw f122n59 f5pgtk9 f1g0x7ka f11qrl6u f1qch9an fjlbh76 fff7au0 f1bjk9e1 fwsfkhu f8wkphi f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z fghlq4f f1gn591s fb073pr fjscplz fz58gqq fkhj508 fl43uef f19n0e5 fxugw4r"
+        role="status"
       >
-        <div
-          class="ui-box ui-alert__icon"
-          data-uses-unhanded-props="true"
+        <span
+          class="fui-Alert__icon ___srf8880_13m7jpf fd461yt f4ybsrx f1g0x7ka f19lj068 f1qch9an f1cnd47f f1m7fhi8"
         >
-          <span
+          <svg
             aria-hidden="true"
-            class="root_dd790ee3"
+            class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 20 20"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              class="svg_dd790ee3"
-              focusable="false"
-              viewBox="0 0 2048 2048"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M960 1920q-133 0-255-34t-230-96-194-150-150-195-97-229T0 960q0-133 34-255t96-230 150-194 195-150 229-97T960 0q133 0 255 34t230 96 194 150 150 195 97 229 34 256q0 133-34 255t-96 230-150 194-195 150-229 97-256 34zm0-1792q-115 0-221 30t-198 84-169 130-130 168-84 199-30 221q0 114 30 220t84 199 130 169 168 130 199 84 221 30q114 0 220-30t199-84 169-130 130-168 84-199 30-221q0-114-30-220t-84-199-130-169-168-130-199-84-221-30zm-64 640h128v640H896V768zm0-256h128v128H896V512z"
-              />
-            </svg>
-          </span>
-        </div>
-        <div
-          class="ui-box ui-alert__body"
-          data-uses-unhanded-props="true"
-          id="alert-body-3"
-        >
-          <div
-            class="ui-box ui-alert__content"
-            data-uses-unhanded-props="true"
-            dir="auto"
-          >
-            success
-          </div>
-        </div>
+            <path
+              d="M10 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm3.36 5.65a.5.5 0 0 0-.64-.06l-.07.06L9 11.3 7.35 9.65l-.07-.06a.5.5 0 0 0-.7.7l.07.07 2 2 .07.06c.17.11.4.11.56 0l.07-.06 4-4 .07-.08a.5.5 0 0 0-.06-.63Z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        success
         <button
-          aria-describedby="alert-body-3"
-          class="ui-alert__dismissaction"
-          data-aa-class="Alert__dismissAction"
-          data-uses-unhanded-props="true"
+          class="fui-Button rsawnvh fui-Alert__action ___14wq5io_1te16yn f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
+          title="Dismiss"
+          type="button"
         >
           <span
-            class="ui-box ui-alert__dismissaction__content"
-            data-uses-unhanded-props="true"
-          />
+            class="fui-Button__icon rywnvv2"
+          >
+            <span
+              aria-hidden="true"
+              class="root_dd790ee3 emotion-1"
+            >
+              <svg
+                class="svg_dd790ee3"
+                focusable="false"
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1024 0q141 0 272 36t244 104 207 160 161 207 103 245 37 272q0 141-36 272t-104 244-160 207-207 161-245 103-272 37q-141 0-272-36t-244-104-207-160-161-207-103-245-37-272q0-141 36-272t104-244 160-207 207-161T752 37t272-37zm0 1920q124 0 238-32t214-90 181-140 140-181 91-214 32-239q0-124-32-238t-90-214-140-181-181-140-214-91-239-32q-124 0-238 32t-214 90-181 140-140 181-91 214-32 239q0 124 32 238t90 214 140 181 181 140 214 91 239 32zm443-1249l-352 353 352 353-90 90-353-352-353 352-90-90 352-353-352-353 90-90 353 352 353-352 90 90z"
+                />
+              </svg>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -154,7 +161,12 @@ exports[`create shapshot of when type is warning 1`] = `
   right: 0;
   left: 0;
   z-index: 1001;
-  margin-bottom: 1rem;
+  margin: 0.5rem;
+}
+
+.emotion-1 {
+  width: 1rem;
+  height: 1rem;
 }
 
 <body>
@@ -163,55 +175,52 @@ exports[`create shapshot of when type is warning 1`] = `
       class="emotion-0"
     >
       <div
-        class="ui-alert"
-        data-uses-unhanded-props="true"
+        class="fui-Alert ___co0mdz0_q48w6e0 f22iagw f122n59 f5pgtk9 f1g0x7ka f11qrl6u f1qch9an fjlbh76 fff7au0 f1bjk9e1 fwsfkhu f8wkphi f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z fghlq4f f1gn591s fb073pr fjscplz fz58gqq fkhj508 fl43uef f19n0e5 fxugw4r"
+        role="alert"
       >
-        <div
-          class="ui-box ui-alert__icon"
-          data-uses-unhanded-props="true"
+        <span
+          class="fui-Alert__icon ___znwrb80_14kh1uj fd461yt f4ybsrx f1g0x7ka f19lj068 f1qch9an f1cnd47f fpti2h4"
         >
-          <span
+          <svg
             aria-hidden="true"
-            class="root_dd790ee3"
+            class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 20 20"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              class="svg_dd790ee3"
-              focusable="false"
-              viewBox="0 0 2048 2048"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1920 1920H0L960 0l960 1920zM207 1792h1506L960 286 207 1792zm817-1024v640H896V768h128zm-128 768h128v128H896v-128z"
-              />
-            </svg>
-          </span>
-        </div>
-        <div
-          aria-live="polite"
-          class="ui-box ui-alert__body"
-          data-aa-class="Alert__body"
-          data-uses-unhanded-props="true"
-          id="alert-body-2"
-          role="alert"
-        >
-          <div
-            class="ui-box ui-alert__content"
-            data-uses-unhanded-props="true"
-            dir="auto"
-          >
-            warning
-          </div>
-        </div>
+            <path
+              d="M8.68 2.79a1.5 1.5 0 0 1 2.64 0l6.5 12A1.5 1.5 0 0 1 16.5 17h-13a1.5 1.5 0 0 1-1.32-2.21l6.5-12ZM10.5 7.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 1 0v-4Zm.25 6.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        warning
         <button
-          aria-describedby="alert-body-2"
-          class="ui-alert__dismissaction"
-          data-aa-class="Alert__dismissAction"
-          data-uses-unhanded-props="true"
+          class="fui-Button rsawnvh fui-Alert__action ___14wq5io_1te16yn f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
+          title="Dismiss"
+          type="button"
         >
           <span
-            class="ui-box ui-alert__dismissaction__content"
-            data-uses-unhanded-props="true"
-          />
+            class="fui-Button__icon rywnvv2"
+          >
+            <span
+              aria-hidden="true"
+              class="root_dd790ee3 emotion-1"
+            >
+              <svg
+                class="svg_dd790ee3"
+                focusable="false"
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1024 0q141 0 272 36t244 104 207 160 161 207 103 245 37 272q0 141-36 272t-104 244-160 207-207 161-245 103-272 37q-141 0-272-36t-244-104-207-160-161-207-103-245-37-272q0-141 36-272t104-244 160-207 207-161T752 37t272-37zm0 1920q124 0 238-32t214-90 181-140 140-181 91-214 32-239q0-124-32-238t-90-214-140-181-181-140-214-91-239-32q-124 0-238 32t-214 90-181 140-140 181-91 214-32 239q0 124 32 238t90 214 140 181 181 140 214 91 239 32zm443-1249l-352 353 352 353-90 90-353-352-353 352-90-90 352-353-352-353 90-90 353 352 353-352 90 90z"
+                />
+              </svg>
+            </span>
+          </span>
         </button>
       </div>
     </div>

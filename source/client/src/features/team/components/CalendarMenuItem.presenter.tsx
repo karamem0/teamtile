@@ -7,10 +7,11 @@
 //
 
 import React from 'react';
+
 import { useIntl } from 'react-intl';
 
+import { Button } from '@fluentui/react-components';
 import { CalendarIcon } from '@fluentui/react-icons-mdl2';
-import { Loader } from '@fluentui/react-northstar';
 
 import { css } from '@emotion/react';
 
@@ -27,7 +28,7 @@ interface CalendarMenuItemProps {
 function CalendarMenuItem(props: CalendarMenuItemProps) {
 
   const {
-    loading,
+    // loading,
     onClick
   } = props;
 
@@ -36,29 +37,19 @@ function CalendarMenuItem(props: CalendarMenuItemProps) {
   return (
     <CardMenuItem
       tooltip={intl.formatMessage(messages.OpenChannelCalendar)}
-      icon={
-        loading ? (
-          <Loader
-            size="smallest"
-            css={css`
-              & > div {
+      onClick={onClick}>
+      {
+        <Button
+          appearance="transparent"
+          icon={(
+            <CalendarIcon
+              css={css`
                 width: 1rem;
                 height: 1rem;
-              }
-              & > div > div::before {
-                width: 1rem;
-                animation-timing-function: steps(90);
-              }
-            `} />
-        ) : (
-          <CalendarIcon
-            css={css`
-              width: 1rem;
-              height: 1rem;
-            `} />
-        )
-      }
-      onClick={onClick} />
+              `} />
+          )} />
+        }
+    </CardMenuItem>
   );
 
 }

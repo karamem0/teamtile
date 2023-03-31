@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { Loader } from '@fluentui/react-northstar';
+import { Spinner } from '@fluentui/react-components';
 
 import CenterLayout from './CenterLayout';
 
@@ -16,7 +16,7 @@ function LoaderPanel() {
 
   return (
     <CenterLayout>
-      <Loader />
+      <Spinner />
     </CenterLayout>
   );
 

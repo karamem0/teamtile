@@ -7,13 +7,15 @@
 //
 
 import React from 'react';
-import { useIntl } from 'react-intl';
 
-import { Communication, CommunicationOptions } from '@fluentui/react-teams';
+import { FormattedMessage } from 'react-intl';
+
+import { Text } from '@fluentui/react-components';
 
 import { css } from '@emotion/react';
 
 import CenterLayout from '../../../common/components/CenterLayout';
+import { useTheme } from '../../../providers/ThemeProvider';
 import messages from '../messages';
 
 interface Error500PageProps {
@@ -24,22 +26,41 @@ function Error500Page(props: Error500PageProps) {
 
   const { error } = props;
 
-  const intl = useIntl();
+  const { theme } = useTheme();
 
   return (
     <CenterLayout>
       <div
         css={css`
-          & > div {
-            flex-basis: auto;
-          }
+          display: flex;
+          flex-direction: column;
+          grid-gap: 0.5rem;
+          align-items: center;
+          justify-content: center;
         `}>
-        <Communication
-          option={CommunicationOptions.Empty}
-          fields={{
-            title: intl.formatMessage(messages.Error500Description),
-            desc: error
-          }} />
+        <Text
+          as="h1"
+          css={css`
+            font-size: 3rem;
+            line-height: calc(3rem * 1.25);
+            color: ${theme.colorNeutralForegroundDisabled};
+          `}>
+          <FormattedMessage {...messages.Error500Title} />
+        </Text>
+        <Text
+          css={css`
+            color: ${theme.colorNeutralForegroundDisabled};
+          `}>
+          <FormattedMessage {...messages.Error500Description} />
+        </Text>
+        <Text
+          css={css`
+            font-size: 0.75rem;
+            line-height: calc(0.75rem * 1.25);
+            color: ${theme.colorNeutralForegroundDisabled};
+          `}>
+          {error}
+        </Text>
       </div>
     </CenterLayout>
   );
