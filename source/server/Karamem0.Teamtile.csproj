@@ -4,15 +4,15 @@
     <TargetFramework>net7.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <PackageId>Teamtile</PackageId>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <Authors>karamem0</Authors>
     <Company>karamem0</Company>
     <Product>Teamtile</Product>
     <Copyright>Copyright (c) 2023 karamem0</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/karamem0/teamtile</PackageProjectUrl>
-    <AssemblyVersion>2.0.0</AssemblyVersion>
-    <FileVersion>2.0.0</FileVersion>
+    <AssemblyVersion>2.0.1</AssemblyVersion>
+    <FileVersion>2.0.1</FileVersion>
     <RootNamespace>Karamem0.Teamtile</RootNamespace>
     <UserSecretsId>752965d3-575a-4e30-a3ba-5c781a02ace1</UserSecretsId>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>

@@ -25,10 +25,8 @@ function GridLayout(props: GridLayoutProps) {
         display: grid;
         grid-template-rows: auto;
         grid-template-columns: repeat(auto-fill, minmax(22.5rem, 1fr));
-        @media (max-width: 599px) {
-          grid-gap: 0.5rem;
-        }
-        @media (min-width: 600px) {
+        grid-gap: 0.5rem;
+        @media (width >= 600px) {
           grid-gap: 1rem;
         }
       `}>

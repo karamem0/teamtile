@@ -47,7 +47,7 @@ function TeamPanel(props: TeamPanelProps) {
           contentBefore={<SearchIcon />}
           css={css`
             min-height: 2.25rem;
-            @media (min-width: 600px) {
+            @media (width >= 600px) {
               max-width: 20rem;
             }
           `}

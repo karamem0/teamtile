@@ -1,6 +1,6 @@
 {
   "name": "teamtile",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": true,
   "dependencies": {
     "@automapper/core": "^8.7.7",
@@ -45,7 +45,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
-    "@vitejs/plugin-react": "^3.1.0",
+    "@vitejs/plugin-react": "^4.0.0",
     "babel-jest": "^29.5.0",
     "babel-plugin-formatjs": "^10.4.0",
     "eslint": "^8.37.0",
@@ -59,12 +59,11 @@
     "jest-fetch-mock": "^3.0.3",
     "jest-junit": "^15.0.0",
     "postcss": "^8.4.21",
-    "postcss-scss": "^4.0.6",
     "postcss-styled-syntax": "^0.4.0",
     "sass": "^1.60.0",
     "stylelint": "^15.3.0",
     "stylelint-config-recess-order": "^4.0.0",
-    "stylelint-config-standard-scss": "^7.0.1",
+    "stylelint-config-standard-scss": "^9.0.0",
     "typescript": "^4.9.5",
     "vite": "^4.2.1",
     "vite-plugin-env-compatible": "^1.1.1"
@@ -96,6 +95,6 @@
     ]
   },
   "volta": {
-    "node": "16.19.1"
+    "node": "18.16.0"
   }
 }

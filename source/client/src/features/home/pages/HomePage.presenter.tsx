@@ -70,24 +70,20 @@ function HomePage(props: HomePageProps) {
           align-items: center;
           justify-content: center;
           width: 100%;
+          padding: 2rem;
           background-color: #90d0f0;
-          @media (max-width: 959px) {
-            padding: 2rem;
-          }
-          @media (min-width: 960px) {
+          @media (width >= 960px) {
             padding: 4rem 2rem;
           }
         `}>
         <div
           css={css`
             display: grid;
+            grid-template-rows: auto;
+            grid-template-columns: auto;
             align-items: center;
             justify-content: center;
-            @media (max-width: 959px) {
-              grid-template-rows: auto;
-              grid-template-columns: auto;
-            }
-            @media (min-width: 960px) {
+            @media (width >= 960px) {
               grid-template-rows: auto;
               grid-template-columns: 1fr 1fr;
             }
@@ -118,7 +114,10 @@ function HomePage(props: HomePageProps) {
           </div>
           <Image
             fit="contain"
-            src="/assets/screenshot.png" />
+            src="/assets/screenshot.png"
+            css={css`
+              height: auto;
+            `} />
         </div>
       </section>
       <section

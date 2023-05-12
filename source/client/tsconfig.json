@@ -22,7 +22,6 @@
     "jsxImportSource": "@emotion/react"
   },
   "include": [
-    "src",
-    "node_modules/babel-plugin-react-intl-auto/**/*.d.ts"
+    "src"
   ]
 }

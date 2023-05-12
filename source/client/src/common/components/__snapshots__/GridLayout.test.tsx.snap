@@ -5,15 +5,10 @@ exports[`create shapshot 1`] = `
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: repeat(auto-fill, minmax(22.5rem, 1fr));
+  grid-gap: 0.5rem;
 }
 
-@media (max-width: 599px) {
-  .emotion-0 {
-    grid-gap: 0.5rem;
-  }
-}
-
-@media (min-width: 600px) {
+@media (width >= 600px) {
   .emotion-0 {
     grid-gap: 1rem;
   }

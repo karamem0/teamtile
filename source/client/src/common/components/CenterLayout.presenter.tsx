@@ -25,10 +25,8 @@ function CenterLayout(props: CenterLayoutProps) {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        @media (max-width: 599px) {
-          min-height: calc(100vh - 0.5rem);
-        }
-        @media (min-width: 600px) {
+        min-height: calc(100vh - 0.5rem);
+        @media (width >= 600px) {
           min-height: calc(100vh - 2rem);
         }
       `}>

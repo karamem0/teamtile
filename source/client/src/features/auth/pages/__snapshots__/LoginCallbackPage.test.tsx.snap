@@ -17,15 +17,10 @@ exports[`create shapshot 1`] = `
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
+  min-height: calc(100vh - 0.5rem);
 }
 
-@media (max-width: 599px) {
-  .emotion-0 {
-    min-height: calc(100vh - 0.5rem);
-  }
-}
-
-@media (min-width: 600px) {
+@media (width >= 600px) {
   .emotion-0 {
     min-height: calc(100vh - 2rem);
   }

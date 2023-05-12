@@ -47,16 +47,11 @@ exports[`create shapshot 1`] = `
   -webkit-justify-content: center;
   justify-content: center;
   width: 100%;
+  padding: 2rem;
   background-color: #90d0f0;
 }
 
-@media (max-width: 959px) {
-  .emotion-3 {
-    padding: 2rem;
-  }
-}
-
-@media (min-width: 960px) {
+@media (width >= 960px) {
   .emotion-3 {
     padding: 4rem 2rem;
   }
@@ -64,6 +59,8 @@ exports[`create shapshot 1`] = `
 
 .emotion-4 {
   display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -74,14 +71,7 @@ exports[`create shapshot 1`] = `
   justify-content: center;
 }
 
-@media (max-width: 959px) {
-  .emotion-4 {
-    grid-template-rows: auto;
-    grid-template-columns: auto;
-  }
-}
-
-@media (min-width: 960px) {
+@media (width >= 960px) {
   .emotion-4 {
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr;
@@ -113,6 +103,10 @@ exports[`create shapshot 1`] = `
 }
 
 .emotion-8 {
+  height: auto;
+}
+
+.emotion-9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -133,14 +127,14 @@ exports[`create shapshot 1`] = `
   padding: 2rem 0;
 }
 
-.emotion-9 {
+.emotion-10 {
   font-size: 2rem;
   font-weight: 700;
   line-height: calc(2rem * 1.25);
   text-align: center;
 }
 
-.emotion-10 {
+.emotion-11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -160,7 +154,7 @@ exports[`create shapshot 1`] = `
   justify-content: center;
 }
 
-.emotion-11 {
+.emotion-12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -180,7 +174,7 @@ exports[`create shapshot 1`] = `
   padding: 2rem 0;
 }
 
-.emotion-12 {
+.emotion-13 {
   padding: 0 0.25rem;
 }
 
@@ -241,21 +235,21 @@ exports[`create shapshot 1`] = `
             </span>
           </div>
           <img
-            class="fui-Image ___6naqpy0_1l1fxem fj3muxo f1akhkt f1aperda f1lxtadh fzi6hpg fyowgf4 f3fg2lr f13av6d4 f1ewtqcl f14t3ns0 f1kle4es f14xojzb f1l02sjl fly5x3f"
+            class="fui-Image emotion-8 ___6naqpy0_1l1fxem fj3muxo f1akhkt f1aperda f1lxtadh fzi6hpg fyowgf4 f3fg2lr f13av6d4 f1ewtqcl f14t3ns0 f1kle4es f14xojzb f1l02sjl fly5x3f"
             src="/assets/screenshot.png"
           />
         </div>
       </section>
       <section
-        class="emotion-8"
+        class="emotion-9"
       >
         <h2
-          class="fui-Text emotion-9 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
+          class="fui-Text emotion-10 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
         >
           Features
         </h2>
         <div
-          class="emotion-10"
+          class="emotion-11"
         >
           <span
             class="fui-Text ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
@@ -280,7 +274,7 @@ exports[`create shapshot 1`] = `
         </div>
       </section>
       <footer
-        class="emotion-11"
+        class="emotion-12"
       >
         <button
           class="fui-Link ___hrsc1m0_1r9p467 f3rmtva f1ewtqcl fyind8e f1k6fduh f1w7gpdv fk6fouc fkhj508 figsok6 f1hu3pq6 f11qmguv f19f4twv f1tyq0we f1g0x7ka fhxju0i f1qch9an f1cnd47f fqv5qza f1vmzxwi f1o700av f1iuv45f f1cmlufx f9n3di6 f1ids18y f1tx3yz7 f1deo86v f1eh06m1 f1iescvh ftqa4ok f2hkw1w fhgqx19 f1olyrje f1p93eir f1ern45e f1n71otn f1h8hb77 f1deefiw"
@@ -289,7 +283,7 @@ exports[`create shapshot 1`] = `
           Terms of Use
         </button>
         <span
-          class="fui-Text emotion-12 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
+          class="fui-Text emotion-13 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
         >
           |
         </span>

@@ -24,7 +24,7 @@ exports[`create shapshot 1`] = `
   min-height: 2.25rem;
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
   .emotion-2 {
     max-width: 20rem;
   }
