@@ -8,8 +8,12 @@
 
 import React from 'react';
 
-import { Card, Text } from '@fluentui/react-components';
-import { Skeleton, SkeletonItem } from '@fluentui/react-components/unstable';
+import {
+  Card,
+  Skeleton,
+  SkeletonItem,
+  Text
+} from '@fluentui/react-components';
 
 import { css } from '@emotion/react';
 

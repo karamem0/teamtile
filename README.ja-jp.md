@@ -2,8 +2,8 @@
 
 参加中のチームをタイルで表示することで素早くアクセスできます。
 
-[![.github/workflows/main.yml](https://github.com/karamem0/teamtile/actions/workflows/main.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/main.yml)
-[![.github/workflows/develop.yml](https://github.com/karamem0/teamtile/actions/workflows/develop.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/develop.yml)
+[![.github/workflows/production.yml](https://github.com/karamem0/teamtile/actions/workflows/production.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/production.yml)
+[![.github/workflows/development.yml](https://github.com/karamem0/teamtile/actions/workflows/development.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/development.yml)
 [![License](https://img.shields.io/github/license/karamem0/teamtile.svg)](https://github.com/karamem0/teamtile/blob/main/LICENSE)
 
 ## 機能
@@ -135,7 +135,7 @@
     |-|-|-|
     |{{AppId}}|`[アプリケーション ID]`|はい|
     |{{TenantId}}|`[テナント ID]`|はい|
-    |{{ConnectionString}}|`[Application Insights の接続文字列]`|いいえ|
+    |{{TelemetryConnectionString}}|`[Application Insights の接続文字列]`|いいえ|
 
 3. `source/server` フォルダーに移動します。
 
@@ -147,7 +147,7 @@
     |{{AppId}}|`[アプリケーション ID]`|はい|
     |{{AppSecret}}|`[アプリケーション シークレット]`|はい|
     |{{TenantId}}|`[テナント ID]`|はい|
-    |{{ConnectionString}}|`[Application Insights の接続文字列]`|いいえ|
+    |{{TelemetryConnectionString}}|`[Application Insights の接続文字列]`|いいえ|
 
 5. アプリケーションをビルドします。
 

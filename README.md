@@ -2,8 +2,8 @@
 
 Tile your teams for quick access.
 
-[![.github/workflows/main.yml](https://github.com/karamem0/teamtile/actions/workflows/main.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/main.yml)
-[![.github/workflows/develop.yml](https://github.com/karamem0/teamtile/actions/workflows/develop.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/develop.yml)
+[![.github/workflows/production.yml](https://github.com/karamem0/teamtile/actions/workflows/production.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/production.yml)
+[![.github/workflows/development.yml](https://github.com/karamem0/teamtile/actions/workflows/development.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/development.yml)
 [![License](https://img.shields.io/github/license/karamem0/teamtile.svg)](https://github.com/karamem0/teamtile/blob/main/LICENSE)
 
 ## Features
@@ -135,7 +135,7 @@ Are you frustrated with finding a team? Teamtile provides these features to you:
     |-|-|-|
     |{{AppId}}|`[Application ID]`|true|
     |{{TenantId}}|`[Tenent ID]`|true|
-    |{{ConnectionString}}|`[Connection String of Application Insights]`|false|
+    |{{TelemetryConnectionString}}|`[Connection String of Application Insights]`|false|
 
 3. Go to `source/server` folder.
 
@@ -147,7 +147,7 @@ Are you frustrated with finding a team? Teamtile provides these features to you:
     |{{AppId}}|`[Application ID]`|true|
     |{{AppSecret}}|`[Application Secret]`|true|
     |{{TenantId}}|`[Tenent ID]`|true|
-    |{{ConnectionString}}|`[Connection String of Application Insights]`|false|
+    |{{TelemetryConnectionString}}|`[Connection String of Application Insights]`|false|
 
 5. Build application.
 

@@ -11,22 +11,22 @@ jobs:
     steps:
       - name: Checkout repos
         uses: actions/checkout@v3
-      - name: Setup Node.js 16.x
+      - name: Setup Node.js 18.x
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
       - name: Rewrite .env
         run: |
           $content = Get-Content -Path source/client/.env
-          $content = $content -replace "{{AppId}}", "${{secrets.APP_CLIENT_ID}}"
+          $content = $content -replace "{{AppId}}", "${{secrets.APP_ID}}"
           $content = $content -replace "{{TenantId}}", "${{secrets.APP_TENANT_ID}}"
-          $content = $content -replace "{{ConnectionString}}", "${{secrets.APPLICATIONINSIGHTS_CONNECTION_STRING}}"
+          $content = $content -replace "{{TelemetryConnectionString}}", "${{secrets.TELEMERTY_CONNECTION_STRING}}"
           Out-File -FilePath source/client/.env -InputObject $content -Encoding UTF8
       - name: Restore client
         run: npm ci
         working-directory: source/client
       - name: Audit client
-        run: npm audit
+        run: npm audit --omit=dev
         working-directory: source/client
       - name: Build client
         run: npm run build
@@ -56,7 +56,7 @@ jobs:
       - name: Rewrite manifest.json
         run: |
           $content = Get-Content -Path manifest/manifest.json
-          $content = $content -replace "{{AppId}}", "${{secrets.APP_CLIENT_ID}}"
+          $content = $content -replace "{{AppId}}", "${{secrets.APP_ID}}"
           $content = $content -replace "{{AppDomain}}", "${{secrets.APP_DOMAIN}}"
           Out-File -FilePath manifest/manifest.json -InputObject $content -Encoding UTF8
       - name: Upload manifest files

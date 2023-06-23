@@ -50,7 +50,7 @@ exports[`create shapshot of when type is error 1`] = `
         </span>
         error
         <button
-          class="fui-Button rsawnvh fui-Alert__action ___14wq5io_1te16yn f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
+          class="fui-Button ri7kuyr fui-Alert__action ___14wq5io_1te16yn f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
           title="Dismiss"
           type="button"
         >
@@ -124,7 +124,7 @@ exports[`create shapshot of when type is success 1`] = `
         </span>
         success
         <button
-          class="fui-Button rsawnvh fui-Alert__action ___14wq5io_1te16yn f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
+          class="fui-Button ri7kuyr fui-Alert__action ___14wq5io_1te16yn f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
           title="Dismiss"
           type="button"
         >
@@ -198,7 +198,7 @@ exports[`create shapshot of when type is warning 1`] = `
         </span>
         warning
         <button
-          class="fui-Button rsawnvh fui-Alert__action ___14wq5io_1te16yn f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
+          class="fui-Button ri7kuyr fui-Alert__action ___14wq5io_1te16yn f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
           title="Dismiss"
           type="button"
         >
