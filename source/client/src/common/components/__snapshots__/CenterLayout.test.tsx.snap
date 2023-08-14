@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`create shapshot 1`] = `
-.emotion-0 {
+<DocumentFragment>
+  .emotion-0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -26,11 +27,8 @@ exports[`create shapshot 1`] = `
   }
 }
 
-<body>
-  <div>
-    <div
-      class="emotion-0"
-    />
-  </div>
-</body>
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
 `;

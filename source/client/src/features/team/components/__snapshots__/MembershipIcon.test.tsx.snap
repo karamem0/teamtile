@@ -1,45 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`create shapshot of when MembershipType is private 1`] = `
-.emotion-0 {
+<DocumentFragment>
+  .emotion-0 {
   width: 0.75rem;
   height: 0.75rem;
 }
 
-<body>
-  <div>
+<span
+    aria-label="Private"
+    class="fui-Text ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
+  >
     <span
-      aria-label="Private"
-      class="fui-Text ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
+      aria-hidden="true"
+      class="root_dd790ee3 emotion-0"
     >
-      <span
-        aria-hidden="true"
-        class="root_dd790ee3 emotion-0"
+      <svg
+        class="svg_dd790ee3"
+        focusable="false"
+        viewBox="0 0 2048 2048"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <svg
-          class="svg_dd790ee3"
-          focusable="false"
-          viewBox="0 0 2048 2048"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M1792 896v1152H256V896h256V522q0-108 39-203t108-166T821 41t203-41q109 0 202 41t163 112 108 166 39 203v374h256zm-1152 0h768V522q0-81-29-152t-80-126-122-85-153-31q-82 0-152 31t-122 85-81 125-29 153v374zm1024 128H384v896h1280v-896z"
-          />
-        </svg>
-      </span>
+        <path
+          d="M1792 896v1152H256V896h256V522q0-108 39-203t108-166T821 41t203-41q109 0 202 41t163 112 108 166 39 203v374h256zm-1152 0h768V522q0-81-29-152t-80-126-122-85-153-31q-82 0-152 31t-122 85-81 125-29 153v374zm1024 128H384v896h1280v-896z"
+        />
+      </svg>
     </span>
-  </div>
-</body>
+  </span>
+</DocumentFragment>
 `;
 
-exports[`create shapshot of when MembershipType is standard 1`] = `
-<body>
-  <div />
-</body>
-`;
+exports[`create shapshot of when MembershipType is standard 1`] = `<DocumentFragment />`;
 
-exports[`create shapshot of when MembershipType is undefined 1`] = `
-<body>
-  <div />
-</body>
-`;
+exports[`create shapshot of when MembershipType is undefined 1`] = `<DocumentFragment />`;

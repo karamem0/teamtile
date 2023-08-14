@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import SidePanel from './SidePanel.presenter';
 
@@ -18,6 +18,6 @@ test('create shapshot', async () => {
     content: <div data-testid="Content" />,
     title: <div data-testid="Title" />
   };
-  render(<SidePanel {...params} />);
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  const { asFragment } = render(<SidePanel {...params} />);
+  expect(asFragment()).toMatchSnapshot();
 });

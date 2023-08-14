@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import IntlProvider from '../../providers/IntlProvider';
 import { SnackbarType } from '../../types/Snackbar';
@@ -20,12 +20,12 @@ test('create shapshot of when text is undefined', async () => {
     text: undefined,
     type: undefined
   };
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <Snackbar {...params} />
     </IntlProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });
 
 test('create shapshot of when type is error', async () => {
@@ -33,12 +33,12 @@ test('create shapshot of when type is error', async () => {
     text: 'error',
     type: SnackbarType.error
   };
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <Snackbar {...params} />
     </IntlProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });
 
 test('create shapshot of when type is warning', async () => {
@@ -46,12 +46,12 @@ test('create shapshot of when type is warning', async () => {
     text: 'warning',
     type: SnackbarType.warning
   };
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <Snackbar {...params} />
     </IntlProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });
 
 test('create shapshot of when type is success', async () => {
@@ -59,10 +59,10 @@ test('create shapshot of when type is success', async () => {
     text: 'success',
     type: SnackbarType.success
   };
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <Snackbar {...params} />
     </IntlProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });

@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`create shapshot 1`] = `
-.emotion-0 {
+<DocumentFragment>
+  .emotion-0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -35,71 +36,68 @@ exports[`create shapshot 1`] = `
   height: 1rem;
 }
 
-<body>
-  <div>
+<div
+    class="emotion-0"
+  >
     <div
-      class="emotion-0"
+      class="emotion-1"
     >
-      <div
-        class="emotion-1"
+      <span
+        class="fui-Input r1jtohuq emotion-2 ___1v9icnz_137yv9i fvcxoqz f1ub3y4t f1l4zc64 f1m52nbi f8vnjqi fz1etlk f1klwx88 f1hc16gm"
       >
         <span
-          class="fui-Input r1jtohuq emotion-2 ___1v9icnz_137yv9i fvcxoqz f1ub3y4t f1l4zc64 f1m52nbi f8vnjqi fz1etlk f1klwx88 f1hc16gm"
+          class="fui-Input__contentBefore r1572tok"
         >
           <span
-            class="fui-Input__contentBefore r1572tok"
+            aria-hidden="true"
+            class="root_dd790ee3"
           >
-            <span
-              aria-hidden="true"
-              class="root_dd790ee3"
+            <svg
+              class="svg_dd790ee3"
+              focusable="false"
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                class="svg_dd790ee3"
-                focusable="false"
-                viewBox="0 0 2048 2048"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1344 0q97 0 187 25t168 71 142 110 111 143 71 168 25 187q0 97-25 187t-71 168-110 142-143 111-168 71-187 25q-125 0-239-42t-211-121l-785 784q-19 19-45 19t-45-19-19-45q0-26 19-45l784-785q-79-96-121-210t-42-240q0-97 25-187t71-168 110-142T989 96t168-71 187-25zm0 1280q119 0 224-45t183-124 123-183 46-224q0-119-45-224t-124-183-183-123-224-46q-119 0-224 45T937 297 814 480t-46 224q0 119 45 224t124 183 183 123 224 46z"
-                />
-              </svg>
-            </span>
+              <path
+                d="M1344 0q97 0 187 25t168 71 142 110 111 143 71 168 25 187q0 97-25 187t-71 168-110 142-143 111-168 71-187 25q-125 0-239-42t-211-121l-785 784q-19 19-45 19t-45-19-19-45q0-26 19-45l784-785q-79-96-121-210t-42-240q0-97 25-187t71-168 110-142T989 96t168-71 187-25zm0 1280q119 0 224-45t183-124 123-183 46-224q0-119-45-224t-124-183-183-123-224-46q-119 0-224 45T937 297 814 480t-46 224q0 119 45 224t124 183 183 123 224 46z"
+              />
+            </svg>
           </span>
-          <input
-            class="fui-Input__input rvp2gzh"
-            type="text"
-            value=""
-          />
         </span>
-        <button
-          class="fui-Button ri7kuyr ___91x5cg0_tj6h1h0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk fwiuce9 fdghr9 f15vdbe4 fwbmr0d f44c6la"
-          type="button"
+        <input
+          class="fui-Input__input rvp2gzh"
+          type="text"
+          value=""
+        />
+      </span>
+      <button
+        class="fui-Button rlr4yyk ___1eu6g8f_9i8vou0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 fwa4z56 fe5wyld ffrv2ww f1rnfj6r f9dg1pr f4xjyn1 f19ot1t3 fjaevkr f1yrt24w f1lym4af f11cxmw1 f9ddjv3 f1sbtcvk fwiuce9 fdghr9 f15vdbe4 fwbmr0d f44c6la"
+        type="button"
+      >
+        <span
+          class="fui-Button__icon rywnvv2"
         >
           <span
-            class="fui-Button__icon rywnvv2"
+            aria-hidden="true"
+            class="root_dd790ee3 emotion-3"
           >
-            <span
-              aria-hidden="true"
-              class="root_dd790ee3 emotion-3"
+            <svg
+              class="svg_dd790ee3"
+              focusable="false"
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                class="svg_dd790ee3"
-                focusable="false"
-                viewBox="0 0 2048 2048"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1297 38q166 45 304 140t237 226 155 289 55 331q0 141-36 272t-103 245-160 207-208 160-245 103-272 37q-141 0-272-36t-245-103-207-160-160-208-103-244-37-273q0-140 37-272t105-248 167-212 221-164H256V0h512v512H640V215q-117 56-211 140T267 545 164 773t-36 251q0 123 32 237t90 214 141 182 181 140 214 91 238 32q123 0 237-32t214-90 182-141 140-181 91-214 32-238q0-150-48-289t-136-253-207-197-266-124l34-123z"
-                />
-              </svg>
-            </span>
+              <path
+                d="M1297 38q166 45 304 140t237 226 155 289 55 331q0 141-36 272t-103 245-160 207-208 160-245 103-272 37q-141 0-272-36t-245-103-207-160-160-208-103-244-37-273q0-140 37-272t105-248 167-212 221-164H256V0h512v512H640V215q-117 56-211 140T267 545 164 773t-36 251q0 123 32 237t90 214 141 182 181 140 214 91 238 32q123 0 237-32t214-90 182-141 140-181 91-214 32-238q0-150-48-289t-136-253-207-197-266-124l34-123z"
+              />
+            </svg>
           </span>
-        </button>
-      </div>
-      <div
-        data-testid="TeamGrid"
-      />
+        </span>
+      </button>
     </div>
+    <div
+      data-testid="TeamGrid"
+    />
   </div>
-</body>
+</DocumentFragment>
 `;

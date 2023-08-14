@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import IntlProvider from '../../../providers/IntlProvider';
 
@@ -16,10 +16,10 @@ import HomePage from './HomePage.presenter';
 
 test('create shapshot', async () => {
   const params = {};
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <HomePage {...params} />
     </IntlProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });

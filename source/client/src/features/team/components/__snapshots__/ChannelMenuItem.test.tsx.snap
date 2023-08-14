@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`create shapshot 1`] = `
-.emotion-0 {
+<DocumentFragment>
+  .emotion-0 {
   min-height: 100vh;
   line-height: 1.25em;
   background-color: #f5f5f5;
@@ -28,49 +29,46 @@ exports[`create shapshot 1`] = `
   height: 1rem;
 }
 
-<body>
-  <div>
+<div
+    class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    dir="ltr"
+  >
     <div
-      class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
-      dir="ltr"
+      class="emotion-0"
     >
-      <div
-        class="emotion-0"
-      >
-        <div>
-          <span
-            aria-label="View channels"
-            class="fui-Text emotion-1 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
-            role="button"
+      <div>
+        <span
+          aria-label="View channels"
+          class="fui-Text emotion-1 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
+          role="button"
+        >
+          <button
+            class="fui-Button rlr4yyk ___1eu6g8f_9i8vou0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 fwa4z56 fe5wyld ffrv2ww f1rnfj6r f9dg1pr f4xjyn1 f19ot1t3 fjaevkr f1yrt24w f1lym4af f11cxmw1 f9ddjv3 f1sbtcvk fwiuce9 fdghr9 f15vdbe4 fwbmr0d f44c6la"
+            type="button"
           >
-            <button
-              class="fui-Button ri7kuyr ___91x5cg0_tj6h1h0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk fwiuce9 fdghr9 f15vdbe4 fwbmr0d f44c6la"
-              type="button"
+            <span
+              class="fui-Button__icon rywnvv2"
             >
               <span
-                class="fui-Button__icon rywnvv2"
+                aria-hidden="true"
+                class="root_dd790ee3 emotion-2"
               >
-                <span
-                  aria-hidden="true"
-                  class="root_dd790ee3 emotion-2"
+                <svg
+                  class="svg_dd790ee3"
+                  focusable="false"
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    class="svg_dd790ee3"
-                    focusable="false"
-                    viewBox="0 0 2048 2048"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1792 128v1664H256V128h1536zm-128 128H384v1408h1280V256zm-256 768H640V896h768v128zm0 384H640v-128h768v128zm0-768H640V512h768v128z"
-                    />
-                  </svg>
-                </span>
+                  <path
+                    d="M1792 128v1664H256V128h1536zm-128 128H384v1408h1280V256zm-256 768H640V896h768v128zm0 384H640v-128h768v128zm0-768H640V512h768v128z"
+                  />
+                </svg>
               </span>
-            </button>
-          </span>
-        </div>
+            </span>
+          </button>
+        </span>
       </div>
     </div>
   </div>
-</body>
+</DocumentFragment>
 `;

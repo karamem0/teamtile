@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`create shapshot 1`] = `
-.emotion-0 {
+<DocumentFragment>
+  .emotion-0 {
   min-height: 100vh;
   line-height: 1.25em;
   background-color: #f5f5f5;
@@ -20,25 +21,22 @@ exports[`create shapshot 1`] = `
   }
 }
 
-<body>
-  <div>
+<div
+    class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    dir="ltr"
+  >
     <div
-      class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
-      dir="ltr"
+      class="emotion-0"
     >
       <div
-        class="emotion-0"
+        class="emotion-1"
+        role="list"
       >
         <div
-          class="emotion-1"
-          role="list"
-        >
-          <div
-            data-testid="TeamCard"
-          />
-        </div>
+          data-testid="TeamCard"
+        />
       </div>
     </div>
   </div>
-</body>
+</DocumentFragment>
 `;

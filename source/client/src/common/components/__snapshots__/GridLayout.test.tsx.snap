@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`create shapshot 1`] = `
-.emotion-0 {
+<DocumentFragment>
+  .emotion-0 {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: repeat(auto-fill, minmax(22.5rem, 1fr));
@@ -14,12 +15,9 @@ exports[`create shapshot 1`] = `
   }
 }
 
-<body>
-  <div>
-    <div
-      class="emotion-0"
-      role="list"
-    />
-  </div>
-</body>
+<div
+    class="emotion-0"
+    role="list"
+  />
+</DocumentFragment>
 `;

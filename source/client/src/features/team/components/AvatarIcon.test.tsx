@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import AvatarIcon from './AvatarIcon.presenter';
 
@@ -18,8 +18,8 @@ test('create shapshot of when url is undefined', async () => {
     name: 'HR Taskforce',
     size: undefined
   };
-  render(<AvatarIcon {...params} />);
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  const { asFragment } = render(<AvatarIcon {...params} />);
+  expect(asFragment()).toMatchSnapshot();
 });
 
 test('create shapshot of when url is not undefined', async () => {
@@ -28,6 +28,6 @@ test('create shapshot of when url is not undefined', async () => {
     name: 'HR Taskforce',
     size: undefined
   };
-  render(<AvatarIcon {...params} />);
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  const { asFragment } = render(<AvatarIcon {...params} />);
+  expect(asFragment()).toMatchSnapshot();
 });

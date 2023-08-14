@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`create shapshot 1`] = `
-.emotion-0 {
+<DocumentFragment>
+  .emotion-0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -26,31 +27,28 @@ exports[`create shapshot 1`] = `
   }
 }
 
-<body>
-  <div>
+<div
+    class="emotion-0"
+  >
     <div
-      class="emotion-0"
+      class="fui-Spinner ___p104zz0_oywd6f0 f22iagw f122n59 f4d9j23 fez10in f4px1ci fn67r4l f1063pyq"
+      role="progressbar"
     >
-      <div
-        class="fui-Spinner ___p104zz0_oywd6f0 f22iagw f122n59 f4d9j23 fez10in f4px1ci fn67r4l f1063pyq"
-        role="progressbar"
+      <span
+        class="fui-Spinner__spinner ___1cijk8q_7xauj70 f1or16p5 f1grzc83 f19shzzi f5tbecn fn4mtlg f1y80fxs f1r2crtq f1wsi8sr f1bkm2qd f1urqz7h f1da2vov f11rfva0 f1exc66 f1aiqagr f1wtx80b f1flujpd f1u06hy7 f11ditju f1m9nikz fq8a5sv f1b4lwqj f1najlst fjxod4 fu3xdw0 f1ttdh6v f1eseayc folzdkc fhlfkde f61h2gu flglbw1"
       >
-        <span
-          class="fui-Spinner__spinner ___1cijk8q_7xauj70 f1or16p5 f1grzc83 f19shzzi f5tbecn fn4mtlg f1y80fxs f1r2crtq f1wsi8sr f1bkm2qd f1urqz7h f1da2vov f11rfva0 f1exc66 f1aiqagr f1wtx80b f1flujpd f1u06hy7 f11ditju f1m9nikz fq8a5sv f1b4lwqj f1najlst fjxod4 fu3xdw0 f1ttdh6v f1eseayc folzdkc fhlfkde f61h2gu flglbw1"
+        <svg
+          class="fui-Spinner__Progressbar"
         >
-          <svg
-            class="fui-Spinner__Progressbar"
-          >
-            <circle
-              class="fui-Spinner__Track"
-            />
-            <circle
-              class="fui-Spinner__Tail"
-            />
-          </svg>
-        </span>
-      </div>
+          <circle
+            class="fui-Spinner__Track"
+          />
+          <circle
+            class="fui-Spinner__Tail"
+          />
+        </svg>
+      </span>
     </div>
   </div>
-</body>
+</DocumentFragment>
 `;

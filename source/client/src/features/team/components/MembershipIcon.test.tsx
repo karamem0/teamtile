@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import IntlProvider from '../../../providers/IntlProvider';
 import { MembershipType } from '../../../types/Entity';
@@ -19,34 +19,34 @@ test('create shapshot of when MembershipType is standard', async () => {
   const params = {
     value: MembershipType.standard
   };
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <MembershipIcon {...params} />
     </IntlProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });
 
 test('create shapshot of when MembershipType is private', async () => {
   const params = {
     value: MembershipType.private
   };
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <MembershipIcon {...params} />
     </IntlProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });
 
 test('create shapshot of when MembershipType is undefined', async () => {
   const params = {
     value: undefined
   };
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <MembershipIcon {...params} />
     </IntlProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });

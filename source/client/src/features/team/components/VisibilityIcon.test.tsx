@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import IntlProvider from '../../../providers/IntlProvider';
 import ThemeProvider from '../../../providers/ThemeProvider';
@@ -20,40 +20,40 @@ test('create shapshot of when VisibilityType is public', async () => {
   const params = {
     value: VisibilityType.public
   };
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <ThemeProvider>
         <VisibilityIcon {...params} />
       </ThemeProvider>
     </IntlProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });
 
 test('create shapshot of when VisibilityType is private', async () => {
   const params = {
     value: VisibilityType.private
   };
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <ThemeProvider>
         <VisibilityIcon {...params} />
       </ThemeProvider>
     </IntlProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });
 
 test('create shapshot of when VisibilityType is undefined', async () => {
   const params = {
     value: undefined
   };
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <ThemeProvider>
         <VisibilityIcon {...params} />
       </ThemeProvider>
     </IntlProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });

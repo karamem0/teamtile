@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
@@ -95,12 +95,12 @@ test('create shapshot of when item loading is true', async () => {
       visible: true
     }
   };
-  render(
+  const { asFragment } = render(
     <ThemeProvider>
       <TeamCard {...params} />
     </ThemeProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });
 
 test('create shapshot of when item loading is false', async () => {
@@ -120,10 +120,10 @@ test('create shapshot of when item loading is false', async () => {
       visible: true
     }
   };
-  render(
+  const { asFragment } = render(
     <ThemeProvider>
       <TeamCard {...params} />
     </ThemeProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });

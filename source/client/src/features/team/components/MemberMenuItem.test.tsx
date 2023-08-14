@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import IntlProvider from '../../../providers/IntlProvider';
 import ThemeProvider from '../../../providers/ThemeProvider';
@@ -26,12 +26,12 @@ test('create shapshot', async () => {
       }
     ]
   };
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <ThemeProvider>
         <MemberMenuItem {...params} />
       </ThemeProvider>
     </IntlProvider>
   );
-  expect(screen.queryAllByText(/^.*$/)[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });

@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`create shapshot 1`] = `
-.emotion-0 {
+<DocumentFragment>
+  <div />
+  .emotion-0 {
   position: fixed;
   inset: 0;
   z-index: 1000;
@@ -49,62 +51,58 @@ exports[`create shapshot 1`] = `
   margin: 1rem;
 }
 
-<body>
-  <div>
-    <div />
+<div
+    class="emotion-0"
+  >
     <div
-      class="emotion-0"
+      class="emotion-1"
+    />
+    <div
+      class="emotion-2"
     >
       <div
-        class="emotion-1"
-      />
-      <div
-        class="emotion-2"
+        class="emotion-3"
       >
-        <div
-          class="emotion-3"
-        >
-          <span
-            class="fui-Text emotion-4 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
-          >
-            <div
-              data-testid="Title"
-            />
-          </span>
-          <button
-            class="fui-Button ri7kuyr ___91x5cg0_tj6h1h0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk fwiuce9 fdghr9 f15vdbe4 fwbmr0d f44c6la"
-            type="button"
-          >
-            <span
-              class="fui-Button__icon rywnvv2"
-            >
-              <span
-                aria-hidden="true"
-                class="root_dd790ee3 emotion-5"
-              >
-                <svg
-                  class="svg_dd790ee3"
-                  focusable="false"
-                  viewBox="0 0 2048 2048"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1115 1024l690 691-90 90-691-690-691 690-90-90 690-691-690-691 90-90 691 690 691-690 90 90-690 691z"
-                  />
-                </svg>
-              </span>
-            </span>
-          </button>
-        </div>
-        <div
-          class="emotion-6"
+        <span
+          class="fui-Text emotion-4 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
         >
           <div
-            data-testid="Content"
+            data-testid="Title"
           />
-        </div>
+        </span>
+        <button
+          class="fui-Button rlr4yyk ___1eu6g8f_9i8vou0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 fwa4z56 fe5wyld ffrv2ww f1rnfj6r f9dg1pr f4xjyn1 f19ot1t3 fjaevkr f1yrt24w f1lym4af f11cxmw1 f9ddjv3 f1sbtcvk fwiuce9 fdghr9 f15vdbe4 fwbmr0d f44c6la"
+          type="button"
+        >
+          <span
+            class="fui-Button__icon rywnvv2"
+          >
+            <span
+              aria-hidden="true"
+              class="root_dd790ee3 emotion-5"
+            >
+              <svg
+                class="svg_dd790ee3"
+                focusable="false"
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1115 1024l690 691-90 90-691-690-691 690-90-90 690-691-690-691 90-90 691 690 691-690 90 90-690 691z"
+                />
+              </svg>
+            </span>
+          </span>
+        </button>
+      </div>
+      <div
+        class="emotion-6"
+      >
+        <div
+          data-testid="Content"
+        />
       </div>
     </div>
   </div>
-</body>
+</DocumentFragment>
 `;

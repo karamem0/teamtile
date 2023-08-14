@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import CenterLayout from './CenterLayout.presenter';
 
@@ -16,6 +16,6 @@ test('create shapshot', async () => {
   const params = {
     children: <React.Fragment />
   };
-  render(<CenterLayout {...params} />);
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  const { asFragment } = render(<CenterLayout {...params} />);
+  expect(asFragment()).toMatchSnapshot();
 });

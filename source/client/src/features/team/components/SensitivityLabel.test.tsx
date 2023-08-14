@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import SensitivityLabel from './SensitivityLabel.presenter';
 
@@ -16,14 +16,14 @@ test('create shapshot of when SensitivityLabel is not null', async () => {
   const params = {
     value: 'Restricted'
   };
-  render(<SensitivityLabel {...params} />);
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  const { asFragment } = render(<SensitivityLabel {...params} />);
+  expect(asFragment()).toMatchSnapshot();
 });
 
 test('create shapshot of when SensitivityLabel is undefined', async () => {
   const params = {
     value: undefined
   };
-  render(<SensitivityLabel {...params} />);
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  const { asFragment } = render(<SensitivityLabel {...params} />);
+  expect(asFragment()).toMatchSnapshot();
 });

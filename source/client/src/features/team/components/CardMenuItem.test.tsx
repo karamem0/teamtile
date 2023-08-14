@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import IntlProvider from '../../../providers/IntlProvider';
 
@@ -19,10 +19,10 @@ test('create shapshot', async () => {
     children: <div data-testid="Children" />,
     icon: <div data-testid="Icon" />
   };
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <CardMenuItem {...params} />
     </IntlProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });

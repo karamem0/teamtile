@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`create shapshot of when item loading is false 1`] = `
-.emotion-0 {
+<DocumentFragment>
+  .emotion-0 {
   min-height: 100vh;
   line-height: 1.25em;
   background-color: #f5f5f5;
@@ -25,57 +26,53 @@ exports[`create shapshot of when item loading is false 1`] = `
   grid-gap: 0.25rem;
 }
 
-<body
-  data-tabster="{"root":{}}"
->
-  <div>
+<div
+    class="fui-FluentProvider fui-FluentProviderr1 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    dir="ltr"
+  >
     <div
-      class="fui-FluentProvider fui-FluentProviderr1 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
-      dir="ltr"
+      class="emotion-0"
     >
       <div
-        class="emotion-0"
+        class="fui-Card emotion-1 ___19k834s_1teyidu f1p9o1ba f1sil6mw fifeqxg f899z7z f4h3tyx f18ur2pz f1lplnzb f10m5gbb fhftqfp f1k04kkk fxsr4vj fcvsdzp f22iagw f10pi13n f1ewtqcl f19n0e5 f1mdlcz9 frwkxtg f1n6gb5g f15yvnhg fo72kxq f13zj6fq f1nwj1ja f8rth92 flthirb f1lh990p ftkbnf5 f6czdpx f13hvwk3 f1i1u9k0 f1en4csx f1qnomq5 f2fl922 f1anhtl f1n2zcl3 f16v3d5c f1su8t2g f1vx9l62 fobhde4 fx5r7kn f19chtn8 fuvs6re fy4glsf frsmuga fuldkky fxugw4r f1whvlc6 f16gxe2i fpgykix f1osi826 fzybk4o ftqa4ok f2hkw1w f8hki3x f1d2448m f1bjia2o ffh67wi f15bsgw9 f14e48fq f18yb2kv fd6o370 fh1cnn4 fy7oxxb fpukqih f184ne2d f99gebs f13b0oaq f1jvq617 f8t2bz6 f11unbnk fbd201q f12nqxso f1uguk4w f1dvezut fd0oaoj fjvm52t f1cwg4i8 f15fr7a0 fwsq40z f34ld9f fy0y4wt"
+        role="listitem"
       >
         <div
-          class="fui-Card emotion-1 ___19k834s_1teyidu f1p9o1ba f1sil6mw fifeqxg f899z7z f4h3tyx f18ur2pz f1lplnzb f10m5gbb fhftqfp f1k04kkk fxsr4vj fcvsdzp f22iagw f10pi13n f1ewtqcl f19n0e5 f1mdlcz9 frwkxtg f1n6gb5g f15yvnhg fo72kxq f13zj6fq f1nwj1ja f8rth92 flthirb f1lh990p ftkbnf5 f6czdpx f13hvwk3 f1i1u9k0 f1en4csx f1qnomq5 f2fl922 f1anhtl f1n2zcl3 f16v3d5c f1su8t2g f1vx9l62 fobhde4 fx5r7kn f19chtn8 fuvs6re fy4glsf frsmuga fuldkky fxugw4r f1whvlc6 f16gxe2i fpgykix f1osi826 fzybk4o ftqa4ok f2hkw1w f8hki3x f1d2448m f1bjia2o ffh67wi f15bsgw9 f14e48fq f18yb2kv fd6o370 fh1cnn4 fy7oxxb fpukqih f184ne2d f99gebs f13b0oaq f1jvq617 f8t2bz6 f11unbnk fbd201q f12nqxso f1uguk4w f1dvezut fd0oaoj fjvm52t f1cwg4i8 f15fr7a0 fwsq40z f34ld9f fy0y4wt"
-          role="listitem"
+          aria-busy="true"
+          aria-label="Loading Content"
+          class="fui-Skeleton"
+          role="progressbar"
         >
           <div
-            aria-busy="true"
-            aria-label="Loading Content"
-            class="fui-Skeleton"
-            role="progressbar"
+            class="emotion-2"
           >
             <div
-              class="emotion-2"
+              class="fui-SkeletonItem ___1i6aon0_xirmf90 f10pi13n f1p9o1ba f1sil6mw f1qx3921 fj9j8l8 f1b6djjb f1dsdmen f1cpbl36 f1iuewzk f452v7t f4akx1t f18p5put fnm2mpv f1gjxg63 fqgqgel fchfifz fc7b1hi f1dpx5h9 f124akge ff2sm71"
+            />
+            <div
+              class="emotion-3"
             >
               <div
-                class="fui-SkeletonItem ___1i6aon0_xirmf90 f10pi13n f1p9o1ba f1sil6mw f1qx3921 fj9j8l8 f1b6djjb f1dsdmen f1cpbl36 f1iuewzk f452v7t f4akx1t f18p5put fnm2mpv f1gjxg63 fqgqgel fchfifz fc7b1hi f1dpx5h9 f124akge ff2sm71"
+                class="fui-SkeletonItem ___1vfe0su_5qso6u0 f10pi13n f1p9o1ba f1sil6mw f1qx3921 fj9j8l8 f1b6djjb f1dsdmen f1cpbl36 f1iuewzk f452v7t f4akx1t f18p5put fnm2mpv f1gjxg63 fly5x3f fff7au0 f1bjk9e1 fwsfkhu f8wkphi frvgh55"
               />
               <div
-                class="emotion-3"
-              >
-                <div
-                  class="fui-SkeletonItem ___1vfe0su_5qso6u0 f10pi13n f1p9o1ba f1sil6mw f1qx3921 fj9j8l8 f1b6djjb f1dsdmen f1cpbl36 f1iuewzk f452v7t f4akx1t f18p5put fnm2mpv f1gjxg63 fly5x3f fff7au0 f1bjk9e1 fwsfkhu f8wkphi frvgh55"
-                />
-                <div
-                  class="fui-SkeletonItem ___y70xim0_z4r0x50 f10pi13n f1p9o1ba f1sil6mw f1qx3921 fj9j8l8 f1b6djjb f1dsdmen f1cpbl36 f1iuewzk f452v7t f4akx1t f18p5put fnm2mpv f1gjxg63 fly5x3f fff7au0 f1bjk9e1 fwsfkhu f8wkphi fjamq6b"
-                />
-                <div
-                  class="fui-SkeletonItem ___y70xim0_z4r0x50 f10pi13n f1p9o1ba f1sil6mw f1qx3921 fj9j8l8 f1b6djjb f1dsdmen f1cpbl36 f1iuewzk f452v7t f4akx1t f18p5put fnm2mpv f1gjxg63 fly5x3f fff7au0 f1bjk9e1 fwsfkhu f8wkphi fjamq6b"
-                />
-              </div>
+                class="fui-SkeletonItem ___y70xim0_z4r0x50 f10pi13n f1p9o1ba f1sil6mw f1qx3921 fj9j8l8 f1b6djjb f1dsdmen f1cpbl36 f1iuewzk f452v7t f4akx1t f18p5put fnm2mpv f1gjxg63 fly5x3f fff7au0 f1bjk9e1 fwsfkhu f8wkphi fjamq6b"
+              />
+              <div
+                class="fui-SkeletonItem ___y70xim0_z4r0x50 f10pi13n f1p9o1ba f1sil6mw f1qx3921 fj9j8l8 f1b6djjb f1dsdmen f1cpbl36 f1iuewzk f452v7t f4akx1t f18p5put fnm2mpv f1gjxg63 fly5x3f fff7au0 f1bjk9e1 fwsfkhu f8wkphi fjamq6b"
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</body>
+</DocumentFragment>
 `;
 
 exports[`create shapshot of when item loading is true 1`] = `
-.emotion-0 {
+<DocumentFragment>
+  .emotion-0 {
   min-height: 100vh;
   line-height: 1.25em;
   background-color: #f5f5f5;
@@ -141,80 +138,75 @@ exports[`create shapshot of when item loading is true 1`] = `
   justify-content: left;
 }
 
-<body
-  data-tabster="{"root":{}}"
->
-  <div>
+<div
+    class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    dir="ltr"
+  >
     <div
-      class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
-      dir="ltr"
+      class="emotion-0"
     >
       <div
-        class="emotion-0"
+        class="fui-Card emotion-1 ___19k834s_1teyidu f1p9o1ba f1sil6mw fifeqxg f899z7z f4h3tyx f18ur2pz f1lplnzb f10m5gbb fhftqfp f1k04kkk fxsr4vj fcvsdzp f22iagw f10pi13n f1ewtqcl f19n0e5 f1mdlcz9 frwkxtg f1n6gb5g f15yvnhg fo72kxq f13zj6fq f1nwj1ja f8rth92 flthirb f1lh990p ftkbnf5 f6czdpx f13hvwk3 f1i1u9k0 f1en4csx f1qnomq5 f2fl922 f1anhtl f1n2zcl3 f16v3d5c f1su8t2g f1vx9l62 fobhde4 fx5r7kn f19chtn8 fuvs6re fy4glsf frsmuga fuldkky fxugw4r f1whvlc6 f16gxe2i fpgykix f1osi826 fzybk4o ftqa4ok f2hkw1w f8hki3x f1d2448m f1bjia2o ffh67wi f15bsgw9 f14e48fq f18yb2kv fd6o370 fh1cnn4 fy7oxxb fpukqih f184ne2d f99gebs f13b0oaq f1jvq617 f8t2bz6 f11unbnk fbd201q f12nqxso f1uguk4w f1dvezut fd0oaoj fjvm52t f1cwg4i8 f15fr7a0 fwsq40z f34ld9f fy0y4wt"
+        role="listitem"
       >
         <div
-          class="fui-Card emotion-1 ___19k834s_1teyidu f1p9o1ba f1sil6mw fifeqxg f899z7z f4h3tyx f18ur2pz f1lplnzb f10m5gbb fhftqfp f1k04kkk fxsr4vj fcvsdzp f22iagw f10pi13n f1ewtqcl f19n0e5 f1mdlcz9 frwkxtg f1n6gb5g f15yvnhg fo72kxq f13zj6fq f1nwj1ja f8rth92 flthirb f1lh990p ftkbnf5 f6czdpx f13hvwk3 f1i1u9k0 f1en4csx f1qnomq5 f2fl922 f1anhtl f1n2zcl3 f16v3d5c f1su8t2g f1vx9l62 fobhde4 fx5r7kn f19chtn8 fuvs6re fy4glsf frsmuga fuldkky fxugw4r f1whvlc6 f16gxe2i fpgykix f1osi826 fzybk4o ftqa4ok f2hkw1w f8hki3x f1d2448m f1bjia2o ffh67wi f15bsgw9 f14e48fq f18yb2kv fd6o370 fh1cnn4 fy7oxxb fpukqih f184ne2d f99gebs f13b0oaq f1jvq617 f8t2bz6 f11unbnk fbd201q f12nqxso f1uguk4w f1dvezut fd0oaoj fjvm52t f1cwg4i8 f15fr7a0 fwsq40z f34ld9f fy0y4wt"
-          role="listitem"
+          class="emotion-2"
         >
           <div
-            class="emotion-2"
+            data-testid="AvatarIcon"
+          />
+          <div
+            class="emotion-3"
           >
             <div
-              data-testid="AvatarIcon"
-            />
-            <div
-              class="emotion-3"
+              class="emotion-4"
             >
-              <div
-                class="emotion-4"
-              >
-                <div
-                  class="emotion-5"
-                >
-                  <span
-                    class="fui-Text emotion-6 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
-                    role="button"
-                  >
-                    <span
-                      class="fui-Text emotion-7 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
-                    >
-                      HR Taskforce
-                    </span>
-                  </span>
-                </div>
-                <div
-                  data-testid="SensitivityLabel"
-                />
-                <div
-                  data-testid="VisibilityIcon"
-                />
-              </div>
               <div
                 class="emotion-5"
               >
-                Welcome to the HR Taskforce team.
+                <span
+                  class="fui-Text emotion-6 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
+                  role="button"
+                >
+                  <span
+                    class="fui-Text emotion-7 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
+                  >
+                    HR Taskforce
+                  </span>
+                </span>
               </div>
               <div
-                class="emotion-9"
-              >
-                <div
-                  data-testid="ChannelMenuItem"
-                />
-                <div
-                  data-testid="MemberMenuItem"
-                />
-                <div
-                  data-testid="DriveMenuItem"
-                />
-                <div
-                  data-testid="CalendarMenuItem"
-                />
-              </div>
+                data-testid="SensitivityLabel"
+              />
+              <div
+                data-testid="VisibilityIcon"
+              />
+            </div>
+            <div
+              class="emotion-5"
+            >
+              Welcome to the HR Taskforce team.
+            </div>
+            <div
+              class="emotion-9"
+            >
+              <div
+                data-testid="ChannelMenuItem"
+              />
+              <div
+                data-testid="MemberMenuItem"
+              />
+              <div
+                data-testid="DriveMenuItem"
+              />
+              <div
+                data-testid="CalendarMenuItem"
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</body>
+</DocumentFragment>
 `;

@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import IntlProvider from '../../../providers/IntlProvider';
 import ThemeProvider from '../../../providers/ThemeProvider';
@@ -17,12 +17,12 @@ import EmptyPanel from './EmptyPanel.presenter';
 
 test('create shapshot', async () => {
   const params = {};
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <ThemeProvider>
         <EmptyPanel {...params} />
       </ThemeProvider>
     </IntlProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });

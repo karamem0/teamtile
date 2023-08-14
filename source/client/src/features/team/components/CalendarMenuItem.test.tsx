@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import IntlProvider from '../../../providers/IntlProvider';
 
@@ -18,22 +18,22 @@ test('create shapshot of when loading is true', async () => {
   const params = {
     loading: true
   };
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <CalendarMenuItem {...params} />
     </IntlProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });
 
 test('create shapshot of when loading is false', async () => {
   const params = {
     loading: false
   };
-  render(
+  const { asFragment } = render(
     <IntlProvider>
       <CalendarMenuItem {...params} />
     </IntlProvider>
   );
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });

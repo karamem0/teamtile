@@ -1,48 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`create shapshot of when url is not undefined 1`] = `
-<body>
-  <div>
+<DocumentFragment>
+  <span
+    aria-label="HR Taskforce"
+    class="fui-Avatar r81b29z"
+    id="avatar-r1"
+    role="img"
+  >
     <span
-      aria-label="HR Taskforce"
-      class="fui-Avatar r81b29z"
-      id="avatar-r1"
-      role="img"
+      class="fui-Avatar__initials rip04v ___1d63l1f_wwkuc90 f11d4kpn f18f03hv"
+      id="avatar-r1__initials"
     >
-      <span
-        class="fui-Avatar__initials rip04v ___1d63l1f_wwkuc90 f11d4kpn f18f03hv"
-        id="avatar-r1__initials"
-      >
-        HT
-      </span>
-      <img
-        alt=""
-        aria-hidden="true"
-        class="fui-Avatar__image r136dc0n ___1d63l1f_wwkuc90 f11d4kpn f18f03hv"
-        role="presentation"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII="
-      />
+      HT
     </span>
-  </div>
-</body>
+    <img
+      alt=""
+      aria-hidden="true"
+      class="fui-Avatar__image r136dc0n ___1d63l1f_wwkuc90 f11d4kpn f18f03hv"
+      role="presentation"
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII="
+    />
+  </span>
+</DocumentFragment>
 `;
 
 exports[`create shapshot of when url is undefined 1`] = `
-<body>
-  <div>
+<DocumentFragment>
+  <span
+    aria-label="HR Taskforce"
+    class="fui-Avatar r81b29z"
+    id="avatar-r0"
+    role="img"
+  >
     <span
-      aria-label="HR Taskforce"
-      class="fui-Avatar r81b29z"
-      id="avatar-r0"
-      role="img"
+      class="fui-Avatar__initials rip04v ___1d63l1f_wwkuc90 f11d4kpn f18f03hv"
+      id="avatar-r0__initials"
     >
-      <span
-        class="fui-Avatar__initials rip04v ___1d63l1f_wwkuc90 f11d4kpn f18f03hv"
-        id="avatar-r0__initials"
-      >
-        HT
-      </span>
+      HT
     </span>
-  </div>
-</body>
+  </span>
+</DocumentFragment>
 `;

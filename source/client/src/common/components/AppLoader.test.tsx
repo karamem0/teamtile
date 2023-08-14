@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import AppLoader from './AppLoader.presenter';
 
@@ -17,8 +17,8 @@ test('create shapshot of when loading is true', async () => {
     children: <div data-testid="Children" />,
     loading: true
   };
-  render(<AppLoader {...params} />);
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  const { asFragment } = render(<AppLoader {...params} />);
+  expect(asFragment()).toMatchSnapshot();
 });
 
 test('create shapshot of when loading is false', async () => {
@@ -26,6 +26,6 @@ test('create shapshot of when loading is false', async () => {
     children: <div data-testid="Children" />,
     loading: false
   };
-  render(<AppLoader {...params} />);
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  const { asFragment } = render(<AppLoader {...params} />);
+  expect(asFragment()).toMatchSnapshot();
 });

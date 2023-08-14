@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`create shapshot of when loading is false 1`] = `
-.emotion-0 {
+<DocumentFragment>
+  .emotion-0 {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto auto;
@@ -22,44 +23,42 @@ exports[`create shapshot of when loading is false 1`] = `
   height: 1rem;
 }
 
-<body>
-  <div>
-    <span
-      aria-label="Open channel calendar"
-      class="fui-Text emotion-0 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
-      role="button"
+<span
+    aria-label="Open channel calendar"
+    class="fui-Text emotion-0 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
+    role="button"
+  >
+    <button
+      class="fui-Button rlr4yyk ___1eu6g8f_9i8vou0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 fwa4z56 fe5wyld ffrv2ww f1rnfj6r f9dg1pr f4xjyn1 f19ot1t3 fjaevkr f1yrt24w f1lym4af f11cxmw1 f9ddjv3 f1sbtcvk fwiuce9 fdghr9 f15vdbe4 fwbmr0d f44c6la"
+      type="button"
     >
-      <button
-        class="fui-Button ri7kuyr ___91x5cg0_tj6h1h0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk fwiuce9 fdghr9 f15vdbe4 fwbmr0d f44c6la"
-        type="button"
+      <span
+        class="fui-Button__icon rywnvv2"
       >
         <span
-          class="fui-Button__icon rywnvv2"
+          aria-hidden="true"
+          class="root_dd790ee3 emotion-1"
         >
-          <span
-            aria-hidden="true"
-            class="root_dd790ee3 emotion-1"
+          <svg
+            class="svg_dd790ee3"
+            focusable="false"
+            viewBox="0 0 2048 2048"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              class="svg_dd790ee3"
-              focusable="false"
-              viewBox="0 0 2048 2048"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M768 768h128v128H768V768zm384 768h128v128h-128v-128zm384-768h128v128h-128V768zm-384 0h128v128h-128V768zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zm1152 0h128v128h-128v-128zm-384 0h128v128h-128v-128zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zm1152 0h128v128h-128v-128zm-384 0h128v128h-128v-128zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zM2048 128v1792H0V128h384V0h128v128h1024V0h128v128h384zM128 256v256h1792V256h-256v128h-128V256H512v128H384V256H128zm1792 1536V640H128v1152h1792z"
-              />
-            </svg>
-          </span>
+            <path
+              d="M768 768h128v128H768V768zm384 768h128v128h-128v-128zm384-768h128v128h-128V768zm-384 0h128v128h-128V768zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zm1152 0h128v128h-128v-128zm-384 0h128v128h-128v-128zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zm1152 0h128v128h-128v-128zm-384 0h128v128h-128v-128zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zM2048 128v1792H0V128h384V0h128v128h1024V0h128v128h384zM128 256v256h1792V256h-256v128h-128V256H512v128H384V256H128zm1792 1536V640H128v1152h1792z"
+            />
+          </svg>
         </span>
-      </button>
-    </span>
-  </div>
-</body>
+      </span>
+    </button>
+  </span>
+</DocumentFragment>
 `;
 
 exports[`create shapshot of when loading is true 1`] = `
-.emotion-0 {
+<DocumentFragment>
+  .emotion-0 {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto auto;
@@ -80,38 +79,35 @@ exports[`create shapshot of when loading is true 1`] = `
   height: 1rem;
 }
 
-<body>
-  <div>
-    <span
-      aria-label="Open channel calendar"
-      class="fui-Text emotion-0 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
-      role="button"
+<span
+    aria-label="Open channel calendar"
+    class="fui-Text emotion-0 ___nzdt000_bc09y70 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649"
+    role="button"
+  >
+    <button
+      class="fui-Button rlr4yyk ___1eu6g8f_9i8vou0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 fwa4z56 fe5wyld ffrv2ww f1rnfj6r f9dg1pr f4xjyn1 f19ot1t3 fjaevkr f1yrt24w f1lym4af f11cxmw1 f9ddjv3 f1sbtcvk fwiuce9 fdghr9 f15vdbe4 fwbmr0d f44c6la"
+      type="button"
     >
-      <button
-        class="fui-Button ri7kuyr ___91x5cg0_tj6h1h0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1sbtcvk fwiuce9 fdghr9 f15vdbe4 fwbmr0d f44c6la"
-        type="button"
+      <span
+        class="fui-Button__icon rywnvv2"
       >
         <span
-          class="fui-Button__icon rywnvv2"
+          aria-hidden="true"
+          class="root_dd790ee3 emotion-1"
         >
-          <span
-            aria-hidden="true"
-            class="root_dd790ee3 emotion-1"
+          <svg
+            class="svg_dd790ee3"
+            focusable="false"
+            viewBox="0 0 2048 2048"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              class="svg_dd790ee3"
-              focusable="false"
-              viewBox="0 0 2048 2048"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M768 768h128v128H768V768zm384 768h128v128h-128v-128zm384-768h128v128h-128V768zm-384 0h128v128h-128V768zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zm1152 0h128v128h-128v-128zm-384 0h128v128h-128v-128zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zm1152 0h128v128h-128v-128zm-384 0h128v128h-128v-128zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zM2048 128v1792H0V128h384V0h128v128h1024V0h128v128h384zM128 256v256h1792V256h-256v128h-128V256H512v128H384V256H128zm1792 1536V640H128v1152h1792z"
-              />
-            </svg>
-          </span>
+            <path
+              d="M768 768h128v128H768V768zm384 768h128v128h-128v-128zm384-768h128v128h-128V768zm-384 0h128v128h-128V768zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zm1152 0h128v128h-128v-128zm-384 0h128v128h-128v-128zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zm1152 0h128v128h-128v-128zm-384 0h128v128h-128v-128zm-384 256h128v128H768v-128zm-384 0h128v128H384v-128zM2048 128v1792H0V128h384V0h128v128h1024V0h128v128h384zM128 256v256h1792V256h-256v128h-128V256H512v128H384V256H128zm1792 1536V640H128v1152h1792z"
+            />
+          </svg>
         </span>
-      </button>
-    </span>
-  </div>
-</body>
+      </span>
+    </button>
+  </span>
+</DocumentFragment>
 `;

@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import TeamPanel from './TeamPanel.presenter';
 
@@ -23,6 +23,6 @@ jest.mock('./TeamGrid', () =>
 
 test('create shapshot', async () => {
   const params = {};
-  render(<TeamPanel {...params} />);
-  expect((await screen.findAllByText(/^.*$/))[0]).toMatchSnapshot();
+  const { asFragment } = render(<TeamPanel {...params} />);
+  expect(asFragment()).toMatchSnapshot();
 });
