@@ -45,7 +45,7 @@ exports[`create shapshot of when type is error 1`] = `
       </span>
       error
       <button
-        class="fui-Button rlr4yyk fui-Alert__action ___jw5j7g0_17p02te f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 fwa4z56 fe5wyld ffrv2ww f1rnfj6r f9dg1pr f4xjyn1 f19ot1t3 fjaevkr f1yrt24w f1lym4af f11cxmw1 f9ddjv3 f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
+        class="fui-Button r1alrhcs fui-Alert__action ___1vt4ohf_2gz9f00 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
         title="Dismiss"
         type="button"
       >
@@ -117,7 +117,7 @@ exports[`create shapshot of when type is success 1`] = `
       </span>
       success
       <button
-        class="fui-Button rlr4yyk fui-Alert__action ___jw5j7g0_17p02te f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 fwa4z56 fe5wyld ffrv2ww f1rnfj6r f9dg1pr f4xjyn1 f19ot1t3 fjaevkr f1yrt24w f1lym4af f11cxmw1 f9ddjv3 f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
+        class="fui-Button r1alrhcs fui-Alert__action ___1vt4ohf_2gz9f00 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
         title="Dismiss"
         type="button"
       >
@@ -189,7 +189,7 @@ exports[`create shapshot of when type is warning 1`] = `
       </span>
       warning
       <button
-        class="fui-Button rlr4yyk fui-Alert__action ___jw5j7g0_17p02te f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 fwa4z56 fe5wyld ffrv2ww f1rnfj6r f9dg1pr f4xjyn1 f19ot1t3 fjaevkr f1yrt24w f1lym4af f11cxmw1 f9ddjv3 f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
+        class="fui-Button r1alrhcs fui-Alert__action ___1vt4ohf_2gz9f00 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
         title="Dismiss"
         type="button"
       >

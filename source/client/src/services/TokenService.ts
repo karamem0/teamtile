@@ -8,7 +8,7 @@
 
 import { authentication } from '@microsoft/teams-js';
 
-import decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 import { loginParams } from '../config/MsalConfig';
 
@@ -50,11 +50,11 @@ export function getCachedToken(): string | undefined {
   if (!token) {
     return;
   }
-  const jwt = decode(token) as Record<string, string>;
+  const jwt = jwtDecode(token);
   if (!jwt) {
     return;
   }
-  const exp = Number.parseInt(jwt.exp);
+  const exp = jwt.exp ?? 0;
   const now = Date.now();
   if (now >= exp * 1000) {
     return;
