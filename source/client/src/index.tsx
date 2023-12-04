@@ -13,8 +13,8 @@ import ReactDOM from 'react-dom/client';
 import { ErrorBoundary } from 'react-error-boundary';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { css, Global } from '@emotion/react';
-import ress from 'ress';
+import { css } from '@emotion/react';
+import 'ress';
 
 import AppLoader from './common/components/AppLoader';
 import Snackbar from './common/components/Snackbar';
@@ -35,58 +35,55 @@ import { inTeams } from './utils/Teams';
 const element = document.getElementById('root') as HTMLElement;
 const root = ReactDOM.createRoot(element);
 root.render(
-  <React.Fragment>
-    <Global styles={ress} />
-    <BrowserRouter>
-      <TelemetryProvider>
-        <IntlProvider>
-          <ThemeProvider>
-            <MsalProvider>
-              <ErrorBoundary fallbackRender={(props) => <Error500Page {...props} />}>
-                <Routes>
-                  {
-                    inTeams() ? (
-                      <Route
-                        path="/"
-                        element={(
-                          <div
-                            css={css`
-                              padding: 0.5rem;
-                              @media (width >= 600px) {
-                                padding: 1rem;
-                              }
-                            `}>
-                            <ReducerProvider>
-                              <SnackbarProvider>
-                                <Snackbar />
-                                <AppLoader>
-                                  <TeamPage />
-                                </AppLoader>
-                              </SnackbarProvider>
-                            </ReducerProvider>
-                          </div>
-                        )} />
-                    ) : (
-                      <Route
-                        element={<HomePage />}
-                        path="/" />
-                    )
-                  }
-                  <Route
-                    element={<LoginRedirectPage />}
-                    path="/auth/login" />
-                  <Route
-                    element={<LoginCallbackPage />}
-                    path="/auth/callback" />
-                  <Route
-                    element={<Error404Page />}
-                    path="*" />
-                </Routes>
-              </ErrorBoundary>
-            </MsalProvider>
-          </ThemeProvider>
-        </IntlProvider>
-      </TelemetryProvider>
-    </BrowserRouter>
-  </React.Fragment>
+  <BrowserRouter>
+    <TelemetryProvider>
+      <IntlProvider>
+        <ThemeProvider>
+          <MsalProvider>
+            <ErrorBoundary fallbackRender={(props) => <Error500Page {...props} />}>
+              <Routes>
+                {
+                  inTeams() ? (
+                    <Route
+                      path="/"
+                      element={(
+                        <div
+                          css={css`
+                            padding: 0.5rem;
+                            @media (width >= 600px) {
+                              padding: 1rem;
+                            }
+                          `}>
+                          <ReducerProvider>
+                            <SnackbarProvider>
+                              <Snackbar />
+                              <AppLoader>
+                                <TeamPage />
+                              </AppLoader>
+                            </SnackbarProvider>
+                          </ReducerProvider>
+                        </div>
+                      )} />
+                  ) : (
+                    <Route
+                      element={<HomePage />}
+                      path="/" />
+                  )
+                }
+                <Route
+                  element={<LoginRedirectPage />}
+                  path="/auth/login" />
+                <Route
+                  element={<LoginCallbackPage />}
+                  path="/auth/callback" />
+                <Route
+                  element={<Error404Page />}
+                  path="*" />
+              </Routes>
+            </ErrorBoundary>
+          </MsalProvider>
+        </ThemeProvider>
+      </IntlProvider>
+    </TelemetryProvider>
+  </BrowserRouter>
 );
