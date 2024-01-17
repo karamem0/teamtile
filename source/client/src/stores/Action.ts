@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -14,6 +14,11 @@ import {
 
 export const setFilter = (payload?: string): Action => ({
   type: ActionType.setFilter,
+  payload
+});
+
+export const setItem = (payload?: Item): Action => ({
+  type: ActionType.setItem,
   payload
 });
 

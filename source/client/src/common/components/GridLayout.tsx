@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -14,7 +14,7 @@ interface GridLayoutProps {
   children?: React.ReactNode
 }
 
-function GridLayout(props: GridLayoutProps) {
+function GridLayout(props: Readonly<GridLayoutProps>) {
 
   const { children } = props;
 

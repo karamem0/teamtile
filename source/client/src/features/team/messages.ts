@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -9,17 +9,22 @@
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
+  AllTeams: { defaultMessage: 'All teams' },
+  ArchivedTeams: { defaultMessage: 'Archived teams' },
   Channels: { defaultMessage: 'Channels' },
   Members: { defaultMessage: 'Members' },
-  NoItemsFoundDescription1: { defaultMessage: 'It looks like you are not a member of any teams.' },
-  NoItemsFoundDescription2: { defaultMessage: 'There are no items matching the keyword.' },
-  NoItemsFoundTitle: { defaultMessage: 'No items found' },
+  NoTeamsFound: { defaultMessage: 'No teams found.' },
+  NoTeamsFoundTitle: { defaultMessage: 'No teams found' },
+  NoTeamsFoundDescription: { defaultMessage: 'It looks like you are not a member of any teams.' },
   OpenChannelCalendar: { defaultMessage: 'Open channel calendar' },
   OpenInSharePoint: { defaultMessage: 'Open in SharePoint' },
   OperationNotSupported: { defaultMessage: 'This operation is not supported on this device.' },
+  Pin: { defaultMessage: 'Pin' },
+  PinnedTeams: { defaultMessage: 'Pinned teams' },
   Private: { defaultMessage: 'Private' },
   Public: { defaultMessage: 'Public' },
   Reload: { defaultMessage: 'Reload' },
+  Unpin: { defaultMessage: 'Unpin' },
   ViewChannels: { defaultMessage: 'View channels' },
   ViewMembers: { defaultMessage: 'View members' }
 });

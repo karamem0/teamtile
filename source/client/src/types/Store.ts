@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -15,6 +15,7 @@ export interface Action {
 
 export enum ActionType {
   setFilter = 'setFilter',
+  setItem = 'setItem',
   setItems = 'setItems',
   setLoading = 'setLoading'
 }
@@ -23,8 +24,9 @@ export type DispatchAction<T> = (payload: T) => void;
 
 export type Item = {
   id: string,
-  value: Group & Team,
   loading?: boolean,
+  pinned?: boolean,
+  value: Group & Team,
   visible?: boolean
 };
 

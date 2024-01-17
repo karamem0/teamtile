@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -10,6 +10,7 @@ import React from 'react';
 
 import {
   setFilter,
+  setItem,
   setItems,
   setLoading
 } from '../stores/Action';
@@ -19,6 +20,7 @@ import { DispatchAction, Item, State } from '../types/Store';
 interface ReducerContextProps {
   dispatchers: {
     setFilter: DispatchAction<string | undefined>,
+    setItem: DispatchAction<Item | undefined>,
     setItems: DispatchAction<Item[] | undefined>,
     setLoading: DispatchAction<boolean | undefined>
   },
@@ -29,7 +31,7 @@ const ReducerContext = React.createContext<ReducerContextProps | undefined>(unde
 
 export const useReducer = (): ReducerContextProps => {
   const value = React.useContext(ReducerContext);
-  if (!value) {
+  if (value == null) {
     throw new Error('The context is not initialzed: ReducerContext');
   }
   return value;
@@ -39,17 +41,19 @@ interface ReducerProviderProps {
   children?: React.ReactNode
 }
 
-function ReducerProvider(props: ReducerProviderProps) {
+function ReducerProvider(props: Readonly<ReducerProviderProps>) {
 
   const { children } = props;
 
   const [ state, dispatch ] = React.useReducer(reducer, {});
 
-  const dispatchers = React.useMemo(() => ({
-    setFilter: (payload?: string) => dispatch(setFilter(payload)),
-    setItems: (payload?: Item[]) => dispatch(setItems(payload)),
-    setLoading: (payload?: boolean) => dispatch(setLoading(payload))
-  }), []);
+  const dispatchers = React.useMemo(
+    () => ({
+      setFilter: (payload?: string) => dispatch(setFilter(payload)),
+      setItem: (payload?: Item) => dispatch(setItem(payload)),
+      setItems: (payload?: Item[]) => dispatch(setItems(payload)),
+      setLoading: (payload?: boolean) => dispatch(setLoading(payload))
+    }), []);
 
   return (
     <ReducerContext.Provider

@@ -1,22 +1,39 @@
 on:
   push:
     branches:
+      - main
       - develop
 
 env:
-  BUILD_VERSION: '2.0.7'
+  BUILD_VERSION: '2.1.0'
 
 jobs:
-  build-source:
+  select-environment:
     runs-on: windows-latest
-    environment: development
+    steps:
+      - name: Select environment from branch name
+        id: select-environment
+        shell: pwsh
+        run: |
+          if ("${{github.ref}}" -eq "refs/heads/main") {
+            Write-Output "env-name=production" >> $env:GITHUB_OUTPUT
+          }
+          if ("${{github.ref}}" -eq "refs/heads/develop") {
+            Write-Output "env-name=development" >> $env:GITHUB_OUTPUT
+          }
+    outputs:
+      env-name: ${{steps.select-environment.outputs.env-name}}
+  build-source:
+    needs: select-environment
+    runs-on: windows-latest
+    environment: ${{needs.select-environment.outputs.env-name}}
     steps:
       - name: Checkout repos
         uses: actions/checkout@v3
-      - name: Setup Node.js 18.x
+      - name: Setup Node.js 20.x
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 20.x
       - name: Update .env
         shell: pwsh
         run: |
@@ -41,12 +58,18 @@ jobs:
       - name: Test client
         run: npm run test:ci
         working-directory: source/client
-      - name: Publish test results
+      - name: Upload client test results
         uses: enricomi/publish-unit-test-result-action/composite@v2
         if: always()
         with:
-          junit_files: source/client/coverage/junit.xml
-          check_name: test results
+          files: source/client/coverage/junit.xml
+          check_name: client-test-results
+      - name: Upload client coverage reports
+        uses: codecov/codecov-action@v3
+        if: always()
+        env:
+          token: ${{secrets.CODECOV_TOKEN}}
+          files: source/client/coverage/clover.xml
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
         with:
@@ -54,11 +77,21 @@ jobs:
       - name: Restore server
         run: dotnet restore
         working-directory: source/server
+      - name: Test server
+        id: test-server
+        run: dotnet test -- NUnit.TestOutputXml=../../../../coverage
+        working-directory: source/server
+      - name: Upload server test results
+        uses: enricomi/publish-unit-test-result-action/composite@v2
+        if: always()
+        with:
+          files: source/server/coverage/*.xml
+          check_name: server-test-results
       - name: Build server
         run: |
-          dotnet publish `
+          dotnet publish Karamem0.Teamtile/Karamem0.Teamtile.csproj `
             -c Release `
-            -p:PublishDir=build `
+            -p:PublishDir=../build `
             -p:Version=${{env.BUILD_VERSION}}.${{github.run_number}} `
             -p:FileVersion=${{env.BUILD_VERSION}}.${{github.run_number}}
         working-directory: source/server
@@ -68,8 +101,9 @@ jobs:
           name: teamtile-build
           path: source/server/build
   build-manifest:
+    needs: select-environment
     runs-on: windows-latest
-    environment: development
+    environment: ${{needs.select-environment.outputs.env-name}}
     steps:
       - name: Checkout repos
         uses: actions/checkout@v3
@@ -87,9 +121,11 @@ jobs:
           name: teamtile-manifest
           path: manifest
   deploy-source:
-    needs: build-source
+    needs:
+      - select-environment
+      - build-source
     runs-on: windows-latest
-    environment: development
+    environment: ${{needs.select-environment.outputs.env-name}}
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v3

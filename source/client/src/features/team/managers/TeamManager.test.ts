@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -12,7 +12,8 @@ import {
   getChannels,
   getDrive,
   getMembers,
-  getTab
+  getTab,
+  setPin
 } from './TeamManager';
 
 jest.mock('../services/TeamService');
@@ -39,8 +40,8 @@ test('get channels from cache', async () => {
   mockGraph.mockResolvedValue(undefined);
   const actual = await getChannels(params.teamId);
   expect(actual).not.toBeUndefined();
-  expect(mockCache).toBeCalled();
-  expect(mockGraph).not.toBeCalled();
+  expect(mockCache).toHaveBeenCalled();
+  expect(mockGraph).not.toHaveBeenCalled();
 });
 
 test('get channels from graph', async () => {
@@ -61,8 +62,8 @@ test('get channels from graph', async () => {
   mockGraph.mockResolvedValue(params.values);
   const actual = await getChannels(params.teamId);
   expect(actual).not.toBeUndefined();
-  expect(mockCache).toBeCalled();
-  expect(mockGraph).toBeCalled();
+  expect(mockCache).toHaveBeenCalled();
+  expect(mockGraph).toHaveBeenCalled();
 });
 
 test('get drive from cache', async () => {
@@ -79,8 +80,8 @@ test('get drive from cache', async () => {
   mockGraph.mockResolvedValue(undefined);
   const actual = await getDrive(params.teamId);
   expect(actual).not.toBeUndefined();
-  expect(mockCache).toBeCalled();
-  expect(mockGraph).not.toBeCalled();
+  expect(mockCache).toHaveBeenCalled();
+  expect(mockGraph).not.toHaveBeenCalled();
 });
 
 test('get drive from graph', async () => {
@@ -97,8 +98,8 @@ test('get drive from graph', async () => {
   mockGraph.mockResolvedValue(params.value);
   const actual = await getDrive(params.teamId);
   expect(actual).not.toBeUndefined();
-  expect(mockCache).toBeCalled();
-  expect(mockGraph).toBeCalled();
+  expect(mockCache).toHaveBeenCalled();
+  expect(mockGraph).toHaveBeenCalled();
 });
 
 test('get members from cache', async () => {
@@ -123,8 +124,8 @@ test('get members from cache', async () => {
   mockGraphIcons.mockResolvedValue(params.values);
   const actual = await getMembers(params.teamId);
   expect(actual).not.toBeUndefined();
-  expect(mockCache).toBeCalled();
-  expect(mockGraph).not.toBeCalled();
+  expect(mockCache).toHaveBeenCalled();
+  expect(mockGraph).not.toHaveBeenCalled();
 });
 
 test('get members from graph', async () => {
@@ -149,8 +150,8 @@ test('get members from graph', async () => {
   mockGraphIcons.mockResolvedValue(params.values);
   const actual = await getMembers(params.teamId);
   expect(actual).not.toBeUndefined();
-  expect(mockCache).toBeCalled();
-  expect(mockGraph).toBeCalled();
+  expect(mockCache).toHaveBeenCalled();
+  expect(mockGraph).toHaveBeenCalled();
 });
 
 test('get tab', async () => {
@@ -171,5 +172,19 @@ test('get tab', async () => {
   mockGraph.mockResolvedValue(params.values);
   const actual = await getTab(params.teamId, params.channelId, params.appId);
   expect(actual).not.toBeUndefined();
-  expect(mockGraph).toBeCalled();
+  expect(mockGraph).toHaveBeenCalled();
+});
+
+test('set pin', async () => {
+  const params = {
+    teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+    pinned: true
+  };
+  const expected = {
+    teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+    pinned: true
+  };
+  const mock = teamService.setPin as unknown as jest.Mock;
+  await setPin(params.teamId, params.pinned);
+  expect(mock).toHaveBeenCalledWith(expected.teamId, expected.pinned);
 });

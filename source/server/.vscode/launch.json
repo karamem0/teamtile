@@ -6,9 +6,9 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/bin/Debug/net7.0/Karamem0.Teamtile.dll",
+      "program": "${workspaceFolder}/Karamem0.Teamtile/bin/Debug/net7.0/Karamem0.Teamtile.dll",
       "args": [],
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/Karamem0.Teamtile",
       "stopAtEntry": false,
       "serverReadyAction": {
         "action": "openExternally",
@@ -16,9 +16,6 @@
       },
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "sourceFileMap": {
-        "/Views": "${workspaceFolder}/Views"
       }
     },
     {

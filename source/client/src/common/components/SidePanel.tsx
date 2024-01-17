@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -19,7 +19,7 @@ interface SidePanelProps {
   onOpenChange?: EventHandler<boolean>
 }
 
-function SidePanel(props: SidePanelProps) {
+function SidePanel(props: Readonly<SidePanelProps>) {
 
   const {
     children,
@@ -31,7 +31,7 @@ function SidePanel(props: SidePanelProps) {
   const [ open, setOpen ] = React.useState<boolean>(false);
 
   const handleOpenChange = React.useCallback((e?: Event, data?: boolean) => {
-    setOpen(data || false);
+    setOpen(data ?? false);
     onOpenChange?.(e, data);
   }, [ onOpenChange ]);
 

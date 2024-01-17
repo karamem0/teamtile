@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -10,6 +10,8 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import ThemeProvider from '../../providers/ThemeProvider';
+
 import SidePanel from './SidePanel.presenter';
 
 test('create shapshot', async () => {
@@ -18,6 +20,10 @@ test('create shapshot', async () => {
     content: <div data-testid="Content" />,
     title: <div data-testid="Title" />
   };
-  const { asFragment } = render(<SidePanel {...params} />);
+  const { asFragment } = render(
+    <ThemeProvider>
+      <SidePanel {...params} />
+    </ThemeProvider>
+  );
   expect(asFragment()).toMatchSnapshot();
 });

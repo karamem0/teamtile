@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -36,20 +36,29 @@ namespace Karamem0.Teamtile.Controllers
         public TokenController(IHttpClientFactory httpClientFactory, IConfiguration configuration)
         {
             this.httpClient = httpClientFactory.CreateClient();
-            this.identityOptions = configuration.GetSection("AzureAD").Get<MicrosoftIdentityOptions>();
+            this.identityOptions = configuration.GetSection("AzureAD").Get<MicrosoftIdentityOptions>()
+                ?? throw new ArgumentNullException(nameof(configuration));
         }
 
         [HttpPost()]
         public async Task<IActionResult> PostAsync([FromBody] TokenRequest request)
         {
-            var authorizationHeader = this.Request.Headers["Authorization"].ToString().Split(" ");
+            var authorizationHeader = this.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ");
+            if (authorizationHeader is null)
+            {
+                return this.StatusCode((int)HttpStatusCode.Unauthorized);
+            }
+            if (authorizationHeader[0] is not "Bearer")
+            {
+                return this.StatusCode((int)HttpStatusCode.Unauthorized);
+            }
             var clientToken = authorizationHeader[1];
             var jwtToken = new JsonWebToken(clientToken);
             var tenantId = jwtToken.GetPayloadValue<string>("tid");
             var httpRequestUri = $"https://login.microsoft.com/{tenantId}/oauth2/v2.0/token";
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, httpRequestUri)
             {
-                Content = new FormUrlEncodedContent(new Dictionary<string, string>()
+                Content = new FormUrlEncodedContent(new Dictionary<string, string?>()
                 {
                     ["grant_type"] = "urn:ietf:params:oauth:grant-type:jwt-bearer",
                     ["client_id"] = this.identityOptions.ClientId,
@@ -61,27 +70,25 @@ namespace Karamem0.Teamtile.Controllers
             };
             var httpResponseMessage = await this.httpClient.SendAsync(httpRequestMessage);
             var httpResponseContent = await httpResponseMessage.Content.ReadAsStringAsync();
-            var httpResponseJson = JsonSerializer.Deserialize<Dictionary<string, object>>(httpResponseContent);
+            var httpResponseJson = JsonSerializer.Deserialize<Dictionary<string, object?>>(httpResponseContent);
             if (httpResponseMessage.IsSuccessStatusCode)
             {
-                var serverToken = httpResponseJson["access_token"].ToString();
                 return this.Ok(new TokenResponse()
                 {
-                    Token = serverToken,
+                    Token = httpResponseJson?["access_token"]?.ToString()
                 });
             }
             else
             {
-                var errorCode = httpResponseJson["error"].ToString();
-                var errorDescription = httpResponseJson["error_description"].ToString();
-                if (errorCode is "invalid_grant" or "interaction_required")
+                if (httpResponseJson?["error"]?.ToString() is "invalid_grant" or "interaction_required")
                 {
                     return this.StatusCode(
                         (int)HttpStatusCode.Forbidden,
                         new TokenResponse()
                         {
-                            Error = errorDescription,
-                        });
+                            Error = httpResponseJson?["error_description"]?.ToString()
+                        }
+                    );
                 }
                 else
                 {
@@ -89,8 +96,9 @@ namespace Karamem0.Teamtile.Controllers
                         (int)HttpStatusCode.InternalServerError,
                         new TokenResponse()
                         {
-                            Error = errorDescription,
-                        });
+                            Error = httpResponseJson?["error_description"]?.ToString()
+                        }
+                    );
                 }
             }
         }

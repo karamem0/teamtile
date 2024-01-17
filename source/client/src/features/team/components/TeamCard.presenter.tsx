@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -26,6 +26,7 @@ import CalendarMenuItem from './CalendarMenuItem';
 import ChannelMenuItem from './ChannelMenuItem';
 import DriveMenuItem from './DriveMenuItem';
 import MemberMenuItem from './MemberMenuItem';
+import PinMenuItem from './PinMenuItem';
 import SensitivityLabel from './SensitivityLabel';
 import VisibilityIcon from './VisibilityIcon';
 
@@ -34,7 +35,7 @@ interface TeamCardProps {
   onClick?: EventHandler
 }
 
-function TeamCard(props: TeamCardProps) {
+function TeamCard(props: Readonly<TeamCardProps>) {
 
   const {
     item,
@@ -151,7 +152,7 @@ function TeamCard(props: TeamCardProps) {
                 css={css`
                   display: grid;
                   grid-template-rows: auto;
-                  grid-template-columns: auto auto auto auto;
+                  grid-template-columns: auto auto auto auto auto;
                   align-items: center;
                   justify-content: left;
                 `}>
@@ -159,6 +160,7 @@ function TeamCard(props: TeamCardProps) {
                 <MemberMenuItem item={item} />
                 <DriveMenuItem item={item} />
                 <CalendarMenuItem item={item} />
+                <PinMenuItem item={item} />
               </div>
             </div>
           </div>

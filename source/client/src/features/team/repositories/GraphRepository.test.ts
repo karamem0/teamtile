@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -59,7 +59,7 @@ test('get channels', async () => {
     }
   });
   const actual = await getChannels(params.teamId);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -86,7 +86,7 @@ test('get drive', async () => {
     }
   });
   const actual = await getDrive(params.teamId);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -129,7 +129,7 @@ test('get groups', async () => {
     }
   });
   const actual = await getGroups();
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -165,7 +165,7 @@ test('get member icons', async () => {
     }
   });
   const actual = await getMemberIcons(params.userIds);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -202,7 +202,7 @@ test('get members', async () => {
     }
   });
   const actual = await getMembers(params.teamId);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -242,7 +242,7 @@ test('get tabs', async () => {
     }
   });
   const actual = await getTabs(params.teamId, params.channelId);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -278,7 +278,7 @@ test('get team icons', async () => {
     }
   });
   const actual = await getTeamIcons(params.teamIds);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -295,6 +295,7 @@ test('get teams', async () => {
             displayName: 'HR Taskforce',
             description: 'Welcome to the HR Taskforce team.',
             internalId: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
+            isArchived: false,
             visibility: 'private',
             webUrl: 'https://teams.microsoft.com/l/team/19:09fc54a3141a45d0bc769cf506d2e079%40thread.skype/conversations?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
           })
@@ -305,6 +306,7 @@ test('get teams', async () => {
   const expected = [
     {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      archived: false,
       displayName: 'HR Taskforce',
       description: 'Welcome to the HR Taskforce team.',
       internalId: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
@@ -322,6 +324,6 @@ test('get teams', async () => {
     }
   });
   const actual = await getTeams(params.teamIds);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });

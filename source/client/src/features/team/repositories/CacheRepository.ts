@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -7,7 +7,11 @@
 //
 
 import { getConfig } from '../../../config/CacheConfig';
-import { ArrayEntity, ValueEntity } from '../../../types/Dexie';
+import {
+  ArrayEntity,
+  Entity,
+  ValueEntity
+} from '../../../types/Dexie';
 import {
   Channel,
   Drive,
@@ -18,7 +22,13 @@ import {
 
 export async function clearAll(): Promise<void> {
   const { database } = getConfig();
-  await Promise.all(database.tables.map((table) => table.clear()));
+  await Promise.all([
+    database.table('channels').clear(),
+    database.table('drives').clear(),
+    database.table('icons').clear(),
+    database.table('members').clear(),
+    database.table('teams').clear()
+  ]);
 }
 
 export async function getChannels(id: string, expired?: boolean, timestamp = Date.now()): Promise<Channel[] | undefined> {
@@ -26,7 +36,7 @@ export async function getChannels(id: string, expired?: boolean, timestamp = Dat
   return await database.table<ArrayEntity<Channel>>('channels')
     .get(id)
     .then((item) => {
-      if (!item) {
+      if (item == null) {
         return undefined;
       }
       switch (expired) {
@@ -61,7 +71,7 @@ export async function getDrive(id: string, expired?: boolean, timestamp = Date.n
   return await database.table<ValueEntity<Drive>>('drives')
     .get(id)
     .then((item) => {
-      if (!item) {
+      if (item == null) {
         return undefined;
       }
       switch (expired) {
@@ -96,7 +106,7 @@ export async function getIcon(id: string, expired?: boolean, timestamp = Date.no
   return await database.table<ValueEntity<Icon>>('icons')
     .get(id)
     .then((item) => {
-      if (!item) {
+      if (item == null) {
         return undefined;
       }
       switch (expired) {
@@ -132,7 +142,7 @@ export async function getMembers(id: string, expired?: boolean, timestamp = Date
   return await database.table<ArrayEntity<Member>>('members')
     .get(id)
     .then((item) => {
-      if (!item) {
+      if (item == null) {
         return undefined;
       }
       switch (expired) {
@@ -162,12 +172,26 @@ export async function setMembers(id: string, values: Member[], timestamp = Date.
   });
 }
 
+export async function getPin(id: string): Promise<Entity | undefined> {
+  const { database } = getConfig();
+  return await database.table<Entity>('pins').get(id);
+}
+
+export async function setPin(id: string, value: boolean): Promise<void> {
+  const { database } = getConfig();
+  if (value) {
+    await database.table<Entity>('pins').put({ id });
+  } else {
+    await database.table<Entity>('pins').delete(id);
+  }
+}
+
 export async function getTeam(id: string, expired?: boolean, timestamp = Date.now()): Promise<Team | undefined> {
   const { database } = getConfig();
   return await database.table<ValueEntity<Team>>('teams')
     .get(id)
     .then((item) => {
-      if (!item) {
+      if (item == null) {
         return undefined;
       }
       switch (expired) {

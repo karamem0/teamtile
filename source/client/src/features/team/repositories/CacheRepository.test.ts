@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -14,6 +14,7 @@ import {
   getDrive,
   getIcon,
   getMembers,
+  getPin,
   getTeam
 } from './CacheRepository';
 
@@ -28,15 +29,13 @@ test('clear all cache', async () => {
   const mock = jest.fn();
   getConfig.mockReturnValue({
     database: {
-      tables: [
-        {
-          clear: mock
-        }
-      ]
+      table: jest.fn().mockReturnValue({
+        clear: mock
+      })
     }
   });
   await clearAll();
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
 });
 
 test('get channels of when expired is false', async () => {
@@ -67,7 +66,7 @@ test('get channels of when expired is false', async () => {
     }
   });
   const actual = await getChannels(params.teamId, params.expired, params.timestamp);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -106,7 +105,7 @@ test('get channels of when expired is true', async () => {
     }
   });
   const actual = await getChannels(params.teamId, params.expired, params.timestamp);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -134,7 +133,7 @@ test('get drive of when expired is false', async () => {
     }
   });
   const actual = await getDrive(params.teamId, params.expired, params.timestamp);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -165,7 +164,7 @@ test('get drive of when expired is true', async () => {
     }
   });
   const actual = await getDrive(params.teamId, params.expired, params.timestamp);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -196,7 +195,7 @@ test('get icon of when expired is true', async () => {
     }
   });
   const actual = await getIcon(params.teamId, params.expired, params.timestamp);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -224,7 +223,7 @@ test('get icon of when expired is false', async () => {
     }
   });
   const actual = await getIcon(params.teamId, params.expired, params.timestamp);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -263,7 +262,7 @@ test('get members of when expired is true', async () => {
     }
   });
   const actual = await getMembers(params.teamId, params.expired, params.timestamp);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -295,7 +294,30 @@ test('get members of when expired is false', async () => {
     }
   });
   const actual = await getMembers(params.teamId, params.expired, params.timestamp);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
+  expect(actual).toStrictEqual(expected);
+});
+
+test('get pin', async () => {
+  const params = {
+    teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+    response: {
+      id: '02bd9fd6-8f93-4758-87c3-1fb73740a315'
+    }
+  };
+  const expected = {
+    id: '02bd9fd6-8f93-4758-87c3-1fb73740a315'
+  };
+  const mock = jest.fn().mockResolvedValue(params.response);
+  getConfig.mockReturnValue({
+    database: {
+      table: jest.fn().mockReturnValue({
+        get: mock
+      })
+    }
+  });
+  const actual = await getPin(params.teamId);
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -334,7 +356,7 @@ test('get team of when expired is true', async () => {
     }
   });
   const actual = await getTeam(params.teamId, params.expired, params.timestamp);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
@@ -366,6 +388,6 @@ test('get team of when expired is false', async () => {
     }
   });
   const actual = await getTeam(params.teamId, params.expired, params.timestamp);
-  expect(mock).toBeCalled();
+  expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });

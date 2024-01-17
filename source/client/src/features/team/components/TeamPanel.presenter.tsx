@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -22,7 +22,7 @@ interface TeamPanelProps {
   onRefreshClick?: EventHandler
 }
 
-function TeamPanel(props: TeamPanelProps) {
+function TeamPanel(props: Readonly<TeamPanelProps>) {
 
   const {
     onFilterChange,

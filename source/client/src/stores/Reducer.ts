@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -8,56 +8,65 @@
 
 import {
   Action,
-  ActionType,
   Item,
   State
 } from '../types/Store';
 import { search } from '../utils/String';
 
-export const reducer = (state: State, action: Action): State => {
-  switch (action.type) {
-    case ActionType.setFilter: {
-      const { items } = state;
-      const payload = action.payload as string | undefined;
-      return {
-        ...state,
-        filter: payload,
-        items: items?.map((item) => {
-          if (!payload) {
-            return {
-              ...item,
-              visible: true
-            };
-          }
-          if (search(item.value.displayName, payload) ||
-              search(item.value.description, payload)) {
-            return {
-              ...item,
-              visible: true
-            };
-          }
+const actions = {
+  setFilter: (state: State, payload: unknown) => {
+    const data = payload as string | undefined;
+    const { items } = state;
+    return {
+      ...state,
+      filter: data,
+      items: items?.map((item) => {
+        if (data == null) {
           return {
             ...item,
-            visible: false
+            visible: true
           };
-        })
-      };
-    }
-    case ActionType.setItems: {
-      const payload = action.payload as Item[] | undefined;
-      return {
-        ...state,
-        items: payload ? [ ...payload ] : undefined
-      };
-    }
-    case ActionType.setLoading: {
-      const payload = action.payload as boolean | undefined;
-      return {
-        ...state,
-        loading: payload
-      };
-    }
-    default:
+        }
+        if (search(item.value.displayName, data) ||
+            search(item.value.description, data)) {
+          return {
+            ...item,
+            visible: true
+          };
+        }
+        return {
+          ...item,
+          visible: false
+        };
+      })
+    };
+  },
+  setItem: (state: State, payload: unknown) => {
+    const data = payload as Item | undefined;
+    if (data == null) {
       return state;
+    }
+    return {
+      ...state,
+      items: state.items ? (
+        state.items.map((item) => item.id === data.id ? data : item)
+      ) : undefined
+    };
+  },
+  setItems: (state: State, payload: unknown) => {
+    const data = payload as Item[] | undefined;
+    return {
+      ...state,
+      items: data ? [ ...data ] : undefined
+    };
+  },
+  setLoading: (state: State, payload: unknown) => {
+    const data = payload as boolean | undefined;
+    return {
+      ...state,
+      loading: data
+    };
   }
 };
+
+export const reducer = (state: State, action: Action): State => actions[action.type]?.(state, action.payload) ?? state;

@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -18,7 +18,7 @@ interface MainPageProps {
   loading?: boolean
 }
 
-function TeamPage(props: MainPageProps) {
+function TeamPage(props: Readonly<MainPageProps>) {
 
   const {
     items,

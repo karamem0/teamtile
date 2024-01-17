@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -13,6 +13,7 @@ import { CancelIcon } from '@fluentui/react-icons-mdl2';
 
 import { css } from '@emotion/react';
 
+import { useTheme } from '../../providers/ThemeProvider';
 import { EventHandler } from '../../types/Event';
 
 interface SidePanelProps {
@@ -23,7 +24,7 @@ interface SidePanelProps {
   onOpenChange?: EventHandler<boolean>
 }
 
-function SidePanel(props: SidePanelProps) {
+function SidePanel(props: Readonly<SidePanelProps>) {
 
   const {
     children,
@@ -32,6 +33,8 @@ function SidePanel(props: SidePanelProps) {
     title,
     onOpenChange
   } = props;
+
+  const { theme } = useTheme();
 
   return (
     <React.Fragment>
@@ -59,7 +62,7 @@ function SidePanel(props: SidePanelProps) {
               css={css`
                 width: 20rem;
                 max-width: calc(100vw - 2rem);
-                background-color: #fff;
+                background-color: ${theme.colorNeutralBackground1};
                 box-shadow: rgb(0 0 0 / 35%) 0 0 2rem 0;
               `}>
               <div

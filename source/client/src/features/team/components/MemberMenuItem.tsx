@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -28,7 +28,7 @@ interface MemberMenuItemProps {
   item?: Item
 }
 
-function MemberMenuItem(props: MemberMenuItemProps) {
+function MemberMenuItem(props: Readonly<MemberMenuItemProps>) {
 
   const { item } = props;
 
@@ -67,7 +67,7 @@ function MemberMenuItem(props: MemberMenuItemProps) {
   }, []);
 
   const handleOpenChange = React.useCallback(async (_?: Event, data?: boolean) => {
-    if (!data) {
+    if (data == null) {
       return;
     }
     if (!item?.id) {

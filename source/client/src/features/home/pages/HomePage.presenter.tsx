@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -20,6 +20,7 @@ import { GitHubLogoIcon } from '@fluentui/react-icons-mdl2';
 
 import { css } from '@emotion/react';
 
+import { useTheme } from '../../../providers/ThemeProvider';
 import { EventHandler } from '../../../types/Event';
 import messages from '../messages';
 
@@ -27,9 +28,11 @@ interface HomePageProps {
   onLinkClick?: EventHandler<string>
 }
 
-function HomePage(props: HomePageProps) {
+function HomePage(props: Readonly<HomePageProps>) {
 
   const { onLinkClick } = props;
+
+  const { theme } = useTheme();
 
   return (
     <div
@@ -71,7 +74,7 @@ function HomePage(props: HomePageProps) {
           justify-content: center;
           width: 100%;
           padding: 2rem;
-          background-color: #90d0f0;
+          background-color: ${theme.colorBrandBackground};
           @media (width >= 960px) {
             padding: 4rem 2rem;
           }
@@ -100,14 +103,14 @@ function HomePage(props: HomePageProps) {
                 font-size: 3rem;
                 font-weight: 700;
                 line-height: calc(3rem * 1.25);
-                color: #fff;
+                color: ${theme.colorNeutralForegroundInverted};
                 text-align: center;
               `}>
               <FormattedMessage {...messages.AppTitle} />
             </Text>
             <Text
               css={css`
-                color: #fff;
+                color: ${theme.colorNeutralForegroundInverted};
               `}>
               <FormattedMessage {...messages.AppDescription} />
             </Text>
@@ -139,27 +142,34 @@ function HomePage(props: HomePageProps) {
           `}>
           <FormattedMessage {...messages.FeaturesTitle} />
         </Text>
-        <div
+        <ul
           css={css`
             display: flex;
             flex-flow: column;
             grid-gap: 0.5rem;
             align-items: center;
             justify-content: center;
+            list-style: none;
           `}>
-          <Text>
+          <li>
             <FormattedMessage {...messages.FeaturesDescription1} />
-          </Text>
-          <Text>
+          </li>
+          <li>
             <FormattedMessage {...messages.FeaturesDescription2} />
-          </Text>
-          <Text>
+          </li>
+          <li>
             <FormattedMessage {...messages.FeaturesDescription3} />
-          </Text>
-          <Text>
+          </li>
+          <li>
             <FormattedMessage {...messages.FeaturesDescription4} />
-          </Text>
-        </div>
+          </li>
+          <li>
+            <FormattedMessage {...messages.FeaturesDescription5} />
+          </li>
+          <li>
+            <FormattedMessage {...messages.FeaturesDescription6} />
+          </li>
+        </ul>
       </section>
       <footer
         css={css`

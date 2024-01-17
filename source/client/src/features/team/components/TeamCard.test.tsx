@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -60,6 +60,15 @@ jest.mock('./MemberMenuItem', () =>
     );
   });
 
+jest.mock('./PinMenuItem', () =>
+  function PinMenuItem({ children }: React.PropsWithChildren<unknown>) {
+    return (
+      <div data-testid="PinMenuItem">
+        {children}
+      </div>
+    );
+  });
+
 jest.mock('./SensitivityLabel', () =>
   function SensitivityLabel({ children }: React.PropsWithChildren<unknown>) {
     return (
@@ -84,6 +93,7 @@ test('create shapshot of when item loading is true', async () => {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       value: {
         id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        archived: false,
         displayName: 'HR Taskforce',
         description: 'Welcome to the HR Taskforce team.',
         internalId: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
@@ -109,6 +119,7 @@ test('create shapshot of when item loading is false', async () => {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       value: {
         id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        archived: false,
         displayName: 'HR Taskforce',
         description: 'Welcome to the HR Taskforce team.',
         internalId: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',

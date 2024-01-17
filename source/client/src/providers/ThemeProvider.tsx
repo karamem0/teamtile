@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -9,6 +9,7 @@
 import React from 'react';
 
 import {
+  createLightTheme,
   FluentProvider as Provider,
   teamsDarkTheme,
   teamsHighContrastTheme,
@@ -22,6 +23,27 @@ import { css } from '@emotion/react';
 
 import { inTeams } from '../utils/Teams';
 
+const customThemePalette = {
+  10: '#020303',
+  20: '#14181a',
+  30: '#1f282c',
+  40: '#27343a',
+  50: '#304149',
+  60: '#394e58',
+  70: '#425b68',
+  80: '#4c6978',
+  90: '#557889',
+  100: '#5f869a',
+  110: '#6995ab',
+  120: '#73a4bd',
+  130: '#7db3cf',
+  140: '#87c3e1',
+  150: '#96d2f1',
+  160: '#b6dff5'
+};
+
+const customTheme = createLightTheme(customThemePalette);
+
 interface ThemeContextProps {
   theme: Theme
 }
@@ -30,7 +52,7 @@ const ThemeContext = React.createContext<ThemeContextProps | undefined>(undefine
 
 export const useTheme = (): ThemeContextProps => {
   const value = React.useContext(ThemeContext);
-  if (!value) {
+  if (value == null) {
     throw new Error('The context is not initialzed: ThemeContext');
   }
   return value;
@@ -40,7 +62,7 @@ interface ThemeProviderProps {
   children?: React.ReactNode
 }
 
-function ThemeProvider(props: ThemeProviderProps) {
+function ThemeProvider(props: Readonly<ThemeProviderProps>) {
 
   const { children } = props;
 
@@ -48,6 +70,9 @@ function ThemeProvider(props: ThemeProviderProps) {
 
   const handleThemeChange = (value: string) => {
     switch (value) {
+      case 'custom':
+        setTheme(customTheme);
+        break;
       case 'dark':
         setTheme(teamsDarkTheme);
         break;
@@ -61,15 +86,16 @@ function ThemeProvider(props: ThemeProviderProps) {
   };
 
   React.useEffect(() => {
-    if (!inTeams()) {
-      return;
+    if (inTeams()) {
+      (async () => {
+        await app.initialize();
+        const context = await app.getContext();
+        handleThemeChange(context.app.theme);
+        app.registerOnThemeChangeHandler(handleThemeChange);
+      })();
+    } else {
+      handleThemeChange('custom');
     }
-    (async () => {
-      await app.initialize();
-      const context = await app.getContext();
-      handleThemeChange(context.app.theme);
-      app.registerOnThemeChangeHandler(handleThemeChange);
-    })();
   }, []);
 
   return (

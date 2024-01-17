@@ -5,6 +5,12 @@
       "value": "Members"
     }
   ],
+  "0m+JfU": [
+    {
+      "type": 0,
+      "value": "📅Navigate to Channel Calendar"
+    }
+  ],
   "2g59dV": [
     {
       "type": 0,
@@ -15,12 +21,6 @@
     {
       "type": 0,
       "value": "Open channel calendar"
-    }
-  ],
-  "3stSl5": [
-    {
-      "type": 0,
-      "value": "View team members and channels"
     }
   ],
   "4mCpgV": [
@@ -47,10 +47,28 @@
       "value": "404"
     }
   ],
-  "G5aLa5": [
+  "DtvBtA": [
     {
       "type": 0,
-      "value": "View your joined teams as tiles"
+      "value": "All teams"
+    }
+  ],
+  "FLnUwk": [
+    {
+      "type": 0,
+      "value": "No teams found."
+    }
+  ],
+  "G9va/k": [
+    {
+      "type": 0,
+      "value": "🧱View your joined teams as tiles"
+    }
+  ],
+  "GQ0aOI": [
+    {
+      "type": 0,
+      "value": "📌Pin favorite teams"
     }
   ],
   "HMHJK0": [
@@ -69,6 +87,12 @@
     {
       "type": 0,
       "value": "Channels"
+    }
+  ],
+  "MN07HK": [
+    {
+      "type": 0,
+      "value": "📁Navigate to files (SharePoint Document Library)"
     }
   ],
   "QRccCM": [
@@ -101,16 +125,10 @@
       "value": "Terms of Use"
     }
   ],
-  "WSCjCg": [
+  "Vq6kPM": [
     {
       "type": 0,
-      "value": "No items found"
-    }
-  ],
-  "WxG1v5": [
-    {
-      "type": 0,
-      "value": "There are no items matching the keyword."
+      "value": "Archived teams"
     }
   ],
   "Yi/1ky": [
@@ -125,16 +143,16 @@
       "value": "Features"
     }
   ],
-  "awtRIX": [
-    {
-      "type": 0,
-      "value": "Filter teams, channels, members"
-    }
-  ],
   "fdCS5/": [
     {
       "type": 0,
       "value": "Reload"
+    }
+  ],
+  "jhrocU": [
+    {
+      "type": 0,
+      "value": "📖View team members and channels"
     }
   ],
   "lPzUBp": [
@@ -143,10 +161,22 @@
       "value": "This operation is not supported on this device."
     }
   ],
-  "uLLWFz": [
+  "opNVQC": [
     {
       "type": 0,
-      "value": "Open SharePoint Document Library directly"
+      "value": "Unpin"
+    }
+  ],
+  "puLNUJ": [
+    {
+      "type": 0,
+      "value": "Pin"
+    }
+  ],
+  "q5l+mO": [
+    {
+      "type": 0,
+      "value": "🪄Filter teams, channels, members"
     }
   ],
   "uhu5aG": [
@@ -173,10 +203,22 @@
       "value": "GitHub"
     }
   ],
+  "wTFAZN": [
+    {
+      "type": 0,
+      "value": "No teams found"
+    }
+  ],
   "xWjtDB": [
     {
       "type": 0,
       "value": "Teamtile"
+    }
+  ],
+  "zoDVmL": [
+    {
+      "type": 0,
+      "value": "Pinned teams"
     }
   ]
 }

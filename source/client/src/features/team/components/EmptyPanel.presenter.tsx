@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -23,7 +23,7 @@ interface EmptyPanelProps {
   onClick?: EventHandler
 }
 
-function EmptyPanel(props: EmptyPanelProps) {
+function EmptyPanel(props: Readonly<EmptyPanelProps>) {
 
   const { onClick } = props;
 
@@ -46,13 +46,13 @@ function EmptyPanel(props: EmptyPanelProps) {
             line-height: calc(3rem * 1.25);
             color: ${theme.colorNeutralForegroundDisabled};
           `}>
-          <FormattedMessage {...messages.NoItemsFoundTitle} />
+          <FormattedMessage {...messages.NoTeamsFoundTitle} />
         </Text>
         <Text
           css={css`
             color: ${theme.colorNeutralForegroundDisabled};
           `}>
-          <FormattedMessage {...messages.NoItemsFoundDescription1} />
+          <FormattedMessage {...messages.NoTeamsFoundDescription} />
         </Text>
         <Button
           appearance="primary"

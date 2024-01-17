@@ -10,7 +10,7 @@ exports[`create shapshot of when VisibilityType is private 1`] = `
 
 .emotion-1 {
   line-height: 1rem;
-  color: #5b5fc7;
+  color: #4c6978;
   vertical-align: baseline;
 }
 
@@ -62,7 +62,7 @@ exports[`create shapshot of when VisibilityType is public 1`] = `
 
 .emotion-1 {
   line-height: 1rem;
-  color: #5b5fc7;
+  color: #4c6978;
   vertical-align: baseline;
 }
 

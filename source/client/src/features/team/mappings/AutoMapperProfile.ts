@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -80,6 +80,7 @@ PojosMetadataMap.create<Tab>('Tab', {
 
 PojosMetadataMap.create<Team>('Team', {
   id: String,
+  archived: Boolean,
   description: String,
   displayName: String,
   internalId: String,
@@ -133,6 +134,7 @@ PojosMetadataMap.create<GraphTeam>('GraphTeam', {
   description: String,
   displayName: String,
   internalId: String,
+  isArchived: Boolean,
   visibility: String,
   webUrl: String
 });
@@ -147,8 +149,8 @@ createMap<GraphChannel, Channel>(
   mapper,
   'GraphChannel',
   'Channel',
-  forMember((target) => target.membershipType, mapFrom((source) => source.membershipType || undefined)),
-  forMember((target) => target.webUrl, mapFrom((source) => source.webUrl || undefined))
+  forMember((target) => target.membershipType, mapFrom((source) => source.membershipType ?? undefined)),
+  forMember((target) => target.webUrl, mapFrom((source) => source.webUrl ?? undefined))
 );
 
 export function mapChannel(value: GraphChannel) {
@@ -163,7 +165,7 @@ createMap<GraphDrive, Drive>(
   mapper,
   'GraphDrive',
   'Drive',
-  forMember((target) => target.webUrl, mapFrom((source) => source.webUrl || undefined))
+  forMember((target) => target.webUrl, mapFrom((source) => source.webUrl ?? undefined))
 );
 
 export function mapDrive(value: GraphDrive) {
@@ -181,7 +183,7 @@ createMap<GraphGroup, Group>(
   forMember((target) => target.email, mapFrom((source) => source.mail)),
   forMember(
     (target) => target.sensitivityLabel,
-    mapFrom((source) => source.assignedLabels?.[0]?.displayName || undefined))
+    mapFrom((source) => source.assignedLabels?.[0]?.displayName ?? undefined))
 );
 
 export function mapGroup(value: GraphGroup) {
@@ -196,9 +198,9 @@ createMap<GraphMember, Member>(
   mapper,
   'GraphMember',
   'Member',
-  forMember((target) => target.displayName, mapFrom((source) => source.displayName || undefined)),
-  forMember((target) => target.email, mapFrom((source) => source.email || undefined)),
-  forMember((target) => target.userId, mapFrom((source) => source.userId || undefined))
+  forMember((target) => target.displayName, mapFrom((source) => source.displayName ?? undefined)),
+  forMember((target) => target.email, mapFrom((source) => source.email ?? undefined)),
+  forMember((target) => target.userId, mapFrom((source) => source.userId ?? undefined))
 );
 
 export function mapMember(value: GraphMember) {
@@ -214,8 +216,8 @@ createMap<GraphTab, Tab>(
   'GraphTab',
   'Tab',
   forMember((target) => target.appId, mapFrom((source) => source.teamsApp?.id)),
-  forMember((target) => target.displayName, mapFrom((source) => source.displayName || undefined)),
-  forMember((target) => target.webUrl, mapFrom((source) => source.webUrl || undefined))
+  forMember((target) => target.displayName, mapFrom((source) => source.displayName ?? undefined)),
+  forMember((target) => target.webUrl, mapFrom((source) => source.webUrl ?? undefined))
 );
 
 export function mapTab(value: GraphTab) {
@@ -230,11 +232,12 @@ createMap<GraphTeam, Team>(
   mapper,
   'GraphTeam',
   'Team',
-  forMember((target) => target.description, mapFrom((source) => source.description || undefined)),
-  forMember((target) => target.displayName, mapFrom((source) => source.displayName || undefined)),
-  forMember((target) => target.internalId, mapFrom((source) => source.internalId || undefined)),
-  forMember((target) => target.visibility, mapFrom((source) => source.visibility || undefined)),
-  forMember((target) => target.webUrl, mapFrom((source) => source.webUrl || undefined))
+  forMember((target) => target.archived, mapFrom((source) => source.isArchived ?? false)),
+  forMember((target) => target.description, mapFrom((source) => source.description ?? undefined)),
+  forMember((target) => target.displayName, mapFrom((source) => source.displayName ?? undefined)),
+  forMember((target) => target.internalId, mapFrom((source) => source.internalId ?? undefined)),
+  forMember((target) => target.visibility, mapFrom((source) => source.visibility ?? undefined)),
+  forMember((target) => target.webUrl, mapFrom((source) => source.webUrl ?? undefined))
 );
 
 export function mapTeam(value: GraphTeam) {
@@ -262,13 +265,15 @@ export function mapItemFromGroup(value: Group) {
     'Item'
   );
 }
+
 createMap<Team, Item>(
   mapper,
   'Team',
   'Item',
   forMember((target) => target.id, mapFrom((source) => source.id)),
-  forMember((target) => target.value, mapFrom((source) => source)),
   forMember((target) => target.loading, mapFrom(() => false)),
+  forMember((target) => target.pinned, mapFrom(() => false)),
+  forMember((target) => target.value, mapFrom((source) => source)),
   forMember((target) => target.visible, mapFrom(() => true))
 );
 

@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -62,9 +62,13 @@ export async function getItemsFromCache(items: Item[]): Promise<Item[]> {
   return Promise.all(items
     .map(async (item) => {
       if (item.loading) {
-        const value = await cacheService.getTeam(item.id);
-        if (value) {
-          return merge(item, mapItemFromTeam(value));
+        const team = await cacheService.getTeam(item.id);
+        if (team != null) {
+          const pin = await cacheService.getPin(item.id);
+          return {
+            ...merge(item, mapItemFromTeam(team)),
+            pinned: pin != null
+          };
         }
       }
       return item;
@@ -97,7 +101,7 @@ export async function getMemberIconsFromCache(items: Member[]): Promise<Member[]
   return Promise.all(items.map(async (item) => {
     if (item.userId) {
       const cache = await cacheService.getIcon(item.userId);
-      if (cache) {
+      if (cache != null) {
         return merge(item, mapMemberFromIcon(cache));
       }
     }
@@ -127,7 +131,7 @@ export async function getTabFromGraph(teamId: string, channelId: string): Promis
 export async function getTeamIconsFromCache(items: Item[]): Promise<Item[]> {
   return Promise.all(items.map(async (item) => {
     const cache = await cacheService.getIcon(item.id);
-    if (cache) {
+    if (cache != null) {
       return merge(item, mapItemFromIcon(cache));
     }
     return item;
@@ -146,4 +150,8 @@ export async function getTeamIconsFromGraph(items: Item[]): Promise<Item[]> {
     {
       arrayMerge: mergeItems
     });
+}
+
+export async function setPin(teamId: string, pinned: boolean): Promise<void> {
+  return await cacheService.setPin(teamId, pinned);
 }

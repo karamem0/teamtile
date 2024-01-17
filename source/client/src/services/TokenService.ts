@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -47,11 +47,11 @@ export async function getServerToken(token: string): Promise<string> {
 
 export function getCachedToken(): string | undefined {
   const token = sessionStorage.getItem(process.env.VITE_AUTH_CLIENT_ID);
-  if (!token) {
+  if (token == null) {
     return;
   }
   const jwt = jwtDecode(token);
-  if (!jwt) {
+  if (jwt == null) {
     return;
   }
   const exp = jwt.exp ?? 0;

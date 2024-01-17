@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -26,7 +26,7 @@ interface SnackbarProviderProps {
   children?: React.ReactNode
 }
 
-function SnackbarProvider(props: SnackbarProviderProps) {
+function SnackbarProvider(props: Readonly<SnackbarProviderProps>) {
 
   const { children } = props;
 
@@ -48,7 +48,7 @@ export default SnackbarProvider;
 
 export const useSnackbar = (): SnackbarContextProps => {
   const props = React.useContext(SnackbarContext);
-  if (!props) {
+  if (props == null) {
     throw new Error('The context is not initialzed: SnackbarContext');
   }
   return props;

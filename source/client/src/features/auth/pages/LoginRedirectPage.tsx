@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -25,7 +25,7 @@ function LoginRedirectPage() {
       await app.initialize();
       try {
         const result = await instance.handleRedirectPromise();
-        if (result) {
+        if (result != null) {
           authentication.notifySuccess(result.accessToken);
         } else {
           await instance.acquireTokenRedirect(loginParams);

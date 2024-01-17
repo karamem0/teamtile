@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -220,7 +220,15 @@ export async function getTeams(teamIds: string[]): Promise<Team[]> {
         id: teamId,
         request: new Request(
           `/teams/${teamId}` +
-          '?$select=description,displayName,id,internalId,visibility,webUrl',
+          `?$select=${[
+            'description',
+            'displayName',
+            'id',
+            'internalId',
+            'isArchived',
+            'visibility',
+            'webUrl'
+          ].join(',')}`,
           {
             method: 'GET'
           }
@@ -240,6 +248,7 @@ export async function getTeams(teamIds: string[]): Promise<Team[]> {
         values.push(value);
       } else {
         switch (response.status) {
+          case 403:
           case 404:
             break;
           default:

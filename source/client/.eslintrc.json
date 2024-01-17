@@ -4,12 +4,16 @@
     "es2021": true,
     "jest": true
   },
+  "plugins": [
+    "sonarjs"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:testing-library/react",
+    "plugin:sonarjs/recommended",
     "standard"
   ],
   "settings": {
@@ -206,6 +210,8 @@
         ]
       }
     ],
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "sonarjs/no-duplicate-string": "off",
+    "sonarjs/prefer-single-boolean-return": "off"
   }
 }

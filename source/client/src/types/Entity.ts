@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -14,6 +14,12 @@ export enum MembershipType {
 export enum VisibilityType {
   private = 'private',
   public = 'public'
+}
+
+export enum AccordionType {
+  all = 'all',
+  archived = 'archived',
+  pinned = 'pinned'
 }
 
 export interface Channel {
@@ -56,6 +62,7 @@ export interface Tab {
 
 export interface Team {
   id?: string,
+  archived: boolean,
   description?: string,
   displayName?: string,
   icon?: string,

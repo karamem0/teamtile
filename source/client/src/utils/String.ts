@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -10,17 +10,17 @@ export function compare(a: string | null | undefined, b: string | null | undefin
   if (a === b) {
     return 0;
   }
-  if (!a) {
+  if (a == null) {
     return 1;
   }
-  if (!b) {
+  if (b == null) {
     return -1;
   }
   return String.prototype.localeCompare.call(a, b);
 }
 
 export function search(value: string | null | undefined, match: string | null | undefined) {
-  if (!value) {
+  if (value == null) {
     return false;
   }
   if (match && value.search(new RegExp(match.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&'), 'i')) < 0) {

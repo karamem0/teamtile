@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -13,7 +13,7 @@ import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 
 const reactPlugin = new ReactPlugin();
 const connectionString = process.env.VITE_TELEMETRY_CONNECTION_STRING;
-if (connectionString) {
+if (connectionString != null && connectionString.length > 0) {
   const appInsights = new ApplicationInsights({
     config: {
       connectionString,

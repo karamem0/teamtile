@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -24,7 +24,7 @@ interface DriveMenuItemProps {
   onClick?: EventHandler
 }
 
-function DriveMenuItem(props: DriveMenuItemProps) {
+function DriveMenuItem(props: Readonly<DriveMenuItemProps>) {
 
   const { onClick } = props;
 

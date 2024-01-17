@@ -2,18 +2,20 @@
 
 参加中のチームをタイルで表示することで素早くアクセスできます。
 
-[![.github/workflows/production.yml](https://github.com/karamem0/teamtile/actions/workflows/production.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/production.yml)
-[![.github/workflows/development.yml](https://github.com/karamem0/teamtile/actions/workflows/development.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/development.yml)
-[![License](https://img.shields.io/github/license/karamem0/teamtile.svg)](https://github.com/karamem0/teamtile/blob/main/LICENSE)
+[![.github/workflows/workflow.yml](https://github.com/karamem0/teamtile/actions/workflows/workflow.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/workflow.yml)
+[![codecov](https://codecov.io/gh/karamem0/teamtile/graph/badge.svg?token=UY4ZU4E73I)](https://codecov.io/gh/karamem0/teamtile)
+[![license](https://img.shields.io/github/license/karamem0/teamtile.svg)](https://github.com/karamem0/teamtile/blob/main/LICENSE)
 
 ## 機能
 
-チームを探すのにイライラしていませんか? Teamtile は以下の機能を提供します。
+チームを探すのにイライラしていませんか? Teamtile は以下の機能を提供します😊
 
-- 参加中のチームをタイルで表示
-- チームのメンバーとチャンネルを表示
-- SharePoint ドキュメント ライブラリへのリンク
-- チーム、チャネル、メンバーのフィルター
+- 🧱参加中のチームをタイルで表示
+- 📖チームのメンバーとチャンネルを表示
+- 📁ファイル (SharePoint ドキュメント ライブラリ) へのナビゲーション
+- 📅チャネル カレンダーへのナビゲーション
+- 🪄チーム、チャネル、メンバーのフィルター
+- 📌お気に入りのチームのピン留め
 
 ## スクリーンショット
 

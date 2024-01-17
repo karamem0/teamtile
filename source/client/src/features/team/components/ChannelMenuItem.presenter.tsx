@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 karamem0
+// Copyright (c) 2021-2024 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -37,7 +37,7 @@ interface ChannelMenuItemProps {
   onOpenChange?: EventHandler<boolean>
 }
 
-function ChannelMenuItem(props: ChannelMenuItemProps) {
+function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
 
   const {
     items,
