@@ -36,7 +36,7 @@ export async function getServerToken(token: string): Promise<string> {
     return json.token;
   }
   if (response.status === 403) {
-    return authentication.authenticate({
+    return await authentication.authenticate({
       url: `${window.location.origin}/auth/login`,
       width: 600,
       height: 535

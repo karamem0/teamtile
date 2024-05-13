@@ -5,7 +5,7 @@ on:
       - develop
 
 env:
-  BUILD_VERSION: '2.1.1'
+  BUILD_VERSION: '2.1.2'
 
 jobs:
   select-environment:
@@ -62,32 +62,33 @@ jobs:
         uses: enricomi/publish-unit-test-result-action/composite@v2
         if: always()
         with:
-          files: source/client/coverage/junit.xml
+          files: source/client/dist/test/junit.xml
           check_name: client-test-results
-      - name: Upload client coverage reports
-        uses: codecov/codecov-action@v3
-        if: always()
-        env:
-          token: ${{secrets.CODECOV_TOKEN}}
-          files: source/client/coverage/clover.xml
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x
+          dotnet-version: 8.x
       - name: Restore server
         run: dotnet restore
         working-directory: source/server
       - name: Test server
-        id: test-server
-        run: dotnet test -- NUnit.TestOutputXml=../../../../coverage
+        shell: pwsh
+        run: dotnet test /p:AltCover=true -- NUnit.TestOutputXml=${{github.workspace}}/source/server/dist/test
         working-directory: source/server
       - name: Upload server test results
         uses: enricomi/publish-unit-test-result-action/composite@v2
         if: always()
         with:
-          files: source/server/coverage/*.xml
+          files: source/server/dist/test/*.xml
           check_name: server-test-results
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v4
+        if: always()
+        with:
+          fail_ci_if_error: true
+          token: ${{secrets.CODECOV_TOKEN}}
       - name: Build server
+        shell: pwsh
         run: |
           dotnet publish Karamem0.Teamtile/Karamem0.Teamtile.csproj `
             -c Release `

@@ -43,7 +43,7 @@ namespace Karamem0.Teamtile.Controllers
         [HttpPost()]
         public async Task<IActionResult> PostAsync([FromBody] TokenRequest request)
         {
-            var authorizationHeader = this.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ");
+            var authorizationHeader = this.Request.Headers.Authorization.FirstOrDefault()?.Split(" ");
             if (authorizationHeader is null)
             {
                 return this.StatusCode((int)HttpStatusCode.Unauthorized);

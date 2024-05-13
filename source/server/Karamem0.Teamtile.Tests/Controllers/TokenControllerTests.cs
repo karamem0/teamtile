@@ -70,7 +70,7 @@ namespace Karamem0.Teamtile.Controllers.Tests
                 })
                 .Build();
             var httpContext = new DefaultHttpContext();
-            httpContext.Request.Headers.Add("Authorization", $"Bearer {AccessToken}");
+            httpContext.Request.Headers.Append("Authorization", $"Bearer {AccessToken}");
             var controller = new TokenController(httpClientFactory, configuration)
             {
                 ControllerContext = new ControllerContext()
@@ -177,7 +177,7 @@ namespace Karamem0.Teamtile.Controllers.Tests
                 })
                 .Build();
             var httpContext = new DefaultHttpContext();
-            httpContext.Request.Headers.Add("Authorization", $"Bearer {AccessToken}");
+            httpContext.Request.Headers.Append("Authorization", $"Bearer {AccessToken}");
             var controller = new TokenController(httpClientFactory, configuration)
             {
                 ControllerContext = new ControllerContext()
@@ -232,7 +232,7 @@ namespace Karamem0.Teamtile.Controllers.Tests
                 })
                 .Build();
             var httpContext = new DefaultHttpContext();
-            httpContext.Request.Headers.Add("Authorization", $"Bearer {AccessToken}");
+            httpContext.Request.Headers.Append("Authorization", $"Bearer {AccessToken}");
             var controller = new TokenController(httpClientFactory, configuration)
             {
                 ControllerContext = new ControllerContext()

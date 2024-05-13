@@ -6,6 +6,6 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import mock from 'jest-fetch-mock';
+import fetchMock from 'jest-fetch-mock';
 
-mock.enableMocks();
+fetchMock.enableMocks();
