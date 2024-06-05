@@ -59,9 +59,12 @@ function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
       const appId = process.env.VITE_CALENDAR_APP_ID;
       const appTab = await fetch(item.value.id, item.value.internalId, appId);
       if (appTab?.webUrl) {
-        return await app.openLink(appTab.webUrl);
-      } else if (appInstallDialog.isSupported()) {
-        return await appInstallDialog.openAppInstallDialog({ appId });
+        await app.openLink(appTab.webUrl);
+        return;
+      }
+      if (appInstallDialog.isSupported()) {
+        await appInstallDialog.openAppInstallDialog({ appId });
+        return;
       }
     }
     setSnackbar({
@@ -69,9 +72,9 @@ function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
       type: SnackbarType.warning
     });
   }, [
-    fetch,
     intl,
     item,
+    fetch,
     setSnackbar
   ]);
 

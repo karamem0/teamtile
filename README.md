@@ -1,6 +1,6 @@
 # Teamtile
 
-Tile your teams for quick access.
+You can quickly access participating teams by displaying them as tiles.
 
 [![.github/workflows/workflow.yml](https://github.com/karamem0/teamtile/actions/workflows/workflow.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/workflow.yml)
 [![codecov](https://codecov.io/gh/karamem0/teamtile/graph/badge.svg?token=UY4ZU4E73I)](https://codecov.io/gh/karamem0/teamtile)
@@ -10,11 +10,11 @@ Tile your teams for quick access.
 
 Are you frustrated with finding a team? Teamtile provides these features to you😊:
 
-- 🧱View your joined teams as tiles
-- 📖View team members and channels
+- 🧱Display participating teams as tiles
+- 📖Show team members and channels
 - 📁Navigate to files (SharePoint Document Library)
-- 📅Navigate to Channel Calendar
-- 🪄Filter teams, channels, members
+- 📅Access the Channel Calendar
+- 🪄Filter teams, channels, and members
 - 📌Pin favorite teams
 
 ## Screenshot

@@ -1,8 +1,8 @@
 {
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
-  "version": "{{AppVersion}}",
+  "version": "{{APP_BUILD_VERSION}}",
   "manifestVersion": "1.16",
-  "id": "{{AppId}}",
+  "id": "{{APP_CLIENT_ID}}",
   "packageName": "dev.karamem0.teamtile",
   "name": {
     "short": "Teamtile",
@@ -15,8 +15,8 @@
     "termsOfUseUrl": "https://github.com/karamem0/teamtile/blob/main/TERMS_OF_USE.md"
   },
   "description": {
-    "short": "Tile your teams for quick access.",
-    "full": "Are you frustrated with finding a team? Teamtile provides these features to you😊:\n- View your joined teams as tiles\n- View team members and channels\n- Navigate to files (SharePoint Document Library)\n- Navigate to Channel Calendar\n- Filter teams, channels, members\n- Pin favorite teams"
+    "short": "You can quickly access participating teams by displaying them as tiles.",
+    "full": "Are you frustrated with finding a team? Teamtile provides these features to you😊:\n- 🧱Display participating teams as tiles\n- 📖Show team members and channels\n- 📁Navigate to files (SharePoint Document Library)\n- 📅Access the Channel Calendar\n- 🪄Filter teams, channels, and members\n- 📌Pin favorite teams"
   },
   "icons": {
     "outline": "icon_outline.png",
@@ -27,19 +27,19 @@
     {
       "entityId": "87082f5a-0cc1-4eb1-81b4-b48a566a0854",
       "name": "Home",
-      "contentUrl": "https://{{AppDomain}}",
-      "websiteUrl": "https://{{AppDomain}}",
+      "contentUrl": "https://{{APP_DOMAIN_NAME}}",
+      "websiteUrl": "https://{{APP_DOMAIN_NAME}}",
       "scopes": [
         "personal"
       ]
     }
   ],
   "validDomains": [
-    "{{AppDomain}}"
+    "{{APP_DOMAIN_NAME}}"
   ],
   "webApplicationInfo": {
-    "id": "{{AppId}}",
-    "resource": "api://{{AppDomain}}/{{AppId}}"
+    "id": "{{APP_CLIENT_ID}}",
+    "resource": "api://{{APP_DOMAIN_NAME}}/{{APP_CLIENT_ID}}"
   },
   "localizationInfo": {
     "defaultLanguageTag": "en-us",

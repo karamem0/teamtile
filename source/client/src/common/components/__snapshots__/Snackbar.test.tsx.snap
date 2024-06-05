@@ -22,11 +22,11 @@ exports[`create shapshot of when type is error 1`] = `
     class="emotion-0"
   >
     <div
-      class="fui-Alert ___co0mdz0_q48w6e0 f22iagw f122n59 f5pgtk9 f1g0x7ka f11qrl6u f1qch9an fjlbh76 fff7au0 f1bjk9e1 fwsfkhu f8wkphi f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z fghlq4f f1gn591s fb073pr fjscplz fz58gqq fkhj508 fl43uef f19n0e5 fxugw4r"
+      class="fui-Alert ___1w0g6cp_1jh3gpt f22iagw f122n59 f5pgtk9 f1oic3e7 ff3glw6 f9ggezi fz58gqq fkhj508 fl43uef f19n0e5 fxugw4r"
       role="alert"
     >
       <span
-        class="fui-Alert__icon ___1l1smhh_k5ukh20 fd461yt f4ybsrx f1g0x7ka f19lj068 f1qch9an f1cnd47f f1whyuy6"
+        class="fui-Alert__icon ___k55sq20_c0vl4e0 fd461yt f4ybsrx fhivll6 f1whyuy6"
       >
         <svg
           aria-hidden="true"
@@ -45,7 +45,7 @@ exports[`create shapshot of when type is error 1`] = `
       </span>
       error
       <button
-        class="fui-Button r1alrhcs fui-Alert__action ___1vt4ohf_2gz9f00 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
+        class="fui-Button r1alrhcs fui-Alert__action ___nkoa4j0_hz6oqh0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f4jnnbt fy77jfu f44c6la fcgxt0o"
         title="Dismiss"
         type="button"
       >
@@ -94,11 +94,11 @@ exports[`create shapshot of when type is success 1`] = `
     class="emotion-0"
   >
     <div
-      class="fui-Alert ___co0mdz0_q48w6e0 f22iagw f122n59 f5pgtk9 f1g0x7ka f11qrl6u f1qch9an fjlbh76 fff7au0 f1bjk9e1 fwsfkhu f8wkphi f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z fghlq4f f1gn591s fb073pr fjscplz fz58gqq fkhj508 fl43uef f19n0e5 fxugw4r"
+      class="fui-Alert ___1w0g6cp_1jh3gpt f22iagw f122n59 f5pgtk9 f1oic3e7 ff3glw6 f9ggezi fz58gqq fkhj508 fl43uef f19n0e5 fxugw4r"
       role="status"
     >
       <span
-        class="fui-Alert__icon ___srf8880_13m7jpf fd461yt f4ybsrx f1g0x7ka f19lj068 f1qch9an f1cnd47f f1m7fhi8"
+        class="fui-Alert__icon ___1fnjq5w_b4l6m40 fd461yt f4ybsrx fhivll6 f1m7fhi8"
       >
         <svg
           aria-hidden="true"
@@ -117,7 +117,7 @@ exports[`create shapshot of when type is success 1`] = `
       </span>
       success
       <button
-        class="fui-Button r1alrhcs fui-Alert__action ___1vt4ohf_2gz9f00 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
+        class="fui-Button r1alrhcs fui-Alert__action ___nkoa4j0_hz6oqh0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f4jnnbt fy77jfu f44c6la fcgxt0o"
         title="Dismiss"
         type="button"
       >
@@ -166,11 +166,11 @@ exports[`create shapshot of when type is warning 1`] = `
     class="emotion-0"
   >
     <div
-      class="fui-Alert ___co0mdz0_q48w6e0 f22iagw f122n59 f5pgtk9 f1g0x7ka f11qrl6u f1qch9an fjlbh76 fff7au0 f1bjk9e1 fwsfkhu f8wkphi f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z fghlq4f f1gn591s fb073pr fjscplz fz58gqq fkhj508 fl43uef f19n0e5 fxugw4r"
+      class="fui-Alert ___1w0g6cp_1jh3gpt f22iagw f122n59 f5pgtk9 f1oic3e7 ff3glw6 f9ggezi fz58gqq fkhj508 fl43uef f19n0e5 fxugw4r"
       role="alert"
     >
       <span
-        class="fui-Alert__icon ___znwrb80_14kh1uj fd461yt f4ybsrx f1g0x7ka f19lj068 f1qch9an f1cnd47f fpti2h4"
+        class="fui-Alert__icon ___1wifs8x_rs7eu10 fd461yt f4ybsrx fhivll6 fpti2h4"
       >
         <svg
           aria-hidden="true"
@@ -189,7 +189,7 @@ exports[`create shapshot of when type is warning 1`] = `
       </span>
       warning
       <button
-        class="fui-Button r1alrhcs fui-Alert__action ___1vt4ohf_2gz9f00 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f1sbtcvk f81rol6 fdghr9 frdkuqy fy77jfu f44c6la fcgxt0o"
+        class="fui-Button r1alrhcs fui-Alert__action ___nkoa4j0_hz6oqh0 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu f16muhyy fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f4jnnbt fy77jfu f44c6la fcgxt0o"
         title="Dismiss"
         type="button"
       >

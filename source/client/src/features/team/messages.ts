@@ -18,6 +18,7 @@ const messages = defineMessages({
   NoTeamsFoundDescription: { defaultMessage: 'It looks like you are not a member of any teams.' },
   OpenChannelCalendar: { defaultMessage: 'Open channel calendar' },
   OpenInSharePoint: { defaultMessage: 'Open in SharePoint' },
+  OpenLinkError: { defaultMessage: 'Cannot open the link.' },
   OperationNotSupported: { defaultMessage: 'This operation is not supported on this device.' },
   Pin: { defaultMessage: 'Pin' },
   PinnedTeams: { defaultMessage: 'Pinned teams' },

@@ -46,7 +46,7 @@ function TeamGrid(props: Readonly<TeamGridProps>) {
           <FormattedMessage {...messages.AllTeams} />
         } />
       <TeamAccordionItem
-        items={items?.filter((item) => item.value.archived)}
+        items={items?.filter((item) => item.visible && item.value.archived)}
         key={AccordionType.archived}
         value={AccordionType.archived}
         header={

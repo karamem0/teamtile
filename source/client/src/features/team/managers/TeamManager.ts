@@ -29,7 +29,8 @@ export async function getChannels(teamId: string): Promise<Channel[]> {
 export async function getDrive(teamId: string): Promise<Drive | undefined> {
   return await Promise.resolve()
     .then(async () => teamService.getDriveFromCache(teamId))
-    .then(async (value) => value || await teamService.getDriveFromGraph(teamId));
+    .then(async (value) => value || await teamService.getDriveFromGraph(teamId))
+    .catch(() => undefined);
 }
 
 export async function getItems(): Promise<Item[]> {

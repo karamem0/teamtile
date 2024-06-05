@@ -3,13 +3,13 @@
   "moduleNameMapper": {
     "^dexie$": "<rootDir>/node_modules/dexie"
   },
-  "coverageDirectory": "dist/coverage",
+  "coverageDirectory": "coverage",
   "reporters": [
     "default",
     [
       "jest-junit",
       {
-        "outputDirectory": "dist/test"
+        "outputDirectory": "test"
       }
     ]
   ],

@@ -45,7 +45,7 @@ function TeamAccordionItem(props: Readonly<TeamAccordionItemProps>) {
       </AccordionHeader>
       <AccordionPanel>
         {
-        items && items.length ? (
+        items?.length ? (
           <GridLayout>
             {
               items.map((item) => (

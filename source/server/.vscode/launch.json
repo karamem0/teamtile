@@ -6,7 +6,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/Karamem0.Teamtile/bin/Debug/net7.0/Karamem0.Teamtile.dll",
+      "program": "${workspaceFolder}/Karamem0.Teamtile/bin/Debug/net8.0/Karamem0.Teamtile.dll",
       "args": [],
       "cwd": "${workspaceFolder}/Karamem0.Teamtile",
       "stopAtEntry": false,

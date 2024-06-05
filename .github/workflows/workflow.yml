@@ -5,11 +5,11 @@ on:
       - develop
 
 env:
-  BUILD_VERSION: '2.1.2'
+  BUILD_VERSION: '2.1.3'
 
 jobs:
   select-environment:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Select environment from branch name
         id: select-environment
@@ -25,24 +25,25 @@ jobs:
       env-name: ${{steps.select-environment.outputs.env-name}}
   build-source:
     needs: select-environment
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     environment: ${{needs.select-environment.outputs.env-name}}
     steps:
       - name: Checkout repos
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup Node.js 20.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20.x
       - name: Update .env
         shell: pwsh
         run: |
-          $content = Get-Content -Path .env
-          $content = $content -replace "{{AppId}}", "${{secrets.APP_ID}}"
-          $content = $content -replace "{{TenantId}}", "${{secrets.APP_TENANT_ID}}"
-          $content = $content -replace "{{TelemetryConnectionString}}", "${{secrets.TELEMERTY_CONNECTION_STRING}}"
-          Out-File -FilePath .env -InputObject $content -Encoding UTF8
-        working-directory: source/client
+          $content = Get-Content -Path ${{env.FILE_PATH}}
+          $content = $content -replace "{{APP_CLIENT_ID}}", "${{secrets.APP_CLIENT_ID}}"
+          $content = $content -replace "{{APP_TENANT_ID}}", "${{secrets.APP_TENANT_ID}}"
+          $content = $content -replace "{{TELEMETRY_CONNECTION_STRING}}", "${{secrets.TELEMETRY_CONNECTION_STRING}}"
+          Out-File -FilePath ${{env.FILE_PATH}} -InputObject $content -Encoding UTF8
+        env:
+          FILE_PATH: source/client/.env
       - name: Update package.json
         run: npm version ${{env.BUILD_VERSION}} --no-git-tag-version
         working-directory: source/client
@@ -58,14 +59,8 @@ jobs:
       - name: Test client
         run: npm run test:ci
         working-directory: source/client
-      - name: Upload client test results
-        uses: enricomi/publish-unit-test-result-action/composite@v2
-        if: always()
-        with:
-          files: source/client/dist/test/junit.xml
-          check_name: client-test-results
       - name: Setup .NET Core
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.x
       - name: Restore server
@@ -73,20 +68,11 @@ jobs:
         working-directory: source/server
       - name: Test server
         shell: pwsh
-        run: dotnet test /p:AltCover=true -- NUnit.TestOutputXml=${{github.workspace}}/source/server/dist/test
+        run: |
+          dotnet test `
+            -p:AltCover=true `
+            -- NUnit.TestOutputXml=${{github.workspace}}/source/server/test
         working-directory: source/server
-      - name: Upload server test results
-        uses: enricomi/publish-unit-test-result-action/composite@v2
-        if: always()
-        with:
-          files: source/server/dist/test/*.xml
-          check_name: server-test-results
-      - name: Upload coverage reports
-        uses: codecov/codecov-action@v4
-        if: always()
-        with:
-          fail_ci_if_error: true
-          token: ${{secrets.CODECOV_TOKEN}}
       - name: Build server
         shell: pwsh
         run: |
@@ -97,27 +83,43 @@ jobs:
             -p:FileVersion=${{env.BUILD_VERSION}}.${{github.run_number}}
         working-directory: source/server
       - name: Upload build files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: teamtile-build
           path: source/server/build
+      - name: Upload test results
+        uses: enricomi/publish-unit-test-result-action/linux@v2
+        if: always()
+        with:
+          files: |
+            source/client/test/**/*.xml
+            source/server/test/**/*.xml
+          check_name: test-results
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v4
+        if: always()
+        with:
+          fail_ci_if_error: true
+          token: ${{secrets.CODECOV_TOKEN}}
   build-manifest:
     needs: select-environment
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     environment: ${{needs.select-environment.outputs.env-name}}
     steps:
       - name: Checkout repos
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Update manifest.json
         shell: pwsh
         run: |
-          $content = Get-Content -Path manifest/manifest.json
-          $content = $content -replace "{{AppId}}", "${{secrets.APP_ID}}"
-          $content = $content -replace "{{AppDomain}}", "${{secrets.APP_DOMAIN}}"
-          $content = $content -replace "{{AppVersion}}", "${{env.BUILD_VERSION}}"
-          Out-File -FilePath manifest/manifest.json -InputObject $content -Encoding UTF8
+          $content = Get-Content -Path ${{env.FILE_PATH}}
+          $content = $content -replace "{{APP_CLIENT_ID}}", "${{secrets.APP_CLIENT_ID}}"
+          $content = $content -replace "{{APP_DOMAIN_NAME}}", "${{secrets.APP_DOMAIN_NAME}}"
+          $content = $content -replace "{{APP_BUILD_VERSION}}", "${{env.BUILD_VERSION}}"
+          Out-File -FilePath ${{env.FILE_PATH}} -InputObject $content -Encoding UTF8
+        env:
+          FILE_PATH: manifest/manifest.json
       - name: Upload manifest files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: teamtile-manifest
           path: manifest
@@ -125,20 +127,20 @@ jobs:
     needs:
       - select-environment
       - build-source
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     environment: ${{needs.select-environment.outputs.env-name}}
     steps:
       - name: Download build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: teamtile-build
           path: build
       - name: Connect to Azure
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
           creds: ${{secrets.AZURE_CREDENTIALS}}
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{secrets.APP_NAME}}
+          app-name: ${{secrets.APP_DEPLOYMENT_NAME}}
           package: build

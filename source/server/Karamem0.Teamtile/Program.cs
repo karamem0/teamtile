@@ -47,6 +47,6 @@ _ = app.UseAuthorization();
 _ = app.MapControllers();
 _ = app.MapFallbackToFile("/index.html");
 
-app.Run();
+await app.RunAsync();
 
 #pragma warning restore CA1852
