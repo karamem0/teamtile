@@ -12,20 +12,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Karamem0.Teamtile.Models
+namespace Karamem0.Teamtile.Models;
+
+public class TokenResponse
 {
 
-    public class TokenResponse
+    public TokenResponse()
     {
-
-        public TokenResponse()
-        {
-        }
-
-        public string? Token { get; set; }
-
-        public string? Error { get; set; }
-
     }
+
+    public string? Token { get; set; }
+
+    public string? Error { get; set; }
 
 }

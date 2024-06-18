@@ -12,24 +12,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Karamem0.Teamtile.Helpers
+namespace Karamem0.Teamtile.Helpers;
+
+public class DelegateHttpClientHandler : HttpClientHandler
 {
 
-    public class DelegateHttpClientHandler : HttpClientHandler
+    private readonly Func<HttpRequestMessage, CancellationToken, Task<HttpResponseMessage>> onSendAsync;
+
+    public DelegateHttpClientHandler(Func<HttpRequestMessage, CancellationToken, Task<HttpResponseMessage>> onSendAsync)
     {
+        this.onSendAsync = onSendAsync;
+    }
 
-        private readonly Func<HttpRequestMessage, CancellationToken, Task<HttpResponseMessage>> onSendAsync;
-
-        public DelegateHttpClientHandler(Func<HttpRequestMessage, CancellationToken, Task<HttpResponseMessage>> onSendAsync)
-        {
-            this.onSendAsync = onSendAsync;
-        }
-
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            return this.onSendAsync(request, cancellationToken);
-        }
-
+    protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    {
+        return this.onSendAsync(request, cancellationToken);
     }
 
 }

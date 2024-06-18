@@ -3,6 +3,16 @@
 indent_size = 4
 indent_style = tab
 
+# ResX files
+[*.resx]
+indent_size = 4
+indent_style = space
+
+# XAML files
+[*.xaml]
+indent_size = 4
+indent_style = space
+
 # C# files
 [*.cs]
 
@@ -125,6 +135,9 @@ csharp_style_unused_value_expression_statement_preference = discard_variable:war
 
 # 'using' directive preferences
 csharp_using_directive_placement = outside_namespace:warning
+
+# Namecpace preferences
+csharp_style_namespace_declarations = file_scoped
 
 #### C# Formatting Rules ####
 

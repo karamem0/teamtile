@@ -12,18 +12,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Karamem0.Teamtile.Models
+namespace Karamem0.Teamtile.Models;
+
+public class TokenRequest
 {
 
-    public class TokenRequest
+    public TokenRequest()
     {
-
-        public TokenRequest()
-        {
-        }
-
-        public string? Scope { get; set; }
-
     }
+
+    public string? Scope { get; set; }
 
 }

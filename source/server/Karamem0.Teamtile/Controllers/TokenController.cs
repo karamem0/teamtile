@@ -20,89 +20,86 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Karamem0.Teamtile.Controllers
+namespace Karamem0.Teamtile.Controllers;
+
+[ApiController()]
+[Authorize()]
+[Route("api/token")]
+public class TokenController : Controller
 {
 
-    [ApiController()]
-    [Authorize()]
-    [Route("api/token")]
-    public class TokenController : Controller
+    private readonly HttpClient httpClient;
+
+    private readonly MicrosoftIdentityOptions identityOptions;
+
+    public TokenController(IHttpClientFactory httpClientFactory, IConfiguration configuration)
     {
+        this.httpClient = httpClientFactory.CreateClient();
+        this.identityOptions = configuration.GetSection("AzureAD").Get<MicrosoftIdentityOptions>()
+            ?? throw new ArgumentNullException(nameof(configuration));
+    }
 
-        private readonly HttpClient httpClient;
-
-        private readonly MicrosoftIdentityOptions identityOptions;
-
-        public TokenController(IHttpClientFactory httpClientFactory, IConfiguration configuration)
+    [HttpPost()]
+    public async Task<IActionResult> PostAsync([FromBody] TokenRequest request)
+    {
+        var authorizationHeader = this.Request.Headers.Authorization.FirstOrDefault()?.Split(" ");
+        if (authorizationHeader is null)
         {
-            this.httpClient = httpClientFactory.CreateClient();
-            this.identityOptions = configuration.GetSection("AzureAD").Get<MicrosoftIdentityOptions>()
-                ?? throw new ArgumentNullException(nameof(configuration));
+            return this.StatusCode((int)HttpStatusCode.Unauthorized);
         }
-
-        [HttpPost()]
-        public async Task<IActionResult> PostAsync([FromBody] TokenRequest request)
+        if (authorizationHeader[0] is not "Bearer")
         {
-            var authorizationHeader = this.Request.Headers.Authorization.FirstOrDefault()?.Split(" ");
-            if (authorizationHeader is null)
+            return this.StatusCode((int)HttpStatusCode.Unauthorized);
+        }
+        var clientToken = authorizationHeader[1];
+        var jwtToken = new JsonWebToken(clientToken);
+        var tenantId = jwtToken.GetPayloadValue<string>("tid");
+        var httpRequestUri = $"https://login.microsoft.com/{tenantId}/oauth2/v2.0/token";
+        var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, httpRequestUri)
+        {
+            Content = new FormUrlEncodedContent(new Dictionary<string, string?>()
             {
-                return this.StatusCode((int)HttpStatusCode.Unauthorized);
-            }
-            if (authorizationHeader[0] is not "Bearer")
+                ["grant_type"] = "urn:ietf:params:oauth:grant-type:jwt-bearer",
+                ["client_id"] = this.identityOptions.ClientId,
+                ["client_secret"] = this.identityOptions.ClientSecret,
+                ["assertion"] = clientToken,
+                ["scope"] = request.Scope,
+                ["requested_token_use"] = "on_behalf_of",
+            })
+        };
+        var httpResponseMessage = await this.httpClient.SendAsync(httpRequestMessage);
+        var httpResponseContent = await httpResponseMessage.Content.ReadAsStringAsync();
+        var httpResponseJson = JsonSerializer.Deserialize<Dictionary<string, object?>>(httpResponseContent);
+        if (httpResponseMessage.IsSuccessStatusCode)
+        {
+            return this.Ok(new TokenResponse()
             {
-                return this.StatusCode((int)HttpStatusCode.Unauthorized);
-            }
-            var clientToken = authorizationHeader[1];
-            var jwtToken = new JsonWebToken(clientToken);
-            var tenantId = jwtToken.GetPayloadValue<string>("tid");
-            var httpRequestUri = $"https://login.microsoft.com/{tenantId}/oauth2/v2.0/token";
-            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, httpRequestUri)
+                Token = httpResponseJson?["access_token"]?.ToString()
+            });
+        }
+        else
+        {
+            if (httpResponseJson?["error"]?.ToString() is "invalid_grant" or "interaction_required")
             {
-                Content = new FormUrlEncodedContent(new Dictionary<string, string?>()
-                {
-                    ["grant_type"] = "urn:ietf:params:oauth:grant-type:jwt-bearer",
-                    ["client_id"] = this.identityOptions.ClientId,
-                    ["client_secret"] = this.identityOptions.ClientSecret,
-                    ["assertion"] = clientToken,
-                    ["scope"] = request.Scope,
-                    ["requested_token_use"] = "on_behalf_of",
-                })
-            };
-            var httpResponseMessage = await this.httpClient.SendAsync(httpRequestMessage);
-            var httpResponseContent = await httpResponseMessage.Content.ReadAsStringAsync();
-            var httpResponseJson = JsonSerializer.Deserialize<Dictionary<string, object?>>(httpResponseContent);
-            if (httpResponseMessage.IsSuccessStatusCode)
-            {
-                return this.Ok(new TokenResponse()
-                {
-                    Token = httpResponseJson?["access_token"]?.ToString()
-                });
+                return this.StatusCode(
+                    (int)HttpStatusCode.Forbidden,
+                    new TokenResponse()
+                    {
+                        Error = httpResponseJson?["error_description"]?.ToString()
+                    }
+                );
             }
             else
             {
-                if (httpResponseJson?["error"]?.ToString() is "invalid_grant" or "interaction_required")
-                {
-                    return this.StatusCode(
-                        (int)HttpStatusCode.Forbidden,
-                        new TokenResponse()
-                        {
-                            Error = httpResponseJson?["error_description"]?.ToString()
-                        }
-                    );
-                }
-                else
-                {
-                    return this.StatusCode(
-                        (int)HttpStatusCode.InternalServerError,
-                        new TokenResponse()
-                        {
-                            Error = httpResponseJson?["error_description"]?.ToString()
-                        }
-                    );
-                }
+                return this.StatusCode(
+                    (int)HttpStatusCode.InternalServerError,
+                    new TokenResponse()
+                    {
+                        Error = httpResponseJson?["error_description"]?.ToString()
+                    }
+                );
             }
         }
-
     }
 
 }
