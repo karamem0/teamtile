@@ -101,7 +101,7 @@ test('create shapshot of when item loading is true', async () => {
         visibility: 'private' as VisibilityType,
         webUrl: 'https://teams.microsoft.com/l/team/19:09fc54a3141a45d0bc769cf506d2e079%40thread.skype/conversations?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
       },
-      loading: false,
+      loading: true,
       visible: true
     }
   };
@@ -127,7 +127,7 @@ test('create shapshot of when item loading is false', async () => {
         visibility: 'private' as VisibilityType,
         webUrl: 'https://teams.microsoft.com/l/team/19:09fc54a3141a45d0bc769cf506d2e079%40thread.skype/conversations?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
       },
-      loading: true,
+      loading: false,
       visible: true
     }
   };

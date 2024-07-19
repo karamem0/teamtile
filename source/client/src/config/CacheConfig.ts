@@ -19,7 +19,7 @@ export function getConfig(): CacheConfig {
   if (config == null) {
     config = {
       database: new Dexie('teamtile'),
-      timeout: process.env.VITE_CACHE_TIMEOUT || 3600
+      timeout: process.env.VITE_CACHE_TIMEOUT ?? 3600
     };
     config.database.version(8).stores({
       channels: '&id, expired',

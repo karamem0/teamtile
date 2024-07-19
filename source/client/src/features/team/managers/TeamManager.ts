@@ -23,13 +23,13 @@ export async function clearCache() {
 export async function getChannels(teamId: string): Promise<Channel[]> {
   return await Promise.resolve()
     .then(async () => teamService.getChannelsFromCache(teamId))
-    .then(async (values) => values || await teamService.getChannelsFromGraph(teamId));
+    .then(async (values) => values ?? await teamService.getChannelsFromGraph(teamId));
 }
 
 export async function getDrive(teamId: string): Promise<Drive | undefined> {
   return await Promise.resolve()
     .then(async () => teamService.getDriveFromCache(teamId))
-    .then(async (value) => value || await teamService.getDriveFromGraph(teamId))
+    .then(async (value) => value ?? await teamService.getDriveFromGraph(teamId))
     .catch(() => undefined);
 }
 
@@ -46,7 +46,7 @@ export async function getItems(): Promise<Item[]> {
 export async function getMembers(teamId: string): Promise<Member[]> {
   return await Promise.resolve()
     .then(async () => teamService.getMembersFromCache(teamId))
-    .then(async (values) => values || await teamService.getMembersFromGraph(teamId))
+    .then(async (values) => values ?? await teamService.getMembersFromGraph(teamId))
     .then(async (values) => teamService.getMemberIconsFromCache(values))
     .then(async (values) => teamService.getMemberIconsFromGraph(values));
 }
