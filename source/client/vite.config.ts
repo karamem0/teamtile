@@ -26,8 +26,8 @@ export default defineConfig({
           [
             'formatjs',
             {
-              idInterpolationPattern: '[sha512:contenthash:base64:6]',
-              ast: true
+              ast: true,
+              idInterpolationPattern: '[sha512:contenthash:base64:6]'
             }
           ]
         ]
@@ -44,9 +44,9 @@ export default defineConfig({
     },
     proxy: {
       '/api': {
-        target: 'https://localhost:5001',
         changeOrigin: true,
-        secure: false
+        secure: false,
+        target: 'https://localhost:5001'
       }
     }
   }

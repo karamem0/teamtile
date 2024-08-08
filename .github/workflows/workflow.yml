@@ -5,7 +5,7 @@ on:
       - develop
 
 env:
-  BUILD_VERSION: '2.1.6'
+  BUILD_VERSION: '2.1.7'
 
 jobs:
   select-environment:
@@ -39,6 +39,7 @@ jobs:
         run: |
           $content = Get-Content -Path ${{env.FILE_PATH}}
           $content = $content -replace "{{APP_CLIENT_ID}}", "${{secrets.APP_CLIENT_ID}}"
+          $content = $content -Replace '{{APP_DOMAIN_NAME}}', '${{secrets.APP_DOMAIN_NAME}}'
           $content = $content -replace "{{APP_TENANT_ID}}", "${{secrets.APP_TENANT_ID}}"
           $content = $content -replace "{{TELEMETRY_CONNECTION_STRING}}", "${{secrets.TELEMETRY_CONNECTION_STRING}}"
           Out-File -FilePath ${{env.FILE_PATH}} -InputObject $content -Encoding UTF8
@@ -70,15 +71,17 @@ jobs:
         shell: pwsh
         run: |
           dotnet test `
+            Karamem0.Teamtile.Tests/Karamem0.Teamtile.Tests.csproj `
             -p:AltCover=true `
             -- NUnit.TestOutputXml=${{github.workspace}}/source/server/test
         working-directory: source/server
       - name: Build server
         shell: pwsh
         run: |
-          dotnet publish Karamem0.Teamtile/Karamem0.Teamtile.csproj `
+          dotnet publish `
+            Karamem0.Teamtile/Karamem0.Teamtile.csproj `
             -c Release `
-            -p:PublishDir=../build `
+            -p:PublishDir=${{github.workspace}}/source/server/build `
             -p:Version=${{env.BUILD_VERSION}}.${{github.run_number}} `
             -p:FileVersion=${{env.BUILD_VERSION}}.${{github.run_number}}
         working-directory: source/server
@@ -101,6 +104,7 @@ jobs:
         with:
           fail_ci_if_error: true
           token: ${{secrets.CODECOV_TOKEN}}
+          slug: karamem0/teamtile
   build-manifest:
     needs: select-environment
     runs-on: ubuntu-latest

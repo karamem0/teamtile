@@ -6,6 +6,8 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+declare module 'ress';
+
 declare namespace NodeJS {
 
   interface ProcessEnv {
