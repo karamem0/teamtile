@@ -32,22 +32,22 @@ function TeamGrid(props: Readonly<TeamGridProps>) {
       defaultOpenItems={[ AccordionType.pinned, AccordionType.all ]}
       multiple>
       <TeamAccordionItem
-        items={items?.filter((item) => item.pinned)}
         key={AccordionType.pinned}
+        items={items?.filter((item) => item.pinned)}
         value={AccordionType.pinned}
         header={
           <FormattedMessage {...messages.PinnedTeams} />
         } />
       <TeamAccordionItem
-        items={items?.filter((item) => item.visible && !item.value.archived)}
         key={AccordionType.all}
+        items={items?.filter((item) => item.visible && !item.value.archived)}
         value={AccordionType.all}
         header={
           <FormattedMessage {...messages.AllTeams} />
         } />
       <TeamAccordionItem
-        items={items?.filter((item) => item.visible && item.value.archived)}
         key={AccordionType.archived}
+        items={items?.filter((item) => item.visible && item.value.archived)}
         value={AccordionType.archived}
         header={
           <FormattedMessage {...messages.ArchivedTeams} />

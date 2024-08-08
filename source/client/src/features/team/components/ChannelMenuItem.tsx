@@ -38,16 +38,6 @@ function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
   const [ values, setValues ] = React.useState<Channel[]>();
   const [ filter, setFilter ] = React.useState<string>();
 
-  React.useEffect(() => {
-    if (!state.error) {
-      return;
-    }
-    dispatchError(state.error);
-  }, [
-    dispatchError,
-    state.error
-  ]);
-
   useDebounce(() => {
     setValues(state.value?.filter((item) => search(item.displayName, filter)));
   }, 500, [
@@ -77,6 +67,16 @@ function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
   }, [
     fetch,
     item
+  ]);
+
+  React.useEffect(() => {
+    if (!state.error) {
+      return;
+    }
+    dispatchError(state.error);
+  }, [
+    dispatchError,
+    state.error
   ]);
 
   return (

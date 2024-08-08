@@ -37,16 +37,11 @@ export const useReducer = (): ReducerContextProps => {
   return value;
 };
 
-interface ReducerProviderProps {
-  children?: React.ReactNode
-}
-
-function ReducerProvider(props: Readonly<ReducerProviderProps>) {
+function ReducerProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
 
   const { children } = props;
 
   const [ state, dispatch ] = React.useReducer(reducer, {});
-
   const dispatchers = React.useMemo(
     () => ({
       setFilter: (payload?: string) => dispatch(setFilter(payload)),
@@ -54,13 +49,16 @@ function ReducerProvider(props: Readonly<ReducerProviderProps>) {
       setItems: (payload?: Item[]) => dispatch(setItems(payload)),
       setLoading: (payload?: boolean) => dispatch(setLoading(payload))
     }), []);
+  const value = React.useMemo(() => ({
+    dispatchers,
+    state
+  }), [
+    dispatchers,
+    state
+  ]);
 
   return (
-    <ReducerContext.Provider
-      value={{
-        dispatchers,
-        state
-      }}>
+    <ReducerContext.Provider value={value}>
       {children}
     </ReducerContext.Provider>
   );

@@ -5,6 +5,7 @@
     "jest": true
   },
   "plugins": [
+    "hooks",
     "sonarjs"
   ],
   "extends": [
@@ -12,8 +13,8 @@
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:sonarjs/recommended-legacy",
     "plugin:testing-library/react",
-    "plugin:sonarjs/recommended",
     "standard"
   ],
   "settings": {
@@ -22,10 +23,6 @@
     }
   },
   "rules": {
-    "arrow-parens": [
-      "error",
-      "always"
-    ],
     "array-bracket-spacing": [
       "error",
       "always",
@@ -33,10 +30,29 @@
         "arraysInArrays": false
       }
     ],
+    "arrow-parens": [
+      "error",
+      "always"
+    ],
+    "arrow-spacing": "error",
     "dot-notation": [
       "error",
       {
         "allowPattern": "^[a-z]+(_[a-z]+)+$"
+      }
+    ],
+    "hooks/sort": [
+      "error",
+      {
+        "groups": [
+          "useContext",
+          "useReducer",
+          "useState",
+          "useMemo",
+          "useRef",
+          "useCallback",
+          "useEffect"
+        ]
       }
     ],
     "key-spacing": [
@@ -62,8 +78,9 @@
         ]
       }
     ],
-    "no-use-before-define": "off",
     "no-unused-vars": "off",
+    "no-use-before-define": "off",
+    "no-var": "error",
     "operator-linebreak": [
       "error",
       "after"
@@ -77,6 +94,7 @@
       "error",
       "always"
     ],
+    "sort-imports": "off",
     "space-before-function-paren": [
       "error",
       {
@@ -85,7 +103,6 @@
         "asyncArrow": "always"
       }
     ],
-    "sort-imports": "off",
     "@typescript-eslint/array-type": [
       "error",
       {
@@ -106,6 +123,7 @@
       }
     ],
     "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-use-before-define": "error",
     "import/order": [
       "error",
       {
@@ -193,7 +211,8 @@
       "error",
       {
         "callbacksLast": true,
-        "multiline": "last"
+        "multiline": "last",
+        "reservedFirst": true
       }
     ],
     "react/jsx-tag-spacing": [
@@ -211,7 +230,9 @@
       }
     ],
     "react/prop-types": "off",
+    "sonarjs/no-collapsible-if": "warn",
     "sonarjs/no-duplicate-string": "off",
+    "sonarjs/no-small-switch": "warn",
     "sonarjs/prefer-single-boolean-return": "off"
   }
 }

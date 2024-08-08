@@ -28,7 +28,7 @@ const intl = createIntl({
   messages: translations[window.navigator.language.substring(0, 2)]
 });
 
-function IntlProvider(props: React.PropsWithChildren<unknown>) {
+function IntlProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
 
   const { children } = props;
 

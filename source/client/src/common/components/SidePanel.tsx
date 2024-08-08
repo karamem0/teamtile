@@ -12,9 +12,14 @@ import { Event, EventHandler } from '../../types/Event';
 
 import Presenter from './SidePanel.presenter';
 
+interface SidePanelRenderProps {
+  onOpenChange?: EventHandler<boolean>
+}
+
 interface SidePanelProps {
-  children?: React.ReactNode,
   content?: React.ReactNode,
+  loading?: boolean,
+  renderer?: (props: SidePanelRenderProps) => React.ReactNode,
   title?: React.ReactNode,
   onOpenChange?: EventHandler<boolean>
 }
@@ -22,8 +27,9 @@ interface SidePanelProps {
 function SidePanel(props: Readonly<SidePanelProps>) {
 
   const {
-    children,
     content,
+    loading,
+    renderer,
     title,
     onOpenChange
   } = props;
@@ -38,10 +44,13 @@ function SidePanel(props: Readonly<SidePanelProps>) {
   return (
     <Presenter
       content={content}
+      loading={loading}
       open={open}
       title={title}
       onOpenChange={handleOpenChange}>
-      {children}
+      {
+        renderer?.({ onOpenChange: handleOpenChange })
+      }
     </Presenter>
   );
 

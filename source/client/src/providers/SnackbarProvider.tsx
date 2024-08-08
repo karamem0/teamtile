@@ -22,22 +22,20 @@ interface SnackbarContextProps {
 
 const SnackbarContext = React.createContext<SnackbarContextProps | undefined>(undefined);
 
-interface SnackbarProviderProps {
-  children?: React.ReactNode
-}
-
-function SnackbarProvider(props: Readonly<SnackbarProviderProps>) {
+function SnackbarProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
 
   const { children } = props;
 
   const [ snackbar, setSnackbar ] = React.useState<SnackbarProps>();
+  const value = React.useMemo(() => ({
+    snackbar,
+    setSnackbar
+  }), [
+    snackbar
+  ]);
 
   return (
-    <SnackbarContext.Provider
-      value={{
-        snackbar,
-        setSnackbar
-      }}>
+    <SnackbarContext.Provider value={value}>
       {children}
     </SnackbarContext.Provider>
   );

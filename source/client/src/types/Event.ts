@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-export type Event = React.SyntheticEvent | React.SyntheticEvent<unknown> | Record<string, never>;
+export type Event = globalThis.Event | React.SyntheticEvent | Record<string, never>;
 
 export type EventHandler<T = never> = (
   event?: Event,

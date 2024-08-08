@@ -58,11 +58,7 @@ export const useTheme = (): ThemeContextProps => {
   return value;
 };
 
-interface ThemeProviderProps {
-  children?: React.ReactNode
-}
-
-function ThemeProvider(props: Readonly<ThemeProviderProps>) {
+function ThemeProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
 
   const { children } = props;
 

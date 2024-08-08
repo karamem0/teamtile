@@ -11,11 +11,9 @@
       ],
       "rules": {
         "at-rule-empty-line-before": "never",
+        "declaration-empty-line-before": "never",
         "rule-empty-line-before": "never"
       }
     }
-  ],
-  "rules": {
-    "scss/comment-no-empty": null
-  }
+  ]
 }

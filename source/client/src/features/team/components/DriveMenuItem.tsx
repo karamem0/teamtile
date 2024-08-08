@@ -34,16 +34,6 @@ function DriveMenuItem(props: Readonly<DriveMenuItemProps>) {
   const [ state, fetch ] = useAsyncFn((teamId: string) => getDrive(teamId));
   const intl = useIntl();
 
-  React.useEffect(() => {
-    if (!state.error) {
-      return;
-    }
-    dispatchError(state.error);
-  }, [
-    dispatchError,
-    state.error
-  ]);
-
   const handleClick = React.useCallback(async () => {
     if (!item?.id) {
       return;
@@ -62,6 +52,16 @@ function DriveMenuItem(props: Readonly<DriveMenuItemProps>) {
     item?.id,
     fetch,
     setSnackbar
+  ]);
+
+  React.useEffect(() => {
+    if (!state.error) {
+      return;
+    }
+    dispatchError(state.error);
+  }, [
+    dispatchError,
+    state.error
   ]);
 
   return (

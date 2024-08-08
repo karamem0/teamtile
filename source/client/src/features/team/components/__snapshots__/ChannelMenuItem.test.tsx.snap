@@ -36,38 +36,36 @@ exports[`create shapshot 1`] = `
     <div
       class="emotion-0"
     >
-      <div>
-        <span
-          aria-label="View channels"
-          class="fui-Text emotion-1 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
-          role="button"
+      <span
+        aria-label="View channels"
+        class="fui-Text emotion-1 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
+        role="button"
+      >
+        <button
+          class="fui-Button r1alrhcs ___cpe5h10_1yhfyj7 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f18ktai2 fwbmr0d f44c6la"
+          type="button"
         >
-          <button
-            class="fui-Button r1alrhcs ___cpe5h10_1yhfyj7 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f18ktai2 fwbmr0d f44c6la"
-            type="button"
+          <span
+            class="fui-Button__icon rywnvv2"
           >
             <span
-              class="fui-Button__icon rywnvv2"
+              aria-hidden="true"
+              class="root_dd790ee3 emotion-2"
             >
-              <span
-                aria-hidden="true"
-                class="root_dd790ee3 emotion-2"
+              <svg
+                class="svg_dd790ee3"
+                focusable="false"
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <svg
-                  class="svg_dd790ee3"
-                  focusable="false"
-                  viewBox="0 0 2048 2048"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1792 128v1664H256V128h1536zm-128 128H384v1408h1280V256zm-256 768H640V896h768v128zm0 384H640v-128h768v128zm0-768H640V512h768v128z"
-                  />
-                </svg>
-              </span>
+                <path
+                  d="M1792 128v1664H256V128h1536zm-128 128H384v1408h1280V256zm-256 768H640V896h768v128zm0 384H640v-128h768v128zm0-768H640V512h768v128z"
+                />
+              </svg>
             </span>
-          </button>
-        </span>
-      </div>
+          </span>
+        </button>
+      </span>
     </div>
   </div>
 </DocumentFragment>

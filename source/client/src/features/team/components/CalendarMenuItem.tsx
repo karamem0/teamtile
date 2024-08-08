@@ -38,16 +38,6 @@ function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
   const [ state, fetch ] = useAsyncFn((teamId: string, channelId: string, appId: string) => getTab(teamId, channelId, appId));
   const intl = useIntl();
 
-  React.useEffect(() => {
-    if (!state.error) {
-      return;
-    }
-    dispatchError(state.error);
-  }, [
-    dispatchError,
-    state.error
-  ]);
-
   const handleClick = React.useCallback(async () => {
     if (!item?.value?.id) {
       return;
@@ -76,6 +66,16 @@ function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
     item,
     fetch,
     setSnackbar
+  ]);
+
+  React.useEffect(() => {
+    if (!state.error) {
+      return;
+    }
+    dispatchError(state.error);
+  }, [
+    dispatchError,
+    state.error
   ]);
 
   return (

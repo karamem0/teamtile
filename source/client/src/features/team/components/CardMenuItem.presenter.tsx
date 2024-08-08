@@ -15,12 +15,11 @@ import { css } from '@emotion/react';
 import { EventHandler } from '../../../types/Event';
 
 interface CardMenuItemProps {
-  children?: React.ReactNode,
   tooltip?: string,
   onClick?: EventHandler
 }
 
-function CardMenuItem(props: Readonly<CardMenuItemProps>) {
+function CardMenuItem(props: Readonly<React.PropsWithChildren<CardMenuItemProps>>) {
 
   const {
     children,

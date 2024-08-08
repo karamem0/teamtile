@@ -25,7 +25,7 @@ if (connectionString != null && connectionString.length > 0) {
   appInsights.trackPageView();
 }
 
-function TelemetryProvider(props: React.PropsWithChildren<unknown>) {
+function TelemetryProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
 
   const { children } = props;
 

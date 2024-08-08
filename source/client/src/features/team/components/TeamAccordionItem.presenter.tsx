@@ -50,8 +50,8 @@ function TeamAccordionItem(props: Readonly<TeamAccordionItemProps>) {
             {
               items.map((item) => (
                 <TeamCard
-                  item={item}
-                  key={item.id} />
+                  key={item.id}
+                  item={item} />
               ))
             }
           </GridLayout>

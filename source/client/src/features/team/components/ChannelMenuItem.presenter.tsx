@@ -13,7 +13,6 @@ import { useIntl } from 'react-intl';
 import {
   Button,
   Input,
-  Spinner,
   Text
 } from '@fluentui/react-components';
 import { ContextMenuIcon, SearchIcon } from '@fluentui/react-icons-mdl2';
@@ -52,30 +51,28 @@ function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
 
   return (
     <SidePanel
+      loading={loading}
       title={intl.formatMessage(messages.Channels)}
       content={
-        loading ? (
-          <Spinner />
-        ) : (
-          items ? (
-            <div
-              css={css`
+        items ? (
+          <div
+            css={css`
                 display: flex;
                 flex-flow: column;
                 grid-gap: 0.5rem;
               `}>
-              <Input
-                contentBefore={<SearchIcon />}
-                onChange={(e, data) => onFilterChange?.(e, data.value)} />
-              <div
-                css={css`
+            <Input
+              contentBefore={<SearchIcon />}
+              onChange={(e, data) => onFilterChange?.(e, data.value)} />
+            <div
+              css={css`
                   display: flex;
                   flex-flow: column;
                   grid-gap: 0.5rem;
                   height: calc(100vh - 8rem);
                   overflow: auto;
                 `}>
-                {
+              {
                   items.map((item) => (
                     <Text
                       key={item.id}
@@ -100,24 +97,26 @@ function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
                     </Text>
                   ))
                 }
-              </div>
             </div>
-          ) : null
-        )
+          </div>
+        ) : null
       }
-      onOpenChange={onOpenChange}>
-      <CardMenuItem tooltip={intl.formatMessage(messages.ViewChannels)}>
-        <Button
-          appearance="transparent"
-          icon={(
-            <ContextMenuIcon
-              css={css`
-              width: 1rem;
-              height: 1rem;
-            `} />
-          )} />
-      </CardMenuItem>
-    </SidePanel>
+      renderer={
+        ({ onOpenChange }) => (
+          <CardMenuItem tooltip={intl.formatMessage(messages.ViewChannels)}>
+            <Button
+              appearance="transparent"
+              icon={(
+                <ContextMenuIcon
+                  css={css`
+                    width: 1rem;
+                    height: 1rem;
+                  `} />
+              )}
+              onClick={(e) => onOpenChange?.(e, true)} />
+          </CardMenuItem>
+        )}
+      onOpenChange={onOpenChange} />
   );
 
 }

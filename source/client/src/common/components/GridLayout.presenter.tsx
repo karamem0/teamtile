@@ -10,11 +10,7 @@ import React from 'react';
 
 import { css } from '@emotion/react';
 
-interface GridLayoutProps {
-  children?: React.ReactNode
-}
-
-function GridLayout(props: Readonly<GridLayoutProps>) {
+function GridLayout(props: Readonly<React.PropsWithChildren<unknown>>) {
 
   const { children } = props;
 

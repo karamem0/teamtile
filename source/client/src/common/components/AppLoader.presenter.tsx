@@ -11,11 +11,10 @@ import React from 'react';
 import LoaderPanal from './LoaderPanel';
 
 interface AppLoaderProps {
-  children?: React.ReactNode,
   loading?: boolean
 }
 
-function AppLoader(props: Readonly<AppLoaderProps>) {
+function AppLoader(props: Readonly<React.PropsWithChildren<AppLoaderProps>>) {
 
   const {
     children,

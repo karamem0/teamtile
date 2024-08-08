@@ -10,11 +10,7 @@ import React from 'react';
 
 import { css } from '@emotion/react';
 
-interface CenterLayoutProps {
-  children?: React.ReactNode
-}
-
-function CenterLayout(props: Readonly<CenterLayoutProps>) {
+function CenterLayout(props: Readonly<React.PropsWithChildren<unknown>>) {
 
   const { children } = props;
 

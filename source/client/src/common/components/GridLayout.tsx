@@ -10,11 +10,7 @@ import React from 'react';
 
 import Presenter from './GridLayout.presenter';
 
-interface GridLayoutProps {
-  children?: React.ReactNode
-}
-
-function GridLayout(props: Readonly<GridLayoutProps>) {
+function GridLayout(props: Readonly<React.PropsWithChildren<unknown>>) {
 
   const { children } = props;
 

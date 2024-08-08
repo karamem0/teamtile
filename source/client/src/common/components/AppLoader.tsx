@@ -14,11 +14,7 @@ import { getAccessToken } from '../../managers/TokenManager';
 
 import Presenter from './AppLoader.presenter';
 
-interface AppLoaderProps {
-  children?: React.ReactNode
-}
-
-function AppLoader(props: Readonly<AppLoaderProps>) {
+function AppLoader(props: Readonly<React.PropsWithChildren<unknown>>) {
 
   const { children } = props;
 

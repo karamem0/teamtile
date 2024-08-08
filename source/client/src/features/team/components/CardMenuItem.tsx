@@ -13,12 +13,11 @@ import { EventHandler } from '../../../types/Event';
 import Presenter from './CardMenuItem.presenter';
 
 interface CardMenuItemProps {
-  children?: React.ReactNode,
   tooltip?: string,
   onClick?: EventHandler
 }
 
-function CardMenuItem(props: Readonly<CardMenuItemProps>) {
+function CardMenuItem(props: Readonly<React.PropsWithChildren<CardMenuItemProps>>) {
 
   const {
     children,
