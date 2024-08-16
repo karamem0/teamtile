@@ -5,7 +5,7 @@ on:
       - develop
 
 env:
-  BUILD_VERSION: '2.1.7'
+  BUILD_VERSION: '2.1.8'
 
 jobs:
   select-environment:
@@ -15,12 +15,7 @@ jobs:
         id: select-environment
         shell: pwsh
         run: |
-          if ("${{github.ref}}" -eq "refs/heads/main") {
-            Write-Output "env-name=production" >> $env:GITHUB_OUTPUT
-          }
-          if ("${{github.ref}}" -eq "refs/heads/develop") {
-            Write-Output "env-name=development" >> $env:GITHUB_OUTPUT
-          }
+          Write-Output "env-name=$(@{'main'='production';'develop'='development'}['${{github.ref_name}}'])" >> $env:GITHUB_OUTPUT
     outputs:
       env-name: ${{steps.select-environment.outputs.env-name}}
   build-source:

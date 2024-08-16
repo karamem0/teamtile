@@ -25,7 +25,7 @@ export async function getServerToken(token: string): Promise<string> {
         scope: loginParams.scopes.join(' ')
       }),
       headers: {
-        Authorization: `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       mode: 'cors'

@@ -13,40 +13,40 @@ import { defineConfig } from 'vite';
 import env from 'vite-plugin-env-compatible';
 
 export default defineConfig({
-  build: {
-    outDir: 'dist',
-    sourcemap: true
+  'build': {
+    'outDir': 'dist',
+    'sourcemap': true
   },
-  plugins: [
+  'plugins': [
     react({
-      jsxImportSource: '@emotion/react',
-      babel: {
-        plugins: [
+      'jsxImportSource': '@emotion/react',
+      'babel': {
+        'plugins': [
           '@emotion/babel-plugin',
           [
             'formatjs',
             {
-              ast: true,
-              idInterpolationPattern: '[sha512:contenthash:base64:6]'
+              'ast': true,
+              'idInterpolationPattern': '[sha512:contenthash:base64:6]'
             }
           ]
         ]
       }
     }),
     env({
-      prefix: 'VITE'
+      'prefix': 'VITE'
     })
   ],
-  server: {
-    https: {
-      cert: fs.readFileSync('./cert/localhost.crt'),
-      key: fs.readFileSync('./cert/localhost.key')
+  'server': {
+    'https': {
+      'cert': fs.readFileSync('./cert/localhost.crt'),
+      'key': fs.readFileSync('./cert/localhost.key')
     },
-    proxy: {
+    'proxy': {
       '/api': {
-        changeOrigin: true,
-        secure: false,
-        target: 'https://localhost:5001'
+        'changeOrigin': true,
+        'secure': false,
+        'target': 'https://localhost:5001'
       }
     }
   }

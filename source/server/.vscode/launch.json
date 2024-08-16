@@ -2,27 +2,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": ".NET Core Launch (web)",
-      "type": "coreclr",
+      "name": "Debug Web",
+      "type": "dotnet",
       "request": "launch",
-      "preLaunchTask": "build",
-      "program": "${workspaceFolder}/Karamem0.Teamtile/bin/Debug/net8.0/Karamem0.Teamtile.dll",
-      "args": [],
-      "cwd": "${workspaceFolder}/Karamem0.Teamtile",
-      "stopAtEntry": false,
-      "serverReadyAction": {
-        "action": "openExternally",
-        "pattern": "\\\\bNow listening on:\\\\s+(https?://\\\\S+)"
-      },
-      "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    {
-      "name": ".NET Core Attach",
-      "type": "coreclr",
-      "request": "attach",
-      "processId": "${command:pickProcess}"
+      "projectPath": "${workspaceFolder}/Karamem0.Teamtile/Karamem0.Teamtile.csproj"
     }
   ]
 }

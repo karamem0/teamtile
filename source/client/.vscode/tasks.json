@@ -31,7 +31,7 @@
           "background": {
             "activeOnStart": true,
             "beginsPattern": "^VITE v[0-9\\.]+  ready in [0-9]+ms$",
-            "endsPattern": "https://(localhost|127.0.0.1):[0-9]+/$"
+            "endsPattern": "https://(?:localhost|127.0.0.1):[0-9]+/$"
           }
         }
       ],
