@@ -39,8 +39,8 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
     |Resource Group|(You can choose)|
     |Name|(You can choose)|
     |Publish|Code|
-    |Runtime stack|.NET 7|
-    |Operating System|Windows|
+    |Runtime stack|.NET 8|
+    |Operating System|Windows or Linux (You can choose)|
     |Region|(You can choose)|
 
 5. Click **Create** and wait until creation is completed.
@@ -160,7 +160,7 @@ dotnet publish --configuration Release
 4. Compress contents of `publish` folder.
 
 ```
-Compress-Archive -Path ./bin/Release/net7.0/publish/* -DestinationPath ../../build.zip
+Compress-Archive -Path ./bin/Release/net8.0/publish/* -DestinationPath ../../build.zip
 ```
 
 ### Manifest

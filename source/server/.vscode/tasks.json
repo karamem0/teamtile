@@ -3,8 +3,8 @@
   "tasks": [
     {
       "label": "clean",
-      "command": "dotnet",
       "type": "shell",
+      "command": "dotnet",
       "args": [
         "clean",
         "${workspaceFolder}/Karamem0.Teamtile.sln",
@@ -19,8 +19,8 @@
         "kind": "build",
         "isDefault": true
       },
-      "command": "dotnet",
       "type": "shell",
+      "command": "dotnet",
       "args": [
         "build",
         "${workspaceFolder}/Karamem0.Teamtile.sln",

@@ -39,8 +39,8 @@
     |リソース グループ|(選択可能)|
     |名前|(選択可能)|
     |公開|コード|
-    |ランタイム スタック|.NET 7|
-    |オペレーティング システム|Windows|
+    |ランタイム スタック|.NET 8|
+    |オペレーティング システム|Windows または Linux (選択可能)|
     |地域|(選択可能)|
 
 5. **作成** をクリックして操作が完了するまで待機します。
@@ -160,7 +160,7 @@ dotnet publish --configuration Release
 4. `publish` フォルダーの中身を圧縮します。
 
 ```
-Compress-Archive -Path ./bin/Release/net7.0/publish/* -DestinationPath ../../build.zip
+Compress-Archive -Path ./bin/Release/net8.0/publish/* -DestinationPath ../../build.zip
 ```
 
 ### マニフェスト
