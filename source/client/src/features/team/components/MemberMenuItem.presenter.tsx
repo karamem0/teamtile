@@ -117,7 +117,8 @@ function MemberMenuItem(props: Readonly<MemberMenuItemProps>) {
               )}
               onClick={(e) => onOpenChange?.(e, true)} />
           </CardMenuItem>
-        )}
+        )
+      }
       onOpenChange={onOpenChange} />
   );
 }

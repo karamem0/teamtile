@@ -57,46 +57,46 @@ function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
         items ? (
           <div
             css={css`
-                display: flex;
-                flex-flow: column;
-                grid-gap: 0.5rem;
-              `}>
+              display: flex;
+              flex-flow: column;
+              grid-gap: 0.5rem;
+            `}>
             <Input
               contentBefore={<SearchIcon />}
               onChange={(e, data) => onFilterChange?.(e, data.value)} />
             <div
               css={css`
-                  display: flex;
-                  flex-flow: column;
-                  grid-gap: 0.5rem;
-                  height: calc(100vh - 8rem);
-                  overflow: auto;
-                `}>
+                display: flex;
+                flex-flow: column;
+                grid-gap: 0.5rem;
+                height: calc(100vh - 8rem);
+                overflow: auto;
+              `}>
               {
-                  items.map((item) => (
-                    <Text
-                      key={item.id}
-                      role="button"
-                      css={css`
-                        display: grid;
-                        grid-template-rows: auto;
-                        grid-template-columns: auto auto;
-                        grid-gap: 0.5rem;
-                        align-items: center;
-                        justify-content: left;
-                        padding: 0.5rem;
-                        &:hover {
-                          background-color: ${theme.colorNeutralBackground1Hover};
-                        }
-                      `}
-                      onClick={(e: Event) => onClick?.(e, item)}>
-                      <Text truncate>
-                        {item.displayName}
-                      </Text>
-                      <MembershipIcon value={item.membershipType} />
+                items.map((item) => (
+                  <Text
+                    key={item.id}
+                    role="button"
+                    css={css`
+                      display: grid;
+                      grid-template-rows: auto;
+                      grid-template-columns: auto auto;
+                      grid-gap: 0.5rem;
+                      align-items: center;
+                      justify-content: left;
+                      padding: 0.5rem;
+                      &:hover {
+                        background-color: ${theme.colorNeutralBackground1Hover};
+                      }
+                    `}
+                    onClick={(e: Event) => onClick?.(e, item)}>
+                    <Text truncate>
+                      {item.displayName}
                     </Text>
-                  ))
-                }
+                    <MembershipIcon value={item.membershipType} />
+                  </Text>
+                ))
+              }
             </div>
           </div>
         ) : null
@@ -115,7 +115,8 @@ function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
               )}
               onClick={(e) => onOpenChange?.(e, true)} />
           </CardMenuItem>
-        )}
+        )
+      }
       onOpenChange={onOpenChange} />
   );
 

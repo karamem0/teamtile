@@ -45,28 +45,28 @@ function TeamAccordionItem(props: Readonly<TeamAccordionItemProps>) {
       </AccordionHeader>
       <AccordionPanel>
         {
-        items?.length ? (
-          <GridLayout>
-            {
-              items.map((item) => (
-                <TeamCard
-                  key={item.id}
-                  item={item} />
-              ))
-            }
-          </GridLayout>
-        ) : (
-          <div
-            css={css`
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-            `}>
-            <FormattedMessage {...messages.NoTeamsFound} />
-          </div>
-        )
-      }
+          items?.length ? (
+            <GridLayout>
+              {
+                items.map((item) => (
+                  <TeamCard
+                    key={item.id}
+                    item={item} />
+                ))
+              }
+            </GridLayout>
+          ) : (
+            <div
+              css={css`
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+              `}>
+              <FormattedMessage {...messages.NoTeamsFound} />
+            </div>
+          )
+        }
       </AccordionPanel>
     </AccordionItem>
   );

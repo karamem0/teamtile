@@ -53,7 +53,8 @@ function PinMenuItem(props: Readonly<PinMenuItemProps>) {
                 width: 1rem;
                 height: 1rem;
               `} />
-          )} />
+          )
+        } />
     </CardMenuItem>
   );
 

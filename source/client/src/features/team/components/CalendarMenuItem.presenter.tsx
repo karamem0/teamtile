@@ -38,17 +38,15 @@ function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
     <CardMenuItem
       tooltip={intl.formatMessage(messages.OpenChannelCalendar)}
       onClick={onClick}>
-      {
-        <Button
-          appearance="transparent"
-          icon={(
-            <CalendarIcon
-              css={css`
-                width: 1rem;
-                height: 1rem;
-              `} />
-          )} />
-        }
+      <Button
+        appearance="transparent"
+        icon={(
+          <CalendarIcon
+            css={css`
+              width: 1rem;
+              height: 1rem;
+            `} />
+        )} />
     </CardMenuItem>
   );
 
