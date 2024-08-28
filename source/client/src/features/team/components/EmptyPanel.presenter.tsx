@@ -8,16 +8,13 @@
 
 import React from 'react';
 
-import { FormattedMessage } from 'react-intl';
-
 import { Button, Text } from '@fluentui/react-components';
-
-import { css } from '@emotion/react';
-
 import CenterLayout from '../../../common/components/CenterLayout';
-import { useTheme } from '../../../providers/ThemeProvider';
 import { EventHandler } from '../../../types/Event';
+import { FormattedMessage } from 'react-intl';
+import { css } from '@emotion/react';
 import messages from '../messages';
+import { useTheme } from '../../../providers/ThemeProvider';
 
 interface EmptyPanelProps {
   onClick?: EventHandler
@@ -65,4 +62,4 @@ function EmptyPanel(props: Readonly<EmptyPanelProps>) {
 
 }
 
-export default EmptyPanel;
+export default React.memo(EmptyPanel);

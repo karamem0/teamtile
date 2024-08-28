@@ -8,32 +8,31 @@
 
 import React from 'react';
 
-import { useIntl } from 'react-intl';
-
-import { Alert } from '@fluentui/react-components/unstable';
-import { ErrorBadgeIcon } from '@fluentui/react-icons-mdl2';
-
-import { css } from '@emotion/react';
-
+import {
+  Link,
+  MessageBar,
+  MessageBarActions,
+  MessageBarBody,
+  MessageBarIntent
+} from '@fluentui/react-components';
 import { EventHandler } from '../../types/Event';
-import { SnackbarType } from '../../types/Snackbar';
+import { FormattedMessage } from 'react-intl';
+import { css } from '@emotion/react';
 import messages from '../messages';
 
 interface SnackbarProps {
+  intent?: MessageBarIntent,
   text?: string,
-  type?: SnackbarType,
   onDismiss?: EventHandler
 }
 
 function Snackbar(props: Readonly<SnackbarProps>) {
 
   const {
+    intent,
     text,
-    type,
     onDismiss
   } = props;
-
-  const intl = useIntl();
 
   return text ? (
     <div
@@ -45,21 +44,19 @@ function Snackbar(props: Readonly<SnackbarProps>) {
         z-index: 1001;
         margin: 0.5rem;
       `}>
-      <Alert
-        intent={type}
-        action={{
-          title: intl.formatMessage(messages.Dismiss),
-          icon: (
-            <ErrorBadgeIcon
-              css={css`
-                width: 1rem;
-                height: 1rem;
-              `} />
-          ),
-          onClick: onDismiss
-        }}>
-        {text}
-      </Alert>
+      <MessageBar intent={intent}>
+        <MessageBarBody>
+          {text}
+        </MessageBarBody>
+        <MessageBarActions
+          containerAction={(
+            <Link
+              as="button"
+              onClick={onDismiss}>
+              <FormattedMessage {...messages.Dismiss} />
+            </Link>
+          )} />
+      </MessageBar>
     </div>
   ) : null;
 

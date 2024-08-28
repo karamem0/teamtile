@@ -8,13 +8,11 @@
 
 import React from 'react';
 
-import { useDebounce } from 'react-use';
-
-import { useReducer } from '../../../providers/ReducerProvider';
 import { Event } from '../../../types/Event';
-import { clearCache } from '../managers/TeamManager';
-
 import Presenter from './TeamPanel.presenter';
+import { clearCache } from '../managers/TeamManager';
+import { useDebounce } from 'react-use';
+import { useReducer } from '../../../providers/ReducerProvider';
 
 function TeamPanel() {
 

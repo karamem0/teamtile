@@ -6,6 +6,7 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import * as teamService from '../services/TeamService';
 import {
   Channel,
   Drive,
@@ -13,7 +14,6 @@ import {
   Tab
 } from '../../../types/Entity';
 import { Item } from '../../../types/Store';
-import * as teamService from '../services/TeamService';
 
 export async function clearCache() {
   return await Promise.resolve()

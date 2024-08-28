@@ -8,12 +8,10 @@
 
 import React from 'react';
 
-import { render } from '@testing-library/react';
-
+import TeamCard from './TeamCard.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
-
-import TeamCard from './TeamCard.presenter';
+import { render } from '@testing-library/react';
 
 jest.mock('./AvatarIcon', () =>
   function AvatarIcon({ children }: React.PropsWithChildren<unknown>) {

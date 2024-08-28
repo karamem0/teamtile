@@ -6,7 +6,6 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import { getConfig } from '../../../config/CacheConfig';
 import {
   ArrayEntity,
   Entity,
@@ -19,6 +18,7 @@ import {
   Member,
   Team
 } from '../../../types/Entity';
+import { getConfig } from '../../../config/CacheConfig';
 
 export async function clearAll(): Promise<void> {
   const { database } = getConfig();

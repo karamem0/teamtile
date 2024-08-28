@@ -7,7 +7,6 @@
 //
 
 import * as graphConfig from '../../../config/GraphConfig';
-
 import {
   getChannels,
   getDrive,

@@ -6,11 +6,10 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import { app, HostClientType } from '@microsoft/teams-js';
+import { HostClientType, app } from '@microsoft/teams-js';
 
 export function inTeams(): boolean {
-  if (window.parent === window.self &&
-      Object.prototype.hasOwnProperty.call(window, 'nativeInterface')) {
+  if (window.parent === window.self && Object.hasOwn(window, 'nativeInterface')) {
     return true;
   }
   if (window.navigator.userAgent.includes('Teams/')) {

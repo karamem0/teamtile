@@ -9,7 +9,6 @@
 import React from 'react';
 
 import { Event, EventHandler } from '../../types/Event';
-
 import Presenter from './SidePanel.presenter';
 
 interface SidePanelRenderProps {

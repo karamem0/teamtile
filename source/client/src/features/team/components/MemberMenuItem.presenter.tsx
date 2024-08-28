@@ -8,25 +8,21 @@
 
 import React from 'react';
 
-import { useIntl } from 'react-intl';
-
 import {
   Button,
   Input,
   Text
 } from '@fluentui/react-components';
-import { GroupIcon, SearchIcon } from '@fluentui/react-icons-mdl2';
-
-import { css } from '@emotion/react';
-
-import SidePanel from '../../../common/components/SidePanel';
-import { useTheme } from '../../../providers/ThemeProvider';
-import { Member } from '../../../types/Entity';
 import { Event, EventHandler } from '../../../types/Event';
-import messages from '../messages';
-
+import { GroupIcon, SearchIcon } from '@fluentui/react-icons-mdl2';
 import AvatarIcon from './AvatarIcon';
 import CardMenuItem from './CardMenuItem';
+import { Member } from '../../../types/Entity';
+import SidePanel from '../../../common/components/SidePanel';
+import { css } from '@emotion/react';
+import messages from '../messages';
+import { useIntl } from 'react-intl';
+import { useTheme } from '../../../providers/ThemeProvider';
 
 interface MemberMenuItemProps {
   items?: Member[],

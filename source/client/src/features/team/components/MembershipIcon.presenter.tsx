@@ -8,15 +8,12 @@
 
 import React from 'react';
 
-import { useIntl } from 'react-intl';
-
 import { Text, Tooltip } from '@fluentui/react-components';
 import { LockIcon } from '@fluentui/react-icons-mdl2';
-
-import { css } from '@emotion/react';
-
 import { MembershipType } from '../../../types/Entity';
+import { css } from '@emotion/react';
 import messages from '../messages';
+import { useIntl } from 'react-intl';
 
 export interface MembershipIconProps {
   value?: MembershipType

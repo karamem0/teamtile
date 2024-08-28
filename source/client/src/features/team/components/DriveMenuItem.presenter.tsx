@@ -8,17 +8,13 @@
 
 import React from 'react';
 
-import { useIntl } from 'react-intl';
-
 import { Button } from '@fluentui/react-components';
-import { SharepointLogoIcon } from '@fluentui/react-icons-mdl2-branded';
-
-import { css } from '@emotion/react';
-
-import { EventHandler } from '../../../types/Event';
-import messages from '../messages';
-
 import CardMenuItem from './CardMenuItem';
+import { EventHandler } from '../../../types/Event';
+import { SharepointLogoIcon } from '@fluentui/react-icons-mdl2-branded';
+import { css } from '@emotion/react';
+import messages from '../messages';
+import { useIntl } from 'react-intl';
 
 interface DriveMenuItemProps {
   onClick?: EventHandler

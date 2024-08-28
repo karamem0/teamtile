@@ -8,11 +8,9 @@
 
 import React from 'react';
 
-import { app } from '@microsoft/teams-js';
-
-import { getAccessToken } from '../../managers/TokenManager';
-
 import Presenter from './AppLoader.presenter';
+import { app } from '@microsoft/teams-js';
+import { getAccessToken } from '../../managers/TokenManager';
 
 function AppLoader(props: Readonly<React.PropsWithChildren<unknown>>) {
 

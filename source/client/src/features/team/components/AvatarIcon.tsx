@@ -9,7 +9,6 @@
 import React from 'react';
 
 import { AvatarSize } from '@fluentui/react-components';
-
 import Presenter from './AvatarIcon.presenter';
 
 interface AvatarIconProps {

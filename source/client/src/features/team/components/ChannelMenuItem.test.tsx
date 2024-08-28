@@ -8,13 +8,11 @@
 
 import React from 'react';
 
-import { render } from '@testing-library/react';
-
-import IntlProvider from '../../../providers/IntlProvider';
-import ThemeProvider from '../../../providers/ThemeProvider';
-import { MembershipType } from '../../../types/Entity';
-
 import ChannelMenuItem from './ChannelMenuItem.presenter';
+import IntlProvider from '../../../providers/IntlProvider';
+import { MembershipType } from '../../../types/Entity';
+import ThemeProvider from '../../../providers/ThemeProvider';
+import { render } from '@testing-library/react';
 
 test('create shapshot', async () => {
   const params = {

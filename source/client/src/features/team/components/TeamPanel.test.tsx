@@ -8,9 +8,8 @@
 
 import React from 'react';
 
-import { render } from '@testing-library/react';
-
 import TeamPanel from './TeamPanel.presenter';
+import { render } from '@testing-library/react';
 
 jest.mock('./TeamGrid', () =>
   function TeamGrid({ children }: React.PropsWithChildren<unknown>) {

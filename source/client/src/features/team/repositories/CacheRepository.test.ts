@@ -7,7 +7,6 @@
 //
 
 import * as cacheConfig from '../../../config/CacheConfig';
-
 import {
   clearAll,
   getChannels,

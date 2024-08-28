@@ -8,27 +8,21 @@
 
 import React from 'react';
 
-import { useIntl } from 'react-intl';
-
 import { Button } from '@fluentui/react-components';
 import { CalendarIcon } from '@fluentui/react-icons-mdl2';
-
-import { css } from '@emotion/react';
-
-import { EventHandler } from '../../../types/Event';
-import messages from '../messages';
-
 import CardMenuItem from './CardMenuItem';
+import { EventHandler } from '../../../types/Event';
+import { css } from '@emotion/react';
+import messages from '../messages';
+import { useIntl } from 'react-intl';
 
 interface CalendarMenuItemProps {
-  loading?: boolean,
   onClick?: EventHandler
 }
 
 function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
 
   const {
-    // loading,
     onClick
   } = props;
 

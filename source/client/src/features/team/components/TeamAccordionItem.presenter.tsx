@@ -8,21 +8,17 @@
 
 import React from 'react';
 
-import { FormattedMessage } from 'react-intl';
-
 import {
   AccordionHeader,
   AccordionItem,
   AccordionPanel
 } from '@fluentui/react-components';
-
-import { css } from '@emotion/react';
-
+import { FormattedMessage } from 'react-intl';
 import GridLayout from '../../../common/components/GridLayout';
 import { Item } from '../../../types/Store';
-import messages from '../messages';
-
 import TeamCard from './TeamCard';
+import { css } from '@emotion/react';
+import messages from '../messages';
 
 interface TeamAccordionItemProps {
   header?: React.ReactNode,
@@ -73,4 +69,4 @@ function TeamAccordionItem(props: Readonly<TeamAccordionItemProps>) {
 
 }
 
-export default TeamAccordionItem;
+export default React.memo(TeamAccordionItem);

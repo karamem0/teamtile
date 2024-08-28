@@ -10,12 +10,9 @@ import React from 'react';
 
 import { Button, Input } from '@fluentui/react-components';
 import { RefreshIcon, SearchIcon } from '@fluentui/react-icons-mdl2';
-
-import { css } from '@emotion/react';
-
 import { EventHandler } from '../../../types/Event';
-
 import TeamGrid from './TeamGrid';
+import { css } from '@emotion/react';
 
 interface TeamPanelProps {
   onFilterChange?: EventHandler<string>,
@@ -69,4 +66,4 @@ function TeamPanel(props: Readonly<TeamPanelProps>) {
 
 }
 
-export default TeamPanel;
+export default React.memo(TeamPanel);

@@ -17,7 +17,7 @@ import {
   Routes
 } from 'react-router-dom';
 
-import { css, Global } from '@emotion/react';
+import { Global, css } from '@emotion/react';
 import * as ress from 'ress';
 
 import AppLoader from './common/components/AppLoader';

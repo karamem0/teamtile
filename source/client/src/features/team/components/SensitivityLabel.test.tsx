@@ -8,9 +8,8 @@
 
 import React from 'react';
 
-import { render } from '@testing-library/react';
-
 import SensitivityLabel from './SensitivityLabel.presenter';
+import { render } from '@testing-library/react';
 
 test('create shapshot of when SensitivityLabel is not null', async () => {
   const params = {

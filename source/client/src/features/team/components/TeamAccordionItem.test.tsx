@@ -8,12 +8,11 @@
 
 import React from 'react';
 
-import { render } from '@testing-library/react';
-
+import { Accordion } from '@fluentui/react-components';
 import IntlProvider from '../../../providers/IntlProvider';
-import TeamGrid from './TeamGrid.presenter';
-import ThemeProvider from '../../../providers/ThemeProvider';
+import TeamAccordionItem from './TeamAccordionItem.presenter';
 import { VisibilityType } from '../../../types/Entity';
+import { render } from '@testing-library/react';
 
 jest.mock('./TeamCard', () =>
   function TeamCard({ children }: React.PropsWithChildren<unknown>) {
@@ -26,6 +25,7 @@ jest.mock('./TeamCard', () =>
 
 test('create shapshot', async () => {
   const params = {
+    header: 'Pinned',
     items: [
       {
         id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -43,13 +43,14 @@ test('create shapshot', async () => {
         },
         visible: true
       }
-    ]
+    ],
+    value: 'pinned'
   };
   const { asFragment } = render(
     <IntlProvider>
-      <ThemeProvider>
-        <TeamGrid {...params} />
-      </ThemeProvider>
+      <Accordion defaultOpenItems={[ params.value ]}>
+        <TeamAccordionItem {...params} />
+      </Accordion>
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();

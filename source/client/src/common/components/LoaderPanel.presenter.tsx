@@ -8,9 +8,8 @@
 
 import React from 'react';
 
-import { Spinner } from '@fluentui/react-components';
-
 import CenterLayout from './CenterLayout';
+import { Spinner } from '@fluentui/react-components';
 
 function LoaderPanel() {
 

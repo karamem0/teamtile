@@ -7,7 +7,6 @@
 //
 
 import * as teamService from '../services/TeamService';
-
 import {
   getChannels,
   getDrive,

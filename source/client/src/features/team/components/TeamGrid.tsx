@@ -8,9 +8,8 @@
 
 import React from 'react';
 
-import { useReducer } from '../../../providers/ReducerProvider';
-
 import Presenter from './TeamGrid.presenter';
+import { useReducer } from '../../../providers/ReducerProvider';
 
 function TeamGrid() {
 

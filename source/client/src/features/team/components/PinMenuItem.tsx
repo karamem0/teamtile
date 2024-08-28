@@ -8,12 +8,11 @@
 
 import React from 'react';
 
-import { useReducer } from '../../../providers/ReducerProvider';
 import { Event } from '../../../types/Event';
 import { Item } from '../../../types/Store';
-import { setPin } from '../managers/TeamManager';
-
 import Presenter from './PinMenuItem.presenter';
+import { setPin } from '../managers/TeamManager';
+import { useReducer } from '../../../providers/ReducerProvider';
 
 interface PinMenuItemProps {
   item?: Item

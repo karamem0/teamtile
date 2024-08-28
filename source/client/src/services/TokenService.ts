@@ -7,9 +7,7 @@
 //
 
 import { authentication } from '@microsoft/teams-js';
-
 import { jwtDecode } from 'jwt-decode';
-
 import { loginParams } from '../config/MsalConfig';
 
 export async function getClientToken(): Promise<string> {

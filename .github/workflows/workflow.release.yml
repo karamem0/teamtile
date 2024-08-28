@@ -1,0 +1,39 @@
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+    secrets:
+      APP_CLIENT_ID:
+        required: true
+      APP_DOMAIN_NAME:
+        required: true
+
+jobs:
+  create-release:
+    environment: ${{inputs.environment}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repos
+        uses: actions/checkout@v4
+      - name: Update manifest.json
+        shell: pwsh
+        run: |
+          $content = Get-Content -Path ${{env.FILE_PATH}}
+          $content = $content -Replace '{{APP_CLIENT_ID}}', '${{secrets.APP_CLIENT_ID}}'
+          $content = $content -Replace '{{APP_DOMAIN_NAME}}', '${{secrets.APP_DOMAIN_NAME}}'
+          $content = $content -Replace "{{APP_VERSION}}", "${{vars.BUILD_VERSION}}"
+          Out-File -FilePath ${{env.FILE_PATH}} -InputObject $content -Encoding UTF8
+        env:
+          FILE_PATH: manifest/manifest.json
+      - name: Archive manifest files
+        shell: pwsh
+        run: Compress-Archive -Path manifest/* -DestinationPath manifest_${{vars.BUILD_VERSION}}.zip
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          files: |
+            manifest_${{vars.BUILD_VERSION}}.zip

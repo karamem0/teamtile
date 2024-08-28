@@ -9,11 +9,10 @@
 import React from 'react';
 
 import {
+  MessageFormatElement,
   IntlProvider as Provider,
-  createIntl,
-  MessageFormatElement
+  createIntl
 } from 'react-intl';
-
 import en from '../translations/compiled/en.json';
 import ja from '../translations/compiled/ja.json';
 

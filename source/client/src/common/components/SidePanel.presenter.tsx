@@ -9,18 +9,16 @@
 import React from 'react';
 
 import {
+  Button,
   DrawerBody,
   DrawerHeader,
-  Button,
   DrawerHeaderTitle,
   OverlayDrawer,
   Spinner
 } from '@fluentui/react-components';
 import { CancelIcon } from '@fluentui/react-icons-mdl2';
-
-import { css } from '@emotion/react';
-
 import { EventHandler } from '../../types/Event';
+import { css } from '@emotion/react';
 
 interface SidePanelProps {
   content?: React.ReactNode,
@@ -86,4 +84,4 @@ function SidePanel(props: Readonly<React.PropsWithChildren<SidePanelProps>>) {
 
 }
 
-export default SidePanel;
+export default React.memo(SidePanel);

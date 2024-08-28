@@ -16,17 +16,14 @@ import {
   Text
 } from '@fluentui/react-components';
 import { ContextMenuIcon, SearchIcon } from '@fluentui/react-icons-mdl2';
-
-import { css } from '@emotion/react';
-
-import SidePanel from '../../../common/components/SidePanel';
-import { useTheme } from '../../../providers/ThemeProvider';
-import { Channel } from '../../../types/Entity';
 import { Event, EventHandler } from '../../../types/Event';
-import messages from '../messages';
-
 import CardMenuItem from './CardMenuItem';
+import { Channel } from '../../../types/Entity';
 import MembershipIcon from './MembershipIcon';
+import SidePanel from '../../../common/components/SidePanel';
+import { css } from '@emotion/react';
+import messages from '../messages';
+import { useTheme } from '../../../providers/ThemeProvider';
 
 interface ChannelMenuItemProps {
   items?: Channel[],

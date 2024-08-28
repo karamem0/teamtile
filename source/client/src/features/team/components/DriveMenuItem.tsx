@@ -8,16 +8,13 @@
 
 import React from 'react';
 
-import { useIntl } from 'react-intl';
 import { useAsyncFn, useError } from 'react-use';
-
-import { app } from '@microsoft/teams-js';
-
-import { useSnackbar } from '../../../providers/SnackbarProvider';
-import { SnackbarType } from '../../../types/Snackbar';
 import { Item } from '../../../types/Store';
+import { app } from '@microsoft/teams-js';
 import { getDrive } from '../managers/TeamManager';
 import messages from '../messages';
+import { useIntl } from 'react-intl';
+import { useSnackbar } from '../../../providers/SnackbarProvider';
 
 import Presenter from './DriveMenuItem.presenter';
 
@@ -44,8 +41,8 @@ function DriveMenuItem(props: Readonly<DriveMenuItemProps>) {
       return;
     }
     setSnackbar({
-      text: intl.formatMessage(messages.OpenLinkError),
-      type: SnackbarType.warning
+      intent: 'warning',
+      text: intl.formatMessage(messages.OpenLinkError)
     });
   }, [
     intl,

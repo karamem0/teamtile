@@ -8,25 +8,25 @@
 
 import React from 'react';
 
-import { SnackbarType } from '../types/Snackbar';
+import { MessageBarIntent } from '@fluentui/react-components';
 
-interface SnackbarProps {
-  text?: string,
-  type?: SnackbarType
+interface SnackbarState {
+  intent?: MessageBarIntent,
+  text?: string
 }
 
-interface SnackbarContextProps {
-  snackbar?: SnackbarProps,
-  setSnackbar: React.Dispatch<React.SetStateAction<SnackbarProps | undefined>>
+interface SnackbarContextState {
+  snackbar?: SnackbarState,
+  setSnackbar: React.Dispatch<React.SetStateAction<SnackbarState | undefined>>
 }
 
-const SnackbarContext = React.createContext<SnackbarContextProps | undefined>(undefined);
+const SnackbarContext = React.createContext<SnackbarContextState | undefined>(undefined);
 
 function SnackbarProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
 
   const { children } = props;
 
-  const [ snackbar, setSnackbar ] = React.useState<SnackbarProps>();
+  const [ snackbar, setSnackbar ] = React.useState<SnackbarState>();
   const value = React.useMemo(() => ({
     snackbar,
     setSnackbar
@@ -44,7 +44,7 @@ function SnackbarProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
 
 export default SnackbarProvider;
 
-export const useSnackbar = (): SnackbarContextProps => {
+export const useSnackbar = (): SnackbarContextState => {
   const props = React.useContext(SnackbarContext);
   if (props == null) {
     throw new Error('The context is not initialzed: SnackbarContext');

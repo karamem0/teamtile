@@ -9,18 +9,15 @@
 import React from 'react';
 
 import {
-  createLightTheme,
   FluentProvider as Provider,
+  Theme,
+  createLightTheme,
   teamsDarkTheme,
   teamsHighContrastTheme,
-  teamsLightTheme,
-  Theme
+  teamsLightTheme
 } from '@fluentui/react-components';
-
 import { app } from '@microsoft/teams-js';
-
 import { css } from '@emotion/react';
-
 import { inTeams } from '../utils/Teams';
 
 const customThemePalette = {
@@ -44,13 +41,13 @@ const customThemePalette = {
 
 const customTheme = createLightTheme(customThemePalette);
 
-interface ThemeContextProps {
+interface ThemeContextState {
   theme: Theme
 }
 
-const ThemeContext = React.createContext<ThemeContextProps | undefined>(undefined);
+const ThemeContext = React.createContext<ThemeContextState | undefined>(undefined);
 
-export const useTheme = (): ThemeContextProps => {
+export const useTheme = (): ThemeContextState => {
   const value = React.useContext(ThemeContext);
   if (value == null) {
     throw new Error('The context is not initialzed: ThemeContext');

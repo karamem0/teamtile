@@ -9,7 +9,6 @@
 import React from 'react';
 
 import { Event } from '../../../types/Event';
-
 import Presenter from './HomePage.presenter';
 
 function HomePage() {

@@ -8,22 +8,15 @@
 
 import React from 'react';
 
-import { useIntl } from 'react-intl';
+import { app, appInstallDialog } from '@microsoft/teams-js';
 import { useAsyncFn, useError } from 'react-use';
-
-import {
-  app,
-  appInstallDialog
-} from '@microsoft/teams-js';
-
-import { useSnackbar } from '../../../providers/SnackbarProvider';
-import { SnackbarType } from '../../../types/Snackbar';
 import { Item } from '../../../types/Store';
-import { isPC } from '../../../utils/Teams';
-import { getTab } from '../managers/TeamManager';
-import messages from '../messages';
-
 import Presenter from './CalendarMenuItem.presenter';
+import { getTab } from '../managers/TeamManager';
+import { isPC } from '../../../utils/Teams';
+import messages from '../messages';
+import { useIntl } from 'react-intl';
+import { useSnackbar } from '../../../providers/SnackbarProvider';
 
 interface CalendarMenuItemProps {
   item?: Item
@@ -58,8 +51,8 @@ function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
       }
     }
     setSnackbar({
-      text: intl.formatMessage(messages.OperationNotSupported),
-      type: SnackbarType.warning
+      intent: 'warning',
+      text: intl.formatMessage(messages.OperationNotSupported)
     });
   }, [
     intl,
@@ -79,9 +72,7 @@ function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
   ]);
 
   return (
-    <Presenter
-      loading={state.loading}
-      onClick={handleClick} />
+    <Presenter onClick={handleClick} />
   );
 
 }

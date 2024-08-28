@@ -9,41 +9,40 @@
 import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
-import MembershipIcon from './MembershipIcon.presenter';
-import { MembershipType } from '../../../types/Entity';
+import PinMenuItem from './PinMenuItem.presenter';
 import { render } from '@testing-library/react';
 
-test('create shapshot of when MembershipType is standard', async () => {
+test('create shapshot of when pinned is true', async () => {
   const params = {
-    value: MembershipType.standard
+    pinned: true
   };
   const { asFragment } = render(
     <IntlProvider>
-      <MembershipIcon {...params} />
+      <PinMenuItem {...params} />
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();
 });
 
-test('create shapshot of when MembershipType is private', async () => {
+test('create shapshot of when pinned is false', async () => {
   const params = {
-    value: MembershipType.private
+    pinned: false
   };
   const { asFragment } = render(
     <IntlProvider>
-      <MembershipIcon {...params} />
+      <PinMenuItem {...params} />
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();
 });
 
-test('create shapshot of when MembershipType is undefined', async () => {
+test('create shapshot of when pinned is undefined', async () => {
   const params = {
-    value: undefined
+    pinned: undefined
   };
   const { asFragment } = render(
     <IntlProvider>
-      <MembershipIcon {...params} />
+      <PinMenuItem {...params} />
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();

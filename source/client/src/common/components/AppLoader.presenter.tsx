@@ -31,4 +31,4 @@ function AppLoader(props: Readonly<React.PropsWithChildren<AppLoaderProps>>) {
 
 }
 
-export default AppLoader;
+export default React.memo(AppLoader);

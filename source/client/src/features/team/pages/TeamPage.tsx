@@ -9,11 +9,9 @@
 import React from 'react';
 
 import { useAsyncFn, useError } from 'react-use';
-
-import { useReducer } from '../../../providers/ReducerProvider';
-import { getItems } from '../managers/TeamManager';
-
 import Presenter from './TeamPage.presenter';
+import { getItems } from '../managers/TeamManager';
+import { useReducer } from '../../../providers/ReducerProvider';
 
 function TeamPage() {
 

@@ -8,12 +8,10 @@
 
 import React from 'react';
 
-import { render } from '@testing-library/react';
-
 import IntlProvider from '../../../providers/IntlProvider';
-import ThemeProvider from '../../../providers/ThemeProvider';
-
 import MemberMenuItem from './MemberMenuItem.presenter';
+import ThemeProvider from '../../../providers/ThemeProvider';
+import { render } from '@testing-library/react';
 
 test('create shapshot', async () => {
   const params = {

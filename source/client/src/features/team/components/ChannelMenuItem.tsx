@@ -13,14 +13,12 @@ import {
   useDebounce,
   useError
 } from 'react-use';
-
-import { app } from '@microsoft/teams-js';
-
 import { Channel } from '../../../types/Entity';
 import { Event } from '../../../types/Event';
 import { Item } from '../../../types/Store';
-import { search } from '../../../utils/String';
+import { app } from '@microsoft/teams-js';
 import { getChannels } from '../managers/TeamManager';
+import { search } from '../../../utils/String';
 
 import Presenter from './ChannelMenuItem.presenter';
 

@@ -8,17 +8,21 @@
 
 import React from 'react';
 
+import IntlProvider from '../../providers/IntlProvider';
+import { MessageBarIntent } from '@fluentui/react-components';
+import Snackbar from './Snackbar.presenter';
 import { render } from '@testing-library/react';
 
-import IntlProvider from '../../providers/IntlProvider';
-import { SnackbarType } from '../../types/Snackbar';
-
-import Snackbar from './Snackbar.presenter';
+global.ResizeObserver = jest.fn().mockImplementation(() => ({
+  observe: jest.fn(),
+  unobserve: jest.fn(),
+  disconnect: jest.fn()
+}));
 
 test('create shapshot of when text is undefined', async () => {
   const params = {
-    text: undefined,
-    type: undefined
+    intent: undefined,
+    text: undefined
   };
   const { asFragment } = render(
     <IntlProvider>
@@ -30,8 +34,8 @@ test('create shapshot of when text is undefined', async () => {
 
 test('create shapshot of when type is error', async () => {
   const params = {
-    text: 'error',
-    type: SnackbarType.error
+    intent: 'error' as MessageBarIntent,
+    text: 'error'
   };
   const { asFragment } = render(
     <IntlProvider>
@@ -43,8 +47,8 @@ test('create shapshot of when type is error', async () => {
 
 test('create shapshot of when type is warning', async () => {
   const params = {
-    text: 'warning',
-    type: SnackbarType.warning
+    intent: 'warning' as MessageBarIntent,
+    text: 'warning'
   };
   const { asFragment } = render(
     <IntlProvider>
@@ -56,8 +60,8 @@ test('create shapshot of when type is warning', async () => {
 
 test('create shapshot of when type is success', async () => {
   const params = {
-    text: 'success',
-    type: SnackbarType.success
+    intent: 'success' as MessageBarIntent,
+    text: 'success'
   };
   const { asFragment } = render(
     <IntlProvider>

@@ -9,10 +9,8 @@
 import React from 'react';
 
 import { Text, Tooltip } from '@fluentui/react-components';
-
-import { css } from '@emotion/react';
-
 import { EventHandler } from '../../../types/Event';
+import { css } from '@emotion/react';
 
 interface CardMenuItemProps {
   tooltip?: string,

@@ -7,13 +7,11 @@
 //
 
 import * as teamsjs from '@microsoft/teams-js';
-
-import fetchMock from 'jest-fetch-mock';
-
 import {
   getClientToken,
   getServerToken
 } from './TokenService';
+import fetchMock from 'jest-fetch-mock';
 
 jest.mock('@microsoft/teams-js');
 

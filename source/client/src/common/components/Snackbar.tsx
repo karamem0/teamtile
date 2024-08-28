@@ -8,9 +8,8 @@
 
 import React from 'react';
 
-import { useSnackbar } from '../../providers/SnackbarProvider';
-
 import Presenter from './Snackbar.presenter';
+import { useSnackbar } from '../../providers/SnackbarProvider';
 
 function Snackbar() {
 
@@ -22,8 +21,8 @@ function Snackbar() {
 
   return (
     <Presenter
+      intent={snackbar?.intent}
       text={snackbar?.text}
-      type={snackbar?.type}
       onDismiss={handleDismiss} />
   );
 

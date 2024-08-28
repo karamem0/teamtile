@@ -6,14 +6,13 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-import { fixupConfigRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
-import js from '@eslint/js';
-import hooks from 'eslint-plugin-hooks';
+import { fileURLToPath } from 'url';
+import { fixupConfigRules } from '@eslint/compat';
 import globals from 'globals';
+import hooks from 'eslint-plugin-hooks';
+import js from '@eslint/js';
+import path from 'path';
 
 const compat = new FlatCompat({
   baseDirectory: path.dirname(fileURLToPath(import.meta.url)),
@@ -25,7 +24,6 @@ export default [
   ...fixupConfigRules(compat.extends(
     'plugin:@stylistic/recommended-extends',
     'plugin:@typescript-eslint/recommended',
-    'plugin:import/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:sonarjs/recommended-legacy',
@@ -75,7 +73,12 @@ export default [
       'no-unused-vars': 'off',
       'no-use-before-define': 'off',
       'no-var': 'error',
-      'sort-imports': 'off',
+      'sort-imports': [
+        'error',
+        {
+          'allowSeparatedGroups': true
+        }
+      ],
       'space-before-function-paren': [
         'error',
         {
@@ -200,69 +203,6 @@ export default [
           ]
         }
       ],
-      'import/namespace': 'off',
-      'import/no-unresolved': 'off',
-      'import/order': [
-        'error',
-        {
-          'pathGroups': [
-            {
-              'pattern': 'react',
-              'group': 'builtin',
-              'position': 'before'
-            },
-            {
-              'pattern': 'react-dom/**',
-              'group': 'builtin',
-              'position': 'before'
-            },
-            {
-              'pattern': 'react**',
-              'group': 'builtin',
-              'position': 'before'
-            },
-            {
-              'pattern': '@testing-library/**',
-              'group': 'builtin',
-              'position': 'after'
-            },
-            {
-              'pattern': '@automapper/**',
-              'group': 'builtin',
-              'position': 'after'
-            },
-            {
-              'pattern': '@fluentui/**',
-              'group': 'builtin',
-              'position': 'after'
-            },
-            {
-              'pattern': '@microsoft/**',
-              'group': 'builtin',
-              'position': 'after'
-            },
-            {
-              'pattern': '@azure/**',
-              'group': 'builtin',
-              'position': 'after'
-            }
-          ],
-          'pathGroupsExcludedImportTypes': [
-            'react',
-            'react-dom/**',
-            'react**',
-            '@testing-library/**',
-            '@automapper/**',
-            '@fluentui/**',
-            '@microsoft/**',
-            '@azure/**'
-          ],
-          'alphabetize': {
-            'order': 'asc'
-          },
-          'newlines-between': 'always'
-        }
-      ],
       'react/no-unknown-property': [
         'error',
         {
@@ -272,6 +212,7 @@ export default [
         }
       ],
       'react/prop-types': 'off',
+      'sonarjs/max-switch-cases': 'warn',
       'sonarjs/no-collapsible-if': 'warn',
       'sonarjs/no-duplicate-string': 'off',
       'sonarjs/no-small-switch': 'warn',

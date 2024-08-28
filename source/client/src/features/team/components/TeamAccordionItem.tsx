@@ -9,7 +9,6 @@
 import React from 'react';
 
 import { Item } from '../../../types/Store';
-
 import Presenter from './TeamAccordionItem.presenter';
 
 interface TeamAccordionItemProps {

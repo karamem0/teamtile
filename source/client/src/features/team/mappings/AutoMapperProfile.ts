@@ -7,26 +7,6 @@
 //
 
 import {
-  createMap,
-  createMapper,
-  forMember,
-  ignore,
-  mapFrom
-} from '@automapper/core';
-import { pojos, PojosMetadataMap } from '@automapper/pojos';
-
-import {
-  AadUserConversationMember as GraphMember,
-  Channel as GraphChannel,
-  Drive as GraphDrive,
-  Group as GraphGroup,
-  AssignedLabel as GraphLabel,
-  Team as GraphTeam,
-  TeamsTab as GraphTab,
-  TeamsApp as GraphApp
-} from '@microsoft/microsoft-graph-types';
-
-import {
   Channel,
   Drive,
   Group,
@@ -35,6 +15,24 @@ import {
   Tab,
   Team
 } from '../../../types/Entity';
+import {
+  TeamsApp as GraphApp,
+  Channel as GraphChannel,
+  Drive as GraphDrive,
+  Group as GraphGroup,
+  AssignedLabel as GraphLabel,
+  AadUserConversationMember as GraphMember,
+  TeamsTab as GraphTab,
+  Team as GraphTeam
+} from '@microsoft/microsoft-graph-types';
+import { PojosMetadataMap, pojos } from '@automapper/pojos';
+import {
+  createMap,
+  createMapper,
+  forMember,
+  ignore,
+  mapFrom
+} from '@automapper/core';
 import { Item } from '../../../types/Store';
 
 const mapper = createMapper({

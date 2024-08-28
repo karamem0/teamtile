@@ -9,7 +9,6 @@
 import React from 'react';
 
 import { MembershipType } from '../../../types/Entity';
-
 import Presenter from './MembershipIcon.presenter';
 
 export interface MembershipIconProps {

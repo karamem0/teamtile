@@ -6,10 +6,9 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import merge from 'deepmerge';
-
-import { Member } from '../types/Entity';
 import { Item } from '../types/Store';
+import { Member } from '../types/Entity';
+import merge from 'deepmerge';
 
 export function mergeItems(source: Item[], target: Item[], options?: merge.Options) {
   const items = [ ...source ];

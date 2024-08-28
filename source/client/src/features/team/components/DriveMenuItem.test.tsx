@@ -8,11 +8,9 @@
 
 import React from 'react';
 
-import { render } from '@testing-library/react';
-
-import IntlProvider from '../../../providers/IntlProvider';
-
 import DriveMenuItem from './DriveMenuItem.presenter';
+import IntlProvider from '../../../providers/IntlProvider';
+import { render } from '@testing-library/react';
 
 test('create shapshot', async () => {
   const params = {};

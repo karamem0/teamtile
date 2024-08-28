@@ -11,8 +11,6 @@ import {
   BatchResponseContent,
   PageIterator
 } from '@microsoft/microsoft-graph-client';
-
-import { getConfig } from '../../../config/GraphConfig';
 import {
   Channel,
   Drive,
@@ -22,7 +20,6 @@ import {
   Tab,
   Team
 } from '../../../types/Entity';
-import { compare } from '../../../utils/String';
 import {
   mapChannel,
   mapDrive,
@@ -31,6 +28,8 @@ import {
   mapTab,
   mapTeam
 } from '../mappings/AutoMapperProfile';
+import { compare } from '../../../utils/String';
+import { getConfig } from '../../../config/GraphConfig';
 
 export async function getChannels(teamId: string): Promise<Channel[]> {
   const { client } = getConfig();

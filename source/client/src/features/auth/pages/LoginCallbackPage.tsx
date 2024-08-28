@@ -8,11 +8,9 @@
 
 import React from 'react';
 
-import { app } from '@microsoft/teams-js';
-
-import { useMsal } from '@azure/msal-react';
-
 import Presenter from './LoginCallbackPage.presenter';
+import { app } from '@microsoft/teams-js';
+import { useMsal } from '@azure/msal-react';
 
 function LoginCallbackPage() {
 

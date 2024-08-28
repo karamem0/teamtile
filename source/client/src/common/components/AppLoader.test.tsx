@@ -8,9 +8,8 @@
 
 import React from 'react';
 
-import { render } from '@testing-library/react';
-
 import AppLoader from './AppLoader.presenter';
+import { render } from '@testing-library/react';
 
 test('create shapshot of when loading is true', async () => {
   const params = {

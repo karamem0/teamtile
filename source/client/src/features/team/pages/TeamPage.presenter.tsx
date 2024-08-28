@@ -8,9 +8,9 @@
 
 import React from 'react';
 
-import LoaderPanal from '../../../common/components/LoaderPanel';
-import { Item } from '../../../types/Store';
 import EmptyPanel from '../components/EmptyPanel';
+import { Item } from '../../../types/Store';
+import LoaderPanal from '../../../common/components/LoaderPanel';
 import TeamPanel from '../components/TeamPanel';
 
 interface MainPageProps {
@@ -46,4 +46,4 @@ function TeamPage(props: Readonly<MainPageProps>) {
 
 }
 
-export default TeamPage;
+export default React.memo(TeamPage);

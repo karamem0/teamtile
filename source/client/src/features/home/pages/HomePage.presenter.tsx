@@ -8,21 +8,18 @@
 
 import React from 'react';
 
-import { FormattedMessage } from 'react-intl';
-
 import {
   Button,
   Image,
   Link,
   Text
 } from '@fluentui/react-components';
-import { GitHubLogoIcon } from '@fluentui/react-icons-mdl2';
-
-import { css } from '@emotion/react';
-
-import { useTheme } from '../../../providers/ThemeProvider';
 import { EventHandler } from '../../../types/Event';
+import { FormattedMessage } from 'react-intl';
+import { GitHubLogoIcon } from '@fluentui/react-icons-mdl2';
+import { css } from '@emotion/react';
 import messages from '../messages';
+import { useTheme } from '../../../providers/ThemeProvider';
 
 interface HomePageProps {
   onLinkClick?: EventHandler<string>

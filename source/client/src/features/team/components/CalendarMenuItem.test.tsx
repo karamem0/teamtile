@@ -8,28 +8,12 @@
 
 import React from 'react';
 
+import CalendarMenuItem from './CalendarMenuItem.presenter';
+import IntlProvider from '../../../providers/IntlProvider';
 import { render } from '@testing-library/react';
 
-import IntlProvider from '../../../providers/IntlProvider';
-
-import CalendarMenuItem from './CalendarMenuItem.presenter';
-
-test('create shapshot of when loading is true', async () => {
-  const params = {
-    loading: true
-  };
-  const { asFragment } = render(
-    <IntlProvider>
-      <CalendarMenuItem {...params} />
-    </IntlProvider>
-  );
-  expect(asFragment()).toMatchSnapshot();
-});
-
-test('create shapshot of when loading is false', async () => {
-  const params = {
-    loading: false
-  };
+test('create shapshot', async () => {
+  const params = {};
   const { asFragment } = render(
     <IntlProvider>
       <CalendarMenuItem {...params} />

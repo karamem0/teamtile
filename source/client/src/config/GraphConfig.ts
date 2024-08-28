@@ -7,7 +7,6 @@
 //
 
 import { Client } from '@microsoft/microsoft-graph-client';
-
 import { getAccessToken } from '../managers/TokenManager';
 
 interface GraphConfig {

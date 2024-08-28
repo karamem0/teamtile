@@ -8,9 +8,8 @@
 
 import React from 'react';
 
-import { render } from '@testing-library/react';
-
 import AvatarIcon from './AvatarIcon.presenter';
+import { render } from '@testing-library/react';
 
 test('create shapshot of when url is undefined', async () => {
   const params = {

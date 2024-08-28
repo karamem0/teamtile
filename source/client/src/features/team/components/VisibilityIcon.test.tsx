@@ -8,13 +8,11 @@
 
 import React from 'react';
 
-import { render } from '@testing-library/react';
-
 import IntlProvider from '../../../providers/IntlProvider';
 import ThemeProvider from '../../../providers/ThemeProvider';
-import { VisibilityType } from '../../../types/Entity';
-
 import VisibilityIcon from './VisibilityIcon.presenter';
+import { VisibilityType } from '../../../types/Entity';
+import { render } from '@testing-library/react';
 
 test('create shapshot of when VisibilityType is public', async () => {
   const params = {

@@ -14,21 +14,18 @@ import {
   SkeletonItem,
   Text
 } from '@fluentui/react-components';
-
-import { css } from '@emotion/react';
-
-import { useTheme } from '../../../providers/ThemeProvider';
-import { EventHandler } from '../../../types/Event';
-import { Item } from '../../../types/Store';
-
 import AvatarIcon from './AvatarIcon';
 import CalendarMenuItem from './CalendarMenuItem';
 import ChannelMenuItem from './ChannelMenuItem';
 import DriveMenuItem from './DriveMenuItem';
+import { EventHandler } from '../../../types/Event';
+import { Item } from '../../../types/Store';
 import MemberMenuItem from './MemberMenuItem';
 import PinMenuItem from './PinMenuItem';
 import SensitivityLabel from './SensitivityLabel';
 import VisibilityIcon from './VisibilityIcon';
+import { css } from '@emotion/react';
+import { useTheme } from '../../../providers/ThemeProvider';
 
 interface TeamCardProps {
   item: Item,

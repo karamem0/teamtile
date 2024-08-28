@@ -13,16 +13,13 @@ import {
   useDebounce,
   useError
 } from 'react-use';
-
-import { app } from '@microsoft/teams-js';
-
-import { Member } from '../../../types/Entity';
 import { Event } from '../../../types/Event';
 import { Item } from '../../../types/Store';
-import { search } from '../../../utils/String';
-import { getMembers } from '../managers/TeamManager';
-
+import { Member } from '../../../types/Entity';
 import Presenter from './MemberMenuItem.presenter';
+import { app } from '@microsoft/teams-js';
+import { getMembers } from '../managers/TeamManager';
+import { search } from '../../../utils/String';
 
 interface MemberMenuItemProps {
   item?: Item

@@ -6,10 +6,7 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import { TeamVisibilityType } from '@microsoft/microsoft-graph-types';
-
 import { MembershipType, VisibilityType } from '../../../types/Entity';
-
 import {
   mapChannel,
   mapDrive,
@@ -21,6 +18,7 @@ import {
   mapTab,
   mapTeam
 } from './AutoMapperProfile';
+import { TeamVisibilityType } from '@microsoft/microsoft-graph-types';
 
 test('transform channel', () => {
   const params = {

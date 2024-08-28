@@ -8,12 +8,10 @@
 
 import React from 'react';
 
-import { render } from '@testing-library/react';
-
+import Error404Page from './Error404Page.presenter';
 import IntlProvider from '../../../providers/IntlProvider';
 import ThemeProvider from '../../../providers/ThemeProvider';
-
-import Error404Page from './Error404Page.presenter';
+import { render } from '@testing-library/react';
 
 test('create shapshot', async () => {
   const params = {};

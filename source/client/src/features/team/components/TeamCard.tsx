@@ -8,11 +8,9 @@
 
 import React from 'react';
 
-import { app } from '@microsoft/teams-js';
-
 import { Item } from '../../../types/Store';
-
 import Presenter from './TeamCard.presenter';
+import { app } from '@microsoft/teams-js';
 
 export interface TeamCardProps {
   item: Item

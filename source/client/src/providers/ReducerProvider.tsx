@@ -9,15 +9,19 @@
 import React from 'react';
 
 import {
+  DispatchAction,
+  Item,
+  State
+} from '../types/Store';
+import {
   setFilter,
   setItem,
   setItems,
   setLoading
 } from '../stores/Action';
 import { reducer } from '../stores/Reducer';
-import { DispatchAction, Item, State } from '../types/Store';
 
-interface ReducerContextProps {
+interface ReducerContextState {
   dispatchers: {
     setFilter: DispatchAction<string | undefined>,
     setItem: DispatchAction<Item | undefined>,
@@ -27,9 +31,9 @@ interface ReducerContextProps {
   state: State
 }
 
-const ReducerContext = React.createContext<ReducerContextProps | undefined>(undefined);
+const ReducerContext = React.createContext<ReducerContextState | undefined>(undefined);
 
-export const useReducer = (): ReducerContextProps => {
+export const useReducer = (): ReducerContextState => {
   const value = React.useContext(ReducerContext);
   if (value == null) {
     throw new Error('The context is not initialzed: ReducerContext');

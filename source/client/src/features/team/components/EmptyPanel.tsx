@@ -8,9 +8,8 @@
 
 import React from 'react';
 
-import { useReducer } from '../../../providers/ReducerProvider';
-
 import Presenter from './EmptyPanel.presenter';
+import { useReducer } from '../../../providers/ReducerProvider';
 
 function EmptyPanel() {
 
@@ -18,7 +17,9 @@ function EmptyPanel() {
 
   const handleClick = React.useCallback(() => {
     dispatchers.setLoading(true);
-  }, [ dispatchers ]);
+  }, [
+    dispatchers
+  ]);
 
   return (
     <Presenter onClick={handleClick} />

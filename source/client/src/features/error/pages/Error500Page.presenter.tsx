@@ -8,15 +8,12 @@
 
 import React from 'react';
 
-import { FormattedMessage } from 'react-intl';
-
-import { Text } from '@fluentui/react-components';
-
-import { css } from '@emotion/react';
-
 import CenterLayout from '../../../common/components/CenterLayout';
-import { useTheme } from '../../../providers/ThemeProvider';
+import { FormattedMessage } from 'react-intl';
+import { Text } from '@fluentui/react-components';
+import { css } from '@emotion/react';
 import messages from '../messages';
+import { useTheme } from '../../../providers/ThemeProvider';
 
 interface Error500PageProps {
   error?: string

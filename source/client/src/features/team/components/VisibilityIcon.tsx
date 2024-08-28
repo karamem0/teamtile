@@ -8,9 +8,8 @@
 
 import React from 'react';
 
-import { VisibilityType } from '../../../types/Entity';
-
 import Presenter from './VisibilityIcon.presenter';
+import { VisibilityType } from '../../../types/Entity';
 
 interface VisibilityIconProps {
   value?: VisibilityType

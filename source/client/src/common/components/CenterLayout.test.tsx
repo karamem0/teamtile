@@ -8,9 +8,8 @@
 
 import React from 'react';
 
-import { render } from '@testing-library/react';
-
 import CenterLayout from './CenterLayout.presenter';
+import { render } from '@testing-library/react';
 
 test('create shapshot', async () => {
   const params = {

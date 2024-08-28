@@ -9,12 +9,9 @@
 import React from 'react';
 
 import { app, authentication } from '@microsoft/teams-js';
-
-import { useMsal } from '@azure/msal-react';
-
-import { loginParams } from '../../../config/MsalConfig';
-
 import Presenter from './LoginRedirectPage.presenter';
+import { loginParams } from '../../../config/MsalConfig';
+import { useMsal } from '@azure/msal-react';
 
 function LoginRedirectPage() {
 
