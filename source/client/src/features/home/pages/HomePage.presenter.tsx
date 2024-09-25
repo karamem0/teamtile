@@ -59,7 +59,7 @@ function HomePage(props: Readonly<HomePageProps>) {
               `} />
           )}
           onClick={(e) => onLinkClick?.(e, 'GitHub')}>
-          <FormattedMessage {...messages.GitHubTitle} />
+          <FormattedMessage {...messages.GitHub} />
         </Button>
       </header>
       <section
@@ -139,6 +139,12 @@ function HomePage(props: Readonly<HomePageProps>) {
           `}>
           <FormattedMessage {...messages.FeaturesTitle} />
         </Text>
+        <Text
+          css={css`
+            text-align: center;
+          `}>
+          <FormattedMessage {...messages.FeaturesSubtitle} />
+        </Text>
         <ul
           css={css`
             display: flex;
@@ -179,7 +185,7 @@ function HomePage(props: Readonly<HomePageProps>) {
         <Link
           as="button"
           onClick={(e) => onLinkClick?.(e, 'TermsOfUse')}>
-          <FormattedMessage {...messages.TermsOfUseTitle} />
+          <FormattedMessage {...messages.TermsOfUse} />
         </Link>
         <Text
           css={css`
@@ -190,7 +196,7 @@ function HomePage(props: Readonly<HomePageProps>) {
         <Link
           as="button"
           onClick={(e) => onLinkClick?.(e, 'PrivacyPolicy')}>
-          <FormattedMessage {...messages.PrivacyPolicyTitle} />
+          <FormattedMessage {...messages.PrivacyPolicy} />
         </Link>
       </footer>
     </div>

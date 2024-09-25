@@ -11,7 +11,9 @@ import React from 'react';
 import { Event } from '../../../types/Event';
 import Presenter from './TeamPanel.presenter';
 import { clearCache } from '../managers/TeamManager';
+import messages from '../messages';
 import { useDebounce } from 'react-use';
+import { useIntl } from 'react-intl';
 import { useReducer } from '../../../providers/ReducerProvider';
 
 function TeamPanel() {
@@ -19,7 +21,7 @@ function TeamPanel() {
   const {
     dispatchers
   } = useReducer();
-
+  const intl = useIntl();
   const [ filter, setFilter ] = React.useState<string>();
 
   useDebounce(() => {
@@ -33,6 +35,24 @@ function TeamPanel() {
     setFilter(data);
   }, []);
 
+  const handleLinkToGitHub = React.useCallback(() => {
+    window.open(intl.formatMessage(messages.GitHubLink), '_blank', 'noreferrer');
+  }, [
+    intl
+  ]);
+
+  const handleLinkToPrivacyPolicy = React.useCallback(() => {
+    window.open(intl.formatMessage(messages.PrivacyPolicyLink), '_blank', 'noreferrer');
+  }, [
+    intl
+  ]);
+
+  const handleLinkToTermsOfUse = React.useCallback(() => {
+    window.open(intl.formatMessage(messages.TermsOfUseLink), '_blank', 'noreferrer');
+  }, [
+    intl
+  ]);
+
   const handleRefreshClick = React.useCallback(async (e?: Event) => {
     if ((e as React.KeyboardEvent)?.shiftKey) {
       await clearCache();
@@ -43,6 +63,9 @@ function TeamPanel() {
   return (
     <Presenter
       onFilterChange={handleFilterChange}
+      onLinkToGitHub={handleLinkToGitHub}
+      onLinkToPrivacyPolicy={handleLinkToPrivacyPolicy}
+      onLinkToTermsOfUse={handleLinkToTermsOfUse}
       onRefreshClick={handleRefreshClick} />
   );
 

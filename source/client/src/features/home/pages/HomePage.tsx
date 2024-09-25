@@ -10,24 +10,30 @@ import React from 'react';
 
 import { Event } from '../../../types/Event';
 import Presenter from './HomePage.presenter';
+import messages from '../messages';
+import { useIntl } from 'react-intl';
 
 function HomePage() {
+
+  const intl = useIntl();
 
   const handleLinkClick = React.useCallback((_?: Event, data?: string) => {
     switch (data) {
       case 'GitHub':
-        window.open('https://github.com/karamem0/teamtile', '_blank');
-        break;
-      case 'TermsOfUse':
-        window.open('https://github.com/karamem0/teamtile/blob/main/TERMS_OF_USE.md', '_blank');
+        window.open(intl.formatMessage(messages.GitHubLink), '_blank');
         break;
       case 'PrivacyPolicy':
-        window.open('https://github.com/karamem0/teamtile/blob/main/PRIVACY.md', '_blank');
+        window.open(intl.formatMessage(messages.PrivacyPolicyLink), '_blank');
+        break;
+      case 'TermsOfUse':
+        window.open(intl.formatMessage(messages.TermsOfUseLink), '_blank');
         break;
       default:
         break;
     }
-  }, []);
+  }, [
+    intl
+  ]);
 
   return (
     <Presenter onLinkClick={handleLinkClick} />

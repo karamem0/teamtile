@@ -8,14 +8,34 @@
 
 import React from 'react';
 
-import { Button, Input } from '@fluentui/react-components';
-import { RefreshIcon, SearchIcon } from '@fluentui/react-icons-mdl2';
+import {
+  Button,
+  Input,
+  Menu,
+  MenuDivider,
+  MenuGroup,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger
+} from '@fluentui/react-components';
+import {
+  GitHubLogoIcon,
+  MoreVerticalIcon,
+  RefreshIcon,
+  SearchIcon
+} from '@fluentui/react-icons-mdl2';
 import { EventHandler } from '../../../types/Event';
+import { FormattedMessage } from 'react-intl';
 import TeamGrid from './TeamGrid';
 import { css } from '@emotion/react';
+import messages from '../messages';
 
 interface TeamPanelProps {
   onFilterChange?: EventHandler<string>,
+  onLinkToGitHub?: EventHandler,
+  onLinkToPrivacyPolicy?: EventHandler,
+  onLinkToTermsOfUse?: EventHandler,
   onRefreshClick?: EventHandler
 }
 
@@ -23,6 +43,9 @@ function TeamPanel(props: Readonly<TeamPanelProps>) {
 
   const {
     onFilterChange,
+    onLinkToGitHub,
+    onLinkToPrivacyPolicy,
+    onLinkToTermsOfUse,
     onRefreshClick
   } = props;
 
@@ -41,7 +64,9 @@ function TeamPanel(props: Readonly<TeamPanelProps>) {
           grid-gap: 0.25rem;
         `}>
         <Input
-          contentBefore={<SearchIcon />}
+          contentBefore={(
+            <SearchIcon />
+          )}
           css={css`
             min-height: 2.25rem;
             @media (width >= 600px) {
@@ -49,16 +74,59 @@ function TeamPanel(props: Readonly<TeamPanelProps>) {
             }
           `}
           onChange={(e, data) => onFilterChange?.(e, data.value)} />
-        <Button
-          appearance="transparent"
-          icon={(
-            <RefreshIcon
-              css={css`
-                width: 1rem;
-                height: 1rem;
-              `} />
-          )}
-          onClick={onRefreshClick} />
+        <Menu>
+          <MenuTrigger disableButtonEnhancement>
+            <Button
+              appearance="transparent"
+              icon={(
+                <MoreVerticalIcon
+                  css={css`
+                  width: 1rem;
+                  height: 1rem;
+                `} />
+              )} />
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuGroup>
+                <MenuItem
+                  icon={(
+                    <RefreshIcon
+                      css={css`
+                        font-size: 1rem;
+                        line-height: 1rem;
+                      `} />
+                  )}
+                  onClick={onRefreshClick}>
+                  <FormattedMessage {...messages.Refresh} />
+                </MenuItem>
+              </MenuGroup>
+              <MenuDivider />
+              <MenuGroup>
+                <MenuItem
+                  icon={(
+                    <GitHubLogoIcon
+                      css={css`
+                        font-size: 1rem;
+                        line-height: 1rem;
+                      `} />
+                  )}
+                  onClick={onLinkToGitHub}>
+                  <FormattedMessage {...messages.GitHub} />
+                </MenuItem>
+              </MenuGroup>
+              <MenuDivider />
+              <MenuGroup>
+                <MenuItem onClick={onLinkToTermsOfUse}>
+                  <FormattedMessage {...messages.TermsOfUse} />
+                </MenuItem>
+                <MenuItem onClick={onLinkToPrivacyPolicy}>
+                  <FormattedMessage {...messages.PrivacyPolicy} />
+                </MenuItem>
+              </MenuGroup>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
       </div>
       <TeamGrid />
     </div>

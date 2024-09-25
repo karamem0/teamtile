@@ -29,22 +29,16 @@
       "value": "どのチームにも参加していないようです。"
     }
   ],
-  "9cQLm9": [
+  "8Xtz/f": [
     {
       "type": 0,
-      "value": "500"
+      "value": "https://github.com/karamem0/teamtile/blob/main/PRIVACY_POLICY.ja-jp.md"
     }
   ],
   "BgQuJf": [
     {
       "type": 0,
       "value": "タイル状に表示された参加中のチームに素早くアクセスします。"
-    }
-  ],
-  "DRXWXB": [
-    {
-      "type": 0,
-      "value": "404"
     }
   ],
   "DtvBtA": [
@@ -107,6 +101,12 @@
       "value": "メンバーを表示"
     }
   ],
+  "STExef": [
+    {
+      "type": 0,
+      "value": "https://github.com/karamem0/teamtile/blob/main/TERMS_OF_USE.ja-jp.md"
+    }
+  ],
   "T8ySab": [
     {
       "type": 0,
@@ -155,10 +155,28 @@
       "value": "📖チームのメンバーとチャンネルを表示"
     }
   ],
+  "jnPlyv": [
+    {
+      "type": 0,
+      "value": "404 Error"
+    }
+  ],
+  "jok8RB": [
+    {
+      "type": 0,
+      "value": "https://github.com/karamem0/teamtile"
+    }
+  ],
   "lPzUBp": [
     {
       "type": 0,
       "value": "このデバイスではサポートされていない操作です。"
+    }
+  ],
+  "muR1QI": [
+    {
+      "type": 0,
+      "value": "500 Error"
     }
   ],
   "opNVQC": [
@@ -183,6 +201,12 @@
     {
       "type": 0,
       "value": "リンクを開けません。"
+    }
+  ],
+  "rELDbB": [
+    {
+      "type": 0,
+      "value": "最新の状態に更新"
     }
   ],
   "uhu5aG": [
@@ -219,6 +243,12 @@
     {
       "type": 0,
       "value": "Teamtile"
+    }
+  ],
+  "y3SYHe": [
+    {
+      "type": 0,
+      "value": "チームを探すのにイライラしていませんか? Teamtile は以下の機能を提供します😊"
     }
   ],
   "zoDVmL": [

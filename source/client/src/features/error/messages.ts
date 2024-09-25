@@ -10,9 +10,9 @@ import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
   Error404Description: { defaultMessage: 'Page not found' },
-  Error404Title: { defaultMessage: '404' },
+  Error404Title: { defaultMessage: '404 Error' },
   Error500Description: { defaultMessage: 'Something went wrong' },
-  Error500Title: { defaultMessage: '500' }
+  Error500Title: { defaultMessage: '500 Error' }
 });
 
 export default messages;

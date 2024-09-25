@@ -29,22 +29,16 @@
       "value": "It looks like you are not a member of any teams."
     }
   ],
-  "9cQLm9": [
+  "8Xtz/f": [
     {
       "type": 0,
-      "value": "500"
+      "value": "https://github.com/karamem0/teamtile/blob/main/PRIVACY_POLICY.md"
     }
   ],
   "BgQuJf": [
     {
       "type": 0,
       "value": "Tile your teams for quick access."
-    }
-  ],
-  "DRXWXB": [
-    {
-      "type": 0,
-      "value": "404"
     }
   ],
   "DtvBtA": [
@@ -107,6 +101,12 @@
       "value": "View members"
     }
   ],
+  "STExef": [
+    {
+      "type": 0,
+      "value": "https://github.com/karamem0/teamtile/blob/main/TERMS_OF_USE.md"
+    }
+  ],
   "T8ySab": [
     {
       "type": 0,
@@ -155,10 +155,28 @@
       "value": "📖View team members and channels"
     }
   ],
+  "jnPlyv": [
+    {
+      "type": 0,
+      "value": "404 Error"
+    }
+  ],
+  "jok8RB": [
+    {
+      "type": 0,
+      "value": "https://github.com/karamem0/teamtile"
+    }
+  ],
   "lPzUBp": [
     {
       "type": 0,
       "value": "This operation is not supported on this device."
+    }
+  ],
+  "muR1QI": [
+    {
+      "type": 0,
+      "value": "500 Error"
     }
   ],
   "opNVQC": [
@@ -183,6 +201,12 @@
     {
       "type": 0,
       "value": "Cannot open the link."
+    }
+  ],
+  "rELDbB": [
+    {
+      "type": 0,
+      "value": "Refresh"
     }
   ],
   "uhu5aG": [
@@ -219,6 +243,12 @@
     {
       "type": 0,
       "value": "Teamtile"
+    }
+  ],
+  "y3SYHe": [
+    {
+      "type": 0,
+      "value": "Are you frustrated with finding a team? Teamtile provides these features to you😊:"
     }
   ],
   "zoDVmL": [
