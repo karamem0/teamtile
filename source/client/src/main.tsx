@@ -10,28 +10,26 @@ import React from 'react';
 
 import ReactDOM from 'react-dom/client';
 
-import { ErrorBoundary } from 'react-error-boundary';
+import * as ress from 'ress';
 import {
   BrowserRouter,
   Route,
   Routes
 } from 'react-router-dom';
-
 import { Global, css } from '@emotion/react';
-import * as ress from 'ress';
-
 import AppLoader from './common/components/AppLoader';
-import Snackbar from './common/components/Snackbar';
-import LoginCallbackPage from './features/auth/pages/LoginCallbackPage';
-import LoginRedirectPage from './features/auth/pages/LoginRedirectPage';
 import Error404Page from './features/error/pages/Error404Page';
 import Error500Page from './features/error/pages/Error500Page';
+import { ErrorBoundary } from 'react-error-boundary';
 import HomePage from './features/home/pages/HomePage';
-import TeamPage from './features/team/pages/TeamPage';
 import IntlProvider from './providers/IntlProvider';
+import LoginCallbackPage from './features/auth/pages/LoginCallbackPage';
+import LoginRedirectPage from './features/auth/pages/LoginRedirectPage';
 import MsalProvider from './providers/MsalProvider';
-import ReducerProvider from './providers/ReducerProvider';
+import Snackbar from './common/components/Snackbar';
 import SnackbarProvider from './providers/SnackbarProvider';
+import StoreProvider from './providers/StoreProvider';
+import TeamPage from './features/team/pages/TeamPage';
 import TelemetryProvider from './providers/TelemetryProvider';
 import ThemeProvider from './providers/ThemeProvider';
 import { inTeams } from './utils/Teams';
@@ -60,14 +58,14 @@ ReactDOM
                                   padding: 1rem;
                                 }
                               `}>
-                              <ReducerProvider>
+                              <StoreProvider>
                                 <SnackbarProvider>
                                   <Snackbar />
                                   <AppLoader>
                                     <TeamPage />
                                   </AppLoader>
                                 </SnackbarProvider>
-                              </ReducerProvider>
+                              </StoreProvider>
                             </div>
                           )} />
                       ) : (

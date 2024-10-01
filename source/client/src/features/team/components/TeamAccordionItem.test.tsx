@@ -14,16 +14,16 @@ import TeamAccordionItem from './TeamAccordionItem.presenter';
 import { VisibilityType } from '../../../types/Entity';
 import { render } from '@testing-library/react';
 
-jest.mock('./TeamCard', () =>
-  function TeamCard({ children }: React.PropsWithChildren<unknown>) {
+jest.mock('./TeamGridItem', () =>
+  function TeamGridItem({ children }: React.PropsWithChildren<unknown>) {
     return (
-      <div data-testid="TeamCard">
+      <div data-testid="TeamGridItem">
         {children}
       </div>
     );
   });
 
-test('create shapshot', async () => {
+it('should create shapshot', async () => {
   const params = {
     header: 'Pinned',
     items: [

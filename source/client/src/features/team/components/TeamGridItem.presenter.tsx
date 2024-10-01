@@ -19,35 +19,39 @@ import CalendarMenuItem from './CalendarMenuItem';
 import ChannelMenuItem from './ChannelMenuItem';
 import DriveMenuItem from './DriveMenuItem';
 import { EventHandler } from '../../../types/Event';
-import { Item } from '../../../types/Store';
 import MemberMenuItem from './MemberMenuItem';
 import PinMenuItem from './PinMenuItem';
 import SensitivityLabel from './SensitivityLabel';
+import { TeamCard } from '../../../types/Store';
 import VisibilityIcon from './VisibilityIcon';
 import { css } from '@emotion/react';
 import { useTheme } from '../../../providers/ThemeProvider';
 
-interface TeamCardProps {
-  item: Item,
+interface TeamGridItemProps {
+  card: TeamCard,
   onClick?: EventHandler
 }
 
-function TeamCard(props: Readonly<TeamCardProps>) {
+function TeamGridItem(props: Readonly<TeamGridItemProps>) {
 
   const {
-    item,
+    card: {
+      loading,
+      team,
+      visible
+    },
     onClick
   } = props;
 
   const { theme } = useTheme();
 
-  switch (item.loading) {
+  switch (loading) {
     case true:
       return (
         <Card
           role="listitem"
           css={css`
-            height: 6rem;
+            height: 6.5rem;
           `}>
           <Skeleton animation="pulse">
             <div
@@ -82,11 +86,11 @@ function TeamCard(props: Readonly<TeamCardProps>) {
         </Card>
       );
     case false: {
-      return item.visible ? (
+      return visible ? (
         <Card
           role="listitem"
           css={css`
-            height: 6rem;
+            height: 6.5rem;
           `}>
           <div
             css={css`
@@ -96,12 +100,14 @@ function TeamCard(props: Readonly<TeamCardProps>) {
               grid-gap: 0.5rem;
             `}>
             <AvatarIcon
-              icon={item.value.icon}
-              name={item.value.displayName}
+              icon={team.icon}
+              name={team.displayName}
               size={48} />
             <div
               css={css`
                 display: grid;
+                grid-template-rows: 1.25rem 1.25rem 2rem;
+                grid-template-columns: 1fr;
                 grid-gap: 0.25rem;
               `}>
               <div
@@ -130,12 +136,12 @@ function TeamCard(props: Readonly<TeamCardProps>) {
                         font-weight: 600;
                         color: ${theme.colorBrandForeground1};
                       `}>
-                      {item.value.displayName}
+                      {team.displayName}
                     </Text>
                   </Text>
                 </div>
-                <SensitivityLabel value={item.value.sensitivityLabel} />
-                <VisibilityIcon value={item.value.visibility} />
+                <SensitivityLabel value={team.sensitivityLabel} />
+                <VisibilityIcon value={team.visibility} />
               </div>
               <div
                 css={css`
@@ -143,7 +149,7 @@ function TeamCard(props: Readonly<TeamCardProps>) {
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 `}>
-                {item.value.description}
+                {team.description}
               </div>
               <div
                 css={css`
@@ -153,11 +159,11 @@ function TeamCard(props: Readonly<TeamCardProps>) {
                   align-items: center;
                   justify-content: left;
                 `}>
-                <ChannelMenuItem item={item} />
-                <MemberMenuItem item={item} />
-                <DriveMenuItem item={item} />
-                <CalendarMenuItem item={item} />
-                <PinMenuItem item={item} />
+                <ChannelMenuItem {...team} />
+                <MemberMenuItem {...team} />
+                <DriveMenuItem {...team} />
+                <CalendarMenuItem {...team} />
+                <PinMenuItem {...team} />
               </div>
             </div>
           </div>
@@ -170,4 +176,4 @@ function TeamCard(props: Readonly<TeamCardProps>) {
 
 }
 
-export default React.memo(TeamCard);
+export default React.memo(TeamGridItem);

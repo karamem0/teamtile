@@ -6,7 +6,7 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import { Group, Team } from './Entity';
+import { VisibilityType } from './Entity';
 
 export interface Action {
   type: ActionType,
@@ -15,23 +15,38 @@ export interface Action {
 
 export enum ActionType {
   setFilter = 'setFilter',
-  setItem = 'setItem',
-  setItems = 'setItems',
-  setLoading = 'setLoading'
+  setCard = 'setCard',
+  setCards = 'setCards',
+  setLoading = 'setLoading',
+  togglePin = 'togglePin'
 }
 
 export type DispatchAction<T> = (payload: T) => void;
 
-export type Item = {
+export interface State {
+  filter?: string,
+  cards?: TeamCard[],
+  loading?: boolean
+}
+
+export interface TeamCard {
   id: string,
   loading?: boolean,
   pinned?: boolean,
-  value: Group & Team,
+  team: TeamProps,
   visible?: boolean
-};
+}
 
-export interface State {
-  filter?: string,
-  items?: Item[],
-  loading?: boolean
+export interface TeamProps {
+  id: string,
+  archived?: boolean,
+  description?: string,
+  displayName?: string,
+  email?: string,
+  icon?: string,
+  internalId?: string,
+  sensitivityLabel?: string,
+  tenantId?: string,
+  visibility?: VisibilityType,
+  webUrl?: string
 }

@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`create shapshot of when text is undefined 1`] = `<DocumentFragment />`;
+exports[`should create shapshot of when text is undefined 1`] = `<DocumentFragment />`;
 
-exports[`create shapshot of when type is error 1`] = `
+exports[`should create shapshot of when type is error 1`] = `
 <DocumentFragment>
   .emotion-0 {
   position: fixed;
@@ -62,7 +62,7 @@ exports[`create shapshot of when type is error 1`] = `
 </DocumentFragment>
 `;
 
-exports[`create shapshot of when type is success 1`] = `
+exports[`should create shapshot of when type is success 1`] = `
 <DocumentFragment>
   .emotion-0 {
   position: fixed;
@@ -122,7 +122,7 @@ exports[`create shapshot of when type is success 1`] = `
 </DocumentFragment>
 `;
 
-exports[`create shapshot of when type is warning 1`] = `
+exports[`should create shapshot of when type is warning 1`] = `
 <DocumentFragment>
   .emotion-0 {
   position: fixed;

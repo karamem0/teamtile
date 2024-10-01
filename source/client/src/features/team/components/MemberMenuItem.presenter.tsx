@@ -10,13 +10,13 @@ import React from 'react';
 
 import {
   Button,
-  Input,
+  SearchBox,
   Text
 } from '@fluentui/react-components';
 import { Event, EventHandler } from '../../../types/Event';
-import { GroupIcon, SearchIcon } from '@fluentui/react-icons-mdl2';
 import AvatarIcon from './AvatarIcon';
 import CardMenuItem from './CardMenuItem';
+import { GroupIcon } from '@fluentui/react-icons-mdl2';
 import { Member } from '../../../types/Entity';
 import SidePanel from '../../../common/components/SidePanel';
 import { css } from '@emotion/react';
@@ -57,9 +57,7 @@ function MemberMenuItem(props: Readonly<MemberMenuItemProps>) {
               flex-flow: column;
               grid-gap: 0.5rem;
             `}>
-            <Input
-              contentBefore={<SearchIcon />}
-              onChange={(e, data) => onFilterChange?.(e, data.value)} />
+            <SearchBox onChange={(e, data) => onFilterChange?.(e, data.value)} />
             <div
               css={css`
                 display: flex;

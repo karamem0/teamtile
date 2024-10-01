@@ -22,6 +22,14 @@ interface SnackbarContextState {
 
 const SnackbarContext = React.createContext<SnackbarContextState | undefined>(undefined);
 
+export const useSnackbar = (): SnackbarContextState => {
+  const props = React.useContext(SnackbarContext);
+  if (props == null) {
+    throw new Error('The context is not initialzed: SnackbarContext');
+  }
+  return props;
+};
+
 function SnackbarProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
 
   const { children } = props;
@@ -43,11 +51,3 @@ function SnackbarProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
 }
 
 export default SnackbarProvider;
-
-export const useSnackbar = (): SnackbarContextState => {
-  const props = React.useContext(SnackbarContext);
-  if (props == null) {
-    throw new Error('The context is not initialzed: SnackbarContext');
-  }
-  return props;
-};

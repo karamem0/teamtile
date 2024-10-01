@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`create shapshot of when url is not undefined 1`] = `
+exports[`should create shapshot of when url is not undefined 1`] = `
 <DocumentFragment>
   <span
     aria-label="HR Taskforce"
@@ -25,7 +25,7 @@ exports[`create shapshot of when url is not undefined 1`] = `
 </DocumentFragment>
 `;
 
-exports[`create shapshot of when url is undefined 1`] = `
+exports[`should create shapshot of when url is undefined 1`] = `
 <DocumentFragment>
   <span
     aria-label="HR Taskforce"

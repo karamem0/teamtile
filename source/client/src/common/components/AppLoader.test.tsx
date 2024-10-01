@@ -11,7 +11,7 @@ import React from 'react';
 import AppLoader from './AppLoader.presenter';
 import { render } from '@testing-library/react';
 
-test('create shapshot of when loading is true', async () => {
+it('should create shapshot of when loading is true', async () => {
   const params = {
     children: <div data-testid="Children" />,
     loading: true
@@ -20,7 +20,7 @@ test('create shapshot of when loading is true', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-test('create shapshot of when loading is false', async () => {
+it('should create shapshot of when loading is false', async () => {
   const params = {
     children: <div data-testid="Children" />,
     loading: false

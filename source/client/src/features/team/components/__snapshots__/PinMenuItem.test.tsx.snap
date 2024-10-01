@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`create shapshot of when pinned is false 1`] = `
+exports[`should create shapshot of when pinned is false 1`] = `
 <DocumentFragment>
   .emotion-0 {
   display: grid;
@@ -56,7 +56,7 @@ exports[`create shapshot of when pinned is false 1`] = `
 </DocumentFragment>
 `;
 
-exports[`create shapshot of when pinned is true 1`] = `
+exports[`should create shapshot of when pinned is true 1`] = `
 <DocumentFragment>
   .emotion-0 {
   display: grid;
@@ -112,7 +112,7 @@ exports[`create shapshot of when pinned is true 1`] = `
 </DocumentFragment>
 `;
 
-exports[`create shapshot of when pinned is undefined 1`] = `
+exports[`should create shapshot of when pinned is undefined 1`] = `
 <DocumentFragment>
   .emotion-0 {
   display: grid;

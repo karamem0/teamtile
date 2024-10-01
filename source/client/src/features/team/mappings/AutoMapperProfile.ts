@@ -13,7 +13,8 @@ import {
   Icon,
   Member,
   Tab,
-  Team
+  Team,
+  TeamInfo
 } from '../../../types/Entity';
 import {
   TeamsApp as GraphApp,
@@ -23,17 +24,19 @@ import {
   AssignedLabel as GraphLabel,
   AadUserConversationMember as GraphMember,
   TeamsTab as GraphTab,
-  Team as GraphTeam
+  Team as GraphTeam,
+  AssociatedTeamInfo as GraphTeamInfo
 } from '@microsoft/microsoft-graph-types';
 import { PojosMetadataMap, pojos } from '@automapper/pojos';
+import { TeamCard, TeamProps } from '../../../types/Store';
 import {
   createMap,
   createMapper,
   forMember,
+  fromValue,
   ignore,
   mapFrom
 } from '@automapper/core';
-import { Item } from '../../../types/Store';
 
 const mapper = createMapper({
   strategyInitializer: pojos()
@@ -84,6 +87,12 @@ PojosMetadataMap.create<Team>('Team', {
   internalId: String,
   visibility: String,
   webUrl: String
+});
+
+PojosMetadataMap.create<TeamInfo>('TeamInfo', {
+  id: String,
+  displayName: String,
+  tenantId: String
 });
 
 PojosMetadataMap.create<GraphApp>('GraphApp', {
@@ -137,10 +146,28 @@ PojosMetadataMap.create<GraphTeam>('GraphTeam', {
   webUrl: String
 });
 
-PojosMetadataMap.create<Item>('Item', {
-  value: Object,
+PojosMetadataMap.create<GraphTeamInfo>('GraphTeamInfo', {
+  id: String,
+  displayName: String,
+  tenantId: String
+});
+
+PojosMetadataMap.create<TeamCard>('TeamCard', {
+  team: 'TeamProps',
   loading: Boolean,
   visible: Boolean
+});
+
+PojosMetadataMap.create<TeamProps>('TeamProps', {
+  id: String,
+  archived: Boolean,
+  description: String,
+  displayName: String,
+  email: String,
+  internalId: String,
+  sensitivityLabel: String,
+  visibility: String,
+  webUrl: String
 });
 
 createMap<GraphChannel, Channel>(
@@ -246,57 +273,88 @@ export function mapTeam(value: GraphTeam) {
   );
 }
 
-createMap<Group, Item>(
+createMap<GraphTeamInfo, TeamInfo>(
+  mapper,
+  'GraphTeamInfo',
+  'TeamInfo',
+  forMember((target) => target.displayName, mapFrom((source) => source.displayName ?? undefined)),
+  forMember((target) => target.tenantId, mapFrom((source) => source.tenantId ?? undefined))
+);
+
+export function mapTeamInfo(value: GraphTeamInfo) {
+  return mapper.map<GraphTeamInfo, TeamInfo>(
+    value,
+    'GraphTeamInfo',
+    'TeamInfo'
+  );
+}
+
+createMap<Group, TeamCard>(
   mapper,
   'Group',
-  'Item',
+  'TeamCard',
   forMember((target) => target.id, mapFrom((source) => source.id)),
-  forMember((target) => target.value, mapFrom((source) => source)),
-  forMember((target) => target.loading, mapFrom(() => true)),
-  forMember((target) => target.visible, mapFrom(() => true))
+  forMember((target) => target.team, mapFrom((source) => source))
 );
 
-export function mapItemFromGroup(value: Group) {
-  return mapper.map<Group, Item>(
+export function mapCardFromGroup(value: Group) {
+  return mapper.map<Group, TeamCard>(
     value,
     'Group',
-    'Item'
+    'TeamCard'
   );
 }
 
-createMap<Team, Item>(
+createMap<Team, TeamCard>(
   mapper,
   'Team',
-  'Item',
+  'TeamCard',
   forMember((target) => target.id, mapFrom((source) => source.id)),
-  forMember((target) => target.loading, mapFrom(() => false)),
-  forMember((target) => target.pinned, mapFrom(() => false)),
-  forMember((target) => target.value, mapFrom((source) => source)),
-  forMember((target) => target.visible, mapFrom(() => true))
+  forMember((target) => target.team, mapFrom((source) => source)),
+  forMember((target) => target.loading, fromValue(false))
 );
 
-export function mapItemFromTeam(value: Team) {
-  return mapper.map<Team, Item>(
+export function mapCardFromTeam(value: Team) {
+  return mapper.map<Team, TeamCard>(
     value,
     'Team',
-    'Item'
+    'TeamCard'
   );
 }
 
-createMap<Icon, Item>(
+createMap<TeamInfo, TeamCard>(
   mapper,
-  'Icon',
-  'Item',
+  'TeamInfo',
+  'TeamCard',
   forMember((target) => target.id, mapFrom((source) => source.id)),
-  forMember((target) => target.value.id, mapFrom((source) => source.id)),
-  forMember((target) => target.value.icon, mapFrom((source) => source.data))
+  forMember((target) => target.team, mapFrom((source) => source)),
+  forMember((target) => target.loading, fromValue(true)),
+  forMember((target) => target.pinned, fromValue(false)),
+  forMember((target) => target.visible, fromValue(true))
 );
 
-export function mapItemFromIcon(value: Icon) {
-  return mapper.map<Icon, Item>(
+export function mapCardFromTeamInfo(value: TeamInfo) {
+  return mapper.map<TeamInfo, TeamCard>(
+    value,
+    'TeamInfo',
+    'TeamCard'
+  );
+}
+
+createMap<Icon, TeamCard>(
+  mapper,
+  'Icon',
+  'TeamCard',
+  forMember((target) => target.id, mapFrom((source) => source.id)),
+  forMember((target) => target.team.id, mapFrom((source) => source.id)),
+  forMember((target) => target.team.icon, mapFrom((source) => source.data))
+);
+
+export function mapCardFromIcon(value: Icon) {
+  return mapper.map<Icon, TeamCard>(
     value,
     'Icon',
-    'Item'
+    'TeamCard'
   );
 }
 

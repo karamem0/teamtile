@@ -24,6 +24,7 @@ export function getConfig(): CacheConfig {
     config.database.version(8).stores({
       channels: '&id, expired',
       drives: '&id, expired',
+      groups: '&id, expired',
       icons: '&id, expired',
       members: '&id, expired',
       pins: '&id',

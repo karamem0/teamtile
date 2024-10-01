@@ -14,7 +14,7 @@ import { MembershipType } from '../../../types/Entity';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
-test('create shapshot', async () => {
+it('should create shapshot', async () => {
   const params = {
     items: [
       {

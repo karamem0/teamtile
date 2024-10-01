@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`create shapshot of when MembershipType is private 1`] = `
+exports[`should create shapshot of when MembershipType is private 1`] = `
 <DocumentFragment>
   .emotion-0 {
   width: 0.75rem;
@@ -30,6 +30,6 @@ exports[`create shapshot of when MembershipType is private 1`] = `
 </DocumentFragment>
 `;
 
-exports[`create shapshot of when MembershipType is standard 1`] = `<DocumentFragment />`;
+exports[`should create shapshot of when MembershipType is standard 1`] = `<DocumentFragment />`;
 
-exports[`create shapshot of when MembershipType is undefined 1`] = `<DocumentFragment />`;
+exports[`should create shapshot of when MembershipType is undefined 1`] = `<DocumentFragment />`;

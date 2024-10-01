@@ -15,14 +15,14 @@ import {
 } from '@fluentui/react-components';
 import { FormattedMessage } from 'react-intl';
 import GridLayout from '../../../common/components/GridLayout';
-import { Item } from '../../../types/Store';
-import TeamCard from './TeamCard';
+import { TeamCard } from '../../../types/Store';
+import TeamGridItem from './TeamGridItem';
 import { css } from '@emotion/react';
 import messages from '../messages';
 
 interface TeamAccordionItemProps {
   header?: React.ReactNode,
-  items?: Item[],
+  cards?: TeamCard[],
   value?: unknown
 }
 
@@ -30,7 +30,7 @@ function TeamAccordionItem(props: Readonly<TeamAccordionItemProps>) {
 
   const {
     header,
-    items,
+    cards,
     value
   } = props;
 
@@ -39,15 +39,18 @@ function TeamAccordionItem(props: Readonly<TeamAccordionItemProps>) {
       <AccordionHeader>
         {header}
       </AccordionHeader>
-      <AccordionPanel>
+      <AccordionPanel
+        css={css`
+          margin: 0.25rem;
+        `}>
         {
-          items?.length ? (
+          cards?.length ? (
             <GridLayout>
               {
-                items.map((item) => (
-                  <TeamCard
-                    key={item.id}
-                    item={item} />
+                cards.map((card) => (
+                  <TeamGridItem
+                    key={card.id}
+                    card={card} />
                 ))
               }
             </GridLayout>

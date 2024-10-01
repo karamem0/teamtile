@@ -15,23 +15,23 @@ import TeamGrid from './TeamGrid.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
 
-jest.mock('./TeamCard', () =>
-  function TeamCard({ children }: React.PropsWithChildren<unknown>) {
+jest.mock('./TeamGridItem', () =>
+  function TeamGridItem({ children }: React.PropsWithChildren<unknown>) {
     return (
-      <div data-testid="TeamCard">
+      <div data-testid="TeamGridItem">
         {children}
       </div>
     );
   });
 
-test('create shapshot', async () => {
+it('should create shapshot', async () => {
   const params = {
-    items: [
+    cards: [
       {
         id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         pinned: true,
         loading: false,
-        value: {
+        team: {
           id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
           archived: false,
           displayName: 'HR Taskforce',

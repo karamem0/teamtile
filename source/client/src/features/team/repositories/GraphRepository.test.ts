@@ -15,6 +15,7 @@ import {
   getMembers,
   getTabs,
   getTeamIcons,
+  getTeamInfos,
   getTeams
 } from './GraphRepository';
 
@@ -25,7 +26,7 @@ beforeEach(() => {
   jest.resetModules();
 });
 
-test('get channels', async () => {
+it('should get channels', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     response: {
@@ -62,7 +63,7 @@ test('get channels', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get drive', async () => {
+it('should get drive', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     response: {
@@ -89,19 +90,24 @@ test('get drive', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get groups', async () => {
+it('should get groups', async () => {
   const params = {
+    groupIds: [ '02bd9fd6-8f93-4758-87c3-1fb73740a315' ],
     response: {
-      value: [
+      responses: [
         {
           id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-          mail: 'HRTaskforce@M365x214355.onmicrosoft.com',
-          assignedLabels: [
-            {
-              labelId: '65f3af67-1866-4bf3-bd26-b98c7495f533',
-              displayName: 'Restricted'
-            }
-          ]
+          status: 200,
+          body: JSON.stringify({
+            id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+            mail: 'HRTaskforce@M365x214355.onmicrosoft.com',
+            assignedLabels: [
+              {
+                labelId: '65f3af67-1866-4bf3-bd26-b98c7495f533',
+                displayName: 'Restricted'
+              }
+            ]
+          })
         }
       ]
     }
@@ -118,21 +124,16 @@ test('get groups', async () => {
     client: {
       api: () => ({
         version: jest.fn().mockReturnThis(),
-        count: jest.fn().mockReturnThis(),
-        select: jest.fn().mockReturnThis(),
-        filter: jest.fn().mockReturnThis(),
-        orderby: jest.fn().mockReturnThis(),
-        header: jest.fn().mockReturnThis(),
-        get: mock
+        post: mock
       })
     }
   });
-  const actual = await getGroups();
+  const actual = await getGroups(params.groupIds);
   expect(mock).toHaveBeenCalled();
   expect(actual).toStrictEqual(expected);
 });
 
-test('get member icons', async () => {
+it('should get member icons', async () => {
   const params = {
     userIds: [ '87d349ed-44d7-43e1-9a83-5f2406dee5bd' ],
     response: {
@@ -168,7 +169,7 @@ test('get member icons', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get members', async () => {
+it('should get members', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     response: {
@@ -205,7 +206,7 @@ test('get members', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get tabs', async () => {
+it('should get tabs', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     channelId: '19%3A09fc54a3141a45d0bc769cf506d2e079%40thread.skype',
@@ -245,7 +246,7 @@ test('get tabs', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get team icons', async () => {
+it('should get team icons', async () => {
   const params = {
     teamIds: [ '02bd9fd6-8f93-4758-87c3-1fb73740a315' ],
     response: {
@@ -281,7 +282,41 @@ test('get team icons', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get teams', async () => {
+it('should get team infos', async () => {
+  const params = {
+    response: {
+      value: [
+        {
+          id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+          displayName: 'HR Taskforce',
+          tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
+        }
+      ]
+    }
+  };
+  const expected = [
+    {
+      id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      displayName: 'HR Taskforce',
+      tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
+    }
+  ];
+  const mock = jest.fn().mockResolvedValue(params.response);
+  getConfig.mockReturnValue({
+    client: {
+      api: () => ({
+        version: jest.fn().mockReturnThis(),
+        select: jest.fn().mockReturnThis(),
+        get: mock
+      })
+    }
+  });
+  const actual = await getTeamInfos();
+  expect(mock).toHaveBeenCalled();
+  expect(actual).toStrictEqual(expected);
+});
+
+it('should get teams', async () => {
   const params = {
     teamIds: [ '02bd9fd6-8f93-4758-87c3-1fb73740a315' ],
     response: {

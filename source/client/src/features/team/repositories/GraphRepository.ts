@@ -18,7 +18,8 @@ import {
   Icon,
   Member,
   Tab,
-  Team
+  Team,
+  TeamInfo
 } from '../../../types/Entity';
 import {
   mapChannel,
@@ -26,7 +27,8 @@ import {
   mapGroup,
   mapMember,
   mapTab,
-  mapTeam
+  mapTeam,
+  mapTeamInfo
 } from '../mappings/AutoMapperProfile';
 import { compare } from '../../../utils/String';
 import { getConfig } from '../../../config/GraphConfig';
@@ -65,27 +67,48 @@ export async function getDrive(teamId: string): Promise<Drive> {
   return mapDrive(response);
 }
 
-export async function getGroups(): Promise<Group[]> {
+export async function getGroups(groupIds: string[]): Promise<Group[]> {
   const { client } = getConfig();
-  const response = await client
-    .api('/me/memberOf/microsoft.graph.group')
-    .version('v1.0')
-    .count(true)
-    .select([
-      'assignedLabels',
-      'id',
-      'mail'
-    ])
-    .filter('resourceProvisioningOptions/any(x:x eq \'Team\')')
-    .orderby('displayName')
-    .header('ConsistencyLevel', 'eventual')
-    .get();
   const values: Group[] = [];
-  const iterator = new PageIterator(
-    client,
-    response,
-    (value) => Boolean(values.push(mapGroup(value))));
-  await iterator.iterate();
+  for (let chunk = 0; chunk < groupIds.length; chunk += 20) {
+    const requestContent = new BatchRequestContent(
+      groupIds.slice(chunk, chunk + 20).map((groupId) => ({
+        id: groupId,
+        request: new Request(
+          `/groups/${groupId}` +
+          `?$select=${[
+            'assignedLabels',
+            'displayName',
+            'id'
+          ].join(',')}`,
+          {
+            method: 'GET'
+          }
+        )
+      }))
+    );
+    const requestBody = await requestContent.getContent();
+    const responseBody = await client
+      .api('/$batch')
+      .version('v1.0')
+      .post(requestBody);
+    const responseContent = new BatchResponseContent(responseBody);
+    for (const [ , response ] of responseContent.getResponses()) {
+      if (response.ok) {
+        const json = await response.json();
+        const value = mapGroup(json);
+        values.push(value);
+      } else {
+        switch (response.status) {
+          case 403:
+          case 404:
+            break;
+          default:
+            throw new Error(`${response.status}: ${response.statusText}`);
+        }
+      }
+    }
+  }
   return values;
 }
 
@@ -208,6 +231,26 @@ export async function getTeamIcons(teamIds: string[]): Promise<Icon[]> {
     }
   }
   return values;
+}
+
+export async function getTeamInfos(): Promise<TeamInfo[]> {
+  const { client } = getConfig();
+  const response = await client
+    .api('/me/teamwork/associatedTeams')
+    .version('v1.0')
+    .select([
+      'displayName',
+      'id',
+      'tenantId'
+    ])
+    .get();
+  const values: TeamInfo[] = [];
+  const iterator = new PageIterator(
+    client,
+    response,
+    (value) => Boolean(values.push(mapTeamInfo(value))));
+  await iterator.iterate();
+  return values.sort((a, b) => compare(a.displayName, b.displayName));
 }
 
 export async function getTeams(teamIds: string[]): Promise<Team[]> {

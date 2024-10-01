@@ -11,17 +11,17 @@ import React from 'react';
 import { Accordion } from '@fluentui/react-components';
 import { AccordionType } from '../../../types/Entity';
 import { FormattedMessage } from 'react-intl';
-import { Item } from '../../../types/Store';
 import TeamAccordionItem from './TeamAccordionItem';
+import { TeamCard } from '../../../types/Store';
 import messages from '../messages';
 
 interface TeamGridProps {
-  items?: Item[]
+  cards?: TeamCard[]
 }
 
 function TeamGrid(props: Readonly<TeamGridProps>) {
 
-  const { items } = props;
+  const { cards } = props;
 
   return (
     <Accordion
@@ -30,21 +30,21 @@ function TeamGrid(props: Readonly<TeamGridProps>) {
       multiple>
       <TeamAccordionItem
         key={AccordionType.pinned}
-        items={items?.filter((item) => item.pinned)}
+        cards={cards?.filter((card) => card.pinned)}
         value={AccordionType.pinned}
         header={(
           <FormattedMessage {...messages.PinnedTeams} />
         )} />
       <TeamAccordionItem
         key={AccordionType.all}
-        items={items?.filter((item) => item.visible && !item.value.archived)}
+        cards={cards?.filter((card) => card.visible && !card.team.archived)}
         value={AccordionType.all}
         header={(
           <FormattedMessage {...messages.AllTeams} />
         )} />
       <TeamAccordionItem
         key={AccordionType.archived}
-        items={items?.filter((item) => item.visible && item.value.archived)}
+        cards={cards?.filter((card) => card.visible && card.team.archived)}
         value={AccordionType.archived}
         header={(
           <FormattedMessage {...messages.ArchivedTeams} />

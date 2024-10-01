@@ -14,7 +14,7 @@ import { render } from '@testing-library/react';
 
 import EmptyPanel from './EmptyPanel.presenter';
 
-test('create shapshot', async () => {
+it('should create shapshot', async () => {
   const params = {};
   const { asFragment } = render(
     <IntlProvider>

@@ -13,7 +13,7 @@ import MemberMenuItem from './MemberMenuItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
-test('create shapshot', async () => {
+it('should create shapshot', async () => {
   const params = {
     items: [
       {

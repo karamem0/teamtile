@@ -12,7 +12,7 @@ import SidePanel from './SidePanel.presenter';
 import ThemeProvider from '../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
-test('create shapshot', async () => {
+it('should create shapshot', async () => {
   const params = {
     open: true,
     content: <div data-testid="Content" />,

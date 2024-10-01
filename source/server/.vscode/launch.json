@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug Web",
+      "name": "Launch Web",
       "type": "dotnet",
       "request": "launch",
       "projectPath": "${workspaceFolder}/Karamem0.Teamtile/Karamem0.Teamtile.csproj"

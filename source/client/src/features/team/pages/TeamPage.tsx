@@ -8,33 +8,34 @@
 
 import React from 'react';
 
+import { setCards, setLoading } from '../../../stores/Action';
 import { useAsyncFn, useError } from 'react-use';
 import Presenter from './TeamPage.presenter';
-import { getItems } from '../managers/TeamManager';
-import { useReducer } from '../../../providers/ReducerProvider';
+import { getCards } from '../managers/TeamManager';
+import { useStore } from '../../../providers/StoreProvider';
 
 function TeamPage() {
 
   const dispatchError = useError();
   const {
-    dispatchers,
+    dispatch,
     state: {
-      items,
+      cards,
       loading
     }
-  } = useReducer();
-  const [ state, fetch ] = useAsyncFn(() => getItems());
+  } = useStore();
+  const [ state, fetch ] = useAsyncFn(() => getCards());
 
   React.useEffect(() => {
     (async () => {
       if (loading) {
-        dispatchers.setItems(await fetch());
+        dispatch(setCards(await fetch()));
       }
     })();
   }, [
-    dispatchers,
-    fetch,
-    loading
+    loading,
+    dispatch,
+    fetch
   ]);
 
   React.useEffect(() => {
@@ -48,21 +49,21 @@ function TeamPage() {
   ]);
 
   React.useEffect(() => {
-    dispatchers.setLoading(state.loading);
+    dispatch(setLoading(state.loading));
   }, [
-    dispatchers,
+    dispatch,
     state.loading
   ]);
 
   React.useEffect(() => {
-    dispatchers.setLoading(true);
+    dispatch(setLoading(true));
   }, [
-    dispatchers
+    dispatch
   ]);
 
   return (
     <Presenter
-      items={items}
+      cards={cards}
       loading={loading} />
   );
 

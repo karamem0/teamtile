@@ -15,7 +15,6 @@ import {
 } from 'react-use';
 import { Channel } from '../../../types/Entity';
 import { Event } from '../../../types/Event';
-import { Item } from '../../../types/Store';
 import { app } from '@microsoft/teams-js';
 import { getChannels } from '../managers/TeamManager';
 import { search } from '../../../utils/String';
@@ -23,12 +22,12 @@ import { search } from '../../../utils/String';
 import Presenter from './ChannelMenuItem.presenter';
 
 interface ChannelMenuItemProps {
-  item?: Item
+  id?: string
 }
 
 function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
 
-  const { item } = props;
+  const { id } = props;
 
   const dispatchError = useError();
   const [ state, fetch ] = useAsyncFn((teamId: string) => getChannels(teamId));
@@ -44,7 +43,7 @@ function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
   ]);
 
   const handleClick = React.useCallback((_?: Event, data?: Channel) => {
-    if (!data?.webUrl) {
+    if (data?.webUrl == null) {
       return;
     }
     app.openLink(data.webUrl);
@@ -58,23 +57,23 @@ function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
     if (data == null) {
       return;
     }
-    if (!item?.id) {
+    if (id == null) {
       return;
     }
-    await fetch(item.id);
+    await fetch(id);
   }, [
-    fetch,
-    item
+    id,
+    fetch
   ]);
 
   React.useEffect(() => {
-    if (!state.error) {
+    if (state.error == null) {
       return;
     }
     dispatchError(state.error);
   }, [
-    dispatchError,
-    state.error
+    state.error,
+    dispatchError
   ]);
 
   return (

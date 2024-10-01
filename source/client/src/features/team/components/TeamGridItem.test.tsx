@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import TeamCard from './TeamCard.presenter';
+import TeamGridItem from './TeamGridItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
 import { render } from '@testing-library/react';
@@ -85,11 +85,11 @@ jest.mock('./VisibilityIcon', () =>
     );
   });
 
-test('create shapshot of when item loading is true', async () => {
+it('should create shapshot of when item loading is true', async () => {
   const params = {
-    item: {
+    card: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-      value: {
+      team: {
         id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         archived: false,
         displayName: 'HR Taskforce',
@@ -105,17 +105,17 @@ test('create shapshot of when item loading is true', async () => {
   };
   const { asFragment } = render(
     <ThemeProvider>
-      <TeamCard {...params} />
+      <TeamGridItem {...params} />
     </ThemeProvider>
   );
   expect(asFragment()).toMatchSnapshot();
 });
 
-test('create shapshot of when item loading is false', async () => {
+it('should create shapshot of when item loading is false', async () => {
   const params = {
-    item: {
+    card: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-      value: {
+      team: {
         id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         archived: false,
         displayName: 'HR Taskforce',
@@ -131,7 +131,7 @@ test('create shapshot of when item loading is false', async () => {
   };
   const { asFragment } = render(
     <ThemeProvider>
-      <TeamCard {...params} />
+      <TeamGridItem {...params} />
     </ThemeProvider>
   );
   expect(asFragment()).toMatchSnapshot();

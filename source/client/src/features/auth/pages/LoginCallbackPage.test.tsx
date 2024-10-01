@@ -12,7 +12,7 @@ import IntlProvider from '../../../providers/IntlProvider';
 import LoginCallbackPage from './LoginCallbackPage.presenter';
 import { render } from '@testing-library/react';
 
-test('create shapshot', async () => {
+it('should create shapshot', async () => {
   const params = {};
   const { asFragment } = render(
     <IntlProvider>

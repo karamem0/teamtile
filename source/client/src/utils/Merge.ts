@@ -6,11 +6,11 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import { Item } from '../types/Store';
 import { Member } from '../types/Entity';
+import { TeamCard } from '../types/Store';
 import merge from 'deepmerge';
 
-export function mergeItems(source: Item[], target: Item[], options?: merge.Options) {
+export function margeCards(source: TeamCard[], target: TeamCard[], options?: merge.Options) {
   const items = [ ...source ];
   source.forEach((sourceItem, sourceIndex) => {
     const targetIndex = target.findIndex((targetItem) => targetItem.id === sourceItem.id);

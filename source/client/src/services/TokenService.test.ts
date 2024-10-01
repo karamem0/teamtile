@@ -20,7 +20,7 @@ beforeEach(() => {
   fetchMock.mockClear();
 });
 
-test('get client token', async () => {
+it('should get client token', async () => {
   const params = {
     token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
   };
@@ -34,7 +34,7 @@ test('get client token', async () => {
   expect(actual).toStrictEqual(expected.token);
 });
 
-test('get server token when server returns 200', async () => {
+it('should get server token when server returns 200', async () => {
   const params = {
     token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
     status: 200
@@ -76,7 +76,7 @@ test('get server token when server returns 200', async () => {
   expect(actual).toStrictEqual(expected.token);
 });
 
-test('get server token when server returns 200', async () => {
+it('should get server token when server returns 200', async () => {
   const params = {
     token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
     status: 403,
@@ -122,7 +122,7 @@ test('get server token when server returns 200', async () => {
   expect(actual).toStrictEqual(expected.token);
 });
 
-test('get server token when server returns 500', async () => {
+it('should get server token when server returns 500', async () => {
   const params = {
     token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
     status: 500,

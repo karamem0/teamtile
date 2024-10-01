@@ -8,21 +8,20 @@
 
 import React from 'react';
 
-import { useIntl } from 'react-intl';
-
 import {
   Button,
-  Input,
+  SearchBox,
   Text
 } from '@fluentui/react-components';
-import { ContextMenuIcon, SearchIcon } from '@fluentui/react-icons-mdl2';
 import { Event, EventHandler } from '../../../types/Event';
 import CardMenuItem from './CardMenuItem';
 import { Channel } from '../../../types/Entity';
+import { ContextMenuIcon } from '@fluentui/react-icons-mdl2';
 import MembershipIcon from './MembershipIcon';
 import SidePanel from '../../../common/components/SidePanel';
 import { css } from '@emotion/react';
 import messages from '../messages';
+import { useIntl } from 'react-intl';
 import { useTheme } from '../../../providers/ThemeProvider';
 
 interface ChannelMenuItemProps {
@@ -58,9 +57,7 @@ function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
               flex-flow: column;
               grid-gap: 0.5rem;
             `}>
-            <Input
-              contentBefore={<SearchIcon />}
-              onChange={(e, data) => onFilterChange?.(e, data.value)} />
+            <SearchBox onChange={(e, data) => onFilterChange?.(e, data.value)} />
             <div
               css={css`
                 display: flex;

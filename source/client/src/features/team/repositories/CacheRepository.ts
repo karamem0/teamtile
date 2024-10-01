@@ -14,6 +14,7 @@ import {
 import {
   Channel,
   Drive,
+  Group,
   Icon,
   Member,
   Team
@@ -25,6 +26,7 @@ export async function clearAll(): Promise<void> {
   await Promise.all([
     database.table('channels').clear(),
     database.table('drives').clear(),
+    database.table('groups').clear(),
     database.table('icons').clear(),
     database.table('members').clear(),
     database.table('teams').clear()
@@ -95,6 +97,41 @@ export async function getDrive(id: string, expired?: boolean, timestamp = Date.n
 export async function setDrive(id: string, value: Drive, timestamp = Date.now()): Promise<void> {
   const { database, timeout } = getConfig();
   await database.table<ValueEntity<Drive>>('drives').put({
+    id,
+    expired: timestamp + (timeout * 1000),
+    value
+  });
+}
+
+export async function getGroup(id: string, expired?: boolean, timestamp = Date.now()): Promise<Group | undefined> {
+  const { database } = getConfig();
+  return await database.table<ValueEntity<Group>>('groups')
+    .get(id)
+    .then((item) => {
+      if (item == null) {
+        return undefined;
+      }
+      switch (expired) {
+        case true:
+          if (item.expired < timestamp) {
+            return item.value;
+          }
+          break;
+        case false:
+          if (item.expired >= timestamp) {
+            return item.value;
+          }
+          break;
+        default:
+          return item.value;
+      }
+      return undefined;
+    });
+}
+
+export async function setGroup(id: string, value: Group, timestamp = Date.now()): Promise<void> {
+  const { database, timeout } = getConfig();
+  await database.table<ValueEntity<Group>>('groups').put({
     id,
     expired: timestamp + (timeout * 1000),
     value

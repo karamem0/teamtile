@@ -8,12 +8,12 @@
 
 import React from 'react';
 
-import { Item } from '../../../types/Store';
 import Presenter from './TeamAccordionItem.presenter';
+import { TeamCard } from '../../../types/Store';
 
 interface TeamAccordionItemProps {
   header?: React.ReactNode,
-  items?: Item[],
+  cards?: TeamCard[],
   value?: unknown
 }
 
@@ -21,14 +21,14 @@ function TeamAccordionItem(props: Readonly<TeamAccordionItemProps>) {
 
   const {
     header,
-    items,
+    cards,
     value
   } = props;
 
   return (
     <Presenter
+      cards={cards}
       header={header}
-      items={items}
       value={value} />
   );
 

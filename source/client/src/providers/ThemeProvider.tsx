@@ -78,6 +78,10 @@ function ThemeProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
     }
   };
 
+  const value = React.useMemo<ThemeContextState>(() => ({ theme }), [
+    theme
+  ]);
+
   React.useEffect(() => {
     if (inTeams()) {
       (async () => {
@@ -92,7 +96,7 @@ function ThemeProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
   }, []);
 
   return (
-    <ThemeContext.Provider value={{ theme }}>
+    <ThemeContext.Provider value={value}>
       <Provider theme={theme}>
         <div
           css={css`

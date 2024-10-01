@@ -20,7 +20,7 @@ jest.mock('./TeamGrid', () =>
     );
   });
 
-test('create shapshot', async () => {
+it('should create shapshot', async () => {
   const params = {};
   const { asFragment } = render(<TeamPanel {...params} />);
   expect(asFragment()).toMatchSnapshot();

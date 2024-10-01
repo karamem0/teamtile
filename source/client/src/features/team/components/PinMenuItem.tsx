@@ -8,40 +8,40 @@
 
 import React from 'react';
 
-import { Event } from '../../../types/Event';
-import { Item } from '../../../types/Store';
 import Presenter from './PinMenuItem.presenter';
 import { setPin } from '../managers/TeamManager';
-import { useReducer } from '../../../providers/ReducerProvider';
+import { togglePin } from '../../../stores/Action';
+import { useStore } from '../../../providers/StoreProvider';
 
 interface PinMenuItemProps {
-  item?: Item
+  id?: string,
+  pinned?: boolean
 }
 
 function PinMenuItem(props: Readonly<PinMenuItemProps>) {
 
-  const { item } = props;
+  const {
+    id,
+    pinned
+  } = props;
 
-  const { dispatchers } = useReducer();
+  const { dispatch } = useStore();
 
-  const handleClick = React.useCallback(async (_?: Event, data?: boolean) => {
-    if (!item?.id) {
+  const handleClick = React.useCallback(async () => {
+    if (id == null) {
       return;
     }
-    const pinned = data ?? false;
-    setPin(item.id, pinned);
-    dispatchers.setItem({
-      ...item,
-      pinned
-    });
+    setPin(id, !pinned);
+    dispatch(togglePin(id));
   }, [
-    dispatchers,
-    item
+    id,
+    pinned,
+    dispatch
   ]);
 
   return (
     <Presenter
-      pinned={item?.pinned}
+      pinned={pinned}
       onClick={handleClick} />
   );
 

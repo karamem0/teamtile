@@ -8,31 +8,30 @@
 
 import React from 'react';
 
+import { setFilter, setLoading } from '../../../stores/Action';
 import { Event } from '../../../types/Event';
 import Presenter from './TeamPanel.presenter';
 import { clearCache } from '../managers/TeamManager';
 import messages from '../messages';
 import { useDebounce } from 'react-use';
 import { useIntl } from 'react-intl';
-import { useReducer } from '../../../providers/ReducerProvider';
+import { useStore } from '../../../providers/StoreProvider';
 
 function TeamPanel() {
 
-  const {
-    dispatchers
-  } = useReducer();
+  const { dispatch } = useStore();
   const intl = useIntl();
-  const [ filter, setFilter ] = React.useState<string>();
+  const [ cache, setCache ] = React.useState<string>();
 
   useDebounce(() => {
-    dispatchers.setFilter(filter);
+    dispatch(setFilter(cache));
   }, 500, [
-    dispatchers,
-    filter
+    cache,
+    dispatch
   ]);
 
   const handleFilterChange = React.useCallback((_?: Event, data?: string) => {
-    setFilter(data);
+    setCache(data);
   }, []);
 
   const handleLinkToGitHub = React.useCallback(() => {
@@ -57,8 +56,10 @@ function TeamPanel() {
     if ((e as React.KeyboardEvent)?.shiftKey) {
       await clearCache();
     }
-    dispatchers.setLoading(true);
-  }, [ dispatchers ]);
+    dispatch(setLoading(true));
+  }, [
+    dispatch
+  ]);
 
   return (
     <Presenter

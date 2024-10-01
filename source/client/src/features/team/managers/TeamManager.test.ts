@@ -21,7 +21,7 @@ beforeEach(() => {
   jest.resetModules();
 });
 
-test('get channels from cache', async () => {
+it('should get channels from cache', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     values: [
@@ -43,7 +43,7 @@ test('get channels from cache', async () => {
   expect(mockGraph).not.toHaveBeenCalled();
 });
 
-test('get channels from graph', async () => {
+it('should get channels from graph', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     values: [
@@ -65,7 +65,7 @@ test('get channels from graph', async () => {
   expect(mockGraph).toHaveBeenCalled();
 });
 
-test('get drive from cache', async () => {
+it('should get drive from cache', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     value: {
@@ -83,7 +83,7 @@ test('get drive from cache', async () => {
   expect(mockGraph).not.toHaveBeenCalled();
 });
 
-test('get drive from graph', async () => {
+it('should get drive from graph', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     value: {
@@ -101,7 +101,7 @@ test('get drive from graph', async () => {
   expect(mockGraph).toHaveBeenCalled();
 });
 
-test('get members from cache', async () => {
+it('should get members from cache', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     values: [
@@ -127,7 +127,7 @@ test('get members from cache', async () => {
   expect(mockGraph).not.toHaveBeenCalled();
 });
 
-test('get members from graph', async () => {
+it('should get members from graph', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     values: [
@@ -153,7 +153,7 @@ test('get members from graph', async () => {
   expect(mockGraph).toHaveBeenCalled();
 });
 
-test('get tab', async () => {
+it('should get tab', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     channelId: 'b!UvZsiQCydEuBEcAT9kQGz_C9gbGAlohJgfeiSu5K_WrNO7djCV5dS4pWDvGiRupe',
@@ -174,7 +174,7 @@ test('get tab', async () => {
   expect(mockGraph).toHaveBeenCalled();
 });
 
-test('set pin', async () => {
+it('should set pin', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     pinned: true

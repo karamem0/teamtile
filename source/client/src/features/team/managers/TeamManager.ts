@@ -13,7 +13,7 @@ import {
   Member,
   Tab
 } from '../../../types/Entity';
-import { Item } from '../../../types/Store';
+import { TeamCard } from '../../../types/Store';
 
 export async function clearCache() {
   return await Promise.resolve()
@@ -33,11 +33,12 @@ export async function getDrive(teamId: string): Promise<Drive | undefined> {
     .catch(() => undefined);
 }
 
-export async function getItems(): Promise<Item[]> {
+export async function getCards(): Promise<TeamCard[]> {
   return await Promise.resolve()
-    .then(async () => teamService.getItemsFromGroup())
-    .then(async (values) => await teamService.getItemsFromCache(values))
-    .then(async (values) => await teamService.getItemsFromGraph(values))
+    .then(async () => teamService.getCardsFromTeamInfos())
+    .then(async (values) => await teamService.getCardsFromCache(values))
+    .then(async (values) => await teamService.getCardsFromGroup(values))
+    .then(async (values) => await teamService.getCardsFromTeam(values))
     .then((values) => values.filter((value) => !value.loading))
     .then(async (values) => await teamService.getTeamIconsFromCache(values))
     .then(async (values) => await teamService.getTeamIconsFromGraph(values));

@@ -13,7 +13,7 @@ import MembershipIcon from './MembershipIcon.presenter';
 import { MembershipType } from '../../../types/Entity';
 import { render } from '@testing-library/react';
 
-test('create shapshot of when MembershipType is standard', async () => {
+it('should create shapshot of when MembershipType is standard', async () => {
   const params = {
     value: MembershipType.standard
   };
@@ -25,7 +25,7 @@ test('create shapshot of when MembershipType is standard', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-test('create shapshot of when MembershipType is private', async () => {
+it('should create shapshot of when MembershipType is private', async () => {
   const params = {
     value: MembershipType.private
   };
@@ -37,7 +37,7 @@ test('create shapshot of when MembershipType is private', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-test('create shapshot of when MembershipType is undefined', async () => {
+it('should create shapshot of when MembershipType is undefined', async () => {
   const params = {
     value: undefined
   };

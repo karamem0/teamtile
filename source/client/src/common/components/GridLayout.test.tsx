@@ -11,7 +11,7 @@ import React from 'react';
 import GridLayout from './GridLayout.presenter';
 import { render } from '@testing-library/react';
 
-test('create shapshot', async () => {
+it('should create shapshot', async () => {
   const params = {
     children: <React.Fragment />
   };

@@ -62,11 +62,17 @@ export interface Tab {
 
 export interface Team {
   id?: string,
-  archived: boolean,
+  archived?: boolean,
   description?: string,
   displayName?: string,
   icon?: string,
   internalId?: string,
   visibility?: VisibilityType,
   webUrl?: string
+}
+
+export interface TeamInfo {
+  id?: string,
+  displayName?: string,
+  tenantId?: string
 }

@@ -19,7 +19,7 @@ global.ResizeObserver = jest.fn().mockImplementation(() => ({
   disconnect: jest.fn()
 }));
 
-test('create shapshot of when text is undefined', async () => {
+it('should create shapshot of when text is undefined', async () => {
   const params = {
     intent: undefined,
     text: undefined
@@ -32,7 +32,7 @@ test('create shapshot of when text is undefined', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-test('create shapshot of when type is error', async () => {
+it('should create shapshot of when type is error', async () => {
   const params = {
     intent: 'error' as MessageBarIntent,
     text: 'error'
@@ -45,7 +45,7 @@ test('create shapshot of when type is error', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-test('create shapshot of when type is warning', async () => {
+it('should create shapshot of when type is warning', async () => {
   const params = {
     intent: 'warning' as MessageBarIntent,
     text: 'warning'
@@ -58,7 +58,7 @@ test('create shapshot of when type is warning', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-test('create shapshot of when type is success', async () => {
+it('should create shapshot of when type is success', async () => {
   const params = {
     intent: 'success' as MessageBarIntent,
     text: 'success'

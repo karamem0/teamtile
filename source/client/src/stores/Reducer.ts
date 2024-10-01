@@ -8,63 +8,81 @@
 
 import {
   Action,
-  Item,
-  State
+  State,
+  TeamCard
 } from '../types/Store';
 import { search } from '../utils/String';
 
 const actions = {
   setFilter: (state: State, payload: unknown) => {
     const data = payload as string | undefined;
-    const { items } = state;
+    const { cards } = state;
     return {
       ...state,
       filter: data,
-      items: items?.map((item) => {
+      cards: cards?.map((card) => {
         if (data == null) {
           return {
-            ...item,
+            ...card,
             visible: true
           };
         }
-        if (search(item.value.displayName, data) ||
-            search(item.value.description, data)) {
+        if (search(card.team.displayName, data) ||
+            search(card.team.description, data)) {
           return {
-            ...item,
+            ...card,
             visible: true
           };
         }
         return {
-          ...item,
+          ...card,
           visible: false
         };
       })
     };
   },
-  setItem: (state: State, payload: unknown) => {
-    const data = payload as Item | undefined;
+  setCard: (state: State, payload: unknown) => {
+    const data = payload as TeamCard | undefined;
     if (data == null) {
       return state;
     }
     return {
       ...state,
-      items: state.items ? (
-        state.items.map((item) => item.id === data.id ? data : item)
+      cards: state.cards ? (
+        state.cards.map((card) => card.id === data.id ? data : card)
       ) : undefined
     };
   },
-  setItems: (state: State, payload: unknown) => {
-    const data = payload as Item[] | undefined;
+  setCards: (state: State, payload: unknown) => {
+    const data = payload as TeamCard[] | undefined;
+    if (data == null) {
+      return state;
+    }
     return {
       ...state,
-      items: data ? [ ...data ] : undefined
+      cards: data ? [ ...data ] : undefined
     };
   },
   setLoading: (state: State, payload: unknown) => {
     const data = payload as boolean | undefined;
+    if (data == null) {
+      return state;
+    }
     return {
       ...state,
       loading: data
+    };
+  },
+  togglePin: (state: State, payload: unknown) => {
+    const data = payload as string | undefined;
+    if (data == null) {
+      return state;
+    }
+    return {
+      ...state,
+      cards: state.cards ? (
+        state.cards.map((card) => card.id === data ? { ...card, pinned: !card.pinned } : card)
+      ) : undefined
     };
   }
 };

@@ -14,7 +14,7 @@ import VisibilityIcon from './VisibilityIcon.presenter';
 import { VisibilityType } from '../../../types/Entity';
 import { render } from '@testing-library/react';
 
-test('create shapshot of when VisibilityType is public', async () => {
+it('should create shapshot of when VisibilityType is public', async () => {
   const params = {
     value: VisibilityType.public
   };
@@ -28,7 +28,7 @@ test('create shapshot of when VisibilityType is public', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-test('create shapshot of when VisibilityType is private', async () => {
+it('should create shapshot of when VisibilityType is private', async () => {
   const params = {
     value: VisibilityType.private
   };
@@ -42,7 +42,7 @@ test('create shapshot of when VisibilityType is private', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-test('create shapshot of when VisibilityType is undefined', async () => {
+it('should create shapshot of when VisibilityType is undefined', async () => {
   const params = {
     value: undefined
   };

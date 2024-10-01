@@ -15,16 +15,17 @@ import {
   Tab
 } from '../../../types/Entity';
 import {
-  mapItemFromGroup,
-  mapItemFromIcon,
-  mapItemFromTeam,
+  mapCardFromGroup,
+  mapCardFromIcon,
+  mapCardFromTeam,
+  mapCardFromTeamInfo,
   mapMemberFromIcon
 } from '../mappings/AutoMapperProfile';
 import {
-  mergeItems,
+  margeCards,
   mergeMembers
 } from '../../../utils/Merge';
-import { Item } from '../../../types/Store';
+import { TeamCard } from '../../../types/Store';
 import merge from 'deepmerge';
 
 export async function clearCache(): Promise<void> {
@@ -51,21 +52,22 @@ export async function getDriveFromGraph(teamId: string): Promise<Drive> {
   return value;
 }
 
-export async function getItemsFromGroup(): Promise<Item[]> {
+export async function getCardsFromTeamInfos(): Promise<TeamCard[]> {
   return await graphService
-    .getGroups()
-    .then((params) => params.map((param) => mapItemFromGroup(param)));
+    .getTeamInfos()
+    .then((items) => items.map((item) => mapCardFromTeamInfo(item)));
 }
 
-export async function getItemsFromCache(items: Item[]): Promise<Item[]> {
+export async function getCardsFromCache(items: TeamCard[]): Promise<TeamCard[]> {
   return Promise.all(items
     .map(async (item) => {
       if (item.loading) {
+        const group = await cacheService.getGroup(item.id);
         const team = await cacheService.getTeam(item.id);
-        if (team != null) {
-          const pin = await cacheService.getPin(item.id);
+        const pin = await cacheService.getPin(item.id);
+        if (group != null && team != null) {
           return {
-            ...merge(item, mapItemFromTeam(team)),
+            ...merge(merge(item, mapCardFromGroup(group)), mapCardFromTeam(team)),
             pinned: pin != null
           };
         }
@@ -74,15 +76,27 @@ export async function getItemsFromCache(items: Item[]): Promise<Item[]> {
     }));
 }
 
-export async function getItemsFromGraph(items: Item[]): Promise<Item[]> {
+export async function getCardsFromGroup(items: TeamCard[]): Promise<TeamCard[]> {
+  const ids = items.filter((item) => item.loading).map((item) => item.id);
+  const values = await graphService.getGroups(ids);
+  values.forEach(async (value) => value.id && await cacheService.setGroup(value.id, value));
+  return merge(
+    items,
+    values.map((value) => mapCardFromGroup(value)),
+    {
+      arrayMerge: margeCards
+    });
+}
+
+export async function getCardsFromTeam(items: TeamCard[]): Promise<TeamCard[]> {
   const ids = items.filter((item) => item.loading).map((item) => item.id);
   const values = await graphService.getTeams(ids);
   values.forEach(async (value) => value.id && await cacheService.setTeam(value.id, value));
   return merge(
     items,
-    values.map((value) => mapItemFromTeam(value)),
+    values.map((value) => mapCardFromTeam(value)),
     {
-      arrayMerge: mergeItems
+      arrayMerge: margeCards
     });
 }
 
@@ -127,27 +141,27 @@ export async function getTabFromGraph(teamId: string, channelId: string): Promis
   return await graphService.getTabs(teamId, channelId);
 }
 
-export async function getTeamIconsFromCache(items: Item[]): Promise<Item[]> {
+export async function getTeamIconsFromCache(items: TeamCard[]): Promise<TeamCard[]> {
   return Promise.all(items.map(async (item) => {
     const cache = await cacheService.getIcon(item.id);
     if (cache != null) {
-      return merge(item, mapItemFromIcon(cache));
+      return merge(item, mapCardFromIcon(cache));
     }
     return item;
   }));
 }
 
-export async function getTeamIconsFromGraph(items: Item[]): Promise<Item[]> {
+export async function getTeamIconsFromGraph(items: TeamCard[]): Promise<TeamCard[]> {
   const ids = items
-    .filter((item) => !item.value.icon)
+    .filter((item) => !item.team.icon)
     .map((item) => item.id);
   const values = await graphService.getTeamIcons(ids);
   values.forEach(async (value) => value.id && await cacheService.setIcon(value.id, value));
   return merge(
     items,
-    values.map((value) => mapItemFromIcon(value)),
+    values.map((value) => mapCardFromIcon(value)),
     {
-      arrayMerge: mergeItems
+      arrayMerge: margeCards
     });
 }
 

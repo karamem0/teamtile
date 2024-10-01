@@ -9,19 +9,19 @@
 import React from 'react';
 
 import EmptyPanel from '../components/EmptyPanel';
-import { Item } from '../../../types/Store';
 import LoaderPanal from '../../../common/components/LoaderPanel';
+import { TeamCard } from '../../../types/Store';
 import TeamPanel from '../components/TeamPanel';
 
 interface MainPageProps {
-  items?: Item[],
+  cards?: TeamCard[],
   loading?: boolean
 }
 
 function TeamPage(props: Readonly<MainPageProps>) {
 
   const {
-    items,
+    cards,
     loading
   } = props;
 
@@ -31,7 +31,7 @@ function TeamPage(props: Readonly<MainPageProps>) {
         <LoaderPanal />
       );
     case false:
-      if (items?.length) {
+      if (cards?.length) {
         return (
           <TeamPanel />
         );

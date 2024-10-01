@@ -8,11 +8,11 @@
 
 import { MembershipType, VisibilityType } from '../../../types/Entity';
 import {
+  mapCardFromGroup,
+  mapCardFromIcon,
+  mapCardFromTeam,
   mapChannel,
   mapDrive,
-  mapItemFromGroup,
-  mapItemFromIcon,
-  mapItemFromTeam,
   mapMember,
   mapMemberFromIcon,
   mapTab,
@@ -20,7 +20,7 @@ import {
 } from './AutoMapperProfile';
 import { TeamVisibilityType } from '@microsoft/microsoft-graph-types';
 
-test('transform channel', () => {
+it('should transform Channel', () => {
   const params = {
     value: {
       id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
@@ -39,7 +39,7 @@ test('transform channel', () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('transform drive', () => {
+it('should transform Drive', () => {
   const params = {
     value: {
       id: 'b!UvZsiQCydEuBEcAT9kQGz_C9gbGAlohJgfeiSu5K_WrNO7djCV5dS4pWDvGiRupe',
@@ -54,7 +54,7 @@ test('transform drive', () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('transform member', () => {
+it('should transform Member', () => {
   const params = {
     value: {
       id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
@@ -73,7 +73,7 @@ test('transform member', () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('transform tab', () => {
+it('should transform Tab', () => {
   const params = {
     value: {
       id: 'caf5a7c7-15d6-470a-8275-8b392d7f98e5',
@@ -94,7 +94,7 @@ test('transform tab', () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('transform team', () => {
+it('should transform Team', () => {
   const params = {
     value: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -119,7 +119,7 @@ test('transform team', () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('transform group to item', () => {
+it('should transform Group to TeamCard', () => {
   const params = {
     value: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -129,19 +129,17 @@ test('transform group to item', () => {
   };
   const expected = {
     id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-    value: {
+    team: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       email: 'HRTaskforce@M365x214355.onmicrosoft.com',
       sensitivityLabel: 'Restricted'
-    },
-    loading: true,
-    visible: true
+    }
   };
-  const actual = mapItemFromGroup(params.value);
+  const actual = mapCardFromGroup(params.value);
   expect(actual).toStrictEqual(expected);
 });
 
-test('transform team to item', () => {
+it('should transform Team to TeamCard', () => {
   const params = {
     value: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -156,8 +154,7 @@ test('transform team to item', () => {
   const expected = {
     id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     loading: false,
-    pinned: false,
-    value: {
+    team: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       archived: false,
       displayName: 'HR Taskforce',
@@ -165,14 +162,13 @@ test('transform team to item', () => {
       internalId: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
       visibility: 'private',
       webUrl: 'https://teams.microsoft.com/l/team/19:09fc54a3141a45d0bc769cf506d2e079%40thread.skype/conversations?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
-    },
-    visible: true
+    }
   };
-  const actual = mapItemFromTeam(params.value);
+  const actual = mapCardFromTeam(params.value);
   expect(actual).toStrictEqual(expected);
 });
 
-test('transform icon to item', () => {
+it('should transform Icon to TeamCard', () => {
   const params = {
     value: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -181,16 +177,16 @@ test('transform icon to item', () => {
   };
   const expected = {
     id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-    value: {
+    team: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII='
     }
   };
-  const actual = mapItemFromIcon(params.value);
+  const actual = mapCardFromIcon(params.value);
   expect(actual).toStrictEqual(expected);
 });
 
-test('transform icon to member', () => {
+it('should transform Icon to Member', () => {
   const params = {
     value: {
       id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',

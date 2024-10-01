@@ -37,6 +37,9 @@ export default [
       'globals': {
         ...globals.browser,
         ...globals.jest
+      },
+      'parserOptions': {
+        'warnOnUnsupportedTypeScriptVersion': false
       }
     },
     'settings': {

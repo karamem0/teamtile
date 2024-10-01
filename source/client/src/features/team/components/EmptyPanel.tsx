@@ -9,16 +9,17 @@
 import React from 'react';
 
 import Presenter from './EmptyPanel.presenter';
-import { useReducer } from '../../../providers/ReducerProvider';
+import { setLoading } from '../../../stores/Action';
+import { useStore } from '../../../providers/StoreProvider';
 
 function EmptyPanel() {
 
-  const { dispatchers } = useReducer();
+  const { dispatch } = useStore();
 
   const handleClick = React.useCallback(() => {
-    dispatchers.setLoading(true);
+    dispatch(setLoading(true));
   }, [
-    dispatchers
+    dispatch
   ]);
 
   return (

@@ -14,7 +14,6 @@ import {
   useError
 } from 'react-use';
 import { Event } from '../../../types/Event';
-import { Item } from '../../../types/Store';
 import { Member } from '../../../types/Entity';
 import Presenter from './MemberMenuItem.presenter';
 import { app } from '@microsoft/teams-js';
@@ -22,12 +21,12 @@ import { getMembers } from '../managers/TeamManager';
 import { search } from '../../../utils/String';
 
 interface MemberMenuItemProps {
-  item?: Item
+  id?: string
 }
 
 function MemberMenuItem(props: Readonly<MemberMenuItemProps>) {
 
-  const { item } = props;
+  const { id } = props;
 
   const dispatchError = useError();
   const [ state, fetch ] = useAsyncFn((teamId: string) => getMembers(teamId));
@@ -57,23 +56,23 @@ function MemberMenuItem(props: Readonly<MemberMenuItemProps>) {
     if (data == null) {
       return;
     }
-    if (!item?.id) {
+    if (id == null) {
       return;
     }
-    await fetch(item.id);
+    await fetch(id);
   }, [
-    fetch,
-    item
+    id,
+    fetch
   ]);
 
   React.useEffect(() => {
-    if (!state.error) {
+    if (state.error == null) {
       return;
     }
     dispatchError(state.error);
   }, [
-    dispatchError,
-    state.error
+    state.error,
+    dispatchError
   ]);
 
   return (

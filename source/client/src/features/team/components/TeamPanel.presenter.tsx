@@ -10,20 +10,19 @@ import React from 'react';
 
 import {
   Button,
-  Input,
   Menu,
   MenuDivider,
   MenuGroup,
   MenuItem,
   MenuList,
   MenuPopover,
-  MenuTrigger
+  MenuTrigger,
+  SearchBox
 } from '@fluentui/react-components';
 import {
   GitHubLogoIcon,
   MoreVerticalIcon,
-  RefreshIcon,
-  SearchIcon
+  RefreshIcon
 } from '@fluentui/react-icons-mdl2';
 import { EventHandler } from '../../../types/Event';
 import { FormattedMessage } from 'react-intl';
@@ -63,10 +62,7 @@ function TeamPanel(props: Readonly<TeamPanelProps>) {
           grid-template-columns: 1fr auto;
           grid-gap: 0.25rem;
         `}>
-        <Input
-          contentBefore={(
-            <SearchIcon />
-          )}
+        <SearchBox
           css={css`
             min-height: 2.25rem;
             @media (width >= 600px) {

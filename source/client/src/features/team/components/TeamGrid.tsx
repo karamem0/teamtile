@@ -9,14 +9,14 @@
 import React from 'react';
 
 import Presenter from './TeamGrid.presenter';
-import { useReducer } from '../../../providers/ReducerProvider';
+import { useStore } from '../../../providers/StoreProvider';
 
 function TeamGrid() {
 
-  const { state } = useReducer();
+  const { state } = useStore();
 
   return (
-    <Presenter items={state.items} />
+    <Presenter cards={state.cards} />
   );
 
 }

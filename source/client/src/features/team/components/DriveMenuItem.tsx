@@ -9,7 +9,6 @@
 import React from 'react';
 
 import { useAsyncFn, useError } from 'react-use';
-import { Item } from '../../../types/Store';
 import { app } from '@microsoft/teams-js';
 import { getDrive } from '../managers/TeamManager';
 import messages from '../messages';
@@ -19,12 +18,12 @@ import { useSnackbar } from '../../../providers/SnackbarProvider';
 import Presenter from './DriveMenuItem.presenter';
 
 interface DriveMenuItemProps {
-  item?: Item
+  id?: string
 }
 
 function DriveMenuItem(props: Readonly<DriveMenuItemProps>) {
 
-  const { item } = props;
+  const { id } = props;
 
   const { setSnackbar } = useSnackbar();
   const dispatchError = useError();
@@ -32,10 +31,10 @@ function DriveMenuItem(props: Readonly<DriveMenuItemProps>) {
   const intl = useIntl();
 
   const handleClick = React.useCallback(async () => {
-    if (!item?.id) {
+    if (id == null) {
       return;
     }
-    const value = await fetch(item.id);
+    const value = await fetch(id);
     if (value?.webUrl) {
       app.openLink(value.webUrl);
       return;
@@ -45,20 +44,20 @@ function DriveMenuItem(props: Readonly<DriveMenuItemProps>) {
       text: intl.formatMessage(messages.OpenLinkError)
     });
   }, [
+    id,
     intl,
-    item?.id,
     fetch,
     setSnackbar
   ]);
 
   React.useEffect(() => {
-    if (!state.error) {
+    if (state.error == null) {
       return;
     }
     dispatchError(state.error);
   }, [
-    dispatchError,
-    state.error
+    state.error,
+    dispatchError
   ]);
 
   return (

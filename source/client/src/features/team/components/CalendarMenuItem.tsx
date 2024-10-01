@@ -10,7 +10,6 @@ import React from 'react';
 
 import { app, appInstallDialog } from '@microsoft/teams-js';
 import { useAsyncFn, useError } from 'react-use';
-import { Item } from '../../../types/Store';
 import Presenter from './CalendarMenuItem.presenter';
 import { getTab } from '../managers/TeamManager';
 import { isPC } from '../../../utils/Teams';
@@ -19,12 +18,16 @@ import { useIntl } from 'react-intl';
 import { useSnackbar } from '../../../providers/SnackbarProvider';
 
 interface CalendarMenuItemProps {
-  item?: Item
+  id?: string,
+  internalId?: string
 }
 
 function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
 
-  const { item } = props;
+  const {
+    id,
+    internalId
+  } = props;
 
   const { setSnackbar } = useSnackbar();
   const dispatchError = useError();
@@ -32,15 +35,15 @@ function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
   const intl = useIntl();
 
   const handleClick = React.useCallback(async () => {
-    if (!item?.value?.id) {
+    if (id == null) {
       return;
     }
-    if (!item?.value?.internalId) {
+    if (internalId == null) {
       return;
     }
     if (isPC(await app.getContext())) {
       const appId = process.env.VITE_CALENDAR_APP_ID;
-      const appTab = await fetch(item.value.id, item.value.internalId, appId);
+      const appTab = await fetch(id, internalId, appId);
       if (appTab?.webUrl) {
         await app.openLink(appTab.webUrl);
         return;
@@ -55,20 +58,21 @@ function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
       text: intl.formatMessage(messages.OperationNotSupported)
     });
   }, [
+    id,
+    internalId,
     intl,
-    item,
     fetch,
     setSnackbar
   ]);
 
   React.useEffect(() => {
-    if (!state.error) {
+    if (state.error == null) {
       return;
     }
     dispatchError(state.error);
   }, [
-    dispatchError,
-    state.error
+    state.error,
+    dispatchError
   ]);
 
   return (

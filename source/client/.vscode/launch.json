@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "configurations": [
     {
-      "name": "Debug Web (Teams)",
+      "name": "Launch Chrome (Teams)",
       "type": "chrome",
       "request": "launch",
       "url": "https://dev.teams.microsoft.com",
@@ -14,7 +14,7 @@
       "postDebugTask": "react-terminate"
     },
     {
-      "name": "Debug Web",
+      "name": "Launch Chrome",
       "type": "chrome",
       "request": "launch",
       "url": "https://localhost:5173",

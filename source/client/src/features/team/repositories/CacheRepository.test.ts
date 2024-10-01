@@ -11,6 +11,7 @@ import {
   clearAll,
   getChannels,
   getDrive,
+  getGroup,
   getIcon,
   getMembers,
   getPin,
@@ -24,7 +25,7 @@ beforeEach(() => {
   jest.resetModules();
 });
 
-test('clear all cache', async () => {
+it('should clear all cache', async () => {
   const mock = jest.fn();
   getConfig.mockReturnValue({
     database: {
@@ -37,7 +38,7 @@ test('clear all cache', async () => {
   expect(mock).toHaveBeenCalled();
 });
 
-test('get channels of when expired is false', async () => {
+it('should get channels of when expired is false', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     expired: false,
@@ -69,7 +70,7 @@ test('get channels of when expired is false', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get channels of when expired is true', async () => {
+it('should get channels of when expired is true', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     expired: true,
@@ -108,7 +109,7 @@ test('get channels of when expired is true', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get drive of when expired is false', async () => {
+it('should get drive of when expired is false', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     expired: false,
@@ -136,7 +137,7 @@ test('get drive of when expired is false', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get drive of when expired is true', async () => {
+it('should get drive of when expired is true', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     expired: true,
@@ -167,7 +168,69 @@ test('get drive of when expired is true', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get icon of when expired is true', async () => {
+it('should get group of when expired is true', async () => {
+  const params = {
+    teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+    expired: true,
+    timestamp: 1,
+    response: {
+      id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      expired: 0,
+      value: {
+        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        email: 'HRTaskforce@M365x214355.onmicrosoft.com',
+        sensitivityLabel: 'Restricted'
+      }
+    }
+  };
+  const expected = {
+    id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+    email: 'HRTaskforce@M365x214355.onmicrosoft.com',
+    sensitivityLabel: 'Restricted'
+  };
+  const mock = jest.fn().mockResolvedValue(params.response);
+  getConfig.mockReturnValue({
+    database: {
+      table: jest.fn().mockReturnValue({
+        get: mock
+      })
+    }
+  });
+  const actual = await getGroup(params.teamId, params.expired, params.timestamp);
+  expect(mock).toHaveBeenCalled();
+  expect(actual).toStrictEqual(expected);
+});
+
+it('should get group of when expired is false', async () => {
+  const params = {
+    teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+    expired: false,
+    timestamp: 1,
+    response: {
+      id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      expired: 0,
+      value: {
+        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        email: 'HRTaskforce@M365x214355.onmicrosoft.com',
+        sensitivityLabel: 'Restricted'
+      }
+    }
+  };
+  const expected = undefined;
+  const mock = jest.fn().mockResolvedValue(params.response);
+  getConfig.mockReturnValue({
+    database: {
+      table: jest.fn().mockReturnValue({
+        get: mock
+      })
+    }
+  });
+  const actual = await getGroup(params.teamId, params.expired, params.timestamp);
+  expect(mock).toHaveBeenCalled();
+  expect(actual).toStrictEqual(expected);
+});
+
+it('should get icon of when expired is true', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     expired: true,
@@ -198,7 +261,7 @@ test('get icon of when expired is true', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get icon of when expired is false', async () => {
+it('should get icon of when expired is false', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     expired: false,
@@ -226,7 +289,7 @@ test('get icon of when expired is false', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get members of when expired is true', async () => {
+it('should get members of when expired is true', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     expired: true,
@@ -265,7 +328,7 @@ test('get members of when expired is true', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get members of when expired is false', async () => {
+it('should get members of when expired is false', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     expired: false,
@@ -297,7 +360,7 @@ test('get members of when expired is false', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get pin', async () => {
+it('should get pin', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     response: {
@@ -320,7 +383,7 @@ test('get pin', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get team of when expired is true', async () => {
+it('should get team of when expired is true', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     expired: true,
@@ -359,7 +422,7 @@ test('get team of when expired is true', async () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('get team of when expired is false', async () => {
+it('should get team of when expired is false', async () => {
   const params = {
     teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
     expired: false,
