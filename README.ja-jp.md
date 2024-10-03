@@ -19,7 +19,11 @@
 
 ## スクリーンショット
 
-![screenshot](./assets/screenshot.png)
+![screenshot1](./assets/screenshots/001.png)
+
+![screenshot2](./assets/screenshots/002.png)
+
+![screenshot3](./assets/screenshots/003.png)
 
 ## インストール
 
@@ -45,11 +49,11 @@
 
 5. **作成** をクリックして操作が完了するまで待機します。
 
-### Azure AD アプリケーションの登録
+### Microsoft Entra ID アプリケーションの登録
 
 1. [Azure ポータル](https://portal.azure.com) に移動します。
 
-2. **≡** - **Azure Active Directory** をクリックします。
+2. **≡** - **Microsoft Entra ID** をクリックします。
 
 3. **アプリの登録** - **新規登録** をクリックします。
 
@@ -203,3 +207,7 @@ Compress-Archive -Path ./* -DestinationPath ../manifest.zip
 2. **Teams のアプリ** - **アプリを管理** をクリックします。
 
 3. **アップロード** をクリックして `manifest.zip` を選択します。
+
+# 素材
+
+アプリで使用している素材は [unDraw](https://undraw.co/illustrations) にライセンスされています。

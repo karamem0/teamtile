@@ -252,8 +252,9 @@ exports[`should create shapshot 1`] = `
               </span>
             </div>
             <img
+              alt="Teamtile"
               class="fui-Image emotion-9 ___18apvp7_1wq7hmk fj3muxo f1akhkt f1aperda f1lxtadh f1fabniw f1ewtqcl f14t3ns0 f1kle4es f14xojzb f1l02sjl fly5x3f"
-              src="/assets/screenshot.png"
+              src="/assets/screenshots/001.png"
             />
           </div>
         </section>

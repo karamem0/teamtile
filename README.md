@@ -19,7 +19,11 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
 
 ## Screenshot
 
-![screenshot](./assets/screenshot.png)
+![screenshot1](./assets/screenshots/001.png)
+
+![screenshot2](./assets/screenshots/002.png)
+
+![screenshot3](./assets/screenshots/003.png)
 
 ## Installation
 
@@ -45,11 +49,11 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
 
 5. Click **Create** and wait until creation is completed.
 
-### Register Azure AD Application
+### Register Microsoft Entra ID Application
 
 1. Go to [Azure Portal](https://portal.azure.com).
 
-2. Click **â‰¡** - **Azure Active Directory**.
+2. Click **â‰¡** - **Microsoft Entra ID**.
 
 3. Click **App registrations** - **New registration**.
 
@@ -203,3 +207,7 @@ Compress-Archive -Path ./* -DestinationPath ../manifest.zip
 2. Click **Teams apps** - **Manage apps**.
 
 3. Click **Upload** and select `manifest.zip` file.
+
+## Assets
+
+The assets are licensed by [unDraw](https://undraw.co/illustrations).

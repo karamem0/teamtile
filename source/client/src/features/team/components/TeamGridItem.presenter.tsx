@@ -36,7 +36,9 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
 
   const {
     card: {
+      id,
       loading,
+      pinned,
       team,
       visible
     },
@@ -163,7 +165,9 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
                 <MemberMenuItem {...team} />
                 <DriveMenuItem {...team} />
                 <CalendarMenuItem {...team} />
-                <PinMenuItem {...team} />
+                <PinMenuItem
+                  id={id}
+                  pinned={pinned} />
               </div>
             </div>
           </div>

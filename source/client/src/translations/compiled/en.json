@@ -101,6 +101,12 @@
       "value": "View members"
     }
   ],
+  "RZx/ih": [
+    {
+      "type": 0,
+      "value": "500 Internal Server Error"
+    }
+  ],
   "STExef": [
     {
       "type": 0,
@@ -155,28 +161,22 @@
       "value": "📖View team members and channels"
     }
   ],
-  "jnPlyv": [
-    {
-      "type": 0,
-      "value": "404 Error"
-    }
-  ],
   "jok8RB": [
     {
       "type": 0,
       "value": "https://github.com/karamem0/teamtile"
     }
   ],
+  "kOfp9A": [
+    {
+      "type": 0,
+      "value": "404 Not Found"
+    }
+  ],
   "lPzUBp": [
     {
       "type": 0,
       "value": "This operation is not supported on this device."
-    }
-  ],
-  "muR1QI": [
-    {
-      "type": 0,
-      "value": "500 Error"
     }
   ],
   "opNVQC": [

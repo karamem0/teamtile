@@ -14,8 +14,8 @@ import {
   Link,
   Text
 } from '@fluentui/react-components';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { EventHandler } from '../../../types/Event';
-import { FormattedMessage } from 'react-intl';
 import { GitHubLogoIcon } from '@fluentui/react-icons-mdl2';
 import { css } from '@emotion/react';
 import messages from '../messages';
@@ -27,8 +27,11 @@ interface HomePageProps {
 
 function HomePage(props: Readonly<HomePageProps>) {
 
-  const { onLinkClick } = props;
+  const {
+    onLinkClick
+  } = props;
 
+  const intl = useIntl();
   const { theme } = useTheme();
 
   return (
@@ -113,8 +116,9 @@ function HomePage(props: Readonly<HomePageProps>) {
             </Text>
           </div>
           <Image
+            alt={intl.formatMessage(messages.AppTitle)}
             fit="contain"
-            src="/assets/screenshot.png"
+            src="/assets/screenshots/001.png"
             css={css`
               height: auto;
             `} />

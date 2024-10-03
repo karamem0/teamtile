@@ -24,13 +24,8 @@ exports[`should create shapshot 1`] = `
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  min-height: calc(100vh - 0.5rem);
-}
-
-@media (width >= 600px) {
-  .emotion-1 {
-    min-height: calc(100vh - 2rem);
-  }
+  min-height: 100vh;
+  background-color: #f5f5f5;
 }
 
 .emotion-2 {
@@ -41,7 +36,7 @@ exports[`should create shapshot 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  grid-gap: 0.5rem;
+  grid-gap: 1rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -53,12 +48,17 @@ exports[`should create shapshot 1`] = `
 }
 
 .emotion-3 {
-  font-size: 3rem;
-  line-height: calc(3rem * 1.25);
-  color: #bdbdbd;
+  max-width: 32rem;
+  max-height: 24rem;
 }
 
 .emotion-4 {
+  color: #bdbdbd;
+}
+
+.emotion-5 {
+  font-size: 0.75rem;
+  line-height: calc(0.75rem * 1.25);
   color: #bdbdbd;
 }
 
@@ -76,15 +76,22 @@ exports[`should create shapshot 1`] = `
           class="emotion-2"
         >
           <h1
-            class="fui-Text emotion-3 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
+            class="fui-Text ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
           >
-            404 Error
+            <img
+              alt="404 Not Found"
+              class="fui-Image emotion-3 ___1erkwlp_1hna692 fj3muxo f1akhkt f1aperda f1lxtadh f1fabniw f1ewtqcl f14t3ns0"
+              src="/assets/errors/404.svg"
+            />
           </h1>
           <span
             class="fui-Text emotion-4 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
           >
             Page not found
           </span>
+          <span
+            class="fui-Text emotion-5 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
+          />
         </div>
       </div>
     </div>
