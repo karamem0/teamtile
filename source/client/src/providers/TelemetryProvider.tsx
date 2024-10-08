@@ -29,11 +29,7 @@ function TelemetryProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
 
   const { children } = props;
 
-  return (
-    <React.Fragment>
-      {children}
-    </React.Fragment>
-  );
+  return children;
 
 }
 

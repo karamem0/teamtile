@@ -8,23 +8,27 @@
 
 import React from 'react';
 
-import AppLoader from './AppLoader.presenter';
+import TeamsInitializer from './TeamsInitializer.presenter';
 import { render } from '@testing-library/react';
 
 it('should create shapshot of when loading is true', async () => {
   const params = {
-    children: <div data-testid="Children" />,
+    children: (
+      <div data-testid="Children" />
+    ),
     loading: true
   };
-  const { asFragment } = render(<AppLoader {...params} />);
+  const { asFragment } = render(<TeamsInitializer {...params} />);
   expect(asFragment()).toMatchSnapshot();
 });
 
 it('should create shapshot of when loading is false', async () => {
   const params = {
-    children: <div data-testid="Children" />,
+    children: (
+      <div data-testid="Children" />
+    ),
     loading: false
   };
-  const { asFragment } = render(<AppLoader {...params} />);
+  const { asFragment } = render(<TeamsInitializer {...params} />);
   expect(asFragment()).toMatchSnapshot();
 });

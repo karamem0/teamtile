@@ -18,6 +18,10 @@ exports[`should create shapshot 1`] = `
 <div
     class="emotion-0"
     role="list"
-  />
+  >
+    <div
+      data-testid="Children"
+    />
+  </div>
 </DocumentFragment>
 `;

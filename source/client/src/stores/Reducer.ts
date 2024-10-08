@@ -27,8 +27,7 @@ const actions = {
             visible: true
           };
         }
-        if (search(card.team.displayName, data) ||
-            search(card.team.description, data)) {
+        if (search(card.team.displayName, data) || search(card.team.description, data)) {
           return {
             ...card,
             visible: true

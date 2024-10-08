@@ -15,18 +15,16 @@ import { useMsal } from '@azure/msal-react';
 
 function LoginRedirectPage() {
 
-  const { instance } = useMsal();
+  const { inProgress, instance } = useMsal();
 
   React.useEffect(() => {
     (async () => {
-      await app.initialize();
+      if (inProgress !== 'none') {
+        return;
+      }
       try {
-        const result = await instance.handleRedirectPromise();
-        if (result != null) {
-          authentication.notifySuccess(result.accessToken);
-        } else {
-          await instance.acquireTokenRedirect(loginParams);
-        }
+        await app.initialize();
+        await instance.acquireTokenRedirect(loginParams);
       } catch (error) {
         const message = error instanceof Error ? error.message : Object.prototype.toString.call(error);
         console.error(message);
@@ -34,6 +32,7 @@ function LoginRedirectPage() {
       }
     })();
   }, [
+    inProgress,
     instance
   ]);
 

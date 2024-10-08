@@ -15,8 +15,8 @@ exports[`should create shapshot of when VisibilityType is private 1`] = `
 }
 
 .emotion-2 {
-  width: 1rem;
-  height: 1rem;
+  font-size: 1rem;
+  line-height: 1rem;
 }
 
 <div
@@ -67,8 +67,8 @@ exports[`should create shapshot of when VisibilityType is public 1`] = `
 }
 
 .emotion-2 {
-  width: 1rem;
-  height: 1rem;
+  font-size: 1rem;
+  line-height: 1rem;
 }
 
 <div

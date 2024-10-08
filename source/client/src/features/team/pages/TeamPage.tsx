@@ -39,7 +39,7 @@ function TeamPage() {
   ]);
 
   React.useEffect(() => {
-    if (!state.error) {
+    if (state.error == null) {
       return;
     }
     dispatchError(state.error);

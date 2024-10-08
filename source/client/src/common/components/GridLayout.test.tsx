@@ -13,7 +13,9 @@ import { render } from '@testing-library/react';
 
 it('should create shapshot', async () => {
   const params = {
-    children: <React.Fragment />
+    children: (
+      <div data-testid="Children" />
+    )
   };
   const { asFragment } = render(<GridLayout {...params} />);
   expect(asFragment()).toMatchSnapshot();

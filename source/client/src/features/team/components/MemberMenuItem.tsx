@@ -42,7 +42,7 @@ function MemberMenuItem(props: Readonly<MemberMenuItemProps>) {
   ]);
 
   const handleClick = React.useCallback((_?: Event, data?: Member) => {
-    if (!data?.email) {
+    if (data?.email == null) {
       return;
     }
     app.openLink(`https://teams.microsoft.com/l/chat/0/0?users=${data.email}`);

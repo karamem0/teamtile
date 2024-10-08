@@ -35,8 +35,8 @@ function DriveMenuItem(props: Readonly<DriveMenuItemProps>) {
         icon={(
           <SharepointLogoIcon
             css={css`
-              width: 1rem;
-              height: 1rem;
+              font-size: 1rem;
+              line-height: 1rem;
             `} />
         )} />
     </CardMenuItem>

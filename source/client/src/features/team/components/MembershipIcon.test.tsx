@@ -15,7 +15,7 @@ import { render } from '@testing-library/react';
 
 it('should create shapshot of when MembershipType is standard', async () => {
   const params = {
-    value: MembershipType.standard
+    value: 'standard' as MembershipType
   };
   const { asFragment } = render(
     <IntlProvider>
@@ -27,7 +27,7 @@ it('should create shapshot of when MembershipType is standard', async () => {
 
 it('should create shapshot of when MembershipType is private', async () => {
   const params = {
-    value: MembershipType.private
+    value: 'private' as MembershipType
   };
   const { asFragment } = render(
     <IntlProvider>

@@ -6,21 +6,18 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-export enum MembershipType {
-  private = 'private',
-  standard = 'standard'
-}
+export type MembershipType =
+  'private' |
+  'standard';
 
-export enum VisibilityType {
-  private = 'private',
-  public = 'public'
-}
+export type VisibilityType =
+  'private' |
+  'public';
 
-export enum AccordionType {
-  all = 'all',
-  archived = 'archived',
-  pinned = 'pinned'
-}
+export type AccordionType =
+  'all' |
+  'archived' |
+  'pinned';
 
 export interface Channel {
   id?: string,

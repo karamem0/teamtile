@@ -18,7 +18,6 @@ import {
 } from '@fluentui/react-components';
 import { app } from '@microsoft/teams-js';
 import { css } from '@emotion/react';
-import { inTeams } from '../utils/Teams';
 
 const customThemePalette = {
   10: '#020303',
@@ -55,11 +54,13 @@ export const useTheme = (): ThemeContextState => {
   return value;
 };
 
-function ThemeProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
+function ThemeProvider(props: Readonly<React.PropsWithChildren>) {
 
-  const { children } = props;
+  const {
+    children
+  } = props;
 
-  const [ theme, setTheme ] = React.useState<Theme>(teamsLightTheme);
+  const [ theme, setTheme ] = React.useState<Theme>(app.isInitialized() ? teamsLightTheme : customTheme);
 
   const handleThemeChange = (value: string) => {
     switch (value) {
@@ -83,9 +84,8 @@ function ThemeProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
   ]);
 
   React.useEffect(() => {
-    if (inTeams()) {
+    if (app.isInitialized()) {
       (async () => {
-        await app.initialize();
         const context = await app.getContext();
         handleThemeChange(context.app.theme);
         app.registerOnThemeChangeHandler(handleThemeChange);

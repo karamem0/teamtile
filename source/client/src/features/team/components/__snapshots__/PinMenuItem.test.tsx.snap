@@ -19,8 +19,8 @@ exports[`should create shapshot of when pinned is false 1`] = `
 }
 
 .emotion-1 {
-  width: 1rem;
-  height: 1rem;
+  font-size: 1rem;
+  line-height: 1rem;
 }
 
 <span
@@ -75,8 +75,8 @@ exports[`should create shapshot of when pinned is true 1`] = `
 }
 
 .emotion-1 {
-  width: 1rem;
-  height: 1rem;
+  font-size: 1rem;
+  line-height: 1rem;
 }
 
 <span
@@ -131,8 +131,8 @@ exports[`should create shapshot of when pinned is undefined 1`] = `
 }
 
 .emotion-1 {
-  width: 1rem;
-  height: 1rem;
+  font-size: 1rem;
+  line-height: 1rem;
 }
 
 <span

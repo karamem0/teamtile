@@ -8,19 +8,29 @@
 
 import React from 'react';
 
+import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 import { MsalProvider as Provider } from '@azure/msal-react';
-import { PublicClientApplication } from '@azure/msal-browser';
 import { msalConfig } from '../config/MsalConfig';
 
 function MsalProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
 
   const { children } = props;
 
-  return (
-    <Provider instance={new PublicClientApplication(msalConfig)}>
+  const [ instance, setInstance ] = React.useState<IPublicClientApplication>();
+
+  React.useEffect(() => {
+    (async () => {
+      const instance = new PublicClientApplication(msalConfig);
+      await instance.initialize();
+      setInstance(instance);
+    })();
+  }, []);
+
+  return instance ? (
+    <Provider instance={instance}>
       {children}
     </Provider>
-  );
+  ) : null;
 
 }
 

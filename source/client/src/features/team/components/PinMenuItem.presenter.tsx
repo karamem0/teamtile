@@ -40,14 +40,14 @@ function PinMenuItem(props: Readonly<PinMenuItemProps>) {
           pinned ? (
             <UnpinIcon
               css={css`
-                width: 1rem;
-                height: 1rem;
+                font-size: 1rem;
+                line-height: 1rem;
               `} />
           ) : (
             <PinnedIcon
               css={css`
-                width: 1rem;
-                height: 1rem;
+                font-size: 1rem;
+                line-height: 1rem;
               `} />
           )
         } />

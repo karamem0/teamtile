@@ -17,7 +17,6 @@ import {
   Routes
 } from 'react-router-dom';
 import { Global, css } from '@emotion/react';
-import AppLoader from './common/components/AppLoader';
 import Error404Page from './features/error/pages/Error404Page';
 import Error500Page from './features/error/pages/Error500Page';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -30,65 +29,81 @@ import Snackbar from './common/components/Snackbar';
 import SnackbarProvider from './providers/SnackbarProvider';
 import StoreProvider from './providers/StoreProvider';
 import TeamPage from './features/team/pages/TeamPage';
+import TeamsAuthenticator from './common/components/TeamsAuthenticator';
+import TeamsInitializer from './common/components/TeamsInitializer';
 import TelemetryProvider from './providers/TelemetryProvider';
 import ThemeProvider from './providers/ThemeProvider';
-import { inTeams } from './utils/Teams';
 
 ReactDOM
   .createRoot(document.getElementById('root') as Element)
   .render(
     <React.StrictMode>
       <Global styles={ress} />
-      <BrowserRouter>
-        <TelemetryProvider>
-          <IntlProvider>
-            <ThemeProvider>
-              <MsalProvider>
-                <ErrorBoundary fallbackRender={(props) => <Error500Page {...props} />}>
-                  <Routes>
-                    {
-                      inTeams() ? (
-                        <Route
-                          path="/"
-                          element={(
-                            <div
-                              css={css`
-                                padding: 0.5rem;
-                                @media (width >= 600px) {
-                                  padding: 1rem;
-                                }
-                              `}>
-                              <StoreProvider>
-                                <SnackbarProvider>
-                                  <Snackbar />
-                                  <AppLoader>
-                                    <TeamPage />
-                                  </AppLoader>
-                                </SnackbarProvider>
-                              </StoreProvider>
-                            </div>
-                          )} />
-                      ) : (
-                        <Route
-                          element={<HomePage />}
-                          path="/" />
-                      )
-                    }
-                    <Route
-                      element={<LoginRedirectPage />}
-                      path="/auth/login" />
-                    <Route
-                      element={<LoginCallbackPage />}
-                      path="/auth/callback" />
-                    <Route
-                      element={<Error404Page />}
-                      path="*" />
-                  </Routes>
-                </ErrorBoundary>
-              </MsalProvider>
-            </ThemeProvider>
-          </IntlProvider>
-        </TelemetryProvider>
-      </BrowserRouter>
+      <TelemetryProvider>
+        <BrowserRouter>
+          <TeamsInitializer>
+            {
+              (inTeams) => (
+                <IntlProvider>
+                  <ThemeProvider>
+                    <MsalProvider>
+                      <ErrorBoundary
+                        fallbackRender={(props) => (
+                          <Error500Page {...props} />
+                        )}>
+                        <Routes>
+                          {
+                            inTeams ? (
+                              <Route
+                                path="/"
+                                element={(
+                                  <div
+                                    css={css`
+                                    padding: 0.5rem;
+                                    @media (width >= 600px) {
+                                      padding: 1rem;
+                                    }
+                                  `}>
+                                    <TeamsAuthenticator>
+                                      <StoreProvider>
+                                        <SnackbarProvider>
+                                          <Snackbar />
+                                          <TeamPage />
+                                        </SnackbarProvider>
+                                      </StoreProvider>
+                                    </TeamsAuthenticator>
+                                  </div>
+                                )} />
+                            ) : (
+                              <Route
+                                path="/"
+                                element={(
+                                  <HomePage />
+                                )} />
+                            )
+                          }
+                          <Route
+                            path="/auth/login"
+                            element={(
+                              <LoginRedirectPage />)} />
+                          <Route
+                            path="/auth/callback"
+                            element={(
+                              <LoginCallbackPage />)} />
+                          <Route
+                            path="*"
+                            element={(
+                              <Error404Page />
+                            )} />
+                        </Routes>
+                      </ErrorBoundary>
+                    </MsalProvider>
+                  </ThemeProvider>
+                </IntlProvider>
+              )
+            }
+          </TeamsInitializer>
+        </BrowserRouter>
+      </TelemetryProvider>
     </React.StrictMode>
   );

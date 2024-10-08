@@ -15,7 +15,8 @@ export const msalConfig = {
     knownAuthorities: [
       `https://login.microsoftonline.com/${process.env.VITE_AUTH_TENANT_ID}`
     ],
-    redirectUri: `${window.location.origin}/auth/callback`
+    redirectUri: `${window.location.origin}/auth/callback`,
+    navigateToLoginRequestUrl: false
   },
   cache: {
     cacheLocation: BrowserCacheLocation.SessionStorage

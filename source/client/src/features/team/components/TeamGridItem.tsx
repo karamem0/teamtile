@@ -21,7 +21,7 @@ function TeamCardView(props: Readonly<TeamGridItemProps>) {
   const { card } = props;
 
   const handleClick = React.useCallback(() => {
-    if (!card.team.webUrl) {
+    if (card.team.webUrl == null) {
       return;
     }
     app.openLink(card.team.webUrl);

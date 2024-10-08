@@ -13,13 +13,12 @@ export interface Action {
   payload: unknown
 }
 
-export enum ActionType {
-  setFilter = 'setFilter',
-  setCard = 'setCard',
-  setCards = 'setCards',
-  setLoading = 'setLoading',
-  togglePin = 'togglePin'
-}
+export type ActionType =
+  'setFilter' |
+  'setCard' |
+  'setCards' |
+  'setLoading' |
+  'togglePin';
 
 export type DispatchAction<T> = (payload: T) => void;
 

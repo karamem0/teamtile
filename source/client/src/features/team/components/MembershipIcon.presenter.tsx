@@ -26,9 +26,9 @@ function MembershipIcon(props: Readonly<MembershipIconProps>) {
   const intl = useIntl();
 
   switch (value) {
-    case MembershipType.standard:
+    case 'standard':
       return null;
-    case MembershipType.private:
+    case 'private':
       return (
         <Tooltip
           content={intl.formatMessage(messages.Private)}

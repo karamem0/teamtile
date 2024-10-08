@@ -39,6 +39,7 @@ if (app.Environment.IsDevelopment())
     _ = app.UseCors();
 }
 _ = app.UseHttpsRedirection();
+_ = app.UseHsts();
 _ = app.UseDefaultFiles();
 _ = app.UseStaticFiles();
 _ = app.UseRouting();

@@ -15,8 +15,12 @@ import { render } from '@testing-library/react';
 it('should create shapshot', async () => {
   const params = {
     open: true,
-    content: <div data-testid="Content" />,
-    title: <div data-testid="Title" />
+    content: (
+      <div data-testid="Content" />
+    ),
+    title: (
+      <div data-testid="Title" />
+    )
   };
   const { asFragment } = render(
     <ThemeProvider>

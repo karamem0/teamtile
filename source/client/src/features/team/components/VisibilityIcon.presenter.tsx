@@ -28,7 +28,7 @@ function VisibilityIcon(props: Readonly<VisibilityIconProps>) {
   const intl = useIntl();
 
   switch (value) {
-    case VisibilityType.public:
+    case 'public':
       return (
         <Tooltip
           content={intl.formatMessage(messages.Public)}
@@ -42,13 +42,13 @@ function VisibilityIcon(props: Readonly<VisibilityIconProps>) {
             `}>
             <GlobeIcon
               css={css`
-                width: 1rem;
-                height: 1rem;
+                font-size: 1rem;
+                line-height: 1rem;
               `} />
           </Text>
         </Tooltip>
       );
-    case VisibilityType.private:
+    case 'private':
       return (
         <Tooltip
           content={intl.formatMessage(messages.Private)}
@@ -62,8 +62,8 @@ function VisibilityIcon(props: Readonly<VisibilityIconProps>) {
             `}>
             <LockIcon
               css={css`
-                width: 1rem;
-                height: 1rem;
+                font-size: 1rem;
+                line-height: 1rem;
               `} />
           </Text>
         </Tooltip>

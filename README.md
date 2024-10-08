@@ -2,7 +2,7 @@
 
 You can quickly access participating teams by displaying them as tiles.
 
-[![.github/workflows/workflow.yml](https://github.com/karamem0/teamtile/actions/workflows/workflow.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/workflow.yml)
+[![.github/workflows/trigger.yml](https://github.com/karamem0/teamtile/actions/workflows/trigger.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/trigger.yml)
 [![codecov](https://codecov.io/gh/karamem0/teamtile/graph/badge.svg?token=UY4ZU4E73I)](https://codecov.io/gh/karamem0/teamtile)
 [![license](https://img.shields.io/github/license/karamem0/teamtile.svg)](https://github.com/karamem0/teamtile/blob/main/LICENSE)
 
@@ -69,7 +69,7 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
     |Parameter|Value|
     |-|-|
     |Type|Single-page application|
-    |Redirect URL|`[URL of Azure Web App]`/auth/callback|
+    |Redirect URL|**URL of Azure Web App**/auth/callback|
     |Access tokens|Checked|
     |ID tokens|Checked|
 
@@ -92,7 +92,7 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
 
     |Parameter|Value|
     |-|-|
-    |Application ID URL|api://`[Domain name of Azure Web App]`/`[Application ID]`|
+    |Application ID URL|api://**Domain name of Azure Web App**/**Application ID**|
     |Scope name|user_impersonation|
     |User|Admins and users|
     |Admin consent display name|Access Teamtile|
@@ -137,23 +137,23 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
 
 2. Edit `.env` file.
 
-    |Parameter|Value|Required|
+    |Placeholder|Replace|
     |-|-|-|
-    |{{AppId}}|`[Application ID]`|true|
-    |{{TenantId}}|`[Tenent ID]`|true|
-    |{{TelemetryConnectionString}}|`[Connection String of Application Insights]`|false|
+    |`{{APP_CLIENT_ID}}`|**Application ID**|
+    |`{{APP_DOMAIN_NAME}}`|**Domain name of Azure Web App**|
+    |`{{APP_TENANT_ID}}`|**Tenent ID**|
+    |`{{TELEMETRY_CONNECTION_STRING}}`|**Connection String of Application Insights**|
 
 3. Go to `source/server` folder.
 
 4. Edit `appsettings.json` file.
 
-    |Parameter|Value|Required|
+    |Placeholder|Replace|
     |-|-|-|
-    |{{Audience}}|api://`[Domain name of Azure Web App]`/`[Application ID]`|true|
-    |{{AppId}}|`[Application ID]`|true|
-    |{{AppSecret}}|`[Application Secret]`|true|
-    |{{TenantId}}|`[Tenent ID]`|true|
-    |{{TelemetryConnectionString}}|`[Connection String of Application Insights]`|false|
+    |`{{APP_CLIENT_ID}}`|**Application ID**|
+    |`{{APP_CLIENT_SECRET}}`|**Application Secret**|
+    |`{{APP_TENANT_ID}}`|**Tenent ID**|
+    |`{{TELEMETRY_CONNECTION_STRING}}`|**Connection String of Application Insights**|
 
 5. Build application.
 
@@ -173,10 +173,10 @@ Compress-Archive -Path ./bin/Release/net8.0/publish/* -DestinationPath ../../bui
 
 2. Edit `manifest.json` file.
 
-    |Parameter|Value|
+    |Placeholder|Replace|
     |-|-|
-    |{{AppDomain}}|`[Domain name of Azure Web App]`|
-    |{{AppId}}|`[Application ID]`|
+    |`{{APP_DOMAIN_NAME}}`|**Domain name of Azure Web App**|
+    |`{{APP_CLIENT_ID}}`|**Application ID**|
 
 3. Compress contents of `manifest` folder.
 

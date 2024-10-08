@@ -26,26 +26,26 @@ function TeamGrid(props: Readonly<TeamGridProps>) {
   return (
     <Accordion
       collapsible
-      defaultOpenItems={[ AccordionType.pinned, AccordionType.all ]}
+      defaultOpenItems={[ 'all', 'pinned' ]}
       multiple>
       <TeamAccordionItem
-        key={AccordionType.pinned}
+        key="pinned"
         cards={cards?.filter((card) => card.pinned)}
-        value={AccordionType.pinned}
+        value="pinned"
         header={(
           <FormattedMessage {...messages.PinnedTeams} />
         )} />
       <TeamAccordionItem
-        key={AccordionType.all}
+        key="all"
         cards={cards?.filter((card) => card.visible && !card.team.archived)}
-        value={AccordionType.all}
+        value="all"
         header={(
           <FormattedMessage {...messages.AllTeams} />
         )} />
       <TeamAccordionItem
-        key={AccordionType.archived}
+        key="archived"
         cards={cards?.filter((card) => card.visible && card.team.archived)}
-        value={AccordionType.archived}
+        value="archived"
         header={(
           <FormattedMessage {...messages.ArchivedTeams} />
         )} />

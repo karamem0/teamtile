@@ -28,11 +28,11 @@ public class TokenControllerTests
 
     private static readonly string AccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkdW1teS1jbGllbnQtaWQiLCJ0aWQiOiJkdW1teS10ZW5hbnQtaWQifQ.t65aZipKY8AWHyE6rlRcvtt54q9RIkWFR7vasXxfKck";
 
-    private static readonly string ClientId = "dummy-client-id";
+    private static readonly string ClientId = "d2fa1d7a-1576-4135-b1dc-97b62bca6433";
 
-    private static readonly string ClientSecret = "dummy-client-secret";
+    private static readonly string ClientSecret = "NWIyYzUwM2QtOWE5Mi00NjExLWE1ZTktZDViZGVhMWUzZDM2";
 
-    private static readonly string TenantId = "dummy-tenant-id";
+    private static readonly string TenantId = "ce18f42c-6baa-4d90-9733-f234e9fb0f7c";
 
     [Test()]
     public async Task PostAsync_Ok()

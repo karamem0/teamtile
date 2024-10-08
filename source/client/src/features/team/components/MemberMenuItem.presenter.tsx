@@ -105,8 +105,8 @@ function MemberMenuItem(props: Readonly<MemberMenuItemProps>) {
               icon={(
                 <GroupIcon
                   css={css`
-                    width: 1rem;
-                    height: 1rem;
+                    font-size: 1rem;
+                    line-height: 1rem;
                   `} />
               )}
               onClick={(e) => onOpenChange?.(e, true)} />

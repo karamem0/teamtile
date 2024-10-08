@@ -10,11 +10,11 @@ import React from 'react';
 
 import LoaderPanal from './LoaderPanel';
 
-interface AppLoaderProps {
+interface TeamsAuthenticatorProps {
   loading?: boolean
 }
 
-function AppLoader(props: Readonly<React.PropsWithChildren<AppLoaderProps>>) {
+function TeamsAuthenticator(props: Readonly<React.PropsWithChildren<TeamsAuthenticatorProps>>) {
 
   const {
     children,
@@ -23,12 +23,8 @@ function AppLoader(props: Readonly<React.PropsWithChildren<AppLoaderProps>>) {
 
   return loading ? (
     <LoaderPanal />
-  ) : (
-    <React.Fragment>
-      {children}
-    </React.Fragment>
-  );
+  ) : children;
 
 }
 
-export default React.memo(AppLoader);
+export default React.memo(TeamsAuthenticator);

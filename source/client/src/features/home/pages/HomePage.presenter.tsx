@@ -57,8 +57,8 @@ function HomePage(props: Readonly<HomePageProps>) {
           icon={(
             <GitHubLogoIcon
               css={css`
-                width: 1rem;
-                height: 1rem;
+                font-size: 1rem;
+                line-height: 1rem;
               `} />
           )}
           onClick={(e) => onLinkClick?.(e, 'GitHub')}>

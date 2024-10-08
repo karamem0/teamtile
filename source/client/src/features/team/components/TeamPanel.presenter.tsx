@@ -77,9 +77,9 @@ function TeamPanel(props: Readonly<TeamPanelProps>) {
               icon={(
                 <MoreVerticalIcon
                   css={css`
-                  width: 1rem;
-                  height: 1rem;
-                `} />
+                    font-size: 1rem;
+                    line-height: 1rem;
+                  `} />
               )} />
           </MenuTrigger>
           <MenuPopover>

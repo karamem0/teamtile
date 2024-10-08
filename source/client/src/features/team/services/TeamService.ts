@@ -53,9 +53,8 @@ export async function getDriveFromGraph(teamId: string): Promise<Drive> {
 }
 
 export async function getCardsFromTeamInfos(): Promise<TeamCard[]> {
-  return await graphService
-    .getTeamInfos()
-    .then((items) => items.map((item) => mapCardFromTeamInfo(item)));
+  const values = await graphService.getTeamInfos();
+  return values.map((value) => mapCardFromTeamInfo(value));
 }
 
 export async function getCardsFromCache(items: TeamCard[]): Promise<TeamCard[]> {

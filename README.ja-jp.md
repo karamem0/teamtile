@@ -2,7 +2,7 @@
 
 参加中のチームをタイルで表示することで素早くアクセスできます。
 
-[![.github/workflows/workflow.yml](https://github.com/karamem0/teamtile/actions/workflows/workflow.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/workflow.yml)
+[![.github/workflows/trigger.yml](https://github.com/karamem0/teamtile/actions/workflows/trigger.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/trigger.yml)
 [![codecov](https://codecov.io/gh/karamem0/teamtile/graph/badge.svg?token=UY4ZU4E73I)](https://codecov.io/gh/karamem0/teamtile)
 [![license](https://img.shields.io/github/license/karamem0/teamtile.svg)](https://github.com/karamem0/teamtile/blob/main/LICENSE)
 
@@ -69,7 +69,7 @@
     |項目|値|
     |-|-|
     |種類|シングル ページ アプリケーション|
-    |リダイレクト URL|`[Azure Web アプリの URL]`/auth/callback|
+    |リダイレクト URL|**Azure Web アプリの URL**/auth/callback|
     |アクセス トークン|チェックする|
     |ID トークン|チェックす津|
 
@@ -92,7 +92,7 @@
 
     |項目|値|
     |-|-|
-    |アプリケーション ID URL|api://`[Azure Web アプリ のドメイン名]`/`[アプリケーション ID]`|
+    |アプリケーション ID URL|api://**Azure Web アプリ のドメイン名**/**アプリケーション ID**|
     |スコープ名|user_impersonation|
     |同意できるユーザー|管理者とユーザー|
     |管理者の同意の表示名|Teamtile へのアクセス|
@@ -137,23 +137,23 @@
 
 2. `.env` ファイルを編集します。
 
-    |項目|値|必須|
+    |プレースホルダー|置換|
     |-|-|-|
-    |{{AppId}}|`[アプリケーション ID]`|はい|
-    |{{TenantId}}|`[テナント ID]`|はい|
-    |{{TelemetryConnectionString}}|`[Application Insights の接続文字列]`|いいえ|
+    |`{{APP_CLIENT_ID}}`|**アプリケーション ID**|
+    |`{{APP_DOMAIN_NAME}}`|**Azure Web アプリのドメイン名**|
+    |`{{APP_TENANT_ID}}`|**テナント ID**|
+    |`{{TELEMETRY_CONNECTION_STRING}}`|**Application Insights の接続文字列**|
 
 3. `source/server` フォルダーに移動します。
 
 4. `appsettings.json` ファイルを編集します。
 
-    |項目|値|必須|
+    |プレースホルダー|置換|
     |-|-|-|
-    |{{Audience}}|api://`[Azure Web アプリのドメイン名]`/`[アプリケーション ID]`|はい|
-    |{{AppId}}|`[アプリケーション ID]`|はい|
-    |{{AppSecret}}|`[アプリケーション シークレット]`|はい|
-    |{{TenantId}}|`[テナント ID]`|はい|
-    |{{TelemetryConnectionString}}|`[Application Insights の接続文字列]`|いいえ|
+    |`{{APP_CLIENT_ID}}`|**アプリケーション ID**|
+    |`{{APP_CLIENT_SECRET}}`|**アプリケーション シークレット**|
+    |`{{APP_TENANT_ID}}`|**テナント ID**|
+    |`{{TELEMETRY_CONNECTION_STRING}}`|**Application Insights の接続文字列**|
 
 5. アプリケーションをビルドします。
 
@@ -173,10 +173,10 @@ Compress-Archive -Path ./bin/Release/net8.0/publish/* -DestinationPath ../../bui
 
 2. `manifest.json` ファイルを編集します。
 
-    |項目|値|
+    |プレースホルダー|置換|
     |-|-|
-    |{{AppDomain}}|`[Azure Web アプリのドメイン名]`|
-    |{{AppId}}|`[アプリケーション ID]`|
+    |`{{APP_DOMAIN_NAME}}`|**Azure Web アプリのドメイン名**|
+    |`{{APP_CLIENT_ID}}`|**アプリケーション ID**|
 
 3. `manifest` フォルダーの中身を圧縮します。
 

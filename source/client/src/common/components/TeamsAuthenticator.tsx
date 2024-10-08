@@ -8,24 +8,25 @@
 
 import React from 'react';
 
-import Presenter from './AppLoader.presenter';
+import Presenter from './TeamsAuthenticator.presenter';
 import { app } from '@microsoft/teams-js';
 import { getAccessToken } from '../../managers/TokenManager';
 
-function AppLoader(props: Readonly<React.PropsWithChildren<unknown>>) {
+function TeamsAuthenticator(props: Readonly<React.PropsWithChildren>) {
 
   const { children } = props;
 
-  const [ loading, setLoading ] = React.useState<boolean>(true);
+  const [ loading, setLoading ] = React.useState<boolean>();
 
   React.useEffect(() => {
     (async () => {
       try {
         setLoading(true);
-        await app.initialize();
-        await getAccessToken();
-        app.notifyAppLoaded();
-        app.notifySuccess();
+        if (app.isInitialized()) {
+          await getAccessToken();
+          app.notifyAppLoaded();
+          app.notifySuccess();
+        }
       } catch (error) {
         app.notifyFailure({
           reason: app.FailedReason.AuthFailed,
@@ -45,4 +46,4 @@ function AppLoader(props: Readonly<React.PropsWithChildren<unknown>>) {
 
 }
 
-export default AppLoader;
+export default TeamsAuthenticator;

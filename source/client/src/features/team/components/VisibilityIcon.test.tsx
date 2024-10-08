@@ -16,7 +16,7 @@ import { render } from '@testing-library/react';
 
 it('should create shapshot of when VisibilityType is public', async () => {
   const params = {
-    value: VisibilityType.public
+    value: 'public' as VisibilityType
   };
   const { asFragment } = render(
     <IntlProvider>
@@ -30,7 +30,7 @@ it('should create shapshot of when VisibilityType is public', async () => {
 
 it('should create shapshot of when VisibilityType is private', async () => {
   const params = {
-    value: VisibilityType.private
+    value: 'private' as VisibilityType
   };
   const { asFragment } = render(
     <IntlProvider>

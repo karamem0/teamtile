@@ -9,7 +9,7 @@ on:
 jobs:
   deploy-development:
     if: github.ref == 'refs/heads/develop'
-    uses: ./.github/workflows/workflow.deploy.yml
+    uses: ./.github/workflows/deploy.yml
     secrets:
       APP_CLIENT_ID: ${{secrets.APP_CLIENT_ID}}
       APP_DOMAIN_NAME: ${{secrets.APP_DOMAIN_NAME}}
@@ -22,7 +22,7 @@ jobs:
       environment: development
   deploy-production:
     if: github.ref == 'refs/heads/main'
-    uses: ./.github/workflows/workflow.deploy.yml
+    uses: ./.github/workflows/deploy.yml
     secrets:
       APP_CLIENT_ID: ${{secrets.APP_CLIENT_ID}}
       APP_DOMAIN_NAME: ${{secrets.APP_DOMAIN_NAME}}
@@ -35,7 +35,7 @@ jobs:
       environment: production
   create-release:
     if: contains(github.ref, 'refs/tags/')
-    uses: ./.github/workflows/workflow.release.yml
+    uses: ./.github/workflows/release.yml
     secrets:
       APP_CLIENT_ID: ${{secrets.APP_CLIENT_ID}}
       APP_DOMAIN_NAME: ${{secrets.APP_DOMAIN_NAME}}
