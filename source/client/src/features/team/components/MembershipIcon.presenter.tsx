@@ -14,6 +14,7 @@ import { MembershipType } from '../../../types/Entity';
 import { css } from '@emotion/react';
 import messages from '../messages';
 import { useIntl } from 'react-intl';
+import { useTheme } from '../../../providers/ThemeProvider';
 
 export interface MembershipIconProps {
   value?: MembershipType
@@ -24,6 +25,7 @@ function MembershipIcon(props: Readonly<MembershipIconProps>) {
   const { value } = props;
 
   const intl = useIntl();
+  const { theme } = useTheme();
 
   switch (value) {
     case 'standard':
@@ -33,11 +35,17 @@ function MembershipIcon(props: Readonly<MembershipIconProps>) {
         <Tooltip
           content={intl.formatMessage(messages.Private)}
           relationship="label">
-          <Text>
+          <Text
+            css={css`
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: ${theme.colorNeutralForeground4};
+            `}>
             <LockIcon
               css={css`
-                width: 0.75rem;
-                height: 0.75rem;
+                width: 1rem;
+                height: 1rem;
               `} />
           </Text>
         </Tooltip>

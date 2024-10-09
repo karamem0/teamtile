@@ -138,7 +138,7 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
 2. Edit `.env` file.
 
     |Placeholder|Replace|
-    |-|-|-|
+    |-|-|
     |`{{APP_CLIENT_ID}}`|**Application ID**|
     |`{{APP_DOMAIN_NAME}}`|**Domain name of Azure Web App**|
     |`{{APP_TENANT_ID}}`|**Tenent ID**|
@@ -149,7 +149,7 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
 4. Edit `appsettings.json` file.
 
     |Placeholder|Replace|
-    |-|-|-|
+    |-|-|
     |`{{APP_CLIENT_ID}}`|**Application ID**|
     |`{{APP_CLIENT_SECRET}}`|**Application Secret**|
     |`{{APP_TENANT_ID}}`|**Tenent ID**|

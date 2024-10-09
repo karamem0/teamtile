@@ -3,7 +3,7 @@
 exports[`should create shapshot 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  margin: 0.25rem;
+  padding: 0.25rem;
 }
 
 .emotion-1 {

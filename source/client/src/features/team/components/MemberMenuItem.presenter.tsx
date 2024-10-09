@@ -57,7 +57,9 @@ function MemberMenuItem(props: Readonly<MemberMenuItemProps>) {
               flex-flow: column;
               grid-gap: 0.5rem;
             `}>
-            <SearchBox onChange={(e, data) => onFilterChange?.(e, data.value)} />
+            <SearchBox
+              placeholder={intl.formatMessage(messages.SearchMembers)}
+              onChange={(e, data) => onFilterChange?.(e, data.value)} />
             <div
               css={css`
                 display: flex;

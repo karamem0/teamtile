@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import IntlProvider from '../../../providers/IntlProvider';
 import TeamPanel from './TeamPanel.presenter';
 import { render } from '@testing-library/react';
 
@@ -22,6 +23,10 @@ jest.mock('./TeamGrid', () =>
 
 it('should create shapshot', async () => {
   const params = {};
-  const { asFragment } = render(<TeamPanel {...params} />);
+  const { asFragment } = render(
+    <IntlProvider>
+      <TeamPanel {...params} />
+    </IntlProvider>
+  );
   expect(asFragment()).toMatchSnapshot();
 });

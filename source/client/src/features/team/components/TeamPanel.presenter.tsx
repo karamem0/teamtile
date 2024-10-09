@@ -19,13 +19,13 @@ import {
   MenuTrigger,
   SearchBox
 } from '@fluentui/react-components';
+import { FormattedMessage, useIntl } from 'react-intl';
 import {
   GitHubLogoIcon,
   MoreVerticalIcon,
   RefreshIcon
 } from '@fluentui/react-icons-mdl2';
 import { EventHandler } from '../../../types/Event';
-import { FormattedMessage } from 'react-intl';
 import TeamGrid from './TeamGrid';
 import { css } from '@emotion/react';
 import messages from '../messages';
@@ -48,6 +48,8 @@ function TeamPanel(props: Readonly<TeamPanelProps>) {
     onRefreshClick
   } = props;
 
+  const intl = useIntl();
+
   return (
     <div
       css={css`
@@ -63,6 +65,7 @@ function TeamPanel(props: Readonly<TeamPanelProps>) {
           grid-gap: 0.25rem;
         `}>
         <SearchBox
+          placeholder={intl.formatMessage(messages.SearchTeams)}
           css={css`
             min-height: 2.25rem;
             @media (width >= 600px) {

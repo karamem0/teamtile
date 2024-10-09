@@ -26,6 +26,7 @@ function AvatarIcon(props: Readonly<AvatarIconProps>) {
 
   return (
     <Avatar
+      color="colorful"
       image={{ src: icon }}
       name={name}
       size={size} />

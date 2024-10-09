@@ -65,6 +65,7 @@ exports[`should create shapshot 1`] = `
         </span>
         <input
           class="fui-Input__input r12stul0 fui-SearchBox__input ___69a85s0_ca35df0 fk8j09s f1vdfbxk f18izjht fcoa6sg"
+          placeholder="Search teams"
           type="search"
           value=""
         />

@@ -63,12 +63,10 @@ export async function getCardsFromCache(items: TeamCard[]): Promise<TeamCard[]> 
       if (item.loading) {
         const group = await cacheService.getGroup(item.id);
         const team = await cacheService.getTeam(item.id);
-        const pin = await cacheService.getPin(item.id);
         if (group != null && team != null) {
-          return {
-            ...merge(merge(item, mapCardFromGroup(group)), mapCardFromTeam(team)),
-            pinned: pin != null
-          };
+          item = merge(item, mapCardFromGroup(group));
+          item = merge(item, mapCardFromTeam(team));
+          return item;
         }
       }
       return item;
@@ -123,7 +121,7 @@ export async function getMemberIconsFromCache(items: Member[]): Promise<Member[]
 
 export async function getMemberIconsFromGraph(items: Member[]): Promise<Member[]> {
   const ids = items
-    .filter((item) => !item.icon)
+    .filter((item) => item.icon != null)
     .map((item) => item.userId)
     .filter((id): id is Exclude<typeof id, undefined> => Boolean(id));
   const values = await graphService.getMemberIcons(ids);
@@ -134,6 +132,16 @@ export async function getMemberIconsFromGraph(items: Member[]): Promise<Member[]
     {
       arrayMerge: mergeMembers
     });
+}
+
+export async function getPins(items: TeamCard[]): Promise<TeamCard[]> {
+  return Promise.all(items.map(async (item) => {
+    const pinned = await cacheService.getPin(item.id);
+    return {
+      ...item,
+      pinned: pinned != null
+    };
+  }));
 }
 
 export async function getTabFromGraph(teamId: string, channelId: string): Promise<Tab[]> {

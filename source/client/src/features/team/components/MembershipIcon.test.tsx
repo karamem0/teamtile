@@ -11,6 +11,7 @@ import React from 'react';
 import IntlProvider from '../../../providers/IntlProvider';
 import MembershipIcon from './MembershipIcon.presenter';
 import { MembershipType } from '../../../types/Entity';
+import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
 it('should create shapshot of when MembershipType is standard', async () => {
@@ -19,7 +20,9 @@ it('should create shapshot of when MembershipType is standard', async () => {
   };
   const { asFragment } = render(
     <IntlProvider>
-      <MembershipIcon {...params} />
+      <ThemeProvider>
+        <MembershipIcon {...params} />
+      </ThemeProvider>
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();
@@ -31,7 +34,9 @@ it('should create shapshot of when MembershipType is private', async () => {
   };
   const { asFragment } = render(
     <IntlProvider>
-      <MembershipIcon {...params} />
+      <ThemeProvider>
+        <MembershipIcon {...params} />
+      </ThemeProvider>
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();
@@ -43,7 +48,9 @@ it('should create shapshot of when MembershipType is undefined', async () => {
   };
   const { asFragment } = render(
     <IntlProvider>
-      <MembershipIcon {...params} />
+      <ThemeProvider>
+        <MembershipIcon {...params} />
+      </ThemeProvider>
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();

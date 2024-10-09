@@ -9,7 +9,6 @@
 import React from 'react';
 
 import { Accordion } from '@fluentui/react-components';
-import { AccordionType } from '../../../types/Entity';
 import { FormattedMessage } from 'react-intl';
 import TeamAccordionItem from './TeamAccordionItem';
 import { TeamCard } from '../../../types/Store';
@@ -30,7 +29,7 @@ function TeamGrid(props: Readonly<TeamGridProps>) {
       multiple>
       <TeamAccordionItem
         key="pinned"
-        cards={cards?.filter((card) => card.pinned)}
+        cards={cards?.filter((card) => card.visible && card.pinned)}
         value="pinned"
         header={(
           <FormattedMessage {...messages.PinnedTeams} />

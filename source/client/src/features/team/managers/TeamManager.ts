@@ -39,6 +39,7 @@ export async function getCards(): Promise<TeamCard[]> {
     .then(async (values) => await teamService.getCardsFromCache(values))
     .then(async (values) => await teamService.getCardsFromGroup(values))
     .then(async (values) => await teamService.getCardsFromTeam(values))
+    .then(async (values) => await teamService.getPins(values))
     .then((values) => values.filter((value) => !value.loading))
     .then(async (values) => await teamService.getTeamIconsFromCache(values))
     .then(async (values) => await teamService.getTeamIconsFromGraph(values));

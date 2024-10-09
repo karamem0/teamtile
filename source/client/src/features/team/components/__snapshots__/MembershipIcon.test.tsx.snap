@@ -3,33 +3,98 @@
 exports[`should create shapshot of when MembershipType is private 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  width: 0.75rem;
-  height: 0.75rem;
+  min-height: 100vh;
+  line-height: 1.25em;
+  background-color: #f5f5f5;
 }
 
-<span
-    aria-label="Private"
-    class="fui-Text ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  color: #707070;
+}
+
+.emotion-2 {
+  width: 1rem;
+  height: 1rem;
+}
+
+<div
+    class="fui-FluentProvider fui-FluentProviderr1 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    dir="ltr"
   >
-    <span
-      aria-hidden="true"
-      class="root_dd790ee3 emotion-0"
+    <div
+      class="emotion-0"
     >
-      <svg
-        class="svg_dd790ee3"
-        focusable="false"
-        viewBox="0 0 2048 2048"
-        xmlns="http://www.w3.org/2000/svg"
+      <span
+        aria-label="Private"
+        class="fui-Text emotion-1 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
       >
-        <path
-          d="M1792 896v1152H256V896h256V522q0-108 39-203t108-166T821 41t203-41q109 0 202 41t163 112 108 166 39 203v374h256zm-1152 0h768V522q0-81-29-152t-80-126-122-85-153-31q-82 0-152 31t-122 85-81 125-29 153v374zm1024 128H384v896h1280v-896z"
-        />
-      </svg>
-    </span>
-  </span>
+        <span
+          aria-hidden="true"
+          class="root_dd790ee3 emotion-2"
+        >
+          <svg
+            class="svg_dd790ee3"
+            focusable="false"
+            viewBox="0 0 2048 2048"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1792 896v1152H256V896h256V522q0-108 39-203t108-166T821 41t203-41q109 0 202 41t163 112 108 166 39 203v374h256zm-1152 0h768V522q0-81-29-152t-80-126-122-85-153-31q-82 0-152 31t-122 85-81 125-29 153v374zm1024 128H384v896h1280v-896z"
+            />
+          </svg>
+        </span>
+      </span>
+    </div>
+  </div>
 </DocumentFragment>
 `;
 
-exports[`should create shapshot of when MembershipType is standard 1`] = `<DocumentFragment />`;
+exports[`should create shapshot of when MembershipType is standard 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-height: 100vh;
+  line-height: 1.25em;
+  background-color: #f5f5f5;
+}
 
-exports[`should create shapshot of when MembershipType is undefined 1`] = `<DocumentFragment />`;
+<div
+    class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    dir="ltr"
+  >
+    <div
+      class="emotion-0"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should create shapshot of when MembershipType is undefined 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-height: 100vh;
+  line-height: 1.25em;
+  background-color: #f5f5f5;
+}
+
+<div
+    class="fui-FluentProvider fui-FluentProviderr3 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    dir="ltr"
+  >
+    <div
+      class="emotion-0"
+    />
+  </div>
+</DocumentFragment>
+`;

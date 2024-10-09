@@ -9,7 +9,7 @@ exports[`should create shapshot of when url is not undefined 1`] = `
     role="img"
   >
     <span
-      class="fui-Avatar__initials rip04v ___1d63l1f_wwkuc90 f11d4kpn f18f03hv"
+      class="fui-Avatar__initials rip04v ___1ijdyrp_1g9zh4u f1up9qbj f42feg1"
       id="avatar-r1__initials"
     >
       HT
@@ -17,7 +17,7 @@ exports[`should create shapshot of when url is not undefined 1`] = `
     <img
       alt=""
       aria-hidden="true"
-      class="fui-Avatar__image r136dc0n ___1d63l1f_wwkuc90 f11d4kpn f18f03hv"
+      class="fui-Avatar__image r136dc0n ___1ijdyrp_1g9zh4u f1up9qbj f42feg1"
       role="presentation"
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII="
     />
@@ -34,7 +34,7 @@ exports[`should create shapshot of when url is undefined 1`] = `
     role="img"
   >
     <span
-      class="fui-Avatar__initials rip04v ___1d63l1f_wwkuc90 f11d4kpn f18f03hv"
+      class="fui-Avatar__initials rip04v ___1ijdyrp_1g9zh4u f1up9qbj f42feg1"
       id="avatar-r0__initials"
     >
       HT

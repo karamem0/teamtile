@@ -41,7 +41,7 @@ function TeamAccordionItem(props: Readonly<TeamAccordionItemProps>) {
       </AccordionHeader>
       <AccordionPanel
         css={css`
-          margin: 0.25rem;
+          padding: 0.25rem;
         `}>
         {
           cards?.length ? (

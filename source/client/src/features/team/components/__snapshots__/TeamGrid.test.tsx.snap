@@ -9,7 +9,7 @@ exports[`should create shapshot 1`] = `
 }
 
 .emotion-1 {
-  margin: 0.25rem;
+  padding: 0.25rem;
 }
 
 .emotion-2 {
