@@ -17,8 +17,10 @@ import {
   Group,
   Icon,
   Member,
+  Tag,
   Team
 } from '../../../types/Entity';
+import { getArray, getValue } from '../../../utils/Dexie';
 import { getConfig } from '../../../config/CacheConfig';
 
 export async function clearAll(): Promise<void> {
@@ -29,34 +31,17 @@ export async function clearAll(): Promise<void> {
     database.table('groups').clear(),
     database.table('icons').clear(),
     database.table('members').clear(),
+    database.table('tags').clear(),
+    database.table('tagmembers').clear(),
     database.table('teams').clear()
   ]);
 }
 
-export async function getChannels(id: string, expired?: boolean, timestamp = Date.now()): Promise<Channel[] | undefined> {
+export async function getChannels(id: string, expired?: boolean, timestamp?: number): Promise<Channel[] | undefined> {
   const { database } = getConfig();
   return await database.table<ArrayEntity<Channel>>('channels')
     .get(id)
-    .then((item) => {
-      if (item == null) {
-        return undefined;
-      }
-      switch (expired) {
-        case true:
-          if (item.expired < timestamp) {
-            return item.values;
-          }
-          break;
-        case false:
-          if (item.expired >= timestamp) {
-            return item.values;
-          }
-          break;
-        default:
-          return item.values;
-      }
-      return undefined;
-    });
+    .then((item) => getArray(item, expired, timestamp));
 }
 
 export async function setChannels(id: string, values: Channel[], timestamp = Date.now()): Promise<void> {
@@ -72,26 +57,7 @@ export async function getDrive(id: string, expired?: boolean, timestamp = Date.n
   const { database } = getConfig();
   return await database.table<ValueEntity<Drive>>('drives')
     .get(id)
-    .then((item) => {
-      if (item == null) {
-        return undefined;
-      }
-      switch (expired) {
-        case true:
-          if (item.expired < timestamp) {
-            return item.value;
-          }
-          break;
-        case false:
-          if (item.expired >= timestamp) {
-            return item.value;
-          }
-          break;
-        default:
-          return item.value;
-      }
-      return undefined;
-    });
+    .then((item) => getValue(item, expired, timestamp));
 }
 
 export async function setDrive(id: string, value: Drive, timestamp = Date.now()): Promise<void> {
@@ -107,26 +73,7 @@ export async function getGroup(id: string, expired?: boolean, timestamp = Date.n
   const { database } = getConfig();
   return await database.table<ValueEntity<Group>>('groups')
     .get(id)
-    .then((item) => {
-      if (item == null) {
-        return undefined;
-      }
-      switch (expired) {
-        case true:
-          if (item.expired < timestamp) {
-            return item.value;
-          }
-          break;
-        case false:
-          if (item.expired >= timestamp) {
-            return item.value;
-          }
-          break;
-        default:
-          return item.value;
-      }
-      return undefined;
-    });
+    .then((item) => getValue(item, expired, timestamp));
 }
 
 export async function setGroup(id: string, value: Group, timestamp = Date.now()): Promise<void> {
@@ -142,26 +89,7 @@ export async function getIcon(id: string, expired?: boolean, timestamp = Date.no
   const { database } = getConfig();
   return await database.table<ValueEntity<Icon>>('icons')
     .get(id)
-    .then((item) => {
-      if (item == null) {
-        return undefined;
-      }
-      switch (expired) {
-        case true:
-          if (item.expired < timestamp) {
-            return item.value;
-          }
-          break;
-        case false:
-          if (item.expired >= timestamp) {
-            return item.value;
-          }
-          break;
-        default:
-          return item.value;
-      }
-      return undefined;
-    })
+    .then((item) => getValue(item, expired, timestamp))
     .then((item) => item?.data?.startsWith('data:') ? item : undefined);
 }
 
@@ -174,30 +102,11 @@ export async function setIcon(id: string, value: Icon, timestamp = Date.now()): 
   });
 }
 
-export async function getMembers(id: string, expired?: boolean, timestamp = Date.now()): Promise<Member[] | undefined> {
+export async function getMembers(id: string, expired?: boolean, timestamp?: number): Promise<Member[] | undefined> {
   const { database } = getConfig();
   return await database.table<ArrayEntity<Member>>('members')
     .get(id)
-    .then((item) => {
-      if (item == null) {
-        return undefined;
-      }
-      switch (expired) {
-        case true:
-          if (item.expired < timestamp) {
-            return item.values;
-          }
-          break;
-        case false:
-          if (item.expired >= timestamp) {
-            return item.values;
-          }
-          break;
-        default:
-          return item.values;
-      }
-      return undefined;
-    });
+    .then((item) => getArray(item, expired, timestamp));
 }
 
 export async function setMembers(id: string, values: Member[], timestamp = Date.now()): Promise<void> {
@@ -223,30 +132,43 @@ export async function setPin(id: string, value: boolean): Promise<void> {
   }
 }
 
+export async function getTags(id: string, expired?: boolean, timestamp = Date.now()): Promise<Tag[] | undefined> {
+  const { database } = getConfig();
+  return await database.table<ArrayEntity<Tag>>('tags')
+    .get(id)
+    .then((item) => getArray(item, expired, timestamp));
+}
+
+export async function setTags(id: string, values: Tag[], timestamp = Date.now()): Promise<void> {
+  const { database, timeout } = getConfig();
+  await database.table<ArrayEntity<Tag>>('tags').put({
+    id,
+    expired: timestamp + (timeout * 1000),
+    values
+  });
+}
+
+export async function getTagMembers(id: string, expired?: boolean, timestamp = Date.now()): Promise<Member[] | undefined> {
+  const { database } = getConfig();
+  return await database.table<ArrayEntity<Member>>('tagmembers')
+    .get(id)
+    .then((item) => getArray(item, expired, timestamp));
+}
+
+export async function setTagMembers(id: string, values: Member[], timestamp = Date.now()): Promise<void> {
+  const { database, timeout } = getConfig();
+  await database.table<ArrayEntity<Member>>('tagmembers').put({
+    id,
+    expired: timestamp + (timeout * 1000),
+    values
+  });
+}
+
 export async function getTeam(id: string, expired?: boolean, timestamp = Date.now()): Promise<Team | undefined> {
   const { database } = getConfig();
   return await database.table<ValueEntity<Team>>('teams')
     .get(id)
-    .then((item) => {
-      if (item == null) {
-        return undefined;
-      }
-      switch (expired) {
-        case true:
-          if (item.expired < timestamp) {
-            return item.value;
-          }
-          break;
-        case false:
-          if (item.expired >= timestamp) {
-            return item.value;
-          }
-          break;
-        default:
-          return item.value;
-      }
-      return undefined;
-    });
+    .then((item) => getValue(item, expired, timestamp));
 }
 
 export async function setTeam(id: string, value: Team, timestamp = Date.now()): Promise<void> {

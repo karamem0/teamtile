@@ -2,7 +2,7 @@
 
 参加中のチームをタイルで表示することで素早くアクセスできます。
 
-[![.github/workflows/trigger.yml](https://github.com/karamem0/teamtile/actions/workflows/trigger.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/trigger.yml)
+[![.github/workflows/develop.yml](https://github.com/karamem0/teamtile/actions/workflows/develop.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/develop.yml)
 [![codecov](https://codecov.io/gh/karamem0/teamtile/graph/badge.svg?token=UY4ZU4E73I)](https://codecov.io/gh/karamem0/teamtile)
 [![license](https://img.shields.io/github/license/karamem0/teamtile.svg)](https://github.com/karamem0/teamtile/blob/main/LICENSE)
 
@@ -19,11 +19,21 @@
 
 ## スクリーンショット
 
+### チーム
+
 ![screenshot1](./assets/screenshots/001.png)
+
+### チャネル
 
 ![screenshot2](./assets/screenshots/002.png)
 
+### メンバー
+
 ![screenshot3](./assets/screenshots/003.png)
+
+### タグ
+
+![screenshot4](./assets/screenshots/004.png)
 
 ## インストール
 
@@ -83,6 +93,7 @@
     ||Group.Read.All|委任されたアクセス許可|
     ||Team.ReadBasic.All|委任されたアクセス許可|
     ||TeamMember.Read.All|委任されたアクセス許可|
+    ||TeamworkTag.Read|委任されたアクセス許可|
     ||User.Read|委任されたアクセス許可|
     ||User.ReadBasic.All|委任されたアクセス許可|
 

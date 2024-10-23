@@ -18,6 +18,7 @@ import {
   Icon,
   Member,
   Tab,
+  Tag,
   Team,
   TeamInfo
 } from '../../../types/Entity';
@@ -27,6 +28,8 @@ import {
   mapGroup,
   mapMember,
   mapTab,
+  mapTag,
+  mapTagMember,
   mapTeam,
   mapTeamInfo
 } from '../mappings/AutoMapperProfile';
@@ -118,7 +121,7 @@ export async function getMemberIcons(userIds: string[]): Promise<Icon[]> {
   for (let chunk = 0; chunk < userIds.length; chunk += 20) {
     const requestContent = new BatchRequestContent(
       userIds.slice(chunk, chunk + 20).map((userId) => ({
-        id: `${userId}`,
+        id: userId,
         request: new Request(
           `/users/${userId}/photo/$value`,
           {
@@ -193,13 +196,43 @@ export async function getTabs(teamId: string, channelId: string): Promise<Tab[]>
   return values;
 }
 
+export async function getTags(teamId: string): Promise<Tag[]> {
+  const { client } = getConfig();
+  const response = await client
+    .api(`/teams/${teamId}/tags`)
+    .version('v1.0')
+    .get();
+  const values: Tag[] = [];
+  const iterator = new PageIterator(
+    client,
+    response,
+    (value) => Boolean(values.push(mapTag(value))));
+  await iterator.iterate();
+  return values;
+}
+
+export async function getTagMembers(teamId: string, tagId: string): Promise<Member[]> {
+  const { client } = getConfig();
+  const response = await client
+    .api(`/teams/${teamId}/tags/${tagId}/members`)
+    .version('v1.0')
+    .get();
+  const values: Member[] = [];
+  const iterator = new PageIterator(
+    client,
+    response,
+    (value) => Boolean(values.push(mapTagMember(value))));
+  await iterator.iterate();
+  return values;
+}
+
 export async function getTeamIcons(teamIds: string[]): Promise<Icon[]> {
   const { client } = getConfig();
   const values: Icon[] = [];
   for (let chunk = 0; chunk < teamIds.length; chunk += 20) {
     const requestContent = new BatchRequestContent(
       teamIds.slice(chunk, chunk + 20).map((teamId) => ({
-        id: `${teamId}`,
+        id: teamId,
         request: new Request(
           `/groups/${teamId}/photo/$value`,
           {

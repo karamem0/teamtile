@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should create shapshot of when MembershipType is private 1`] = `
+exports[`should create shapshot of when value is "private" 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;
@@ -61,7 +61,7 @@ exports[`should create shapshot of when MembershipType is private 1`] = `
 </DocumentFragment>
 `;
 
-exports[`should create shapshot of when MembershipType is standard 1`] = `
+exports[`should create shapshot of when value is "standard" 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;
@@ -80,7 +80,7 @@ exports[`should create shapshot of when MembershipType is standard 1`] = `
 </DocumentFragment>
 `;
 
-exports[`should create shapshot of when MembershipType is undefined 1`] = `
+exports[`should create shapshot of when value is undefined 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;

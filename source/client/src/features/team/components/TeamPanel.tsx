@@ -30,7 +30,7 @@ function TeamPanel() {
     dispatch
   ]);
 
-  const handleFilterChange = React.useCallback((_?: Event, data?: string) => {
+  const handleFilterChange = React.useCallback((_: Event, data?: string) => {
     setCache(data);
   }, []);
 
@@ -52,8 +52,9 @@ function TeamPanel() {
     intl
   ]);
 
-  const handleRefreshClick = React.useCallback(async (e?: Event) => {
-    if ((e as React.KeyboardEvent)?.shiftKey) {
+  const handleRefreshClick = React.useCallback(async (event: Event) => {
+    const { shiftKey } = event as KeyboardEvent;
+    if (shiftKey) {
       await clearCache();
     }
     dispatch(setLoading(true));

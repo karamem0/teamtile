@@ -14,6 +14,8 @@ import {
   getMemberIcons,
   getMembers,
   getTabs,
+  getTagMembers,
+  getTags,
   getTeamIcons,
   getTeamInfos,
   getTeams
@@ -195,8 +197,9 @@ describe('getMembers', () => {
           {
             id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
             displayName: 'Adele Vance',
-            userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-            email: 'AdeleV@M365x214355.onmicrosoft.com'
+            email: 'AdeleV@M365x214355.onmicrosoft.com',
+            tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
+            userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
           }
         ]
       }
@@ -205,8 +208,9 @@ describe('getMembers', () => {
       {
         id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
         displayName: 'Adele Vance',
-        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-        email: 'AdeleV@M365x214355.onmicrosoft.com'
+        email: 'AdeleV@M365x214355.onmicrosoft.com',
+        tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
+        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
       }
     ];
     const mock = jest.fn().mockResolvedValue(params.response);
@@ -264,6 +268,88 @@ describe('getTabs', () => {
       }
     });
     const actual = await getTabs(params.teamId, params.channelId);
+    expect(mock).toHaveBeenCalled();
+    expect(actual).toStrictEqual(expected);
+  });
+
+});
+
+describe('getTags', () => {
+
+  it('should get tags', async () => {
+    const params = {
+      teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      response: {
+        value: [
+          {
+            id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
+            displayName: 'Finance',
+            description: 'Finance Team for Mach 8 Project',
+            memberCount: 2
+          }
+        ]
+      }
+    };
+    const expected = [
+      {
+        id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
+        displayName: 'Finance',
+        description: 'Finance Team for Mach 8 Project',
+        memberCount: 2
+      }
+    ];
+    const mock = jest.fn().mockResolvedValue(params.response);
+    getConfig.mockReturnValue({
+      client: {
+        api: () => ({
+          version: jest.fn().mockReturnThis(),
+          get: mock
+        })
+      }
+    });
+    const actual = await getTags(params.teamId);
+    expect(mock).toHaveBeenCalled();
+    expect(actual).toStrictEqual(expected);
+  });
+
+});
+
+describe('getTagMembers', () => {
+
+  it('should get tag members', async () => {
+    const params = {
+      teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      tagId: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyNlYjY1M2Y5Mi04MzczLTRkZTYtYmZlYy01YjRkMjE2YjZhZGUjI2QzYjJiM2ViLWM0N2YtNDViOS05NWYyLWIyZjJlZjYyMTVjZQ==',
+      response: {
+        value: [
+          {
+            id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyNlYjY1M2Y5Mi04MzczLTRkZTYtYmZlYy01YjRkMjE2YjZhZGUjI2QzYjJiM2ViLWM0N2YtNDViOS05NWYyLWIyZjJlZjYyMTVjZQ==',
+            displayName: 'Adele Vance',
+            tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
+            userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
+          }
+        ]
+      }
+    };
+    const expected = [
+      {
+        id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyNlYjY1M2Y5Mi04MzczLTRkZTYtYmZlYy01YjRkMjE2YjZhZGUjI2QzYjJiM2ViLWM0N2YtNDViOS05NWYyLWIyZjJlZjYyMTVjZQ==',
+        displayName: 'Adele Vance',
+        email: undefined,
+        tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
+        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
+      }
+    ];
+    const mock = jest.fn().mockResolvedValue(params.response);
+    getConfig.mockReturnValue({
+      client: {
+        api: () => ({
+          version: jest.fn().mockReturnThis(),
+          get: mock
+        })
+      }
+    });
+    const actual = await getTagMembers(params.teamId, params.tagId);
     expect(mock).toHaveBeenCalled();
     expect(actual).toStrictEqual(expected);
   });

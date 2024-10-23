@@ -8,29 +8,33 @@
 
 import React from 'react';
 
-import { Text, Tooltip } from '@fluentui/react-components';
+import {
+  Button,
+  Text,
+  Tooltip
+} from '@fluentui/react-components';
 import { EventHandler } from '../../../types/Event';
 import { css } from '@emotion/react';
 
 interface CardMenuItemProps {
-  tooltip?: string,
+  icon?: React.ReactElement,
+  title?: string,
   onClick?: EventHandler
 }
 
-function CardMenuItem(props: Readonly<React.PropsWithChildren<CardMenuItemProps>>) {
+function CardMenuItem(props: Readonly<CardMenuItemProps>) {
 
   const {
-    children,
-    tooltip,
+    icon,
+    title,
     onClick
   } = props;
 
-  return (
+  return title ? (
     <Tooltip
-      content={tooltip ?? ''}
+      content={title}
       relationship="label">
       <Text
-        role="button"
         css={css`
           display: grid;
           grid-template-rows: auto;
@@ -39,11 +43,29 @@ function CardMenuItem(props: Readonly<React.PropsWithChildren<CardMenuItemProps>
           align-items: center;
           justify-content: start;
           cursor: pointer;
-        `}
-        onClick={onClick}>
-        {children}
+        `}>
+        <Button
+          appearance="transparent"
+          icon={icon}
+          onClick={onClick} />
       </Text>
     </Tooltip>
+  ) : (
+    <Text
+      css={css`
+      display: grid;
+      grid-template-rows: auto;
+      grid-template-columns: auto auto;
+      grid-gap: 0.25rem;
+      align-items: center;
+      justify-content: start;
+      cursor: pointer;
+    `}>
+      <Button
+        appearance="transparent"
+        icon={icon}
+        onClick={onClick} />
+    </Text>
   );
 
 }

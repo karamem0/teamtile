@@ -33,11 +33,13 @@ const messages = defineMessages({
   SearchChannels: { defaultMessage: 'Search channels' },
   SearchMembers: { defaultMessage: 'Search members' },
   SearchTeams: { defaultMessage: 'Search teams' },
+  Tags: { defaultMessage: 'Tags' },
   TermsOfUse: { defaultMessage: 'Terms of Use' },
   TermsOfUseLink: { defaultMessage: 'https://github.com/karamem0/teamtile/blob/main/TERMS_OF_USE.md' },
   Unpin: { defaultMessage: 'Unpin' },
   ViewChannels: { defaultMessage: 'View channels' },
-  ViewMembers: { defaultMessage: 'View members' }
+  ViewMembers: { defaultMessage: 'View members' },
+  ViewTags: { defaultMessage: 'View tags' }
 });
 
 export default messages;

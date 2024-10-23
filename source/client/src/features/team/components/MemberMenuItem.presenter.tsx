@@ -8,14 +8,10 @@
 
 import React from 'react';
 
-import {
-  Button,
-  SearchBox,
-  Text
-} from '@fluentui/react-components';
-import { Event, EventHandler } from '../../../types/Event';
+import { SearchBox, Text } from '@fluentui/react-components';
 import AvatarIcon from './AvatarIcon';
 import CardMenuItem from './CardMenuItem';
+import { EventHandler } from '../../../types/Event';
 import { GroupIcon } from '@fluentui/react-icons-mdl2';
 import { Member } from '../../../types/Entity';
 import SidePanel from '../../../common/components/SidePanel';
@@ -84,7 +80,7 @@ function MemberMenuItem(props: Readonly<MemberMenuItemProps>) {
                         background-color: ${theme.colorNeutralBackground1Hover};
                       }
                     `}
-                    onClick={(e: Event) => onClick?.(e, item)}>
+                    onClick={(event) => onClick?.(event, item)}>
                     <AvatarIcon
                       icon={item.icon}
                       name={item.displayName}
@@ -101,22 +97,21 @@ function MemberMenuItem(props: Readonly<MemberMenuItemProps>) {
       }
       renderer={
         ({ onOpenChange }) => (
-          <CardMenuItem tooltip={intl.formatMessage(messages.ViewMembers)}>
-            <Button
-              appearance="transparent"
-              icon={(
-                <GroupIcon
-                  css={css`
-                    font-size: 1rem;
-                    line-height: 1rem;
-                  `} />
-              )}
-              onClick={(e) => onOpenChange?.(e, true)} />
-          </CardMenuItem>
+          <CardMenuItem
+            title={intl.formatMessage(messages.ViewMembers)}
+            icon={(
+              <GroupIcon
+                css={css`
+                  font-size: 1rem;
+                  line-height: 1rem;
+                `} />
+            )}
+            onClick={(event) => onOpenChange?.(event, true)} />
         )
       }
       onOpenChange={onOpenChange} />
   );
+
 }
 
 export default React.memo(MemberMenuItem);

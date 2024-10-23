@@ -8,12 +8,8 @@
 
 import React from 'react';
 
-import {
-  Button,
-  SearchBox,
-  Text
-} from '@fluentui/react-components';
 import { Event, EventHandler } from '../../../types/Event';
+import { SearchBox, Text } from '@fluentui/react-components';
 import CardMenuItem from './CardMenuItem';
 import { Channel } from '../../../types/Entity';
 import { ContextMenuIcon } from '@fluentui/react-icons-mdl2';
@@ -99,18 +95,16 @@ function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
       }
       renderer={
         ({ onOpenChange }) => (
-          <CardMenuItem tooltip={intl.formatMessage(messages.ViewChannels)}>
-            <Button
-              appearance="transparent"
-              icon={(
-                <ContextMenuIcon
-                  css={css`
-                    font-size: 1rem;
-                    line-height: 1rem;
-                  `} />
-              )}
-              onClick={(e) => onOpenChange?.(e, true)} />
-          </CardMenuItem>
+          <CardMenuItem
+            title={intl.formatMessage(messages.ViewChannels)}
+            icon={(
+              <ContextMenuIcon
+                css={css`
+                font-size: 1rem;
+                line-height: 1rem;
+              `} />
+            )}
+            onClick={(event) => onOpenChange?.(event, true)} />
         )
       }
       onOpenChange={onOpenChange} />

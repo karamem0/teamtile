@@ -35,10 +35,12 @@ function SidePanel(props: Readonly<SidePanelProps>) {
 
   const [ open, setOpen ] = React.useState<boolean>(false);
 
-  const handleOpenChange = React.useCallback((e?: Event, data?: boolean) => {
+  const handleOpenChange = React.useCallback((event: Event, data?: boolean) => {
     setOpen(data ?? false);
-    onOpenChange?.(e, data);
-  }, [ onOpenChange ]);
+    onOpenChange?.(event, data);
+  }, [
+    onOpenChange
+  ]);
 
   return (
     <Presenter

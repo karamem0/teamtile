@@ -61,7 +61,7 @@ function HomePage(props: Readonly<HomePageProps>) {
                 line-height: 1rem;
               `} />
           )}
-          onClick={(e) => onLinkClick?.(e, 'GitHub')}>
+          onClick={(event) => onLinkClick?.(event, 'GitHub')}>
           <FormattedMessage {...messages.GitHub} />
         </Button>
       </header>
@@ -188,7 +188,7 @@ function HomePage(props: Readonly<HomePageProps>) {
         `}>
         <Link
           as="button"
-          onClick={(e) => onLinkClick?.(e, 'TermsOfUse')}>
+          onClick={(event) => onLinkClick?.(event, 'TermsOfUse')}>
           <FormattedMessage {...messages.TermsOfUse} />
         </Link>
         <Text
@@ -199,7 +199,7 @@ function HomePage(props: Readonly<HomePageProps>) {
         </Text>
         <Link
           as="button"
-          onClick={(e) => onLinkClick?.(e, 'PrivacyPolicy')}>
+          onClick={(event) => onLinkClick?.(event, 'PrivacyPolicy')}>
           <FormattedMessage {...messages.PrivacyPolicy} />
         </Link>
       </footer>

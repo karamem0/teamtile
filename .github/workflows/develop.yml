@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build-source:
+    name: Build source
+    uses: ./.github/workflows/build-source.yml
+    secrets: inherit
+    with:
+      environment: dev
+  build-manifest:
+    name: Build manifest
+    uses: ./.github/workflows/build-manifest.yml
+    secrets: inherit
+    with:
+      environment: dev
+  deploy:
+    name: Deploy
+    needs: build-source
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit
+    with:
+      environment: dev

@@ -17,7 +17,7 @@ function HomePage() {
 
   const intl = useIntl();
 
-  const handleLinkClick = React.useCallback((_?: Event, data?: string) => {
+  const handleLinkClick = React.useCallback((_: Event, data?: string) => {
     switch (data) {
       case 'GitHub':
         window.open(intl.formatMessage(messages.GitHubLink), '_blank');

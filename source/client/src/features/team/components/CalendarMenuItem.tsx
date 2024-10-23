@@ -42,7 +42,7 @@ function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
       return;
     }
     if (isPC(await app.getContext())) {
-      const appId = process.env.VITE_CALENDAR_APP_ID;
+      const appId = import.meta.env.VITE_CALENDAR_APP_ID;
       const appTab = await fetch(id, internalId, appId);
       if (appTab?.webUrl) {
         await app.openLink(appTab.webUrl);

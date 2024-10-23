@@ -8,7 +8,6 @@
 
 import React from 'react';
 
-import { Button } from '@fluentui/react-components';
 import CardMenuItem from './CardMenuItem';
 import { EventHandler } from '../../../types/Event';
 import { SharepointLogoIcon } from '@fluentui/react-icons-mdl2-branded';
@@ -28,18 +27,15 @@ function DriveMenuItem(props: Readonly<DriveMenuItemProps>) {
 
   return (
     <CardMenuItem
-      tooltip={intl.formatMessage(messages.OpenInSharePoint)}
-      onClick={onClick}>
-      <Button
-        appearance="transparent"
-        icon={(
-          <SharepointLogoIcon
-            css={css`
-              font-size: 1rem;
-              line-height: 1rem;
-            `} />
-        )} />
-    </CardMenuItem>
+      title={intl.formatMessage(messages.OpenInSharePoint)}
+      icon={(
+        <SharepointLogoIcon
+          css={css`
+            font-size: 1rem;
+            line-height: 1rem;
+          `} />
+      )}
+      onClick={onClick} />
   );
 
 }

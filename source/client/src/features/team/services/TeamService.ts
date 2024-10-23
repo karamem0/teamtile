@@ -12,7 +12,8 @@ import {
   Channel,
   Drive,
   Member,
-  Tab
+  Tab,
+  Tag
 } from '../../../types/Entity';
 import {
   mapCardFromGroup,
@@ -121,7 +122,7 @@ export async function getMemberIconsFromCache(items: Member[]): Promise<Member[]
 
 export async function getMemberIconsFromGraph(items: Member[]): Promise<Member[]> {
   const ids = items
-    .filter((item) => item.icon != null)
+    .filter((item) => item.icon == null)
     .map((item) => item.userId)
     .filter((id): id is Exclude<typeof id, undefined> => Boolean(id));
   const values = await graphService.getMemberIcons(ids);
@@ -158,9 +159,29 @@ export async function getTeamIconsFromCache(items: TeamCard[]): Promise<TeamCard
   }));
 }
 
+export async function getTagsFromCache(teamId: string): Promise<Tag[] | undefined> {
+  return await cacheService.getTags(teamId, false);
+}
+
+export async function getTagsFromGraph(teamId: string): Promise<Tag[]> {
+  const value = await graphService.getTags(teamId);
+  await cacheService.setTags(teamId, value);
+  return value;
+}
+
+export async function getTagMembersFromCache(tagId: string): Promise<Member[] | undefined> {
+  return await cacheService.getTagMembers(tagId, false);
+}
+
+export async function getTagMembersFromGraph(teamId: string, tagId: string): Promise<Member[]> {
+  const value = await graphService.getTagMembers(teamId, tagId);
+  await cacheService.setTagMembers(tagId, value);
+  return value;
+}
+
 export async function getTeamIconsFromGraph(items: TeamCard[]): Promise<TeamCard[]> {
   const ids = items
-    .filter((item) => !item.team.icon)
+    .filter((item) => item.team.icon == null)
     .map((item) => item.id);
   const values = await graphService.getTeamIcons(ids);
   values.forEach(async (value) => value.id && await cacheService.setIcon(value.id, value));

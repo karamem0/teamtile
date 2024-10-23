@@ -47,6 +47,7 @@ export interface Member {
   displayName?: string,
   email?: string,
   icon?: string,
+  tenantId?: string,
   userId?: string
 }
 
@@ -55,6 +56,13 @@ export interface Tab {
   appId?: string,
   displayName?: string,
   webUrl?: string
+}
+
+export interface Tag {
+  id?: string,
+  description?: string,
+  displayName?: string,
+  memberCount?: number
 }
 
 export interface Team {

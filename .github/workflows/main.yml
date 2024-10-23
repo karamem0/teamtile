@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-source:
+    name: Build source
+    uses: ./.github/workflows/build-source.yml
+    secrets: inherit
+    with:
+      environment: prd
+  build-manifest:
+    name: Build manifest
+    uses: ./.github/workflows/build-manifest.yml
+    secrets: inherit
+    with:
+      environment: prd
+  deploy:
+    name: Deploy
+    needs: build-source
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit
+    with:
+      environment: prd

@@ -12,6 +12,8 @@ import {
   getDrive,
   getMembers,
   getTab,
+  getTagMembers,
+  getTags,
   setPin
 } from './TeamManager';
 
@@ -267,6 +269,146 @@ describe('getTab', () => {
       throw new Error('Something went wrong');
     });
     await expect(getTab(params.teamId, params.channelId, params.appId)).rejects.toThrow('Something went wrong');
+  });
+
+});
+
+describe('getTags', () => {
+
+  it('should get tags from cache', async () => {
+    const params = {
+      teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      values: [
+        {
+          id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
+          displayName: 'Finance',
+          description: 'Finance Team for Mach 8 Project',
+          memberCount: 2
+        }
+      ]
+    };
+    const mockCache = teamService.getTagsFromCache as unknown as jest.Mock;
+    const mockGraph = teamService.getTagsFromGraph as unknown as jest.Mock;
+    mockCache.mockResolvedValue(params.values);
+    mockGraph.mockResolvedValue(undefined);
+    const actual = await getTags(params.teamId);
+    expect(actual).not.toBeUndefined();
+    expect(mockCache).toHaveBeenCalled();
+    expect(mockGraph).not.toHaveBeenCalled();
+  });
+
+  it('should get tags from graph', async () => {
+    const params = {
+      teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      values: [
+        {
+          id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
+          displayName: 'Finance',
+          description: 'Finance Team for Mach 8 Project',
+          memberCount: 2
+        }
+      ]
+    };
+    const mockCache = teamService.getTagsFromCache as unknown as jest.Mock;
+    const mockGraph = teamService.getTagsFromGraph as unknown as jest.Mock;
+    mockCache.mockResolvedValue(undefined);
+    mockGraph.mockResolvedValue(params.values);
+    const actual = await getTags(params.teamId);
+    expect(actual).not.toBeUndefined();
+    expect(mockCache).toHaveBeenCalled();
+    expect(mockGraph).toHaveBeenCalled();
+  });
+
+  it('should return error when getting tags', async () => {
+    const params = {
+      teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      values: [
+        {
+          id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
+          displayName: 'Finance',
+          description: 'Finance Team for Mach 8 Project',
+          memberCount: 2
+        }
+      ]
+    };
+    const mockCache = teamService.getTagsFromCache as unknown as jest.Mock;
+    const mockGraph = teamService.getTagsFromGraph as unknown as jest.Mock;
+    mockCache.mockResolvedValue(undefined);
+    mockGraph.mockImplementation(() => {
+      throw new Error('Something went wrong');
+    });
+    await expect(getTags(params.teamId)).rejects.toThrow('Something went wrong');
+  });
+
+});
+
+describe('getTagMembers', () => {
+
+  it('should get tag members from cache', async () => {
+    const params = {
+      teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      tagId: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
+      values: [
+        {
+          id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
+          displayName: 'Adele Vance',
+          userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+          tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
+        }
+      ]
+    };
+    const mockCache = teamService.getTagMembersFromCache as unknown as jest.Mock;
+    const mockGraph = teamService.getTagMembersFromGraph as unknown as jest.Mock;
+    mockCache.mockResolvedValue(params.values);
+    mockGraph.mockResolvedValue(undefined);
+    const actual = await getTagMembers(params.teamId, params.tagId);
+    expect(actual).not.toBeUndefined();
+    expect(mockCache).toHaveBeenCalled();
+    expect(mockGraph).not.toHaveBeenCalled();
+  });
+
+  it('should get tag members from graph', async () => {
+    const params = {
+      teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      tagId: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
+      values: [
+        {
+          id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
+          displayName: 'Adele Vance',
+          userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+          tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
+        }
+      ]
+    };
+    const mockCache = teamService.getTagMembersFromCache as unknown as jest.Mock;
+    const mockGraph = teamService.getTagMembersFromGraph as unknown as jest.Mock;
+    mockCache.mockResolvedValue(undefined);
+    mockGraph.mockResolvedValue(params.values);
+    const actual = await getTagMembers(params.teamId, params.tagId);
+    expect(actual).not.toBeUndefined();
+    expect(mockCache).toHaveBeenCalled();
+    expect(mockGraph).toHaveBeenCalled();
+  });
+
+  it('should return error when getting tags', async () => {
+    const params = {
+      teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      values: [
+        {
+          id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
+          displayName: 'Finance',
+          description: 'Finance Team for Mach 8 Project',
+          memberCount: 2
+        }
+      ]
+    };
+    const mockCache = teamService.getTagsFromCache as unknown as jest.Mock;
+    const mockGraph = teamService.getTagsFromGraph as unknown as jest.Mock;
+    mockCache.mockResolvedValue(undefined);
+    mockGraph.mockImplementation(() => {
+      throw new Error('Something went wrong');
+    });
+    await expect(getTags(params.teamId)).rejects.toThrow('Something went wrong');
   });
 
 });

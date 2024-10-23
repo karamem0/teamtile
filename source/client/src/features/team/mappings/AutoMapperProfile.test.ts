@@ -71,15 +71,17 @@ describe('mapMember', () => {
       value: {
         id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
         displayName: 'Adele Vance',
-        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-        email: 'AdeleV@M365x214355.onmicrosoft.com'
+        email: 'AdeleV@M365x214355.onmicrosoft.com',
+        tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
+        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
       }
     };
     const expected = {
       id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
       displayName: 'Adele Vance',
-      userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-      email: 'AdeleV@M365x214355.onmicrosoft.com'
+      email: 'AdeleV@M365x214355.onmicrosoft.com',
+      tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
+      userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
     };
     const actual = mapMember(params.value);
     expect(actual).toStrictEqual(expected);
@@ -107,6 +109,30 @@ describe('mapTab', () => {
       displayName: 'Wiki'
     };
     const actual = mapTab(params.value);
+    expect(actual).toStrictEqual(expected);
+  });
+
+});
+
+describe('mapTabMember', () => {
+
+  it('should transform TabMember', () => {
+    const params = {
+      value: {
+        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+        displayName: 'Adele Vance',
+        tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
+        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
+      }
+    };
+    const expected = {
+      id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+      displayName: 'Adele Vance',
+      email: undefined,
+      tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
+      userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
+    };
+    const actual = mapMember(params.value);
     expect(actual).toStrictEqual(expected);
   });
 

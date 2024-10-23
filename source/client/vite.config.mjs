@@ -8,9 +8,8 @@
 
 import fs from 'fs';
 
-import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
-import env from 'vite-plugin-env-compatible';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   'build': {
@@ -32,9 +31,6 @@ export default defineConfig({
           ]
         ]
       }
-    }),
-    env({
-      'prefix': 'VITE'
     })
   ],
   'server': {

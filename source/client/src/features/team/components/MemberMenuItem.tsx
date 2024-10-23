@@ -41,18 +41,18 @@ function MemberMenuItem(props: Readonly<MemberMenuItemProps>) {
     filter
   ]);
 
-  const handleClick = React.useCallback((_?: Event, data?: Member) => {
+  const handleClick = React.useCallback((_: Event, data?: Member) => {
     if (data?.email == null) {
       return;
     }
     app.openLink(`https://teams.microsoft.com/l/chat/0/0?users=${data.email}`);
   }, []);
 
-  const handleFilterChange = React.useCallback((_?: Event, data?: string) => {
+  const handleFilterChange = React.useCallback((_: Event, data?: string) => {
     setFilter(data);
   }, []);
 
-  const handleOpenChange = React.useCallback(async (_?: Event, data?: boolean) => {
+  const handleOpenChange = React.useCallback(async (_: Event, data?: boolean) => {
     if (data == null) {
       return;
     }

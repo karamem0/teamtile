@@ -8,7 +8,6 @@
 
 import React from 'react';
 
-import { Button } from '@fluentui/react-components';
 import { CalendarIcon } from '@fluentui/react-icons-mdl2';
 import CardMenuItem from './CardMenuItem';
 import { EventHandler } from '../../../types/Event';
@@ -30,18 +29,15 @@ function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
 
   return (
     <CardMenuItem
-      tooltip={intl.formatMessage(messages.OpenChannelCalendar)}
-      onClick={onClick}>
-      <Button
-        appearance="transparent"
-        icon={(
-          <CalendarIcon
-            css={css`
-              font-size: 1rem;
-              line-height: 1rem;
-            `} />
-        )} />
-    </CardMenuItem>
+      title={intl.formatMessage(messages.OpenChannelCalendar)}
+      icon={(
+        <CalendarIcon
+          css={css`
+            font-size: 1rem;
+            line-height: 1rem;
+          `} />
+      )}
+      onClick={onClick} />
   );
 
 }

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should create shapshot of when VisibilityType is private 1`] = `
+exports[`should create shapshot of when value is "private" 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;
@@ -52,7 +52,7 @@ exports[`should create shapshot of when VisibilityType is private 1`] = `
 </DocumentFragment>
 `;
 
-exports[`should create shapshot of when VisibilityType is public 1`] = `
+exports[`should create shapshot of when value is "public" 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;
@@ -104,7 +104,7 @@ exports[`should create shapshot of when VisibilityType is public 1`] = `
 </DocumentFragment>
 `;
 
-exports[`should create shapshot of when VisibilityType is undefined 1`] = `
+exports[`should create shapshot of when value is undefined 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;

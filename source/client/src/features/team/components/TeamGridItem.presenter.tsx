@@ -22,6 +22,7 @@ import { EventHandler } from '../../../types/Event';
 import MemberMenuItem from './MemberMenuItem';
 import PinMenuItem from './PinMenuItem';
 import SensitivityLabel from './SensitivityLabel';
+import TagMenuItem from './TagMenuItem';
 import { TeamCard } from '../../../types/Store';
 import VisibilityIcon from './VisibilityIcon';
 import { css } from '@emotion/react';
@@ -157,12 +158,13 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
                 css={css`
                   display: grid;
                   grid-template-rows: auto;
-                  grid-template-columns: auto auto auto auto auto;
+                  grid-template-columns: auto auto auto auto auto auto;
                   align-items: center;
                   justify-content: left;
                 `}>
                 <ChannelMenuItem {...team} />
                 <MemberMenuItem {...team} />
+                <TagMenuItem id={id} />
                 <DriveMenuItem {...team} />
                 <CalendarMenuItem {...team} />
                 <PinMenuItem

@@ -11,6 +11,6 @@ import React from 'react';
 export type Event = globalThis.Event | React.SyntheticEvent | Record<string, never>;
 
 export type EventHandler<T = never> = (
-  event?: Event,
+  event: Event,
   data?: T
 ) => void;

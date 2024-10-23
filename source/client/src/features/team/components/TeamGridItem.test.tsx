@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import IntlProvider from '../../../providers/IntlProvider';
 import TeamGridItem from './TeamGridItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
@@ -76,6 +77,15 @@ jest.mock('./SensitivityLabel', () =>
     );
   });
 
+jest.mock('./TagMenuItem', () =>
+  function TagMenuItem({ children }: React.PropsWithChildren<unknown>) {
+    return (
+      <div data-testid="TagMenuItem">
+        {children}
+      </div>
+    );
+  });
+
 jest.mock('./VisibilityIcon', () =>
   function VisibilityIcon({ children }: React.PropsWithChildren<unknown>) {
     return (
@@ -85,7 +95,7 @@ jest.mock('./VisibilityIcon', () =>
     );
   });
 
-it('should create shapshot of when item loading is true', async () => {
+it('should create shapshot of when loading is true', async () => {
   const params = {
     card: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -104,14 +114,16 @@ it('should create shapshot of when item loading is true', async () => {
     }
   };
   const { asFragment } = render(
-    <ThemeProvider>
-      <TeamGridItem {...params} />
-    </ThemeProvider>
+    <IntlProvider>
+      <ThemeProvider>
+        <TeamGridItem {...params} />
+      </ThemeProvider>
+    </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create shapshot of when item loading is false', async () => {
+it('should create shapshot of when loading is false', async () => {
   const params = {
     card: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -130,9 +142,11 @@ it('should create shapshot of when item loading is false', async () => {
     }
   };
   const { asFragment } = render(
-    <ThemeProvider>
-      <TeamGridItem {...params} />
-    </ThemeProvider>
+    <IntlProvider>
+      <ThemeProvider>
+        <TeamGridItem {...params} />
+      </ThemeProvider>
+    </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();
 });

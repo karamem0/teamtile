@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should create shapshot of when SensitivityLabel is not null 1`] = `
+exports[`should create shapshot of when value is not undefined 1`] = `
 <DocumentFragment>
   <div
     class="fui-Badge r1l7mb74 ___172bkpj_b7iz950 f16xkysk faj9fo0 f161y7kd f1c8dzaj f1619yhw f1sl6hi9"
@@ -10,4 +10,4 @@ exports[`should create shapshot of when SensitivityLabel is not null 1`] = `
 </DocumentFragment>
 `;
 
-exports[`should create shapshot of when SensitivityLabel is undefined 1`] = `<DocumentFragment />`;
+exports[`should create shapshot of when value is undefined 1`] = `<DocumentFragment />`;

@@ -1,0 +1,17 @@
+on:
+  push:
+    tags:
+      - v*.*.*
+
+jobs:
+  build-manifest:
+    name: Build manifest
+    uses: ./.github/workflows/build-manifest.yml
+    secrets: inherit
+    with:
+      environment: prd
+  release:
+    name: Release
+    needs: build-manifest
+    uses: ./.github/workflows/release.yml
+    secrets: inherit

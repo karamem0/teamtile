@@ -14,7 +14,7 @@ import { MembershipType } from '../../../types/Entity';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
-it('should create shapshot of when MembershipType is standard', async () => {
+it('should create shapshot of when value is "standard"', async () => {
   const params = {
     value: 'standard' as MembershipType
   };
@@ -28,7 +28,7 @@ it('should create shapshot of when MembershipType is standard', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create shapshot of when MembershipType is private', async () => {
+it('should create shapshot of when value is "private"', async () => {
   const params = {
     value: 'private' as MembershipType
   };
@@ -42,7 +42,7 @@ it('should create shapshot of when MembershipType is private', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create shapshot of when MembershipType is undefined', async () => {
+it('should create shapshot of when value is undefined', async () => {
   const params = {
     value: undefined
   };

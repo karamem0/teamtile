@@ -2,7 +2,7 @@
 
 You can quickly access participating teams by displaying them as tiles.
 
-[![.github/workflows/trigger.yml](https://github.com/karamem0/teamtile/actions/workflows/trigger.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/trigger.yml)
+[![.github/workflows/develop.yml](https://github.com/karamem0/teamtile/actions/workflows/develop.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/develop.yml)
 [![codecov](https://codecov.io/gh/karamem0/teamtile/graph/badge.svg?token=UY4ZU4E73I)](https://codecov.io/gh/karamem0/teamtile)
 [![license](https://img.shields.io/github/license/karamem0/teamtile.svg)](https://github.com/karamem0/teamtile/blob/main/LICENSE)
 
@@ -19,11 +19,21 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
 
 ## Screenshot
 
+### Teams
+
 ![screenshot1](./assets/screenshots/001.png)
+
+### Channels
 
 ![screenshot2](./assets/screenshots/002.png)
 
+### Members
+
 ![screenshot3](./assets/screenshots/003.png)
+
+### Tags
+
+![screenshot4](./assets/screenshots/004.png)
 
 ## Installation
 
@@ -83,6 +93,7 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
     ||Group.Read.All|Delegate|
     ||Team.ReadBasic.All|Delegate|
     ||TeamMember.Read.All|Delegate|
+    ||TeamworkTag.Read|Delegate|
     ||User.Read|Delegate|
     ||User.ReadBasic.All|Delegate|
 

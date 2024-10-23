@@ -7,6 +7,7 @@
 //
 
 import Dexie from 'dexie';
+import env from '../env';
 
 interface CacheConfig {
   database: Dexie,
@@ -19,15 +20,17 @@ export function getConfig(): CacheConfig {
   if (config == null) {
     config = {
       database: new Dexie('teamtile'),
-      timeout: process.env.VITE_CACHE_TIMEOUT ?? 3600
+      timeout: env.VITE_CACHE_TIMEOUT ?? 3600
     };
-    config.database.version(8).stores({
+    config.database.version(9).stores({
       channels: '&id, expired',
       drives: '&id, expired',
       groups: '&id, expired',
       icons: '&id, expired',
       members: '&id, expired',
       pins: '&id',
+      tags: '&id, expired',
+      tagmembers: '&id, expired',
       teams: '&id, expired'
     });
   }

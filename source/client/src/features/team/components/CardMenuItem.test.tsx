@@ -14,12 +14,10 @@ import { render } from '@testing-library/react';
 
 it('should create shapshot', async () => {
   const params = {
-    children: (
-      <div data-testid="Children" />
-    ),
     icon: (
       <div data-testid="Icon" />
-    )
+    ),
+    title: 'Title'
   };
   const { asFragment } = render(
     <IntlProvider>

@@ -13,6 +13,7 @@ import {
   Icon,
   Member,
   Tab,
+  Tag,
   Team,
   TeamInfo
 } from '../../../types/Entity';
@@ -24,6 +25,8 @@ import {
   AssignedLabel as GraphLabel,
   AadUserConversationMember as GraphMember,
   TeamsTab as GraphTab,
+  TeamworkTag as GraphTag,
+  TeamworkTagMember as GraphTagMember,
   Team as GraphTeam,
   AssociatedTeamInfo as GraphTeamInfo
 } from '@microsoft/microsoft-graph-types';
@@ -77,6 +80,13 @@ PojosMetadataMap.create<Tab>('Tab', {
   appId: String,
   displayName: String,
   webUrl: String
+});
+
+PojosMetadataMap.create<Tag>('Tag', {
+  id: String,
+  description: String,
+  displayName: String,
+  memberCount: Number
 });
 
 PojosMetadataMap.create<Team>('Team', {
@@ -134,6 +144,20 @@ PojosMetadataMap.create<GraphTab>('GraphTab', {
   displayName: String,
   webUrl: String,
   teamsApp: 'TeamsApp'
+});
+
+PojosMetadataMap.create<GraphTag>('GraphTag', {
+  id: String,
+  description: String,
+  displayName: String,
+  memberCount: Number
+});
+
+PojosMetadataMap.create<GraphTagMember>('GraphTagMember', {
+  id: String,
+  displayName: String,
+  tenantId: String,
+  userId: String
 });
 
 PojosMetadataMap.create<GraphTeam>('GraphTeam', {
@@ -225,6 +249,7 @@ createMap<GraphMember, Member>(
   'Member',
   forMember((target) => target.displayName, mapFrom((source) => source.displayName ?? undefined)),
   forMember((target) => target.email, mapFrom((source) => source.email ?? undefined)),
+  forMember((target) => target.tenantId, mapFrom((source) => source.tenantId ?? undefined)),
   forMember((target) => target.userId, mapFrom((source) => source.userId ?? undefined))
 );
 
@@ -250,6 +275,40 @@ export function mapTab(value: GraphTab) {
     value,
     'GraphTab',
     'Tab'
+  );
+}
+
+createMap<GraphTag, Tag>(
+  mapper,
+  'GraphTag',
+  'Tag',
+  forMember((target) => target.description, mapFrom((source) => source.description ?? undefined)),
+  forMember((target) => target.displayName, mapFrom((source) => source.displayName ?? undefined)),
+  forMember((target) => target.memberCount, mapFrom((source) => source.memberCount ?? undefined))
+);
+
+export function mapTag(value: GraphTag) {
+  return mapper.map<GraphTag, Tag>(
+    value,
+    'GraphTag',
+    'Tag'
+  );
+}
+
+createMap<GraphTagMember, Member>(
+  mapper,
+  'GraphMember',
+  'Member',
+  forMember((target) => target.displayName, mapFrom((source) => source.displayName ?? undefined)),
+  forMember((target) => target.tenantId, mapFrom((source) => source.tenantId ?? undefined)),
+  forMember((target) => target.userId, mapFrom((source) => source.userId ?? undefined))
+);
+
+export function mapTagMember(value: GraphTagMember) {
+  return mapper.map<GraphTagMember, Member>(
+    value,
+    'GraphMember',
+    'Member'
   );
 }
 

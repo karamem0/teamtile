@@ -7,13 +7,14 @@
 //
 
 import { BrowserCacheLocation } from '@azure/msal-browser';
+import env from '../env';
 
 export const msalConfig = {
   auth: {
-    authority: `https://login.microsoftonline.com/${process.env.VITE_AUTH_TENANT_ID}`,
-    clientId: process.env.VITE_AUTH_CLIENT_ID,
+    authority: `https://login.microsoftonline.com/${env.VITE_AUTH_TENANT_ID}`,
+    clientId: env.VITE_AUTH_CLIENT_ID,
     knownAuthorities: [
-      `https://login.microsoftonline.com/${process.env.VITE_AUTH_TENANT_ID}`
+      `https://login.microsoftonline.com/${env.VITE_AUTH_TENANT_ID}`
     ],
     redirectUri: `${window.location.origin}/auth/callback`,
     navigateToLoginRequestUrl: false
@@ -29,6 +30,7 @@ export const loginParams = {
     'Group.Read.All',
     'Team.ReadBasic.All',
     'TeamMember.Read.All',
+    'TeamworkTag.Read',
     'User.Read',
     'User.ReadBasic.All'
   ]

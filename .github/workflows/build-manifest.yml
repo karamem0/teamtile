@@ -1,0 +1,30 @@
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+
+jobs:
+  run:
+    name: Run
+    environment: ${{inputs.environment}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repos
+        uses: actions/checkout@v4
+      - name: Update manifest.json
+        shell: pwsh
+        run: |
+          $content = Get-Content -Path ${{env.FILE_PATH}}
+          $content = $content -Replace "{{APP_CLIENT_ID}}", "${{vars.APP_CLIENT_ID}}"
+          $content = $content -Replace "{{APP_DOMAIN_NAME}}", "${{vars.APP_DOMAIN_NAME}}"
+          $content = $content -Replace "{{APP_VERSION}}", "${{vars.BUILD_VERSION}}"
+          Out-File -FilePath ${{env.FILE_PATH}} -InputObject $content -Encoding UTF8
+        env:
+          FILE_PATH: manifest/manifest.json
+      - name: Upload artifatcs
+        uses: actions/upload-artifact@v4
+        with:
+          name: manifest
+          path: manifest

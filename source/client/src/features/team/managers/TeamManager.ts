@@ -11,7 +11,8 @@ import {
   Channel,
   Drive,
   Member,
-  Tab
+  Tab,
+  Tag
 } from '../../../types/Entity';
 import { TeamCard } from '../../../types/Store';
 
@@ -57,6 +58,20 @@ export async function getTab(teamId: string, channelId: string, appId: string): 
   return await Promise.resolve()
     .then(async () => teamService.getTabFromGraph(teamId, channelId))
     .then((values) => values.find((value) => value.appId === appId));
+}
+
+export async function getTags(teamId: string): Promise<Tag[]> {
+  return await Promise.resolve()
+    .then(async () => teamService.getTagsFromCache(teamId))
+    .then(async (values) => values ?? await teamService.getTagsFromGraph(teamId));
+}
+
+export async function getTagMembers(teamId: string, tagId: string): Promise<Member[]> {
+  return await Promise.resolve()
+    .then(async () => teamService.getTagMembersFromCache(tagId))
+    .then(async (values) => values ?? await teamService.getTagMembersFromGraph(teamId, tagId))
+    .then(async (values) => teamService.getMemberIconsFromCache(values))
+    .then(async (values) => teamService.getMemberIconsFromGraph(values));
 }
 
 export async function setPin(teamId: string, pinned: boolean) {

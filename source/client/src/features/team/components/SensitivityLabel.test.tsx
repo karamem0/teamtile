@@ -11,7 +11,7 @@ import React from 'react';
 import SensitivityLabel from './SensitivityLabel.presenter';
 import { render } from '@testing-library/react';
 
-it('should create shapshot of when SensitivityLabel is not null', async () => {
+it('should create shapshot of when value is not undefined', async () => {
   const params = {
     value: 'Restricted'
   };
@@ -19,7 +19,7 @@ it('should create shapshot of when SensitivityLabel is not null', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create shapshot of when SensitivityLabel is undefined', async () => {
+it('should create shapshot of when value is undefined', async () => {
   const params = {
     value: undefined
   };

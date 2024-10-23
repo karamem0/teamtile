@@ -42,18 +42,18 @@ function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
     filter
   ]);
 
-  const handleClick = React.useCallback((_?: Event, data?: Channel) => {
+  const handleClick = React.useCallback((_: Event, data?: Channel) => {
     if (data?.webUrl == null) {
       return;
     }
     app.openLink(data.webUrl);
   }, []);
 
-  const handleFilterChange = React.useCallback((_?: Event, data?: string) => {
+  const handleFilterChange = React.useCallback((_: Event, data?: string) => {
     setFilter(data);
   }, []);
 
-  const handleOpenChange = React.useCallback(async (_?: Event, data?: boolean) => {
+  const handleOpenChange = React.useCallback(async (_: Event, data?: boolean) => {
     if (data == null) {
       return;
     }
