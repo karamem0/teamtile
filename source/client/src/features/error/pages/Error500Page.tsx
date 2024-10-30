@@ -9,6 +9,7 @@
 import React from 'react';
 
 import Presenter from './Error500Page.presenter';
+import { useTelemetry } from '../../../providers/TelemetryProvider';
 
 interface Error500PageProps {
   error?: Error
@@ -17,6 +18,17 @@ interface Error500PageProps {
 function Error500Page(props: Readonly<Error500PageProps>) {
 
   const { error } = props;
+
+  const { trackException } = useTelemetry();
+
+  React.useEffect(() => {
+    trackException({
+      exception: error
+    });
+  }, [
+    error,
+    trackException
+  ]);
 
   return (
     <Presenter error={error?.message} />

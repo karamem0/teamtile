@@ -32,7 +32,7 @@ function PinMenuItem(props: Readonly<PinMenuItemProps>) {
 
   return (
     <CardMenuItem
-      tooltip={pinned ? intl.formatMessage(messages.Unpin) : intl.formatMessage(messages.Pin)}
+      title={pinned ? intl.formatMessage(messages.Unpin) : intl.formatMessage(messages.Pin)}
       onClick={onClick}>
       <Button
         appearance="transparent"

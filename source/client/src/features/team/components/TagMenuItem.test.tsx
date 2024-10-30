@@ -8,11 +8,10 @@
 
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
 import IntlProvider from '../../../providers/IntlProvider';
 import TagMenuItem from './TagMenuItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
-import userEvent from '@testing-library/user-event';
+import { render } from '@testing-library/react';
 
 jest.mock('./TagMemberAccordionItem', () =>
   function TagMemberAccordionItem({ children }: React.PropsWithChildren<unknown>) {
@@ -23,12 +22,21 @@ jest.mock('./TagMemberAccordionItem', () =>
     );
   });
 
-const setup = (jsx: JSX.Element) => ({
-  user: userEvent.setup(),
-  ...render(jsx)
-});
+jest.mock('../../../common/components/SidePanel', () =>
+  function SidePanel({ content, renderer }: { content: React.ReactNode, renderer: (props: unknown) => React.ReactNode }) {
+    return (
+      <div data-testid="SidePanel">
+        <div data-testid="Content">
+          {content}
+        </div>
+        <div data-testid="Renderer">
+          {renderer({})}
+        </div>
+      </div>
+    );
+  });
 
-it('should create shapshot of when loading is true', async () => {
+it('should create shapshot', () => {
   const params = {
     id: '2bd9fd6-8f93-4758-87c3-1fb73740a315',
     items: [
@@ -38,40 +46,14 @@ it('should create shapshot of when loading is true', async () => {
         description: 'Finance Team for Mach 8 Project',
         memberCount: 2
       }
-    ],
-    loading: false
+    ]
   };
-  const { asFragment, user } = setup(
+  const { asFragment } = render(
     <IntlProvider>
       <ThemeProvider>
         <TagMenuItem {...params} />
       </ThemeProvider>
     </IntlProvider>
   );
-  await user.click(screen.getByRole('button'));
-  expect(asFragment()).toMatchSnapshot();
-});
-
-it('should create shapshot of when loading is false', async () => {
-  const params = {
-    id: '2bd9fd6-8f93-4758-87c3-1fb73740a315',
-    items: [
-      {
-        id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
-        displayName: 'Finance',
-        description: 'Finance Team for Mach 8 Project',
-        memberCount: 2
-      }
-    ],
-    loading: false
-  };
-  const { asFragment, user } = setup(
-    <IntlProvider>
-      <ThemeProvider>
-        <TagMenuItem {...params} />
-      </ThemeProvider>
-    </IntlProvider>
-  );
-  await user.click(screen.getByRole('button'));
   expect(asFragment()).toMatchSnapshot();
 });

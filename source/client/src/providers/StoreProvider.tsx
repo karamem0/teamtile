@@ -21,7 +21,7 @@ const StoreContext = React.createContext<StoreContextState | undefined>(undefine
 export const useStore = (): StoreContextState => {
   const value = React.useContext(StoreContext);
   if (value == null) {
-    throw new Error('The context is not initialzed: ReducerContext');
+    throw new Error('The context is not initialzed: StoreContext');
   }
   return value;
 };

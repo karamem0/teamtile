@@ -23,6 +23,7 @@ import { css } from '@emotion/react';
 interface SidePanelProps {
   content?: React.ReactNode,
   loading?: boolean,
+  mountNode?: HTMLElement,
   open?: boolean,
   title?: React.ReactNode,
   onOpenChange?: EventHandler<boolean>
@@ -34,6 +35,7 @@ function SidePanel(props: Readonly<React.PropsWithChildren<SidePanelProps>>) {
     children,
     content,
     loading,
+    mountNode,
     open,
     title,
     onOpenChange
@@ -44,6 +46,7 @@ function SidePanel(props: Readonly<React.PropsWithChildren<SidePanelProps>>) {
       {children}
       <OverlayDrawer
         as="aside"
+        mountNode={mountNode}
         open={open}
         position="end"
         size="small"

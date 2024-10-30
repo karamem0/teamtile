@@ -14,6 +14,20 @@ import { MembershipType } from '../../../types/Entity';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
+jest.mock('../../../common/components/SidePanel', () =>
+  function SidePanel({ content, renderer }: { content: React.ReactNode, renderer: (props: unknown) => React.ReactNode }) {
+    return (
+      <div data-testid="SidePanel">
+        <div data-testid="Content">
+          {content}
+        </div>
+        <div data-testid="Renderer">
+          {renderer({})}
+        </div>
+      </div>
+    );
+  });
+
 it('should create shapshot', async () => {
   const params = {
     items: [

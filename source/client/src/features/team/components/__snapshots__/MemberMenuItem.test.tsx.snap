@@ -9,6 +9,51 @@ exports[`should create shapshot 1`] = `
 }
 
 .emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: column;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  grid-gap: 0.5rem;
+}
+
+.emotion-2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: column;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  grid-gap: 0.5rem;
+  height: calc(100vh - 8rem);
+  overflow: auto;
+}
+
+.emotion-3 {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: left;
+  -ms-flex-pack: left;
+  -webkit-justify-content: left;
+  justify-content: left;
+  padding: 0.5rem;
+}
+
+.emotion-3:hover {
+  background-color: #f5f5f5;
+}
+
+.emotion-4 {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto auto;
@@ -24,7 +69,7 @@ exports[`should create shapshot 1`] = `
   cursor: pointer;
 }
 
-.emotion-2 {
+.emotion-5 {
   font-size: 1rem;
   line-height: 1rem;
 }
@@ -36,35 +81,131 @@ exports[`should create shapshot 1`] = `
     <div
       class="emotion-0"
     >
-      <span
-        aria-label="View members"
-        class="fui-Text emotion-1 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
+      <div
+        data-testid="SidePanel"
       >
-        <button
-          class="fui-Button r1alrhcs ___cpe5h10_1yhfyj7 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f18ktai2 fwbmr0d f44c6la"
-          type="button"
+        <div
+          data-testid="Content"
         >
-          <span
-            class="fui-Button__icon rywnvv2"
+          <div
+            class="emotion-1"
           >
             <span
-              aria-hidden="true"
-              class="root_dd790ee3 emotion-2"
+              class="fui-Input r1oeeo9n fui-SearchBox ___13yg2oi_15g8mz3 f1f5gg8d fhxju0i fvcxoqz f1ub3y4t f1l4zc64 f1m52nbi f8vnjqi fz1etlk f1klwx88 f1hc16gm fjuset5 f1xzfw5u"
             >
-              <svg
-                class="svg_dd790ee3"
-                focusable="false"
-                viewBox="0 0 2048 2048"
-                xmlns="http://www.w3.org/2000/svg"
+              <span
+                class="fui-Input__contentBefore r1572tok fui-SearchBox__contentBefore"
               >
-                <path
-                  d="M1850 688q45 25 82 61t62 80 40 93 14 102h-128q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99q0 91-41 173t-115 136q65 33 117 81t90 108 57 128 20 142h-128q0-79-30-149t-83-122-122-82-149-31q-79 0-149 30t-122 83-82 122-31 149H512q0-73 20-141t57-128 89-108 118-82q-73-54-114-136t-42-173q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99H0q0-52 14-101t39-93 63-80 82-62q-33-35-51-81t-19-95q0-52 20-99t55-81 81-55 100-21q52 0 99 20t81 55 55 82 21 99q0 49-18 95t-52 81q82 45 134 124 54-80 138-126t182-46q97 0 181 46t139 126q52-79 134-124-33-35-51-81t-19-95q0-52 20-99t55-81 81-55 100-21q52 0 99 20t81 55 55 82 21 99q0 49-18 95t-52 81zM256 512q0 27 10 50t27 40 41 28 50 10q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50zm768 768q52 0 99-20t81-55 55-81 21-100q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99q0 53 20 99t55 81 81 55 100 21zm512-768q0 27 10 50t27 40 41 28 50 10q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50z"
-                />
-              </svg>
+                <svg
+                  aria-hidden="true"
+                  class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+                  fill="currentColor"
+                  height="1em"
+                  viewBox="0 0 20 20"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.5 3a5.5 5.5 0 0 1 4.23 9.02l4.12 4.13a.5.5 0 0 1-.63.76l-.07-.06-4.13-4.12A5.5 5.5 0 1 1 8.5 3Zm0 1a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+              <input
+                class="fui-Input__input r12stul0 fui-SearchBox__input ___69a85s0_ca35df0 fk8j09s f1vdfbxk f18izjht fcoa6sg"
+                placeholder="Search members"
+                type="search"
+                value=""
+              />
+              <span
+                class="fui-Input__contentAfter r1572tok fui-SearchBox__contentAfter ___d39huh0_hhph080 f1cnd47f f1ufnopg fk73vx1 fniina8 f3tsq5r"
+              >
+                <span
+                  aria-label="clear"
+                  class="fui-SearchBox__dismiss r1pvzcuu"
+                  role="button"
+                  tabindex="-1"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 20 20"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m4.09 4.22.06-.07a.5.5 0 0 1 .63-.06l.07.06L10 9.29l5.15-5.14a.5.5 0 0 1 .63-.06l.07.06c.18.17.2.44.06.63l-.06.07L10.71 10l5.14 5.15c.18.17.2.44.06.63l-.06.07a.5.5 0 0 1-.63.06l-.07-.06L10 10.71l-5.15 5.14a.5.5 0 0 1-.63.06l-.07-.06a.5.5 0 0 1-.06-.63l.06-.07L9.29 10 4.15 4.85a.5.5 0 0 1-.06-.63l.06-.07-.06.07Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </span>
             </span>
+            <div
+              class="emotion-2"
+            >
+              <span
+                class="fui-Text emotion-3 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
+                role="button"
+              >
+                <span
+                  aria-label="Adele Vance"
+                  class="fui-Avatar r81b29z ___3oygws0_1lfz49j fq4mcun frvgh55 f13mqy1h"
+                  id="avatar-r1"
+                  role="img"
+                >
+                  <span
+                    class="fui-Avatar__initials rip04v ___105uvta_5ja1qh0 f1f3ti53 fu4yj0j"
+                    id="avatar-r1__initials"
+                  >
+                    AV
+                  </span>
+                </span>
+                <span
+                  class="fui-Text ___gbswv60_1h9bfvt fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f1cmbuwj"
+                >
+                  Adele Vance
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid="Renderer"
+        >
+          <span
+            aria-label="View members"
+            class="fui-Text emotion-4 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
+          >
+            <button
+              class="fui-Button r1alrhcs ___cpe5h10_1yhfyj7 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f18ktai2 fwbmr0d f44c6la"
+              type="button"
+            >
+              <span
+                class="fui-Button__icon rywnvv2"
+              >
+                <span
+                  aria-hidden="true"
+                  class="root_dd790ee3 emotion-5"
+                >
+                  <svg
+                    class="svg_dd790ee3"
+                    focusable="false"
+                    viewBox="0 0 2048 2048"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1850 688q45 25 82 61t62 80 40 93 14 102h-128q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99q0 91-41 173t-115 136q65 33 117 81t90 108 57 128 20 142h-128q0-79-30-149t-83-122-122-82-149-31q-79 0-149 30t-122 83-82 122-31 149H512q0-73 20-141t57-128 89-108 118-82q-73-54-114-136t-42-173q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99H0q0-52 14-101t39-93 63-80 82-62q-33-35-51-81t-19-95q0-52 20-99t55-81 81-55 100-21q52 0 99 20t81 55 55 82 21 99q0 49-18 95t-52 81q82 45 134 124 54-80 138-126t182-46q97 0 181 46t139 126q52-79 134-124-33-35-51-81t-19-95q0-52 20-99t55-81 81-55 100-21q52 0 99 20t81 55 55 82 21 99q0 49-18 95t-52 81zM256 512q0 27 10 50t27 40 41 28 50 10q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50zm768 768q52 0 99-20t81-55 55-81 21-100q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99q0 53 20 99t55 81 81 55 100 21zm512-768q0 27 10 50t27 40 41 28 50 10q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50z"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </button>
           </span>
-        </button>
-      </span>
+        </div>
+      </div>
     </div>
   </div>
 </DocumentFragment>

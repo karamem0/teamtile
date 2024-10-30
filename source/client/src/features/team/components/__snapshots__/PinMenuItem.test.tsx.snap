@@ -19,6 +19,7 @@ exports[`should create shapshot of when pinned is false 1`] = `
 }
 
 <span
+    aria-label="Pin"
     class="fui-Text emotion-0 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
   >
     <button
@@ -48,6 +49,7 @@ exports[`should create shapshot of when pinned is true 1`] = `
 }
 
 <span
+    aria-label="Unpin"
     class="fui-Text emotion-0 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
   >
     <button
@@ -77,6 +79,7 @@ exports[`should create shapshot of when pinned is undefined 1`] = `
 }
 
 <span
+    aria-label="Pin"
     class="fui-Text emotion-0 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
   >
     <button
