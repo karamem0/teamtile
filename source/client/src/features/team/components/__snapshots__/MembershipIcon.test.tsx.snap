@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should create shapshot of when value is "private" 1`] = `
+exports[`should create a shapshot when type is private 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;
@@ -61,26 +61,7 @@ exports[`should create shapshot of when value is "private" 1`] = `
 </DocumentFragment>
 `;
 
-exports[`should create shapshot of when value is "standard" 1`] = `
-<DocumentFragment>
-  .emotion-0 {
-  min-height: 100vh;
-  line-height: 1.25em;
-  background-color: #f5f5f5;
-}
-
-<div
-    class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
-    dir="ltr"
-  >
-    <div
-      class="emotion-0"
-    />
-  </div>
-</DocumentFragment>
-`;
-
-exports[`should create shapshot of when value is undefined 1`] = `
+exports[`should create a shapshot when type is undefined 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;
@@ -90,6 +71,25 @@ exports[`should create shapshot of when value is undefined 1`] = `
 
 <div
     class="fui-FluentProvider fui-FluentProviderr3 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    dir="ltr"
+  >
+    <div
+      class="emotion-0"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should create a shapshot when value is standard 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-height: 100vh;
+  line-height: 1.25em;
+  background-color: #f5f5f5;
+}
+
+<div
+    class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
     dir="ltr"
   >
     <div

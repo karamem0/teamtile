@@ -9,7 +9,7 @@
 import React from 'react';
 
 import Presenter from './Error500Page.presenter';
-import { useTelemetry } from '../../../providers/TelemetryProvider';
+import { useAppInsightsContext } from '@microsoft/applicationinsights-react-js';
 
 interface Error500PageProps {
   error?: Error
@@ -19,7 +19,7 @@ function Error500Page(props: Readonly<Error500PageProps>) {
 
   const { error } = props;
 
-  const { trackException } = useTelemetry();
+  const { trackException } = useAppInsightsContext();
 
   React.useEffect(() => {
     trackException({

@@ -95,7 +95,7 @@ jest.mock('./VisibilityIcon', () =>
     );
   });
 
-it('should create shapshot of when loading is true', async () => {
+it('should create a shapshot when loading is true', () => {
   const params = {
     card: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -123,7 +123,7 @@ it('should create shapshot of when loading is true', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create shapshot of when loading is false', async () => {
+it('should create a shapshot when loading is false', () => {
   const params = {
     card: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',

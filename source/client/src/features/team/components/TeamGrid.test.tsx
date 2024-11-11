@@ -24,7 +24,7 @@ jest.mock('./TeamGridItem', () =>
     );
   });
 
-it('should create shapshot', async () => {
+it('should create a shapshot', () => {
   const params = {
     cards: [
       {

@@ -10,7 +10,7 @@ import { compare } from './String';
 
 describe('compare', () => {
 
-  it('should return "0" if the values are in the same position', () => {
+  it('should retrieve 0 when the values are in the same position', () => {
     const param = {
       a: 'foo',
       b: 'foo'
@@ -22,7 +22,7 @@ describe('compare', () => {
     expect(actual).toStrictEqual(expected.value);
   });
 
-  it('should return a positive value if the first value comes after the second value', () => {
+  it('should retrieve a positive value when the first value comes after the second value', () => {
     const param = {
       a: 'foo',
       b: 'bar'
@@ -34,7 +34,7 @@ describe('compare', () => {
     expect(actual).toStrictEqual(expected.value);
   });
 
-  it('should return a positive value if the the first value is "null"', () => {
+  it('should retrieve a positive value when the the first value is null', () => {
     const param = {
       a: null,
       b: 'bar'
@@ -46,7 +46,7 @@ describe('compare', () => {
     expect(actual).toStrictEqual(expected.value);
   });
 
-  it('should return a positive value if the the first value is "undefined"', () => {
+  it('should retrieve a positive value when the the first value is undefined', () => {
     const param = {
       a: undefined,
       b: 'bar'
@@ -58,7 +58,7 @@ describe('compare', () => {
     expect(actual).toStrictEqual(expected.value);
   });
 
-  it('should return a negative value if the first value comes before the second value', () => {
+  it('should retrieve a negative value if the first value comes before the second value', () => {
     const param = {
       a: 'bar',
       b: 'foo'
@@ -70,7 +70,7 @@ describe('compare', () => {
     expect(actual).toStrictEqual(expected.value);
   });
 
-  it('should return a negative value if the the second value is "null"', () => {
+  it('should retrieve a negative value if the the second value is null', () => {
     const param = {
       a: 'bar',
       b: null
@@ -82,7 +82,7 @@ describe('compare', () => {
     expect(actual).toStrictEqual(expected.value);
   });
 
-  it('should return a negative value if the the second value is "undefined"', () => {
+  it('should retrieve a negative value if the the second value is undefined', () => {
     const param = {
       a: 'bar',
       b: undefined

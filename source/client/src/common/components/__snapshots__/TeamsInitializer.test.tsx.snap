@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should create shapshot of when loading is false 1`] = `
+exports[`should create a shapshot when loading 1`] = `<DocumentFragment />`;
+
+exports[`should create a shapshot when not loading 1`] = `
 <DocumentFragment>
   <div
     data-testid="Children"
   />
 </DocumentFragment>
 `;
-
-exports[`should create shapshot of when loading is true 1`] = `<DocumentFragment />`;

@@ -17,17 +17,17 @@ import { useIntl } from 'react-intl';
 import { useTheme } from '../../../providers/ThemeProvider';
 
 export interface MembershipIconProps {
-  value?: MembershipType
+  type?: MembershipType
 }
 
 function MembershipIcon(props: Readonly<MembershipIconProps>) {
 
-  const { value } = props;
+  const { type } = props;
 
   const intl = useIntl();
   const { theme } = useTheme();
 
-  switch (value) {
+  switch (type) {
     case 'standard':
       return null;
     case 'private':

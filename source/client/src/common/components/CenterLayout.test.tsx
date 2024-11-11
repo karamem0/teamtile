@@ -11,7 +11,7 @@ import React from 'react';
 import CenterLayout from './CenterLayout.presenter';
 import { render } from '@testing-library/react';
 
-it('should create shapshot', async () => {
+it('should create a shapshot', () => {
   const params = {
     children: (
       <div data-testid="Children" />

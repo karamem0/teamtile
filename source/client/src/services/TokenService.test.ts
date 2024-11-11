@@ -8,6 +8,7 @@
 
 import * as teamsjs from '@microsoft/teams-js';
 import {
+  getCachedToken,
   getClientToken,
   getServerToken
 } from './TokenService';
@@ -22,7 +23,7 @@ beforeEach(() => {
 
 describe('getClientToken', () => {
 
-  it('should get client token', async () => {
+  it('should retrieve a client token', async () => {
     const params = {
       token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
     };
@@ -40,7 +41,7 @@ describe('getClientToken', () => {
 
 describe('getServerToken', () => {
 
-  it('should get server token when server returns 200', async () => {
+  it('should retrieve a server token when the server responds with a "200" status code', async () => {
     const params = {
       token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
       status: 200
@@ -82,7 +83,7 @@ describe('getServerToken', () => {
     expect(actual).toStrictEqual(expected.token);
   });
 
-  it('should get server token when server returns 200', async () => {
+  it('should retrieve a server token when the server responds with a "403" status code', async () => {
     const params = {
       token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
       status: 403,
@@ -128,7 +129,7 @@ describe('getServerToken', () => {
     expect(actual).toStrictEqual(expected.token);
   });
 
-  it('should get server token when server returns 500', async () => {
+  it('should raise an error when the server responds with a "500" status code', async () => {
     const params = {
       token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
       status: 500,
@@ -168,6 +169,52 @@ describe('getServerToken', () => {
       });
     });
     await getServerToken(params.token).catch((error) => expect(error.message).toBe(expected.error));
+  });
+
+});
+
+describe('getCachedToken', () => {
+
+  it('should retrieve a cached token when the token has not been expired', () => {
+    const params = {
+      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjQxMDI0MTIzOTl9.-PbkLpaS6zJSm1n_f2HkNUbrRQHZ0hF3kYdopo48_-E'
+    };
+    const expected = {
+      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjQxMDI0MTIzOTl9.-PbkLpaS6zJSm1n_f2HkNUbrRQHZ0hF3kYdopo48_-E'
+    };
+    const mock = sessionStorage.getItem as jest.Mock;
+    mock.mockReturnValue(params.token);
+    const actual = getCachedToken();
+    expect(mock).toHaveBeenCalled();
+    expect(actual).toStrictEqual(expected.token);
+  });
+
+  it('should retrieve undefined when the token has not been cached', () => {
+    const params = {
+      token: undefined
+    };
+    const expected = {
+      token: undefined
+    };
+    const mock = sessionStorage.getItem as jest.Mock;
+    mock.mockReturnValue(params.token);
+    const actual = getCachedToken();
+    expect(mock).toHaveBeenCalled();
+    expect(actual).toStrictEqual(expected.token);
+  });
+
+  it('should retrieve undefined when the token has been expired', () => {
+    const params = {
+      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjk0NjY1MjQwMH0.4KH1oUE6zGRmtA3ht0W969-9LqK-OAzjRmGcUBMfVH8'
+    };
+    const expected = {
+      token: undefined
+    };
+    const mock = sessionStorage.getItem as jest.Mock;
+    mock.mockReturnValue(params.token);
+    const actual = getCachedToken();
+    expect(mock).toHaveBeenCalled();
+    expect(actual).toStrictEqual(expected.token);
   });
 
 });

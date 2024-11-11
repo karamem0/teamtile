@@ -27,7 +27,7 @@ jest.mock('../../../common/components/SidePanel', () =>
     );
   });
 
-it('should create shapshot', async () => {
+it('should create a shapshot', () => {
   const params = {
     items: [
       {

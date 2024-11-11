@@ -25,7 +25,7 @@ beforeEach(() => {
 
 describe('getChannels', () => {
 
-  it('should get channels from cache', async () => {
+  it('should retrieve channels from the cache', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       values: [
@@ -47,7 +47,7 @@ describe('getChannels', () => {
     expect(mockGraph).not.toHaveBeenCalled();
   });
 
-  it('should get channels from graph', async () => {
+  it('should retrieve channels from the Microsoft Graph API', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       values: [
@@ -69,7 +69,7 @@ describe('getChannels', () => {
     expect(mockGraph).toHaveBeenCalled();
   });
 
-  it('should return error when getting channels', async () => {
+  it('should raise an error when retrieving channels', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       values: [
@@ -94,7 +94,7 @@ describe('getChannels', () => {
 
 describe('getDrive', () => {
 
-  it('should get drive from cache', async () => {
+  it('should retrieve a drive from the cache', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       value: {
@@ -112,7 +112,7 @@ describe('getDrive', () => {
     expect(mockGraph).not.toHaveBeenCalled();
   });
 
-  it('should get drive from graph', async () => {
+  it('should retrieve a drive from the Microsoft Graph API', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       value: {
@@ -130,7 +130,7 @@ describe('getDrive', () => {
     expect(mockGraph).toHaveBeenCalled();
   });
 
-  it('should return undefined when getting drive', async () => {
+  it('should return undefined when retrieving a drive', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       value: {
@@ -152,7 +152,7 @@ describe('getDrive', () => {
 
 describe('getMembers', () => {
 
-  it('should get members from cache', async () => {
+  it('should retrieve members from the cache', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       values: [
@@ -178,7 +178,7 @@ describe('getMembers', () => {
     expect(mockGraph).not.toHaveBeenCalled();
   });
 
-  it('should get members from graph', async () => {
+  it('should retrieve members from the Microsoft Graph API', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       values: [
@@ -204,7 +204,7 @@ describe('getMembers', () => {
     expect(mockGraph).toHaveBeenCalled();
   });
 
-  it('should return error when getting members', async () => {
+  it('should raise an error when retrieving members', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       values: [
@@ -229,7 +229,7 @@ describe('getMembers', () => {
 
 describe('getTab', () => {
 
-  it('should get tab', async () => {
+  it('should retrieve a tab', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       channelId: 'b!UvZsiQCydEuBEcAT9kQGz_C9gbGAlohJgfeiSu5K_WrNO7djCV5dS4pWDvGiRupe',
@@ -250,7 +250,7 @@ describe('getTab', () => {
     expect(mockGraph).toHaveBeenCalled();
   });
 
-  it('should return error when getting tab', async () => {
+  it('should raise an error when retrieving tab', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       channelId: 'b!UvZsiQCydEuBEcAT9kQGz_C9gbGAlohJgfeiSu5K_WrNO7djCV5dS4pWDvGiRupe',
@@ -275,7 +275,7 @@ describe('getTab', () => {
 
 describe('getTags', () => {
 
-  it('should get tags from cache', async () => {
+  it('should retrieve tags from the cache', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       values: [
@@ -297,7 +297,7 @@ describe('getTags', () => {
     expect(mockGraph).not.toHaveBeenCalled();
   });
 
-  it('should get tags from graph', async () => {
+  it('should retrieve tags from the Microsoft Graph API', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       values: [
@@ -319,7 +319,7 @@ describe('getTags', () => {
     expect(mockGraph).toHaveBeenCalled();
   });
 
-  it('should return error when getting tags', async () => {
+  it('should raise an error when retrieving tags', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       values: [
@@ -344,7 +344,7 @@ describe('getTags', () => {
 
 describe('getTagMembers', () => {
 
-  it('should get tag members from cache', async () => {
+  it('should retrieve tag members from the cache', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       tagId: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
@@ -367,7 +367,7 @@ describe('getTagMembers', () => {
     expect(mockGraph).not.toHaveBeenCalled();
   });
 
-  it('should get tag members from graph', async () => {
+  it('should retrieve tag members from the Microsoft Graph API', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       tagId: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
@@ -390,32 +390,25 @@ describe('getTagMembers', () => {
     expect(mockGraph).toHaveBeenCalled();
   });
 
-  it('should return error when getting tags', async () => {
+  it('should raise an error when retrieving tag members', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-      values: [
-        {
-          id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
-          displayName: 'Finance',
-          description: 'Finance Team for Mach 8 Project',
-          memberCount: 2
-        }
-      ]
+      tagId: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk=='
     };
-    const mockCache = teamService.getTagsFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getTagsFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getTagMembersFromCache as unknown as jest.Mock;
+    const mockGraph = teamService.getTagMembersFromGraph as unknown as jest.Mock;
     mockCache.mockResolvedValue(undefined);
     mockGraph.mockImplementation(() => {
       throw new Error('Something went wrong');
     });
-    await expect(getTags(params.teamId)).rejects.toThrow('Something went wrong');
+    await expect(getTagMembers(params.teamId, params.tagId)).rejects.toThrow('Something went wrong');
   });
 
 });
 
 describe('setPin', () => {
 
-  it('should set pin', async () => {
+  it('should set a pin', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       pinned: true
@@ -429,7 +422,7 @@ describe('setPin', () => {
     expect(mock).toHaveBeenCalledWith(expected.teamId, expected.pinned);
   });
 
-  it('should return error when setting pin', async () => {
+  it('should raise an error when setting a pin', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       pinned: true

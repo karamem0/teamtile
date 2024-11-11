@@ -50,9 +50,6 @@ export function getCachedToken(): string | undefined {
     return;
   }
   const jwt = jwtDecode(token);
-  if (jwt == null) {
-    return;
-  }
   const exp = jwt.exp ?? 0;
   const now = Date.now();
   if (now >= exp * 1000) {

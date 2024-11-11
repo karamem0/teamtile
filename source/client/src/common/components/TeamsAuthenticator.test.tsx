@@ -11,7 +11,7 @@ import React from 'react';
 import TeamsAuthenticator from './TeamsAuthenticator.presenter';
 import { render } from '@testing-library/react';
 
-it('should create shapshot of when loading is true', async () => {
+it('should create a shapshot when loading is true', () => {
   const params = {
     children: (
       <div data-testid="Children" />
@@ -22,7 +22,7 @@ it('should create shapshot of when loading is true', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create shapshot of when loading is false', async () => {
+it('should create a shapshot when loading is false', () => {
   const params = {
     children: (
       <div data-testid="Children" />

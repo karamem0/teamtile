@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should create shapshot 1`] = `
+exports[`should create a shapshot 1`] = `
 <DocumentFragment>
   .emotion-0 {
   display: -webkit-box;
@@ -70,7 +70,7 @@ exports[`should create shapshot 1`] = `
           value=""
         />
         <span
-          class="fui-Input__contentAfter r1572tok fui-SearchBox__contentAfter ___d39huh0_hhph080 f1cnd47f f1ufnopg fk73vx1 fniina8 f3tsq5r"
+          class="fui-Input__contentAfter r1572tok fui-SearchBox__contentAfter ___yrbim60_1xrsupy f1cnd47f f1ufnopg fniina8 f3tsq5r f1a3p1vp"
         >
           <span
             aria-label="clear"

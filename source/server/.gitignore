@@ -1,4 +1,4 @@
-# https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
+### https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
 # User-specific files
 *.rsuser
@@ -393,3 +393,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Azurite
+.azurite/

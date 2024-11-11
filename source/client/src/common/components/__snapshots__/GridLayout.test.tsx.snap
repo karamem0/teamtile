@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should create shapshot 1`] = `
+exports[`should create a shapshot 1`] = `
 <DocumentFragment>
   .emotion-0 {
   display: grid;

@@ -21,7 +21,7 @@ jest.mock('./TeamGrid', () =>
     );
   });
 
-it('should create shapshot', async () => {
+it('should create a shapshot', () => {
   const params = {};
   const { asFragment } = render(
     <IntlProvider>

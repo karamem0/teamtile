@@ -17,17 +17,17 @@ import { useIntl } from 'react-intl';
 import { useTheme } from '../../../providers/ThemeProvider';
 
 interface VisibilityIconProps {
-  value?: VisibilityType
+  type?: VisibilityType
 }
 
 function VisibilityIcon(props: Readonly<VisibilityIconProps>) {
 
-  const { value } = props;
+  const { type } = props;
 
   const { theme } = useTheme();
   const intl = useIntl();
 
-  switch (value) {
+  switch (type) {
     case 'public':
       return (
         <Tooltip

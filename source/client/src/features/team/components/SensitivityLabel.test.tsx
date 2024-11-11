@@ -11,17 +11,17 @@ import React from 'react';
 import SensitivityLabel from './SensitivityLabel.presenter';
 import { render } from '@testing-library/react';
 
-it('should create shapshot of when value is not undefined', async () => {
+it('should create a shapshot when value is undefined', () => {
   const params = {
-    value: 'Restricted'
+    value: undefined
   };
   const { asFragment } = render(<SensitivityLabel {...params} />);
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create shapshot of when value is undefined', async () => {
+it('should create a shapshot when value is not undefined', () => {
   const params = {
-    value: undefined
+    value: 'Restricted'
   };
   const { asFragment } = render(<SensitivityLabel {...params} />);
   expect(asFragment()).toMatchSnapshot();

@@ -15,10 +15,10 @@ jobs:
           path: manifest
       - name: Archive artifatcs
         shell: pwsh
-        run: Compress-Archive -Path manifest/* -DestinationPath ${{env.RELEASE_FILE_NAME}}.zip
+        run: Compress-Archive -Path manifest/* -DestinationPath ${{env.RELEASE_FILE_NAME}}
       - name: Create release
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
-          files: ${{env.RELEASE_FILE_NAME}}.zip
+          files: ${{env.RELEASE_FILE_NAME}}

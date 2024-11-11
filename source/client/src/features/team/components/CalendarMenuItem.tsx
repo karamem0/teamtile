@@ -12,7 +12,6 @@ import { app, appInstallDialog } from '@microsoft/teams-js';
 import { useAsyncFn, useError } from 'react-use';
 import Presenter from './CalendarMenuItem.presenter';
 import { getTab } from '../managers/TeamManager';
-import { isPC } from '../../../utils/Teams';
 import messages from '../messages';
 import { useIntl } from 'react-intl';
 import { useSnackbar } from '../../../providers/SnackbarProvider';
@@ -41,17 +40,15 @@ function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
     if (internalId == null) {
       return;
     }
-    if (isPC(await app.getContext())) {
-      const appId = import.meta.env.VITE_CALENDAR_APP_ID;
-      const appTab = await fetch(id, internalId, appId);
-      if (appTab?.webUrl) {
-        await app.openLink(appTab.webUrl);
-        return;
-      }
-      if (appInstallDialog.isSupported()) {
-        await appInstallDialog.openAppInstallDialog({ appId });
-        return;
-      }
+    const appId = import.meta.env.VITE_CALENDAR_APP_ID;
+    const appTab = await fetch(id, internalId, appId);
+    if (appTab?.webUrl) {
+      await app.openLink(appTab.webUrl);
+      return;
+    }
+    if (appInstallDialog.isSupported()) {
+      await appInstallDialog.openAppInstallDialog({ appId });
+      return;
     }
     setSnackbar({
       intent: 'warning',

@@ -14,9 +14,9 @@ import VisibilityIcon from './VisibilityIcon.presenter';
 import { VisibilityType } from '../../../types/Entity';
 import { render } from '@testing-library/react';
 
-it('should create shapshot of when value is "public"', async () => {
+it('should create a shapshot when value is public', () => {
   const params = {
-    value: 'public' as VisibilityType
+    type: 'public' as VisibilityType
   };
   const { asFragment } = render(
     <IntlProvider>
@@ -28,9 +28,9 @@ it('should create shapshot of when value is "public"', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create shapshot of when value is "private"', async () => {
+it('should create a shapshot when value is private', () => {
   const params = {
-    value: 'private' as VisibilityType
+    type: 'private' as VisibilityType
   };
   const { asFragment } = render(
     <IntlProvider>
@@ -42,9 +42,9 @@ it('should create shapshot of when value is "private"', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create shapshot of when value is undefined', async () => {
+it('should create a shapshot when value is undefined', () => {
   const params = {
-    value: undefined
+    type: undefined
   };
   const { asFragment } = render(
     <IntlProvider>

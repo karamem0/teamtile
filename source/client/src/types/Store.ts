@@ -13,12 +13,7 @@ export interface Action {
   payload: unknown
 }
 
-export type ActionType =
-  'setFilter' |
-  'setCard' |
-  'setCards' |
-  'setLoading' |
-  'togglePin';
+export type ActionType = 'setFilter' | 'setCard' | 'setCards' | 'setLoading' | 'togglePin';
 
 export type DispatchAction<T> = (payload: T) => void;
 

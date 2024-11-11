@@ -13,7 +13,7 @@ import IntlProvider from '../../../providers/IntlProvider';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
-it('should create shapshot', async () => {
+it('should create a shapshot', () => {
   const params = {};
   const { asFragment } = render(
     <ThemeProvider>

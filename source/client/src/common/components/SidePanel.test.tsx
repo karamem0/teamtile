@@ -12,7 +12,7 @@ import SidePanel from './SidePanel.presenter';
 import ThemeProvider from '../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
-it('should create shapshot of when loading is true', async () => {
+it('should create a shapshot when loading is true', () => {
   const container = document.body.appendChild(document.createElement('div'));
   const params = {
     content: (
@@ -36,7 +36,7 @@ it('should create shapshot of when loading is true', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create shapshot of when loading is false', async () => {
+it('should create a shapshot when loading is false', () => {
   const container = document.body.appendChild(document.createElement('div'));
   const params = {
     content: (

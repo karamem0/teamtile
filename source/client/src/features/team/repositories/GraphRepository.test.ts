@@ -30,7 +30,7 @@ beforeEach(() => {
 
 describe('getChannels', () => {
 
-  it('should get channels', async () => {
+  it('should retrieve channels', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       response: {
@@ -71,7 +71,7 @@ describe('getChannels', () => {
 
 describe('getDrive', () => {
 
-  it('should get drive', async () => {
+  it('should retrieve drive', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       response: {
@@ -102,7 +102,7 @@ describe('getDrive', () => {
 
 describe('getGroups', () => {
 
-  it('should get groups', async () => {
+  it('should retrieve groups', async () => {
     const params = {
       groupIds: [ '02bd9fd6-8f93-4758-87c3-1fb73740a315' ],
       response: {
@@ -149,7 +149,7 @@ describe('getGroups', () => {
 
 describe('getMemberIcons', () => {
 
-  it('should get member icons', async () => {
+  it('should retrieve member icons', async () => {
     const params = {
       userIds: [ '87d349ed-44d7-43e1-9a83-5f2406dee5bd' ],
       response: {
@@ -189,7 +189,7 @@ describe('getMemberIcons', () => {
 
 describe('getMembers', () => {
 
-  it('should get members', async () => {
+  it('should retrieve members', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       response: {
@@ -232,7 +232,7 @@ describe('getMembers', () => {
 
 describe('getTabs', () => {
 
-  it('should get tabs', async () => {
+  it('should retrieve tabs', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       channelId: '19%3A09fc54a3141a45d0bc769cf506d2e079%40thread.skype',
@@ -276,7 +276,7 @@ describe('getTabs', () => {
 
 describe('getTags', () => {
 
-  it('should get tags', async () => {
+  it('should retrieve tags', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       response: {
@@ -316,7 +316,7 @@ describe('getTags', () => {
 
 describe('getTagMembers', () => {
 
-  it('should get tag members', async () => {
+  it('should retrieve tag members', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       tagId: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyNlYjY1M2Y5Mi04MzczLTRkZTYtYmZlYy01YjRkMjE2YjZhZGUjI2QzYjJiM2ViLWM0N2YtNDViOS05NWYyLWIyZjJlZjYyMTVjZQ==',
@@ -358,7 +358,7 @@ describe('getTagMembers', () => {
 
 describe('getTeamIcons', () => {
 
-  it('should get team icons', async () => {
+  it('should retrieve team icons', async () => {
     const params = {
       teamIds: [ '02bd9fd6-8f93-4758-87c3-1fb73740a315' ],
       response: {
@@ -398,7 +398,7 @@ describe('getTeamIcons', () => {
 
 describe('getTeamInfos', () => {
 
-  it('should get team infos', async () => {
+  it('should retrieve team infos', async () => {
     const params = {
       response: {
         value: [
@@ -436,7 +436,7 @@ describe('getTeamInfos', () => {
 
 describe('getTeams', () => {
 
-  it('should get teams', async () => {
+  it('should retrieve teams', async () => {
     const params = {
       teamIds: [ '02bd9fd6-8f93-4758-87c3-1fb73740a315' ],
       response: {

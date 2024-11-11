@@ -12,7 +12,7 @@ import CalendarMenuItem from './CalendarMenuItem.presenter';
 import IntlProvider from '../../../providers/IntlProvider';
 import { render } from '@testing-library/react';
 
-it('should create shapshot', async () => {
+it('should create a shapshot', () => {
   const params = {};
   const { asFragment } = render(
     <IntlProvider>

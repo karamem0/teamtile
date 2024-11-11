@@ -11,7 +11,7 @@ import React from 'react';
 import TeamsInitializer from './TeamsInitializer.presenter';
 import { render } from '@testing-library/react';
 
-it('should create shapshot of when loading is true', async () => {
+it('should create a shapshot when loading', () => {
   const params = {
     children: (
       <div data-testid="Children" />
@@ -22,7 +22,7 @@ it('should create shapshot of when loading is true', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create shapshot of when loading is false', async () => {
+it('should create a shapshot when not loading', () => {
   const params = {
     children: (
       <div data-testid="Children" />
