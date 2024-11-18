@@ -8,13 +8,13 @@
 
 import React from 'react';
 
-import LoaderPanel from './LoaderPanel.presenter';
+import Presenter from './LoaderPanel.presenter';
 import { render } from '@testing-library/react';
 
 it('should create a shapshot', () => {
   const params = {};
   const { asFragment } = render(
-    <LoaderPanel {...params} />
+    <Presenter {...params} />
   );
   expect(asFragment()).toMatchSnapshot();
 });

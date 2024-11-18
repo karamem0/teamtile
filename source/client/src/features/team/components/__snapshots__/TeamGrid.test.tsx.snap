@@ -77,7 +77,7 @@ exports[`should create a shapshot 1`] = `
               role="list"
             >
               <div
-                data-testid="TeamGridItem"
+                data-testid="test-TeamGridItem"
               />
             </div>
           </div>
@@ -124,7 +124,7 @@ exports[`should create a shapshot 1`] = `
               role="list"
             >
               <div
-                data-testid="TeamGridItem"
+                data-testid="test-TeamGridItem"
               />
             </div>
           </div>

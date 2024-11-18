@@ -9,23 +9,24 @@
 import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
-import TeamPanel from './TeamPanel.presenter';
+import Presenter from './TeamPanel.presenter';
 import { render } from '@testing-library/react';
 
 jest.mock('./TeamGrid', () =>
   function TeamGrid({ children }: React.PropsWithChildren<unknown>) {
     return (
-      <div data-testid="TeamGrid">
+      <div data-testid="test-TeamGrid">
         {children}
       </div>
     );
-  });
+  }
+);
 
 it('should create a shapshot', () => {
   const params = {};
   const { asFragment } = render(
     <IntlProvider>
-      <TeamPanel {...params} />
+      <Presenter {...params} />
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();

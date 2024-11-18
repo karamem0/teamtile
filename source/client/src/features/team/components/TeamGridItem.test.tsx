@@ -9,7 +9,7 @@
 import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
-import TeamGridItem from './TeamGridItem.presenter';
+import Presenter from './TeamGridItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
 import { render } from '@testing-library/react';
@@ -17,85 +17,94 @@ import { render } from '@testing-library/react';
 jest.mock('./AvatarIcon', () =>
   function AvatarIcon({ children }: React.PropsWithChildren<unknown>) {
     return (
-      <div data-testid="AvatarIcon">
+      <div data-testid="test-AvatarIcon">
         {children}
       </div>
     );
-  });
+  }
+);
 
 jest.mock('./CalendarMenuItem', () =>
   function CalendarMenuItem({ children }: React.PropsWithChildren<unknown>) {
     return (
-      <div data-testid="CalendarMenuItem">
+      <div data-testid="test-CalendarMenuItem">
         {children}
       </div>
     );
-  });
+  }
+);
 
 jest.mock('./ChannelMenuItem', () =>
   function ChannelMenuItem({ children }: React.PropsWithChildren<unknown>) {
     return (
-      <div data-testid="ChannelMenuItem">
+      <div data-testid="test-ChannelMenuItem">
         {children}
       </div>
     );
-  });
+  }
+);
 
 jest.mock('./DriveMenuItem', () =>
   function DriveMenuItem({ children }: React.PropsWithChildren<unknown>) {
     return (
-      <div data-testid="DriveMenuItem">
+      <div data-testid="test-DriveMenuItem">
         {children}
       </div>
     );
-  });
+  }
+);
 
 jest.mock('./MemberMenuItem', () =>
   function MemberMenuItem({ children }: React.PropsWithChildren<unknown>) {
     return (
-      <div data-testid="MemberMenuItem">
+      <div data-testid="test-MemberMenuItem">
         {children}
       </div>
     );
-  });
+  }
+);
 
 jest.mock('./PinMenuItem', () =>
   function PinMenuItem({ children }: React.PropsWithChildren<unknown>) {
     return (
-      <div data-testid="PinMenuItem">
+      <div data-testid="test-PinMenuItem">
         {children}
       </div>
     );
-  });
+  }
+);
 
 jest.mock('./SensitivityLabel', () =>
   function SensitivityLabel({ children }: React.PropsWithChildren<unknown>) {
     return (
-      <div data-testid="SensitivityLabel">
+      <div data-testid="test-SensitivityLabel">
         {children}
       </div>
     );
-  });
+  }
+);
 
 jest.mock('./TagMenuItem', () =>
   function TagMenuItem({ children }: React.PropsWithChildren<unknown>) {
     return (
-      <div data-testid="TagMenuItem">
+      <div data-testid="test-TagMenuItem">
         {children}
       </div>
     );
-  });
+  }
+);
 
 jest.mock('./VisibilityIcon', () =>
   function VisibilityIcon({ children }: React.PropsWithChildren<unknown>) {
     return (
-      <div data-testid="VisibilityIcon">
+      <div data-testid="test-VisibilityIcon">
         {children}
       </div>
     );
-  });
+  }
+);
 
-it('should create a shapshot when loading is true', () => {
+it('should create a shapshot when the loading parameter is true', () => {
   const params = {
     card: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -116,14 +125,14 @@ it('should create a shapshot when loading is true', () => {
   const { asFragment } = render(
     <IntlProvider>
       <ThemeProvider>
-        <TeamGridItem {...params} />
+        <Presenter {...params} />
       </ThemeProvider>
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when loading is false', () => {
+it('should create a shapshot when the loading parameter is false', () => {
   const params = {
     card: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -144,7 +153,7 @@ it('should create a shapshot when loading is false', () => {
   const { asFragment } = render(
     <IntlProvider>
       <ThemeProvider>
-        <TeamGridItem {...params} />
+        <Presenter {...params} />
       </ThemeProvider>
     </IntlProvider>
   );

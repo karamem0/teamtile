@@ -23,7 +23,10 @@ export function search(value: string | null | undefined, match: string | null | 
   if (value == null) {
     return false;
   }
-  if (match && value.search(new RegExp(match.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&'), 'i')) < 0) {
+  if (match == null) {
+    return false;
+  }
+  if (value.search(new RegExp(match.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&'), 'i')) < 0) {
     return false;
   }
   return true;

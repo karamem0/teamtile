@@ -25,19 +25,15 @@ namespace Karamem0.Teamtile.Controllers;
 [ApiController()]
 [Authorize()]
 [Route("api/token")]
-public class TokenController : Controller
+public class TokenController(IHttpClientFactory httpClientFactory, IConfiguration configuration) : Controller
 {
 
-    private readonly HttpClient httpClient;
+    private readonly HttpClient httpClient = httpClientFactory.CreateClient();
 
-    private readonly MicrosoftIdentityOptions identityOptions;
-
-    public TokenController(IHttpClientFactory httpClientFactory, IConfiguration configuration)
-    {
-        this.httpClient = httpClientFactory.CreateClient();
-        this.identityOptions = configuration.GetSection("AzureAD").Get<MicrosoftIdentityOptions>()
-            ?? throw new ArgumentNullException(nameof(configuration));
-    }
+    private readonly MicrosoftIdentityOptions identityOptions = configuration
+        .GetSection("AzureAD")
+        .Get<MicrosoftIdentityOptions>()
+        ?? throw new ArgumentNullException(nameof(configuration));
 
     [HttpPost()]
     public async Task<IActionResult> PostAsync([FromBody] TokenRequest request)

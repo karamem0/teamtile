@@ -6,16 +6,25 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-export type MembershipType = 'private' | 'standard';
+export type MembershipType =
+  | 'private'
+  | 'standard'
+  | 'shared';
 
-export type VisibilityType = 'private' | 'public';
+export type VisibilityType =
+  | 'private'
+  | 'public';
 
-export type AccordionType = 'all' | 'archived' | 'pinned';
+export type AccordionType =
+  | 'all'
+  | 'archived'
+  | 'pinned';
 
 export interface Channel {
   id?: string,
   displayName?: string,
   membershipType?: MembershipType,
+  primary?: boolean,
   webUrl?: string
 }
 

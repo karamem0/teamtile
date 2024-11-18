@@ -8,27 +8,34 @@
 
 import React from 'react';
 
-import TeamsAuthenticator from './TeamsAuthenticator.presenter';
-import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+import Presenter from './TeamsAuthenticator.presenter';
 
-it('should create a shapshot when loading is true', () => {
+it('should create a shapshot when the loading parameter is true', () => {
   const params = {
     children: (
-      <div data-testid="Children" />
+      <div data-testid="test-Children" />
     ),
     loading: true
   };
-  const { asFragment } = render(<TeamsAuthenticator {...params} />);
+  const { asFragment } = render(
+    <Presenter {...params} />
+  );
   expect(asFragment()).toMatchSnapshot();
+  expect(screen.queryByTestId('test-Children')).not.toBeInTheDocument();
 });
 
-it('should create a shapshot when loading is false', () => {
+it('should create a shapshot when the loading parameter is false', () => {
   const params = {
     children: (
-      <div data-testid="Children" />
+      <div data-testid="test-Children" />
     ),
     loading: false
   };
-  const { asFragment } = render(<TeamsAuthenticator {...params} />);
+  const { asFragment } = render(
+    <Presenter {...params} />
+  );
   expect(asFragment()).toMatchSnapshot();
+  expect(screen.getByTestId('test-Children')).toBeInTheDocument();
 });

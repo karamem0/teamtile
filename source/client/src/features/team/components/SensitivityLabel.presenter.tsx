@@ -11,17 +11,17 @@ import React from 'react';
 import { Badge } from '@fluentui/react-components';
 
 interface SensitivityLabelProps {
-  value?: string
+  label?: string
 }
 
 function SensitivityLabel(props: Readonly<SensitivityLabelProps>) {
 
-  const { value } = props;
+  const { label } = props;
 
   return (
-    value ? (
+    label ? (
       <Badge appearance="tint">
-        {value}
+        {label}
       </Badge>
     ) : null
   );

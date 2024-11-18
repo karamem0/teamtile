@@ -8,10 +8,9 @@
 
 import React from 'react';
 
-import { CalendarIcon } from '@fluentui/react-icons-mdl2';
+import { Calendar16Regular } from '@fluentui/react-icons';
 import CardMenuItem from './CardMenuItem';
 import { EventHandler } from '../../../types/Event';
-import { css } from '@emotion/react';
 import messages from '../messages';
 import { useIntl } from 'react-intl';
 
@@ -31,11 +30,7 @@ function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
     <CardMenuItem
       title={intl.formatMessage(messages.OpenChannelCalendar)}
       icon={(
-        <CalendarIcon
-          css={css`
-            font-size: 1rem;
-            line-height: 1rem;
-          `} />
+        <Calendar16Regular />
       )}
       onClick={onClick} />
   );

@@ -11,18 +11,19 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import IntlProvider from '../../../providers/IntlProvider';
-import TeamGrid from './TeamGrid.presenter';
+import Presenter from './TeamGrid.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
 
 jest.mock('./TeamGridItem', () =>
   function TeamGridItem({ children }: React.PropsWithChildren<unknown>) {
     return (
-      <div data-testid="TeamGridItem">
+      <div data-testid="test-TeamGridItem">
         {children}
       </div>
     );
-  });
+  }
+);
 
 it('should create a shapshot', () => {
   const params = {
@@ -48,7 +49,7 @@ it('should create a shapshot', () => {
   const { asFragment } = render(
     <IntlProvider>
       <ThemeProvider>
-        <TeamGrid {...params} />
+        <Presenter {...params} />
       </ThemeProvider>
     </IntlProvider>
   );

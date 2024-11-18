@@ -6,7 +6,7 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import { compare } from './String';
+import { compare, search } from './String';
 
 describe('compare', () => {
 
@@ -92,6 +92,50 @@ describe('compare', () => {
     };
     const actual = compare(param.a, param.b);
     expect(actual).toStrictEqual(expected.value);
+  });
+
+});
+
+describe('search', () => {
+
+  it('should retrieve true when the value contains the search string', () => {
+    const param = {
+      value: 'foo bar baz',
+      match: 'bar'
+    };
+    const expected = true;
+    const actual = search(param.value, param.match);
+    expect(actual).toStrictEqual(expected);
+  });
+
+  it('should retrieve false when the value does not contain the search string', () => {
+    const param = {
+      value: 'foo bar baz',
+      match: 'qux'
+    };
+    const expected = false;
+    const actual = search(param.value, param.match);
+    expect(actual).toStrictEqual(expected);
+  });
+
+  it('should retrieve false when the value is null', () => {
+    const param = {
+      value: null,
+      match: 'bar'
+    };
+    const expected = false;
+    const actual = search(param.value, param.match);
+    expect(actual).toStrictEqual(expected);
+  });
+
+  it('should retrieve false when the value is undefined', () => {
+    const param = {
+      value: undefined,
+      match: 'bar'
+    };
+    const expected = false;
+    const actual = search(param.value, param.match);
+    expect(actual).toStrictEqual(expected);
   });
 
 });

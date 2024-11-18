@@ -9,34 +9,36 @@
 import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
-import TagMenuItem from './TagMenuItem.presenter';
+import Presenter from './TagMenuItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
 jest.mock('./TagMemberAccordionItem', () =>
   function TagMemberAccordionItem({ children }: React.PropsWithChildren<unknown>) {
     return (
-      <div data-testid="TagMemberAccordionItem">
+      <div data-testid="test-TagMemberAccordionItem">
         {children}
       </div>
     );
-  });
+  }
+);
 
 jest.mock('../../../common/components/SidePanel', () =>
   function SidePanel({ content, renderer }: { content: React.ReactNode, renderer: (props: unknown) => React.ReactNode }) {
     return (
-      <div data-testid="SidePanel">
-        <div data-testid="Content">
+      <div data-testid="test-SidePanel">
+        <div data-testid="test-Content">
           {content}
         </div>
-        <div data-testid="Renderer">
+        <div data-testid="test-Renderer">
           {renderer({})}
         </div>
       </div>
     );
-  });
+  }
+);
 
-it('should create a shapshot', () => {
+it('should create a shapshot when the items parameter is not undefined', () => {
   const params = {
     id: '2bd9fd6-8f93-4758-87c3-1fb73740a315',
     items: [
@@ -51,7 +53,37 @@ it('should create a shapshot', () => {
   const { asFragment } = render(
     <IntlProvider>
       <ThemeProvider>
-        <TagMenuItem {...params} />
+        <Presenter {...params} />
+      </ThemeProvider>
+    </IntlProvider>
+  );
+  expect(asFragment()).toMatchSnapshot();
+});
+
+it('should create a shapshot when the items parameter is undefined', () => {
+  const params = {
+    id: '2bd9fd6-8f93-4758-87c3-1fb73740a315',
+    items: undefined
+  };
+  const { asFragment } = render(
+    <IntlProvider>
+      <ThemeProvider>
+        <Presenter {...params} />
+      </ThemeProvider>
+    </IntlProvider>
+  );
+  expect(asFragment()).toMatchSnapshot();
+});
+
+it('should create a shapshot when the items parameter is an empty array', () => {
+  const params = {
+    id: '2bd9fd6-8f93-4758-87c3-1fb73740a315',
+    items: []
+  };
+  const { asFragment } = render(
+    <IntlProvider>
+      <ThemeProvider>
+        <Presenter {...params} />
       </ThemeProvider>
     </IntlProvider>
   );

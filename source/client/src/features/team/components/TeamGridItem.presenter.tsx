@@ -143,8 +143,8 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
                     </Text>
                   </Text>
                 </div>
-                <SensitivityLabel value={team.sensitivityLabel} />
-                <VisibilityIcon value={team.visibility} />
+                <SensitivityLabel label={team.sensitivityLabel} />
+                <VisibilityIcon type={team.visibility} />
               </div>
               <div
                 css={css`

@@ -48,6 +48,7 @@ const mapper = createMapper({
 PojosMetadataMap.create<Channel>('Channel', {
   id: String,
   displayName: String,
+  primary: Boolean,
   membershipType: String,
   webUrl: String
 });
@@ -199,6 +200,7 @@ createMap<GraphChannel, Channel>(
   'GraphChannel',
   'Channel',
   forMember((target) => target.membershipType, mapFrom((source) => source.membershipType ?? undefined)),
+  forMember((target) => target.primary, fromValue(false)),
   forMember((target) => target.webUrl, mapFrom((source) => source.webUrl ?? undefined))
 );
 

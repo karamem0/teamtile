@@ -12,15 +12,15 @@ import { MembershipType } from '../../../types/Entity';
 import Presenter from './MembershipIcon.presenter';
 
 export interface MembershipIconProps {
-  value?: MembershipType
+  type?: MembershipType
 }
 
 function MembershipIcon(props: Readonly<MembershipIconProps>) {
 
-  const { value } = props;
+  const { type } = props;
 
   return (
-    <Presenter value={value} />
+    <Presenter type={type} />
   );
 
 }

@@ -38,9 +38,15 @@ export async function getChannelsFromCache(teamId: string): Promise<Channel[] | 
 }
 
 export async function getChannelsFromGraph(teamId: string): Promise<Channel[]> {
-  const value = await graphService.getChannels(teamId);
-  await cacheService.setChannels(teamId, value);
-  return value;
+  const primaryChannel = await graphService.getPrimaryChannel(teamId);
+  const channels = await graphService
+    .getChannels(teamId)
+    .then((values) => values.map((value) => ({
+      ...value,
+      primary: value.id === primaryChannel?.id
+    })));
+  await cacheService.setChannels(teamId, channels);
+  return channels;
 }
 
 export async function getDriveFromCache(teamId: string): Promise<Drive | undefined> {
@@ -74,7 +80,7 @@ export async function getCardsFromCache(items: TeamCard[]): Promise<TeamCard[]> 
     }));
 }
 
-export async function getCardsFromGroup(items: TeamCard[]): Promise<TeamCard[]> {
+export async function getCardsFromGraphGroup(items: TeamCard[]): Promise<TeamCard[]> {
   const ids = items.filter((item) => item.loading).map((item) => item.id);
   const values = await graphService.getGroups(ids);
   values.forEach(async (value) => value.id && await cacheService.setGroup(value.id, value));
@@ -86,7 +92,7 @@ export async function getCardsFromGroup(items: TeamCard[]): Promise<TeamCard[]> 
     });
 }
 
-export async function getCardsFromTeam(items: TeamCard[]): Promise<TeamCard[]> {
+export async function getCardsFromGraphTeam(items: TeamCard[]): Promise<TeamCard[]> {
   const ids = items.filter((item) => item.loading).map((item) => item.id);
   const values = await graphService.getTeams(ids);
   values.forEach(async (value) => value.id && await cacheService.setTeam(value.id, value));

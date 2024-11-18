@@ -3,6 +3,12 @@
 exports[`should create a shapshot 1`] = `
 <DocumentFragment>
   .emotion-0 {
+  min-height: 100vh;
+  line-height: 1.25em;
+  background-color: #f5f5f5;
+}
+
+.emotion-1 {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto auto;
@@ -18,38 +24,42 @@ exports[`should create a shapshot 1`] = `
   cursor: pointer;
 }
 
-.emotion-1 {
-  font-size: 1rem;
-  line-height: 1rem;
-}
-
-<span
-    aria-label="Open in SharePoint"
-    class="fui-Text emotion-0 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
+<div
+    class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    dir="ltr"
   >
-    <button
-      class="fui-Button r1alrhcs ___cpe5h10_1yhfyj7 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f18ktai2 fwbmr0d f44c6la"
-      type="button"
+    <div
+      class="emotion-0"
     >
       <span
-        class="fui-Button__icon rywnvv2"
+        aria-label="Open in SharePoint"
+        class="fui-Text emotion-1 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
       >
-        <span
-          aria-hidden="true"
-          class="root_dd790ee3 emotion-1"
+        <button
+          class="fui-Button r1alrhcs ___cpe5h10_1yhfyj7 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f18ktai2 fwbmr0d f44c6la"
+          type="button"
         >
-          <svg
-            class="svg_dd790ee3"
-            viewBox="0 0 2048 2048"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            class="fui-Button__icon rywnvv2"
           >
-            <path
-              d="M2048 1152q0 106-40 199t-110 162-163 110-199 41q-65 0-130-17-9 85-47 158t-99 128-137 84-163 31q-93 0-174-35t-142-96-96-142-36-175q0-16 1-32t4-32H85q-35 0-60-25t-25-60V597q0-35 25-60t60-25h302q12-109 62-202t127-163T751 39 960 0q119 0 224 45t183 124 123 183 46 224q0 16-1 32t-3 32q106 0 200 40t164 109 111 162 41 201zM960 128q-83 0-158 29t-135 80-98 122-52 153h422q35 0 60 25t25 60v422l18-3q18-64 52-121t80-104 104-81 122-52q8-43 8-82 0-93-35-174t-96-142-142-96-175-36zM522 1357q46 0 90-9t80-32 56-58 22-90q0-54-22-90t-57-60-73-39-73-29-56-29-23-38q0-17 12-27t28-17 35-8 30-2q51 0 90 13t81 39V729q-24-7-44-12t-41-8-41-5-48-2q-44 0-90 10t-83 32-61 58-24 88q0 51 22 85t57 58 73 40 73 31 56 31 23 39q0 19-10 30t-27 17-33 7-32 2q-60 0-106-20t-95-53v160q102 40 211 40zm438 563q66 0 124-25t101-68 69-102 26-125q0-57-19-109t-53-93-81-71-103-41v165q0 35-25 60t-60 25H646q-6 32-6 64 0 66 25 124t68 102 102 69 125 25zm576-384q79 0 149-30t122-82 83-122 30-150q0-79-30-149t-82-122-123-83-149-30q-79 0-148 30t-122 83-83 122-31 149v22q0 11 2 22 47 23 87 55t71 73 54 88 33 98q67 26 137 26z"
-            />
-          </svg>
-        </span>
+            <svg
+              aria-hidden="true"
+              class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+              fill="currentColor"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 4.5V6h3.59a.5.5 0 0 0 .35-.15L7.29 4.5 5.94 3.15A.5.5 0 0 0 5.59 3H3.5C2.67 3 2 3.67 2 4.5Zm-1 0A2.5 2.5 0 0 1 3.5 2h2.09c.4 0 .78.16 1.06.44L8.2 4h4.29A2.5 2.5 0 0 1 15 6.5v5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 11.5v-7ZM2 7v4.5c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-5c0-.83-.67-1.5-1.5-1.5H8.2L6.66 6.56A1.5 1.5 0 0 1 5.59 7H2Z"
+                fill="currentColor"
+              />
+            </svg>
+          </span>
+        </button>
       </span>
-    </button>
-  </span>
+    </div>
+  </div>
 </DocumentFragment>
 `;

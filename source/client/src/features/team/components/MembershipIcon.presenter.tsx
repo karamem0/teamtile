@@ -8,8 +8,8 @@
 
 import React from 'react';
 
+import { ChannelShare16Regular, LockClosed16Regular } from '@fluentui/react-icons';
 import { Text, Tooltip } from '@fluentui/react-components';
-import { LockIcon } from '@fluentui/react-icons-mdl2';
 import { MembershipType } from '../../../types/Entity';
 import { css } from '@emotion/react';
 import messages from '../messages';
@@ -28,12 +28,10 @@ function MembershipIcon(props: Readonly<MembershipIconProps>) {
   const { theme } = useTheme();
 
   switch (type) {
-    case 'standard':
-      return null;
-    case 'private':
+    case 'shared':
       return (
         <Tooltip
-          content={intl.formatMessage(messages.Private)}
+          content={intl.formatMessage(messages.SharedChannel)}
           relationship="label">
           <Text
             css={css`
@@ -42,11 +40,25 @@ function MembershipIcon(props: Readonly<MembershipIconProps>) {
               justify-content: center;
               color: ${theme.colorNeutralForeground4};
             `}>
-            <LockIcon
-              css={css`
-                width: 1rem;
-                height: 1rem;
-              `} />
+            <ChannelShare16Regular />
+          </Text>
+        </Tooltip>
+      );
+    case 'standard':
+      return null;
+    case 'private':
+      return (
+        <Tooltip
+          content={intl.formatMessage(messages.PrivateChannel)}
+          relationship="label">
+          <Text
+            css={css`
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: ${theme.colorNeutralForeground4};
+            `}>
+            <LockClosed16Regular />
           </Text>
         </Tooltip>
       );

@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import AvatarIcon from './AvatarIcon.presenter';
+import Presenter from './AvatarIcon.presenter';
 import { render } from '@testing-library/react';
 
 it('should create a snapshot when icon is undefined', () => {
@@ -17,7 +17,9 @@ it('should create a snapshot when icon is undefined', () => {
     name: 'HR Taskforce',
     size: undefined
   };
-  const { asFragment } = render(<AvatarIcon {...params} />);
+  const { asFragment } = render(
+    <Presenter {...params} />
+  );
   expect(asFragment()).toMatchSnapshot();
 });
 
@@ -27,6 +29,8 @@ it('should create a snapshot when icon is not undefined', () => {
     name: 'HR Taskforce',
     size: undefined
   };
-  const { asFragment } = render(<AvatarIcon {...params} />);
+  const { asFragment } = render(
+    <Presenter {...params} />
+  );
   expect(asFragment()).toMatchSnapshot();
 });

@@ -8,8 +8,8 @@
 
 import React from 'react';
 
-import Error404Page from './Error404Page.presenter';
 import IntlProvider from '../../../providers/IntlProvider';
+import Presenter from './Error404Page.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
@@ -18,7 +18,7 @@ it('should create a shapshot', () => {
   const { asFragment } = render(
     <IntlProvider>
       <ThemeProvider>
-        <Error404Page {...params} />
+        <Presenter {...params} />
       </ThemeProvider>
     </IntlProvider>
   );

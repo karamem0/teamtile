@@ -8,20 +8,20 @@
 
 import React from 'react';
 
-import CardMenuItem from './CardMenuItem.presenter';
 import IntlProvider from '../../../providers/IntlProvider';
+import Presenter from './CardMenuItem.presenter';
 import { render } from '@testing-library/react';
 
 it('should create a shapshot', () => {
   const params = {
     icon: (
-      <div data-testid="Icon" />
+      <div data-testid="test-Icon" />
     ),
     title: 'Title'
   };
   const { asFragment } = render(
     <IntlProvider>
-      <CardMenuItem {...params} />
+      <Presenter {...params} />
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();

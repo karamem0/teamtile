@@ -8,27 +8,34 @@
 
 import React from 'react';
 
-import TeamsInitializer from './TeamsInitializer.presenter';
-import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+import Presenter from './TeamsInitializer.presenter';
 
-it('should create a shapshot when loading', () => {
+it('should create a shapshot when the loading parameter is true', () => {
   const params = {
     children: (
-      <div data-testid="Children" />
+      <div data-testid="test-Children" />
     ),
     loading: true
   };
-  const { asFragment } = render(<TeamsInitializer {...params} />);
+  const { asFragment } = render(
+    <Presenter {...params} />
+  );
   expect(asFragment()).toMatchSnapshot();
+  expect(screen.queryByTestId('test-Children')).not.toBeInTheDocument();
 });
 
-it('should create a shapshot when not loading', () => {
+it('should create a shapshot when the loading parameter is false', () => {
   const params = {
     children: (
-      <div data-testid="Children" />
+      <div data-testid="test-Children" />
     ),
     loading: false
   };
-  const { asFragment } = render(<TeamsInitializer {...params} />);
+  const { asFragment } = render(
+    <Presenter {...params} />
+  );
   expect(asFragment()).toMatchSnapshot();
+  expect(screen.getByTestId('test-Children')).toBeInTheDocument();
 });

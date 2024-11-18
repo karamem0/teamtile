@@ -8,8 +8,8 @@
 
 import React from 'react';
 
-import HomePage from './HomePage.presenter';
 import IntlProvider from '../../../providers/IntlProvider';
+import Presenter from './HomePage.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
@@ -18,7 +18,7 @@ it('should create a shapshot', () => {
   const { asFragment } = render(
     <ThemeProvider>
       <IntlProvider>
-        <HomePage {...params} />
+        <Presenter {...params} />
       </IntlProvider>
     </ThemeProvider>
   );

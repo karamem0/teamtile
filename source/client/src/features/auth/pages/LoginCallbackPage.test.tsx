@@ -9,14 +9,14 @@
 import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
-import LoginCallbackPage from './LoginCallbackPage.presenter';
+import Presenter from './LoginCallbackPage.presenter';
 import { render } from '@testing-library/react';
 
 it('should create a shapshot', () => {
   const params = {};
   const { asFragment } = render(
     <IntlProvider>
-      <LoginCallbackPage {...params} />
+      <Presenter {...params} />
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();

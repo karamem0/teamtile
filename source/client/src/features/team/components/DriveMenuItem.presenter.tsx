@@ -10,8 +10,7 @@ import React from 'react';
 
 import CardMenuItem from './CardMenuItem';
 import { EventHandler } from '../../../types/Event';
-import { SharepointLogoIcon } from '@fluentui/react-icons-mdl2-branded';
-import { css } from '@emotion/react';
+import { Folder16Regular } from '@fluentui/react-icons';
 import messages from '../messages';
 import { useIntl } from 'react-intl';
 
@@ -29,11 +28,7 @@ function DriveMenuItem(props: Readonly<DriveMenuItemProps>) {
     <CardMenuItem
       title={intl.formatMessage(messages.OpenInSharePoint)}
       icon={(
-        <SharepointLogoIcon
-          css={css`
-            font-size: 1rem;
-            line-height: 1rem;
-          `} />
+        <Folder16Regular />
       )}
       onClick={onClick} />
   );

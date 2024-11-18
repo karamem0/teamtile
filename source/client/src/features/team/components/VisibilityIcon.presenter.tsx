@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { GlobeIcon, LockIcon } from '@fluentui/react-icons-mdl2';
+import { Globe16Regular, LockClosed16Regular } from '@fluentui/react-icons';
 import { Text, Tooltip } from '@fluentui/react-components';
 import { VisibilityType } from '../../../types/Entity';
 import { css } from '@emotion/react';
@@ -40,11 +40,7 @@ function VisibilityIcon(props: Readonly<VisibilityIconProps>) {
               color: ${theme.colorBrandForeground1};
               vertical-align: baseline;
             `}>
-            <GlobeIcon
-              css={css`
-                font-size: 1rem;
-                line-height: 1rem;
-              `} />
+            <Globe16Regular />
           </Text>
         </Tooltip>
       );
@@ -60,11 +56,7 @@ function VisibilityIcon(props: Readonly<VisibilityIconProps>) {
               color: ${theme.colorBrandForeground1};
               vertical-align: baseline;
             `}>
-            <LockIcon
-              css={css`
-                font-size: 1rem;
-                line-height: 1rem;
-              `} />
+            <LockClosed16Regular />
           </Text>
         </Tooltip>
       );

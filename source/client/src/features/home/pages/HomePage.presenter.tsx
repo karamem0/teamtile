@@ -16,7 +16,7 @@ import {
 } from '@fluentui/react-components';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { EventHandler } from '../../../types/Event';
-import { GitHubLogoIcon } from '@fluentui/react-icons-mdl2';
+import { SiGithub } from 'react-icons/si';
 import { css } from '@emotion/react';
 import messages from '../messages';
 import { useTheme } from '../../../providers/ThemeProvider';
@@ -55,7 +55,7 @@ function HomePage(props: Readonly<HomePageProps>) {
           appearance="transparent"
           as="a"
           icon={(
-            <GitHubLogoIcon
+            <SiGithub
               css={css`
                 font-size: 1rem;
                 line-height: 1rem;

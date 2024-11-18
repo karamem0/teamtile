@@ -9,15 +9,15 @@
 import React from 'react';
 
 import { Accordion, AccordionToggleData } from '@fluentui/react-components';
+import { FormattedMessage, useIntl } from 'react-intl';
 import CardMenuItem from './CardMenuItem';
 import { EventHandler } from '../../../types/Event';
 import SidePanel from '../../../common/components/SidePanel';
 import { Tag } from '../../../types/Entity';
-import { TagIcon } from '@fluentui/react-icons-mdl2';
+import { Tag16Regular } from '@fluentui/react-icons';
 import TagMemberAccordionItem from './TagMemberAccordionItem';
 import { css } from '@emotion/react';
 import messages from '../messages';
-import { useIntl } from 'react-intl';
 
 interface TagMenuItemProps {
   id?: string,
@@ -60,13 +60,20 @@ function TagMenuItem(props: Readonly<TagMenuItemProps>) {
               multiple
               onToggle={(event, data: AccordionToggleData<Tag>) => onToggle?.(event, data.openItems)}>
               {
-                items.map((item) => (
+                items.length > 0 ? items.map((item) => (
                   <TagMemberAccordionItem
                     key={item.id}
                     id={id}
                     open={openItems?.some((openItem) => openItem.id === item.id)}
                     tag={item} />
-                ))
+                )) : (
+                  <div
+                    css={css`
+                      text-align: center;
+                    `}>
+                    <FormattedMessage {...messages.NoTagsFound} />
+                  </div>
+                )
               }
             </Accordion>
           </div>
@@ -77,11 +84,7 @@ function TagMenuItem(props: Readonly<TagMenuItemProps>) {
           <CardMenuItem
             title={intl.formatMessage(messages.ViewTags)}
             icon={(
-              <TagIcon
-                css={css`
-                font-size: 1rem;
-                line-height: 1rem;
-              `} />
+              <Tag16Regular />
             )}
             onClick={(event) => onOpenChange?.(event, true)} />
         )

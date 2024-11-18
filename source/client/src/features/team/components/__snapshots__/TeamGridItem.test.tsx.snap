@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should create a shapshot when loading is false 1`] = `
+exports[`should create a shapshot when the loading parameter is false 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;
@@ -85,7 +85,7 @@ exports[`should create a shapshot when loading is false 1`] = `
           class="emotion-2"
         >
           <div
-            data-testid="AvatarIcon"
+            data-testid="test-AvatarIcon"
           />
           <div
             class="emotion-3"
@@ -108,10 +108,10 @@ exports[`should create a shapshot when loading is false 1`] = `
                 </span>
               </div>
               <div
-                data-testid="SensitivityLabel"
+                data-testid="test-SensitivityLabel"
               />
               <div
-                data-testid="VisibilityIcon"
+                data-testid="test-VisibilityIcon"
               />
             </div>
             <div
@@ -123,22 +123,22 @@ exports[`should create a shapshot when loading is false 1`] = `
               class="emotion-9"
             >
               <div
-                data-testid="ChannelMenuItem"
+                data-testid="test-ChannelMenuItem"
               />
               <div
-                data-testid="MemberMenuItem"
+                data-testid="test-MemberMenuItem"
               />
               <div
-                data-testid="TagMenuItem"
+                data-testid="test-TagMenuItem"
               />
               <div
-                data-testid="DriveMenuItem"
+                data-testid="test-DriveMenuItem"
               />
               <div
-                data-testid="CalendarMenuItem"
+                data-testid="test-CalendarMenuItem"
               />
               <div
-                data-testid="PinMenuItem"
+                data-testid="test-PinMenuItem"
               />
             </div>
           </div>
@@ -149,7 +149,7 @@ exports[`should create a shapshot when loading is false 1`] = `
 </DocumentFragment>
 `;
 
-exports[`should create a shapshot when loading is true 1`] = `
+exports[`should create a shapshot when the loading parameter is true 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;

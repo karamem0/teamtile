@@ -10,11 +10,11 @@ import React from 'react';
 
 import { Accordion } from '@fluentui/react-components';
 import IntlProvider from '../../../providers/IntlProvider';
-import TagMemberAccordionItem from './TagMemberAccordionItem.presenter';
+import Presenter from './TagMemberAccordionItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
-it('should create a shapshot when loading is true', () => {
+it('should create a shapshot when the loading parameter is true', () => {
   const params = {
     loading: true,
     members: [
@@ -39,7 +39,7 @@ it('should create a shapshot when loading is true', () => {
           openItems={[
             params.tag
           ]}>
-          <TagMemberAccordionItem {...params} />
+          <Presenter {...params} />
         </Accordion>
       </ThemeProvider>
     </IntlProvider>
@@ -47,7 +47,7 @@ it('should create a shapshot when loading is true', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when loading is false', () => {
+it('should create a shapshot when the loading parameter is false', () => {
   const params = {
     loading: false,
     members: [
@@ -72,7 +72,7 @@ it('should create a shapshot when loading is false', () => {
           openItems={[
             params.tag
           ]}>
-          <TagMemberAccordionItem {...params} />
+          <Presenter {...params} />
         </Accordion>
       </ThemeProvider>
     </IntlProvider>

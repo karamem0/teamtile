@@ -30,7 +30,7 @@ exports[`should create a shapshot 1`] = `
         class="fui-Button__icon rywnvv2"
       >
         <div
-          data-testid="Icon"
+          data-testid="test-Icon"
         />
       </span>
     </button>

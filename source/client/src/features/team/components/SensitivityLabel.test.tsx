@@ -8,21 +8,25 @@
 
 import React from 'react';
 
-import SensitivityLabel from './SensitivityLabel.presenter';
+import Presenter from './SensitivityLabel.presenter';
 import { render } from '@testing-library/react';
 
-it('should create a shapshot when value is undefined', () => {
+it('should create a shapshot when the label parameter is undefined', () => {
   const params = {
-    value: undefined
+    label: undefined
   };
-  const { asFragment } = render(<SensitivityLabel {...params} />);
+  const { asFragment } = render(
+    <Presenter {...params} />
+  );
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when value is not undefined', () => {
+it('should create a shapshot when the label parameter is not undefined', () => {
   const params = {
-    value: 'Restricted'
+    label: 'Restricted'
   };
-  const { asFragment } = render(<SensitivityLabel {...params} />);
+  const { asFragment } = render(
+    <Presenter {...params} />
+  );
   expect(asFragment()).toMatchSnapshot();
 });

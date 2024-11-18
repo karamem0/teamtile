@@ -1,0 +1,53 @@
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+
+jobs:
+  run:
+    name: Run
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repos
+        uses: actions/checkout@v4
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+      - name: Restore client
+        run: npm ci
+        working-directory: source/client
+      - name: Audit client
+        run: npm audit --omit=dev
+        working-directory: source/client
+      - name: Test client
+        run: npm run test:ci
+        working-directory: source/client
+      - name: Restore server
+        run: dotnet restore
+        working-directory: source/server
+      - name: Test server
+        shell: pwsh
+        run: |
+          dotnet test `
+            Karamem0.Teamtile.Tests/Karamem0.Teamtile.Tests.csproj `
+            -p:AltCover=true `
+            -- NUnit.TestOutputXml=${{github.workspace}}/source/server/test
+        working-directory: source/server
+      - name: Upload test results
+        uses: enricomi/publish-unit-test-result-action/linux@v2
+        if: always()
+        with:
+          files: |
+            source/client/test/**/*.xml
+            source/server/test/**/*.xml
+          check_name: Test results
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v4
+        if: always()
+        with:
+          fail_ci_if_error: true
+          token: ${{secrets.CODECOV_TOKEN}}
+          slug: karamem0/teamtile

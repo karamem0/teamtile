@@ -6,8 +6,6 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-#pragma warning disable CA1852
-
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -49,5 +47,3 @@ _ = app.MapControllers();
 _ = app.MapFallbackToFile("/index.html");
 
 await app.RunAsync();
-
-#pragma warning restore CA1852

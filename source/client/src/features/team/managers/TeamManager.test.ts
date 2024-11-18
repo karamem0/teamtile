@@ -8,6 +8,8 @@
 
 import * as teamService from '../services/TeamService';
 import {
+  clearCache,
+  getCards,
   getChannels,
   getDrive,
   getMembers,
@@ -16,11 +18,80 @@ import {
   getTags,
   setPin
 } from './TeamManager';
+import { Tag } from '../../../types/Entity';
 
 jest.mock('../services/TeamService');
 
 beforeEach(() => {
   jest.resetModules();
+});
+
+describe('clearCache', () => {
+
+  it('should clear the cache', async () => {
+    const mock = teamService.clearCache as unknown as jest.Mock;
+    await clearCache();
+    expect(mock).toHaveBeenCalled();
+  });
+
+});
+
+describe('getCards', () => {
+
+  it('should retrieve cards from the cache', async () => {
+    const params = {
+      teamInfos: [
+        {
+          id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
+          displayName: 'General',
+          tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
+        }
+      ],
+      values: [
+        {
+          id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+          loading: false,
+          pinned: false,
+          team: {
+            id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+            archived: false,
+            displayName: 'HR Taskforce',
+            description: 'Welcome to the HR Taskforce team.',
+            email: 'HRTaskforce@M365x214355.onmicrosoft.com',
+            internalId: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
+            sensitivityLabel: 'Restricted',
+            visibility: 'private',
+            webUrl: 'https://teams.microsoft.com/l/team/19:09fc54a3141a45d0bc769cf506d2e079%40thread.skype/conversations?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
+          },
+          visible: true
+        }
+      ]
+    };
+    const mockGetCardsFromTeamInfos = teamService.getCardsFromTeamInfos as unknown as jest.Mock;
+    const mockGetCardsFromCache = teamService.getCardsFromCache as unknown as jest.Mock;
+    const mockGetCardsFromGraphGroup = teamService.getCardsFromGraphGroup as unknown as jest.Mock;
+    const mockGetCardsFromGraphTeam = teamService.getCardsFromGraphTeam as unknown as jest.Mock;
+    const mockGetPins = teamService.getPins as unknown as jest.Mock;
+    const mockGetTeamIconsFromCache = teamService.getTeamIconsFromCache as unknown as jest.Mock;
+    const mockGetTeamIconsFromGraph = teamService.getTeamIconsFromGraph as unknown as jest.Mock;
+    mockGetCardsFromTeamInfos.mockResolvedValue(params.teamInfos);
+    mockGetCardsFromCache.mockResolvedValue(params.values);
+    mockGetCardsFromGraphGroup.mockResolvedValue(params.values);
+    mockGetCardsFromGraphTeam.mockResolvedValue(params.values);
+    mockGetPins.mockResolvedValue(params.values);
+    mockGetTeamIconsFromCache.mockResolvedValue(params.values);
+    mockGetTeamIconsFromGraph.mockResolvedValue(params.values);
+    const actual = await getCards();
+    expect(actual).not.toBeUndefined();
+    expect(mockGetCardsFromTeamInfos).toHaveBeenCalled();
+    expect(mockGetCardsFromCache).toHaveBeenCalled();
+    expect(mockGetCardsFromGraphGroup).toHaveBeenCalled();
+    expect(mockGetCardsFromGraphTeam).toHaveBeenCalled();
+    expect(mockGetPins).toHaveBeenCalled();
+    expect(mockGetTeamIconsFromCache).toHaveBeenCalled();
+    expect(mockGetTeamIconsFromGraph).toHaveBeenCalled();
+  });
+
 });
 
 describe('getChannels', () => {
@@ -69,7 +140,7 @@ describe('getChannels', () => {
     expect(mockGraph).toHaveBeenCalled();
   });
 
-  it('should raise an error when retrieving channels', async () => {
+  it('should raise an error when failed to retrieve channels', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       values: [
@@ -130,7 +201,7 @@ describe('getDrive', () => {
     expect(mockGraph).toHaveBeenCalled();
   });
 
-  it('should return undefined when retrieving a drive', async () => {
+  it('should retrieve undefined when failed to retrieve a drive', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       value: {
@@ -204,7 +275,7 @@ describe('getMembers', () => {
     expect(mockGraph).toHaveBeenCalled();
   });
 
-  it('should raise an error when retrieving members', async () => {
+  it('should raise an error when failed to retrieve members', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       values: [
@@ -250,7 +321,7 @@ describe('getTab', () => {
     expect(mockGraph).toHaveBeenCalled();
   });
 
-  it('should raise an error when retrieving tab', async () => {
+  it('should raise an error when failed to retrieve a tab', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       channelId: 'b!UvZsiQCydEuBEcAT9kQGz_C9gbGAlohJgfeiSu5K_WrNO7djCV5dS4pWDvGiRupe',
@@ -319,7 +390,7 @@ describe('getTags', () => {
     expect(mockGraph).toHaveBeenCalled();
   });
 
-  it('should raise an error when retrieving tags', async () => {
+  it('should retrieve an empty array when failed to retrieve tags', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       values: [
@@ -337,7 +408,9 @@ describe('getTags', () => {
     mockGraph.mockImplementation(() => {
       throw new Error('Something went wrong');
     });
-    await expect(getTags(params.teamId)).rejects.toThrow('Something went wrong');
+    const expected = [] as Tag[];
+    const actual = await getTags(params.teamId);
+    expect(actual).toStrictEqual(expected);
   });
 
 });
@@ -390,7 +463,7 @@ describe('getTagMembers', () => {
     expect(mockGraph).toHaveBeenCalled();
   });
 
-  it('should raise an error when retrieving tag members', async () => {
+  it('should raise an error when failed to retrieve tag members', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       tagId: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk=='
@@ -422,7 +495,7 @@ describe('setPin', () => {
     expect(mock).toHaveBeenCalledWith(expected.teamId, expected.pinned);
   });
 
-  it('should raise an error when setting a pin', async () => {
+  it('should raise an error when failed to retrieve set a pin', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       pinned: true

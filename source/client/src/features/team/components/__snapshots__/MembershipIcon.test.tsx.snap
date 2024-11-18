@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should create a shapshot when type is private 1`] = `
+exports[`should create a shapshot when the type parameter is private 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;
@@ -24,44 +24,93 @@ exports[`should create a shapshot when type is private 1`] = `
   color: #707070;
 }
 
-.emotion-2 {
-  width: 1rem;
-  height: 1rem;
-}
-
 <div
-    class="fui-FluentProvider fui-FluentProviderr1 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    class="fui-FluentProvider fui-FluentProviderr3 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
     dir="ltr"
   >
     <div
       class="emotion-0"
     >
       <span
-        aria-label="Private"
+        aria-label="Private channel"
         class="fui-Text emotion-1 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
       >
-        <span
+        <svg
           aria-hidden="true"
-          class="root_dd790ee3 emotion-2"
+          class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+          fill="currentColor"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            class="svg_dd790ee3"
-            focusable="false"
-            viewBox="0 0 2048 2048"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M1792 896v1152H256V896h256V522q0-108 39-203t108-166T821 41t203-41q109 0 202 41t163 112 108 166 39 203v374h256zm-1152 0h768V522q0-81-29-152t-80-126-122-85-153-31q-82 0-152 31t-122 85-81 125-29 153v374zm1024 128H384v896h1280v-896z"
-            />
-          </svg>
-        </span>
+          <path
+            d="M9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM5 4h-.5A2.5 2.5 0 0 0 2 6.5v5A2.5 2.5 0 0 0 4.5 14h7a2.5 2.5 0 0 0 2.5-2.5v-5A2.5 2.5 0 0 0 11.5 4H11v-.5a3 3 0 0 0-6 0V4Zm1-.5a2 2 0 1 1 4 0V4H6v-.5ZM11.5 5c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5h-7A1.5 1.5 0 0 1 3 11.5v-5C3 5.67 3.67 5 4.5 5h7Z"
+            fill="currentColor"
+          />
+        </svg>
       </span>
     </div>
   </div>
 </DocumentFragment>
 `;
 
-exports[`should create a shapshot when type is undefined 1`] = `
+exports[`should create a shapshot when the type parameter is shared 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-height: 100vh;
+  line-height: 1.25em;
+  background-color: #f5f5f5;
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  color: #707070;
+}
+
+<div
+    class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    dir="ltr"
+  >
+    <div
+      class="emotion-0"
+    >
+      <span
+        aria-label="Shared channel"
+        class="fui-Text emotion-1 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
+      >
+        <svg
+          aria-hidden="true"
+          class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+          fill="currentColor"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1 3.5A2.5 2.5 0 0 1 3.5 1h4A2.5 2.5 0 0 1 10 3.5V4H9v-.5C9 2.67 8.33 2 7.5 2h-4C2.67 2 2 2.67 2 3.5v4C2 8.33 2.67 9 3.5 9h5.59a1.5 1.5 0 1 1 0 1H3.5A2.5 2.5 0 0 1 1 7.5v-4Zm9 6a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0ZM6 11v.5A2.5 2.5 0 0 0 8.5 14h4a2.5 2.5 0 0 0 2.5-2.5v-4A2.5 2.5 0 0 0 12.5 5H6.91a1.5 1.5 0 1 0 0 1h5.59c.83 0 1.5.67 1.5 1.5v4c0 .83-.67 1.5-1.5 1.5h-4A1.5 1.5 0 0 1 7 11.5V11H6Zm-.5-6a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should create a shapshot when the type parameter is standard 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;
@@ -70,7 +119,7 @@ exports[`should create a shapshot when type is undefined 1`] = `
 }
 
 <div
-    class="fui-FluentProvider fui-FluentProviderr3 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    class="fui-FluentProvider fui-FluentProviderr2 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
     dir="ltr"
   >
     <div
@@ -80,7 +129,7 @@ exports[`should create a shapshot when type is undefined 1`] = `
 </DocumentFragment>
 `;
 
-exports[`should create a shapshot when value is standard 1`] = `
+exports[`should create a shapshot when the type parameter is undefined 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;
@@ -89,7 +138,7 @@ exports[`should create a shapshot when value is standard 1`] = `
 }
 
 <div
-    class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    class="fui-FluentProvider fui-FluentProviderr5 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
     dir="ltr"
   >
     <div

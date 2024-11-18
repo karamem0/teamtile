@@ -10,18 +10,19 @@ import React from 'react';
 
 import { Accordion } from '@fluentui/react-components';
 import IntlProvider from '../../../providers/IntlProvider';
-import TeamAccordionItem from './TeamAccordionItem.presenter';
+import Presenter from './TeamAccordionItem.presenter';
 import { VisibilityType } from '../../../types/Entity';
 import { render } from '@testing-library/react';
 
 jest.mock('./TeamGridItem', () =>
   function TeamGridItem({ children }: React.PropsWithChildren<unknown>) {
     return (
-      <div data-testid="TeamGridItem">
+      <div data-testid="test-TeamGridItem">
         {children}
       </div>
     );
-  });
+  }
+);
 
 it('should create a shapshot', () => {
   const params = {
@@ -49,7 +50,7 @@ it('should create a shapshot', () => {
   const { asFragment } = render(
     <IntlProvider>
       <Accordion defaultOpenItems={[ params.value ]}>
-        <TeamAccordionItem {...params} />
+        <Presenter {...params} />
       </Accordion>
     </IntlProvider>
   );

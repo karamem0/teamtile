@@ -1,6 +1,113 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should create a shapshot 1`] = `
+exports[`should create a shapshot when the items parameter is an empty array 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-height: 100vh;
+  line-height: 1.25em;
+  background-color: #f5f5f5;
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: column;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  grid-gap: 0.5rem;
+  height: calc(100vh - 5.5rem);
+  overflow: auto;
+}
+
+.emotion-2 {
+  text-align: center;
+}
+
+.emotion-3 {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto auto;
+  grid-gap: 0.25rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  -webkit-justify-content: start;
+  justify-content: start;
+  cursor: pointer;
+}
+
+<div
+    class="fui-FluentProvider fui-FluentProviderr4 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    dir="ltr"
+  >
+    <div
+      class="emotion-0"
+    >
+      <div
+        data-testid="test-SidePanel"
+      >
+        <div
+          data-testid="test-Content"
+        >
+          <div
+            class="emotion-1"
+          >
+            <div
+              class="fui-Accordion"
+            >
+              <div
+                class="emotion-2"
+              >
+                No tags found.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid="test-Renderer"
+        >
+          <span
+            aria-label="View tags"
+            class="fui-Text emotion-3 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
+          >
+            <button
+              class="fui-Button r1alrhcs ___cpe5h10_1yhfyj7 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f18ktai2 fwbmr0d f44c6la"
+              type="button"
+            >
+              <span
+                class="fui-Button__icon rywnvv2"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+                  fill="currentColor"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-8.41 4.14a1.99 1.99 0 0 1 0-2.83L7.33 2.6c.37-.37.88-.58 1.4-.59L12 2A2 2 0 0 1 14 4l-.02 3.37c0 .53-.22 1.03-.6 1.4l-4.66 4.65c-.78.77-2.05.77-2.84 0l-3.3-3.28Zm.7-2.12a1 1 0 0 0 0 1.41l3.3 3.28a1 1 0 0 0 1.42 0l4.67-4.65a1 1 0 0 0 .3-.7L13 4a1 1 0 0 0-1-1L8.73 3a1 1 0 0 0-.7.3L3.3 8.01Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should create a shapshot when the items parameter is not undefined 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;
@@ -38,11 +145,6 @@ exports[`should create a shapshot 1`] = `
   cursor: pointer;
 }
 
-.emotion-3 {
-  font-size: 1rem;
-  line-height: 1rem;
-}
-
 <div
     class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
     dir="ltr"
@@ -51,10 +153,10 @@ exports[`should create a shapshot 1`] = `
       class="emotion-0"
     >
       <div
-        data-testid="SidePanel"
+        data-testid="test-SidePanel"
       >
         <div
-          data-testid="Content"
+          data-testid="test-Content"
         >
           <div
             class="emotion-1"
@@ -63,13 +165,13 @@ exports[`should create a shapshot 1`] = `
               class="fui-Accordion"
             >
               <div
-                data-testid="TagMemberAccordionItem"
+                data-testid="test-TagMemberAccordionItem"
               />
             </div>
           </div>
         </div>
         <div
-          data-testid="Renderer"
+          data-testid="test-Renderer"
         >
           <span
             aria-label="View tags"
@@ -82,21 +184,95 @@ exports[`should create a shapshot 1`] = `
               <span
                 class="fui-Button__icon rywnvv2"
               >
-                <span
+                <svg
                   aria-hidden="true"
-                  class="root_dd790ee3 emotion-3"
+                  class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+                  fill="currentColor"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    class="svg_dd790ee3"
-                    focusable="false"
-                    viewBox="0 0 2048 2048"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1472 576q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10zM1024 0h896v896L896 1920 0 1024 1024 0zm768 843V128h-715l-896 896 715 715 896-896z"
-                    />
-                  </svg>
-                </span>
+                  <path
+                    d="M11 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-8.41 4.14a1.99 1.99 0 0 1 0-2.83L7.33 2.6c.37-.37.88-.58 1.4-.59L12 2A2 2 0 0 1 14 4l-.02 3.37c0 .53-.22 1.03-.6 1.4l-4.66 4.65c-.78.77-2.05.77-2.84 0l-3.3-3.28Zm.7-2.12a1 1 0 0 0 0 1.41l3.3 3.28a1 1 0 0 0 1.42 0l4.67-4.65a1 1 0 0 0 .3-.7L13 4a1 1 0 0 0-1-1L8.73 3a1 1 0 0 0-.7.3L3.3 8.01Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should create a shapshot when the items parameter is undefined 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-height: 100vh;
+  line-height: 1.25em;
+  background-color: #f5f5f5;
+}
+
+.emotion-1 {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto auto;
+  grid-gap: 0.25rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  -webkit-justify-content: start;
+  justify-content: start;
+  cursor: pointer;
+}
+
+<div
+    class="fui-FluentProvider fui-FluentProviderr2 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    dir="ltr"
+  >
+    <div
+      class="emotion-0"
+    >
+      <div
+        data-testid="test-SidePanel"
+      >
+        <div
+          data-testid="test-Content"
+        />
+        <div
+          data-testid="test-Renderer"
+        >
+          <span
+            aria-label="View tags"
+            class="fui-Text emotion-1 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
+          >
+            <button
+              class="fui-Button r1alrhcs ___cpe5h10_1yhfyj7 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f18ktai2 fwbmr0d f44c6la"
+              type="button"
+            >
+              <span
+                class="fui-Button__icon rywnvv2"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+                  fill="currentColor"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-8.41 4.14a1.99 1.99 0 0 1 0-2.83L7.33 2.6c.37-.37.88-.58 1.4-.59L12 2A2 2 0 0 1 14 4l-.02 3.37c0 .53-.22 1.03-.6 1.4l-4.66 4.65c-.78.77-2.05.77-2.84 0l-3.3-3.28Zm.7-2.12a1 1 0 0 0 0 1.41l3.3 3.28a1 1 0 0 0 1.42 0l4.67-4.65a1 1 0 0 0 .3-.7L13 4a1 1 0 0 0-1-1L8.73 3a1 1 0 0 0-.7.3L3.3 8.01Z"
+                    fill="currentColor"
+                  />
+                </svg>
               </span>
             </button>
           </span>

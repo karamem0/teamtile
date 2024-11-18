@@ -27,7 +27,7 @@ function TagMenuItem(props: Readonly<TagMenuItemProps>) {
   const [ state, fetch ] = useAsyncFn((teamId: string) => getTags(teamId));
 
   const handleOpenChange = React.useCallback(async (_: Event, data?: boolean) => {
-    if (data == null) {
+    if (!(data ?? false)) {
       return;
     }
     if (id == null) {

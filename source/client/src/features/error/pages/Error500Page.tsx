@@ -19,15 +19,13 @@ function Error500Page(props: Readonly<Error500PageProps>) {
 
   const { error } = props;
 
-  const { trackException } = useAppInsightsContext();
+  const appInsights = useAppInsightsContext();
 
   React.useEffect(() => {
-    trackException({
-      exception: error
-    });
+    appInsights.trackException({ exception: error });
   }, [
-    error,
-    trackException
+    appInsights,
+    error
   ]);
 
   return (

@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import { ArrowClockwise16Regular, MoreVertical16Regular } from '@fluentui/react-icons';
 import {
   Button,
   Menu,
@@ -20,12 +21,8 @@ import {
   SearchBox
 } from '@fluentui/react-components';
 import { FormattedMessage, useIntl } from 'react-intl';
-import {
-  GitHubLogoIcon,
-  MoreVerticalIcon,
-  RefreshIcon
-} from '@fluentui/react-icons-mdl2';
 import { EventHandler } from '../../../types/Event';
+import { SiGithub } from 'react-icons/si';
 import TeamGrid from './TeamGrid';
 import { css } from '@emotion/react';
 import messages from '../messages';
@@ -78,11 +75,7 @@ function TeamPanel(props: Readonly<TeamPanelProps>) {
             <Button
               appearance="transparent"
               icon={(
-                <MoreVerticalIcon
-                  css={css`
-                    font-size: 1rem;
-                    line-height: 1rem;
-                  `} />
+                <MoreVertical16Regular />
               )} />
           </MenuTrigger>
           <MenuPopover>
@@ -90,11 +83,7 @@ function TeamPanel(props: Readonly<TeamPanelProps>) {
               <MenuGroup>
                 <MenuItem
                   icon={(
-                    <RefreshIcon
-                      css={css`
-                        font-size: 1rem;
-                        line-height: 1rem;
-                      `} />
+                    <ArrowClockwise16Regular />
                   )}
                   onClick={onRefreshClick}>
                   <FormattedMessage {...messages.Refresh} />
@@ -104,7 +93,7 @@ function TeamPanel(props: Readonly<TeamPanelProps>) {
               <MenuGroup>
                 <MenuItem
                   icon={(
-                    <GitHubLogoIcon
+                    <SiGithub
                       css={css`
                         font-size: 1rem;
                         line-height: 1rem;

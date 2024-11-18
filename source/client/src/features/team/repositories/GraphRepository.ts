@@ -47,6 +47,7 @@ export async function getChannels(teamId: string): Promise<Channel[]> {
       'webUrl',
       'membershipType'
     ])
+    .header('Prefer', 'include-unknown-enum-members')
     .get();
   const values: Channel[] = [];
   const iterator = new PageIterator(
@@ -174,6 +175,21 @@ export async function getMembers(teamId: string): Promise<Member[]> {
     (value) => Boolean(values.push(mapMember(value))));
   await iterator.iterate();
   return values.sort((a, b) => compare(a.displayName, b.displayName));
+}
+
+export async function getPrimaryChannel(teamId: string): Promise<Channel> {
+  const { client } = getConfig();
+  const response = await client
+    .api(`/teams/${teamId}/primaryChannel`)
+    .version('v1.0')
+    .select([
+      'id',
+      'displayName',
+      'webUrl',
+      'membershipType'
+    ])
+    .get();
+  return mapChannel(response) as Channel;
 }
 
 export async function getTabs(teamId: string, channelId: string): Promise<Tab[]> {

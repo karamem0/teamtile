@@ -11,15 +11,15 @@ import React from 'react';
 import Presenter from './SensitivityLabel.presenter';
 
 interface SensitivityLabelProps {
-  value?: string
+  label?: string
 }
 
 function SensitivityLabel(props: Readonly<SensitivityLabelProps>) {
 
-  const { value } = props;
+  const { label } = props;
 
   return (
-    <Presenter value={value} />
+    <Presenter label={label} />
   );
 
 }

@@ -20,20 +20,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AltCover" Version="8.9.3" />
+    <PackageReference Include="AltCover" Version="9.0.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
-    <PackageReference Include="NSubstitute" Version="5.1.0" />
+    <PackageReference Include="NSubstitute" Version="5.3.0" />
     <PackageReference Include="NUnit" Version="4.2.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
-    <PackageReference Include="NUnit.Analyzers" Version="4.3.0">
+    <PackageReference Include="NUnit.Analyzers" Version="4.4.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="NunitXml.TestLogger" Version="4.0.254" />
+    <PackageReference Include="NunitXml.TestLogger" Version="4.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Karamem0.Teamtile\Karamem0.Teamtile.csproj" />
+    <ProjectReference Include="..\Karamem0.Teamtile.Tests.Helpers\Karamem0.Teamtile.Tests.Helpers.csproj" />
   </ItemGroup>
 
 </Project>

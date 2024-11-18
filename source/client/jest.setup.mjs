@@ -7,9 +7,12 @@
 //
 
 import 'jest-localstorage-mock';
+import { TextDecoder } from 'util';
 import fetchMock from 'jest-fetch-mock';
 
 // Mock fetch
 fetchMock.enableMocks();
 // Mock env
 jest.mock('./src/env', () => ({}));
+// Text decoder
+globalThis.TextDecoder = TextDecoder;

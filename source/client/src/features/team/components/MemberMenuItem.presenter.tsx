@@ -8,16 +8,16 @@
 
 import React from 'react';
 
+import { FormattedMessage, useIntl } from 'react-intl';
 import { SearchBox, Text } from '@fluentui/react-components';
 import AvatarIcon from './AvatarIcon';
 import CardMenuItem from './CardMenuItem';
 import { EventHandler } from '../../../types/Event';
-import { GroupIcon } from '@fluentui/react-icons-mdl2';
 import { Member } from '../../../types/Entity';
+import { People16Regular } from '@fluentui/react-icons';
 import SidePanel from '../../../common/components/SidePanel';
 import { css } from '@emotion/react';
 import messages from '../messages';
-import { useIntl } from 'react-intl';
 import { useTheme } from '../../../providers/ThemeProvider';
 
 interface MemberMenuItemProps {
@@ -65,7 +65,7 @@ function MemberMenuItem(props: Readonly<MemberMenuItemProps>) {
                 overflow: auto;
               `}>
               {
-                items.map((item) => (
+                items.length > 0 ? items.map((item) => (
                   <Text
                     key={item.id}
                     role="button"
@@ -89,7 +89,14 @@ function MemberMenuItem(props: Readonly<MemberMenuItemProps>) {
                       {item.displayName}
                     </Text>
                   </Text>
-                ))
+                )) : (
+                  <div
+                    css={css`
+                      text-align: center;
+                    `}>
+                    <FormattedMessage {...messages.NoMembersFound} />
+                  </div>
+                )
               }
             </div>
           </div>
@@ -100,11 +107,7 @@ function MemberMenuItem(props: Readonly<MemberMenuItemProps>) {
           <CardMenuItem
             title={intl.formatMessage(messages.ViewMembers)}
             icon={(
-              <GroupIcon
-                css={css`
-                  font-size: 1rem;
-                  line-height: 1rem;
-                `} />
+              <People16Regular />
             )}
             onClick={(event) => onOpenChange?.(event, true)} />
         )

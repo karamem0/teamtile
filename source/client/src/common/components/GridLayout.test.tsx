@@ -8,15 +8,19 @@
 
 import React from 'react';
 
-import GridLayout from './GridLayout.presenter';
-import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+import Presenter from './GridLayout.presenter';
 
 it('should create a shapshot', () => {
   const params = {
     children: (
-      <div data-testid="Children" />
+      <div data-testid="test-Children" />
     )
   };
-  const { asFragment } = render(<GridLayout {...params} />);
+  const { asFragment } = render(
+    <Presenter {...params} />
+  );
   expect(asFragment()).toMatchSnapshot();
+  expect(screen.getByTestId('test-Children')).toBeInTheDocument();
 });

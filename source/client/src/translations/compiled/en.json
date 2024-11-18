@@ -5,6 +5,12 @@
       "value": "Members"
     }
   ],
+  "/fpt1q": [
+    {
+      "type": 0,
+      "value": "No channels found."
+    }
+  ],
   "0HBlkO": [
     {
       "type": 0,
@@ -21,6 +27,12 @@
     {
       "type": 0,
       "value": "Tags"
+    }
+  ],
+  "2crw8P": [
+    {
+      "type": 0,
+      "value": "No members found."
     }
   ],
   "2g59dV": [
@@ -47,6 +59,12 @@
       "value": "https://github.com/karamem0/teamtile/blob/main/PRIVACY_POLICY.md"
     }
   ],
+  "97KPX7": [
+    {
+      "type": 0,
+      "value": "No tags found."
+    }
+  ],
   "Bg3XSc": [
     {
       "type": 0,
@@ -63,6 +81,12 @@
     {
       "type": 0,
       "value": "All teams"
+    }
+  ],
+  "EXyoXJ": [
+    {
+      "type": 0,
+      "value": "Primary channel"
     }
   ],
   "FLnUwk": [
@@ -93,6 +117,12 @@
     {
       "type": 0,
       "value": "Something went wrong"
+    }
+  ],
+  "JrXpAA": [
+    {
+      "type": 0,
+      "value": "Shared channel"
     }
   ],
   "LUrJwE": [
@@ -171,6 +201,12 @@
     {
       "type": 0,
       "value": "Features"
+    }
+  ],
+  "a2r7Vb": [
+    {
+      "type": 0,
+      "value": "Private channel"
     }
   ],
   "fdCS5/": [

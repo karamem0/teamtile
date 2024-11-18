@@ -10,7 +10,7 @@ import React from 'react';
 
 import IntlProvider from '../../providers/IntlProvider';
 import { MessageBarIntent } from '@fluentui/react-components';
-import Snackbar from './Snackbar.presenter';
+import Presenter from './Snackbar.presenter';
 import { render } from '@testing-library/react';
 
 global.ResizeObserver = jest.fn().mockImplementation(() => ({
@@ -19,53 +19,53 @@ global.ResizeObserver = jest.fn().mockImplementation(() => ({
   disconnect: jest.fn()
 }));
 
-it('should create a shapshot when text is undefined', () => {
+it('should create a shapshot when the text parameter is undefined', () => {
   const params = {
     intent: undefined,
     text: undefined
   };
   const { asFragment } = render(
     <IntlProvider>
-      <Snackbar {...params} />
+      <Presenter {...params} />
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when type is error', () => {
+it('should create a shapshot when the text parameter is error', () => {
   const params = {
     intent: 'error' as MessageBarIntent,
     text: 'error'
   };
   const { asFragment } = render(
     <IntlProvider>
-      <Snackbar {...params} />
+      <Presenter {...params} />
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when type is warning', () => {
+it('should create a shapshot when the text parameter is warning', () => {
   const params = {
     intent: 'warning' as MessageBarIntent,
     text: 'warning'
   };
   const { asFragment } = render(
     <IntlProvider>
-      <Snackbar {...params} />
+      <Presenter {...params} />
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when type is success', () => {
+it('should create a shapshot when the text parameter is success', () => {
   const params = {
     intent: 'success' as MessageBarIntent,
     text: 'success'
   };
   const { asFragment } = render(
     <IntlProvider>
-      <Snackbar {...params} />
+      <Presenter {...params} />
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();

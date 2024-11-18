@@ -6,56 +6,53 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import { FlatCompat } from '@eslint/eslintrc';
-import { fileURLToPath } from 'url';
-import { fixupConfigRules } from '@eslint/compat';
 import globals from 'globals';
+import hooks from 'eslint-plugin-hooks';
 import js from '@eslint/js';
-import path from 'path';
-import pluginHooks from 'eslint-plugin-hooks';
-import pluginTestingLibrary from 'eslint-plugin-testing-library';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import sonarjs from 'eslint-plugin-sonarjs';
+import stylistic from '@stylistic/eslint-plugin';
+import testingLibrary from 'eslint-plugin-testing-library';
+import ts from 'typescript-eslint';
 
-const compat = new FlatCompat({
-  baseDirectory: path.dirname(fileURLToPath(import.meta.url)),
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all
-});
-
-export default [
+export default ts.config(
+  js.configs.recommended,
+  ts.configs.recommended,
   {
     'languageOptions': {
       'globals': {
         ...globals.browser,
-        ...globals.jest
+        ...globals.jest,
+        ...globals.node
       }
     },
     'plugins': {
-      'hooks': pluginHooks
+      '@stylistic': stylistic,
+      'hooks': hooks,
+      'jsx-a11y': jsxA11y,
+      'react': react,
+      'react-hooks': reactHooks,
+      'sonarjs': sonarjs
     },
     'settings': {
+      ...sonarjs.configs.recommended.settings,
       'react': {
         'version': 'detect'
       }
     }
   },
-  ...fixupConfigRules(compat.extends(
-    'plugin:@stylistic/recommended-extends',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:jsx-a11y/recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:sonarjs/recommended-legacy'
-  )),
   {
     'files': [
-      '**/*.test.ts',
-      '**/*.test.tsx'
+      '**/*.test.{ts,tsx}'
     ],
-    ...pluginTestingLibrary.configs['flat/dom'],
-    ...pluginTestingLibrary.configs['flat/react']
+    ...testingLibrary.configs['flat/react']
   },
   {
     'rules': {
+      ...reactHooks.configs.recommended.rules,
+      ...sonarjs.configs.recommended.rules,
       'dot-notation': [
         'error',
         {
@@ -124,7 +121,7 @@ export default [
       ],
       '@stylistic/indent-binary-ops': [
         'error',
-        4
+        2
       ],
       '@stylistic/jsx-closing-bracket-location': [
         'error',
@@ -204,7 +201,6 @@ export default [
           'varsIgnorePattern': '^_'
         }
       ],
-      '@typescript-eslint/no-use-before-define': 'error',
       'hooks/sort': [
         'error',
         {
@@ -227,14 +223,11 @@ export default [
           ]
         }
       ],
-      'react/prop-types': 'off',
-      'sonarjs/max-switch-cases': 'warn',
-      'sonarjs/no-collapsible-if': 'warn',
-      'sonarjs/no-duplicate-string': 'off',
-      'sonarjs/no-small-switch': 'warn',
+      'sonarjs/no-empty-function': 'off',
       'sonarjs/no-unknown-property': 'off',
-      'sonarjs/prefer-single-boolean-return': 'off',
-      'sonarjs/sonar-no-unused-vars': 'off'
+      'sonarjs/no-unused-expressions': 'off',
+      'sonarjs/no-unused-vars': 'off',
+      'sonarjs/prefer-single-boolean-return': 'off'
     }
   }
-];
+);

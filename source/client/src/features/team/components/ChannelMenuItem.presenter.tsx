@@ -9,15 +9,16 @@
 import React from 'react';
 
 import { Event, EventHandler } from '../../../types/Event';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { SearchBox, Text } from '@fluentui/react-components';
 import CardMenuItem from './CardMenuItem';
 import { Channel } from '../../../types/Entity';
-import { ContextMenuIcon } from '@fluentui/react-icons-mdl2';
+import { Channel16Regular } from '@fluentui/react-icons';
 import MembershipIcon from './MembershipIcon';
+import PrimaryChannelIcon from './PrimaryChannelIcon';
 import SidePanel from '../../../common/components/SidePanel';
 import { css } from '@emotion/react';
 import messages from '../messages';
-import { useIntl } from 'react-intl';
 import { useTheme } from '../../../providers/ThemeProvider';
 
 interface ChannelMenuItemProps {
@@ -65,17 +66,14 @@ function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
                 overflow: auto;
               `}>
               {
-                items.map((item) => (
+                items.length > 0 ? items.map((item) => (
                   <Text
                     key={item.id}
                     role="button"
                     css={css`
-                      display: grid;
-                      grid-template-rows: auto;
-                      grid-template-columns: auto auto;
+                      display: flex;
+                      flex-flow: row;
                       grid-gap: 0.5rem;
-                      align-items: center;
-                      justify-content: left;
                       padding: 0.5rem;
                       &:hover {
                         background-color: ${theme.colorNeutralBackground1Hover};
@@ -85,9 +83,17 @@ function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
                     <Text truncate>
                       {item.displayName}
                     </Text>
-                    <MembershipIcon value={item.membershipType} />
+                    <PrimaryChannelIcon primary={item.primary} />
+                    <MembershipIcon type={item.membershipType} />
                   </Text>
-                ))
+                )) : (
+                  <div
+                    css={css`
+                      text-align: center;
+                    `}>
+                    <FormattedMessage {...messages.NoChannelsFound} />
+                  </div>
+                )
               }
             </div>
           </div>
@@ -98,11 +104,7 @@ function ChannelMenuItem(props: Readonly<ChannelMenuItemProps>) {
           <CardMenuItem
             title={intl.formatMessage(messages.ViewChannels)}
             icon={(
-              <ContextMenuIcon
-                css={css`
-                font-size: 1rem;
-                line-height: 1rem;
-              `} />
+              <Channel16Regular />
             )}
             onClick={(event) => onOpenChange?.(event, true)} />
         )

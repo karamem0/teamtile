@@ -53,12 +53,13 @@ function MemberMenuItem(props: Readonly<MemberMenuItemProps>) {
   }, []);
 
   const handleOpenChange = React.useCallback(async (_: Event, data?: boolean) => {
-    if (data == null) {
+    if (!(data ?? false)) {
       return;
     }
     if (id == null) {
       return;
     }
+    setFilter('');
     await fetch(id);
   }, [
     id,

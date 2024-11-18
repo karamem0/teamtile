@@ -8,16 +8,37 @@
 
 import React from 'react';
 
-import CalendarMenuItem from './CalendarMenuItem.presenter';
+import { render, screen } from '@testing-library/react';
 import IntlProvider from '../../../providers/IntlProvider';
-import { render } from '@testing-library/react';
+import Presenter from './CalendarMenuItem.presenter';
+import ThemeProvider from '../../../providers/ThemeProvider';
+import userEvent from '@testing-library/user-event';
 
 it('should create a shapshot', () => {
   const params = {};
   const { asFragment } = render(
     <IntlProvider>
-      <CalendarMenuItem {...params} />
+      <ThemeProvider>
+        <Presenter {...params} />
+      </ThemeProvider>
     </IntlProvider>
   );
   expect(asFragment()).toMatchSnapshot();
+});
+
+it('should raise onClick event when click a button', async () => {
+  const user = userEvent.setup();
+  const mock = jest.fn();
+  const params = {
+    onClick: mock
+  };
+  render(
+    <IntlProvider>
+      <ThemeProvider>
+        <Presenter {...params} />
+      </ThemeProvider>
+    </IntlProvider>
+  );
+  await user.click(screen.getByRole('button'));
+  expect(mock).toHaveBeenCalled();
 });

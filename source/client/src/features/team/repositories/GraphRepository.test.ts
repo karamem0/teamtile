@@ -13,6 +13,7 @@ import {
   getGroups,
   getMemberIcons,
   getMembers,
+  getPrimaryChannel,
   getTabs,
   getTagMembers,
   getTags,
@@ -38,8 +39,8 @@ describe('getChannels', () => {
           {
             id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
             displayName: 'General',
-            webUrl: 'https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
-            membershipType: 'standard'
+            membershipType: 'standard',
+            webUrl: 'https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
           }
         ]
       }
@@ -48,8 +49,9 @@ describe('getChannels', () => {
       {
         id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
         displayName: 'General',
-        webUrl: 'https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
-        membershipType: 'standard'
+        membershipType: 'standard',
+        primary: false,
+        webUrl: 'https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
       }
     ];
     const mock = jest.fn().mockResolvedValue(params.response);
@@ -58,6 +60,7 @@ describe('getChannels', () => {
         api: () => ({
           version: jest.fn().mockReturnThis(),
           select: jest.fn().mockReturnThis(),
+          header: jest.fn().mockReturnThis(),
           get: mock
         })
       }
@@ -71,7 +74,7 @@ describe('getChannels', () => {
 
 describe('getDrive', () => {
 
-  it('should retrieve drive', async () => {
+  it('should retrieve the drive', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       response: {
@@ -104,7 +107,10 @@ describe('getGroups', () => {
 
   it('should retrieve groups', async () => {
     const params = {
-      groupIds: [ '02bd9fd6-8f93-4758-87c3-1fb73740a315' ],
+      groupIds: [
+        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        '13be6971-79db-4f33-9d41-b25589ca25af'
+      ],
       response: {
         responses: [
           {
@@ -120,6 +126,10 @@ describe('getGroups', () => {
                 }
               ]
             })
+          },
+          {
+            id: '13be6971-79db-4f33-9d41-b25589ca25af',
+            status: 403
           }
         ]
       }
@@ -145,13 +155,40 @@ describe('getGroups', () => {
     expect(actual).toStrictEqual(expected);
   });
 
+  it('should raise an error when failed to retrieve groups', async () => {
+    const params = {
+      teamIds: [ '02bd9fd6-8f93-4758-87c3-1fb73740a315' ],
+      response: {
+        responses: [
+          {
+            id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+            status: 500
+          }
+        ]
+      }
+    };
+    const mock = jest.fn().mockResolvedValue(params.response);
+    getConfig.mockReturnValue({
+      client: {
+        api: () => ({
+          version: jest.fn().mockReturnThis(),
+          post: mock
+        })
+      }
+    });
+    await expect(getGroups(params.teamIds)).rejects.toThrow();
+  });
+
 });
 
 describe('getMemberIcons', () => {
 
   it('should retrieve member icons', async () => {
     const params = {
-      userIds: [ '87d349ed-44d7-43e1-9a83-5f2406dee5bd' ],
+      userIds: [
+        '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+        '626cbf8c-5dde-46b0-8385-9e40d64736fe'
+      ],
       response: {
         responses: [
           {
@@ -161,6 +198,10 @@ describe('getMemberIcons', () => {
               'Content-Type': 'image/png'
             },
             body: 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII='
+          },
+          {
+            id: '626cbf8c-5dde-46b0-8385-9e40d64736fe',
+            status: 403
           }
         ]
       }
@@ -169,6 +210,10 @@ describe('getMemberIcons', () => {
       {
         id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
         data: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII='
+      },
+      {
+        id: '626cbf8c-5dde-46b0-8385-9e40d64736fe',
+        data: undefined
       }
     ];
     const mock = jest.fn().mockResolvedValue(params.response);
@@ -224,6 +269,42 @@ describe('getMembers', () => {
       }
     });
     const actual = await getMembers(params.teamId);
+    expect(mock).toHaveBeenCalled();
+    expect(actual).toStrictEqual(expected);
+  });
+
+});
+
+describe('getPrimaryChannel', () => {
+
+  it('should retrieve the primary channel', async () => {
+    const params = {
+      teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      response: {
+        id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
+        displayName: 'General',
+        membershipType: 'standard',
+        webUrl: 'https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
+      }
+    };
+    const expected = {
+      id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
+      displayName: 'General',
+      membershipType: 'standard',
+      primary: false,
+      webUrl: 'https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
+    };
+    const mock = jest.fn().mockResolvedValue(params.response);
+    getConfig.mockReturnValue({
+      client: {
+        api: () => ({
+          version: jest.fn().mockReturnThis(),
+          select: jest.fn().mockReturnThis(),
+          get: mock
+        })
+      }
+    });
+    const actual = await getPrimaryChannel(params.teamId);
     expect(mock).toHaveBeenCalled();
     expect(actual).toStrictEqual(expected);
   });
@@ -360,7 +441,10 @@ describe('getTeamIcons', () => {
 
   it('should retrieve team icons', async () => {
     const params = {
-      teamIds: [ '02bd9fd6-8f93-4758-87c3-1fb73740a315' ],
+      teamIds: [
+        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        '13be6971-79db-4f33-9d41-b25589ca25af'
+      ],
       response: {
         responses: [
           {
@@ -370,6 +454,10 @@ describe('getTeamIcons', () => {
               'Content-Type': 'image/png'
             },
             body: 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII='
+          },
+          {
+            id: '13be6971-79db-4f33-9d41-b25589ca25af',
+            status: 403
           }
         ]
       }
@@ -378,6 +466,10 @@ describe('getTeamIcons', () => {
       {
         id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         data: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII='
+      },
+      {
+        id: '13be6971-79db-4f33-9d41-b25589ca25af',
+        data: undefined
       }
     ];
     const mock = jest.fn().mockResolvedValue(params.response);
@@ -438,7 +530,10 @@ describe('getTeams', () => {
 
   it('should retrieve teams', async () => {
     const params = {
-      teamIds: [ '02bd9fd6-8f93-4758-87c3-1fb73740a315' ],
+      teamIds: [
+        '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        '13be6971-79db-4f33-9d41-b25589ca25af'
+      ],
       response: {
         responses: [
           {
@@ -453,6 +548,10 @@ describe('getTeams', () => {
               visibility: 'private',
               webUrl: 'https://teams.microsoft.com/l/team/19:09fc54a3141a45d0bc769cf506d2e079%40thread.skype/conversations?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
             })
+          },
+          {
+            id: '13be6971-79db-4f33-9d41-b25589ca25af',
+            status: 403
           }
         ]
       }
@@ -480,6 +579,30 @@ describe('getTeams', () => {
     const actual = await getTeams(params.teamIds);
     expect(mock).toHaveBeenCalled();
     expect(actual).toStrictEqual(expected);
+  });
+
+  it('should raise an error when failed to retrieve teams', async () => {
+    const params = {
+      teamIds: [ '02bd9fd6-8f93-4758-87c3-1fb73740a315' ],
+      response: {
+        responses: [
+          {
+            id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+            status: 500
+          }
+        ]
+      }
+    };
+    const mock = jest.fn().mockResolvedValue(params.response);
+    getConfig.mockReturnValue({
+      client: {
+        api: () => ({
+          version: jest.fn().mockReturnThis(),
+          post: mock
+        })
+      }
+    });
+    await expect(getTeams(params.teamIds)).rejects.toThrow();
   });
 
 });

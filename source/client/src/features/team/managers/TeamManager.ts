@@ -21,6 +21,18 @@ export async function clearCache() {
     .then(async () => await teamService.clearCache());
 }
 
+export async function getCards(): Promise<TeamCard[]> {
+  return await Promise.resolve()
+    .then(async () => teamService.getCardsFromTeamInfos())
+    .then(async (values) => await teamService.getCardsFromCache(values))
+    .then(async (values) => await teamService.getCardsFromGraphGroup(values))
+    .then(async (values) => await teamService.getCardsFromGraphTeam(values))
+    .then(async (values) => await teamService.getPins(values))
+    .then((values) => values.filter((value) => !value.loading))
+    .then(async (values) => await teamService.getTeamIconsFromCache(values))
+    .then(async (values) => await teamService.getTeamIconsFromGraph(values));
+}
+
 export async function getChannels(teamId: string): Promise<Channel[]> {
   return await Promise.resolve()
     .then(async () => teamService.getChannelsFromCache(teamId))
@@ -32,18 +44,6 @@ export async function getDrive(teamId: string): Promise<Drive | undefined> {
     .then(async () => teamService.getDriveFromCache(teamId))
     .then(async (value) => value ?? await teamService.getDriveFromGraph(teamId))
     .catch(() => undefined);
-}
-
-export async function getCards(): Promise<TeamCard[]> {
-  return await Promise.resolve()
-    .then(async () => teamService.getCardsFromTeamInfos())
-    .then(async (values) => await teamService.getCardsFromCache(values))
-    .then(async (values) => await teamService.getCardsFromGroup(values))
-    .then(async (values) => await teamService.getCardsFromTeam(values))
-    .then(async (values) => await teamService.getPins(values))
-    .then((values) => values.filter((value) => !value.loading))
-    .then(async (values) => await teamService.getTeamIconsFromCache(values))
-    .then(async (values) => await teamService.getTeamIconsFromGraph(values));
 }
 
 export async function getMembers(teamId: string): Promise<Member[]> {
@@ -63,7 +63,8 @@ export async function getTab(teamId: string, channelId: string, appId: string): 
 export async function getTags(teamId: string): Promise<Tag[]> {
   return await Promise.resolve()
     .then(async () => teamService.getTagsFromCache(teamId))
-    .then(async (values) => values ?? await teamService.getTagsFromGraph(teamId));
+    .then(async (values) => values ?? await teamService.getTagsFromGraph(teamId))
+    .catch(() => []);
 }
 
 export async function getTagMembers(teamId: string, tagId: string): Promise<Member[]> {

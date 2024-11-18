@@ -4,8 +4,15 @@ on:
       - develop
 
 jobs:
+  test:
+    name: Test source
+    uses: ./.github/workflows/test.yml
+    secrets: inherit
+    with:
+      environment: dev
   build-source:
     name: Build source
+    needs: test
     uses: ./.github/workflows/build-source.yml
     secrets: inherit
     with:

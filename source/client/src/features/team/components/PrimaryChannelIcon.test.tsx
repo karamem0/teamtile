@@ -9,14 +9,13 @@
 import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
-import Presenter from './VisibilityIcon.presenter';
+import Presenter from './PrimaryChannelIcon.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
-import { VisibilityType } from '../../../types/Entity';
 import { render } from '@testing-library/react';
 
-it('should create a shapshot when the type parameter is public', () => {
+it('should create a shapshot when the primary parameter is true', () => {
   const params = {
-    type: 'public' as VisibilityType
+    primary: true
   };
   const { asFragment } = render(
     <IntlProvider>
@@ -28,9 +27,9 @@ it('should create a shapshot when the type parameter is public', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the type parameter is private', () => {
+it('should create a shapshot when the primary parameter is false', () => {
   const params = {
-    type: 'private' as VisibilityType
+    primary: false
   };
   const { asFragment } = render(
     <IntlProvider>
@@ -44,7 +43,7 @@ it('should create a shapshot when the type parameter is private', () => {
 
 it('should create a shapshot when the type parameter is undefined', () => {
   const params = {
-    type: undefined
+    primary: undefined
   };
   const { asFragment } = render(
     <IntlProvider>

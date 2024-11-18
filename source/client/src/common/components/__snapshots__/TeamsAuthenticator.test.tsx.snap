@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should create a shapshot when loading is false 1`] = `
+exports[`should create a shapshot when the loading parameter is false 1`] = `
 <DocumentFragment>
   <div
-    data-testid="Children"
+    data-testid="test-Children"
   />
 </DocumentFragment>
 `;
 
-exports[`should create a shapshot when loading is true 1`] = `
+exports[`should create a shapshot when the loading parameter is true 1`] = `
 <DocumentFragment>
   .emotion-0 {
   display: -webkit-box;

@@ -31,11 +31,6 @@ exports[`should create a shapshot 1`] = `
   }
 }
 
-.emotion-3 {
-  font-size: 1rem;
-  line-height: 1rem;
-}
-
 <div
     class="emotion-0"
   >
@@ -104,26 +99,25 @@ exports[`should create a shapshot 1`] = `
         <span
           class="fui-Button__icon rywnvv2"
         >
-          <span
+          <svg
             aria-hidden="true"
-            class="root_dd790ee3 emotion-3"
+            class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+            fill="currentColor"
+            height="16"
+            viewBox="0 0 16 16"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              class="svg_dd790ee3"
-              focusable="false"
-              viewBox="0 0 2048 2048"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1024 1664q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10zm0-768q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10zm0-512q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10z"
-              />
-            </svg>
-          </span>
+            <path
+              d="M8 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm0 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm-1 3a1 1 0 1 0 2 0 1 1 0 0 0-2 0Z"
+              fill="currentColor"
+            />
+          </svg>
         </span>
       </button>
     </div>
     <div
-      data-testid="TeamGrid"
+      data-testid="test-TeamGrid"
     />
   </div>
 </DocumentFragment>

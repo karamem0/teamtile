@@ -1,10 +1,12 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Karamem0.Teamtile", "Karamem0.Teamtile\Karamem0.Teamtile.csproj", "{A51489D9-5703-4616-9DBA-43F155A40DED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karamem0.Teamtile.Tests", "Karamem0.Teamtile.Tests\Karamem0.Teamtile.Tests.csproj", "{85C09AEE-D0D3-4D3D-8F91-B75A0C468614}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karamem0.Teamtile.Tests.Helpers", "Karamem0.Teamtile.Tests.Helpers\Karamem0.Teamtile.Tests.Helpers.csproj", "{166BB71A-447C-45A7-A0D4-B1DB5424ED6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +22,10 @@ Global
 		{85C09AEE-D0D3-4D3D-8F91-B75A0C468614}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85C09AEE-D0D3-4D3D-8F91-B75A0C468614}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85C09AEE-D0D3-4D3D-8F91-B75A0C468614}.Release|Any CPU.Build.0 = Release|Any CPU
+		{166BB71A-447C-45A7-A0D4-B1DB5424ED6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{166BB71A-447C-45A7-A0D4-B1DB5424ED6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{166BB71A-447C-45A7-A0D4-B1DB5424ED6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{166BB71A-447C-45A7-A0D4-B1DB5424ED6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

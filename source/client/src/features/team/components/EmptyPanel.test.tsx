@@ -9,17 +9,16 @@
 import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
+import Presenter from './EmptyPanel.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
-
-import EmptyPanel from './EmptyPanel.presenter';
 
 it('should create a shapshot', () => {
   const params = {};
   const { asFragment } = render(
     <IntlProvider>
       <ThemeProvider>
-        <EmptyPanel {...params} />
+        <Presenter {...params} />
       </ThemeProvider>
     </IntlProvider>
   );

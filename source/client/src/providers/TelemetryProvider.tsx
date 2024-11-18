@@ -8,7 +8,11 @@
 
 import React from 'react';
 
-import { ReactPlugin, withAITracking } from '@microsoft/applicationinsights-react-js';
+import {
+  AppInsightsContext,
+  ReactPlugin,
+  withAITracking
+} from '@microsoft/applicationinsights-react-js';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import env from '../env';
 
@@ -30,7 +34,11 @@ function TelemetryProvider(props: React.PropsWithChildren<unknown>) {
 
   const { children } = props;
 
-  return children;
+  return (
+    <AppInsightsContext.Provider value={reactPlugin}>
+      {children}
+    </AppInsightsContext.Provider>
+  );
 
 }
 

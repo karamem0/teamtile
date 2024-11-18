@@ -5,6 +5,12 @@
       "value": "メンバー"
     }
   ],
+  "/fpt1q": [
+    {
+      "type": 0,
+      "value": "チャネルが見つかりません。"
+    }
+  ],
   "0HBlkO": [
     {
       "type": 0,
@@ -21,6 +27,12 @@
     {
       "type": 0,
       "value": "タグ"
+    }
+  ],
+  "2crw8P": [
+    {
+      "type": 0,
+      "value": "メンバーが見つかりません。"
     }
   ],
   "2g59dV": [
@@ -47,6 +59,12 @@
       "value": "https://github.com/karamem0/teamtile/blob/main/PRIVACY_POLICY.ja-jp.md"
     }
   ],
+  "97KPX7": [
+    {
+      "type": 0,
+      "value": "タグが見つかりません。"
+    }
+  ],
   "Bg3XSc": [
     {
       "type": 0,
@@ -63,6 +81,12 @@
     {
       "type": 0,
       "value": "すべてのチーム"
+    }
+  ],
+  "EXyoXJ": [
+    {
+      "type": 0,
+      "value": "プライマリ チャネル"
     }
   ],
   "FLnUwk": [
@@ -93,6 +117,12 @@
     {
       "type": 0,
       "value": "予期しない問題が発生しました"
+    }
+  ],
+  "JrXpAA": [
+    {
+      "type": 0,
+      "value": "共有チャネル"
     }
   ],
   "LUrJwE": [
@@ -171,6 +201,12 @@
     {
       "type": 0,
       "value": "機能"
+    }
+  ],
+  "a2r7Vb": [
+    {
+      "type": 0,
+      "value": "プライベート チャネル"
     }
   ],
   "fdCS5/": [

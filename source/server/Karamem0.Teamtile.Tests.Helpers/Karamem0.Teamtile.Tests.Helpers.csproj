@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <PackageId>Karamem0.Teamtile.Tests.Helpers</PackageId>
+    <Version>0.0.0</Version>
+    <Authors>karamem0</Authors>
+    <Company>karamem0</Company>
+    <Product>Teamtile</Product>
+    <Copyright>Copyright (c) 2021-2024 karamem0</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/karamem0/teamtile</PackageProjectUrl>
+    <AssemblyVersion>0.0.0</AssemblyVersion>
+    <FileVersion>0.0.0</FileVersion>
+    <RootNamespace>Karamem0.Teamtile</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+</Project>

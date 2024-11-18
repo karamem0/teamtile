@@ -12,15 +12,15 @@ import Presenter from './VisibilityIcon.presenter';
 import { VisibilityType } from '../../../types/Entity';
 
 interface VisibilityIconProps {
-  value?: VisibilityType
+  type?: VisibilityType
 }
 
 function VisibilityIcon(props: Readonly<VisibilityIconProps>) {
 
-  const { value } = props;
+  const { type } = props;
 
   return (
-    <Presenter value={value} />
+    <Presenter type={type} />
   );
 
 }
