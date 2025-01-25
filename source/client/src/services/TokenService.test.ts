@@ -1,11 +1,12 @@
 //
-// Copyright (c) 2021-2024 karamem0
+// Copyright (c) 2021-2025 karamem0
 //
 // This software is released under the MIT License.
 //
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import * as jwtDecode from 'jwt-decode';
 import * as teamsjs from '@microsoft/teams-js';
 import {
   getCachedToken,
@@ -14,6 +15,7 @@ import {
 } from './TokenService';
 import fetchMock from 'jest-fetch-mock';
 
+jest.mock('jwt-decode');
 jest.mock('@microsoft/teams-js');
 
 beforeEach(() => {
@@ -25,10 +27,10 @@ describe('getClientToken', () => {
 
   it('should retrieve a client token', async () => {
     const params = {
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+      token: 'sample_token'
     };
     const expected = {
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+      token: 'sample_token'
     };
     const mock = teamsjs.authentication.getAuthToken as unknown as jest.Mock;
     mock.mockResolvedValue(params.token);
@@ -43,11 +45,11 @@ describe('getServerToken', () => {
 
   it('should retrieve a server token when the server responds with a "200" status code', async () => {
     const params = {
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+      token: 'sample_token',
       status: 200
     };
     const expected = {
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+      token: 'sample_token'
     };
     fetchMock.doMock((req) => {
       if (req.method !== 'POST') {
@@ -85,12 +87,12 @@ describe('getServerToken', () => {
 
   it('should retrieve a server token when the server responds with a "403" status code', async () => {
     const params = {
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+      token: 'sample_token',
       status: 403,
       error: 'invalid_grant'
     };
     const expected = {
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+      token: 'sample_token'
     };
     fetchMock.doMock((req) => {
       if (req.method !== 'POST') {
@@ -131,7 +133,7 @@ describe('getServerToken', () => {
 
   it('should raise an error when the server responds with a "500" status code', async () => {
     const params = {
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+      token: 'sample_token',
       status: 500,
       error: 'unknown_error'
     };
@@ -177,15 +179,20 @@ describe('getCachedToken', () => {
 
   it('should retrieve a cached token when the token has not been expired', () => {
     const params = {
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjQxMDI0MTIzOTl9.-PbkLpaS6zJSm1n_f2HkNUbrRQHZ0hF3kYdopo48_-E'
+      token: 'sample_token'
     };
     const expected = {
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjQxMDI0MTIzOTl9.-PbkLpaS6zJSm1n_f2HkNUbrRQHZ0hF3kYdopo48_-E'
+      token: 'sample_token'
     };
-    const mock = sessionStorage.getItem as jest.Mock;
-    mock.mockReturnValue(params.token);
+    const mockGetItem = sessionStorage.getItem as jest.Mock;
+    mockGetItem.mockReturnValue(params.token);
+    const mockJwtDecode = jwtDecode.jwtDecode as jest.Mock;
+    mockJwtDecode.mockReturnValue({
+      exp: Date.now() / 1000 + 3600
+    });
     const actual = getCachedToken();
-    expect(mock).toHaveBeenCalled();
+    expect(mockGetItem).toHaveBeenCalled();
+    expect(mockJwtDecode).toHaveBeenCalled();
     expect(actual).toStrictEqual(expected.token);
   });
 
@@ -205,15 +212,20 @@ describe('getCachedToken', () => {
 
   it('should retrieve undefined when the token has been expired', () => {
     const params = {
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjk0NjY1MjQwMH0.4KH1oUE6zGRmtA3ht0W969-9LqK-OAzjRmGcUBMfVH8'
+      token: 'sample_token'
     };
     const expected = {
       token: undefined
     };
-    const mock = sessionStorage.getItem as jest.Mock;
-    mock.mockReturnValue(params.token);
+    const mockGetItem = sessionStorage.getItem as jest.Mock;
+    mockGetItem.mockReturnValue(params.token);
+    const mockJwtDecode = jwtDecode.jwtDecode as jest.Mock;
+    mockJwtDecode.mockReturnValue({
+      exp: Date.now() / 1000 - 3600
+    });
     const actual = getCachedToken();
-    expect(mock).toHaveBeenCalled();
+    expect(mockGetItem).toHaveBeenCalled();
+    expect(mockJwtDecode).toHaveBeenCalled();
     expect(actual).toStrictEqual(expected.token);
   });
 

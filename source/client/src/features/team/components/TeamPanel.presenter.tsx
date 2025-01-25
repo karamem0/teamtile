@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2021-2024 karamem0
+// Copyright (c) 2021-2025 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -22,7 +22,7 @@ import {
 } from '@fluentui/react-components';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { EventHandler } from '../../../types/Event';
-import { SiGithub } from 'react-icons/si';
+import { GrGithub } from 'react-icons/gr';
 import TeamGrid from './TeamGrid';
 import { css } from '@emotion/react';
 import messages from '../messages';
@@ -93,7 +93,7 @@ function TeamPanel(props: Readonly<TeamPanelProps>) {
               <MenuGroup>
                 <MenuItem
                   icon={(
-                    <SiGithub
+                    <GrGithub
                       css={css`
                         font-size: 1rem;
                         line-height: 1rem;

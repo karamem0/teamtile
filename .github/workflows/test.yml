@@ -5,6 +5,10 @@ on:
         required: true
         type: string
 
+permissions:
+  checks: write
+  contents: read
+
 jobs:
   run:
     name: Run
@@ -37,7 +41,7 @@ jobs:
             -- NUnit.TestOutputXml=${{github.workspace}}/source/server/test
         working-directory: source/server
       - name: Upload test results
-        uses: enricomi/publish-unit-test-result-action/linux@v2
+        uses: enricomi/publish-unit-test-result-action/linux@170bf24d20d201b842d7a52403b73ed297e6645b
         if: always()
         with:
           files: |
@@ -45,7 +49,7 @@ jobs:
             source/server/test/**/*.xml
           check_name: Test results
       - name: Upload coverage reports
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@13ce06bfc6bbe3ecf90edbbf1bc32fe5978ca1d3
         if: always()
         with:
           fail_ci_if_error: true

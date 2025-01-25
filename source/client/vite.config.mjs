@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2021-2024 karamem0
+// Copyright (c) 2021-2025 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -15,6 +15,13 @@ export default defineConfig({
   'build': {
     'outDir': 'dist',
     'sourcemap': true
+  },
+  'optimizeDeps': {
+    'esbuildOptions': {
+      'define': {
+        'global': 'globalThis'
+      }
+    }
   },
   'plugins': [
     react({

@@ -5,6 +5,9 @@ on:
         required: true
         type: string
 
+permissions:
+  contents: read
+        
 jobs:
   run:
     name: Run
@@ -17,11 +20,11 @@ jobs:
           name: build
           path: build
       - name: Connect to Azure
-        uses: azure/login@v2
+        uses: azure/login@a65d910e8af852a8061c627c456678983e180302
         with:
           creds: ${{secrets.AZURE_CREDENTIALS}}
       - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v2
+        uses: azure/webapps-deploy@de617f46172a906d0617bb0e50d81e9e3aec24c8
         with:
           app-name: ${{vars.AZURE_APP_SERVICE_NAME}}
           package: build
