@@ -14,12 +14,17 @@ using System.Threading.Tasks;
 
 namespace Karamem0.Teamtile.Tests.Helpers;
 
-public class DelegateHttpClientHandler(Func<HttpRequestMessage, CancellationToken, Task<HttpResponseMessage>> onSendAsync) : HttpClientHandler
+public class DelegateHttpClientHandler(
+    Func<HttpRequestMessage, CancellationToken, Task<HttpResponseMessage>> onSendAsync
+) : HttpClientHandler
 {
 
     private readonly Func<HttpRequestMessage, CancellationToken, Task<HttpResponseMessage>> onSendAsync = onSendAsync;
 
-    protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    protected override Task<HttpResponseMessage> SendAsync(
+        HttpRequestMessage request,
+        CancellationToken cancellationToken
+    )
     {
         return this.onSendAsync(request, cancellationToken);
     }

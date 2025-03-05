@@ -30,10 +30,9 @@ public class TokenController(IHttpClientFactory httpClientFactory, IConfiguratio
 
     private readonly HttpClient httpClient = httpClientFactory.CreateClient();
 
-    private readonly MicrosoftIdentityOptions identityOptions = configuration
-        .GetSection("AzureAD")
-        .Get<MicrosoftIdentityOptions>()
-        ?? throw new ArgumentNullException(nameof(configuration));
+    private readonly MicrosoftIdentityOptions identityOptions =
+        configuration.GetSection("AzureAD").Get<MicrosoftIdentityOptions>() ??
+        throw new ArgumentNullException(nameof(configuration));
 
     [HttpPost()]
     public async Task<IActionResult> PostAsync([FromBody] TokenRequest request)
@@ -53,25 +52,29 @@ public class TokenController(IHttpClientFactory httpClientFactory, IConfiguratio
         var httpRequestUri = $"https://login.microsoft.com/{tenantId}/oauth2/v2.0/token";
         var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, httpRequestUri)
         {
-            Content = new FormUrlEncodedContent(new Dictionary<string, string?>()
-            {
-                ["grant_type"] = "urn:ietf:params:oauth:grant-type:jwt-bearer",
-                ["client_id"] = this.identityOptions.ClientId,
-                ["client_secret"] = this.identityOptions.ClientSecret,
-                ["assertion"] = clientToken,
-                ["scope"] = request.Scope,
-                ["requested_token_use"] = "on_behalf_of",
-            })
+            Content = new FormUrlEncodedContent(
+                new Dictionary<string, string?>()
+                {
+                    ["grant_type"] = "urn:ietf:params:oauth:grant-type:jwt-bearer",
+                    ["client_id"] = this.identityOptions.ClientId,
+                    ["client_secret"] = this.identityOptions.ClientSecret,
+                    ["assertion"] = clientToken,
+                    ["scope"] = request.Scope,
+                    ["requested_token_use"] = "on_behalf_of",
+                }
+            )
         };
         var httpResponseMessage = await this.httpClient.SendAsync(httpRequestMessage);
         var httpResponseContent = await httpResponseMessage.Content.ReadAsStringAsync();
         var httpResponseJson = JsonSerializer.Deserialize<Dictionary<string, object?>>(httpResponseContent);
         if (httpResponseMessage.IsSuccessStatusCode)
         {
-            return this.Ok(new TokenResponse()
-            {
-                Token = httpResponseJson?["access_token"]?.ToString()
-            });
+            return this.Ok(
+                new TokenResponse()
+                {
+                    Token = httpResponseJson?["access_token"]?.ToString()
+                }
+            );
         }
         else
         {

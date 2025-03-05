@@ -24,11 +24,16 @@ _ = services.AddMicrosoftIdentityWebApiAuthentication(configuration, "AzureAD");
 _ = services.AddApplicationInsightsTelemetry();
 _ = services.AddControllers();
 _ = services.AddHttpClient();
-_ = services.AddCors(options =>
-    options.AddDefaultPolicy(builder => builder
-        .AllowAnyOrigin()
-        .AllowAnyHeader()
-        .AllowAnyMethod()));
+_ = services.AddCors(
+    options => options.AddDefaultPolicy(
+        builder =>
+        {
+            _ = builder.AllowAnyOrigin();
+            _ = builder.AllowAnyHeader();
+            _ = builder.AllowAnyMethod();
+        }
+    )
+);
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())

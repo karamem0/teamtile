@@ -1,3 +1,5 @@
+name: Tags
+
 on:
   push:
     tags:
