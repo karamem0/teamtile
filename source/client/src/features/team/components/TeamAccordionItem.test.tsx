@@ -8,21 +8,20 @@
 
 import React from 'react';
 
+import { expect, it, vi } from 'vitest';
 import { Accordion } from '@fluentui/react-components';
 import IntlProvider from '../../../providers/IntlProvider';
 import Presenter from './TeamAccordionItem.presenter';
 import { VisibilityType } from '../../../types/Entity';
 import { render } from '@testing-library/react';
 
-jest.mock('./TeamGridItem', () =>
-  function TeamGridItem({ children }: React.PropsWithChildren<unknown>) {
-    return (
-      <div data-testid="test-TeamGridItem">
-        {children}
-      </div>
-    );
-  }
-);
+vi.mock('./TeamGridItem', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="test-TeamGridItem">
+      {children}
+    </div>
+  )
+}));
 
 it('should create a shapshot', () => {
   const params = {

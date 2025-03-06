@@ -1,37 +1,30 @@
-name: Develop
+name: Trigger on main
 
 on:
   push:
     branches:
-      - develop
+      - main
 
 permissions:
   checks: write
 
 jobs:
-  test:
-    name: Test source
-    uses: ./.github/workflows/test.yml
-    secrets: inherit
-    with:
-      environment: dev
   build-source:
     name: Build source
-    needs: test
     uses: ./.github/workflows/build-source.yml
     secrets: inherit
     with:
-      environment: dev
+      environment: prd
   build-manifest:
     name: Build manifest
     uses: ./.github/workflows/build-manifest.yml
     secrets: inherit
     with:
-      environment: dev
+      environment: prd
   deploy:
-    name: Deploy
+    name: Deploy to Azure
     needs: build-source
-    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/deploy-to-azure.yml
     secrets: inherit
     with:
-      environment: dev
+      environment: prd

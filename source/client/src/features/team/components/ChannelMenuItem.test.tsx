@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import { expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import IntlProvider from '../../../providers/IntlProvider';
 import { MembershipType } from '../../../types/Entity';
@@ -15,20 +16,18 @@ import Presenter from './ChannelMenuItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import userEvent from '@testing-library/user-event';
 
-jest.mock('../../../common/components/SidePanel', () =>
-  function SidePanel({ content, renderer }: { content: React.ReactNode, renderer: (props: unknown) => React.ReactNode }) {
-    return (
-      <div data-testid="test-SidePanel">
-        <div data-testid="test-Content">
-          {content}
-        </div>
-        <div data-testid="test-Renderer">
-          {renderer({})}
-        </div>
+vi.mock('../../../common/components/SidePanel', () => ({
+  default: ({ content, renderer }: { content: React.ReactNode, renderer: (props: unknown) => React.ReactNode }) => (
+    <div data-testid="test-SidePanel">
+      <div data-testid="test-Content">
+        {content}
       </div>
-    );
-  }
-);
+      <div data-testid="test-Renderer">
+        {renderer({})}
+      </div>
+    </div>
+  )
+}));
 
 it('should create a shapshot when the items parameter is not undefined', () => {
   const params = {
@@ -81,7 +80,7 @@ it('should create a shapshot when the items parameter is an empty array', () => 
 
 it('should raise onClick event when click an item', async () => {
   const user = userEvent.setup();
-  const mock = jest.fn();
+  const mock = vi.fn();
   const params = {
     items: [
       {
@@ -106,7 +105,7 @@ it('should raise onClick event when click an item', async () => {
 
 it('should raise onFilterChange event when enter text in search box', async () => {
   const user = userEvent.setup();
-  const mock = jest.fn();
+  const mock = vi.fn();
   const params = {
     items: [
       {

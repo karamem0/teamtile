@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import '@testing-library/jest-dom';
+import { expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import IntlProvider from '../../providers/IntlProvider';
 import Presenter from './SidePanel.presenter';
@@ -72,7 +72,7 @@ it('should create a shapshot when the loading parameter is false', () => {
 it('should raise onOpenChange event when click a close button', async () => {
   const container = document.body.appendChild(document.createElement('div'));
   const user = userEvent.setup();
-  const mock = jest.fn();
+  const mock = vi.fn();
   const params = {
     content: (
       <div data-testid="test-Content" />

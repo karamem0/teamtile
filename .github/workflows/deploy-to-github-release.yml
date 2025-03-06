@@ -1,6 +1,7 @@
-name: Release
+name: Deploy to GitHub Release
 
-on: workflow_call
+on:
+  workflow_call: {}
 
 permissions:
   contents: write

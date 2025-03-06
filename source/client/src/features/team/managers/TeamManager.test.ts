@@ -7,6 +7,7 @@
 //
 
 import * as teamService from '../services/TeamService';
+import { Mock, vi } from 'vitest';
 import {
   clearCache,
   getCards,
@@ -20,16 +21,16 @@ import {
 } from './TeamManager';
 import { Tag } from '../../../types/Entity';
 
-jest.mock('../services/TeamService');
+vi.mock('../services/TeamService');
 
 beforeEach(() => {
-  jest.resetModules();
+  vi.resetModules();
 });
 
 describe('clearCache', () => {
 
   it('should clear the cache', async () => {
-    const mock = teamService.clearCache as unknown as jest.Mock;
+    const mock = teamService.clearCache as Mock;
     await clearCache();
     expect(mock).toHaveBeenCalled();
   });
@@ -67,13 +68,13 @@ describe('getCards', () => {
         }
       ]
     };
-    const mockGetCardsFromTeamInfos = teamService.getCardsFromTeamInfos as unknown as jest.Mock;
-    const mockGetCardsFromCache = teamService.getCardsFromCache as unknown as jest.Mock;
-    const mockGetCardsFromGraphGroup = teamService.getCardsFromGraphGroup as unknown as jest.Mock;
-    const mockGetCardsFromGraphTeam = teamService.getCardsFromGraphTeam as unknown as jest.Mock;
-    const mockGetPins = teamService.getPins as unknown as jest.Mock;
-    const mockGetTeamIconsFromCache = teamService.getTeamIconsFromCache as unknown as jest.Mock;
-    const mockGetTeamIconsFromGraph = teamService.getTeamIconsFromGraph as unknown as jest.Mock;
+    const mockGetCardsFromTeamInfos = teamService.getCardsFromTeamInfos as Mock;
+    const mockGetCardsFromCache = teamService.getCardsFromCache as Mock;
+    const mockGetCardsFromGraphGroup = teamService.getCardsFromGraphGroup as Mock;
+    const mockGetCardsFromGraphTeam = teamService.getCardsFromGraphTeam as Mock;
+    const mockGetPins = teamService.getPins as Mock;
+    const mockGetTeamIconsFromCache = teamService.getTeamIconsFromCache as Mock;
+    const mockGetTeamIconsFromGraph = teamService.getTeamIconsFromGraph as Mock;
     mockGetCardsFromTeamInfos.mockResolvedValue(params.teamInfos);
     mockGetCardsFromCache.mockResolvedValue(params.values);
     mockGetCardsFromGraphGroup.mockResolvedValue(params.values);
@@ -108,8 +109,8 @@ describe('getChannels', () => {
         }
       ]
     };
-    const mockCache = teamService.getChannelsFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getChannelsFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getChannelsFromCache as Mock;
+    const mockGraph = teamService.getChannelsFromGraph as Mock;
     mockCache.mockResolvedValue(params.values);
     mockGraph.mockResolvedValue(undefined);
     const actual = await getChannels(params.teamId);
@@ -130,8 +131,8 @@ describe('getChannels', () => {
         }
       ]
     };
-    const mockCache = teamService.getChannelsFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getChannelsFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getChannelsFromCache as Mock;
+    const mockGraph = teamService.getChannelsFromGraph as Mock;
     mockCache.mockResolvedValue(undefined);
     mockGraph.mockResolvedValue(params.values);
     const actual = await getChannels(params.teamId);
@@ -152,8 +153,8 @@ describe('getChannels', () => {
         }
       ]
     };
-    const mockCache = teamService.getChannelsFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getChannelsFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getChannelsFromCache as Mock;
+    const mockGraph = teamService.getChannelsFromGraph as Mock;
     mockCache.mockResolvedValue(undefined);
     mockGraph.mockImplementation(() => {
       throw new Error('Something went wrong');
@@ -173,8 +174,8 @@ describe('getDrive', () => {
         webUrl: 'https://m365x214355.sharepoint.com/sites/HRTaskforce/Shared%20Documents'
       }
     };
-    const mockCache = teamService.getDriveFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getDriveFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getDriveFromCache as Mock;
+    const mockGraph = teamService.getDriveFromGraph as Mock;
     mockCache.mockResolvedValue(params.value);
     mockGraph.mockResolvedValue(undefined);
     const actual = await getDrive(params.teamId);
@@ -191,8 +192,8 @@ describe('getDrive', () => {
         webUrl: 'https://m365x214355.sharepoint.com/sites/HRTaskforce/Shared%20Documents'
       }
     };
-    const mockCache = teamService.getDriveFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getDriveFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getDriveFromCache as Mock;
+    const mockGraph = teamService.getDriveFromGraph as Mock;
     mockCache.mockResolvedValue(undefined);
     mockGraph.mockResolvedValue(params.value);
     const actual = await getDrive(params.teamId);
@@ -209,8 +210,8 @@ describe('getDrive', () => {
         webUrl: 'https://m365x214355.sharepoint.com/sites/HRTaskforce/Shared%20Documents'
       }
     };
-    const mockCache = teamService.getDriveFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getDriveFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getDriveFromCache as Mock;
+    const mockGraph = teamService.getDriveFromGraph as Mock;
     mockCache.mockResolvedValue(undefined);
     mockGraph.mockImplementation(() => {
       throw new Error('Something went wrong');
@@ -235,10 +236,10 @@ describe('getMembers', () => {
         }
       ]
     };
-    const mockCache = teamService.getMembersFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getMembersFromGraph as unknown as jest.Mock;
-    const mockCacheIcons = teamService.getMemberIconsFromCache as unknown as jest.Mock;
-    const mockGraphIcons = teamService.getMemberIconsFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getMembersFromCache as Mock;
+    const mockGraph = teamService.getMembersFromGraph as Mock;
+    const mockCacheIcons = teamService.getMemberIconsFromCache as Mock;
+    const mockGraphIcons = teamService.getMemberIconsFromGraph as Mock;
     mockCache.mockResolvedValue(params.values);
     mockGraph.mockResolvedValue(undefined);
     mockCacheIcons.mockResolvedValue(params.values);
@@ -261,10 +262,10 @@ describe('getMembers', () => {
         }
       ]
     };
-    const mockCache = teamService.getMembersFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getMembersFromGraph as unknown as jest.Mock;
-    const mockCacheIcons = teamService.getMemberIconsFromCache as unknown as jest.Mock;
-    const mockGraphIcons = teamService.getMemberIconsFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getMembersFromCache as Mock;
+    const mockGraph = teamService.getMembersFromGraph as Mock;
+    const mockCacheIcons = teamService.getMemberIconsFromCache as Mock;
+    const mockGraphIcons = teamService.getMemberIconsFromGraph as Mock;
     mockCache.mockResolvedValue(undefined);
     mockGraph.mockResolvedValue(params.values);
     mockCacheIcons.mockResolvedValue(params.values);
@@ -287,8 +288,8 @@ describe('getMembers', () => {
         }
       ]
     };
-    const mockCache = teamService.getMembersFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getMembersFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getMembersFromCache as Mock;
+    const mockGraph = teamService.getMembersFromGraph as Mock;
     mockCache.mockResolvedValue(undefined);
     mockGraph.mockImplementation(() => {
       throw new Error('Something went wrong');
@@ -314,7 +315,7 @@ describe('getTab', () => {
         }
       ]
     };
-    const mockGraph = teamService.getTabFromGraph as unknown as jest.Mock;
+    const mockGraph = teamService.getTabFromGraph as Mock;
     mockGraph.mockResolvedValue(params.values);
     const actual = await getTab(params.teamId, params.channelId, params.appId);
     expect(actual).not.toBeUndefined();
@@ -335,7 +336,7 @@ describe('getTab', () => {
         }
       ]
     };
-    const mockGraph = teamService.getTabFromGraph as unknown as jest.Mock;
+    const mockGraph = teamService.getTabFromGraph as Mock;
     mockGraph.mockImplementation(() => {
       throw new Error('Something went wrong');
     });
@@ -358,8 +359,8 @@ describe('getTags', () => {
         }
       ]
     };
-    const mockCache = teamService.getTagsFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getTagsFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getTagsFromCache as Mock;
+    const mockGraph = teamService.getTagsFromGraph as Mock;
     mockCache.mockResolvedValue(params.values);
     mockGraph.mockResolvedValue(undefined);
     const actual = await getTags(params.teamId);
@@ -380,8 +381,8 @@ describe('getTags', () => {
         }
       ]
     };
-    const mockCache = teamService.getTagsFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getTagsFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getTagsFromCache as Mock;
+    const mockGraph = teamService.getTagsFromGraph as Mock;
     mockCache.mockResolvedValue(undefined);
     mockGraph.mockResolvedValue(params.values);
     const actual = await getTags(params.teamId);
@@ -402,8 +403,8 @@ describe('getTags', () => {
         }
       ]
     };
-    const mockCache = teamService.getTagsFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getTagsFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getTagsFromCache as Mock;
+    const mockGraph = teamService.getTagsFromGraph as Mock;
     mockCache.mockResolvedValue(undefined);
     mockGraph.mockImplementation(() => {
       throw new Error('Something went wrong');
@@ -430,8 +431,8 @@ describe('getTagMembers', () => {
         }
       ]
     };
-    const mockCache = teamService.getTagMembersFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getTagMembersFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getTagMembersFromCache as Mock;
+    const mockGraph = teamService.getTagMembersFromGraph as Mock;
     mockCache.mockResolvedValue(params.values);
     mockGraph.mockResolvedValue(undefined);
     const actual = await getTagMembers(params.teamId, params.tagId);
@@ -453,8 +454,8 @@ describe('getTagMembers', () => {
         }
       ]
     };
-    const mockCache = teamService.getTagMembersFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getTagMembersFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getTagMembersFromCache as Mock;
+    const mockGraph = teamService.getTagMembersFromGraph as Mock;
     mockCache.mockResolvedValue(undefined);
     mockGraph.mockResolvedValue(params.values);
     const actual = await getTagMembers(params.teamId, params.tagId);
@@ -468,8 +469,8 @@ describe('getTagMembers', () => {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       tagId: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk=='
     };
-    const mockCache = teamService.getTagMembersFromCache as unknown as jest.Mock;
-    const mockGraph = teamService.getTagMembersFromGraph as unknown as jest.Mock;
+    const mockCache = teamService.getTagMembersFromCache as Mock;
+    const mockGraph = teamService.getTagMembersFromGraph as Mock;
     mockCache.mockResolvedValue(undefined);
     mockGraph.mockImplementation(() => {
       throw new Error('Something went wrong');
@@ -490,7 +491,7 @@ describe('setPin', () => {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       pinned: true
     };
-    const mock = teamService.setPin as unknown as jest.Mock;
+    const mock = teamService.setPin as Mock;
     await setPin(params.teamId, params.pinned);
     expect(mock).toHaveBeenCalledWith(expected.teamId, expected.pinned);
   });
@@ -504,7 +505,7 @@ describe('setPin', () => {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       pinned: true
     };
-    const mock = teamService.setPin as unknown as jest.Mock;
+    const mock = teamService.setPin as Mock;
     await setPin(params.teamId, params.pinned);
     expect(mock).toHaveBeenCalledWith(expected.teamId, expected.pinned);
   });

@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import { expect, it } from 'vitest';
 import IntlProvider from '../../../providers/IntlProvider';
 import Presenter from './Error404Page.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';

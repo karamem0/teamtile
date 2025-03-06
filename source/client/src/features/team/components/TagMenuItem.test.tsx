@@ -8,35 +8,32 @@
 
 import React from 'react';
 
+import { expect, it, vi } from 'vitest';
 import IntlProvider from '../../../providers/IntlProvider';
 import Presenter from './TagMenuItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
-jest.mock('./TagMemberAccordionItem', () =>
-  function TagMemberAccordionItem({ children }: React.PropsWithChildren<unknown>) {
-    return (
-      <div data-testid="test-TagMemberAccordionItem">
-        {children}
-      </div>
-    );
-  }
-);
+vi.mock('./TagMemberAccordionItem', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="test-TagMemberAccordionItem">
+      {children}
+    </div>
+  )
+}));
 
-jest.mock('../../../common/components/SidePanel', () =>
-  function SidePanel({ content, renderer }: { content: React.ReactNode, renderer: (props: unknown) => React.ReactNode }) {
-    return (
-      <div data-testid="test-SidePanel">
-        <div data-testid="test-Content">
-          {content}
-        </div>
-        <div data-testid="test-Renderer">
-          {renderer({})}
-        </div>
+vi.mock('../../../common/components/SidePanel', () => ({
+  default: ({ content, renderer }: { content: React.ReactNode, renderer: (props: unknown) => React.ReactNode }) => (
+    <div data-testid="test-SidePanel">
+      <div data-testid="test-Content">
+        {content}
       </div>
-    );
-  }
-);
+      <div data-testid="test-Renderer">
+        {renderer({})}
+      </div>
+    </div>
+  )
+}));
 
 it('should create a shapshot when the items parameter is not undefined', () => {
   const params = {

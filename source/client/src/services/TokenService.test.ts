@@ -8,19 +8,20 @@
 
 import * as jwtDecode from 'jwt-decode';
 import * as teamsjs from '@microsoft/teams-js';
+import { Mock, vi } from 'vitest';
 import {
   getCachedToken,
   getClientToken,
   getServerToken
 } from './TokenService';
-import fetchMock from 'jest-fetch-mock';
 
-jest.mock('jwt-decode');
-jest.mock('@microsoft/teams-js');
+vi.mock('jwt-decode');
+vi.mock('@microsoft/teams-js');
 
 beforeEach(() => {
-  jest.resetModules();
-  fetchMock.mockClear();
+  vi.resetModules();
+  vi.restoreAllMocks();
+  sessionStorage.clear();
 });
 
 describe('getClientToken', () => {
@@ -32,7 +33,7 @@ describe('getClientToken', () => {
     const expected = {
       token: 'sample_token'
     };
-    const mock = teamsjs.authentication.getAuthToken as unknown as jest.Mock;
+    const mock = teamsjs.authentication.getAuthToken as Mock;
     mock.mockResolvedValue(params.token);
     const actual = await getClientToken();
     expect(mock).toHaveBeenCalled();
@@ -51,35 +52,48 @@ describe('getServerToken', () => {
     const expected = {
       token: 'sample_token'
     };
-    fetchMock.doMock((req) => {
-      if (req.method !== 'POST') {
-        return Promise.resolve({
-          status: 405
-        });
-      }
-      if (!req.url.endsWith('/api/token')) {
-        return Promise.resolve({
-          status: 404
-        });
-      }
-      if (req.headers.get('Authorization') !== `Bearer ${params.token}`) {
-        return Promise.resolve({
-          status: 401
-        });
-      }
-      if (req.headers.get('Content-Type') !== 'application/json') {
-        return Promise.resolve({
-          status: 400
-        });
-      }
-      return Promise.resolve({
-        status: params.status,
-        body: JSON.stringify(
+    vi.spyOn(global, 'fetch').mockImplementation((url, init) => {
+      const headers = init?.headers as Record<string, string>;
+      if (init?.method !== 'POST') {
+        return Promise.resolve(new Response(
+          null,
           {
-            token: params.token
+            status: 405
           }
-        )
-      });
+        ));
+      }
+      if (!url?.toString()?.endsWith('/api/token')) {
+        return Promise.resolve(new Response(
+          null,
+          {
+            status: 404
+          }
+        ));
+      }
+      if (headers.Authorization !== `Bearer ${params.token}`) {
+        return Promise.resolve(new Response(
+          null,
+          {
+            status: 401
+          }
+        ));
+      }
+      if (headers['Content-Type'] !== 'application/json') {
+        return Promise.resolve(new Response(
+          null,
+          {
+            status: 400
+          }
+        ));
+      }
+      return Promise.resolve(new Response(
+        JSON.stringify({
+          token: params.token
+        }),
+        {
+          status: params.status
+        }
+      ));
     });
     const actual = await getServerToken(params.token);
     expect(actual).toStrictEqual(expected.token);
@@ -94,37 +108,50 @@ describe('getServerToken', () => {
     const expected = {
       token: 'sample_token'
     };
-    fetchMock.doMock((req) => {
-      if (req.method !== 'POST') {
-        return Promise.resolve({
-          status: 405
-        });
-      }
-      if (!req.url.endsWith('/api/token')) {
-        return Promise.resolve({
-          status: 404
-        });
-      }
-      if (req.headers.get('Authorization') !== `Bearer ${params.token}`) {
-        return Promise.resolve({
-          status: 401
-        });
-      }
-      if (req.headers.get('Content-Type') !== 'application/json') {
-        return Promise.resolve({
-          status: 400
-        });
-      }
-      return Promise.resolve({
-        status: params.status,
-        body: JSON.stringify(
+    vi.spyOn(global, 'fetch').mockImplementation((url, init) => {
+      const headers = init?.headers as Record<string, string>;
+      if (init?.method !== 'POST') {
+        return Promise.resolve(new Response(
+          null,
           {
-            error: params.error
+            status: 405
           }
-        )
-      });
+        ));
+      }
+      if (!url?.toString()?.endsWith('/api/token')) {
+        return Promise.resolve(new Response(
+          null,
+          {
+            status: 404
+          }
+        ));
+      }
+      if (headers.Authorization !== `Bearer ${params.token}`) {
+        return Promise.resolve(new Response(
+          null,
+          {
+            status: 401
+          }
+        ));
+      }
+      if (headers['Content-Type'] !== 'application/json') {
+        return Promise.resolve(new Response(
+          null,
+          {
+            status: 400
+          }
+        ));
+      }
+      return Promise.resolve(new Response(
+        JSON.stringify({
+          error: params.error
+        }),
+        {
+          status: params.status
+        }
+      ));
     });
-    const mock = teamsjs.authentication.authenticate as unknown as jest.Mock;
+    const mock = teamsjs.authentication.authenticate as unknown as Mock;
     mock.mockResolvedValue(params.token);
     const actual = await getServerToken(params.token);
     expect(mock).toHaveBeenCalled();
@@ -140,35 +167,48 @@ describe('getServerToken', () => {
     const expected = {
       error: 'unknown_error'
     };
-    fetchMock.doMock((req) => {
-      if (req.method !== 'POST') {
-        return Promise.resolve({
-          status: 405
-        });
-      }
-      if (!req.url.endsWith('/api/token')) {
-        return Promise.resolve({
-          status: 404
-        });
-      }
-      if (req.headers.get('Authorization') !== `Bearer ${params.token}`) {
-        return Promise.resolve({
-          status: 401
-        });
-      }
-      if (req.headers.get('Content-Type') !== 'application/json') {
-        return Promise.resolve({
-          status: 400
-        });
-      }
-      return Promise.resolve({
-        status: params.status,
-        body: JSON.stringify(
+    vi.spyOn(global, 'fetch').mockImplementation((url, init) => {
+      const headers = init?.headers as Record<string, string>;
+      if (init?.method !== 'POST') {
+        return Promise.resolve(new Response(
+          null,
           {
-            error: params.error
+            status: 405
           }
-        )
-      });
+        ));
+      }
+      if (!url?.toString()?.endsWith('/api/token')) {
+        return Promise.resolve(new Response(
+          null,
+          {
+            status: 404
+          }
+        ));
+      }
+      if (headers.Authorization !== `Bearer ${params.token}`) {
+        return Promise.resolve(new Response(
+          null,
+          {
+            status: 401
+          }
+        ));
+      }
+      if (headers['Content-Type'] !== 'application/json') {
+        return Promise.resolve(new Response(
+          null,
+          {
+            status: 400
+          }
+        ));
+      }
+      return Promise.resolve(new Response(
+        JSON.stringify({
+          error: params.error
+        }),
+        {
+          status: params.status
+        }
+      ));
     });
     await getServerToken(params.token).catch((error) => expect(error.message).toBe(expected.error));
   });
@@ -184,29 +224,21 @@ describe('getCachedToken', () => {
     const expected = {
       token: 'sample_token'
     };
-    const mockGetItem = sessionStorage.getItem as jest.Mock;
-    mockGetItem.mockReturnValue(params.token);
-    const mockJwtDecode = jwtDecode.jwtDecode as jest.Mock;
+    sessionStorage.setItem(import.meta.env.VITE_AUTH_CLIENT_ID, params.token);
+    const mockJwtDecode = jwtDecode.jwtDecode as Mock;
     mockJwtDecode.mockReturnValue({
       exp: Date.now() / 1000 + 3600
     });
     const actual = getCachedToken();
-    expect(mockGetItem).toHaveBeenCalled();
     expect(mockJwtDecode).toHaveBeenCalled();
     expect(actual).toStrictEqual(expected.token);
   });
 
   it('should retrieve undefined when the token has not been cached', () => {
-    const params = {
-      token: undefined
-    };
     const expected = {
       token: undefined
     };
-    const mock = sessionStorage.getItem as jest.Mock;
-    mock.mockReturnValue(params.token);
     const actual = getCachedToken();
-    expect(mock).toHaveBeenCalled();
     expect(actual).toStrictEqual(expected.token);
   });
 
@@ -217,14 +249,12 @@ describe('getCachedToken', () => {
     const expected = {
       token: undefined
     };
-    const mockGetItem = sessionStorage.getItem as jest.Mock;
-    mockGetItem.mockReturnValue(params.token);
-    const mockJwtDecode = jwtDecode.jwtDecode as jest.Mock;
+    sessionStorage.setItem(import.meta.env.VITE_AUTH_CLIENT_ID, params.token);
+    const mockJwtDecode = jwtDecode.jwtDecode as Mock;
     mockJwtDecode.mockReturnValue({
       exp: Date.now() / 1000 - 3600
     });
     const actual = getCachedToken();
-    expect(mockGetItem).toHaveBeenCalled();
     expect(mockJwtDecode).toHaveBeenCalled();
     expect(actual).toStrictEqual(expected.token);
   });

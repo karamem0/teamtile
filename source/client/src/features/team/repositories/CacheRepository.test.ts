@@ -7,6 +7,7 @@
 //
 
 import * as cacheConfig from '../../../config/CacheConfig';
+import { Mock, vi } from 'vitest';
 import {
   clearAll,
   getChannels,
@@ -20,18 +21,18 @@ import {
   getTeam
 } from './CacheRepository';
 
-jest.mock('../../../config/CacheConfig');
-const getConfig = cacheConfig.getConfig as unknown as jest.Mock;
+vi.mock('../../../config/CacheConfig');
+const getConfig = cacheConfig.getConfig as Mock;
 
 beforeEach(() => {
-  jest.resetModules();
+  vi.resetModules();
 });
 
 describe('clearAll', () => {
 
   it('should clear all cache', async () => {
-    const mockTable = jest.fn();
-    const mockClear = jest.fn();
+    const mockTable = vi.fn();
+    const mockClear = vi.fn();
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -80,8 +81,8 @@ describe('getChannels', () => {
         membershipType: 'standard'
       }
     ];
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -121,8 +122,8 @@ describe('getChannels', () => {
         membershipType: 'standard'
       }
     ];
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -158,8 +159,8 @@ describe('getDrive', () => {
       id: 'b!UvZsiQCydEuBEcAT9kQGz_C9gbGAlohJgfeiSu5K_WrNO7djCV5dS4pWDvGiRupe',
       webUrl: 'https://m365x214355.sharepoint.com/sites/HRTaskforce/Shared%20Documents'
     };
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -191,8 +192,8 @@ describe('getDrive', () => {
       id: 'b!UvZsiQCydEuBEcAT9kQGz_C9gbGAlohJgfeiSu5K_WrNO7djCV5dS4pWDvGiRupe',
       webUrl: 'https://m365x214355.sharepoint.com/sites/HRTaskforce/Shared%20Documents'
     };
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -230,8 +231,8 @@ describe('getGroup', () => {
       email: 'HRTaskforce@M365x214355.onmicrosoft.com',
       sensitivityLabel: 'Restricted'
     };
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -265,8 +266,8 @@ describe('getGroup', () => {
       email: 'HRTaskforce@M365x214355.onmicrosoft.com',
       sensitivityLabel: 'Restricted'
     };
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -302,8 +303,8 @@ describe('getIcon', () => {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       data: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII='
     };
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -335,16 +336,16 @@ describe('getIcon', () => {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       data: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII='
     };
-    const mock = jest.fn().mockResolvedValue(params.response);
+    const mock = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
-        table: jest.fn().mockReturnValue({
+        table: vi.fn().mockReturnValue({
           get: mock
         })
       }
     });
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -388,8 +389,8 @@ describe('getMembers', () => {
         email: 'AdeleV@M365x214355.onmicrosoft.com'
       }
     ];
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -431,8 +432,8 @@ describe('getMembers', () => {
         email: 'AdeleV@M365x214355.onmicrosoft.com'
       }
     ];
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -460,8 +461,8 @@ describe('getPin', () => {
     const expected = {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315'
     };
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -505,8 +506,8 @@ describe('getTags', () => {
         memberCount: 2
       }
     ];
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -546,8 +547,8 @@ describe('getTags', () => {
         memberCount: 2
       }
     ];
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -591,8 +592,8 @@ describe('getTagMembers', () => {
         tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
       }
     ];
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -632,8 +633,8 @@ describe('getTagMembers', () => {
         tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
       }
     ];
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -677,8 +678,8 @@ describe('getTeam', () => {
       visibility: 'private',
       webUrl: 'https://teams.microsoft.com/l/team/19:09fc54a3141a45d0bc769cf506d2e079%40thread.skype/conversations?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
     };
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({
@@ -718,8 +719,8 @@ describe('getTeam', () => {
       visibility: 'private',
       webUrl: 'https://teams.microsoft.com/l/team/19:09fc54a3141a45d0bc769cf506d2e079%40thread.skype/conversations?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
     };
-    const mockTable = jest.fn();
-    const mockClear = jest.fn().mockResolvedValue(params.response);
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
     getConfig.mockReturnValue({
       database: {
         table: mockTable.mockReturnValue({

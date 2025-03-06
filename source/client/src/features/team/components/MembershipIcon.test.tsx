@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import { expect, it } from 'vitest';
 import IntlProvider from '../../../providers/IntlProvider';
 import { MembershipType } from '../../../types/Entity';
 import Presenter from './MembershipIcon.presenter';

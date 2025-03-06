@@ -7,7 +7,6 @@
 //
 
 import { authentication } from '@microsoft/teams-js';
-import env from '../env';
 import { jwtDecode } from 'jwt-decode';
 import { loginParams } from '../config/MsalConfig';
 
@@ -45,7 +44,7 @@ export async function getServerToken(token: string): Promise<string> {
 }
 
 export function getCachedToken(): string | undefined {
-  const token = sessionStorage.getItem(env.VITE_AUTH_CLIENT_ID);
+  const token = sessionStorage.getItem(import.meta.env.VITE_AUTH_CLIENT_ID);
   if (token == null) {
     return;
   }
@@ -59,5 +58,5 @@ export function getCachedToken(): string | undefined {
 }
 
 export function setCachedToken(token: string): void {
-  sessionStorage.setItem(env.VITE_AUTH_CLIENT_ID, token);
+  sessionStorage.setItem(import.meta.env.VITE_AUTH_CLIENT_ID, token);
 }

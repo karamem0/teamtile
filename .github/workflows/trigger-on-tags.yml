@@ -1,4 +1,4 @@
-name: Tags
+name: Trigger on tags
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
     with:
       environment: prd
   release:
-    name: Release
+    name: Deploy to GitHub Release
     needs: build-manifest
-    uses: ./.github/workflows/release.yml
+    uses: ./.github/workflows/deploy-to-github-release.yml
     secrets: inherit

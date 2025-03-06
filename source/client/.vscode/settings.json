@@ -1,7 +1,6 @@
 {
   "eslint.format.enable": true,
   "eslint.useFlatConfig": true,
-  "jest.runMode": "on-demand",
   "[javascript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },

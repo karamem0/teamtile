@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import { expect, it, vi } from 'vitest';
 import { render } from '@testing-library/react';
 
 import IntlProvider from '../../../providers/IntlProvider';
@@ -15,15 +16,13 @@ import Presenter from './TeamGrid.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
 
-jest.mock('./TeamGridItem', () =>
-  function TeamGridItem({ children }: React.PropsWithChildren<unknown>) {
-    return (
-      <div data-testid="test-TeamGridItem">
-        {children}
-      </div>
-    );
-  }
-);
+vi.mock('./TeamGridItem', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="test-TeamGridItem">
+      {children}
+    </div>
+  )
+}));
 
 it('should create a shapshot', () => {
   const params = {

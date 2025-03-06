@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import { expect, it } from 'vitest';
 import Presenter from './SensitivityLabel.presenter';
 import { render } from '@testing-library/react';
 

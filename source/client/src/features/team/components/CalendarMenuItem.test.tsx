@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import { expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import IntlProvider from '../../../providers/IntlProvider';
 import Presenter from './CalendarMenuItem.presenter';
@@ -28,7 +29,7 @@ it('should create a shapshot', () => {
 
 it('should raise onClick event when click a button', async () => {
   const user = userEvent.setup();
-  const mock = jest.fn();
+  const mock = vi.fn();
   const params = {
     onClick: mock
   };

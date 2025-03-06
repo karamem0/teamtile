@@ -52,5 +52,19 @@ export default defineConfig({
         'target': 'https://localhost:5001'
       }
     }
+  },
+  'test': {
+    'coverage': {
+      'reporter': [
+        'json'
+      ],
+      'reportsDirectory': './coverage'
+    },
+    'environment': 'jsdom',
+    'globals': true,
+    'outputFile': './test/junit.xml',
+    'setupFiles': [
+      './vitest.setup.mjs'
+    ]
   }
 });

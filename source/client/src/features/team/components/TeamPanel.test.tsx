@@ -8,19 +8,18 @@
 
 import React from 'react';
 
+import { expect, it, vi } from 'vitest';
 import IntlProvider from '../../../providers/IntlProvider';
 import Presenter from './TeamPanel.presenter';
 import { render } from '@testing-library/react';
 
-jest.mock('./TeamGrid', () =>
-  function TeamGrid({ children }: React.PropsWithChildren<unknown>) {
-    return (
-      <div data-testid="test-TeamGrid">
-        {children}
-      </div>
-    );
-  }
-);
+vi.mock('./TeamGrid', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="test-TeamGrid">
+      {children}
+    </div>
+  )
+}));
 
 it('should create a shapshot', () => {
   const params = {};

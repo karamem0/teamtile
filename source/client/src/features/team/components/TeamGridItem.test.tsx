@@ -8,101 +8,84 @@
 
 import React from 'react';
 
+import { expect, it, vi } from 'vitest';
 import IntlProvider from '../../../providers/IntlProvider';
 import Presenter from './TeamGridItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
 import { render } from '@testing-library/react';
 
-jest.mock('./AvatarIcon', () =>
-  function AvatarIcon({ children }: React.PropsWithChildren<unknown>) {
-    return (
-      <div data-testid="test-AvatarIcon">
-        {children}
-      </div>
-    );
-  }
-);
+vi.mock('./AvatarIcon', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="test-AvatarIcon">
+      {children}
+    </div>
+  )
+}));
 
-jest.mock('./CalendarMenuItem', () =>
-  function CalendarMenuItem({ children }: React.PropsWithChildren<unknown>) {
-    return (
-      <div data-testid="test-CalendarMenuItem">
-        {children}
-      </div>
-    );
-  }
-);
+vi.mock('./CalendarMenuItem', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="test-CalendarMenuItem">
+      {children}
+    </div>
+  )
+}));
 
-jest.mock('./ChannelMenuItem', () =>
-  function ChannelMenuItem({ children }: React.PropsWithChildren<unknown>) {
-    return (
-      <div data-testid="test-ChannelMenuItem">
-        {children}
-      </div>
-    );
-  }
-);
+vi.mock('./ChannelMenuItem', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="test-ChannelMenuItem">
+      {children}
+    </div>
+  )
+}));
 
-jest.mock('./DriveMenuItem', () =>
-  function DriveMenuItem({ children }: React.PropsWithChildren<unknown>) {
-    return (
-      <div data-testid="test-DriveMenuItem">
-        {children}
-      </div>
-    );
-  }
-);
+vi.mock('./DriveMenuItem', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="test-DriveMenuItem">
+      {children}
+    </div>
+  )
+}));
 
-jest.mock('./MemberMenuItem', () =>
-  function MemberMenuItem({ children }: React.PropsWithChildren<unknown>) {
-    return (
-      <div data-testid="test-MemberMenuItem">
-        {children}
-      </div>
-    );
-  }
-);
+vi.mock('./MemberMenuItem', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="test-MemberMenuItem">
+      {children}
+    </div>
+  )
+}));
 
-jest.mock('./PinMenuItem', () =>
-  function PinMenuItem({ children }: React.PropsWithChildren<unknown>) {
-    return (
-      <div data-testid="test-PinMenuItem">
-        {children}
-      </div>
-    );
-  }
-);
+vi.mock('./PinMenuItem', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="test-PinMenuItem">
+      {children}
+    </div>
+  )
+}));
 
-jest.mock('./SensitivityLabel', () =>
-  function SensitivityLabel({ children }: React.PropsWithChildren<unknown>) {
-    return (
-      <div data-testid="test-SensitivityLabel">
-        {children}
-      </div>
-    );
-  }
-);
+vi.mock('./SensitivityLabel', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="test-SensitivityLabel">
+      {children}
+    </div>
+  )
+}));
 
-jest.mock('./TagMenuItem', () =>
-  function TagMenuItem({ children }: React.PropsWithChildren<unknown>) {
-    return (
-      <div data-testid="test-TagMenuItem">
-        {children}
-      </div>
-    );
-  }
-);
+vi.mock('./TagMenuItem', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="test-TagMenuItem">
+      {children}
+    </div>
+  )
+}));
 
-jest.mock('./VisibilityIcon', () =>
-  function VisibilityIcon({ children }: React.PropsWithChildren<unknown>) {
-    return (
-      <div data-testid="test-VisibilityIcon">
-        {children}
-      </div>
-    );
-  }
-);
+vi.mock('./VisibilityIcon', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="test-VisibilityIcon">
+      {children}
+    </div>
+  )
+}));
 
 it('should create a shapshot when the loading parameter is true', () => {
   const params = {
