@@ -8,7 +8,6 @@
 
 import React from 'react';
 
-import { expect, it, vi } from 'vitest';
 import IntlProvider from '../../../providers/IntlProvider';
 import Presenter from './TeamPanel.presenter';
 import { render } from '@testing-library/react';

@@ -8,7 +8,6 @@
 
 import React from 'react';
 
-import { expect, it } from 'vitest';
 import IntlProvider from '../../../providers/IntlProvider';
 import Presenter from './VisibilityIcon.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';

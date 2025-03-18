@@ -8,7 +8,6 @@
 
 import React from 'react';
 
-import { expect, it } from 'vitest';
 import Presenter from './LoaderPanel.presenter';
 import { render } from '@testing-library/react';
 

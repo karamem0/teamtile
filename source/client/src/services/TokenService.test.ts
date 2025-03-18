@@ -8,12 +8,12 @@
 
 import * as jwtDecode from 'jwt-decode';
 import * as teamsjs from '@microsoft/teams-js';
-import { Mock, vi } from 'vitest';
 import {
   getCachedToken,
   getClientToken,
   getServerToken
 } from './TokenService';
+import { Mock } from 'vitest';
 
 vi.mock('jwt-decode');
 vi.mock('@microsoft/teams-js');

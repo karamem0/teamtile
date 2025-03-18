@@ -7,7 +7,6 @@
 //
 
 import * as teamService from '../services/TeamService';
-import { Mock, vi } from 'vitest';
 import {
   clearCache,
   getCards,
@@ -19,6 +18,7 @@ import {
   getTags,
   setPin
 } from './TeamManager';
+import { Mock } from 'vitest';
 import { Tag } from '../../../types/Entity';
 
 vi.mock('../services/TeamService');

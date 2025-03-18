@@ -8,7 +8,6 @@
 
 import React from 'react';
 
-import { expect, it } from 'vitest';
 import IntlProvider from '../../providers/IntlProvider';
 import { MessageBarIntent } from '@fluentui/react-components';
 import Presenter from './Snackbar.presenter';

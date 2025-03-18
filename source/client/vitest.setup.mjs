@@ -7,7 +7,6 @@
 //
 
 import '@testing-library/jest-dom/vitest';
-import { expect, vi } from 'vitest';
 import { createSerializer } from '@emotion/jest';
 
 expect.addSnapshotSerializer(createSerializer());
