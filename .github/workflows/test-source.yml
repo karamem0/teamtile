@@ -37,7 +37,7 @@ jobs:
         shell: pwsh
         run: |
           dotnet test `
-            Karamem0.Teamtile.Tests/Karamem0.Teamtile.Tests.csproj `
+            Karamem0.Teamtile.Test/Karamem0.Teamtile.Test.csproj `
             -p:AltCover=true `
             -- NUnit.TestOutputXml=${{github.workspace}}/source/server/test
         working-directory: source/server

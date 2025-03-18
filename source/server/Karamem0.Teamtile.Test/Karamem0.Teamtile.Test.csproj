@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <LangVersion>latest</LangVersion>
-    <PackageId>Karamem0.Teamtile.Tests</PackageId>
+    <PackageId>Karamem0.Teamtile.Test</PackageId>
     <Version>0.0.0</Version>
     <Authors>karamem0</Authors>
     <Company>karamem0</Company>
@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Karamem0.Teamtile.Web\Karamem0.Teamtile.Web.csproj" />
+    <ProjectReference Include="..\Karamem0.Teamtile\Karamem0.Teamtile.csproj" />
   </ItemGroup>
 
 </Project>

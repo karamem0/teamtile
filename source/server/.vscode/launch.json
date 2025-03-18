@@ -5,7 +5,7 @@
       "name": "Launch Web",
       "type": "dotnet",
       "request": "launch",
-      "projectPath": "${workspaceFolder}/Karamem0.Teamtile.Web/Karamem0.Teamtile.Web.csproj"
+      "projectPath": "${workspaceFolder}/Karamem0.Teamtile/Karamem0.Teamtile.csproj"
     }
   ]
 }

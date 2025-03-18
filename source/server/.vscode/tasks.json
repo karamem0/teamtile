@@ -27,7 +27,6 @@
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
-      "dependsOn": "clean",
       "problemMatcher": "$msCompile"
     },
     {

@@ -8,7 +8,6 @@
 
 import React from 'react';
 
-import { expect, it, vi } from 'vitest';
 import { Accordion } from '@fluentui/react-components';
 import IntlProvider from '../../../providers/IntlProvider';
 import Presenter from './TeamAccordionItem.presenter';

@@ -33,28 +33,28 @@ public class TokenControllerTests
         var tokenService = Substitute.For<ITokenService>();
         _ = tokenService
             .ExchangeTokenAsync(Arg.Any<string[]>(), Arg.Any<string>())
-            .Returns("dummy-server-token");
+            .Returns("server_token");
         var httpContext = new DefaultHttpContext();
-        httpContext.Request.Headers.Append("Authorization", $"Bearer dummy-client-token");
+        httpContext.Request.Headers.Append("Authorization", $"Bearer client_token");
         // Execute
         var request = new TokenRequest()
         {
             Scope = "user_impersonation"
         };
-        var controller = new TokenController(tokenService)
+        var target = new TokenController(tokenService)
         {
             ControllerContext = new ControllerContext()
             {
                 HttpContext = httpContext
             }
         };
-        var result = await controller.PostAsync(request) as ObjectResult;
+        var actual = await target.PostAsync(request) as ObjectResult;
         // Assert
         Assert.Multiple(
             () =>
             {
-                Assert.That(result?.StatusCode, Is.EqualTo((int)HttpStatusCode.OK));
-                Assert.That(((TokenResponse?)result?.Value)?.Token, Is.EqualTo("dummy-server-token"));
+                Assert.That(actual?.StatusCode, Is.EqualTo((int)HttpStatusCode.OK));
+                Assert.That(((TokenResponse?)actual?.Value)?.Token, Is.EqualTo("server_token"));
             }
         );
     }
@@ -65,23 +65,23 @@ public class TokenControllerTests
         var tokenService = Substitute.For<ITokenService>();
         _ = tokenService
             .ExchangeTokenAsync(Arg.Any<string[]>(), Arg.Any<string>())
-            .Returns("dummy-server-token");
+            .Returns("server_token");
         var httpContext = new DefaultHttpContext();
         // Execute
         var request = new TokenRequest()
         {
             Scope = "user_impersonation"
         };
-        var controller = new TokenController(tokenService)
+        var target = new TokenController(tokenService)
         {
             ControllerContext = new ControllerContext()
             {
                 HttpContext = httpContext
             }
         };
-        var result = await controller.PostAsync(request) as StatusCodeResult;
+        var actual = await target.PostAsync(request) as StatusCodeResult;
         // Assert
-        Assert.That(result?.StatusCode, Is.EqualTo((int)HttpStatusCode.Unauthorized));
+        Assert.That(actual?.StatusCode, Is.EqualTo((int)HttpStatusCode.Unauthorized));
     }
 
     [Test()]
@@ -93,26 +93,26 @@ public class TokenControllerTests
             .ExchangeTokenAsync(Arg.Any<string[]>(), Arg.Any<string>())
             .Throws(new MsalException("invalid_grant"));
         var httpContext = new DefaultHttpContext();
-        httpContext.Request.Headers.Append("Authorization", $"Bearer dummy-client-token");
+        httpContext.Request.Headers.Append("Authorization", $"Bearer client_token");
         // Execute
         var request = new TokenRequest()
         {
             Scope = "user_impersonation"
         };
-        var controller = new TokenController(tokenService)
+        var target = new TokenController(tokenService)
         {
             ControllerContext = new ControllerContext()
             {
                 HttpContext = httpContext
             }
         };
-        var result = await controller.PostAsync(request) as ObjectResult;
-       // Assert
+        var actual = await target.PostAsync(request) as ObjectResult;
+        // Assert
         Assert.Multiple(
             () =>
             {
-                Assert.That(result?.StatusCode, Is.EqualTo((int)HttpStatusCode.Forbidden));
-                Assert.That(((TokenResponse?)result?.Value)?.Error, Is.EqualTo("invalid_grant"));
+                Assert.That(actual?.StatusCode, Is.EqualTo((int)HttpStatusCode.Forbidden));
+                Assert.That(((TokenResponse?)actual?.Value)?.Error, Is.EqualTo("invalid_grant"));
             }
         );
     }
@@ -126,26 +126,26 @@ public class TokenControllerTests
             .ExchangeTokenAsync(Arg.Any<string[]>(), Arg.Any<string>())
             .Throws(new MsalException("unknown_error"));
         var httpContext = new DefaultHttpContext();
-        httpContext.Request.Headers.Append("Authorization", $"Bearer dummy-client-token");
+        httpContext.Request.Headers.Append("Authorization", $"Bearer client_token");
         // Execute
         var request = new TokenRequest()
         {
             Scope = "user_impersonation"
         };
-        var controller = new TokenController(tokenService)
+        var target = new TokenController(tokenService)
         {
             ControllerContext = new ControllerContext()
             {
                 HttpContext = httpContext
             }
         };
-        var result = await controller.PostAsync(request) as ObjectResult;
-       // Assert
+        var actual = await target.PostAsync(request) as ObjectResult;
+        // Assert
         Assert.Multiple(
             () =>
             {
-                Assert.That(result?.StatusCode, Is.EqualTo((int)HttpStatusCode.InternalServerError));
-                Assert.That(((TokenResponse?)result?.Value)?.Error, Is.EqualTo("unknown_error"));
+                Assert.That(actual?.StatusCode, Is.EqualTo((int)HttpStatusCode.InternalServerError));
+                Assert.That(((TokenResponse?)actual?.Value)?.Error, Is.EqualTo("unknown_error"));
             }
         );
     }

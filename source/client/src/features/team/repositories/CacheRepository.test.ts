@@ -7,7 +7,6 @@
 //
 
 import * as cacheConfig from '../../../config/CacheConfig';
-import { Mock, vi } from 'vitest';
 import {
   clearAll,
   getChannels,
@@ -20,6 +19,7 @@ import {
   getTags,
   getTeam
 } from './CacheRepository';
+import { Mock } from 'vitest';
 
 vi.mock('../../../config/CacheConfig');
 const getConfig = cacheConfig.getConfig as Mock;

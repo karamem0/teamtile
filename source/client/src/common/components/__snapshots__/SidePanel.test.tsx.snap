@@ -4,7 +4,7 @@ exports[`should create a shapshot when the loading parameter is false 1`] = `
 <DocumentFragment>
   <div
     aria-hidden="true"
-    class="rmnljus fui-OverlayDrawer__backdrop ___mgf8q40_1ccxybz f1euv43f"
+    class="rl76ifk fui-OverlayDrawer__backdrop ___mgf8q40_1ccxybz f1euv43f"
   />
   .emotion-0 {
   margin-bottom: 1rem;
@@ -98,7 +98,7 @@ exports[`should create a shapshot when the loading parameter is true 1`] = `
 <DocumentFragment>
   <div
     aria-hidden="true"
-    class="rmnljus fui-OverlayDrawer__backdrop ___mgf8q40_1ccxybz f1euv43f"
+    class="rl76ifk fui-OverlayDrawer__backdrop ___mgf8q40_1ccxybz f1euv43f"
   />
   .emotion-0 {
   margin-bottom: 1rem;

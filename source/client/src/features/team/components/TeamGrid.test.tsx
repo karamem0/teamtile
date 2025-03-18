@@ -8,7 +8,6 @@
 
 import React from 'react';
 
-import { expect, it, vi } from 'vitest';
 import { render } from '@testing-library/react';
 
 import IntlProvider from '../../../providers/IntlProvider';

@@ -2,9 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karamem0.Teamtile.Web", "Karamem0.Teamtile.Web\Karamem0.Teamtile.Web.csproj", "{9DAE07EE-68C9-4935-A2DB-55A657B5D2BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karamem0.Teamtile", "Karamem0.Teamtile\Karamem0.Teamtile.csproj", "{9DAE07EE-68C9-4935-A2DB-55A657B5D2BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karamem0.Teamtile.Tests", "Karamem0.Teamtile.Tests\Karamem0.Teamtile.Tests.csproj", "{A3C72E35-3BA0-46D4-AA77-09D5A59AD07E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karamem0.Teamtile.Test", "Karamem0.Teamtile.Test\Karamem0.Teamtile.Test.csproj", "{A3C72E35-3BA0-46D4-AA77-09D5A59AD07E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

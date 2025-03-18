@@ -7,7 +7,6 @@
 //
 
 import * as graphConfig from '../../../config/GraphConfig';
-import { Mock, vi } from 'vitest';
 import {
   getChannels,
   getDrive,
@@ -22,6 +21,7 @@ import {
   getTeamInfos,
   getTeams
 } from './GraphRepository';
+import { Mock } from 'vitest';
 
 vi.mock('../../../config/GraphConfig');
 const getConfig = graphConfig.getConfig as Mock;
