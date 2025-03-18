@@ -29,6 +29,17 @@
       ],
       "dependsOn": "clean",
       "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "format",
+      "type": "shell",
+      "command": "jb",
+      "args": [
+        "cleanupcode",
+        "--profile=\"Built-in: Reformat Code\"",
+        "${workspaceFolder}/Karamem0.Teamtile.sln"
+      ],
+      "problemMatcher": []
     }
   ]
 }

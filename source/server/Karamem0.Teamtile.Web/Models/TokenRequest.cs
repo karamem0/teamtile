@@ -8,21 +8,17 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Karamem0.Teamtile.Models;
 
-public class TokenResponse
+public record TokenRequest
 {
 
-    public TokenResponse()
-    {
-    }
-
-    public string? Token { get; set; }
-
-    public string? Error { get; set; }
+    [Required()]
+    public string Scope { get; set; } = "";
 
 }

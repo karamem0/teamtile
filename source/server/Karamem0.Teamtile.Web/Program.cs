@@ -6,6 +6,7 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+using Karamem0.Teamtile.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,10 +21,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
 var services = builder.Services;
-_ = services.AddMicrosoftIdentityWebApiAuthentication(configuration, "AzureAD");
+_ = services.Configure<MicrosoftIdentityOptions>(configuration.GetSection("MicrosoftEntra"));
+_ = services.AddMicrosoftIdentityWebApiAuthentication(configuration, "MicrosoftEntra");
 _ = services.AddApplicationInsightsTelemetry();
 _ = services.AddControllers();
-_ = services.AddHttpClient();
 _ = services.AddCors(
     options => options.AddDefaultPolicy(
         builder =>
@@ -34,6 +35,7 @@ _ = services.AddCors(
         }
     )
 );
+_ = services.AddSingleton<ITokenService, TokenService>();
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())

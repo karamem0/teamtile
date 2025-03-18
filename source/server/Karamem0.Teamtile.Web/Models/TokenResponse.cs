@@ -14,13 +14,11 @@ using System.Threading.Tasks;
 
 namespace Karamem0.Teamtile.Models;
 
-public class TokenRequest
+public record TokenResponse
 {
 
-    public TokenRequest()
-    {
-    }
+    public string? Token { get; set; }
 
-    public string? Scope { get; set; }
+    public string? Error { get; set; }
 
 }

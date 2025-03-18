@@ -1,0 +1,7 @@
+{
+  "associatedApplications": [
+    {
+      "applicationId": "{{APP_CLIENT_ID}}"
+    }
+  ]
+}

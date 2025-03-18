@@ -29,12 +29,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="NunitXml.TestLogger" Version="6.0.0" />
+    <PackageReference Include="NunitXml.TestLogger" Version="6.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Karamem0.Teamtile\Karamem0.Teamtile.csproj" />
-    <ProjectReference Include="..\Karamem0.Teamtile.Tests.Helpers\Karamem0.Teamtile.Tests.Helpers.csproj" />
+    <ProjectReference Include="..\Karamem0.Teamtile.Web\Karamem0.Teamtile.Web.csproj" />
   </ItemGroup>
 
 </Project>

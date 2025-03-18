@@ -21,6 +21,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
+      - name: Update microsoft-identity-association.json
+        shell: pwsh
+        run: |
+          $content = Get-Content -Path ${{env.FILE_PATH}}
+          $content = $content -Replace "{{APP_CLIENT_ID}}", "${{vars.APP_CLIENT_ID}}"
+          Out-File -FilePath ${{env.FILE_PATH}} -InputObject $content -Encoding UTF8
+        env:
+          FILE_PATH: source/client/public/.well-known/microsoft-identity-association.json
       - name: Update .env
         shell: pwsh
         run: |
@@ -52,7 +60,7 @@ jobs:
         shell: pwsh
         run: |
           dotnet publish `
-            Karamem0.Teamtile/Karamem0.Teamtile.csproj `
+            Karamem0.Teamtile.Web/Karamem0.Teamtile.Web.csproj `
             -c Release `
             -p:PublishDir=${{github.workspace}}/source/server/build `
             -p:Version=${{vars.BUILD_VERSION}}.${{github.run_number}} `
@@ -63,3 +71,4 @@ jobs:
         with:
           name: build
           path: source/server/build
+          include-hidden-files: true
