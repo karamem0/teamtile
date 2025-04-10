@@ -22,7 +22,7 @@ vi.mock('./TeamGridItem', () => ({
   )
 }));
 
-it('should create a shapshot', () => {
+it('should match the snapshot', () => {
   const params = {
     header: 'Pinned',
     items: [

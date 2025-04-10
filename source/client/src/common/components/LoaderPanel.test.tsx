@@ -11,7 +11,7 @@ import React from 'react';
 import Presenter from './LoaderPanel.presenter';
 import { render } from '@testing-library/react';
 
-it('should create a shapshot', () => {
+it('should match the snapshot', () => {
   const params = {};
   const { asFragment } = render(
     <Presenter {...params} />

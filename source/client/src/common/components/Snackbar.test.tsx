@@ -13,7 +13,7 @@ import { MessageBarIntent } from '@fluentui/react-components';
 import Presenter from './Snackbar.presenter';
 import { render } from '@testing-library/react';
 
-it('should create a shapshot when the text parameter is undefined', () => {
+it('should match the snapshot when the text is undefined', () => {
   const params = {
     intent: undefined,
     text: undefined
@@ -26,7 +26,7 @@ it('should create a shapshot when the text parameter is undefined', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the text parameter is error', () => {
+it('should match the snapshot when the text is error', () => {
   const params = {
     intent: 'error' as MessageBarIntent,
     text: 'error'
@@ -39,7 +39,7 @@ it('should create a shapshot when the text parameter is error', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the text parameter is warning', () => {
+it('should match the snapshot when the text is warning', () => {
   const params = {
     intent: 'warning' as MessageBarIntent,
     text: 'warning'
@@ -52,7 +52,7 @@ it('should create a shapshot when the text parameter is warning', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the text parameter is success', () => {
+it('should match the snapshot when the text is success', () => {
   const params = {
     intent: 'success' as MessageBarIntent,
     text: 'success'

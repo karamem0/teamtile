@@ -12,7 +12,7 @@ import IntlProvider from '../../../providers/IntlProvider';
 import Presenter from './CardMenuItem.presenter';
 import { render } from '@testing-library/react';
 
-it('should create a shapshot', () => {
+it('should match the snapshot', () => {
   const params = {
     icon: (
       <div data-testid="test-Icon" />

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should create a shapshot when the loading parameter is false 1`] = `
+exports[`should match the snapshot when the loading is false 1`] = `
 <DocumentFragment>
   <div
     aria-hidden="true"
@@ -94,7 +94,7 @@ exports[`should create a shapshot when the loading parameter is false 1`] = `
 </DocumentFragment>
 `;
 
-exports[`should create a shapshot when the loading parameter is true 1`] = `
+exports[`should match the snapshot when the loading is true 1`] = `
 <DocumentFragment>
   <div
     aria-hidden="true"

@@ -11,7 +11,7 @@ import { getArray, getValue } from './Dexie';
 
 describe('getArray', () => {
 
-  it('should return a value when the expired parameter is true', () => {
+  it('should get a value when the expired is true and the item is not expired', () => {
     const item = {
       expired: true,
       item: {
@@ -34,7 +34,25 @@ describe('getArray', () => {
     expect(actual).toStrictEqual(expected);
   });
 
-  it('should return a value when the expired parameter is false', () => {
+  it('should get undefined when the expired is true and the item is expired', () => {
+    const item = {
+      expired: true,
+      item: {
+        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
+        expired: 1,
+        values: [
+          {
+            id: '48d5b87e-bfff-4195-9685-3ee7afd43d48'
+          }
+        ]
+      } as ArrayEntity<unknown>,
+      timestamp: 0
+    };
+    const actual = getArray(item.item, item.expired, item.timestamp);
+    expect(actual).toBeUndefined();
+  });
+
+  it('should get a value when the expired is false and the item is not expired', () => {
     const item = {
       expired: false,
       item: {
@@ -57,7 +75,25 @@ describe('getArray', () => {
     expect(actual).toStrictEqual(expected);
   });
 
-  it('should return a value when the expired parameter is undefined', () => {
+  it('should get a value when the expired is false and the item is expired', () => {
+    const item = {
+      expired: false,
+      item: {
+        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
+        expired: 0,
+        values: [
+          {
+            id: '48d5b87e-bfff-4195-9685-3ee7afd43d48'
+          }
+        ]
+      } as ArrayEntity<unknown>,
+      timestamp: 1
+    };
+    const actual = getArray(item.item, item.expired, item.timestamp);
+    expect(actual).toBeUndefined();
+  });
+
+  it('should get a value when the expired is undefined', () => {
     const item = {
       expired: undefined,
       item: {
@@ -80,7 +116,7 @@ describe('getArray', () => {
     expect(actual).toStrictEqual(expected);
   });
 
-  it('should return undefined when the item parameter is undefined', () => {
+  it('should get undefined when the item is undefined', () => {
     const item = {
       expired: undefined,
       item: undefined,
@@ -95,7 +131,7 @@ describe('getArray', () => {
 
 describe('getValue', () => {
 
-  it('should return a value when the expired parameter is true', () => {
+  it('should get a value when the expired is true', () => {
     const item = {
       expired: true,
       item: {
@@ -114,7 +150,7 @@ describe('getValue', () => {
     expect(actual).toStrictEqual(expected);
   });
 
-  it('should return a value when the expired parameter is false', () => {
+  it('should get a value when the expired is false', () => {
     const item = {
       expired: false,
       item: {
@@ -133,7 +169,7 @@ describe('getValue', () => {
     expect(actual).toStrictEqual(expected);
   });
 
-  it('should return a value when the expired parameter is undefined', () => {
+  it('should get a value when the expired is undefined', () => {
     const item = {
       expired: undefined,
       item: {
@@ -152,7 +188,7 @@ describe('getValue', () => {
     expect(actual).toStrictEqual(expected);
   });
 
-  it('should return undefined when the item parameter is undefined', () => {
+  it('should get undefined when the item is undefined', () => {
     const item = {
       expired: undefined,
       item: undefined,

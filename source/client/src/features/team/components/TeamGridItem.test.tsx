@@ -86,7 +86,7 @@ vi.mock('./VisibilityIcon', () => ({
   )
 }));
 
-it('should create a shapshot when the loading parameter is true', () => {
+it('should match the snapshot when the loading is true', () => {
   const params = {
     card: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
@@ -114,7 +114,7 @@ it('should create a shapshot when the loading parameter is true', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the loading parameter is false', () => {
+it('should match the snapshot when the loading is false', () => {
   const params = {
     card: {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',

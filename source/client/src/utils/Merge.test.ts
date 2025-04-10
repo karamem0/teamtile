@@ -6,12 +6,12 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import { margeCards, mergeMembers } from './Merge';
+import { mergeCards, mergeMembers } from './Merge';
 import { VisibilityType } from '../types/Entity';
 
-describe('margeCards', () => {
+describe('mergeCards', () => {
 
-  it('should merge two arrays of TeamCard', () => {
+  it('should get merged arrays of TeamCard', () => {
     const param = {
       source: [
         {
@@ -60,7 +60,7 @@ describe('margeCards', () => {
         visible: true
       }
     ];
-    const actual = margeCards(param.source, param.target);
+    const actual = mergeCards(param.source, param.target);
     expect(actual).toStrictEqual(expected);
   });
 
@@ -68,7 +68,7 @@ describe('margeCards', () => {
 
 describe('mergeMembers', () => {
 
-  it('should merge two arrays of TeamMember', () => {
+  it('should get merged arrays of TeamMember', () => {
     const param = {
       source: [
         {

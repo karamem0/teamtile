@@ -12,7 +12,7 @@ import IntlProvider from '../../../providers/IntlProvider';
 import Presenter from './PinMenuItem.presenter';
 import { render } from '@testing-library/react';
 
-it('should create a shapshot when the pinned parameter is true', () => {
+it('should match the snapshot when the pinned is true', () => {
   const params = {
     pinned: true
   };
@@ -24,7 +24,7 @@ it('should create a shapshot when the pinned parameter is true', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the pinned parameter is false', () => {
+it('should match the snapshot when the pinned is false', () => {
   const params = {
     pinned: false
   };
@@ -36,7 +36,7 @@ it('should create a shapshot when the pinned parameter is false', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the pinned parameter is undefined', () => {
+it('should match the snapshot when the pinned is undefined', () => {
   const params = {
     pinned: undefined
   };

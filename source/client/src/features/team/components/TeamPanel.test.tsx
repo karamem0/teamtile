@@ -20,7 +20,7 @@ vi.mock('./TeamGrid', () => ({
   )
 }));
 
-it('should create a shapshot', () => {
+it('should match the snapshot', () => {
   const params = {};
   const { asFragment } = render(
     <IntlProvider>

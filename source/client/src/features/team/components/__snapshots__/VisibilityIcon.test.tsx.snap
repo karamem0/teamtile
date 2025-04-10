@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should create a shapshot when the type parameter is private 1`] = `
+exports[`should match the snapshot when the type is private 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;
@@ -46,7 +46,7 @@ exports[`should create a shapshot when the type parameter is private 1`] = `
 </DocumentFragment>
 `;
 
-exports[`should create a shapshot when the type parameter is public 1`] = `
+exports[`should match the snapshot when the type is public 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;
@@ -92,7 +92,7 @@ exports[`should create a shapshot when the type parameter is public 1`] = `
 </DocumentFragment>
 `;
 
-exports[`should create a shapshot when the type parameter is undefined 1`] = `
+exports[`should match the snapshot when the type is undefined 1`] = `
 <DocumentFragment>
   .emotion-0 {
   min-height: 100vh;

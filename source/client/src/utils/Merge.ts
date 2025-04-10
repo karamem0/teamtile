@@ -10,7 +10,7 @@ import { Member } from '../types/Entity';
 import { TeamCard } from '../types/Store';
 import merge from 'deepmerge';
 
-export function margeCards(source: TeamCard[], target: TeamCard[], options?: merge.Options) {
+export function mergeCards(source: TeamCard[], target: TeamCard[], options?: merge.Options) {
   const items = [ ...source ];
   source.forEach((sourceItem, sourceIndex) => {
     const targetIndex = target.findIndex((targetItem) => targetItem.id === sourceItem.id);

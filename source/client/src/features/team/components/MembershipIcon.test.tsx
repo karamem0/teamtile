@@ -14,7 +14,7 @@ import Presenter from './MembershipIcon.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
-it('should create a shapshot when the type parameter is shared', () => {
+it('should match the snapshot when the type is shared', () => {
   const params = {
     type: 'shared' as MembershipType
   };
@@ -28,7 +28,7 @@ it('should create a shapshot when the type parameter is shared', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the type parameter is standard', () => {
+it('should match the snapshot when the type is standard', () => {
   const params = {
     type: 'standard' as MembershipType
   };
@@ -42,7 +42,7 @@ it('should create a shapshot when the type parameter is standard', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the type parameter is private', () => {
+it('should match the snapshot when the type is private', () => {
   const params = {
     type: 'private' as MembershipType
   };
@@ -56,7 +56,7 @@ it('should create a shapshot when the type parameter is private', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the type parameter is undefined', () => {
+it('should match the snapshot when the type is undefined', () => {
   const params = {
     type: undefined
   };

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should create a shapshot when the text parameter is error 1`] = `
+exports[`should match the snapshot when the text is error 1`] = `
 <DocumentFragment>
   .emotion-0 {
   position: fixed;
@@ -60,7 +60,7 @@ exports[`should create a shapshot when the text parameter is error 1`] = `
 </DocumentFragment>
 `;
 
-exports[`should create a shapshot when the text parameter is success 1`] = `
+exports[`should match the snapshot when the text is success 1`] = `
 <DocumentFragment>
   .emotion-0 {
   position: fixed;
@@ -120,9 +120,9 @@ exports[`should create a shapshot when the text parameter is success 1`] = `
 </DocumentFragment>
 `;
 
-exports[`should create a shapshot when the text parameter is undefined 1`] = `<DocumentFragment />`;
+exports[`should match the snapshot when the text is undefined 1`] = `<DocumentFragment />`;
 
-exports[`should create a shapshot when the text parameter is warning 1`] = `
+exports[`should match the snapshot when the text is warning 1`] = `
 <DocumentFragment>
   .emotion-0 {
   position: fixed;

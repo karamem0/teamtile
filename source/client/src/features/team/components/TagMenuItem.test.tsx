@@ -34,7 +34,7 @@ vi.mock('../../../common/components/SidePanel', () => ({
   )
 }));
 
-it('should create a shapshot when the items parameter is not undefined', () => {
+it('should match the snapshot when the items is not undefined', () => {
   const params = {
     id: '2bd9fd6-8f93-4758-87c3-1fb73740a315',
     items: [
@@ -56,7 +56,7 @@ it('should create a shapshot when the items parameter is not undefined', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the items parameter is undefined', () => {
+it('should match the snapshot when the items is undefined', () => {
   const params = {
     id: '2bd9fd6-8f93-4758-87c3-1fb73740a315',
     items: undefined
@@ -71,7 +71,7 @@ it('should create a shapshot when the items parameter is undefined', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the items parameter is an empty array', () => {
+it('should match the snapshot when the items is an empty array', () => {
   const params = {
     id: '2bd9fd6-8f93-4758-87c3-1fb73740a315',
     items: []

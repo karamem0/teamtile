@@ -14,7 +14,7 @@ import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
 import { render } from '@testing-library/react';
 
-it('should create a shapshot when the type parameter is public', () => {
+it('should match the snapshot when the type is public', () => {
   const params = {
     type: 'public' as VisibilityType
   };
@@ -28,7 +28,7 @@ it('should create a shapshot when the type parameter is public', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the type parameter is private', () => {
+it('should match the snapshot when the type is private', () => {
   const params = {
     type: 'private' as VisibilityType
   };
@@ -42,7 +42,7 @@ it('should create a shapshot when the type parameter is private', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the type parameter is undefined', () => {
+it('should match the snapshot when the type is undefined', () => {
   const params = {
     type: undefined
   };

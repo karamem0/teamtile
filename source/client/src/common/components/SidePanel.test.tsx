@@ -14,7 +14,7 @@ import Presenter from './SidePanel.presenter';
 import ThemeProvider from '../../providers/ThemeProvider';
 import userEvent from '@testing-library/user-event';
 
-it('should create a shapshot when the loading parameter is true', () => {
+it('should match the snapshot when the loading is true', () => {
   const container = document.body.appendChild(document.createElement('div'));
   const params = {
     content: (
@@ -41,7 +41,7 @@ it('should create a shapshot when the loading parameter is true', () => {
   expect(screen.queryByTestId('test-Content')).not.toBeInTheDocument();
 });
 
-it('should create a shapshot when the loading parameter is false', () => {
+it('should match the snapshot when the loading is false', () => {
   const container = document.body.appendChild(document.createElement('div'));
   const params = {
     content: (

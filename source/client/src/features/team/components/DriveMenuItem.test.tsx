@@ -14,7 +14,7 @@ import Presenter from './DriveMenuItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import userEvent from '@testing-library/user-event';
 
-it('should create a shapshot', () => {
+it('should match the snapshot', () => {
   const params = {};
   const { asFragment } = render(
     <IntlProvider>

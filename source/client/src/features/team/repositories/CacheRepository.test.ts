@@ -55,7 +55,7 @@ describe('clearAll', () => {
 
 describe('getChannels', () => {
 
-  it('should retrieve channels when expired is true', async () => {
+  it('should get channels when expired is true', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       expired: true,
@@ -96,7 +96,7 @@ describe('getChannels', () => {
     expect(actual).toStrictEqual(expected);
   });
 
-  it('should retrieve channels when expired is false', async () => {
+  it('should get channels when expired is false', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       expired: false,
@@ -141,7 +141,7 @@ describe('getChannels', () => {
 
 describe('getDrive', () => {
 
-  it('should retrieve drive when expired is true', async () => {
+  it('should get drive when expired is true', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       expired: true,
@@ -174,7 +174,7 @@ describe('getDrive', () => {
     expect(actual).toStrictEqual(expected);
   });
 
-  it('should retrieve drive when expired is false', async () => {
+  it('should get drive when expired is false', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       expired: false,
@@ -211,7 +211,7 @@ describe('getDrive', () => {
 
 describe('getGroup', () => {
 
-  it('should retrieve group when expired is true', async () => {
+  it('should get group when expired is true', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       expired: true,
@@ -285,7 +285,7 @@ describe('getGroup', () => {
 
 describe('getIcon', () => {
 
-  it('should retrieve icon when expired is true', async () => {
+  it('should get icon when expired is true', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       expired: true,
@@ -318,7 +318,7 @@ describe('getIcon', () => {
     expect(actual).toStrictEqual(expected);
   });
 
-  it('should retrieve icon when expired is false', async () => {
+  it('should get icon when expired is false', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       expired: false,
@@ -363,7 +363,7 @@ describe('getIcon', () => {
 
 describe('getMembers', () => {
 
-  it('should retrieve members when expired is true', async () => {
+  it('should get members when expired is true', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       expired: true,
@@ -404,7 +404,7 @@ describe('getMembers', () => {
     expect(actual).toStrictEqual(expected);
   });
 
-  it('should retrieve members when expired is false', async () => {
+  it('should get members when expired is false', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       expired: false,
@@ -451,7 +451,7 @@ describe('getMembers', () => {
 
 describe('getPin', () => {
 
-  it('should retrieve pin', async () => {
+  it('should get pin', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       response: {
@@ -480,7 +480,7 @@ describe('getPin', () => {
 
 describe('getTags', () => {
 
-  it('should retrieve tags when expired is true', async () => {
+  it('should get tags when expired is true', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       expired: true,
@@ -521,7 +521,7 @@ describe('getTags', () => {
     expect(actual).toStrictEqual(expected);
   });
 
-  it('should retrieve tags when expired is false', async () => {
+  it('should get tags when expired is false', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       expired: false,
@@ -566,7 +566,7 @@ describe('getTags', () => {
 
 describe('getTagMembers', () => {
 
-  it('should retrieve tag members when expired is true', async () => {
+  it('should get tag members when expired is true', async () => {
     const params = {
       tagId: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyNlYjY1M2Y5Mi04MzczLTRkZTYtYmZlYy01YjRkMjE2YjZhZGUjI2QzYjJiM2ViLWM0N2YtNDViOS05NWYyLWIyZjJlZjYyMTVjZQ==',
       expired: true,
@@ -607,7 +607,7 @@ describe('getTagMembers', () => {
     expect(actual).toStrictEqual(expected);
   });
 
-  it('should retrieve tag members when expired is false', async () => {
+  it('should get tag members when expired is false', async () => {
     const params = {
       tagId: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyNlYjY1M2Y5Mi04MzczLTRkZTYtYmZlYy01YjRkMjE2YjZhZGUjI2QzYjJiM2ViLWM0N2YtNDViOS05NWYyLWIyZjJlZjYyMTVjZQ==',
       expired: false,
@@ -652,7 +652,7 @@ describe('getTagMembers', () => {
 
 describe('getTeam', () => {
 
-  it('should retrieve team when expired is true', async () => {
+  it('should get team when expired is true', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       expired: true,
@@ -693,7 +693,7 @@ describe('getTeam', () => {
     expect(actual).toStrictEqual(expected);
   });
 
-  it('should retrieve team when expired is false', async () => {
+  it('should get team when expired is false', async () => {
     const params = {
       teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       expired: false,

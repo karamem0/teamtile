@@ -11,7 +11,7 @@ import React from 'react';
 import Presenter from './SensitivityLabel.presenter';
 import { render } from '@testing-library/react';
 
-it('should create a shapshot when the label parameter is undefined', () => {
+it('should match the snapshot when the label is undefined', () => {
   const params = {
     label: undefined
   };
@@ -21,7 +21,7 @@ it('should create a shapshot when the label parameter is undefined', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the label parameter is not undefined', () => {
+it('should match the snapshot when the label is not undefined', () => {
   const params = {
     label: 'Restricted'
   };

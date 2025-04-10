@@ -23,7 +23,7 @@ import {
   mapMemberFromIcon
 } from '../mappings/AutoMapperProfile';
 import {
-  margeCards,
+  mergeCards,
   mergeMembers
 } from '../../../utils/Merge';
 import { TeamCard } from '../../../types/Store';
@@ -88,7 +88,7 @@ export async function getCardsFromGraphGroup(items: TeamCard[]): Promise<TeamCar
     items,
     values.map((value) => mapCardFromGroup(value)),
     {
-      arrayMerge: margeCards
+      arrayMerge: mergeCards
     });
 }
 
@@ -100,7 +100,7 @@ export async function getCardsFromGraphTeam(items: TeamCard[]): Promise<TeamCard
     items,
     values.map((value) => mapCardFromTeam(value)),
     {
-      arrayMerge: margeCards
+      arrayMerge: mergeCards
     });
 }
 
@@ -195,7 +195,7 @@ export async function getTeamIconsFromGraph(items: TeamCard[]): Promise<TeamCard
     items,
     values.map((value) => mapCardFromIcon(value)),
     {
-      arrayMerge: margeCards
+      arrayMerge: mergeCards
     });
 }
 

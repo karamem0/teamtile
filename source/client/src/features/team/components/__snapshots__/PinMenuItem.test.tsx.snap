@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should create a shapshot when the pinned parameter is false 1`] = `
+exports[`should match the snapshot when the pinned is false 1`] = `
 <DocumentFragment>
   .emotion-0 {
   display: grid;
@@ -49,7 +49,7 @@ exports[`should create a shapshot when the pinned parameter is false 1`] = `
 </DocumentFragment>
 `;
 
-exports[`should create a shapshot when the pinned parameter is true 1`] = `
+exports[`should match the snapshot when the pinned is true 1`] = `
 <DocumentFragment>
   .emotion-0 {
   display: grid;
@@ -98,7 +98,7 @@ exports[`should create a shapshot when the pinned parameter is true 1`] = `
 </DocumentFragment>
 `;
 
-exports[`should create a shapshot when the pinned parameter is undefined 1`] = `
+exports[`should match the snapshot when the pinned is undefined 1`] = `
 <DocumentFragment>
   .emotion-0 {
   display: grid;

@@ -26,7 +26,7 @@ beforeEach(() => {
 
 describe('getClientToken', () => {
 
-  it('should retrieve a client token', async () => {
+  it('should get a client token', async () => {
     const params = {
       token: 'sample_token'
     };
@@ -44,7 +44,7 @@ describe('getClientToken', () => {
 
 describe('getServerToken', () => {
 
-  it('should retrieve a server token when the server responds with a "200" status code', async () => {
+  it('should get a server token when the server responds with a "200" status code', async () => {
     const params = {
       token: 'sample_token',
       status: 200
@@ -99,7 +99,7 @@ describe('getServerToken', () => {
     expect(actual).toStrictEqual(expected.token);
   });
 
-  it('should retrieve a server token when the server responds with a "403" status code', async () => {
+  it('should get a server token when the server responds with a "403" status code', async () => {
     const params = {
       token: 'sample_token',
       status: 403,
@@ -217,7 +217,7 @@ describe('getServerToken', () => {
 
 describe('getCachedToken', () => {
 
-  it('should retrieve a cached token when the token has not been expired', () => {
+  it('should get a cached token when the token has not expired', () => {
     const params = {
       token: 'sample_token'
     };
@@ -234,7 +234,7 @@ describe('getCachedToken', () => {
     expect(actual).toStrictEqual(expected.token);
   });
 
-  it('should retrieve undefined when the token has not been cached', () => {
+  it('should get undefined when the token has not been cached', () => {
     const expected = {
       token: undefined
     };
@@ -242,7 +242,7 @@ describe('getCachedToken', () => {
     expect(actual).toStrictEqual(expected.token);
   });
 
-  it('should retrieve undefined when the token has been expired', () => {
+  it('should get undefined when the token has expired', () => {
     const params = {
       token: 'sample_token'
     };

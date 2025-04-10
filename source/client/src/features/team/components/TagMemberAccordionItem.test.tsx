@@ -14,7 +14,7 @@ import Presenter from './TagMemberAccordionItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
-it('should create a shapshot when the loading parameter is true', () => {
+it('should match the snapshot when the loading is true', () => {
   const params = {
     loading: true,
     members: [
@@ -47,7 +47,7 @@ it('should create a shapshot when the loading parameter is true', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the loading parameter is false', () => {
+it('should match the snapshot when the loading is false', () => {
   const params = {
     loading: false,
     members: [

@@ -7,7 +7,6 @@
 //
 
 using Microsoft.Extensions.Options;
-using Microsoft.Identity.Abstractions;
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Web;
 using Microsoft.IdentityModel.JsonWebTokens;

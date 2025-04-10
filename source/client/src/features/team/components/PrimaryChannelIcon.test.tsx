@@ -13,7 +13,7 @@ import Presenter from './PrimaryChannelIcon.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
-it('should create a shapshot when the primary parameter is true', () => {
+it('should match the snapshot when the primary is true', () => {
   const params = {
     primary: true
   };
@@ -27,7 +27,7 @@ it('should create a shapshot when the primary parameter is true', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the primary parameter is false', () => {
+it('should match the snapshot when the primary is false', () => {
   const params = {
     primary: false
   };
@@ -41,7 +41,7 @@ it('should create a shapshot when the primary parameter is false', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should create a shapshot when the type parameter is undefined', () => {
+it('should match the snapshot when the type is undefined', () => {
   const params = {
     primary: undefined
   };

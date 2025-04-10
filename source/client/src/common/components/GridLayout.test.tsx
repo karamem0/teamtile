@@ -11,7 +11,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Presenter from './GridLayout.presenter';
 
-it('should create a shapshot', () => {
+it('should match the snapshot', () => {
   const params = {
     children: (
       <div data-testid="test-Children" />

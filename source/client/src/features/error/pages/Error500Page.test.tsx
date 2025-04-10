@@ -13,7 +13,7 @@ import Presenter from './Error500Page.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
 
-it('should create a shapshot', () => {
+it('should match the snapshot', () => {
   const params = {};
   const { asFragment } = render(
     <IntlProvider>
