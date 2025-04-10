@@ -10,10 +10,10 @@ import { BrowserCacheLocation } from '@azure/msal-browser';
 
 export const msalConfig = {
   auth: {
-    authority: `https://login.microsoftonline.com/${import.meta.env.VITE_AUTH_TENANT_ID}`,
+    authority: import.meta.env.VITE_AUTH_AUTHORITY,
     clientId: import.meta.env.VITE_AUTH_CLIENT_ID,
     knownAuthorities: [
-      `https://login.microsoftonline.com/${import.meta.env.VITE_AUTH_TENANT_ID}`
+      import.meta.env.VITE_AUTH_AUTHORITY
     ],
     redirectUri: `${window.location.origin}/auth/callback`,
     navigateToLoginRequestUrl: false

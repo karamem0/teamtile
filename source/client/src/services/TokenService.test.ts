@@ -6,14 +6,14 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import * as jwtDecode from 'jwt-decode';
-import * as teamsjs from '@microsoft/teams-js';
 import {
   getCachedToken,
   getClientToken,
   getServerToken
 } from './TokenService';
 import { Mock } from 'vitest';
+import { authentication } from '@microsoft/teams-js';
+import { jwtDecode } from 'jwt-decode';
 
 vi.mock('jwt-decode');
 vi.mock('@microsoft/teams-js');
@@ -33,7 +33,7 @@ describe('getClientToken', () => {
     const expected = {
       token: 'sample_token'
     };
-    const mock = teamsjs.authentication.getAuthToken as Mock;
+    const mock = authentication.getAuthToken as Mock;
     mock.mockResolvedValue(params.token);
     const actual = await getClientToken();
     expect(mock).toHaveBeenCalled();
@@ -151,7 +151,7 @@ describe('getServerToken', () => {
         }
       ));
     });
-    const mock = teamsjs.authentication.authenticate as unknown as Mock;
+    const mock = authentication.authenticate as Mock;
     mock.mockResolvedValue(params.token);
     const actual = await getServerToken(params.token);
     expect(mock).toHaveBeenCalled();
@@ -225,7 +225,7 @@ describe('getCachedToken', () => {
       token: 'sample_token'
     };
     sessionStorage.setItem(import.meta.env.VITE_AUTH_CLIENT_ID, params.token);
-    const mockJwtDecode = jwtDecode.jwtDecode as Mock;
+    const mockJwtDecode = jwtDecode as Mock;
     mockJwtDecode.mockReturnValue({
       exp: Date.now() / 1000 + 3600
     });
@@ -250,7 +250,7 @@ describe('getCachedToken', () => {
       token: undefined
     };
     sessionStorage.setItem(import.meta.env.VITE_AUTH_CLIENT_ID, params.token);
-    const mockJwtDecode = jwtDecode.jwtDecode as Mock;
+    const mockJwtDecode = jwtDecode as Mock;
     mockJwtDecode.mockReturnValue({
       exp: Date.now() / 1000 - 3600
     });

@@ -131,7 +131,7 @@ describe('getArray', () => {
 
 describe('getValue', () => {
 
-  it('should get a value when the expired is true', () => {
+  it('should get a value when the expired is true and the item is not expired', () => {
     const item = {
       expired: true,
       item: {
@@ -150,7 +150,23 @@ describe('getValue', () => {
     expect(actual).toStrictEqual(expected);
   });
 
-  it('should get a value when the expired is false', () => {
+  it('should get a value when the expired is true and the item is expired', () => {
+    const item = {
+      expired: true,
+      item: {
+        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
+        expired: 1,
+        value: {
+          id: '48d5b87e-bfff-4195-9685-3ee7afd43d48'
+        }
+      } as ValueEntity<unknown>,
+      timestamp: 0
+    };
+    const actual = getValue(item.item, item.expired, item.timestamp);
+    expect(actual).toBeUndefined();
+  });
+
+  it('should get a value when the expired is false and the item is not expired', () => {
     const item = {
       expired: false,
       item: {
@@ -167,6 +183,22 @@ describe('getValue', () => {
     };
     const actual = getValue(item.item, item.expired, item.timestamp);
     expect(actual).toStrictEqual(expected);
+  });
+
+  it('should get a value when the expired is false and the item is expired', () => {
+    const item = {
+      expired: false,
+      item: {
+        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
+        expired: 0,
+        value: {
+          id: '48d5b87e-bfff-4195-9685-3ee7afd43d48'
+        }
+      } as ValueEntity<unknown>,
+      timestamp: 1
+    };
+    const actual = getValue(item.item, item.expired, item.timestamp);
+    expect(actual).toBeUndefined();
   });
 
   it('should get a value when the expired is undefined', () => {
