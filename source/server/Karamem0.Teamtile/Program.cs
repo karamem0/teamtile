@@ -25,16 +25,6 @@ _ = services.Configure<MicrosoftIdentityOptions>(configuration.GetSection("Micro
 _ = services.AddMicrosoftIdentityWebApiAuthentication(configuration, "MicrosoftEntra");
 _ = services.AddApplicationInsightsTelemetry();
 _ = services.AddControllers();
-_ = services.AddCors(
-    options => options.AddDefaultPolicy(
-        builder =>
-        {
-            _ = builder.AllowAnyOrigin();
-            _ = builder.AllowAnyHeader();
-            _ = builder.AllowAnyMethod();
-        }
-    )
-);
 _ = services.AddSingleton<ITokenService, TokenService>();
 
 var app = builder.Build();

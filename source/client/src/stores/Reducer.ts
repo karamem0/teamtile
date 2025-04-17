@@ -59,7 +59,7 @@ const actions = {
     }
     return {
       ...state,
-      cards: data ? [ ...data ] : undefined
+      cards: data
     };
   },
   setLoading: (state: State, payload: unknown) => {

@@ -18,8 +18,8 @@ export type ActionType = 'setFilter' | 'setCard' | 'setCards' | 'setLoading' | '
 export type DispatchAction<T> = (payload: T) => void;
 
 export interface State {
-  filter?: string,
   cards?: TeamCard[],
+  filter?: string,
   loading?: boolean
 }
 

@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match the snapshot when loading is true 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="test-LoaderPanel"
+  />
+</DocumentFragment>
+`;
+
+exports[`should match the snapshot when the loading is false and the cards is empty 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="test-EmptyPanel"
+  />
+</DocumentFragment>
+`;
+
+exports[`should match the snapshot when the loading is false and the cards is not empty 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="test-TeamPanel"
+  />
+</DocumentFragment>
+`;
+
+exports[`should match the snapshot when the loading is undefined 1`] = `<DocumentFragment />`;

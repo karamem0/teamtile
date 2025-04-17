@@ -83,7 +83,7 @@ describe('getCards', () => {
     mockGetTeamIconsFromCache.mockResolvedValue(params.values);
     mockGetTeamIconsFromGraph.mockResolvedValue(params.values);
     const actual = await getCards();
-    expect(actual).not.toBeUndefined();
+    expect(actual).toBeDefined();
     expect(mockGetCardsFromTeamInfos).toHaveBeenCalled();
     expect(mockGetCardsFromCache).toHaveBeenCalled();
     expect(mockGetCardsFromGraphGroup).toHaveBeenCalled();
@@ -114,7 +114,7 @@ describe('getChannels', () => {
     mockCache.mockResolvedValue(params.values);
     mockGraph.mockResolvedValue(undefined);
     const actual = await getChannels(params.teamId);
-    expect(actual).not.toBeUndefined();
+    expect(actual).toBeDefined();
     expect(mockCache).toHaveBeenCalled();
     expect(mockGraph).not.toHaveBeenCalled();
   });
@@ -136,7 +136,7 @@ describe('getChannels', () => {
     mockCache.mockResolvedValue(undefined);
     mockGraph.mockResolvedValue(params.values);
     const actual = await getChannels(params.teamId);
-    expect(actual).not.toBeUndefined();
+    expect(actual).toBeDefined();
     expect(mockCache).toHaveBeenCalled();
     expect(mockGraph).toHaveBeenCalled();
   });
@@ -179,7 +179,7 @@ describe('getDrive', () => {
     mockCache.mockResolvedValue(params.value);
     mockGraph.mockResolvedValue(undefined);
     const actual = await getDrive(params.teamId);
-    expect(actual).not.toBeUndefined();
+    expect(actual).toBeDefined();
     expect(mockCache).toHaveBeenCalled();
     expect(mockGraph).not.toHaveBeenCalled();
   });
@@ -197,7 +197,7 @@ describe('getDrive', () => {
     mockCache.mockResolvedValue(undefined);
     mockGraph.mockResolvedValue(params.value);
     const actual = await getDrive(params.teamId);
-    expect(actual).not.toBeUndefined();
+    expect(actual).toBeDefined();
     expect(mockCache).toHaveBeenCalled();
     expect(mockGraph).toHaveBeenCalled();
   });
@@ -245,7 +245,7 @@ describe('getMembers', () => {
     mockCacheIcons.mockResolvedValue(params.values);
     mockGraphIcons.mockResolvedValue(params.values);
     const actual = await getMembers(params.teamId);
-    expect(actual).not.toBeUndefined();
+    expect(actual).toBeDefined();
     expect(mockCache).toHaveBeenCalled();
     expect(mockGraph).not.toHaveBeenCalled();
   });
@@ -271,7 +271,7 @@ describe('getMembers', () => {
     mockCacheIcons.mockResolvedValue(params.values);
     mockGraphIcons.mockResolvedValue(params.values);
     const actual = await getMembers(params.teamId);
-    expect(actual).not.toBeUndefined();
+    expect(actual).toBeDefined();
     expect(mockCache).toHaveBeenCalled();
     expect(mockGraph).toHaveBeenCalled();
   });
@@ -318,7 +318,7 @@ describe('getTab', () => {
     const mockGraph = teamService.getTabFromGraph as Mock;
     mockGraph.mockResolvedValue(params.values);
     const actual = await getTab(params.teamId, params.channelId, params.appId);
-    expect(actual).not.toBeUndefined();
+    expect(actual).toBeDefined();
     expect(mockGraph).toHaveBeenCalled();
   });
 
@@ -364,7 +364,7 @@ describe('getTags', () => {
     mockCache.mockResolvedValue(params.values);
     mockGraph.mockResolvedValue(undefined);
     const actual = await getTags(params.teamId);
-    expect(actual).not.toBeUndefined();
+    expect(actual).toBeDefined();
     expect(mockCache).toHaveBeenCalled();
     expect(mockGraph).not.toHaveBeenCalled();
   });
@@ -386,7 +386,7 @@ describe('getTags', () => {
     mockCache.mockResolvedValue(undefined);
     mockGraph.mockResolvedValue(params.values);
     const actual = await getTags(params.teamId);
-    expect(actual).not.toBeUndefined();
+    expect(actual).toBeDefined();
     expect(mockCache).toHaveBeenCalled();
     expect(mockGraph).toHaveBeenCalled();
   });
@@ -436,7 +436,7 @@ describe('getTagMembers', () => {
     mockCache.mockResolvedValue(params.values);
     mockGraph.mockResolvedValue(undefined);
     const actual = await getTagMembers(params.teamId, params.tagId);
-    expect(actual).not.toBeUndefined();
+    expect(actual).toBeDefined();
     expect(mockCache).toHaveBeenCalled();
     expect(mockGraph).not.toHaveBeenCalled();
   });
@@ -459,7 +459,7 @@ describe('getTagMembers', () => {
     mockCache.mockResolvedValue(undefined);
     mockGraph.mockResolvedValue(params.values);
     const actual = await getTagMembers(params.teamId, params.tagId);
-    expect(actual).not.toBeUndefined();
+    expect(actual).toBeDefined();
     expect(mockCache).toHaveBeenCalled();
     expect(mockGraph).toHaveBeenCalled();
   });
