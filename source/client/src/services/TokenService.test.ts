@@ -224,7 +224,7 @@ describe('getCachedToken', () => {
     const expected = {
       token: 'sample_token'
     };
-    sessionStorage.setItem(import.meta.env.VITE_AUTH_CLIENT_ID, params.token);
+    sessionStorage.setItem(import.meta.env.VITE_MSAL_CLIENT_ID, params.token);
     const mockJwtDecode = jwtDecode as Mock;
     mockJwtDecode.mockReturnValue({
       exp: Date.now() / 1000 + 3600
@@ -249,7 +249,7 @@ describe('getCachedToken', () => {
     const expected = {
       token: undefined
     };
-    sessionStorage.setItem(import.meta.env.VITE_AUTH_CLIENT_ID, params.token);
+    sessionStorage.setItem(import.meta.env.VITE_MSAL_CLIENT_ID, params.token);
     const mockJwtDecode = jwtDecode as Mock;
     mockJwtDecode.mockReturnValue({
       exp: Date.now() / 1000 - 3600

@@ -6,6 +6,9 @@ on:
       environment:
         required: true
         type: string
+      slot-name:
+        required: false
+        type: string
 
 permissions: {}
 
@@ -27,5 +30,6 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@de617f46172a906d0617bb0e50d81e9e3aec24c8
         with:
-          app-name: ${{vars.AZURE_APP_SERVICE_NAME}}
+          app-name: ${{vars.AZURE_WEB_APP_NAME}}
+          slot-name: ${{inputs.slot-name}}
           package: build

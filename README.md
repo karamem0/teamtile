@@ -151,9 +151,9 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
 
     |Placeholder|Replace|
     |-|-|
-    |`{{APP_CLIENT_ID}}`|**Application ID**|
-    |`{{APP_DOMAIN_NAME}}`|**Domain name of Azure Web App**|
-    |`{{APP_TENANT_ID}}`|**Tenent ID**|
+    |`{{MSAL_APP_ID}}`|**Application ID**|
+    |`{{HOST_NAME}}`|**Domain name of Azure Web App**|
+    |`{{MSAL_TENANT_ID}}`|**Tenent ID**|
     |`{{TELEMETRY_CONNECTION_STRING}}`|**Connection String of Application Insights**|
 
 3. Go to `source/server` folder.
@@ -162,9 +162,9 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
 
     |Placeholder|Replace|
     |-|-|
-    |`{{APP_CLIENT_ID}}`|**Application ID**|
-    |`{{APP_CLIENT_SECRET}}`|**Application Secret**|
-    |`{{APP_TENANT_ID}}`|**Tenent ID**|
+    |`{{MSAL_APP_ID}}`|**Application ID**|
+    |`{{MSAL_APP_SECRET}}`|**Application Secret**|
+    |`{{MSAL_TENANT_ID}}`|**Tenent ID**|
     |`{{TELEMETRY_CONNECTION_STRING}}`|**Connection String of Application Insights**|
 
 5. Build application.
@@ -187,8 +187,8 @@ Compress-Archive -Path ./bin/Release/net8.0/publish/* -DestinationPath ../../bui
 
     |Placeholder|Replace|
     |-|-|
-    |`{{APP_DOMAIN_NAME}}`|**Domain name of Azure Web App**|
-    |`{{APP_CLIENT_ID}}`|**Application ID**|
+    |`{{HOST_NAME}}`|**Domain name of Azure Web App**|
+    |`{{MSAL_APP_ID}}`|**Application ID**|
 
 3. Compress contents of `manifest` folder.
 

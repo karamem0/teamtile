@@ -151,9 +151,9 @@
 
     |プレースホルダー|置換|
     |-|-|
-    |`{{APP_CLIENT_ID}}`|**アプリケーション ID**|
-    |`{{APP_DOMAIN_NAME}}`|**Azure Web アプリのドメイン名**|
-    |`{{APP_TENANT_ID}}`|**テナント ID**|
+    |`{{MSAL_APP_ID}}`|**アプリケーション ID**|
+    |`{{HOST_NAME}}`|**Azure Web アプリのドメイン名**|
+    |`{{MSAL_TENANT_ID}}`|**テナント ID**|
     |`{{TELEMETRY_CONNECTION_STRING}}`|**Application Insights の接続文字列**|
 
 3. `source/server` フォルダーに移動します。
@@ -162,9 +162,9 @@
 
     |プレースホルダー|置換|
     |-|-|
-    |`{{APP_CLIENT_ID}}`|**アプリケーション ID**|
-    |`{{APP_CLIENT_SECRET}}`|**アプリケーション シークレット**|
-    |`{{APP_TENANT_ID}}`|**テナント ID**|
+    |`{{MSAL_APP_ID}}`|**アプリケーション ID**|
+    |`{{MSAL_APP_SECRET}}`|**アプリケーション シークレット**|
+    |`{{MSAL_TENANT_ID}}`|**テナント ID**|
     |`{{TELEMETRY_CONNECTION_STRING}}`|**Application Insights の接続文字列**|
 
 5. アプリケーションをビルドします。
@@ -187,8 +187,8 @@ Compress-Archive -Path ./bin/Release/net8.0/publish/* -DestinationPath ../../bui
 
     |プレースホルダー|置換|
     |-|-|
-    |`{{APP_DOMAIN_NAME}}`|**Azure Web アプリのドメイン名**|
-    |`{{APP_CLIENT_ID}}`|**アプリケーション ID**|
+    |`{{HOST_NAME}}`|**Azure Web アプリのドメイン名**|
+    |`{{MSAL_APP_ID}}`|**アプリケーション ID**|
 
 3. `manifest` フォルダーの中身を圧縮します。
 
