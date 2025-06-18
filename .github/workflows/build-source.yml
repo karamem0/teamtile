@@ -60,7 +60,7 @@ jobs:
         shell: pwsh
         run: |
           dotnet publish `
-            Karamem0.Teamtile/Karamem0.Teamtile.csproj `
+            Karamem0.Teamtile.Web/Karamem0.Teamtile.Web.csproj `
             -c Release `
             -p:PublishDir=${{github.workspace}}/source/server/build `
             -p:Version=${{vars.BUILD_VERSION}}.${{github.run_number}} `

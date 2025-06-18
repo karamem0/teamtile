@@ -45,6 +45,7 @@ export default defineConfig({
       'cert': fs.readFileSync('./cert/localhost.crt'),
       'key': fs.readFileSync('./cert/localhost.key')
     },
+    'port': process.env.PORT ? Number(process.env.PORT) : 5173,
     'proxy': {
       '/api': {
         'changeOrigin': true,

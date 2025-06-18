@@ -44,10 +44,7 @@ public class TokenController(ITokenService tokenService) : Controller
             {
                 return this.StatusCode((int)HttpStatusCode.Unauthorized);
             }
-            var accessToken = await this.tokenService.ExchangeTokenAsync(
-                request.Scope.Split(' '),
-                authorizationHeaderValuePair[1]
-            );
+            var accessToken = await this.tokenService.ExchangeTokenAsync(request.Scope.Split(' '), authorizationHeaderValuePair[1]);
             return this.Ok(
                 new TokenResponse()
                 {

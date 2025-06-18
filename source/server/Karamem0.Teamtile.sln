@@ -1,10 +1,12 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karamem0.Teamtile", "Karamem0.Teamtile\Karamem0.Teamtile.csproj", "{9DAE07EE-68C9-4935-A2DB-55A657B5D2BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karamem0.Teamtile.AppHost", "Karamem0.Teamtile.AppHost\Karamem0.Teamtile.AppHost.csproj", "{75FA2F57-F582-44AE-A12E-964AEAE41E17}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karamem0.Teamtile.Test", "Karamem0.Teamtile.Test\Karamem0.Teamtile.Test.csproj", "{A3C72E35-3BA0-46D4-AA77-09D5A59AD07E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karamem0.Teamtile.Web", "Karamem0.Teamtile.Web\Karamem0.Teamtile.Web.csproj", "{9DAE07EE-68C9-4935-A2DB-55A657B5D2BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,13 +17,17 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9DAE07EE-68C9-4935-A2DB-55A657B5D2BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9DAE07EE-68C9-4935-A2DB-55A657B5D2BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9DAE07EE-68C9-4935-A2DB-55A657B5D2BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9DAE07EE-68C9-4935-A2DB-55A657B5D2BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75FA2F57-F582-44AE-A12E-964AEAE41E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75FA2F57-F582-44AE-A12E-964AEAE41E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75FA2F57-F582-44AE-A12E-964AEAE41E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75FA2F57-F582-44AE-A12E-964AEAE41E17}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A3C72E35-3BA0-46D4-AA77-09D5A59AD07E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A3C72E35-3BA0-46D4-AA77-09D5A59AD07E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3C72E35-3BA0-46D4-AA77-09D5A59AD07E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3C72E35-3BA0-46D4-AA77-09D5A59AD07E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DAE07EE-68C9-4935-A2DB-55A657B5D2BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DAE07EE-68C9-4935-A2DB-55A657B5D2BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DAE07EE-68C9-4935-A2DB-55A657B5D2BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DAE07EE-68C9-4935-A2DB-55A657B5D2BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

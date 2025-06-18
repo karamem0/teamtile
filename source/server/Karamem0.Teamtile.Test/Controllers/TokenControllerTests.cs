@@ -50,8 +50,7 @@ public class TokenControllerTests
         };
         var actual = await target.PostAsync(request) as ObjectResult;
         // Assert
-        Assert.Multiple(
-            () =>
+        Assert.Multiple(() =>
             {
                 Assert.That(actual?.StatusCode, Is.EqualTo((int)HttpStatusCode.OK));
                 Assert.That(((TokenResponse?)actual?.Value)?.Token, Is.EqualTo("server_token"));
@@ -108,8 +107,7 @@ public class TokenControllerTests
         };
         var actual = await target.PostAsync(request) as ObjectResult;
         // Assert
-        Assert.Multiple(
-            () =>
+        Assert.Multiple(() =>
             {
                 Assert.That(actual?.StatusCode, Is.EqualTo((int)HttpStatusCode.Forbidden));
                 Assert.That(((TokenResponse?)actual?.Value)?.Error, Is.EqualTo("invalid_grant"));
@@ -141,8 +139,7 @@ public class TokenControllerTests
         };
         var actual = await target.PostAsync(request) as ObjectResult;
         // Assert
-        Assert.Multiple(
-            () =>
+        Assert.Multiple(() =>
             {
                 Assert.That(actual?.StatusCode, Is.EqualTo((int)HttpStatusCode.InternalServerError));
                 Assert.That(((TokenResponse?)actual?.Value)?.Error, Is.EqualTo("unknown_error"));
