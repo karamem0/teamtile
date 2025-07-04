@@ -15,6 +15,7 @@ import {
   Text
 } from '@fluentui/react-components';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { EventHandler } from '../../../types/Event';
 import { GrGithub } from 'react-icons/gr';
 import { css } from '@emotion/react';
@@ -35,175 +36,211 @@ function HomePage(props: Readonly<HomePageProps>) {
   const { theme } = useTheme();
 
   return (
-    <div
-      css={css`
-        display: flex;
-        flex-flow: column;
-      `}>
-      <header
+    <React.Fragment>
+      <HelmetProvider>
+        <Helmet>
+          <meta
+            content="karamem0"
+            name="author" />
+          <meta
+            content={intl.formatMessage(messages.AppDescription)}
+            name="description" />
+          <meta
+            content="summary"
+            name="twitter:card" />
+          <meta
+            content="@karamem0"
+            name="twitter:site" />
+          <meta
+            content="@karamem0"
+            name="twitter:creator" />
+          <meta
+            content={location.origin}
+            property="og:url" />
+          <meta
+            content="Teamtile"
+            property="og:title" />
+          <meta
+            content={intl.formatMessage(messages.AppDescription)}
+            property="og:description" />
+          <meta
+            content={`${location.origin}/assets/screenshots/001.png`}
+            property="og:image" />
+          <title>
+            {intl.formatMessage(messages.AppTitle)}
+          </title>
+        </Helmet>
+      </HelmetProvider>
+      <div
         css={css`
-          display: grid;
-          grid-template-rows: auto;
-          grid-template-columns: auto;
-          align-items: center;
-          justify-content: end;
-          width: 100%;
-          height: 2rem;
-          padding: 0 1rem;
+          display: flex;
+          flex-flow: column;
         `}>
-        <Button
-          appearance="transparent"
-          as="a"
-          icon={(
-            <GrGithub
-              css={css`
-                font-size: 1rem;
-                line-height: 1rem;
-              `} />
-          )}
-          onClick={(event) => onLinkClick?.(event, 'GitHub')}>
-          <FormattedMessage {...messages.GitHub} />
-        </Button>
-      </header>
-      <section
-        css={css`
-          display: grid;
-          grid-template-rows: auto;
-          grid-template-columns: auto;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          padding: 2rem;
-          background-color: ${theme.colorBrandBackground};
-          @media (width >= 960px) {
-            padding: 4rem 2rem;
-          }
-        `}>
-        <div
+        <header
+          css={css`
+            display: grid;
+            grid-template-rows: auto;
+            grid-template-columns: auto;
+            align-items: center;
+            justify-content: end;
+            width: 100%;
+            height: 2rem;
+            padding: 0 1rem;
+          `}>
+          <Button
+            appearance="transparent"
+            as="a"
+            icon={(
+              <GrGithub
+                css={css`
+                  font-size: 1rem;
+                  line-height: 1rem;
+                `} />
+            )}
+            onClick={(event) => onLinkClick?.(event, 'GitHub')}>
+            <FormattedMessage {...messages.GitHub} />
+          </Button>
+        </header>
+        <section
           css={css`
             display: grid;
             grid-template-rows: auto;
             grid-template-columns: auto;
             align-items: center;
             justify-content: center;
+            width: 100%;
+            padding: 2rem;
+            background-color: ${theme.colorBrandBackground};
             @media (width >= 960px) {
-              grid-template-rows: auto;
-              grid-template-columns: 1fr 1fr;
+              padding: 4rem 2rem;
             }
           `}>
           <div
             css={css`
               display: grid;
+              grid-template-rows: auto;
+              grid-template-columns: auto;
               align-items: center;
               justify-content: center;
+              @media (width >= 960px) {
+                grid-template-rows: auto;
+                grid-template-columns: 1fr 1fr;
+              }
             `}>
-            <Text
-              as="h1"
+            <div
               css={css`
-                font-size: 3rem;
-                font-weight: 700;
-                line-height: calc(3rem * 1.25);
-                color: ${theme.colorNeutralForegroundInverted};
-                text-align: center;
+                display: grid;
+                align-items: center;
+                justify-content: center;
               `}>
-              <FormattedMessage {...messages.AppTitle} />
-            </Text>
-            <Text
+              <Text
+                as="h1"
+                css={css`
+                  font-size: 3rem;
+                  font-weight: 700;
+                  line-height: calc(3rem * 1.25);
+                  color: ${theme.colorNeutralForegroundInverted};
+                  text-align: center;
+                `}>
+                <FormattedMessage {...messages.AppTitle} />
+              </Text>
+              <Text
+                css={css`
+                  color: ${theme.colorNeutralForegroundInverted};
+                `}>
+                <FormattedMessage {...messages.AppDescription} />
+              </Text>
+            </div>
+            <Image
+              alt={intl.formatMessage(messages.AppTitle)}
+              fit="contain"
+              src="/assets/screenshots/001.png"
               css={css`
-                color: ${theme.colorNeutralForegroundInverted};
-              `}>
-              <FormattedMessage {...messages.AppDescription} />
-            </Text>
+                height: auto;
+              `} />
           </div>
-          <Image
-            alt={intl.formatMessage(messages.AppTitle)}
-            fit="contain"
-            src="/assets/screenshots/001.png"
-            css={css`
-              height: auto;
-            `} />
-        </div>
-      </section>
-      <section
-        css={css`
-          display: flex;
-          flex-flow: column;
-          grid-gap: 1rem;
-          align-items: center;
-          justify-content: center;
-          padding: 2rem 0;
-        `}>
-        <Text
-          as="h2"
-          css={css`
-            font-size: 2rem;
-            font-weight: 700;
-            line-height: calc(2rem * 1.25);
-            text-align: center;
-          `}>
-          <FormattedMessage {...messages.FeaturesTitle} />
-        </Text>
-        <Text
-          css={css`
-            text-align: center;
-          `}>
-          <FormattedMessage {...messages.FeaturesSubtitle} />
-        </Text>
-        <ul
+        </section>
+        <section
           css={css`
             display: flex;
             flex-flow: column;
-            grid-gap: 0.5rem;
+            grid-gap: 1rem;
             align-items: center;
             justify-content: center;
-            list-style: none;
+            padding: 2rem 0;
           `}>
-          <li>
-            <FormattedMessage {...messages.FeaturesDescription1} />
-          </li>
-          <li>
-            <FormattedMessage {...messages.FeaturesDescription2} />
-          </li>
-          <li>
-            <FormattedMessage {...messages.FeaturesDescription3} />
-          </li>
-          <li>
-            <FormattedMessage {...messages.FeaturesDescription4} />
-          </li>
-          <li>
-            <FormattedMessage {...messages.FeaturesDescription5} />
-          </li>
-          <li>
-            <FormattedMessage {...messages.FeaturesDescription6} />
-          </li>
-        </ul>
-      </section>
-      <footer
-        css={css`
-          display: flex;
-          flex-flow: row;
-          align-items: center;
-          justify-content: center;
-          padding: 2rem 0;
-        `}>
-        <Link
-          as="button"
-          onClick={(event) => onLinkClick?.(event, 'TermsOfUse')}>
-          <FormattedMessage {...messages.TermsOfUse} />
-        </Link>
-        <Text
+          <Text
+            as="h2"
+            css={css`
+              font-size: 2rem;
+              font-weight: 700;
+              line-height: calc(2rem * 1.25);
+              text-align: center;
+            `}>
+            <FormattedMessage {...messages.FeaturesTitle} />
+          </Text>
+          <Text
+            css={css`
+              text-align: center;
+            `}>
+            <FormattedMessage {...messages.FeaturesSubtitle} />
+          </Text>
+          <ul
+            css={css`
+              display: flex;
+              flex-flow: column;
+              grid-gap: 0.5rem;
+              align-items: center;
+              justify-content: center;
+              list-style: none;
+            `}>
+            <li>
+              <FormattedMessage {...messages.FeaturesDescription1} />
+            </li>
+            <li>
+              <FormattedMessage {...messages.FeaturesDescription2} />
+            </li>
+            <li>
+              <FormattedMessage {...messages.FeaturesDescription3} />
+            </li>
+            <li>
+              <FormattedMessage {...messages.FeaturesDescription4} />
+            </li>
+            <li>
+              <FormattedMessage {...messages.FeaturesDescription5} />
+            </li>
+            <li>
+              <FormattedMessage {...messages.FeaturesDescription6} />
+            </li>
+          </ul>
+        </section>
+        <footer
           css={css`
-            padding: 0 0.25rem;
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
           `}>
-          |
-        </Text>
-        <Link
-          as="button"
-          onClick={(event) => onLinkClick?.(event, 'PrivacyPolicy')}>
-          <FormattedMessage {...messages.PrivacyPolicy} />
-        </Link>
-      </footer>
-    </div>
+          <Link
+            as="button"
+            onClick={(event) => onLinkClick?.(event, 'TermsOfUse')}>
+            <FormattedMessage {...messages.TermsOfUse} />
+          </Link>
+          <Text
+            css={css`
+              padding: 0 0.25rem;
+            `}>
+            |
+          </Text>
+          <Link
+            as="button"
+            onClick={(event) => onLinkClick?.(event, 'PrivacyPolicy')}>
+            <FormattedMessage {...messages.PrivacyPolicy} />
+          </Link>
+        </footer>
+      </div>
+    </React.Fragment>
   );
 
 }

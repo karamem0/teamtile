@@ -8,7 +8,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +17,6 @@ namespace Karamem0.Teamtile.Models;
 public record TokenRequest
 {
 
-    [Required()]
-    public string Scope { get; set; } = "";
+    public required string Scope { get; set; }
 
 }

@@ -21,8 +21,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
 var services = builder.Services;
-_ = services.Configure<MicrosoftIdentityOptions>(configuration.GetSection("MicrosoftEntra"));
-_ = services.AddMicrosoftIdentityWebApiAuthentication(configuration, "MicrosoftEntra");
+_ = services.Configure<MicrosoftIdentityOptions>(configuration.GetSection("MicrosoftIdentity"));
+_ = services.AddMicrosoftIdentityWebApiAuthentication(configuration, "MicrosoftIdentity");
 _ = services.AddApplicationInsightsTelemetry();
 _ = services.AddControllers();
 _ = services.AddSingleton<ITokenService, TokenService>();

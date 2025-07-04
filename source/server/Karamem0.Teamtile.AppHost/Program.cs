@@ -1,17 +1,26 @@
+//
+// Copyright (c) 2021-2025 karamem0
+//
+// This software is released under the MIT License.
+//
+// https://github.com/karamem0/teamtile/blob/main/LICENSE
+//
+
+using Aspire.Hosting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+#pragma warning disable IDE0059
+
 var builder = DistributedApplication.CreateBuilder(args);
 
-var server = builder.AddProject("server", "../Karamem0.Teamtile/Karamem0.Teamtile.csproj");
-var client = builder
-    .AddViteApp(
-        "client",
-        "../../client",
-        useHttps: true
-    )
-    .WithNpmPackageInstallation()
-    .WithExternalHttpEndpoints()
-    .WithReference(server)
-    .WaitFor(server);
+var server = builder.AddProject<Projects.Karamem0_Teamtile_Web>("server");
 
 var app = builder.Build();
 
 await app.RunAsync();
+
+#pragma warning restore IDE0059

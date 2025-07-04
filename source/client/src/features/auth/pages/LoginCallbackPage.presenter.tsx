@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import CenterLayout from '../../../common/components/CenterLayout';
 import { Spinner } from '@fluentui/react-components';
 import messages from '../messages';
@@ -18,9 +19,18 @@ function LoginCallbackPage() {
   const intl = useIntl();
 
   return (
-    <CenterLayout>
-      <Spinner label={intl.formatMessage(messages.LoginCallback)} />
-    </CenterLayout>
+    <React.Fragment>
+      <HelmetProvider>
+        <Helmet>
+          <title>
+            {`${intl.formatMessage(messages.LoginCallbackTitle)} - ${intl.formatMessage(messages.AppTitle)}`}
+          </title>
+        </Helmet>
+      </HelmetProvider>
+      <CenterLayout>
+        <Spinner label={intl.formatMessage(messages.LoginCallbackDescription)} />
+      </CenterLayout>
+    </React.Fragment>
   );
 
 }

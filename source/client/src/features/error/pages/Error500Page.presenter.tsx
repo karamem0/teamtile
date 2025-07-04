@@ -9,6 +9,7 @@
 import React from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Image, Text } from '@fluentui/react-components';
 import { css } from '@emotion/react';
 import messages from '../messages';
@@ -26,48 +27,57 @@ function Error500Page(props: Readonly<Error500PageProps>) {
   const { theme } = useTheme();
 
   return (
-    <div
-      css={css`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        background-color: ${theme.colorNeutralBackground3};
-      `}>
+    <React.Fragment>
+      <HelmetProvider>
+        <Helmet>
+          <title>
+            {`${intl.formatMessage(messages.Error500Title)} - ${intl.formatMessage(messages.AppTitle)}`}
+          </title>
+        </Helmet>
+      </HelmetProvider>
       <div
         css={css`
           display: flex;
           flex-direction: column;
-          grid-gap: 1rem;
           align-items: center;
           justify-content: center;
+          min-height: 100vh;
+          background-color: ${theme.colorNeutralBackground3};
         `}>
-        <Text as="h1">
-          <Image
-            alt={intl.formatMessage(messages.Error500Title)}
-            src="/assets/errors/500.svg"
+        <div
+          css={css`
+            display: flex;
+            flex-direction: column;
+            grid-gap: 1rem;
+            align-items: center;
+            justify-content: center;
+          `}>
+          <Text as="h1">
+            <Image
+              alt={intl.formatMessage(messages.Error500Title)}
+              src="/assets/errors/500.svg"
+              css={css`
+                max-width: 32rem;
+                max-height: 24rem;
+              `} />
+          </Text>
+          <Text
             css={css`
-              max-width: 32rem;
-              max-height: 24rem;
-            `} />
-        </Text>
-        <Text
-          css={css`
-            color: ${theme.colorNeutralForegroundDisabled};
-          `}>
-          <FormattedMessage {...messages.Error500Description} />
-        </Text>
-        <Text
-          css={css`
-            font-size: 0.75rem;
-            line-height: calc(0.75rem * 1.25);
-            color: ${theme.colorNeutralForegroundDisabled};
-          `}>
-          {error}
-        </Text>
+              color: ${theme.colorNeutralForegroundDisabled};
+            `}>
+            <FormattedMessage {...messages.Error500Description} />
+          </Text>
+          <Text
+            css={css`
+              font-size: 0.75rem;
+              line-height: calc(0.75rem * 1.25);
+              color: ${theme.colorNeutralForegroundDisabled};
+            `}>
+            {error}
+          </Text>
+        </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 
 }

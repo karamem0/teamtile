@@ -9,8 +9,11 @@
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-  LoginCallback: { defaultMessage: 'Consent flow complete. Please wait...' },
-  LoginRedirect: { defaultMessage: 'Redirecting to consent page...' }
+  AppTitle: { defaultMessage: 'Teamtile' },
+  LoginCallbackDescription: { defaultMessage: 'Consent flow complete. Please wait...' },
+  LoginCallbackTitle: { defaultMessage: 'Login' },
+  LoginRedirectDescription: { defaultMessage: 'Redirecting to consent page...' },
+  LoginRedirectTitle: { defaultMessage: 'Login' }
 });
 
 export default messages;

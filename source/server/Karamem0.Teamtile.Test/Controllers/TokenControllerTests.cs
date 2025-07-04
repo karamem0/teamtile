@@ -10,6 +10,7 @@ using Karamem0.Teamtile.Models;
 using Karamem0.Teamtile.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.Identity.Client;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
@@ -34,6 +35,7 @@ public class TokenControllerTests
         _ = tokenService
             .ExchangeTokenAsync(Arg.Any<string[]>(), Arg.Any<string>())
             .Returns("server_token");
+        var logger = Substitute.For<ILogger<TokenController>>();
         var httpContext = new DefaultHttpContext();
         httpContext.Request.Headers.Append("Authorization", $"Bearer client_token");
         // Execute
@@ -41,7 +43,7 @@ public class TokenControllerTests
         {
             Scope = "user_impersonation"
         };
-        var target = new TokenController(tokenService)
+        var target = new TokenController(tokenService, logger)
         {
             ControllerContext = new ControllerContext()
             {
@@ -65,13 +67,14 @@ public class TokenControllerTests
         _ = tokenService
             .ExchangeTokenAsync(Arg.Any<string[]>(), Arg.Any<string>())
             .Returns("server_token");
+        var logger = Substitute.For<ILogger<TokenController>>();
         var httpContext = new DefaultHttpContext();
         // Execute
         var request = new TokenRequest()
         {
             Scope = "user_impersonation"
         };
-        var target = new TokenController(tokenService)
+        var target = new TokenController(tokenService, logger)
         {
             ControllerContext = new ControllerContext()
             {
@@ -91,6 +94,7 @@ public class TokenControllerTests
         _ = tokenService
             .ExchangeTokenAsync(Arg.Any<string[]>(), Arg.Any<string>())
             .Throws(new MsalException("invalid_grant"));
+        var logger = Substitute.For<ILogger<TokenController>>();
         var httpContext = new DefaultHttpContext();
         httpContext.Request.Headers.Append("Authorization", $"Bearer client_token");
         // Execute
@@ -98,7 +102,7 @@ public class TokenControllerTests
         {
             Scope = "user_impersonation"
         };
-        var target = new TokenController(tokenService)
+        var target = new TokenController(tokenService, logger)
         {
             ControllerContext = new ControllerContext()
             {
@@ -123,6 +127,7 @@ public class TokenControllerTests
         _ = tokenService
             .ExchangeTokenAsync(Arg.Any<string[]>(), Arg.Any<string>())
             .Throws(new MsalException("unknown_error"));
+        var logger = Substitute.For<ILogger<TokenController>>();
         var httpContext = new DefaultHttpContext();
         httpContext.Request.Headers.Append("Authorization", $"Bearer client_token");
         // Execute
@@ -130,7 +135,7 @@ public class TokenControllerTests
         {
             Scope = "user_impersonation"
         };
-        var target = new TokenController(tokenService)
+        var target = new TokenController(tokenService, logger)
         {
             ControllerContext = new ControllerContext()
             {

@@ -9,6 +9,8 @@
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
+  AppDescription: { defaultMessage: 'Tile your teams for quick access.' },
+  AppTitle: { defaultMessage: 'Teamtile' },
   AllTeams: { defaultMessage: 'All teams' },
   ArchivedTeams: { defaultMessage: 'Archived teams' },
   Channels: { defaultMessage: 'Channels' },

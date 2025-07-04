@@ -9,6 +9,7 @@
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
+  AppTitle: { defaultMessage: 'Teamtile' },
   Error404Description: { defaultMessage: 'Page not found' },
   Error404Title: { defaultMessage: '404 Not Found' },
   Error500Description: { defaultMessage: 'Something went wrong' },
