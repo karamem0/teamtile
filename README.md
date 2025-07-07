@@ -80,7 +80,7 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
     |Parameter|Value|
     |-|-|
     |Type|Single-page application|
-    |Redirect URL|**URL of Azure Web App**/auth/callback|
+    |Redirect URL|**Azure Web App URL**/auth/callback|
     |Access tokens|Checked|
     |ID tokens|Checked|
 
@@ -104,7 +104,7 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
 
     |Parameter|Value|
     |-|-|
-    |Application ID URL|api://**Domain name of Azure Web App**/**Application ID**|
+    |Application ID URL|api://**Azure Web App Domain Name**/**Application ID**|
     |Scope name|user_impersonation|
     |User|Admins and users|
     |Admin consent display name|Access Teamtile|
@@ -151,10 +151,9 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
 
     |Placeholder|Replace|
     |-|-|
-    |`{{MSAL_APP_ID}}`|**Application ID**|
-    |`{{HOST_NAME}}`|**Domain name of Azure Web App**|
-    |`{{MSAL_TENANT_ID}}`|**Tenent ID**|
-    |`{{TELEMETRY_CONNECTION_STRING}}`|**Connection String of Application Insights**|
+    |`{{MICROSOFT_IDENTITY_APP_ID}}`|**Application ID**|
+    |`{{APP_TENANT_ID}}`|**Tenent ID**|
+    |`{{TELEMETRY_CONNECTION_STRING}}`|**Application Insights Connection String**|
 
 3. Go to `source/server` folder.
 
@@ -162,10 +161,9 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
 
     |Placeholder|Replace|
     |-|-|
-    |`{{MSAL_APP_ID}}`|**Application ID**|
-    |`{{MSAL_APP_SECRET}}`|**Application Secret**|
-    |`{{MSAL_TENANT_ID}}`|**Tenent ID**|
-    |`{{TELEMETRY_CONNECTION_STRING}}`|**Connection String of Application Insights**|
+    |`{{MICROSOFT_IDENTITY_APP_ID}}`|**Application ID**|
+    |`{{APP_CLIENT_SECRET}}`|**Application Secret**|
+    |`{{APP_TENANT_ID}}`|**Tenent ID**|
 
 5. Build application.
 
@@ -188,7 +186,7 @@ Compress-Archive -Path ./bin/Release/net8.0/publish/* -DestinationPath ../../bui
     |Placeholder|Replace|
     |-|-|
     |`{{HOST_NAME}}`|**Domain name of Azure Web App**|
-    |`{{MSAL_APP_ID}}`|**Application ID**|
+    |`{{MICROSOFT_IDENTITY_APP_ID}}`|**Application ID**|
 
 3. Compress contents of `manifest` folder.
 

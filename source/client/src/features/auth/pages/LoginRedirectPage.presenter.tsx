@@ -22,6 +22,12 @@ function LoginRedirectPage() {
     <React.Fragment>
       <HelmetProvider>
         <Helmet>
+          <meta
+            content={intl.formatMessage(messages.AppCreator)}
+            name="author" />
+          <meta
+            content={intl.formatMessage(messages.AppDescription)}
+            name="description" />
           <title>
             {`${intl.formatMessage(messages.LoginRedirectTitle)} - ${intl.formatMessage(messages.AppTitle)}`}
           </title>

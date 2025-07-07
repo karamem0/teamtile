@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-var server = builder.AddProject<Projects.Karamem0_Teamtile_Web>("server");
+var webApp = builder.AddProject<Projects.Karamem0_Teamtile_Web>("web-app");
 
 var app = builder.Build();
 

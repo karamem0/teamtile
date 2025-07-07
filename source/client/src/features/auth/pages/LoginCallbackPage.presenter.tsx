@@ -22,6 +22,12 @@ function LoginCallbackPage() {
     <React.Fragment>
       <HelmetProvider>
         <Helmet>
+          <meta
+            content={intl.formatMessage(messages.AppCreator)}
+            name="author" />
+          <meta
+            content={intl.formatMessage(messages.AppDescription)}
+            name="description" />
           <title>
             {`${intl.formatMessage(messages.LoginCallbackTitle)} - ${intl.formatMessage(messages.AppTitle)}`}
           </title>

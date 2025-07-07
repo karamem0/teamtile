@@ -7,13 +7,16 @@
 //
 
 import { defineMessages } from 'react-intl';
+import parentMessages from '../messages';
 
-const messages = defineMessages({
-  AppTitle: { defaultMessage: 'Teamtile' },
-  LoginCallbackDescription: { defaultMessage: 'Consent flow complete. Please wait...' },
-  LoginCallbackTitle: { defaultMessage: 'Login' },
-  LoginRedirectDescription: { defaultMessage: 'Redirecting to consent page...' },
-  LoginRedirectTitle: { defaultMessage: 'Login' }
-});
+const messages = {
+  ...parentMessages,
+  ...defineMessages({
+    LoginCallbackDescription: { defaultMessage: 'Consent flow complete. Please wait...' },
+    LoginCallbackTitle: { defaultMessage: 'Login' },
+    LoginRedirectDescription: { defaultMessage: 'Redirecting to consent page...' },
+    LoginRedirectTitle: { defaultMessage: 'Login' }
+  })
+};
 
 export default messages;
