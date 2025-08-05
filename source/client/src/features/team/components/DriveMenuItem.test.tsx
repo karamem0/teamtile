@@ -10,9 +10,10 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 import IntlProvider from '../../../providers/IntlProvider';
-import Presenter from './DriveMenuItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import userEvent from '@testing-library/user-event';
+
+import Presenter from './DriveMenuItem.presenter';
 
 it('should match the snapshot', () => {
   const params = {};
@@ -39,6 +40,6 @@ it('should raise onClick event when click a button', async () => {
       </ThemeProvider>
     </IntlProvider>
   );
-  await user.click(screen.getByRole('button'));
+  await user.click(screen.getByRole('menuitem'));
   expect(mock).toHaveBeenCalled();
 });

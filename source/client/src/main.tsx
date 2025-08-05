@@ -17,6 +17,7 @@ import {
   Routes
 } from 'react-router-dom';
 import { Global, css } from '@emotion/react';
+import DrawerProvider from './common/providers/DrawerProvider';
 import Error404Page from './features/error/pages/Error404Page';
 import Error500Page from './features/error/pages/Error500Page';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -26,7 +27,7 @@ import LoginCallbackPage from './features/auth/pages/LoginCallbackPage';
 import LoginRedirectPage from './features/auth/pages/LoginRedirectPage';
 import MsalProvider from './providers/MsalProvider';
 import Snackbar from './common/components/Snackbar';
-import SnackbarProvider from './providers/SnackbarProvider';
+import SnackbarProvider from './common/providers/SnackbarProvider';
 import StoreProvider from './providers/StoreProvider';
 import TeamPage from './features/team/pages/TeamPage';
 import TeamsAuthenticator from './common/components/TeamsAuthenticator';
@@ -67,8 +68,10 @@ ReactDOM
                                     <TeamsAuthenticator>
                                       <StoreProvider>
                                         <SnackbarProvider>
-                                          <Snackbar />
-                                          <TeamPage />
+                                          <DrawerProvider>
+                                            <Snackbar />
+                                            <TeamPage />
+                                          </DrawerProvider>
                                         </SnackbarProvider>
                                       </StoreProvider>
                                     </TeamsAuthenticator>

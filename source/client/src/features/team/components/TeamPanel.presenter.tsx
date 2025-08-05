@@ -21,6 +21,7 @@ import {
   SearchBox
 } from '@fluentui/react-components';
 import { FormattedMessage, useIntl } from 'react-intl';
+import DrawerFactory from './DrawerFactory';
 import { EventHandler } from '../../../types/Event';
 import { GrGithub } from 'react-icons/gr';
 import TeamGrid from './TeamGrid';
@@ -117,6 +118,7 @@ function TeamPanel(props: Readonly<TeamPanelProps>) {
         </Menu>
       </div>
       <TeamGrid />
+      <DrawerFactory />
     </div>
   );
 

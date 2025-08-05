@@ -10,11 +10,12 @@ import React from 'react';
 
 import { app, appInstallDialog } from '@microsoft/teams-js';
 import { useAsyncFn, useError } from 'react-use';
-import Presenter from './CalendarMenuItem.presenter';
 import { getTab } from '../managers/TeamManager';
 import messages from '../messages';
 import { useIntl } from 'react-intl';
-import { useSnackbar } from '../../../providers/SnackbarProvider';
+import { useSnackbar } from '../../../common/providers/SnackbarProvider';
+
+import Presenter from './CalendarMenuItem.presenter';
 
 interface CalendarMenuItemProps {
   id?: string,

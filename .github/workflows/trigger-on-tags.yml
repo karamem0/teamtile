@@ -13,8 +13,6 @@ jobs:
     name: Build manifest
     uses: ./.github/workflows/build-manifest.yml
     secrets: inherit
-    with:
-      environment: prd
   release:
     name: Deploy to GitHub Release
     needs: build-manifest

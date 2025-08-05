@@ -9,10 +9,11 @@
 import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
-import Presenter from './VisibilityIcon.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
 import { render } from '@testing-library/react';
+
+import Presenter from './VisibilityIcon.presenter';
 
 it('should match the snapshot when the type is public', () => {
   const params = {

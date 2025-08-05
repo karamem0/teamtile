@@ -9,8 +9,9 @@
 import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
-import Presenter from './PinMenuItem.presenter';
 import { render } from '@testing-library/react';
+
+import Presenter from './PinMenuItem.presenter';
 
 it('should match the snapshot when the pinned is true', () => {
   const params = {

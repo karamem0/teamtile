@@ -14,19 +14,21 @@ import {
   withAITracking
 } from '@microsoft/applicationinsights-react-js';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
+import { telemetryConfig } from '../config/TelemetryConfig';
 
 const reactPlugin = new ReactPlugin();
-const connectionString = import.meta.env.VITE_TELEMETRY_CONNECTION_STRING;
-if (connectionString != null && connectionString.length > 0) {
+
+try {
   const appInsights = new ApplicationInsights({
     config: {
-      connectionString,
-      enableAutoRouteTracking: true,
+      ...telemetryConfig,
       extensions: [ reactPlugin ]
     }
   });
   appInsights.loadAppInsights();
   appInsights.trackPageView();
+} catch (error) {
+  console.error(error);
 }
 
 function TelemetryProvider(props: React.PropsWithChildren<unknown>) {

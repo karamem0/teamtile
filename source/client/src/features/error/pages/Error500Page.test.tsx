@@ -9,9 +9,10 @@
 import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
-import Presenter from './Error500Page.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
+
+import Presenter from './Error500Page.presenter';
 
 it('should match the snapshot', () => {
   const params = {};

@@ -8,8 +8,9 @@
 
 import React from 'react';
 
-import Presenter from './TeamAccordionItem.presenter';
 import { TeamCard } from '../../../types/Store';
+
+import Presenter from './TeamAccordionItem.presenter';
 
 interface TeamAccordionItemProps {
   header?: React.ReactNode,

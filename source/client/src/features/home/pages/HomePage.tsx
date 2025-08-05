@@ -9,9 +9,10 @@
 import React from 'react';
 
 import { Event } from '../../../types/Event';
-import Presenter from './HomePage.presenter';
 import messages from '../messages';
 import { useIntl } from 'react-intl';
+
+import Presenter from './HomePage.presenter';
 
 function HomePage() {
 

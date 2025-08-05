@@ -1,11 +1,7 @@
 name: Test source
 
 on:
-  workflow_call:
-    inputs:
-      environment:
-        required: true
-        type: string
+  workflow_call: {}
 
 permissions:
   checks: write

@@ -10,34 +10,13 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 import IntlProvider from '../../../providers/IntlProvider';
-import Presenter from './MemberMenuItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import userEvent from '@testing-library/user-event';
 
-vi.mock('../../../common/components/SidePanel', () => ({
-  default: ({ content, renderer }: { content: React.ReactNode, renderer: (props: unknown) => React.ReactNode }) => (
-    <div data-testid="test-SidePanel">
-      <div data-testid="test-Content">
-        {content}
-      </div>
-      <div data-testid="test-Renderer">
-        {renderer({})}
-      </div>
-    </div>
-  )
-}));
+import Presenter from './MemberMenuItem.presenter';
 
-it('should match the snapshot when the items is not undefined', () => {
-  const params = {
-    items: [
-      {
-        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-        displayName: 'Adele Vance',
-        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-        email: 'AdeleV@M365x214355.onmicrosoft.com'
-      }
-    ]
-  };
+it('should match the snapshot', () => {
+  const params = {};
   const { asFragment } = render(
     <IntlProvider>
       <ThemeProvider>
@@ -48,46 +27,10 @@ it('should match the snapshot when the items is not undefined', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should match the snapshot when the items is undefined', () => {
-  const params = {
-    items: undefined
-  };
-  const { asFragment } = render(
-    <IntlProvider>
-      <ThemeProvider>
-        <Presenter {...params} />
-      </ThemeProvider>
-    </IntlProvider>
-  );
-  expect(asFragment()).toMatchSnapshot();
-});
-
-it('should match the snapshot when the items is an empty array', () => {
-  const params = {
-    items: []
-  };
-  const { asFragment } = render(
-    <IntlProvider>
-      <ThemeProvider>
-        <Presenter {...params} />
-      </ThemeProvider>
-    </IntlProvider>
-  );
-  expect(asFragment()).toMatchSnapshot();
-});
-
-it('should raise onClick event when click an item', async () => {
+it('should raise onClick event when click a button', async () => {
   const user = userEvent.setup();
   const mock = vi.fn();
   const params = {
-    items: [
-      {
-        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-        displayName: 'Adele Vance',
-        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-        email: 'AdeleV@M365x214355.onmicrosoft.com'
-      }
-    ],
     onClick: mock
   };
   render(
@@ -97,32 +40,6 @@ it('should raise onClick event when click an item', async () => {
       </ThemeProvider>
     </IntlProvider>
   );
-  await user.click(screen.getByText(params.items[0].displayName));
-  expect(mock).toHaveBeenCalledWith(expect.anything(), params.items[0]);
-});
-
-it('should raise onFilterChange event when enter text in search box', async () => {
-  const user = userEvent.setup();
-  const mock = vi.fn();
-  const params = {
-    items: [
-      {
-        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-        displayName: 'Adele Vance',
-        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-        email: 'AdeleV@M365x214355.onmicrosoft.com'
-      }
-    ],
-    onFilterChange: mock
-  };
-  render(
-    <IntlProvider>
-      <ThemeProvider>
-        <Presenter {...params} />
-      </ThemeProvider>
-    </IntlProvider>
-  );
-  await user.click(screen.getByPlaceholderText(/Search/));
-  await user.keyboard(params.items[0].displayName);
-  expect(mock).toHaveBeenCalledWith(expect.anything(), params.items[0].displayName);
+  await user.click(screen.getByRole('menuitem'));
+  expect(mock).toHaveBeenCalled();
 });

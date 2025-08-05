@@ -9,9 +9,10 @@
 import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
-import Presenter from './TeamPage.presenter';
 import { VisibilityType } from '../../../types/Entity';
 import { render } from '@testing-library/react';
+
+import Presenter from './TeamPage.presenter';
 
 vi.mock('../../../common/components/LoaderPanel', () => ({
   default: () => (

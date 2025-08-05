@@ -10,9 +10,10 @@ import React from 'react';
 
 import { setCards, setLoading } from '../../../stores/Action';
 import { useAsyncFn, useError } from 'react-use';
-import Presenter from './TeamPage.presenter';
 import { getCards } from '../managers/TeamManager';
 import { useStore } from '../../../providers/StoreProvider';
+
+import Presenter from './TeamPage.presenter';
 
 function TeamPage() {
 

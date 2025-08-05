@@ -8,8 +8,9 @@
 
 import React from 'react';
 
-import Presenter from './Error500Page.presenter';
 import { useAppInsightsContext } from '@microsoft/applicationinsights-react-js';
+
+import Presenter from './Error500Page.presenter';
 
 interface Error500PageProps {
   error?: Error

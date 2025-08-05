@@ -9,9 +9,19 @@ exports[`should match the snapshot when the type is private 1`] = `
 }
 
 .emotion-1 {
-  line-height: 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   color: #4c6978;
-  vertical-align: baseline;
 }
 
 <div
@@ -21,14 +31,13 @@ exports[`should match the snapshot when the type is private 1`] = `
     <div
       class="emotion-0"
     >
-      <span
+      <div
         aria-label="Private"
-        class="fui-Text emotion-1 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
-        role="button"
+        class="emotion-1"
       >
         <svg
           aria-hidden="true"
-          class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+          class="___12fm75w_1fmvgpr f1w7gpdv fez10in fg4l7m0"
           fill="currentColor"
           height="16"
           viewBox="0 0 16 16"
@@ -40,7 +49,7 @@ exports[`should match the snapshot when the type is private 1`] = `
             fill="currentColor"
           />
         </svg>
-      </span>
+      </div>
     </div>
   </div>
 </DocumentFragment>
@@ -55,9 +64,19 @@ exports[`should match the snapshot when the type is public 1`] = `
 }
 
 .emotion-1 {
-  line-height: 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   color: #4c6978;
-  vertical-align: baseline;
 }
 
 <div
@@ -67,14 +86,13 @@ exports[`should match the snapshot when the type is public 1`] = `
     <div
       class="emotion-0"
     >
-      <span
+      <div
         aria-label="Public"
-        class="fui-Text emotion-1 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
-        role="button"
+        class="emotion-1"
       >
         <svg
           aria-hidden="true"
-          class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+          class="___12fm75w_1fmvgpr f1w7gpdv fez10in fg4l7m0"
           fill="currentColor"
           height="16"
           viewBox="0 0 16 16"
@@ -86,7 +104,7 @@ exports[`should match the snapshot when the type is public 1`] = `
             fill="currentColor"
           />
         </svg>
-      </span>
+      </div>
     </div>
   </div>
 </DocumentFragment>

@@ -3,7 +3,6 @@
 You can quickly access participating teams by displaying them as tiles.
 
 [![.github/workflows/trigger-on-main.yml](https://github.com/karamem0/teamtile/actions/workflows/trigger-on-main.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/trigger-on-main.yml)
-[![.github/workflows/trigger-on-develop.yml](https://github.com/karamem0/teamtile/actions/workflows/trigger-on-develop.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/trigger-on-develop.yml)
 [![codecov](https://codecov.io/gh/karamem0/teamtile/graph/badge.svg?token=UY4ZU4E73I)](https://codecov.io/gh/karamem0/teamtile)
 [![license](https://img.shields.io/github/license/karamem0/teamtile.svg)](https://github.com/karamem0/teamtile/blob/main/LICENSE)
 
@@ -151,9 +150,9 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
 
     |Placeholder|Replace|
     |-|-|
-    |`{{MSAL_APP_ID}}`|**Application ID**|
-    |`{{HOST_NAME}}`|**Domain name of Azure Web App**|
-    |`{{MSAL_TENANT_ID}}`|**Tenent ID**|
+    |`{{MICROSOFT_APP_ID}}`|**Application ID**|
+    |`{{AZURE_WEB_APP_DOMAIN_NAME}}`|**Domain name of Azure Web App**|
+    |`{{MICROSOFT_TENANT_ID}}`|**Tenent ID**|
     |`{{TELEMETRY_CONNECTION_STRING}}`|**Connection String of Application Insights**|
 
 3. Go to `source/server` folder.
@@ -162,9 +161,9 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
 
     |Placeholder|Replace|
     |-|-|
-    |`{{MSAL_APP_ID}}`|**Application ID**|
+    |`{{MICROSOFT_APP_ID}}`|**Application ID**|
     |`{{MSAL_APP_SECRET}}`|**Application Secret**|
-    |`{{MSAL_TENANT_ID}}`|**Tenent ID**|
+    |`{{MICROSOFT_TENANT_ID}}`|**Tenent ID**|
     |`{{TELEMETRY_CONNECTION_STRING}}`|**Connection String of Application Insights**|
 
 5. Build application.
@@ -187,8 +186,8 @@ Compress-Archive -Path ./bin/Release/net8.0/publish/* -DestinationPath ../../bui
 
     |Placeholder|Replace|
     |-|-|
-    |`{{HOST_NAME}}`|**Domain name of Azure Web App**|
-    |`{{MSAL_APP_ID}}`|**Application ID**|
+    |`{{AZURE_WEB_APP_DOMAIN_NAME}}`|**Domain name of Azure Web App**|
+    |`{{MICROSOFT_APP_ID}}`|**Application ID**|
 
 3. Compress contents of `manifest` folder.
 

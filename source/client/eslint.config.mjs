@@ -173,7 +173,13 @@ export default ts.config(
       ],
       '@stylistic/operator-linebreak': [
         'error',
-        'after'
+        'after',
+        {
+          'overrides': {
+            '&': 'before',
+            '|': 'before'
+          }
+        }
       ],
       '@stylistic/padded-blocks': 'off',
       '@stylistic/quotes': [

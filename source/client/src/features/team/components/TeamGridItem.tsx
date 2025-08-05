@@ -8,15 +8,16 @@
 
 import React from 'react';
 
-import Presenter from './TeamGridItem.presenter';
 import { TeamCard } from '../../../types/Store';
 import { app } from '@microsoft/teams-js';
+
+import Presenter from './TeamGridItem.presenter';
 
 export interface TeamGridItemProps {
   card: TeamCard
 }
 
-function TeamCardView(props: Readonly<TeamGridItemProps>) {
+function TeamGridItem(props: Readonly<TeamGridItemProps>) {
 
   const { card } = props;
 
@@ -37,4 +38,4 @@ function TeamCardView(props: Readonly<TeamGridItemProps>) {
 
 }
 
-export default TeamCardView;
+export default TeamGridItem;

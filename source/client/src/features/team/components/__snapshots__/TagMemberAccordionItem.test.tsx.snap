@@ -63,7 +63,7 @@ exports[`should match the snapshot when the loading is false 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+                  class="___12fm75w_1fmvgpr f1w7gpdv fez10in fg4l7m0"
                   fill="currentColor"
                   height="1em"
                   style="transform: rotate(90deg); transition: transform 200ms ease-out;"
@@ -157,7 +157,7 @@ exports[`should match the snapshot when the loading is true 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="___12fm75w_v8ls9a0 f1w7gpdv fez10in fg4l7m0"
+                  class="___12fm75w_1fmvgpr f1w7gpdv fez10in fg4l7m0"
                   fill="currentColor"
                   height="1em"
                   style="transform: rotate(90deg); transition: transform 200ms ease-out;"

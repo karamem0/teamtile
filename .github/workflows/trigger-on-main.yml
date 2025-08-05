@@ -9,22 +9,21 @@ permissions:
   checks: write
 
 jobs:
+  test-source:
+    name: Test source
+    uses: ./.github/workflows/test-source.yml
+    secrets: inherit
   build-source:
     name: Build source
+    needs: test-source
     uses: ./.github/workflows/build-source.yml
     secrets: inherit
-    with:
-      environment: prd
   build-manifest:
     name: Build manifest
     uses: ./.github/workflows/build-manifest.yml
     secrets: inherit
-    with:
-      environment: prd
   deploy:
     name: Deploy to Azure
     needs: build-source
     uses: ./.github/workflows/deploy-to-azure.yml
     secrets: inherit
-    with:
-      environment: prd

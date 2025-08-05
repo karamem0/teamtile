@@ -1,0 +1,140 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match the snapshot when the items is an empty array 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-height: 100vh;
+  line-height: 1.25em;
+  background-color: #f5f5f5;
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: column;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  grid-gap: 0.5rem;
+  height: calc(100vh - 5.5rem);
+  overflow: auto;
+}
+
+.emotion-2 {
+  text-align: center;
+}
+
+<div
+    class="fui-FluentProvider fui-FluentProviderr2 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    dir="ltr"
+  >
+    <div
+      class="emotion-0"
+    >
+      <div
+        data-testid="test-Drawer"
+      >
+        <div
+          data-testid="test-Children"
+        >
+          <div
+            class="emotion-1"
+          >
+            <div
+              class="fui-Accordion"
+            >
+              <div
+                class="emotion-2"
+              >
+                No tags found.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match the snapshot when the items is not undefined 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-height: 100vh;
+  line-height: 1.25em;
+  background-color: #f5f5f5;
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: column;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  grid-gap: 0.5rem;
+  height: calc(100vh - 5.5rem);
+  overflow: auto;
+}
+
+<div
+    class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    dir="ltr"
+  >
+    <div
+      class="emotion-0"
+    >
+      <div
+        data-testid="test-Drawer"
+      >
+        <div
+          data-testid="test-Children"
+        >
+          <div
+            class="emotion-1"
+          >
+            <div
+              class="fui-Accordion"
+            >
+              <div
+                data-testid="test-TagMemberAccordionItem"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match the snapshot when the items is undefined 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-height: 100vh;
+  line-height: 1.25em;
+  background-color: #f5f5f5;
+}
+
+<div
+    class="fui-FluentProvider fui-FluentProviderr1 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    dir="ltr"
+  >
+    <div
+      class="emotion-0"
+    >
+      <div
+        data-testid="test-Drawer"
+      >
+        <div
+          data-testid="test-Children"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

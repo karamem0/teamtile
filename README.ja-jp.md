@@ -3,7 +3,6 @@
 参加中のチームをタイルで表示することで素早くアクセスできます。
 
 [![.github/workflows/trigger-on-main.yml](https://github.com/karamem0/teamtile/actions/workflows/trigger-on-main.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/trigger-on-main.yml)
-[![.github/workflows/trigger-on-develop.yml](https://github.com/karamem0/teamtile/actions/workflows/trigger-on-develop.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/trigger-on-develop.yml)
 [![codecov](https://codecov.io/gh/karamem0/teamtile/graph/badge.svg?token=UY4ZU4E73I)](https://codecov.io/gh/karamem0/teamtile)
 [![license](https://img.shields.io/github/license/karamem0/teamtile.svg)](https://github.com/karamem0/teamtile/blob/main/LICENSE)
 
@@ -151,9 +150,9 @@
 
     |プレースホルダー|置換|
     |-|-|
-    |`{{MSAL_APP_ID}}`|**アプリケーション ID**|
-    |`{{HOST_NAME}}`|**Azure Web アプリのドメイン名**|
-    |`{{MSAL_TENANT_ID}}`|**テナント ID**|
+    |`{{MICROSOFT_APP_ID}}`|**アプリケーション ID**|
+    |`{{AZURE_WEB_APP_DOMAIN_NAME}}`|**Azure Web アプリのドメイン名**|
+    |`{{MICROSOFT_TENANT_ID}}`|**テナント ID**|
     |`{{TELEMETRY_CONNECTION_STRING}}`|**Application Insights の接続文字列**|
 
 3. `source/server` フォルダーに移動します。
@@ -162,9 +161,9 @@
 
     |プレースホルダー|置換|
     |-|-|
-    |`{{MSAL_APP_ID}}`|**アプリケーション ID**|
+    |`{{MICROSOFT_APP_ID}}`|**アプリケーション ID**|
     |`{{MSAL_APP_SECRET}}`|**アプリケーション シークレット**|
-    |`{{MSAL_TENANT_ID}}`|**テナント ID**|
+    |`{{MICROSOFT_TENANT_ID}}`|**テナント ID**|
     |`{{TELEMETRY_CONNECTION_STRING}}`|**Application Insights の接続文字列**|
 
 5. アプリケーションをビルドします。
@@ -187,8 +186,8 @@ Compress-Archive -Path ./bin/Release/net8.0/publish/* -DestinationPath ../../bui
 
     |プレースホルダー|置換|
     |-|-|
-    |`{{HOST_NAME}}`|**Azure Web アプリのドメイン名**|
-    |`{{MSAL_APP_ID}}`|**アプリケーション ID**|
+    |`{{AZURE_WEB_APP_DOMAIN_NAME}}`|**Azure Web アプリのドメイン名**|
+    |`{{MICROSOFT_APP_ID}}`|**アプリケーション ID**|
 
 3. `manifest` フォルダーの中身を圧縮します。
 

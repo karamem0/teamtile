@@ -9,7 +9,7 @@
 import React from 'react';
 
 import { Globe16Regular, LockClosed16Regular } from '@fluentui/react-icons';
-import { Text, Tooltip } from '@fluentui/react-components';
+import { Tooltip } from '@fluentui/react-components';
 import { VisibilityType } from '../../../types/Entity';
 import { css } from '@emotion/react';
 import messages from '../messages';
@@ -33,15 +33,15 @@ function VisibilityIcon(props: Readonly<VisibilityIconProps>) {
         <Tooltip
           content={intl.formatMessage(messages.Public)}
           relationship="label">
-          <Text
-            role="button"
+          <div
             css={css`
-              line-height: 1rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
               color: ${theme.colorBrandForeground1};
-              vertical-align: baseline;
             `}>
             <Globe16Regular />
-          </Text>
+          </div>
         </Tooltip>
       );
     case 'private':
@@ -49,15 +49,15 @@ function VisibilityIcon(props: Readonly<VisibilityIconProps>) {
         <Tooltip
           content={intl.formatMessage(messages.Private)}
           relationship="label">
-          <Text
-            role="button"
+          <div
             css={css`
-              line-height: 1rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
               color: ${theme.colorBrandForeground1};
-              vertical-align: baseline;
             `}>
             <LockClosed16Regular />
-          </Text>
+          </div>
         </Tooltip>
       );
     default:

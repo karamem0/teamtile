@@ -9,6 +9,7 @@
 import React from 'react';
 
 import { render, screen } from '@testing-library/react';
+
 import Presenter from './TeamsAuthenticator.presenter';
 
 it('should match the snapshot when the loading is true', () => {

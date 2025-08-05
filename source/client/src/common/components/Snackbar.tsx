@@ -8,8 +8,9 @@
 
 import React from 'react';
 
+import { useSnackbar } from '../providers/SnackbarProvider';
+
 import Presenter from './Snackbar.presenter';
-import { useSnackbar } from '../../providers/SnackbarProvider';
 
 function Snackbar() {
 

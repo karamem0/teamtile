@@ -35,32 +35,11 @@ function TeamPage(props: Readonly<MainPageProps>) {
       <HelmetProvider>
         <Helmet>
           <meta
-            content="karamem0"
+            content={intl.formatMessage(messages.AppCreator)}
             name="author" />
           <meta
             content={intl.formatMessage(messages.AppDescription)}
             name="description" />
-          <meta
-            content="summary"
-            name="twitter:card" />
-          <meta
-            content="@karamem0"
-            name="twitter:site" />
-          <meta
-            content="@karamem0"
-            name="twitter:creator" />
-          <meta
-            content={location.origin}
-            property="og:url" />
-          <meta
-            content="Teamtile"
-            property="og:title" />
-          <meta
-            content={intl.formatMessage(messages.AppDescription)}
-            property="og:description" />
-          <meta
-            content={`${location.origin}/assets/screenshots/001.png`}
-            property="og:image" />
           <title>
             {intl.formatMessage(messages.AppTitle)}
           </title>

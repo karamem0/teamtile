@@ -9,9 +9,10 @@
 import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
-import Presenter from './PrimaryChannelIcon.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
+
+import Presenter from './PrimaryChannelIcon.presenter';
 
 it('should match the snapshot when the primary is true', () => {
   const params = {

@@ -8,8 +8,9 @@
 
 import React from 'react';
 
-import Presenter from './TeamGrid.presenter';
 import { useStore } from '../../../providers/StoreProvider';
+
+import Presenter from './TeamGrid.presenter';
 
 function TeamGrid() {
 

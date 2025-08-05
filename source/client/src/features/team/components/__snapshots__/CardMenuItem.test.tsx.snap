@@ -2,38 +2,23 @@
 
 exports[`should match the snapshot 1`] = `
 <DocumentFragment>
-  .emotion-0 {
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: auto auto;
-  grid-gap: 0.25rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  -webkit-justify-content: start;
-  justify-content: start;
-  cursor: pointer;
-}
-
-<span
-    aria-label="Title"
-    class="fui-Text emotion-0 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
+  <div
+    class="fui-MenuItem rfoezjv"
+    role="menuitem"
+    tabindex="0"
   >
-    <button
-      class="fui-Button r1alrhcs ___cpe5h10_1yhfyj7 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f18ktai2 fwbmr0d f44c6la"
-      type="button"
+    <span
+      class="fui-MenuItem__icon ro9koqv"
     >
-      <span
-        class="fui-Button__icon rywnvv2"
-      >
-        <div
-          data-testid="test-Icon"
-        />
-      </span>
-    </button>
-  </span>
+      <div
+        data-testid="test-Icon"
+      />
+    </span>
+    <span
+      class="fui-MenuItem__content r1ls86vo"
+    >
+      Title
+    </span>
+  </div>
 </DocumentFragment>
 `;

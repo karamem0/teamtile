@@ -55,7 +55,7 @@ exports[`should match the snapshot 1`] = `
   justify-content: center;
   width: 100%;
   padding: 2rem;
-  background-color: #4c6978;
+  background: linear-gradient(#425b68, #4c6978);
 }
 
 @media (width >= 960px) {

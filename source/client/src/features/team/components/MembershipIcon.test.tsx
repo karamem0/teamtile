@@ -10,9 +10,10 @@ import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
 import { MembershipType } from '../../../types/Entity';
-import Presenter from './MembershipIcon.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
+
+import Presenter from './MembershipIcon.presenter';
 
 it('should match the snapshot when the type is shared', () => {
   const params = {

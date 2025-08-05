@@ -9,10 +9,11 @@
 import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
-import Presenter from './TeamGridItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
 import { render } from '@testing-library/react';
+
+import Presenter from './TeamGridItem.presenter';
 
 vi.mock('./AvatarIcon', () => ({
   default: ({ children }: { children: React.ReactNode }) => (
