@@ -1,18 +1,13 @@
 name: Build source
 
 on:
-  workflow_call:
-    inputs:
-      environment:
-        required: true
-        type: string
+  workflow_call: {}
 
 permissions: {}
 
 jobs:
   run:
     name: Run
-    environment: ${{inputs.environment}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repos
@@ -25,7 +20,7 @@ jobs:
         shell: pwsh
         run: |
           $content = Get-Content -Path ${{env.FILE_PATH}}
-          $content = $content -Replace "{{MSAL_APP_ID}}", "${{vars.MSAL_APP_ID}}"
+          $content = $content -Replace "{{MICROSOFT_APP_ID}}", "${{vars.MICROSOFT_APP_ID}}"
           Out-File -FilePath ${{env.FILE_PATH}} -InputObject $content -Encoding UTF8
         env:
           FILE_PATH: source/client/public/.well-known/microsoft-identity-association.json
@@ -33,9 +28,8 @@ jobs:
         shell: pwsh
         run: |
           $content = Get-Content -Path ${{env.FILE_PATH}}
-          $content = $content -Replace "{{MSAL_APP_ID}}", "${{vars.MSAL_APP_ID}}"
-          $content = $content -Replace "{{MSAL_TENANT_ID}}", "${{vars.MSAL_TENANT_ID}}"
-          $content = $content -Replace "{{HOST_NAME}}", "${{vars.HOST_NAME}}"
+          $content = $content -Replace "{{MICROSOFT_APP_ID}}", "${{vars.MICROSOFT_APP_ID}}"
+          $content = $content -Replace "{{MICROSOFT_TENANT_ID}}", "${{vars.MICROSOFT_TENANT_ID}}"
           $content = $content -Replace "{{TELEMETRY_CONNECTION_STRING}}", "${{vars.TELEMETRY_CONNECTION_STRING}}"
           Out-File -FilePath ${{env.FILE_PATH}} -InputObject $content -Encoding UTF8
         env:

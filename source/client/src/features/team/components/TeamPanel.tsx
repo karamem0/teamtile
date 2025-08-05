@@ -10,12 +10,13 @@ import React from 'react';
 
 import { setFilter, setLoading } from '../../../stores/Action';
 import { Event } from '../../../types/Event';
-import Presenter from './TeamPanel.presenter';
 import { clearCache } from '../managers/TeamManager';
 import messages from '../messages';
 import { useDebounce } from 'react-use';
 import { useIntl } from 'react-intl';
 import { useStore } from '../../../providers/StoreProvider';
+
+import Presenter from './TeamPanel.presenter';
 
 function TeamPanel() {
 

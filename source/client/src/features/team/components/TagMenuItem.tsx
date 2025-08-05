@@ -8,11 +8,9 @@
 
 import React from 'react';
 
-import { useAsyncFn, useError } from 'react-use';
-import { Event } from '../../../types/Event';
+import { useDrawer } from '../../../common/providers/DrawerProvider';
+
 import Presenter from './TagMenuItem.presenter';
-import { Tag } from '../../../types/Entity';
-import { getTags } from '../managers/TeamManager';
 
 interface TagMenuItemProps {
   id?: string
@@ -22,48 +20,20 @@ function TagMenuItem(props: Readonly<TagMenuItemProps>) {
 
   const { id } = props;
 
-  const [ openItems, setOpenItems ] = React.useState<Tag[]>();
-  const dispatchError = useError();
-  const [ state, fetch ] = useAsyncFn((teamId: string) => getTags(teamId));
+  const { setDrawer } = useDrawer();
 
-  const handleOpenChange = React.useCallback(async (_: Event, data?: boolean) => {
-    if (!(data ?? false)) {
-      return;
-    }
-    if (id == null) {
-      return;
-    }
-    await fetch(id);
+  const handleClick = React.useCallback(() => {
+    setDrawer({
+      data: id,
+      type: 'tag'
+    });
   }, [
     id,
-    fetch
-  ]);
-
-  const handleToggle = React.useCallback(async (_: Event, data?: Tag[]) => {
-    if (data == null) {
-      return;
-    }
-    setOpenItems(data);
-  }, []);
-
-  React.useEffect(() => {
-    if (state.error == null) {
-      return;
-    }
-    dispatchError(state.error);
-  }, [
-    state.error,
-    dispatchError
+    setDrawer
   ]);
 
   return (
-    <Presenter
-      id={id}
-      items={state.value}
-      loading={state.loading}
-      openItems={openItems}
-      onOpenChange={handleOpenChange}
-      onToggle={handleToggle} />
+    <Presenter onClick={handleClick} />
   );
 
 }

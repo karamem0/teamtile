@@ -9,9 +9,10 @@
 import React from 'react';
 
 import { useAsyncFn, useError } from 'react-use';
-import Presenter from './TagMemberAccordionItem.presenter';
 import { Tag } from '../../../types/Entity';
 import { getTagMembers } from '../managers/TeamManager';
+
+import Presenter from './TagMemberAccordionItem.presenter';
 
 interface TagMemberAccordionItemProps {
   id?: string,

@@ -9,7 +9,12 @@
 import React from 'react';
 
 import {
+  Button,
   Card,
+  Menu,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
   Skeleton,
   SkeletonItem,
   Text
@@ -20,6 +25,7 @@ import ChannelMenuItem from './ChannelMenuItem';
 import DriveMenuItem from './DriveMenuItem';
 import { EventHandler } from '../../../types/Event';
 import MemberMenuItem from './MemberMenuItem';
+import { MoreVertical16Regular } from '@fluentui/react-icons';
 import PinMenuItem from './PinMenuItem';
 import SensitivityLabel from './SensitivityLabel';
 import TagMenuItem from './TagMenuItem';
@@ -51,11 +57,7 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
   switch (loading) {
     case true:
       return (
-        <Card
-          role="listitem"
-          css={css`
-            height: 6.5rem;
-          `}>
+        <Card role="listitem">
           <Skeleton animation="pulse">
             <div
               css={css`
@@ -79,10 +81,10 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
                   size={24} />
                 <SkeletonItem
                   shape="rectangle"
-                  size={20} />
+                  size={24} />
                 <SkeletonItem
                   shape="rectangle"
-                  size={20} />
+                  size={96} />
               </div>
             </div>
           </Skeleton>
@@ -90,90 +92,115 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
       );
     case false: {
       return visible ? (
-        <Card
-          role="listitem"
-          css={css`
-            height: 6.5rem;
-          `}>
-          <div
-            css={css`
-              display: grid;
-              grid-template-rows: auto;
-              grid-template-columns: auto 1fr;
-              grid-gap: 0.5rem;
-            `}>
-            <AvatarIcon
-              icon={team.icon}
-              name={team.displayName}
-              size={48} />
+        <React.Fragment>
+          <Card role="listitem">
             <div
               css={css`
                 display: grid;
-                grid-template-rows: 1.25rem 1.25rem 2rem;
-                grid-template-columns: 1fr;
-                grid-gap: 0.25rem;
+                grid-template-rows: auto;
+                grid-template-columns: auto 1fr;
+                grid-gap: 0.5rem;
               `}>
+              <AvatarIcon
+                icon={team.icon}
+                name={team.displayName}
+                size={48} />
               <div
                 css={css`
                   display: grid;
-                  grid-template-rows: auto;
-                  grid-template-columns: 1fr auto auto;
+                  grid-template-rows: auto auto auto;
+                  grid-template-columns: 1fr auto;
                   grid-gap: 0.25rem;
-                  align-items: center;
-                  justify-content: center;
                 `}>
                 <div
                   css={css`
+                    grid-row: 1 / 2;
+                    grid-column: 1 / 2;
+                    height: 1.5rem;
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    white-space: nowrap;
                   `}>
                   <Text
                     role="button"
                     css={css`
+                      font-weight: 600;
+                      color: ${theme.colorBrandForeground1};
+                      white-space: nowrap;
                       cursor: pointer;
                     `}
                     onClick={onClick}>
-                    <Text
-                      css={css`
-                        font-weight: 600;
-                        color: ${theme.colorBrandForeground1};
-                      `}>
-                      {team.displayName}
-                    </Text>
+                    {team.displayName}
                   </Text>
                 </div>
-                <SensitivityLabel label={team.sensitivityLabel} />
-                <VisibilityIcon type={team.visibility} />
-              </div>
-              <div
-                css={css`
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                `}>
-                {team.description}
-              </div>
-              <div
-                css={css`
-                  display: grid;
-                  grid-template-rows: auto;
-                  grid-template-columns: auto auto auto auto auto auto;
-                  align-items: center;
-                  justify-content: left;
-                `}>
-                <ChannelMenuItem {...team} />
-                <MemberMenuItem {...team} />
-                <TagMenuItem id={id} />
-                <DriveMenuItem {...team} />
-                <CalendarMenuItem {...team} />
-                <PinMenuItem
-                  id={id}
-                  pinned={pinned} />
+                <div
+                  css={css`
+                    grid-row: 1 / 3;
+                    grid-column: 2 / 3;
+                  `}>
+                  <Menu>
+                    <MenuTrigger disableButtonEnhancement>
+                      <Button
+                        appearance="transparent"
+                        icon={(
+                          <MoreVertical16Regular />
+                        )} />
+                    </MenuTrigger>
+                    <MenuPopover>
+                      <MenuList>
+                        <ChannelMenuItem {...team} />
+                        <MemberMenuItem {...team} />
+                        <TagMenuItem id={id} />
+                        <DriveMenuItem {...team} />
+                        <CalendarMenuItem {...team} />
+                        <PinMenuItem
+                          id={id}
+                          pinned={pinned} />
+                      </MenuList>
+                    </MenuPopover>
+                  </Menu>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    grid-row: 2 / 3;
+                    grid-column: 1 / 2;
+                    grid-gap: 0.25rem;
+                    align-items: center;
+                    justify-content: left;
+                    height: 1.25rem;
+                  `}>
+                  <VisibilityIcon type={team.visibility} />
+                  {
+                    team.sensitivityLabel ? (
+                      <SensitivityLabel label={team.sensitivityLabel} />
+                    ) : (
+                      <div />
+                    )
+                  }
+                  <div />
+                </div>
+                <div
+                  css={css`
+                    grid-row: 3 / 4;
+                    grid-column: 1 / 3;
+                    height: 6.25rem;
+                  `}>
+                  <div
+                    css={css`
+                      display: -webkit-box;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      -webkit-line-clamp: 5;
+                      line-height: 1.25rem;
+                      -webkit-box-orient: vertical;
+                    `}>
+                    {team.description}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </Card>
+          </Card>
+        </React.Fragment>
       ) : null;
     }
     default:

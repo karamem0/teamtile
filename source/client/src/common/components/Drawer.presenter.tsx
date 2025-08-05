@@ -20,8 +20,7 @@ import { Dismiss16Regular } from '@fluentui/react-icons';
 import { EventHandler } from '../../types/Event';
 import { css } from '@emotion/react';
 
-interface SidePanelProps {
-  content?: React.ReactNode,
+interface DrawerProps {
   loading?: boolean,
   mountNode?: HTMLElement,
   open?: boolean,
@@ -29,11 +28,10 @@ interface SidePanelProps {
   onOpenChange?: EventHandler<boolean>
 }
 
-function SidePanel(props: Readonly<React.PropsWithChildren<SidePanelProps>>) {
+function Drawer(props: Readonly<React.PropsWithChildren<DrawerProps>>) {
 
   const {
     children,
-    content,
     loading,
     mountNode,
     open,
@@ -43,7 +41,6 @@ function SidePanel(props: Readonly<React.PropsWithChildren<SidePanelProps>>) {
 
   return (
     <React.Fragment>
-      {children}
       <OverlayDrawer
         as="aside"
         mountNode={mountNode}
@@ -74,7 +71,7 @@ function SidePanel(props: Readonly<React.PropsWithChildren<SidePanelProps>>) {
           {
             loading ? (
               <Spinner />
-            ) : content
+            ) : children
           }
         </DrawerBody>
       </OverlayDrawer>
@@ -83,4 +80,4 @@ function SidePanel(props: Readonly<React.PropsWithChildren<SidePanelProps>>) {
 
 }
 
-export default React.memo(SidePanel);
+export default React.memo(Drawer);

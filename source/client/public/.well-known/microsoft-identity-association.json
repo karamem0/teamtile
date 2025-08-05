@@ -1,7 +1,7 @@
 {
   "associatedApplications": [
     {
-      "applicationId": "{{MSAL_APP_ID}}"
+      "applicationId": "{{MICROSOFT_APP_ID}}"
     }
   ]
 }

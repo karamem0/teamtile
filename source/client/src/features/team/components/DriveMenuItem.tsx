@@ -13,7 +13,7 @@ import { app } from '@microsoft/teams-js';
 import { getDrive } from '../managers/TeamManager';
 import messages from '../messages';
 import { useIntl } from 'react-intl';
-import { useSnackbar } from '../../../providers/SnackbarProvider';
+import { useSnackbar } from '../../../common/providers/SnackbarProvider';
 
 import Presenter from './DriveMenuItem.presenter';
 

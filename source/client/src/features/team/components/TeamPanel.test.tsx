@@ -9,8 +9,15 @@
 import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
-import Presenter from './TeamPanel.presenter';
 import { render } from '@testing-library/react';
+
+import Presenter from './TeamPanel.presenter';
+
+vi.mock('./DrawerFactory', () => ({
+  default: () => (
+    <div data-testid="test-DrawerFactory" />
+  )
+}));
 
 vi.mock('./TeamGrid', () => ({
   default: ({ children }: { children: React.ReactNode }) => (

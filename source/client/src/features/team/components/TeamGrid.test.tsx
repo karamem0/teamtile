@@ -8,12 +8,12 @@
 
 import React from 'react';
 
-import { render } from '@testing-library/react';
-
 import IntlProvider from '../../../providers/IntlProvider';
-import Presenter from './TeamGrid.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { VisibilityType } from '../../../types/Entity';
+import { render } from '@testing-library/react';
+
+import Presenter from './TeamGrid.presenter';
 
 vi.mock('./TeamGridItem', () => ({
   default: ({ children }: { children: React.ReactNode }) => (

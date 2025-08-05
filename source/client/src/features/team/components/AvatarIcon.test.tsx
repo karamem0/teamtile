@@ -8,8 +8,9 @@
 
 import React from 'react';
 
-import Presenter from './AvatarIcon.presenter';
 import { render } from '@testing-library/react';
+
+import Presenter from './AvatarIcon.presenter';
 
 it('should create a snapshot when icon is undefined', () => {
   const params = {

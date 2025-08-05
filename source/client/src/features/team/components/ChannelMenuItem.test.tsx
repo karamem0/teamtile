@@ -10,35 +10,13 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 import IntlProvider from '../../../providers/IntlProvider';
-import { MembershipType } from '../../../types/Entity';
-import Presenter from './ChannelMenuItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import userEvent from '@testing-library/user-event';
 
-vi.mock('../../../common/components/SidePanel', () => ({
-  default: ({ content, renderer }: { content: React.ReactNode, renderer: (props: unknown) => React.ReactNode }) => (
-    <div data-testid="test-SidePanel">
-      <div data-testid="test-Content">
-        {content}
-      </div>
-      <div data-testid="test-Renderer">
-        {renderer({})}
-      </div>
-    </div>
-  )
-}));
+import Presenter from './ChannelMenuItem.presenter';
 
-it('should match the snapshot when the items is not undefined', () => {
-  const params = {
-    items: [
-      {
-        id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
-        displayName: 'General',
-        membershipType: 'standard' as MembershipType,
-        webUrl: 'https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
-      }
-    ]
-  };
+it('should match the snapshot', () => {
+  const params = {};
   const { asFragment } = render(
     <IntlProvider>
       <ThemeProvider>
@@ -49,46 +27,10 @@ it('should match the snapshot when the items is not undefined', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should match the snapshot when the items is undefined', () => {
-  const params = {
-    items: undefined
-  };
-  const { asFragment } = render(
-    <IntlProvider>
-      <ThemeProvider>
-        <Presenter {...params} />
-      </ThemeProvider>
-    </IntlProvider>
-  );
-  expect(asFragment()).toMatchSnapshot();
-});
-
-it('should match the snapshot when the items is an empty array', () => {
-  const params = {
-    items: []
-  };
-  const { asFragment } = render(
-    <IntlProvider>
-      <ThemeProvider>
-        <Presenter {...params} />
-      </ThemeProvider>
-    </IntlProvider>
-  );
-  expect(asFragment()).toMatchSnapshot();
-});
-
-it('should raise onClick event when click an item', async () => {
+it('should raise onClick event when click a button', async () => {
   const user = userEvent.setup();
   const mock = vi.fn();
   const params = {
-    items: [
-      {
-        id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
-        displayName: 'General',
-        membershipType: 'standard' as MembershipType,
-        webUrl: 'https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
-      }
-    ],
     onClick: mock
   };
   render(
@@ -98,32 +40,6 @@ it('should raise onClick event when click an item', async () => {
       </ThemeProvider>
     </IntlProvider>
   );
-  await user.click(screen.getByText(params.items[0].displayName));
-  expect(mock).toHaveBeenCalledWith(expect.anything(), params.items[0]);
-});
-
-it('should raise onFilterChange event when enter text in search box', async () => {
-  const user = userEvent.setup();
-  const mock = vi.fn();
-  const params = {
-    items: [
-      {
-        id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
-        displayName: 'General',
-        membershipType: 'standard' as MembershipType,
-        webUrl: 'https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
-      }
-    ],
-    onFilterChange: mock
-  };
-  render(
-    <IntlProvider>
-      <ThemeProvider>
-        <Presenter {...params} />
-      </ThemeProvider>
-    </IntlProvider>
-  );
-  await user.click(screen.getByPlaceholderText(/Search/));
-  await user.keyboard(params.items[0].displayName);
-  expect(mock).toHaveBeenCalledWith(expect.anything(), params.items[0].displayName);
+  await user.click(screen.getByRole('menuitem'));
+  expect(mock).toHaveBeenCalled();
 });

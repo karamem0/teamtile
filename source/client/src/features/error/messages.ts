@@ -7,13 +7,16 @@
 //
 
 import { defineMessages } from 'react-intl';
+import parentMessages from '../messages';
 
-const messages = defineMessages({
-  AppTitle: { defaultMessage: 'Teamtile' },
-  Error404Description: { defaultMessage: 'Page not found' },
-  Error404Title: { defaultMessage: '404 Not Found' },
-  Error500Description: { defaultMessage: 'Something went wrong' },
-  Error500Title: { defaultMessage: '500 Internal Server Error' }
-});
+const messages = {
+  ...parentMessages,
+  ...defineMessages({
+    Error404Description: { defaultMessage: 'Page not found' },
+    Error404Title: { defaultMessage: '404 Not Found' },
+    Error500Description: { defaultMessage: 'Something went wrong' },
+    Error500Title: { defaultMessage: '500 Internal Server Error' }
+  })
+};
 
 export default messages;

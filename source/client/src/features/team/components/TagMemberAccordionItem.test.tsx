@@ -10,9 +10,10 @@ import React from 'react';
 
 import { Accordion } from '@fluentui/react-components';
 import IntlProvider from '../../../providers/IntlProvider';
-import Presenter from './TagMemberAccordionItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
+
+import Presenter from './TagMemberAccordionItem.presenter';
 
 it('should match the snapshot when the loading is true', () => {
   const params = {

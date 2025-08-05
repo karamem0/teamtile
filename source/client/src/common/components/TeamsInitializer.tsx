@@ -8,8 +8,9 @@
 
 import React from 'react';
 
-import Presenter from './TeamsInitializer.presenter';
 import { app } from '@microsoft/teams-js';
+
+import Presenter from './TeamsInitializer.presenter';
 
 interface TeamsInitializerProps {
   children?: (inTeams?: boolean) => React.ReactNode

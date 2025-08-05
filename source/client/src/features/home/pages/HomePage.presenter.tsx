@@ -40,32 +40,26 @@ function HomePage(props: Readonly<HomePageProps>) {
       <HelmetProvider>
         <Helmet>
           <meta
-            content="karamem0"
+            content={intl.formatMessage(messages.AppCreator)}
             name="author" />
           <meta
             content={intl.formatMessage(messages.AppDescription)}
             name="description" />
           <meta
-            content="summary"
-            name="twitter:card" />
+            content={intl.formatMessage(messages.AppTitle)}
+            property="og:title" />
           <meta
-            content="@karamem0"
-            name="twitter:site" />
+            content="website"
+            property="og:type" />
           <meta
-            content="@karamem0"
-            name="twitter:creator" />
+            content={`${location.origin}/assets/screenshots/001.png`}
+            property="og:image" />
           <meta
             content={location.origin}
             property="og:url" />
           <meta
-            content="Teamtile"
-            property="og:title" />
-          <meta
             content={intl.formatMessage(messages.AppDescription)}
             property="og:description" />
-          <meta
-            content={`${location.origin}/assets/screenshots/001.png`}
-            property="og:image" />
           <title>
             {intl.formatMessage(messages.AppTitle)}
           </title>
@@ -110,7 +104,7 @@ function HomePage(props: Readonly<HomePageProps>) {
             justify-content: center;
             width: 100%;
             padding: 2rem;
-            background-color: ${theme.colorBrandBackground};
+            background: linear-gradient(${theme.colorBrandBackgroundHover}, ${theme.colorBrandBackground});
             @media (width >= 960px) {
               padding: 4rem 2rem;
             }

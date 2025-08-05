@@ -8,10 +8,11 @@
 
 import React from 'react';
 
-import Presenter from './PinMenuItem.presenter';
 import { setPin } from '../managers/TeamManager';
 import { togglePin } from '../../../stores/Action';
 import { useStore } from '../../../providers/StoreProvider';
+
+import Presenter from './PinMenuItem.presenter';
 
 interface PinMenuItemProps {
   id?: string,

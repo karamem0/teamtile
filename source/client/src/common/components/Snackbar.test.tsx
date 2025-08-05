@@ -10,8 +10,9 @@ import React from 'react';
 
 import IntlProvider from '../../providers/IntlProvider';
 import { MessageBarIntent } from '@fluentui/react-components';
-import Presenter from './Snackbar.presenter';
 import { render } from '@testing-library/react';
+
+import Presenter from './Snackbar.presenter';
 
 it('should match the snapshot when the text is undefined', () => {
   const params = {

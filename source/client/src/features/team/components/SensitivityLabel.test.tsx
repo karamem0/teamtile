@@ -8,8 +8,9 @@
 
 import React from 'react';
 
-import Presenter from './SensitivityLabel.presenter';
 import { render } from '@testing-library/react';
+
+import Presenter from './SensitivityLabel.presenter';
 
 it('should match the snapshot when the label is undefined', () => {
   const params = {

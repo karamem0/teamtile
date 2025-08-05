@@ -10,9 +10,10 @@ import React from 'react';
 
 import { Accordion } from '@fluentui/react-components';
 import IntlProvider from '../../../providers/IntlProvider';
-import Presenter from './TeamAccordionItem.presenter';
 import { VisibilityType } from '../../../types/Entity';
 import { render } from '@testing-library/react';
+
+import Presenter from './TeamAccordionItem.presenter';
 
 vi.mock('./TeamGridItem', () => ({
   default: ({ children }: { children: React.ReactNode }) => (

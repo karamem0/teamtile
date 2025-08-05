@@ -9,8 +9,9 @@
 import React from 'react';
 
 import IntlProvider from '../../../providers/IntlProvider';
-import Presenter from './LoginRedirectPage.presenter';
 import { render } from '@testing-library/react';
+
+import Presenter from './LoginRedirectPage.presenter';
 
 it('should match the snapshot', () => {
   const params = {};

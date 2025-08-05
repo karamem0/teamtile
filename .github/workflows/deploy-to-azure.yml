@@ -1,21 +1,13 @@
 name: Deploy to Azure
 
 on:
-  workflow_call:
-    inputs:
-      environment:
-        required: true
-        type: string
-      slot-name:
-        required: false
-        type: string
+  workflow_call: {}
 
 permissions: {}
 
 jobs:
   run:
     name: Run
-    environment: ${{inputs.environment}}
     runs-on: ubuntu-latest
     steps:
       - name: Download artifatcs
@@ -31,5 +23,4 @@ jobs:
         uses: azure/webapps-deploy@de617f46172a906d0617bb0e50d81e9e3aec24c8
         with:
           app-name: ${{vars.AZURE_WEB_APP_NAME}}
-          slot-name: ${{inputs.slot-name}}
           package: build

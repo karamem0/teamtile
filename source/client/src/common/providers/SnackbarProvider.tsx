@@ -34,12 +34,12 @@ function SnackbarProvider(props: Readonly<React.PropsWithChildren<unknown>>) {
 
   const { children } = props;
 
-  const [ snackbar, setSnackbar ] = React.useState<SnackbarState>();
+  const [ state, setState ] = React.useState<SnackbarState>();
   const value = React.useMemo(() => ({
-    snackbar,
-    setSnackbar
+    snackbar: state,
+    setSnackbar: setState
   }), [
-    snackbar
+    state
   ]);
 
   return (

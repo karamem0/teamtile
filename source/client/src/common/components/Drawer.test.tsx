@@ -10,15 +10,16 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 import IntlProvider from '../../providers/IntlProvider';
-import Presenter from './SidePanel.presenter';
 import ThemeProvider from '../../providers/ThemeProvider';
 import userEvent from '@testing-library/user-event';
+
+import Presenter from './Drawer.presenter';
 
 it('should match the snapshot when the loading is true', () => {
   const container = document.body.appendChild(document.createElement('div'));
   const params = {
-    content: (
-      <div data-testid="test-Content" />
+    children: (
+      <div data-testid="test-Children" />
     ),
     mountNode: container,
     loading: true,
@@ -38,14 +39,14 @@ it('should match the snapshot when the loading is true', () => {
     }
   );
   expect(asFragment()).toMatchSnapshot();
-  expect(screen.queryByTestId('test-Content')).not.toBeInTheDocument();
+  expect(screen.queryByTestId('test-Children')).not.toBeInTheDocument();
 });
 
 it('should match the snapshot when the loading is false', () => {
   const container = document.body.appendChild(document.createElement('div'));
   const params = {
-    content: (
-      <div data-testid="test-Content" />
+    children: (
+      <div data-testid="test-Children" />
     ),
     mountNode: container,
     loading: false,
@@ -65,7 +66,7 @@ it('should match the snapshot when the loading is false', () => {
     }
   );
   expect(asFragment()).toMatchSnapshot();
-  expect(screen.getByTestId('test-Content')).toBeInTheDocument();
+  expect(screen.getByTestId('test-Children')).toBeInTheDocument();
 });
 
 it('should raise onOpenChange event when click a close button', async () => {
@@ -73,8 +74,8 @@ it('should raise onOpenChange event when click a close button', async () => {
   const user = userEvent.setup();
   const mock = vi.fn();
   const params = {
-    content: (
-      <div data-testid="test-Content" />
+    children: (
+      <div data-testid="test-Children" />
     ),
     mountNode: container,
     loading: false,

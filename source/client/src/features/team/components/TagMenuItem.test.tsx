@@ -8,44 +8,15 @@
 
 import React from 'react';
 
+import { render, screen } from '@testing-library/react';
 import IntlProvider from '../../../providers/IntlProvider';
-import Presenter from './TagMenuItem.presenter';
 import ThemeProvider from '../../../providers/ThemeProvider';
-import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
-vi.mock('./TagMemberAccordionItem', () => ({
-  default: ({ children }: { children: React.ReactNode }) => (
-    <div data-testid="test-TagMemberAccordionItem">
-      {children}
-    </div>
-  )
-}));
+import Presenter from './TagMenuItem.presenter';
 
-vi.mock('../../../common/components/SidePanel', () => ({
-  default: ({ content, renderer }: { content: React.ReactNode, renderer: (props: unknown) => React.ReactNode }) => (
-    <div data-testid="test-SidePanel">
-      <div data-testid="test-Content">
-        {content}
-      </div>
-      <div data-testid="test-Renderer">
-        {renderer({})}
-      </div>
-    </div>
-  )
-}));
-
-it('should match the snapshot when the items is not undefined', () => {
-  const params = {
-    id: '2bd9fd6-8f93-4758-87c3-1fb73740a315',
-    items: [
-      {
-        id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
-        displayName: 'Finance',
-        description: 'Finance Team for Mach 8 Project',
-        memberCount: 2
-      }
-    ]
-  };
+it('should match the snapshot', () => {
+  const params = {};
   const { asFragment } = render(
     <IntlProvider>
       <ThemeProvider>
@@ -56,32 +27,19 @@ it('should match the snapshot when the items is not undefined', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-it('should match the snapshot when the items is undefined', () => {
+it('should raise onClick event when click a button', async () => {
+  const user = userEvent.setup();
+  const mock = vi.fn();
   const params = {
-    id: '2bd9fd6-8f93-4758-87c3-1fb73740a315',
-    items: undefined
+    onClick: mock
   };
-  const { asFragment } = render(
+  render(
     <IntlProvider>
       <ThemeProvider>
         <Presenter {...params} />
       </ThemeProvider>
     </IntlProvider>
   );
-  expect(asFragment()).toMatchSnapshot();
-});
-
-it('should match the snapshot when the items is an empty array', () => {
-  const params = {
-    id: '2bd9fd6-8f93-4758-87c3-1fb73740a315',
-    items: []
-  };
-  const { asFragment } = render(
-    <IntlProvider>
-      <ThemeProvider>
-        <Presenter {...params} />
-      </ThemeProvider>
-    </IntlProvider>
-  );
-  expect(asFragment()).toMatchSnapshot();
+  await user.click(screen.getByRole('menuitem'));
+  expect(mock).toHaveBeenCalled();
 });

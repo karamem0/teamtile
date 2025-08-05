@@ -8,9 +8,10 @@
 
 import React from 'react';
 
-import Presenter from './TeamsAuthenticator.presenter';
 import { app } from '@microsoft/teams-js';
 import { getAccessToken } from '../../managers/TokenManager';
+
+import Presenter from './TeamsAuthenticator.presenter';
 
 function TeamsAuthenticator(props: Readonly<React.PropsWithChildren>) {
 

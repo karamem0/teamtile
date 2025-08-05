@@ -30,6 +30,12 @@ function Error404Page(props: Readonly<Error404PageProps>) {
     <React.Fragment>
       <HelmetProvider>
         <Helmet>
+          <meta
+            content={intl.formatMessage(messages.AppCreator)}
+            name="author" />
+          <meta
+            content={intl.formatMessage(messages.AppDescription)}
+            name="description" />
           <title>
             {`${intl.formatMessage(messages.Error404Title)} - ${intl.formatMessage(messages.AppTitle)}`}
           </title>

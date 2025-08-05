@@ -4,8 +4,8 @@ exports[`should match the snapshot 1`] = `
 <DocumentFragment>
   .emotion-0 {
   display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: repeat(auto-fill, minmax(22.5rem, 1fr));
+  grid-template-rows: 11rem;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
   grid-gap: 0.5rem;
 }
 

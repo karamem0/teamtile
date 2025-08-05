@@ -8,9 +8,10 @@
 
 import React from 'react';
 
-import Presenter from './EmptyPanel.presenter';
 import { setLoading } from '../../../stores/Action';
 import { useStore } from '../../../providers/StoreProvider';
+
+import Presenter from './EmptyPanel.presenter';
 
 function EmptyPanel() {
 
