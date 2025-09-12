@@ -1,0 +1,23 @@
+name: Build manifest
+
+description: This GitHub Action builds a manifest and uploads its artifacts.
+
+runs:
+  using: composite
+  steps:
+    - name: Update manifest.json
+      shell: pwsh
+      run: |
+        $content = Get-Content -Path ${{env.FILE_PATH}}
+        $content = $content -Replace "{{APP_VERSION}}", "${{env.BUILD_VERSION}}"
+        $content = $content -Replace "{{AZURE_WEB_APP_DOMAIN_NAME}}", "${{env.AZURE_WEB_APP_DOMAIN_NAME}}"
+        $content = $content -Replace "{{MICROSOFT_APP_ID}}", "${{env.MICROSOFT_APP_ID}}"
+        Out-File -FilePath ${{env.FILE_PATH}} -InputObject $content -Encoding UTF8
+      env:
+        FILE_PATH: manifest/manifest.json
+    - name: Upload artifatcs
+      uses: actions/upload-artifact@v4
+      with:
+        name: manifest
+        path: manifest
+        include-hidden-files: true

@@ -12,14 +12,14 @@ exports[`should match the snapshot when the loading is false 1`] = `
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto 1fr;
-  grid-gap: 0.5rem;
+  gap: 0.5rem;
 }
 
 .emotion-2 {
   display: grid;
   grid-template-rows: auto auto auto;
   grid-template-columns: 1fr auto;
-  grid-gap: 0.25rem;
+  gap: 0.25rem;
 }
 
 .emotion-3 {
@@ -49,7 +49,7 @@ exports[`should match the snapshot when the loading is false 1`] = `
   display: flex;
   grid-row: 2/3;
   grid-column: 1/2;
-  grid-gap: 0.25rem;
+  gap: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -120,7 +120,7 @@ exports[`should match the snapshot when the loading is false 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="___12fm75w_1fmvgpr f1w7gpdv fez10in fg4l7m0"
+                    class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
                     fill="currentColor"
                     height="16"
                     viewBox="0 0 16 16"
@@ -175,14 +175,14 @@ exports[`should match the snapshot when the loading is true 1`] = `
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto 1fr auto;
-  grid-gap: 0.5rem;
+  gap: 0.5rem;
 }
 
 .emotion-2 {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto;
-  grid-gap: 0.25rem;
+  gap: 0.25rem;
 }
 
 <div

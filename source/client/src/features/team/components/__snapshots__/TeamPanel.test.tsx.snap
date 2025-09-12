@@ -11,14 +11,14 @@ exports[`should match the snapshot 1`] = `
   -webkit-flex-flow: column;
   -ms-flex-flow: column;
   flex-flow: column;
-  grid-gap: 0.5rem;
+  gap: 0.5rem;
 }
 
 .emotion-1 {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: 1fr auto;
-  grid-gap: 0.25rem;
+  gap: 0.25rem;
 }
 
 .emotion-2 {
@@ -45,7 +45,7 @@ exports[`should match the snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="___12fm75w_1fmvgpr f1w7gpdv fez10in fg4l7m0"
+            class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
             fill="currentColor"
             height="1em"
             viewBox="0 0 20 20"
@@ -53,7 +53,7 @@ exports[`should match the snapshot 1`] = `
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M12.73 13.44a6.5 6.5 0 1 1 .7-.7l3.42 3.4a.5.5 0 0 1-.63.77l-.07-.06-3.42-3.41Zm-.71-.71A5.54 5.54 0 0 0 14 8.5a5.5 5.5 0 1 0-1.98 4.23Z"
+              d="M13.73 14.44a6.5 6.5 0 1 1 .7-.7l3.42 3.4a.5.5 0 0 1-.63.77l-.07-.06-3.42-3.41Zm-.71-.71A5.54 5.54 0 0 0 15 9.5a5.5 5.5 0 1 0-1.98 4.23Z"
               fill="currentColor"
             />
           </svg>
@@ -75,7 +75,7 @@ exports[`should match the snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="___12fm75w_1fmvgpr f1w7gpdv fez10in fg4l7m0"
+              class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
               fill="currentColor"
               height="1em"
               viewBox="0 0 20 20"
@@ -101,7 +101,7 @@ exports[`should match the snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="___12fm75w_1fmvgpr f1w7gpdv fez10in fg4l7m0"
+            class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
             fill="currentColor"
             height="16"
             viewBox="0 0 16 16"

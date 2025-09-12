@@ -54,7 +54,7 @@ function ChannelDrawer(props: Readonly<ChannelDrawerProps>) {
             css={css`
                 display: flex;
                 flex-flow: column;
-                grid-gap: 0.5rem;
+                gap: 0.5rem;
               `}>
             <SearchBox
               placeholder={intl.formatMessage(messages.SearchChannels)}
@@ -63,7 +63,7 @@ function ChannelDrawer(props: Readonly<ChannelDrawerProps>) {
               css={css`
                   display: flex;
                   flex-flow: column;
-                  grid-gap: 0.5rem;
+                  gap: 0.5rem;
                   height: calc(100vh - 8rem);
                   overflow: auto;
                 `}>
@@ -75,9 +75,9 @@ function ChannelDrawer(props: Readonly<ChannelDrawerProps>) {
                     css={css`
                         display: flex;
                         flex-flow: row;
-                        grid-gap: 0.5rem;
+                        gap: 0.5rem;
                         padding: 0.5rem;
-                        &:hover {
+                        :hover {
                           background-color: ${theme.colorNeutralBackground1Hover};
                         }
                       `}

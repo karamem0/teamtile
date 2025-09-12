@@ -40,7 +40,7 @@ function TagMemberAccordionItem(props: Readonly<TagMemberAccordionItemProps>) {
     <AccordionItem value={tag}>
       <AccordionHeader
         css={css`
-          &>button {
+          > button {
             padding: 0;
           }
         `}>
@@ -60,11 +60,11 @@ function TagMemberAccordionItem(props: Readonly<TagMemberAccordionItemProps>) {
                 css={css`
                   display: grid;
                   grid-template-columns: auto auto;
-                  grid-gap: 0.5rem;
+                  gap: 0.5rem;
                   align-items: center;
                   justify-content: left;
                   padding: 0.5rem;
-                  &:hover {
+                  :hover {
                     background-color: ${theme.colorNeutralBackground1Hover};
                   }
                 `}>

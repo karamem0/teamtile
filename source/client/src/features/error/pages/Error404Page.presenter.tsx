@@ -54,7 +54,7 @@ function Error404Page(props: Readonly<Error404PageProps>) {
           css={css`
             display: flex;
             flex-direction: column;
-            grid-gap: 1rem;
+            gap: 1rem;
             align-items: center;
             justify-content: center;
           `}>

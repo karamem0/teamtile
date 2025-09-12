@@ -53,14 +53,14 @@ function TeamPanel(props: Readonly<TeamPanelProps>) {
       css={css`
         display: flex;
         flex-flow: column;
-        grid-gap: 0.5rem;
+        gap: 0.5rem;
       `}>
       <div
         css={css`
           display: grid;
           grid-template-rows: auto;
           grid-template-columns: 1fr auto;
-          grid-gap: 0.25rem;
+          gap: 0.25rem;
         `}>
         <SearchBox
           placeholder={intl.formatMessage(messages.SearchTeams)}

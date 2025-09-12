@@ -64,6 +64,7 @@ export default defineConfig({
     'environment': 'jsdom',
     'globals': true,
     'outputFile': './test/junit.xml',
+    'pool': 'threads',
     'setupFiles': [
       './vitest.setup.mjs'
     ]

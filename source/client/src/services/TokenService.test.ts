@@ -52,7 +52,7 @@ describe('getServerToken', () => {
     const expected = {
       token: 'sample_token'
     };
-    vi.spyOn(global, 'fetch').mockImplementation((url, init) => {
+    vi.spyOn(globalThis, 'fetch').mockImplementation((url, init) => {
       const headers = init?.headers as Record<string, string>;
       if (init?.method !== 'POST') {
         return Promise.resolve(new Response(
@@ -108,7 +108,7 @@ describe('getServerToken', () => {
     const expected = {
       token: 'sample_token'
     };
-    vi.spyOn(global, 'fetch').mockImplementation((url, init) => {
+    vi.spyOn(globalThis, 'fetch').mockImplementation((url, init) => {
       const headers = init?.headers as Record<string, string>;
       if (init?.method !== 'POST') {
         return Promise.resolve(new Response(
@@ -167,7 +167,7 @@ describe('getServerToken', () => {
     const expected = {
       error: 'unknown_error'
     };
-    vi.spyOn(global, 'fetch').mockImplementation((url, init) => {
+    vi.spyOn(globalThis, 'fetch').mockImplementation((url, init) => {
       const headers = init?.headers as Record<string, string>;
       if (init?.method !== 'POST') {
         return Promise.resolve(new Response(

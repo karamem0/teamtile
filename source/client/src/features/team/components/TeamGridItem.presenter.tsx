@@ -64,7 +64,7 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
                 display: grid;
                 grid-template-rows: auto;
                 grid-template-columns: auto 1fr auto;
-                grid-gap: 0.5rem;
+                gap: 0.5rem;
               `}>
               <SkeletonItem
                 shape="circle"
@@ -74,7 +74,7 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
                   display: grid;
                   grid-template-rows: auto;
                   grid-template-columns: auto;
-                  grid-gap: 0.25rem;
+                  gap: 0.25rem;
                 `}>
                 <SkeletonItem
                   shape="rectangle"
@@ -99,7 +99,7 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
                 display: grid;
                 grid-template-rows: auto;
                 grid-template-columns: auto 1fr;
-                grid-gap: 0.5rem;
+                gap: 0.5rem;
               `}>
               <AvatarIcon
                 icon={team.icon}
@@ -110,7 +110,7 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
                   display: grid;
                   grid-template-rows: auto auto auto;
                   grid-template-columns: 1fr auto;
-                  grid-gap: 0.25rem;
+                  gap: 0.25rem;
                 `}>
                 <div
                   css={css`
@@ -164,7 +164,7 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
                     display: flex;
                     grid-row: 2 / 3;
                     grid-column: 1 / 2;
-                    grid-gap: 0.25rem;
+                    gap: 0.25rem;
                     align-items: center;
                     justify-content: left;
                     height: 1.25rem;

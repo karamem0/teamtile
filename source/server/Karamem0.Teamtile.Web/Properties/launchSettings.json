@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "Karamem0.Teamtile": {
+    "Karamem0.Teamtile.Web": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,

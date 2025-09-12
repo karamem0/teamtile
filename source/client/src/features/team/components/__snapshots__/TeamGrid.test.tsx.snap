@@ -16,12 +16,12 @@ exports[`should match the snapshot 1`] = `
   display: grid;
   grid-template-rows: 11rem;
   grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  grid-gap: 0.5rem;
+  gap: 0.5rem;
 }
 
 @media (width >= 600px) {
   .emotion-2 {
-    grid-gap: 1rem;
+    gap: 1rem;
   }
 }
 
@@ -52,7 +52,7 @@ exports[`should match the snapshot 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="___12fm75w_1fmvgpr f1w7gpdv fez10in fg4l7m0"
+                  class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
                   fill="currentColor"
                   height="1em"
                   style="transform: rotate(90deg); transition: transform 200ms ease-out;"
@@ -99,7 +99,7 @@ exports[`should match the snapshot 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="___12fm75w_1fmvgpr f1w7gpdv fez10in fg4l7m0"
+                  class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
                   fill="currentColor"
                   height="1em"
                   style="transform: rotate(90deg); transition: transform 200ms ease-out;"
@@ -146,7 +146,7 @@ exports[`should match the snapshot 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="___12fm75w_1fmvgpr f1w7gpdv fez10in fg4l7m0"
+                  class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
                   fill="currentColor"
                   height="1em"
                   style="transform: rotate(0deg); transition: transform 200ms ease-out;"

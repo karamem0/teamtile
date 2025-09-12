@@ -6,12 +6,6 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Karamem0.Teamtile.Models;
 
 public record TokenRequest

@@ -9,12 +9,11 @@ permissions:
   contents: write
 
 jobs:
-  build-manifest:
-    name: Build manifest
-    uses: ./.github/workflows/build-manifest.yml
-    secrets: inherit
-  release:
+  deploy-to-github-release:
     name: Deploy to GitHub Release
-    needs: build-manifest
-    uses: ./.github/workflows/deploy-to-github-release.yml
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repos
+        uses: actions/checkout@v4
+      - name: Deploy to GitHub Release
+        uses: ./.github/actions/deploy-to-github-release

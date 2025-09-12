@@ -19,7 +19,7 @@ exports[`should match the snapshot when the loading is false 1`] = `
 .emotion-3 {
   display: grid;
   grid-template-columns: auto auto;
-  grid-gap: 0.5rem;
+  gap: 0.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -63,7 +63,7 @@ exports[`should match the snapshot when the loading is false 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="___12fm75w_1fmvgpr f1w7gpdv fez10in fg4l7m0"
+                  class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
                   fill="currentColor"
                   height="1em"
                   style="transform: rotate(90deg); transition: transform 200ms ease-out;"
@@ -157,7 +157,7 @@ exports[`should match the snapshot when the loading is true 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="___12fm75w_1fmvgpr f1w7gpdv fez10in fg4l7m0"
+                  class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
                   fill="currentColor"
                   height="1em"
                   style="transform: rotate(90deg); transition: transform 200ms ease-out;"
@@ -178,7 +178,7 @@ exports[`should match the snapshot when the loading is true 1`] = `
             class="fui-AccordionPanel emotion-2 ___1rufncu_1hx1scr f1axvtxu"
           >
             <div
-              class="fui-Spinner r82apo5"
+              class="fui-Spinner rpp59a7"
               role="progressbar"
             >
               <span

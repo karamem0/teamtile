@@ -158,7 +158,7 @@ function HomePage(props: Readonly<HomePageProps>) {
           css={css`
             display: flex;
             flex-flow: column;
-            grid-gap: 1rem;
+            gap: 1rem;
             align-items: center;
             justify-content: center;
             padding: 2rem 0;
@@ -183,7 +183,7 @@ function HomePage(props: Readonly<HomePageProps>) {
             css={css`
               display: flex;
               flex-flow: column;
-              grid-gap: 0.5rem;
+              gap: 0.5rem;
               align-items: center;
               justify-content: center;
               list-style: none;

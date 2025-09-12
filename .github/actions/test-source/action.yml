@@ -1,0 +1,52 @@
+name: Test source
+
+description: This GitHub Action tests sources and uploads reports
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout repos
+      uses: actions/checkout@v4
+    - name: Setup Node.js 22.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22.x
+    - name: Restore client
+      shell: pwsh
+      run: npm ci
+      working-directory: source/client
+    - name: Audit client
+      shell: pwsh
+      run: npm audit --omit=dev
+      working-directory: source/client
+    - name: Test client
+      shell: pwsh
+      run: npm run test:ci
+      working-directory: source/client
+    - name: Restore server
+      shell: pwsh
+      run: dotnet restore
+      working-directory: source/server
+    - name: Test server
+      shell: pwsh
+      run: |
+        dotnet test `
+          Karamem0.Teamtile.Test/Karamem0.Teamtile.Test.csproj `
+          -p:AltCover=true `
+          -- NUnit.TestOutputXml=${{github.workspace}}/source/server/test
+      working-directory: source/server
+    - name: Upload test results
+      uses: enricomi/publish-unit-test-result-action/linux@3a74b2957438d0b6e2e61d67b05318aa25c9e6c6
+      if: always()
+      with:
+        files: |
+          source/client/test/**/*.xml
+          source/server/test/**/*.xml
+        check_name: Test results
+    - name: Upload coverage reports
+      uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7
+      if: always()
+      with:
+        fail_ci_if_error: true
+        token: ${{env.CODECOV_TOKEN}}
+        slug: karamem0/teamtile

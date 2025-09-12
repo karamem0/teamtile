@@ -6,6 +6,7 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import hooks from 'eslint-plugin-hooks';
 import js from '@eslint/js';
@@ -17,7 +18,7 @@ import stylistic from '@stylistic/eslint-plugin';
 import testingLibrary from 'eslint-plugin-testing-library';
 import ts from 'typescript-eslint';
 
-export default ts.config(
+export default defineConfig(
   js.configs.recommended,
   ts.configs.recommended,
   {
