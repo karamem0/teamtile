@@ -53,7 +53,7 @@ function TagDrawer(props: Readonly<TagDrawerProps>) {
             css={css`
               display: flex;
               flex-flow: column;
-              grid-gap: 0.5rem;
+              gap: 0.5rem;
               height: calc(100vh - 5.5rem);
               overflow: auto;
             `}>

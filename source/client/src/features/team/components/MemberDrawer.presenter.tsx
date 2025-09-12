@@ -53,7 +53,7 @@ function MemberDrawer(props: Readonly<MemberDrawerProps>) {
             css={css`
               display: flex;
               flex-flow: column;
-              grid-gap: 0.5rem;
+              gap: 0.5rem;
             `}>
             <SearchBox
               placeholder={intl.formatMessage(messages.SearchMembers)}
@@ -62,7 +62,7 @@ function MemberDrawer(props: Readonly<MemberDrawerProps>) {
               css={css`
                 display: flex;
                 flex-flow: column;
-                grid-gap: 0.5rem;
+                gap: 0.5rem;
                 height: calc(100vh - 8rem);
                 overflow: auto;
               `}>
@@ -74,11 +74,11 @@ function MemberDrawer(props: Readonly<MemberDrawerProps>) {
                     css={css`
                       display: grid;
                       grid-template-columns: auto auto;
-                      grid-gap: 0.5rem;
+                      gap: 0.5rem;
                       align-items: center;
                       justify-content: left;
                       padding: 0.5rem;
-                      &:hover {
+                      :hover {
                         background-color: ${theme.colorNeutralBackground1Hover};
                       }
                     `}

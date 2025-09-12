@@ -1,0 +1,21 @@
+name: Deploy to Azure
+
+description: This GitHub Action deploys built artifacts to Azure.
+
+runs:
+  using: composite
+  steps:
+    - name: Download artifatcs
+      uses: actions/download-artifact@v4
+      with:
+        name: build
+        path: build
+    - name: Connect to Azure
+      uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5
+      with:
+        creds: ${{env.AZURE_CREDENTIALS}}
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@657f0700ea5214d56a0400d8ac5e8023c963d25d
+      with:
+        app-name: ${{env.AZURE_WEB_APP_NAME}}
+        package: build

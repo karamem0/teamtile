@@ -22,7 +22,9 @@ try {
   const appInsights = new ApplicationInsights({
     config: {
       ...telemetryConfig,
-      extensions: [ reactPlugin ]
+      extensions: [
+        reactPlugin
+      ]
     }
   });
   appInsights.loadAppInsights();

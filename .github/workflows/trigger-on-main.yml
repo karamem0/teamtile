@@ -11,19 +11,49 @@ permissions:
 jobs:
   test-source:
     name: Test source
-    uses: ./.github/workflows/test-source.yml
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repos
+        uses: actions/checkout@v4
+      - name: Test source
+        uses: ./.github/actions/test-source
+        env:
+          CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
   build-source:
     name: Build source
+    runs-on: ubuntu-latest
     needs: test-source
-    uses: ./.github/workflows/build-source.yml
-    secrets: inherit
+    steps:
+      - name: Checkout repos
+        uses: actions/checkout@v4
+      - name: Build source
+        uses: ./.github/actions/build-source
+        env:
+          BUILD_VERSION: ${{vars.BUILD_VERSION}}
+          MICROSOFT_APP_ID: ${{vars.MICROSOFT_APP_ID}}
+          MICROSOFT_TENANT_ID: ${{vars.MICROSOFT_TENANT_ID}}
+          TELEMETRY_CONNECTION_STRING: ${{vars.TELEMETRY_CONNECTION_STRING}}
+  deploy-to-azure:
+    name: Deploy to Azure
+    runs-on: ubuntu-latest
+    needs: build-source
+    steps:
+      - name: Checkout repos
+        uses: actions/checkout@v4
+      - name: Deploy to Azure
+        uses: ./.github/actions/deploy-to-azure
+        env:
+          AZURE_CREDENTIALS: ${{secrets.AZURE_CREDENTIALS}}
+          AZURE_WEB_APP_NAME: ${{vars.AZURE_WEB_APP_NAME}}
   build-manifest:
     name: Build manifest
-    uses: ./.github/workflows/build-manifest.yml
-    secrets: inherit
-  deploy:
-    name: Deploy to Azure
-    needs: build-source
-    uses: ./.github/workflows/deploy-to-azure.yml
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repos
+        uses: actions/checkout@v4
+      - name: Build manifest
+        uses: ./.github/actions/build-manifest
+        env:
+          AZURE_WEB_APP_DOMAIN_NAME: ${{vars.AZURE_WEB_APP_DOMAIN_NAME}}
+          BUILD_VERSION: ${{vars.BUILD_VERSION}}
+          MICROSOFT_APP_ID: ${{vars.MICROSOFT_APP_ID}}

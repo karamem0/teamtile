@@ -178,7 +178,7 @@ exports[`should match the snapshot when the loading is true 1`] = `
             class="fui-AccordionPanel emotion-2 ___1rufncu_1hx1scr f1axvtxu"
           >
             <div
-              class="fui-Spinner r82apo5"
+              class="fui-Spinner rpp59a7"
               role="progressbar"
             >
               <span

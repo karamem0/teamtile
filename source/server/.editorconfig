@@ -246,6 +246,10 @@ dotnet_naming_style.begins_with_i.required_suffix =
 dotnet_naming_style.begins_with_i.word_separator =
 dotnet_naming_style.begins_with_i.capitalization = pascal_case
 
+#### .NET Code Analysis Rules ####
+
+dotnet_diagnostic.IDE0005.severity = warning
+
 #### ReSharper Code inspection Rules ####
 
 resharper_redundant_attribute_parentheses_highlighting = none

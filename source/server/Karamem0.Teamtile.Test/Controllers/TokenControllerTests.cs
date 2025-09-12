@@ -15,12 +15,7 @@ using Microsoft.Identity.Client;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Karamem0.Teamtile.Controllers.Tests;
 

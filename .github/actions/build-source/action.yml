@@ -1,0 +1,65 @@
+name: Build source
+
+description: This GitHub Action builds sources and uploads its artifacts.
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node.js 22.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22.x
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.x
+    - name: Update microsoft-identity-association.json
+      shell: pwsh
+      run: |
+        $content = Get-Content -Path ${{env.FILE_PATH}}
+        $content = $content -Replace "{{MICROSOFT_APP_ID}}", "${{env.MICROSOFT_APP_ID}}"
+        Out-File -FilePath ${{env.FILE_PATH}} -InputObject $content -Encoding UTF8
+      env:
+        FILE_PATH: source/client/public/.well-known/microsoft-identity-association.json
+    - name: Update .env
+      shell: pwsh
+      run: |
+        $content = Get-Content -Path ${{env.FILE_PATH}}
+        $content = $content -Replace "{{MICROSOFT_APP_ID}}", "${{env.MICROSOFT_APP_ID}}"
+        $content = $content -Replace "{{MICROSOFT_TENANT_ID}}", "${{env.MICROSOFT_TENANT_ID}}"
+        $content = $content -Replace "{{TELEMETRY_CONNECTION_STRING}}", "${{env.TELEMETRY_CONNECTION_STRING}}"
+        Out-File -FilePath ${{env.FILE_PATH}} -InputObject $content -Encoding UTF8
+      env:
+        FILE_PATH: source/client/.env
+    - name: Update package.json
+      shell: pwsh
+      run: npm version ${{env.BUILD_VERSION}} --no-git-tag-version
+      working-directory: source/client
+    - name: Restore client
+      shell: pwsh
+      run: npm ci
+      working-directory: source/client
+    - name: Build client
+      shell: pwsh
+      run: npm run build
+      working-directory: source/client
+    - name: Restore server
+      shell: pwsh
+      run: dotnet restore
+      working-directory: source/server
+    - name: Build server
+      shell: pwsh
+      run: |
+        dotnet publish `
+          Karamem0.Teamtile.Web/Karamem0.Teamtile.Web.csproj `
+          -c Release `
+          -p:PublishDir=${{github.workspace}}/source/server/build `
+          -p:Version=${{env.BUILD_VERSION}}.${{github.run_number}} `
+          -p:FileVersion=${{env.BUILD_VERSION}}.${{github.run_number}}
+      working-directory: source/server
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build
+        path: source/server/build
+        include-hidden-files: true

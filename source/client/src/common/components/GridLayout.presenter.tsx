@@ -21,9 +21,9 @@ function GridLayout(props: Readonly<React.PropsWithChildren<unknown>>) {
         display: grid;
         grid-template-rows: 11rem;
         grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-        grid-gap: 0.5rem;
+        gap: 0.5rem;
         @media (width >= 600px) {
-          grid-gap: 1rem;
+          gap: 1rem;
         }
       `}>
       {children}

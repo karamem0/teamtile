@@ -32,7 +32,7 @@ function EmptyPanel(props: Readonly<EmptyPanelProps>) {
         css={css`
           display: flex;
           flex-direction: column;
-          grid-gap: 0.5rem;
+          gap: 0.5rem;
           align-items: center;
           justify-content: center;
         `}>
