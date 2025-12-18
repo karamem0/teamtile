@@ -1,0 +1,15 @@
+{
+  "folders": [
+    {
+      "path": "./",
+    },
+    {
+      "name": "source/client",
+      "path": "./source/client"
+    },
+    {
+      "name": "source/server",
+      "path": "./source/server"
+    }
+  ]
+}

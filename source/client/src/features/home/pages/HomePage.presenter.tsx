@@ -15,7 +15,6 @@ import {
   Text
 } from '@fluentui/react-components';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { EventHandler } from '../../../types/Event';
 import { GrGithub } from 'react-icons/gr';
 import { css } from '@emotion/react';
@@ -37,34 +36,30 @@ function HomePage(props: Readonly<HomePageProps>) {
 
   return (
     <React.Fragment>
-      <HelmetProvider>
-        <Helmet>
-          <meta
-            content={intl.formatMessage(messages.AppCreator)}
-            name="author" />
-          <meta
-            content={intl.formatMessage(messages.AppDescription)}
-            name="description" />
-          <meta
-            content={intl.formatMessage(messages.AppTitle)}
-            property="og:title" />
-          <meta
-            content="website"
-            property="og:type" />
-          <meta
-            content={`${location.origin}/assets/screenshots/001.png`}
-            property="og:image" />
-          <meta
-            content={location.origin}
-            property="og:url" />
-          <meta
-            content={intl.formatMessage(messages.AppDescription)}
-            property="og:description" />
-          <title>
-            {intl.formatMessage(messages.AppTitle)}
-          </title>
-        </Helmet>
-      </HelmetProvider>
+      <meta
+        content={intl.formatMessage(messages.AppCreator)}
+        name="author" />
+      <meta
+        content={intl.formatMessage(messages.AppDescription)}
+        name="description" />
+      <meta
+        content={intl.formatMessage(messages.AppTitle)}
+        property="og:title" />
+      <meta
+        content="website"
+        property="og:type" />
+      <meta
+        content={`${location.origin}/assets/screenshots/001.png`}
+        property="og:image" />
+      <meta
+        content={location.origin}
+        property="og:url" />
+      <meta
+        content={intl.formatMessage(messages.AppDescription)}
+        property="og:description" />
+      <title>
+        {intl.formatMessage(messages.AppTitle)}
+      </title>
       <div
         css={css`
           display: flex;

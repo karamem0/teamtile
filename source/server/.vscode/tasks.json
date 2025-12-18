@@ -32,6 +32,15 @@
     {
       "label": "format",
       "type": "shell",
+      "command": "dotnet",
+      "args": [
+        "format"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "resharper",
+      "type": "shell",
       "command": "jb",
       "args": [
         "cleanupcode",

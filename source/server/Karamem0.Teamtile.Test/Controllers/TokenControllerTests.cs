@@ -6,18 +6,16 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+using Karamem0.Teamtile.Controllers;
 using Karamem0.Teamtile.Models;
-using Karamem0.Teamtile.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Extensions.Logging;
 using Microsoft.Identity.Client;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 using NUnit.Framework;
-using System.Net;
 
-namespace Karamem0.Teamtile.Controllers.Tests;
+namespace Karamem0.Teamtile.Services.Tests;
 
 public class TokenControllerTests
 {
@@ -28,57 +26,56 @@ public class TokenControllerTests
         // Setup
         var tokenService = Substitute.For<ITokenService>();
         _ = tokenService
-            .ExchangeTokenAsync(Arg.Any<string[]>(), Arg.Any<string>())
-            .Returns("server_token");
+            .InvokeAsync(Arg.Any<TokenRequest>(), Arg.Any<string>())
+            .Returns(new TokenResponse());
         var logger = Substitute.For<ILogger<TokenController>>();
-        var httpContext = new DefaultHttpContext();
-        httpContext.Request.Headers.Append("Authorization", $"Bearer client_token");
-        // Execute
+        var authorization = "Bearer client_token";
         var request = new TokenRequest()
         {
             Scope = "user_impersonation"
         };
-        var target = new TokenController(tokenService, logger)
-        {
-            ControllerContext = new ControllerContext()
-            {
-                HttpContext = httpContext
-            }
-        };
-        var actual = await target.PostAsync(request) as ObjectResult;
-        // Assert
-        Assert.Multiple(() =>
-            {
-                Assert.That(actual?.StatusCode, Is.EqualTo((int)HttpStatusCode.OK));
-                Assert.That(((TokenResponse?)actual?.Value)?.Token, Is.EqualTo("server_token"));
-            }
+        // Execute
+        var actual = await TokenController.PostAsync(
+            tokenService,
+            logger,
+            authorization,
+            request
         );
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual, Is.TypeOf<Ok<TokenResponse>>());
+        }
     }
 
     [Test()]
     public async Task PostAsync_ShouldReturnsUnauthorized()
     {
+        // Setup
         var tokenService = Substitute.For<ITokenService>();
         _ = tokenService
-            .ExchangeTokenAsync(Arg.Any<string[]>(), Arg.Any<string>())
-            .Returns("server_token");
+            .InvokeAsync(Arg.Any<TokenRequest>(), Arg.Any<string>())
+            .Returns(new TokenResponse());
         var logger = Substitute.For<ILogger<TokenController>>();
-        var httpContext = new DefaultHttpContext();
-        // Execute
+        var authorization = "Bearer";
         var request = new TokenRequest()
         {
             Scope = "user_impersonation"
         };
-        var target = new TokenController(tokenService, logger)
-        {
-            ControllerContext = new ControllerContext()
-            {
-                HttpContext = httpContext
-            }
-        };
-        var actual = await target.PostAsync(request) as StatusCodeResult;
+        // Execute
+        var actual = await TokenController.PostAsync(
+            tokenService,
+            logger,
+            authorization,
+            request
+        );
         // Assert
-        Assert.That(actual?.StatusCode, Is.EqualTo((int)HttpStatusCode.Unauthorized));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual, Is.TypeOf<UnauthorizedHttpResult>());
+        }
     }
 
     [Test()]
@@ -87,31 +84,27 @@ public class TokenControllerTests
         // Setup
         var tokenService = Substitute.For<ITokenService>();
         _ = tokenService
-            .ExchangeTokenAsync(Arg.Any<string[]>(), Arg.Any<string>())
+            .InvokeAsync(Arg.Any<TokenRequest>(), Arg.Any<string>())
             .Throws(new MsalException("invalid_grant"));
         var logger = Substitute.For<ILogger<TokenController>>();
-        var httpContext = new DefaultHttpContext();
-        httpContext.Request.Headers.Append("Authorization", $"Bearer client_token");
-        // Execute
+        var authorization = "Bearer client_token";
         var request = new TokenRequest()
         {
             Scope = "user_impersonation"
         };
-        var target = new TokenController(tokenService, logger)
-        {
-            ControllerContext = new ControllerContext()
-            {
-                HttpContext = httpContext
-            }
-        };
-        var actual = await target.PostAsync(request) as ObjectResult;
-        // Assert
-        Assert.Multiple(() =>
-            {
-                Assert.That(actual?.StatusCode, Is.EqualTo((int)HttpStatusCode.Forbidden));
-                Assert.That(((TokenResponse?)actual?.Value)?.Error, Is.EqualTo("invalid_grant"));
-            }
+        // Execute
+        var actual = await TokenController.PostAsync(
+            tokenService,
+            logger,
+            authorization,
+            request
         );
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual, Is.TypeOf<ForbidHttpResult>());
+        }
     }
 
     [Test()]
@@ -120,31 +113,27 @@ public class TokenControllerTests
         // Setup
         var tokenService = Substitute.For<ITokenService>();
         _ = tokenService
-            .ExchangeTokenAsync(Arg.Any<string[]>(), Arg.Any<string>())
+            .InvokeAsync(Arg.Any<TokenRequest>(), Arg.Any<string>())
             .Throws(new MsalException("unknown_error"));
         var logger = Substitute.For<ILogger<TokenController>>();
-        var httpContext = new DefaultHttpContext();
-        httpContext.Request.Headers.Append("Authorization", $"Bearer client_token");
-        // Execute
+        var authorization = "Bearer client_token";
         var request = new TokenRequest()
         {
             Scope = "user_impersonation"
         };
-        var target = new TokenController(tokenService, logger)
-        {
-            ControllerContext = new ControllerContext()
-            {
-                HttpContext = httpContext
-            }
-        };
-        var actual = await target.PostAsync(request) as ObjectResult;
-        // Assert
-        Assert.Multiple(() =>
-            {
-                Assert.That(actual?.StatusCode, Is.EqualTo((int)HttpStatusCode.InternalServerError));
-                Assert.That(((TokenResponse?)actual?.Value)?.Error, Is.EqualTo("unknown_error"));
-            }
+        // Execute
+        var actual = await TokenController.PostAsync(
+            tokenService,
+            logger,
+            authorization,
+            request
         );
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual, Is.TypeOf<InternalServerError<MsalException>>());
+        }
     }
 
 }

@@ -6,7 +6,8 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-using Karamem0.Teamtile.Services;
+using Karamem0.Teamtile;
+using Karamem0.Teamtile.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -19,23 +20,23 @@ var services = builder.Services;
 _ = services.Configure<MicrosoftIdentityOptions>(configuration.GetSection("MicrosoftIdentity"));
 _ = services.AddMicrosoftIdentityWebApiAuthentication(configuration, "MicrosoftIdentity");
 _ = services.AddApplicationInsightsTelemetry();
-_ = services.AddControllers();
-_ = services.AddSingleton<ITokenService, TokenService>();
+_ = services.AddServices();
+_ = services.AddRepsitories();
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     _ = app.UseDeveloperExceptionPage();
-    _ = app.UseCors();
 }
 _ = app.UseHttpsRedirection();
 _ = app.UseHsts();
-_ = app.UseDefaultFiles();
 _ = app.UseStaticFiles();
-_ = app.UseRouting();
-_ = app.UseAuthentication();
-_ = app.UseAuthorization();
-_ = app.MapControllers();
 _ = app.MapFallbackToFile("/index.html");
+
+var api = app
+    .MapGroup("/api")
+    .RequireAuthorization();
+
+_ = api.MapPost("/token", TokenController.PostAsync);
 
 await app.RunAsync();

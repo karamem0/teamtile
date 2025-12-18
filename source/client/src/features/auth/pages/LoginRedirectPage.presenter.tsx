@@ -8,7 +8,6 @@
 
 import React from 'react';
 
-import { Helmet, HelmetProvider } from 'react-helmet-async';
 import CenterLayout from '../../../common/components/CenterLayout';
 import { Spinner } from '@fluentui/react-components';
 import messages from '../messages';
@@ -20,13 +19,9 @@ function LoginRedirectPage() {
 
   return (
     <React.Fragment>
-      <HelmetProvider>
-        <Helmet>
-          <title>
-            {`${intl.formatMessage(messages.LoginRedirectTitle)} - ${intl.formatMessage(messages.AppTitle)}`}
-          </title>
-        </Helmet>
-      </HelmetProvider>
+      <title>
+        {`${intl.formatMessage(messages.LoginRedirectTitle)} - ${intl.formatMessage(messages.AppTitle)}`}
+      </title>
       <CenterLayout>
         <Spinner label={intl.formatMessage(messages.LoginRedirectDescription)} />
       </CenterLayout>

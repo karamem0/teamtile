@@ -33,6 +33,7 @@ runs:
         dotnet test `
           Karamem0.Teamtile.Test/Karamem0.Teamtile.Test.csproj `
           -p:AltCover=true `
+          -p:AltCoverLocalSource=true `
           -- NUnit.TestOutputXml=${{github.workspace}}/source/server/test
       working-directory: source/server
     - name: Upload test results

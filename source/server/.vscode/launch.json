@@ -2,16 +2,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch AppHost",
+      "name": "Launch Server",
       "type": "dotnet",
       "request": "launch",
       "projectPath": "${workspaceFolder}/Karamem0.Teamtile.AppHost/Karamem0.Teamtile.AppHost.csproj"
-    },
-    {
-      "name": "Launch Web",
-      "type": "dotnet",
-      "request": "launch",
-      "projectPath": "${workspaceFolder}/Karamem0.Teamtile.Web/Karamem0.Teamtile.Web.csproj"
     }
   ]
 }

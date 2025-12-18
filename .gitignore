@@ -1,4 +1,4 @@
-# https://github.com/github/gitignore/blob/main/Global/Windows.gitignore
+### https://github.com/github/gitignore/blob/main/Global/Windows.gitignore
 
 # Windows thumbnail cache files
 Thumbs.db
@@ -25,7 +25,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# https://github.com/github/gitignore/blob/main/Global/macOS.gitignore
+### https://github.com/github/gitignore/blob/main/Global/macOS.gitignore
 
 # General
 .DS_Store

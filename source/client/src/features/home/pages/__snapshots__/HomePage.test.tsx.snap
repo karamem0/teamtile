@@ -191,7 +191,7 @@ exports[`should match the snapshot 1`] = `
 }
 
 <div
-    class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    class="fui-FluentProvider fui-FluentProvider_r_0_ ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
     dir="ltr"
   >
     <div
@@ -204,7 +204,7 @@ exports[`should match the snapshot 1`] = `
           class="emotion-2"
         >
           <a
-            class="fui-Button r1alrhcs ___eduuxo0_1tclg4b f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3"
+            class="fui-Button r1f29ykk ___1936867_1dyyxi7 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fkoldzo fhvnf4x fb6swo4 f1klyf7k f232fm2 f1l983o9 f1nhwcv0 f1gm6xmp fxoo9op f1v3eptx f1i0gk12 fd4bjan"
             role="button"
             tabindex="0"
           >

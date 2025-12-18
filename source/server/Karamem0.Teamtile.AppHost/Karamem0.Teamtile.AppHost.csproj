@@ -1,9 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <Sdk Name="Aspire.AppHost.Sdk" Version="9.3.1" />
+<Project Sdk="Aspire.AppHost.Sdk/13.0.0">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <OutputType>Exe</OutputType>
     <PackageId>Karamem0.Teamtile.AppHost</PackageId>
@@ -25,7 +23,6 @@
 
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" />
-    <PackageReference Include="Aspire.Hosting.NodeJs" />
   </ItemGroup>
 
   <ItemGroup>

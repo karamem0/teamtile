@@ -39,7 +39,7 @@ exports[`should match the snapshot when the items is an empty array 1`] = `
 }
 
 <div
-    class="fui-FluentProvider fui-FluentProviderr3 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    class="fui-FluentProvider fui-FluentProvider_r_3_ ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
     dir="ltr"
   >
     <div
@@ -178,7 +178,7 @@ exports[`should match the snapshot when the items is not undefined 1`] = `
 }
 
 <div
-    class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    class="fui-FluentProvider fui-FluentProvider_r_0_ ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
     dir="ltr"
   >
     <div
@@ -256,12 +256,12 @@ exports[`should match the snapshot when the items is not undefined 1`] = `
                 <span
                   aria-label="Adele Vance"
                   class="fui-Avatar r81b29z ___3oygws0_1lfz49j fq4mcun frvgh55 f13mqy1h"
-                  id="avatar-r1"
+                  id="avatar-_r_1_"
                   role="img"
                 >
                   <span
                     class="fui-Avatar__initials rip04v ___105uvta_5ja1qh0 f1f3ti53 fu4yj0j"
-                    id="avatar-r1__initials"
+                    id="avatar-_r_1___initials"
                   >
                     AV
                   </span>
@@ -290,7 +290,7 @@ exports[`should match the snapshot when the items is undefined 1`] = `
 }
 
 <div
-    class="fui-FluentProvider fui-FluentProviderr2 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    class="fui-FluentProvider fui-FluentProvider_r_2_ ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
     dir="ltr"
   >
     <div

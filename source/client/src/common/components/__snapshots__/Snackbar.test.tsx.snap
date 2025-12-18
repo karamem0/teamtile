@@ -15,7 +15,7 @@ exports[`should match the snapshot when the text is error 1`] = `
     class="emotion-0"
   >
     <div
-      aria-labelledby="fui-r0"
+      aria-labelledby="fui-_r_0_"
       class="fui-MessageBar r2oyxsj ___1be4jvi_v7t0590 f1eon7jj f1f8dvr7 f1g1ijmo fo25q1j f1nxacbt"
       role="group"
     >
@@ -75,7 +75,7 @@ exports[`should match the snapshot when the text is success 1`] = `
     class="emotion-0"
   >
     <div
-      aria-labelledby="fui-r2"
+      aria-labelledby="fui-_r_2_"
       class="fui-MessageBar r2oyxsj ___1e8ylb3_17hk5n0 f64thcm f1b4u7v f1nyd2b1 fk173vo f70v3om"
       role="group"
     >
@@ -137,7 +137,7 @@ exports[`should match the snapshot when the text is warning 1`] = `
     class="emotion-0"
   >
     <div
-      aria-labelledby="fui-r1"
+      aria-labelledby="fui-_r_1_"
       class="fui-MessageBar r2oyxsj ___hd2t6r0_1l4k1ej f13ftzij frd1ypx f1gyjrma fqyqtrt f18qd5xz"
       role="group"
     >

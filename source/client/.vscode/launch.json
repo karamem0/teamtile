@@ -2,25 +2,25 @@
   "version": "1.0.0",
   "configurations": [
     {
-      "name": "Launch Chrome (Teams)",
-      "type": "chrome",
+      "name": "Launch Client (Teams)",
+      "type": "msedge",
       "request": "launch",
       "url": "https://dev.teams.microsoft.com",
       "webRoot": "${workspaceFolder}",
       "runtimeArgs": [
-        "-incognito"
+        "--guest"
       ],
       "preLaunchTask": "react-start",
       "postDebugTask": "react-terminate"
     },
     {
-      "name": "Launch Chrome",
-      "type": "chrome",
+      "name": "Launch Client",
+      "type": "msedge",
       "request": "launch",
       "url": "https://localhost:5173",
       "webRoot": "${workspaceFolder}",
       "runtimeArgs": [
-        "-incognito"
+        "--guest"
       ],
       "preLaunchTask": "react-start",
       "postDebugTask": "react-terminate"

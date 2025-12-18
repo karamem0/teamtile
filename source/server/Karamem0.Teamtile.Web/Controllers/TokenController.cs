@@ -9,80 +9,66 @@
 using Karamem0.Teamtile.Logging;
 using Karamem0.Teamtile.Models;
 using Karamem0.Teamtile.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Identity.Client;
+using System.Text.RegularExpressions;
 
 namespace Karamem0.Teamtile.Controllers;
 
-[ApiController()]
-[Authorize()]
-[Route("api/token")]
-public class TokenController(ITokenService tokenService, ILogger<TokenController> logger) : Controller
+public partial class TokenController
 {
 
-    private readonly ITokenService tokenService = tokenService;
+    [GeneratedRegex(
+        @"^Bearer\s+(?<token>.+)$",
+        RegexOptions.IgnoreCase,
+        "ja-JP"
+    )]
+    private static partial Regex BearerAuthorizationRegex();
 
-    private readonly ILogger<TokenController> logger = logger;
-
-    [HttpPost()]
-    public async Task<IActionResult> PostAsync([FromBody] TokenRequest request)
+    public static async Task<IResult> PostAsync(
+        [FromServices()] ITokenService tokenService,
+        [FromServices()] ILogger<TokenController> logger,
+        [FromHeader(Name = "Authorization")] string authorization,
+        [FromBody()] TokenRequest request
+    )
     {
         try
         {
-            this.logger.ActionExecuting();
-            var authorizationHeader = this.Request.Headers.Authorization;
-            var authorizationHeaderValue = authorizationHeader.FirstOrDefault();
-            if (authorizationHeaderValue is null)
+            logger.ActionExecuting();
+            var regex = BearerAuthorizationRegex();
+            var match = regex.Match(authorization);
+            if (match.Success)
             {
-                return this.StatusCode(StatusCodes.Status401Unauthorized);
+                var accessToken = match.Groups["token"].Value;
+                var response = await tokenService.InvokeAsync(request, accessToken);
+                return Results.Ok(response);
             }
-            var authorizationHeaderValuePair = authorizationHeaderValue.Split(" ");
-            if (authorizationHeaderValuePair[0] is not "Bearer")
+            else
             {
-                return this.StatusCode(StatusCodes.Status401Unauthorized);
+                return Results.Unauthorized();
             }
-            var accessToken = await this.tokenService.ExchangeTokenAsync(request.Scope.Split(' '), authorizationHeaderValuePair[1]);
-            return this.Ok(
-                new TokenResponse()
-                {
-                    Token = accessToken
-                }
-            );
         }
         catch (MsalException ex)
         {
             if (ex.ErrorCode is "invalid_grant" or "interaction_required")
             {
-                return this.StatusCode(
-                    StatusCodes.Status403Forbidden,
-                    new TokenResponse()
-                    {
-                        Error = ex.ErrorCode
-                    }
-                );
+                return Results.Forbid();
             }
             else
             {
-                return this.StatusCode(
-                    StatusCodes.Status500InternalServerError,
-                    new TokenResponse()
-                    {
-                        Error = ex.ErrorCode
-                    }
-                );
+                return Results.InternalServerError(ex);
             }
         }
         catch (Exception ex)
         {
-            this.logger.UnhandledErrorOccurred(exception: ex);
-            return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            logger.UnhandledErrorOccurred(exception: ex);
+            return Results.InternalServerError(ex);
         }
         finally
         {
-            this.logger.ActionExecuted();
+            logger.ActionExecuted();
         }
     }
 

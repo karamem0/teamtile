@@ -11,10 +11,10 @@ exports[`should match the snapshot when the loading is false 1`] = `
 }
 
 <aside
-    aria-labelledby="dialog-title-r6"
+    aria-labelledby="dialog-title-_r_5_"
     aria-modal="true"
     class="fui-OverlayDrawer r7dfyj8 ___12p5wfa_jv28t00 fsqykmd f1e31b4d frppm18 f1exhnwo f1euv43f"
-    data-tabster="{"restorer":{"type":0},"modalizer":{"id":"modal-r5","isOthersAccessible":false,"isTrapped":true}}"
+    data-tabster="{"restorer":{"type":0},"modalizer":{"id":"modal-_r_6_","isOthersAccessible":false,"isTrapped":true}}"
     role="dialog"
     tabindex="-1"
   >
@@ -27,7 +27,7 @@ exports[`should match the snapshot when the loading is false 1`] = `
       >
         <h2
           class="fui-DrawerHeaderTitle__heading fui-DialogTitle rxjm636"
-          id="dialog-title-r6"
+          id="dialog-title-_r_5_"
         >
           <div
             data-testid="test-Title"
@@ -38,7 +38,7 @@ exports[`should match the snapshot when the loading is false 1`] = `
         >
           <button
             aria-label="Close"
-            class="fui-Button r1alrhcs ___w3o4yv0_df8ghi0 fhovq9v f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb f1t94bn6 f1s2uweq fr80ssc f1ukrpxl fecsdlb fnwyq0v ft1hn21 fuxngvv fy5bs14 fsv2rcd f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1omzyqd f1dfjoow f1j98vj9 fj8yq94 f4xjyn1 f1et0tmh f9ddjv3 f1wi8ngl f18ktai2 fwbmr0d f44c6la"
+            class="fui-Button r1f29ykk ___clxrxh0_chzwma0 fhovq9v f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb f1t94bn6 f1s2uweq fr80ssc f1ukrpxl fecsdlb fnwyq0v ft1hn21 fuxngvv fy5bs14 f1q1yqic fhvnf4x fb6swo4 f1klyf7k f232fm2 fwga7ee f1nhwcv0 f1gm6xmp f1xxsver f1v3eptx fivsta0 fd4bjan f3m6zum f18ktai2 fwbmr0d f44c6la"
             type="button"
           >
             <span
@@ -83,7 +83,7 @@ exports[`should match the snapshot when the loading is false 1`] = `
 }
 
 <div
-    class="fui-FluentProvider fui-FluentProviderr4 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    class="fui-FluentProvider fui-FluentProvider_r_4_ ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
     dir="ltr"
   >
     <div
@@ -108,10 +108,10 @@ exports[`should match the snapshot when the loading is true 1`] = `
 }
 
 <aside
-    aria-labelledby="dialog-title-r2"
+    aria-labelledby="dialog-title-_r_1_"
     aria-modal="true"
     class="fui-OverlayDrawer r7dfyj8 ___12p5wfa_jv28t00 fsqykmd f1e31b4d frppm18 f1exhnwo f1euv43f"
-    data-tabster="{"restorer":{"type":0},"modalizer":{"id":"modal-r1","isOthersAccessible":false,"isTrapped":true}}"
+    data-tabster="{"restorer":{"type":0},"modalizer":{"id":"modal-_r_2_","isOthersAccessible":false,"isTrapped":true}}"
     role="dialog"
     tabindex="-1"
   >
@@ -124,7 +124,7 @@ exports[`should match the snapshot when the loading is true 1`] = `
       >
         <h2
           class="fui-DrawerHeaderTitle__heading fui-DialogTitle rxjm636"
-          id="dialog-title-r2"
+          id="dialog-title-_r_1_"
         >
           <div
             data-testid="test-Title"
@@ -135,7 +135,7 @@ exports[`should match the snapshot when the loading is true 1`] = `
         >
           <button
             aria-label="Close"
-            class="fui-Button r1alrhcs ___w3o4yv0_df8ghi0 fhovq9v f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb f1t94bn6 f1s2uweq fr80ssc f1ukrpxl fecsdlb fnwyq0v ft1hn21 fuxngvv fy5bs14 fsv2rcd f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1omzyqd f1dfjoow f1j98vj9 fj8yq94 f4xjyn1 f1et0tmh f9ddjv3 f1wi8ngl f18ktai2 fwbmr0d f44c6la"
+            class="fui-Button r1f29ykk ___clxrxh0_chzwma0 fhovq9v f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb f1t94bn6 f1s2uweq fr80ssc f1ukrpxl fecsdlb fnwyq0v ft1hn21 fuxngvv fy5bs14 f1q1yqic fhvnf4x fb6swo4 f1klyf7k f232fm2 fwga7ee f1nhwcv0 f1gm6xmp f1xxsver f1v3eptx fivsta0 fd4bjan f3m6zum f18ktai2 fwbmr0d f44c6la"
             type="button"
           >
             <span
@@ -189,7 +189,7 @@ exports[`should match the snapshot when the loading is true 1`] = `
 }
 
 <div
-    class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    class="fui-FluentProvider fui-FluentProvider_r_0_ ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
     dir="ltr"
   >
     <div

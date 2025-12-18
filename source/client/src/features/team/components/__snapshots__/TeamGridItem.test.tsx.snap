@@ -77,14 +77,14 @@ exports[`should match the snapshot when the loading is false 1`] = `
 }
 
 <div
-    class="fui-FluentProvider fui-FluentProviderr1 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    class="fui-FluentProvider fui-FluentProvider_r_1_ ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
     dir="ltr"
   >
     <div
       class="emotion-0"
     >
       <div
-        class="fui-Card rfxo2k2 ___1x1hcrp_1926re5 f1vx9l62 f14k419y f1fgo9fz fvqmfsm f3am6yf f1r5wgso frsmuga fuldkky fxugw4r f1whvlc6 f16gxe2i fpgykix f1osi826 fzybk4o ftqa4ok f2hkw1w f8hki3x f1d2448m f1bjia2o ffh67wi f226i61 f13kzufm flujwa2 fsx75g8 f15bsgw9 f14e48fq f18yb2kv fd6o370 fpqizxz fnd8nzh f15fr7a0 fwsq40z f34ld9f fy0y4wt"
+        class="fui-Card rfxo2k2 ___1sj3mog_1gdqqgf f1vx9l62 f14k419y f1fgo9fz fvqmfsm f3am6yf f1r5wgso frsmuga fuldkky fxugw4r f1whvlc6 f16gxe2i fpgykix f1osi826 fzybk4o ftqa4ok f2hkw1w f8hki3x f1d2448m f1bjia2o ffh67wi f1j6vpng f1pniga2 f987i1v f1ffjurs f15bsgw9 f14e48fq f18yb2kv fd6o370 fpqizxz fnd8nzh f15fr7a0 fwsq40z f34ld9f fy0y4wt"
         role="listitem"
       >
         <div
@@ -111,8 +111,8 @@ exports[`should match the snapshot when the loading is false 1`] = `
             >
               <button
                 aria-haspopup="menu"
-                class="fui-Button r1alrhcs ___cpe5h10_1yhfyj7 f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fwiml72 f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1fg1p5m f1dfjoow f1j98vj9 f1tme0vf f4xjyn1 f18onu3q f9ddjv3 f18ktai2 fwbmr0d f44c6la"
-                id="menur2"
+                class="fui-Button r1f29ykk ___1cf351u_11vbq2i f1c21dwh f1p3nwhy f11589ue f1q5o8ev f1pdflbu fkfq4zb fjxutwb f1s2uweq fr80ssc f1ukrpxl fecsdlb f139oj5f ft1hn21 fuxngvv fkoldzo fhvnf4x fb6swo4 f1klyf7k f232fm2 f1l983o9 f1nhwcv0 f1gm6xmp fxoo9op f1v3eptx f1i0gk12 fd4bjan f18ktai2 fwbmr0d f44c6la"
+                id="menu_r_2_"
                 type="button"
               >
                 <span
@@ -186,14 +186,14 @@ exports[`should match the snapshot when the loading is true 1`] = `
 }
 
 <div
-    class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
+    class="fui-FluentProvider fui-FluentProvider_r_0_ ___jdtuxv0_17k0bs4 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"
     dir="ltr"
   >
     <div
       class="emotion-0"
     >
       <div
-        class="fui-Card rfxo2k2 ___1x1hcrp_1926re5 f1vx9l62 f14k419y f1fgo9fz fvqmfsm f3am6yf f1r5wgso frsmuga fuldkky fxugw4r f1whvlc6 f16gxe2i fpgykix f1osi826 fzybk4o ftqa4ok f2hkw1w f8hki3x f1d2448m f1bjia2o ffh67wi f226i61 f13kzufm flujwa2 fsx75g8 f15bsgw9 f14e48fq f18yb2kv fd6o370 fpqizxz fnd8nzh f15fr7a0 fwsq40z f34ld9f fy0y4wt"
+        class="fui-Card rfxo2k2 ___1sj3mog_1gdqqgf f1vx9l62 f14k419y f1fgo9fz fvqmfsm f3am6yf f1r5wgso frsmuga fuldkky fxugw4r f1whvlc6 f16gxe2i fpgykix f1osi826 fzybk4o ftqa4ok f2hkw1w f8hki3x f1d2448m f1bjia2o ffh67wi f1j6vpng f1pniga2 f987i1v f1ffjurs f15bsgw9 f14e48fq f18yb2kv fd6o370 fpqizxz fnd8nzh f15fr7a0 fwsq40z f34ld9f fy0y4wt"
         role="listitem"
       >
         <div
@@ -205,19 +205,19 @@ exports[`should match the snapshot when the loading is true 1`] = `
             class="emotion-1"
           >
             <div
-              class="fui-SkeletonItem ___6z4oc50_11iqglg f10pi13n f1a3p1vp f13zj6fq f2gz7yw f1mdlcz9 f1nt53hs f18xs7ez fs3pcyf f1f9zsvm f1ub80pn f1e7twep f171zwvm f1yu5riq f5q2cvs f124akge ff2sm71"
+              class="fui-SkeletonItem ___8fset60_9aw1x30 f10pi13n f1a3p1vp f13zj6fq f2gz7yw f1mdlcz9 f1nt53hs f18xs7ez fs3pcyf f1f9zsvm f1evo4vk f18va1k3 f171zwvm f1yu5riq f5q2cvs f124akge ff2sm71"
             />
             <div
               class="emotion-2"
             >
               <div
-                class="fui-SkeletonItem ___148mfmj_1esmiem f10pi13n f1a3p1vp f13zj6fq f2gz7yw f1mdlcz9 f1nt53hs f18xs7ez fs3pcyf f1f9zsvm f1ub80pn f1e7twep f171zwvm f1yu5riq fly5x3f ff3glw6 frvgh55"
+                class="fui-SkeletonItem ___iw0e790_1utfw1v f10pi13n f1a3p1vp f13zj6fq f2gz7yw f1mdlcz9 f1nt53hs f18xs7ez fs3pcyf f1f9zsvm f1evo4vk f18va1k3 f171zwvm f1yu5riq fly5x3f ff3glw6 frvgh55"
               />
               <div
-                class="fui-SkeletonItem ___148mfmj_1esmiem f10pi13n f1a3p1vp f13zj6fq f2gz7yw f1mdlcz9 f1nt53hs f18xs7ez fs3pcyf f1f9zsvm f1ub80pn f1e7twep f171zwvm f1yu5riq fly5x3f ff3glw6 frvgh55"
+                class="fui-SkeletonItem ___iw0e790_1utfw1v f10pi13n f1a3p1vp f13zj6fq f2gz7yw f1mdlcz9 f1nt53hs f18xs7ez fs3pcyf f1f9zsvm f1evo4vk f18va1k3 f171zwvm f1yu5riq fly5x3f ff3glw6 frvgh55"
               />
               <div
-                class="fui-SkeletonItem ___1316iuv_vy383s0 f10pi13n f1a3p1vp f13zj6fq f2gz7yw f1mdlcz9 f1nt53hs f18xs7ez fs3pcyf f1f9zsvm f1ub80pn f1e7twep f171zwvm f1yu5riq fly5x3f ff3glw6 fypu0ge"
+                class="fui-SkeletonItem ___ajcvwt0_xv61700 f10pi13n f1a3p1vp f13zj6fq f2gz7yw f1mdlcz9 f1nt53hs f18xs7ez fs3pcyf f1f9zsvm f1evo4vk f18va1k3 f171zwvm f1yu5riq fly5x3f ff3glw6 fypu0ge"
               />
             </div>
           </div>

@@ -36,7 +36,7 @@ exports[`should match the snapshot 1`] = `
         <button
           aria-disabled="true"
           aria-expanded="true"
-          class="fui-AccordionHeader__button ___ecb1fz0_z658t20 f1ewtqcl f1u2r49w f1ym3bx4 fk6fouc fkhj508 f1i3iumi f1gl81tg f1rmphuq f37px4s fgusgyc f10pi13n fly5x3f fre7gi1 f1358rze fqdk4by f1rvrf73 f5pgtk9 f22iagw f122n59 f1k6fduh figsok6 ftqa4ok f2hkw1w f8hki3x f1d2448m f1bjia2o ffh67wi f226i61 f13kzufm flujwa2 fsx75g8 f15bsgw9 f14e48fq f18yb2kv fd6o370 ffwy5si f3znvyf f57olzd f4stah7 f480a47 fs1por5"
+          class="fui-AccordionHeader__button ___290x180_14bx2gs f1ewtqcl f1u2r49w f1ym3bx4 fk6fouc fkhj508 f1i3iumi f1gl81tg f1rmphuq f37px4s fgusgyc f10pi13n fly5x3f fre7gi1 f1358rze fqdk4by f1rvrf73 f5pgtk9 f22iagw f122n59 f1k6fduh figsok6 ftqa4ok f2hkw1w f8hki3x f1d2448m f1bjia2o ffh67wi f1j6vpng f1pniga2 f987i1v f1ffjurs f15bsgw9 f14e48fq f18yb2kv fd6o370 ffwy5si f3znvyf f57olzd f4stah7 f480a47 fs1por5"
           type="button"
         >
           <span

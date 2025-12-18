@@ -31,7 +31,7 @@ exports[`should match the snapshot 1`] = `
     class="emotion-0"
   >
     <div
-      aria-labelledby="spinnerr0"
+      aria-labelledby="spinner_r_0_"
       class="fui-Spinner rpp59a7"
       role="progressbar"
     >
@@ -44,7 +44,7 @@ exports[`should match the snapshot 1`] = `
       </span>
       <label
         class="fui-Label fui-Spinner__label ___qwq3bl0_b1t5ty0 fk6fouc f19n0e5 fod5ikn faaz57k fl43uef"
-        id="spinnerr0"
+        id="spinner_r_0_"
       >
         Redirecting to consent page...
       </label>

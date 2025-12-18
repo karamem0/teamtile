@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "github.vscode-github-actions",
+    "ms-azuretools.vscode-bicep",
+    "ms-dotnettools.csdevkit",
+    "redhat.vscode-yaml",
+    "redhat.vscode-xml",
+    "styled-components.vscode-styled-components"
+  ]
+}

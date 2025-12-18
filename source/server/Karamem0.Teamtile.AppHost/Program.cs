@@ -8,14 +8,18 @@
 
 using Aspire.Hosting;
 
-#pragma warning disable IDE0059
-
 var builder = DistributedApplication.CreateBuilder(args);
 
-var server = builder.AddProject<Projects.Karamem0_Teamtile_Web>("server");
+var microsoftIdentityClientId = builder.AddParameter("MicrosoftIdentityClientId");
+var microsoftIdentityClientSecret = builder.AddParameter("MicrosoftIdentityClientSecret");
+var microsoftIdentityTenantId = builder.AddParameter("MicrosoftIdentityTenantId");
+
+_ = builder
+    .AddProject<Projects.Karamem0_Teamtile_Web>("server")
+    .WithEnvironment("MicrosoftIdentity:ClientId", microsoftIdentityClientId)
+    .WithEnvironment("MicrosoftIdentity:ClientSecret", microsoftIdentityClientSecret)
+    .WithEnvironment("MicrosoftIdentity:TenantId", microsoftIdentityTenantId);
 
 var app = builder.Build();
 
 await app.RunAsync();
-
-#pragma warning restore IDE0059

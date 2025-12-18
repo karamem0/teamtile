@@ -6,39 +6,29 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-using Microsoft.Extensions.Options;
-using Microsoft.Identity.Client;
-using Microsoft.Identity.Web;
-using Microsoft.IdentityModel.JsonWebTokens;
+using Karamem0.Teamtile.Models;
+using Karamem0.Teamtile.Repositories;
 
 namespace Karamem0.Teamtile.Services;
 
 public interface ITokenService
 {
 
-    Task<string> ExchangeTokenAsync(string[] scopes, string accessToken);
+    Task<TokenResponse> InvokeAsync(TokenRequest request, string accessToken);
 
 }
 
-public class TokenService(IOptions<MicrosoftIdentityOptions> options) : ITokenService
+public class TokenService(ITokenRepository repository) : ITokenService
 {
 
-    private readonly MicrosoftIdentityOptions options = options.Value;
+    private readonly ITokenRepository repository = repository;
 
-    public async Task<string> ExchangeTokenAsync(string[] scopes, string accessToken)
+    public async Task<TokenResponse> InvokeAsync(TokenRequest request, string accessToken)
     {
-        var jwtToken = new JsonWebToken(accessToken);
-        var tenantId = jwtToken.GetPayloadValue<string>("tid");
-        var msalApplication = ConfidentialClientApplicationBuilder
-            .Create(this.options.ClientId)
-            .WithClientSecret(this.options.ClientSecret)
-            .WithAuthority(this.options.Instance, tenantId)
-            .Build();
-        var authResult = await msalApplication
-            .AcquireTokenOnBehalfOf(scopes, new UserAssertion(accessToken))
-            .ExecuteAsync()
-            .ConfigureAwait(false);
-        return authResult.AccessToken;
+        return new TokenResponse()
+        {
+            Token = await this.repository.ExchangeTokenAsync(request.Scope.Split(' '), accessToken)
+        };
     }
 
 }

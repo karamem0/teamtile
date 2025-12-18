@@ -1,4 +1,4 @@
-# https://github.com/github/gitignore/blob/main/Node.gitignore
+### https://github.com/github/gitignore/blob/main/Node.gitignore
 
 # Logs
 logs
@@ -75,7 +75,7 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
-.env
+# .env
 .env.development.local
 .env.test.local
 .env.production.local

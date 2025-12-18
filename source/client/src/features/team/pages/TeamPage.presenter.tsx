@@ -8,7 +8,6 @@
 
 import React from 'react';
 
-import { Helmet, HelmetProvider } from 'react-helmet-async';
 import EmptyPanel from '../components/EmptyPanel';
 import LoaderPanal from '../../../common/components/LoaderPanel';
 import { TeamCard } from '../../../types/Store';
@@ -32,19 +31,15 @@ function TeamPage(props: Readonly<MainPageProps>) {
 
   return (
     <React.Fragment>
-      <HelmetProvider>
-        <Helmet>
-          <meta
-            content={intl.formatMessage(messages.AppCreator)}
-            name="author" />
-          <meta
-            content={intl.formatMessage(messages.AppDescription)}
-            name="description" />
-          <title>
-            {intl.formatMessage(messages.AppTitle)}
-          </title>
-        </Helmet>
-      </HelmetProvider>
+      <meta
+        content={intl.formatMessage(messages.AppCreator)}
+        name="author" />
+      <meta
+        content={intl.formatMessage(messages.AppDescription)}
+        name="description" />
+      <title>
+        {intl.formatMessage(messages.AppTitle)}
+      </title>
       {
         (() => {
           switch (loading) {

@@ -5,12 +5,12 @@ exports[`should create a snapshot when icon is not undefined 1`] = `
   <span
     aria-label="HR Taskforce"
     class="fui-Avatar r81b29z"
-    id="avatar-r1"
+    id="avatar-_r_1_"
     role="img"
   >
     <span
       class="fui-Avatar__initials rip04v ___1ijdyrp_1g9zh4u f1up9qbj f42feg1"
-      id="avatar-r1__initials"
+      id="avatar-_r_1___initials"
     >
       HT
     </span>
@@ -30,12 +30,12 @@ exports[`should create a snapshot when icon is undefined 1`] = `
   <span
     aria-label="HR Taskforce"
     class="fui-Avatar r81b29z"
-    id="avatar-r0"
+    id="avatar-_r_0_"
     role="img"
   >
     <span
       class="fui-Avatar__initials rip04v ___1ijdyrp_1g9zh4u f1up9qbj f42feg1"
-      id="avatar-r0__initials"
+      id="avatar-_r_0___initials"
     >
       HT
     </span>
