@@ -6,6 +6,10 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+export type MemberRoleType =
+  | 'member'
+  | 'owner';
+
 export type MembershipType =
   | 'private'
   | 'standard'
@@ -49,6 +53,7 @@ export interface Member {
   displayName?: string,
   email?: string,
   icon?: string,
+  role?: MemberRoleType,
   tenantId?: string,
   userId?: string
 }
@@ -72,8 +77,11 @@ export interface Team {
   archived?: boolean,
   description?: string,
   displayName?: string,
+  guestsCount?: number,
   icon?: string,
   internalId?: string,
+  membersCount?: number,
+  ownersCount?: number,
   visibility?: VisibilityType,
   webUrl?: string
 }

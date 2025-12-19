@@ -19,7 +19,7 @@ function GridLayout(props: Readonly<React.PropsWithChildren<unknown>>) {
       role="list"
       css={css`
         display: grid;
-        grid-template-rows: 11rem;
+        grid-template-rows: 12.5rem;
         grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
         gap: 0.5rem;
         @media (width >= 600px) {

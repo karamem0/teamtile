@@ -19,19 +19,27 @@ import {
   SkeletonItem,
   Text
 } from '@fluentui/react-components';
+import {
+  MoreVertical16Regular,
+  PersonAccount16Regular,
+  PersonGuest16Regular,
+  PersonRibbon16Regular
+} from '@fluentui/react-icons';
 import AvatarIcon from './AvatarIcon';
 import CalendarMenuItem from './CalendarMenuItem';
 import ChannelMenuItem from './ChannelMenuItem';
 import DriveMenuItem from './DriveMenuItem';
 import { EventHandler } from '../../../types/Event';
 import MemberMenuItem from './MemberMenuItem';
-import { MoreVertical16Regular } from '@fluentui/react-icons';
 import PinMenuItem from './PinMenuItem';
 import SensitivityLabel from './SensitivityLabel';
+import SummaryIcon from './SummaryIcon';
 import TagMenuItem from './TagMenuItem';
 import { TeamCard } from '../../../types/Store';
 import VisibilityIcon from './VisibilityIcon';
 import { css } from '@emotion/react';
+import messages from '../messages';
+import { useIntl } from 'react-intl';
 import { useTheme } from '../../../providers/ThemeProvider';
 
 interface TeamGridItemProps {
@@ -53,6 +61,7 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
   } = props;
 
   const { theme } = useTheme();
+  const intl = useIntl();
 
   switch (loading) {
     case true:
@@ -108,7 +117,7 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
               <div
                 css={css`
                   display: grid;
-                  grid-template-rows: auto auto auto;
+                  grid-template-rows: auto auto auto auto;
                   grid-template-columns: 1fr auto;
                   gap: 0.25rem;
                 `}>
@@ -181,7 +190,38 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
                 </div>
                 <div
                   css={css`
+                    display: flex;
+                    flex-direction: row;
                     grid-row: 3 / 4;
+                    grid-column: 1 / 3;
+                    align-items: center;
+                    justify-content: left;
+                    height: 1.25rem;
+                    gap: 0.5rem;
+                    color: ${theme.colorNeutralForeground4};
+                  `}>
+                  <SummaryIcon
+                    count={team.ownersCount}
+                    tooltip={intl.formatMessage(messages.Owners)}
+                    icon={(
+                      <PersonRibbon16Regular />
+                    )} />
+                  <SummaryIcon
+                    count={team.membersCount}
+                    tooltip={intl.formatMessage(messages.Members)}
+                    icon={(
+                      <PersonAccount16Regular />
+                    )} />
+                  <SummaryIcon
+                    count={team.guestsCount}
+                    tooltip={intl.formatMessage(messages.Guests)}
+                    icon={(
+                      <PersonGuest16Regular />
+                    )} />
+                </div>
+                <div
+                  css={css`
+                    grid-row: 4 / 5;
                     grid-column: 1 / 3;
                     height: 6.25rem;
                   `}>

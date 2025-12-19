@@ -255,6 +255,7 @@ describe('getMembers', () => {
         id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
         displayName: 'Adele Vance',
         email: 'AdeleV@M365x214355.onmicrosoft.com',
+        role: 'member',
         tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
         userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
       }
@@ -419,6 +420,7 @@ describe('getTagMembers', () => {
         displayName: 'Adele Vance',
         email: undefined,
         tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
+        role: 'member',
         userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
       }
     ];
@@ -546,6 +548,11 @@ describe('getTeams', () => {
               description: 'Welcome to the HR Taskforce team.',
               internalId: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
               isArchived: false,
+              summary: {
+                guestsCount: 2,
+                membersCount: 5,
+                ownersCount: 1
+              },
               visibility: 'private',
               webUrl: 'https://teams.microsoft.com/l/team/19:09fc54a3141a45d0bc769cf506d2e079%40thread.skype/conversations?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
             })
@@ -563,7 +570,10 @@ describe('getTeams', () => {
         archived: false,
         displayName: 'HR Taskforce',
         description: 'Welcome to the HR Taskforce team.',
+        guestsCount: 2,
         internalId: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
+        membersCount: 5,
+        ownersCount: 1,
         visibility: 'private',
         webUrl: 'https://teams.microsoft.com/l/team/19:09fc54a3141a45d0bc769cf506d2e079%40thread.skype/conversations?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
       }

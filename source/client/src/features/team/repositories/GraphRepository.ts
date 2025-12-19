@@ -165,7 +165,8 @@ export async function getMembers(teamId: string): Promise<Member[]> {
       'displayName',
       'id',
       'microsoft.graph.aadUserConversationMember/userId',
-      'microsoft.graph.aadUserConversationMember/email'
+      'microsoft.graph.aadUserConversationMember/email',
+      'roles'
     ])
     .get();
   const values: Member[] = [];
@@ -190,6 +191,27 @@ export async function getPrimaryChannel(teamId: string): Promise<Channel> {
     ])
     .get();
   return mapChannel(response) as Channel;
+}
+
+export async function getOwners(teamId: string): Promise<Member[]> {
+  const { client } = getConfig();
+  const response = await client
+    .api(`/groups/${teamId}/owners`)
+    .version('v1.0')
+    .select([
+      'displayName',
+      'id',
+      'microsoft.graph.aadUserConversationMember/userId',
+      'microsoft.graph.aadUserConversationMember/email'
+    ])
+    .get();
+  const values: Member[] = [];
+  const iterator = new PageIterator(
+    client,
+    response,
+    (value) => Boolean(values.push(mapMember(value))));
+  await iterator.iterate();
+  return values.sort((a, b) => compare(a.displayName, b.displayName));
 }
 
 export async function getTabs(teamId: string, channelId: string): Promise<Tab[]> {
@@ -317,6 +339,7 @@ export async function getTeams(teamIds: string[]): Promise<Team[]> {
             'id',
             'internalId',
             'isArchived',
+            'summary',
             'visibility',
             'webUrl'
           ].join(',')}`,

@@ -28,7 +28,8 @@ import {
   TeamworkTag as GraphTag,
   TeamworkTagMember as GraphTagMember,
   Team as GraphTeam,
-  AssociatedTeamInfo as GraphTeamInfo
+  AssociatedTeamInfo as GraphTeamInfo,
+  TeamSummary as GraphTeamSummary
 } from '@microsoft/microsoft-graph-types';
 import { PojosMetadataMap, pojos } from '@automapper/pojos';
 import { TeamCard, TeamProps } from '../../../types/Store';
@@ -73,6 +74,7 @@ PojosMetadataMap.create<Member>('Member', {
   id: String,
   displayName: String,
   email: String,
+  role: String,
   userId: String
 });
 
@@ -167,6 +169,7 @@ PojosMetadataMap.create<GraphTeam>('GraphTeam', {
   displayName: String,
   internalId: String,
   isArchived: Boolean,
+  summary: 'GraphTeamSummary',
   visibility: String,
   webUrl: String
 });
@@ -175,6 +178,12 @@ PojosMetadataMap.create<GraphTeamInfo>('GraphTeamInfo', {
   id: String,
   displayName: String,
   tenantId: String
+});
+
+PojosMetadataMap.create<GraphTeamSummary>('GraphTeamSummary', {
+  guestsCount: Number,
+  membersCount: Number,
+  ownersCount: Number
 });
 
 PojosMetadataMap.create<TeamCard>('TeamCard', {
@@ -189,7 +198,10 @@ PojosMetadataMap.create<TeamProps>('TeamProps', {
   description: String,
   displayName: String,
   email: String,
+  guestsCount: Number,
   internalId: String,
+  membersCount: Number,
+  ownersCount: Number,
   sensitivityLabel: String,
   visibility: String,
   webUrl: String
@@ -252,6 +264,7 @@ createMap<GraphMember, Member>(
   forMember((target) => target.displayName, mapFrom((source) => source.displayName ?? undefined)),
   forMember((target) => target.email, mapFrom((source) => source.email ?? undefined)),
   forMember((target) => target.tenantId, mapFrom((source) => source.tenantId ?? undefined)),
+  forMember((target) => target.role, mapFrom((source) => source.roles?.includes('owner') ? 'owner' : 'member')),
   forMember((target) => target.userId, mapFrom((source) => source.userId ?? undefined))
 );
 
@@ -321,7 +334,10 @@ createMap<GraphTeam, Team>(
   forMember((target) => target.archived, mapFrom((source) => source.isArchived ?? false)),
   forMember((target) => target.description, mapFrom((source) => source.description ?? undefined)),
   forMember((target) => target.displayName, mapFrom((source) => source.displayName ?? undefined)),
+  forMember((target) => target.guestsCount, mapFrom((source) => source.summary?.guestsCount ?? undefined)),
   forMember((target) => target.internalId, mapFrom((source) => source.internalId ?? undefined)),
+  forMember((target) => target.membersCount, mapFrom((source) => source.summary?.membersCount ?? undefined)),
+  forMember((target) => target.ownersCount, mapFrom((source) => source.summary?.ownersCount ?? undefined)),
   forMember((target) => target.visibility, mapFrom((source) => source.visibility ?? undefined)),
   forMember((target) => target.webUrl, mapFrom((source) => source.webUrl ?? undefined))
 );

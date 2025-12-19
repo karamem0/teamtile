@@ -14,6 +14,7 @@ import AvatarIcon from './AvatarIcon';
 import Drawer from '../../../common/components/Drawer';
 import { EventHandler } from '../../../types/Event';
 import { Member } from '../../../types/Entity';
+import MemberRoleIcon from './MemberRoleIcon';
 import { css } from '@emotion/react';
 import messages from '../messages';
 import { useTheme } from '../../../providers/ThemeProvider';
@@ -72,11 +73,9 @@ function MemberDrawer(props: Readonly<MemberDrawerProps>) {
                     key={item.id}
                     role="button"
                     css={css`
-                      display: grid;
-                      grid-template-columns: auto auto;
+                      display: flex;
+                      flex-flow: row;
                       gap: 0.5rem;
-                      align-items: center;
-                      justify-content: left;
                       padding: 0.5rem;
                       :hover {
                         background-color: ${theme.colorNeutralBackground1Hover};
@@ -90,6 +89,7 @@ function MemberDrawer(props: Readonly<MemberDrawerProps>) {
                     <Text truncate>
                       {item.displayName}
                     </Text>
+                    <MemberRoleIcon type={item.role} />
                   </Text>
                 )) : (
                   <div

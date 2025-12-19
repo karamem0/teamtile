@@ -17,7 +17,7 @@ exports[`should match the snapshot when the loading is false 1`] = `
 
 .emotion-2 {
   display: grid;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto auto auto;
   grid-template-columns: 1fr auto;
   gap: 0.25rem;
 }
@@ -62,12 +62,59 @@ exports[`should match the snapshot when the loading is false 1`] = `
 }
 
 .emotion-7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   grid-row: 3/4;
+  grid-column: 1/3;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: left;
+  -ms-flex-pack: left;
+  -webkit-justify-content: left;
+  justify-content: left;
+  height: 1.25rem;
+  gap: 0.5rem;
+  color: #707070;
+}
+
+.emotion-8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: left;
+  -ms-flex-pack: left;
+  -webkit-justify-content: left;
+  justify-content: left;
+  gap: 0.125rem;
+}
+
+.emotion-9 {
+  font-size: 0.75rem;
+  line-height: calc(0.75rem * 1.25);
+}
+
+.emotion-14 {
+  grid-row: 4/5;
   grid-column: 1/3;
   height: 6.25rem;
 }
 
-.emotion-8 {
+.emotion-15 {
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -151,6 +198,76 @@ exports[`should match the snapshot when the loading is false 1`] = `
             >
               <div
                 class="emotion-8"
+              >
+                <svg
+                  aria-label="Owners"
+                  class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+                  fill="currentColor"
+                  height="16"
+                  role="img"
+                  viewBox="0 0 16 16"
+                  width="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10 12.62v1.07c-.59.2-1.26.31-2 .31-3.14 0-5-2.03-5-4v-.5C3 8.67 3.67 8 4.5 8h5.03c-.14.28-.32.64-.4 1H4.5a.5.5 0 0 0-.5.5v.5c0 1.44 1.43 3 4 3a5.1 5.1 0 0 0 2-.38ZM8 1.5A2.75 2.75 0 1 1 8 7a2.75 2.75 0 0 1 0-5.5Zm0 1A1.75 1.75 0 1 0 8 6a1.75 1.75 0 0 0 0-3.5ZM13 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm0 1c.73 0 1.41-.2 2-.54v2.29c0 .2-.21.31-.38.21L13 15l-1.62.96a.25.25 0 0 1-.38-.21v-2.29c.59.34 1.27.54 2 .54Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <span
+                  class="fui-Text emotion-9 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
+                />
+              </div>
+              <div
+                class="emotion-8"
+              >
+                <svg
+                  aria-label="Members"
+                  class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+                  fill="currentColor"
+                  height="16"
+                  role="img"
+                  viewBox="0 0 16 16"
+                  width="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12.5 7c.83 0 1.5.67 1.5 1.5V9h.5c.83 0 1.5.67 1.5 1.5v4c0 .83-.67 1.5-1.5 1.5h-6A1.5 1.5 0 0 1 7 14.5v-4C7 9.67 7.67 9 8.5 9H9v-.5c0-.83.67-1.5 1.5-1.5h2Zm-2 1a.5.5 0 0 0-.5.5V9h3v-.5a.5.5 0 0 0-.5-.5h-2Zm-2.46.04A2.5 2.5 0 0 0 6.5 9h-3a.5.5 0 0 0-.5.5v.5c0 1.24 1.06 2.57 3 2.91v1.02c-2.53-.38-4-2.18-4-3.93v-.5C2 8.67 2.67 8 3.5 8h4.55v.04ZM7 1.5A2.75 2.75 0 1 1 7 7a2.75 2.75 0 0 1 0-5.5Zm0 1A1.75 1.75 0 1 0 7 6a1.75 1.75 0 0 0 0-3.5Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <span
+                  class="fui-Text emotion-9 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
+                />
+              </div>
+              <div
+                class="emotion-8"
+              >
+                <svg
+                  aria-label="Guests"
+                  class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+                  fill="currentColor"
+                  height="16"
+                  role="img"
+                  viewBox="0 0 16 16"
+                  width="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13 6a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2V8c0-1.1.9-2 2-2h3ZM7 9H3.5a.5.5 0 0 0-.5.5v.5c0 1.44 1.43 3 4 3a3 3 0 0 0 .17 1H7c-3.14 0-5-2.03-5-4v-.5C2 8.67 2.67 8 3.5 8H7v1Zm3.5-1a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2ZM7 1.5a2.75 2.75 0 0 1 2.64 3.52A3 3 0 0 0 7.18 7L7 7a2.75 2.75 0 0 1 0-5.5Zm0 1A1.75 1.75 0 1 0 7 6a1.75 1.75 0 0 0 0-3.5Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <span
+                  class="fui-Text emotion-9 ___c56hd20_1xy0w11 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"
+                />
+              </div>
+            </div>
+            <div
+              class="emotion-14"
+            >
+              <div
+                class="emotion-15"
               >
                 Welcome to the HR Taskforce team.
               </div>

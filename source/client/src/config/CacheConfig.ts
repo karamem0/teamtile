@@ -21,13 +21,14 @@ export function getConfig(): CacheConfig {
       database: new Dexie('teamtile'),
       timeout: import.meta.env.VITE_CACHE_TIMEOUT ?? 3600
     };
-    config.database.version(9).stores({
+    config.database.version(10).stores({
       channels: '&id, expired',
       drives: '&id, expired',
       groups: '&id, expired',
       icons: '&id, expired',
       members: '&id, expired',
       pins: '&id',
+      owners: '&id, expired',
       tags: '&id, expired',
       tagmembers: '&id, expired',
       teams: '&id, expired'

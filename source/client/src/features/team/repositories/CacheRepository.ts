@@ -132,6 +132,22 @@ export async function setPin(id: string, value: boolean): Promise<void> {
   }
 }
 
+export async function getOwners(id: string, expired?: boolean, timestamp?: number): Promise<Member[] | undefined> {
+  const { database } = getConfig();
+  return await database.table<ArrayEntity<Member>>('owners')
+    .get(id)
+    .then((item) => getArray(item, expired, timestamp));
+}
+
+export async function setOwners(id: string, values: Member[], timestamp = Date.now()): Promise<void> {
+  const { database, timeout } = getConfig();
+  await database.table<ArrayEntity<Member>>('owners').put({
+    id,
+    expired: timestamp + (timeout * 1000),
+    values
+  });
+}
+
 export async function getTags(id: string, expired?: boolean, timestamp = Date.now()): Promise<Tag[] | undefined> {
   const { database } = getConfig();
   return await database.table<ArrayEntity<Tag>>('tags')

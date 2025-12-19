@@ -14,6 +14,7 @@ import {
   getGroup,
   getIcon,
   getMembers,
+  getOwners,
   getPin,
   getTagMembers,
   getTags,
@@ -472,6 +473,94 @@ describe('getPin', () => {
     });
     const actual = await getPin(params.teamId);
     expect(mockTable).toHaveBeenCalledWith('pins');
+    expect(mockClear).toHaveBeenCalled();
+    expect(actual).toStrictEqual(expected);
+  });
+
+});
+
+describe('getOwners', () => {
+
+  it('should get owners when expired is true', async () => {
+    const params = {
+      teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      expired: true,
+      timestamp: 1,
+      response: {
+        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        expired: 0,
+        values: [
+          {
+            id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+            displayName: 'Adele Vance',
+            userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+            email: 'AdeleV@M365x214355.onmicrosoft.com'
+          }
+        ]
+      }
+    };
+    const expected = [
+      {
+        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+        displayName: 'Adele Vance',
+        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+        email: 'AdeleV@M365x214355.onmicrosoft.com'
+      }
+    ];
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
+    getConfig.mockReturnValue({
+      database: {
+        table: mockTable.mockReturnValue({
+          get: mockClear
+        })
+      }
+    });
+    const actual = await getOwners(params.teamId, params.expired, params.timestamp);
+    expect(mockTable).toHaveBeenCalledWith('owners');
+    expect(mockClear).toHaveBeenCalled();
+    expect(actual).toStrictEqual(expected);
+  });
+
+  it('should get owners when expired is false', async () => {
+    const params = {
+      teamId: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+      expired: false,
+      timestamp: 0,
+      response: {
+        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
+        expired: 1,
+        values: [
+          {
+            id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+            displayName: 'Adele Vance',
+            userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+            tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
+            email: 'AdeleV@M365x214355.onmicrosoft.com'
+          }
+        ]
+      }
+    };
+    const expected = [
+      {
+        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+        displayName: 'Adele Vance',
+        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+        tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
+        email: 'AdeleV@M365x214355.onmicrosoft.com'
+      }
+    ];
+    const mockTable = vi.fn();
+    const mockClear = vi.fn().mockResolvedValue(params.response);
+    getConfig.mockReturnValue({
+      database: {
+        table: mockTable.mockReturnValue({
+          get: mockClear
+        })
+      }
+    });
+    const actual = await getOwners(params.teamId, params.expired, params.timestamp);
+    expect(mockTable).toHaveBeenCalledWith('owners');
     expect(mockClear).toHaveBeenCalled();
     expect(actual).toStrictEqual(expected);
   });
