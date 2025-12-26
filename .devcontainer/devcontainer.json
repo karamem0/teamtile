@@ -21,6 +21,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "dbaeumer.vscode-eslint",
         "editorconfig.editorconfig",
         "github.vscode-github-actions",
         "ms-azuretools.vscode-bicep",

@@ -264,7 +264,15 @@ createMap<GraphMember, Member>(
   forMember((target) => target.displayName, mapFrom((source) => source.displayName ?? undefined)),
   forMember((target) => target.email, mapFrom((source) => source.email ?? undefined)),
   forMember((target) => target.tenantId, mapFrom((source) => source.tenantId ?? undefined)),
-  forMember((target) => target.role, mapFrom((source) => source.roles?.includes('owner') ? 'owner' : 'member')),
+  forMember((target) => target.role, mapFrom((source) => {
+    if (source.roles?.includes('owner')) {
+      return 'owner';
+    }
+    if (source.roles?.includes('guest')) {
+      return 'guest';
+    }
+    return 'member';
+  })),
   forMember((target) => target.userId, mapFrom((source) => source.userId ?? undefined))
 );
 
