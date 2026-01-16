@@ -37,28 +37,6 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
 
 ## Installation
 
-### Create Azure Web App
-
-1. Go to [Azure Portal](https://portal.azure.com).
-
-2. Click **â‰¡** - **Create a resource**.
-
-3. Click **Web App**.
-
-4. Enter the information and click **Review + create**.
-
-    |Parameter|Value|
-    |-|-|
-    |Subscription|(You can choose)|
-    |Resource Group|(You can choose)|
-    |Name|(You can choose)|
-    |Publish|Code|
-    |Runtime stack|.NET 8|
-    |Operating System|Windows or Linux (You can choose)|
-    |Region|(You can choose)|
-
-5. Click **Create** and wait until creation is completed.
-
 ### Register Microsoft Entra ID Application
 
 1. Go to [Azure Portal](https://portal.azure.com).
@@ -119,26 +97,13 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
     |1fec8e78-bce4-4aaf-ab1b-5451cc387264|user_impersonation|
     |5e3ce6c0-2b1f-4285-8d4b-75ee78787346|user_impersonation|
 
-### Create Application Insights (Optional)
+### Create Azure resources
 
-1. Go to [Azure Portal](https://portal.azure.com).
+1. Deploy resources using Azure CLI.
 
-2. Click **â‰¡** - **Create a resource**.
-
-3. Search **Application Insights** and click **Create**.
-
-4. Enter the information and click **Review + create**.
-
-    |Parameter|Value|
-    |-|-|
-    |Subscription|(Same as Azure Web App)|
-    |Resource Group|(Same as Azure Web App)|
-    |Name|(You can choose)|
-    |Region|(Same as Azure Web App)|
-    |Resource Mode|Workspace-based|
-    |Log Analytics Workspace|(You can choose)|
-
-5. Click **Create** and wait until creation is completed.
+```
+az deployment group create --template-file ./bicep/main.bicep --resource-group <Resource Group Name> --parameters name=<Application Name> microsoftAppId=<Application ID> microsoftAppPassword=<Application Secret> microsoftAppTenantId=<Tenant Id>
+```
 
 ### Build Application
 
@@ -151,22 +116,10 @@ Are you frustrated with finding a team? Teamtile provides these features to youð
     |Placeholder|Replace|
     |-|-|
     |`{{MICROSOFT_APP_ID}}`|**Application ID**|
-    |`{{AZURE_WEB_APP_DOMAIN_NAME}}`|**Domain name of Azure Web App**|
     |`{{MICROSOFT_TENANT_ID}}`|**Tenent ID**|
     |`{{TELEMETRY_CONNECTION_STRING}}`|**Connection String of Application Insights**|
 
-3. Go to `source/server` folder.
-
-4. Edit `appsettings.json` file.
-
-    |Placeholder|Replace|
-    |-|-|
-    |`{{MICROSOFT_APP_ID}}`|**Application ID**|
-    |`{{MSAL_APP_SECRET}}`|**Application Secret**|
-    |`{{MICROSOFT_TENANT_ID}}`|**Tenent ID**|
-    |`{{TELEMETRY_CONNECTION_STRING}}`|**Connection String of Application Insights**|
-
-5. Build application.
+3. Build application.
 
 ```
 dotnet publish --configuration Release
@@ -175,7 +128,7 @@ dotnet publish --configuration Release
 4. Compress contents of `publish` folder.
 
 ```
-Compress-Archive -Path ./bin/Release/net8.0/publish/* -DestinationPath ../../build.zip
+Compress-Archive -Path ./bin/Release/net10.0/publish/* -DestinationPath ../../build.zip
 ```
 
 ### Manifest

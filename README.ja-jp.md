@@ -37,28 +37,6 @@
 
 ## インストール
 
-### Azure Web アプリの作成
-
-1. [Azure ポータル](https://portal.azure.com) に移動します。
-
-2. **≡** - **リソースの作成** をクリックします。
-
-3. **Web アプリ** をクリックします。
-
-4. 情報を入力して **確認および作成** をクリックします。
-
-    |項目|値|
-    |-|-|
-    |サブスクリプション|(選択可能)|
-    |リソース グループ|(選択可能)|
-    |名前|(選択可能)|
-    |公開|コード|
-    |ランタイム スタック|.NET 8|
-    |オペレーティング システム|Windows または Linux (選択可能)|
-    |地域|(選択可能)|
-
-5. **作成** をクリックして操作が完了するまで待機します。
-
 ### Microsoft Entra ID アプリケーションの登録
 
 1. [Azure ポータル](https://portal.azure.com) に移動します。
@@ -119,26 +97,13 @@
     |1fec8e78-bce4-4aaf-ab1b-5451cc387264|user_impersonation|
     |5e3ce6c0-2b1f-4285-8d4b-75ee78787346|user_impersonation|
 
-### Application Insights の作成 (オプション)
+### Azure リソースの作成
 
-1. [Azure ポータル](https://portal.azure.com) に移動します。
+1. Azure CLI でリソースをデプロイします。
 
-2. **≡** - **リソースの作成** をクリックします。
-
-3. **Application Insights** を検索して **作成** をクリックします。
-
-4. 情報を入力して **確認および作成** をクリックします。
-
-    |項目|値|
-    |-|-|
-    |サブスクリプション|(Azure Web App と同じ)|
-    |リソース グループ|(Azure Web App と同じ)|
-    |名前|(選択可能)|
-    |地域|(Azure Web App と同じ)|
-    |リソース モード|ワークスペース ベース|
-    |Log Analytics ワークスペース|(選択可能)|
-
-5. **作成** をクリックして操作が完了するまで待機します。
+```
+az deployment group create --template-file ./bicep/main.bicep --resource-group <リソース グループ名> --parameters name=<アプリケーション名> microsoftAppId=<アプリケーション ID> microsoftAppPassword=<アプリケーション シークレット> microsoftAppTenantId=<テナント ID>
+```
 
 ### アプリケーションのビルド
 
@@ -151,22 +116,10 @@
     |プレースホルダー|置換|
     |-|-|
     |`{{MICROSOFT_APP_ID}}`|**アプリケーション ID**|
-    |`{{AZURE_WEB_APP_DOMAIN_NAME}}`|**Azure Web アプリのドメイン名**|
     |`{{MICROSOFT_TENANT_ID}}`|**テナント ID**|
     |`{{TELEMETRY_CONNECTION_STRING}}`|**Application Insights の接続文字列**|
 
-3. `source/server` フォルダーに移動します。
-
-4. `appsettings.json` ファイルを編集します。
-
-    |プレースホルダー|置換|
-    |-|-|
-    |`{{MICROSOFT_APP_ID}}`|**アプリケーション ID**|
-    |`{{MSAL_APP_SECRET}}`|**アプリケーション シークレット**|
-    |`{{MICROSOFT_TENANT_ID}}`|**テナント ID**|
-    |`{{TELEMETRY_CONNECTION_STRING}}`|**Application Insights の接続文字列**|
-
-5. アプリケーションをビルドします。
+3. アプリケーションをビルドします。
 
 ```
 dotnet publish --configuration Release
@@ -175,7 +128,7 @@ dotnet publish --configuration Release
 4. `publish` フォルダーの中身を圧縮します。
 
 ```
-Compress-Archive -Path ./bin/Release/net8.0/publish/* -DestinationPath ../../build.zip
+Compress-Archive -Path ./bin/Release/net10.0/publish/* -DestinationPath ../../build.zip
 ```
 
 ### マニフェスト

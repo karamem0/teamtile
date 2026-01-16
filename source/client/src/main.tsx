@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2021-2025 karamem0
+// Copyright (c) 2021-2026 karamem0
 //
 // This software is released under the MIT License.
 //
@@ -50,7 +50,7 @@ ReactDOM
                     <MsalProvider>
                       <ErrorBoundary
                         fallbackRender={(props) => (
-                          <Error500Page {...props} />
+                          <Error500Page error={props.error instanceof Error ? props.error : undefined} />
                         )}>
                         <Routes>
                           {

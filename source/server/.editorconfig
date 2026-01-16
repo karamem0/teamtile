@@ -264,7 +264,7 @@ csharp_blank_lines_after_block_statements = 0
 
 # Line Breaks preferences
 csharp_keep_user_linebreaks = false
-csharp_max_line_length = 0
+csharp_max_line_length = 160
 csharp_place_attribute_on_same_line = false
 csharp_insert_final_newline = true
 csharp_wrap_parameters_style = chop_if_long
