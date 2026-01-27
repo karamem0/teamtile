@@ -10,9 +10,9 @@ using Aspire.Hosting;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-var microsoftIdentityClientId = builder.AddParameter("MicrosoftIdentityClientId");
-var microsoftIdentityClientSecret = builder.AddParameter("MicrosoftIdentityClientSecret");
-var microsoftIdentityTenantId = builder.AddParameter("MicrosoftIdentityTenantId");
+var microsoftIdentityClientId = builder.AddParameterFromConfiguration("MicrosoftIdentityClientId", "MicrosoftIdentity:ClientId");
+var microsoftIdentityClientSecret = builder.AddParameterFromConfiguration("MicrosoftIdentityClientSecret", "MicrosoftIdentity:ClientSecret");
+var microsoftIdentityTenantId = builder.AddParameterFromConfiguration("MicrosoftIdentityTenantId", "MicrosoftIdentity:TenantId");
 
 _ = builder
     .AddProject<Projects.Karamem0_Teamtile_Web>("server")

@@ -9,9 +9,9 @@
 import React from 'react';
 
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import IntlProvider from '../../providers/IntlProvider';
 import ThemeProvider from '../../providers/ThemeProvider';
-import userEvent from '@testing-library/user-event';
 
 import Presenter from './Drawer.presenter';
 
@@ -21,8 +21,8 @@ it('should match the snapshot when the loading is true', () => {
     children: (
       <div data-testid="test-Children" />
     ),
-    mountNode: container,
     loading: true,
+    mountNode: container,
     open: true,
     title: (
       <div data-testid="test-Title" />
@@ -48,8 +48,8 @@ it('should match the snapshot when the loading is false', () => {
     children: (
       <div data-testid="test-Children" />
     ),
-    mountNode: container,
     loading: false,
+    mountNode: container,
     open: true,
     title: (
       <div data-testid="test-Title" />
@@ -77,8 +77,8 @@ it('should raise onOpenChange event when click a close button', async () => {
     children: (
       <div data-testid="test-Children" />
     ),
-    mountNode: container,
     loading: false,
+    mountNode: container,
     open: true,
     title: (
       <div data-testid="test-Title" />

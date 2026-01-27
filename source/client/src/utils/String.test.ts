@@ -100,8 +100,8 @@ describe('search', () => {
 
   it('should get true when the value contains the search string', () => {
     const param = {
-      value: 'foo bar baz',
-      match: 'bar'
+      match: 'bar',
+      value: 'foo bar baz'
     };
     const expected = true;
     const actual = search(param.value, param.match);
@@ -110,8 +110,8 @@ describe('search', () => {
 
   it('should get false when the value does not contain the search string', () => {
     const param = {
-      value: 'foo bar baz',
-      match: 'qux'
+      match: 'qux',
+      value: 'foo bar baz'
     };
     const expected = false;
     const actual = search(param.value, param.match);
@@ -120,8 +120,8 @@ describe('search', () => {
 
   it('should get false when the value is null', () => {
     const param = {
-      value: null,
-      match: 'bar'
+      match: 'bar',
+      value: null
     };
     const expected = false;
     const actual = search(param.value, param.match);
@@ -130,8 +130,8 @@ describe('search', () => {
 
   it('should get false when the value is undefined', () => {
     const param = {
-      value: undefined,
-      match: 'bar'
+      match: 'bar',
+      value: undefined
     };
     const expected = false;
     const actual = search(param.value, param.match);

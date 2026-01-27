@@ -9,11 +9,11 @@
 import React from 'react';
 
 import { app, appInstallDialog } from '@microsoft/teams-js';
+import { useIntl } from 'react-intl';
 import { useAsyncFn, useError } from 'react-use';
+import { useToast } from '../../../common/providers/ToastProvider';
 import { getTab } from '../managers/TeamManager';
 import messages from '../messages';
-import { useIntl } from 'react-intl';
-import { useSnackbar } from '../../../common/providers/SnackbarProvider';
 
 import Presenter from './CalendarMenuItem.presenter';
 
@@ -29,7 +29,7 @@ function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
     internalId
   } = props;
 
-  const { setSnackbar } = useSnackbar();
+  const dispatchToast = useToast();
   const dispatchError = useError();
   const [ state, fetch ] = useAsyncFn((teamId: string, channelId: string, appId: string) => getTab(teamId, channelId, appId));
   const intl = useIntl();
@@ -51,16 +51,13 @@ function CalendarMenuItem(props: Readonly<CalendarMenuItemProps>) {
       await appInstallDialog.openAppInstallDialog({ appId });
       return;
     }
-    setSnackbar({
-      intent: 'warning',
-      text: intl.formatMessage(messages.OperationNotSupported)
-    });
+    dispatchToast(intl.formatMessage(messages.OperationNotSupported), 'warning');
   }, [
     id,
     internalId,
     intl,
-    fetch,
-    setSnackbar
+    dispatchToast,
+    fetch
   ]);
 
   React.useEffect(() => {

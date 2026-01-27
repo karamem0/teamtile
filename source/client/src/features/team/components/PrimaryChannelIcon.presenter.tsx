@@ -8,12 +8,12 @@
 
 import React from 'react';
 
+import { css } from '@emotion/react';
 import { Text, Tooltip } from '@fluentui/react-components';
 import { Home16Regular } from '@fluentui/react-icons';
-import { css } from '@emotion/react';
-import messages from '../messages';
 import { useIntl } from 'react-intl';
 import { useTheme } from '../../../providers/ThemeProvider';
+import messages from '../messages';
 
 export interface PrimaryChannelIconProps {
   primary?: boolean

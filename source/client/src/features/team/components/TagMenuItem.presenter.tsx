@@ -8,11 +8,11 @@
 
 import React from 'react';
 
-import CardMenuItem from './CardMenuItem';
-import { EventHandler } from '../../../types/Event';
 import { Tag16Regular } from '@fluentui/react-icons';
-import messages from '../messages';
 import { useIntl } from 'react-intl';
+import { EventHandler } from '../../../types/Event';
+import messages from '../messages';
+import CardMenuItem from './CardMenuItem';
 
 interface TagMenuItemProps {
   onClick?: EventHandler

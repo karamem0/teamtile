@@ -8,13 +8,13 @@
 
 import React from 'react';
 
+import { useIntl } from 'react-intl';
+import { useDebounce } from 'react-use';
+import { useStore } from '../../../providers/StoreProvider';
 import { setFilter, setLoading } from '../../../stores/Action';
 import { Event } from '../../../types/Event';
 import { clearCache } from '../managers/TeamManager';
 import messages from '../messages';
-import { useDebounce } from 'react-use';
-import { useIntl } from 'react-intl';
-import { useStore } from '../../../providers/StoreProvider';
 
 import Presenter from './TeamPanel.presenter';
 

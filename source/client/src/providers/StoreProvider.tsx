@@ -8,8 +8,8 @@
 
 import React from 'react';
 
-import { Action, State } from '../types/Store';
 import { reducer } from '../stores/Reducer';
+import { Action, State } from '../types/Store';
 
 interface StoreContextState {
   dispatch: React.Dispatch<Action>,

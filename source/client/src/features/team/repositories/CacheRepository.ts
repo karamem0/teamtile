@@ -6,6 +6,7 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import { getConfig } from '../../../config/CacheConfig';
 import {
   ArrayEntity,
   Entity,
@@ -21,7 +22,6 @@ import {
   Team
 } from '../../../types/Entity';
 import { getArray, getValue } from '../../../utils/Dexie';
-import { getConfig } from '../../../config/CacheConfig';
 
 export async function clearAll(): Promise<void> {
   const { database } = getConfig();
@@ -47,8 +47,8 @@ export async function getChannels(id: string, expired?: boolean, timestamp?: num
 export async function setChannels(id: string, values: Channel[], timestamp = Date.now()): Promise<void> {
   const { database, timeout } = getConfig();
   await database.table<ArrayEntity<Channel>>('channels').put({
-    id,
     expired: timestamp + (timeout * 1000),
+    id,
     values
   });
 }
@@ -63,8 +63,8 @@ export async function getDrive(id: string, expired?: boolean, timestamp = Date.n
 export async function setDrive(id: string, value: Drive, timestamp = Date.now()): Promise<void> {
   const { database, timeout } = getConfig();
   await database.table<ValueEntity<Drive>>('drives').put({
-    id,
     expired: timestamp + (timeout * 1000),
+    id,
     value
   });
 }
@@ -79,8 +79,8 @@ export async function getGroup(id: string, expired?: boolean, timestamp = Date.n
 export async function setGroup(id: string, value: Group, timestamp = Date.now()): Promise<void> {
   const { database, timeout } = getConfig();
   await database.table<ValueEntity<Group>>('groups').put({
-    id,
     expired: timestamp + (timeout * 1000),
+    id,
     value
   });
 }
@@ -96,8 +96,8 @@ export async function getIcon(id: string, expired?: boolean, timestamp = Date.no
 export async function setIcon(id: string, value: Icon, timestamp = Date.now()): Promise<void> {
   const { database, timeout } = getConfig();
   await database.table<ValueEntity<Icon | undefined>>('icons').put({
-    id,
     expired: timestamp + (timeout * 1000),
+    id,
     value
   });
 }
@@ -112,8 +112,8 @@ export async function getMembers(id: string, expired?: boolean, timestamp?: numb
 export async function setMembers(id: string, values: Member[], timestamp = Date.now()): Promise<void> {
   const { database, timeout } = getConfig();
   await database.table<ArrayEntity<Member>>('members').put({
-    id,
     expired: timestamp + (timeout * 1000),
+    id,
     values
   });
 }
@@ -142,8 +142,8 @@ export async function getOwners(id: string, expired?: boolean, timestamp?: numbe
 export async function setOwners(id: string, values: Member[], timestamp = Date.now()): Promise<void> {
   const { database, timeout } = getConfig();
   await database.table<ArrayEntity<Member>>('owners').put({
-    id,
     expired: timestamp + (timeout * 1000),
+    id,
     values
   });
 }
@@ -158,8 +158,8 @@ export async function getTags(id: string, expired?: boolean, timestamp = Date.no
 export async function setTags(id: string, values: Tag[], timestamp = Date.now()): Promise<void> {
   const { database, timeout } = getConfig();
   await database.table<ArrayEntity<Tag>>('tags').put({
-    id,
     expired: timestamp + (timeout * 1000),
+    id,
     values
   });
 }
@@ -174,8 +174,8 @@ export async function getTagMembers(id: string, expired?: boolean, timestamp = D
 export async function setTagMembers(id: string, values: Member[], timestamp = Date.now()): Promise<void> {
   const { database, timeout } = getConfig();
   await database.table<ArrayEntity<Member>>('tagmembers').put({
-    id,
     expired: timestamp + (timeout * 1000),
+    id,
     values
   });
 }
@@ -190,8 +190,8 @@ export async function getTeam(id: string, expired?: boolean, timestamp = Date.no
 export async function setTeam(id: string, value: Team, timestamp = Date.now()): Promise<void> {
   const { database, timeout } = getConfig();
   await database.table<ValueEntity<Team>>('teams').put({
-    id,
     expired: timestamp + (timeout * 1000),
+    id,
     value
   });
 }

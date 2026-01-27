@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { ArrowClockwise16Regular, MoreVertical16Regular } from '@fluentui/react-icons';
+import { css } from '@emotion/react';
 import {
   Button,
   Menu,
@@ -20,13 +20,13 @@ import {
   MenuTrigger,
   SearchBox
 } from '@fluentui/react-components';
-import { FormattedMessage, useIntl } from 'react-intl';
-import DrawerFactory from './DrawerFactory';
-import { EventHandler } from '../../../types/Event';
+import { ArrowClockwise16Regular, MoreVertical16Regular } from '@fluentui/react-icons';
 import { GrGithub } from 'react-icons/gr';
-import TeamGrid from './TeamGrid';
-import { css } from '@emotion/react';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { EventHandler } from '../../../types/Event';
 import messages from '../messages';
+import DrawerFactory from './DrawerFactory';
+import TeamGrid from './TeamGrid';
 
 interface TeamPanelProps {
   onFilterChange?: EventHandler<string>,

@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import { css } from '@emotion/react';
 import {
   Button,
   DrawerBody,
@@ -18,7 +19,6 @@ import {
 } from '@fluentui/react-components';
 import { Dismiss16Regular } from '@fluentui/react-icons';
 import { EventHandler } from '../../types/Event';
-import { css } from '@emotion/react';
 
 interface DrawerProps {
   loading?: boolean,

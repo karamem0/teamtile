@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import { css } from '@emotion/react';
 import {
   AccordionHeader,
   AccordionItem,
@@ -16,21 +17,20 @@ import {
 import { FormattedMessage } from 'react-intl';
 import GridLayout from '../../../common/components/GridLayout';
 import { TeamCard } from '../../../types/Store';
-import TeamGridItem from './TeamGridItem';
-import { css } from '@emotion/react';
 import messages from '../messages';
+import TeamGridItem from './TeamGridItem';
 
 interface TeamAccordionItemProps {
-  header?: React.ReactNode,
   cards?: TeamCard[],
+  header?: React.ReactNode,
   value?: unknown
 }
 
 function TeamAccordionItem(props: Readonly<TeamAccordionItemProps>) {
 
   const {
-    header,
     cards,
+    header,
     value
   } = props;
 
@@ -49,8 +49,8 @@ function TeamAccordionItem(props: Readonly<TeamAccordionItemProps>) {
               {
                 cards.map((card) => (
                   <TeamGridItem
-                    key={card.id}
-                    card={card} />
+                    card={card}
+                    key={card.id} />
                 ))
               }
             </GridLayout>

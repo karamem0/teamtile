@@ -9,8 +9,8 @@
 import { VisibilityType } from './Entity';
 
 export interface Action {
-  type: ActionType,
-  payload: unknown
+  payload: unknown,
+  type: ActionType
 }
 
 export type ActionType =
@@ -37,13 +37,13 @@ export interface TeamCard {
 }
 
 export interface TeamProps {
-  id: string,
   archived?: boolean,
   description?: string,
   displayName?: string,
   email?: string,
   guestsCount?: number,
   icon?: string,
+  id: string,
   internalId?: string,
   membersCount?: number,
   ownersCount?: number,

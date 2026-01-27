@@ -9,9 +9,9 @@
 import React from 'react';
 
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import IntlProvider from '../../../providers/IntlProvider';
 import ThemeProvider from '../../../providers/ThemeProvider';
-import userEvent from '@testing-library/user-event';
 
 import Presenter from './MemberDrawer.presenter';
 
@@ -29,10 +29,10 @@ it('should match the snapshot when the items is not undefined', () => {
   const params = {
     items: [
       {
-        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
         displayName: 'Adele Vance',
-        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-        email: 'AdeleV@M365x214355.onmicrosoft.com'
+        email: 'AdeleV@M365x214355.onmicrosoft.com',
+        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
       }
     ]
   };
@@ -80,10 +80,10 @@ it('should raise onClick event when click an item', async () => {
   const params = {
     items: [
       {
-        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
         displayName: 'Adele Vance',
-        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-        email: 'AdeleV@M365x214355.onmicrosoft.com'
+        email: 'AdeleV@M365x214355.onmicrosoft.com',
+        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
       }
     ],
     onClick: mock
@@ -105,10 +105,10 @@ it('should raise onFilterChange event when enter text in search box', async () =
   const params = {
     items: [
       {
-        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
         displayName: 'Adele Vance',
-        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-        email: 'AdeleV@M365x214355.onmicrosoft.com'
+        email: 'AdeleV@M365x214355.onmicrosoft.com',
+        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
       }
     ],
     onFilterChange: mock

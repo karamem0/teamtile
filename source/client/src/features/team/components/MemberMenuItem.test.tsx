@@ -9,9 +9,9 @@
 import React from 'react';
 
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import IntlProvider from '../../../providers/IntlProvider';
 import ThemeProvider from '../../../providers/ThemeProvider';
-import userEvent from '@testing-library/user-event';
 
 import Presenter from './MemberMenuItem.presenter';
 

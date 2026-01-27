@@ -8,9 +8,9 @@
 
 import React from 'react';
 
-import { setPin } from '../managers/TeamManager';
-import { togglePin } from '../../../stores/Action';
 import { useStore } from '../../../providers/StoreProvider';
+import { togglePin } from '../../../stores/Action';
+import { setPin } from '../managers/TeamManager';
 
 import Presenter from './PinMenuItem.presenter';
 

@@ -8,8 +8,8 @@
 
 import React from 'react';
 
-import { EventHandler } from '../../../types/Event';
 import { MenuItem } from '@fluentui/react-components';
+import { EventHandler } from '../../../types/Event';
 
 interface CardMenuItemProps {
   icon?: React.ReactElement,

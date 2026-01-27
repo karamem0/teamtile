@@ -8,11 +8,11 @@
 
 import React from 'react';
 
-import CardMenuItem from './CardMenuItem';
 import { Channel16Regular } from '@fluentui/react-icons';
+import { useIntl } from 'react-intl';
 import { EventHandler } from '../../../types/Event';
 import messages from '../messages';
-import { useIntl } from 'react-intl';
+import CardMenuItem from './CardMenuItem';
 
 interface ChannelMenuItemProps {
   onClick?: EventHandler

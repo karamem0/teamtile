@@ -6,8 +6,7 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import * as cacheService from '../repositories/CacheRepository';
-import * as graphService from '../repositories/GraphRepository';
+import merge from 'deepmerge';
 import {
   Channel,
   Drive,
@@ -15,6 +14,11 @@ import {
   Tab,
   Tag
 } from '../../../types/Entity';
+import { TeamCard } from '../../../types/Store';
+import {
+  mergeCards,
+  mergeMembers
+} from '../../../utils/Merge';
 import {
   mapCardFromGroup,
   mapCardFromIcon,
@@ -22,12 +26,8 @@ import {
   mapCardFromTeamInfo,
   mapMemberFromIcon
 } from '../mappings/AutoMapperProfile';
-import {
-  mergeCards,
-  mergeMembers
-} from '../../../utils/Merge';
-import { TeamCard } from '../../../types/Store';
-import merge from 'deepmerge';
+import * as cacheService from '../repositories/CacheRepository';
+import * as graphService from '../repositories/GraphRepository';
 
 export async function clearCache(): Promise<void> {
   return await cacheService.clearAll();

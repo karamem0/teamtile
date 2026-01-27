@@ -8,8 +8,8 @@
 
 import React from 'react';
 
-import ChannelDrawer from './ChannelDrawer';
 import { DrawerType } from '../../../types/Drawer';
+import ChannelDrawer from './ChannelDrawer';
 import MemberDrawer from './MemberDrawer';
 import TagDrawer from './TagDrawer';
 

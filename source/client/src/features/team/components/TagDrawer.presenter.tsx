@@ -8,14 +8,14 @@
 
 import React from 'react';
 
+import { css } from '@emotion/react';
 import { Accordion, AccordionToggleData } from '@fluentui/react-components';
 import { FormattedMessage, useIntl } from 'react-intl';
 import Drawer from '../../../common/components/Drawer';
-import { EventHandler } from '../../../types/Event';
 import { Tag } from '../../../types/Entity';
-import TagMemberAccordionItem from './TagMemberAccordionItem';
-import { css } from '@emotion/react';
+import { EventHandler } from '../../../types/Event';
 import messages from '../messages';
+import TagMemberAccordionItem from './TagMemberAccordionItem';
 
 interface TagDrawerProps {
   id?: string,
@@ -64,8 +64,8 @@ function TagDrawer(props: Readonly<TagDrawerProps>) {
               {
                 items.length > 0 ? items.map((item) => (
                   <TagMemberAccordionItem
-                    key={item.id}
                     id={id}
+                    key={item.id}
                     open={openItems?.some((openItem) => openItem.id === item.id)}
                     tag={item} />
                 )) : (

@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import { css } from '@emotion/react';
 import {
   AccordionHeader,
   AccordionItem,
@@ -15,10 +16,9 @@ import {
   Spinner,
   Text
 } from '@fluentui/react-components';
+import { useTheme } from '../../../providers/ThemeProvider';
 import { Member, Tag } from '../../../types/Entity';
 import AvatarIcon from './AvatarIcon';
-import { css } from '@emotion/react';
-import { useTheme } from '../../../providers/ThemeProvider';
 
 interface TagMemberAccordionItemProps {
   loading?: boolean,

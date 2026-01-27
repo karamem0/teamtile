@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import { css } from '@emotion/react';
 import {
   FluentProvider as Provider,
   Theme,
@@ -17,10 +18,16 @@ import {
   teamsLightTheme
 } from '@fluentui/react-components';
 import { app } from '@microsoft/teams-js';
-import { css } from '@emotion/react';
 
 const customThemePalette = {
   10: '#020303',
+  100: '#5f869a',
+  110: '#6995ab',
+  120: '#73a4bd',
+  130: '#7db3cf',
+  140: '#87c3e1',
+  150: '#96d2f1',
+  160: '#b6dff5',
   20: '#14181a',
   30: '#1f282c',
   40: '#27343a',
@@ -28,14 +35,7 @@ const customThemePalette = {
   60: '#394e58',
   70: '#425b68',
   80: '#4c6978',
-  90: '#557889',
-  100: '#5f869a',
-  110: '#6995ab',
-  120: '#73a4bd',
-  130: '#7db3cf',
-  140: '#87c3e1',
-  150: '#96d2f1',
-  160: '#b6dff5'
+  90: '#557889'
 };
 
 const customTheme = createLightTheme(customThemePalette);

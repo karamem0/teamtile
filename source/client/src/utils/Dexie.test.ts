@@ -15,8 +15,8 @@ describe('getArray', () => {
     const item = {
       expired: true,
       item: {
-        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         expired: 0,
+        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         values: [
           {
             id: '48d5b87e-bfff-4195-9685-3ee7afd43d48'
@@ -38,8 +38,8 @@ describe('getArray', () => {
     const item = {
       expired: true,
       item: {
-        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         expired: 1,
+        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         values: [
           {
             id: '48d5b87e-bfff-4195-9685-3ee7afd43d48'
@@ -56,8 +56,8 @@ describe('getArray', () => {
     const item = {
       expired: false,
       item: {
-        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         expired: 1,
+        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         values: [
           {
             id: '48d5b87e-bfff-4195-9685-3ee7afd43d48'
@@ -79,8 +79,8 @@ describe('getArray', () => {
     const item = {
       expired: false,
       item: {
-        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         expired: 0,
+        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         values: [
           {
             id: '48d5b87e-bfff-4195-9685-3ee7afd43d48'
@@ -97,8 +97,8 @@ describe('getArray', () => {
     const item = {
       expired: undefined,
       item: {
-        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         expired: 0,
+        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         values: [
           {
             id: '48d5b87e-bfff-4195-9685-3ee7afd43d48'
@@ -135,8 +135,8 @@ describe('getValue', () => {
     const item = {
       expired: true,
       item: {
-        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         expired: 0,
+        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         value: {
           id: '48d5b87e-bfff-4195-9685-3ee7afd43d48'
         }
@@ -154,8 +154,8 @@ describe('getValue', () => {
     const item = {
       expired: true,
       item: {
-        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         expired: 1,
+        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         value: {
           id: '48d5b87e-bfff-4195-9685-3ee7afd43d48'
         }
@@ -170,8 +170,8 @@ describe('getValue', () => {
     const item = {
       expired: false,
       item: {
-        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         expired: 1,
+        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         value: {
           id: '48d5b87e-bfff-4195-9685-3ee7afd43d48'
         }
@@ -189,8 +189,8 @@ describe('getValue', () => {
     const item = {
       expired: false,
       item: {
-        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         expired: 0,
+        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         value: {
           id: '48d5b87e-bfff-4195-9685-3ee7afd43d48'
         }
@@ -205,8 +205,8 @@ describe('getValue', () => {
     const item = {
       expired: undefined,
       item: {
-        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         expired: 0,
+        id: '48d5b87e-bfff-4195-9685-3ee7afd43d48',
         value: {
           id: '48d5b87e-bfff-4195-9685-3ee7afd43d48'
         }

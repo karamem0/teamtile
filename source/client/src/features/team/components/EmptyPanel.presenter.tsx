@@ -8,13 +8,13 @@
 
 import React from 'react';
 
-import { Button, Text } from '@fluentui/react-components';
-import CenterLayout from '../../../common/components/CenterLayout';
-import { EventHandler } from '../../../types/Event';
-import { FormattedMessage } from 'react-intl';
 import { css } from '@emotion/react';
-import messages from '../messages';
+import { Button, Text } from '@fluentui/react-components';
+import { FormattedMessage } from 'react-intl';
+import CenterLayout from '../../../common/components/CenterLayout';
 import { useTheme } from '../../../providers/ThemeProvider';
+import { EventHandler } from '../../../types/Event';
+import messages from '../messages';
 
 interface EmptyPanelProps {
   onClick?: EventHandler

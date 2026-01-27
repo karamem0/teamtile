@@ -8,12 +8,12 @@
 
 import React from 'react';
 
-import { useAsyncFn, useError } from 'react-use';
 import { app } from '@microsoft/teams-js';
+import { useIntl } from 'react-intl';
+import { useAsyncFn, useError } from 'react-use';
+import { useToast } from '../../../common/providers/ToastProvider';
 import { getDrive } from '../managers/TeamManager';
 import messages from '../messages';
-import { useIntl } from 'react-intl';
-import { useSnackbar } from '../../../common/providers/SnackbarProvider';
 
 import Presenter from './DriveMenuItem.presenter';
 
@@ -25,7 +25,7 @@ function DriveMenuItem(props: Readonly<DriveMenuItemProps>) {
 
   const { id } = props;
 
-  const { setSnackbar } = useSnackbar();
+  const dispatchToast = useToast();
   const dispatchError = useError();
   const [ state, fetch ] = useAsyncFn((teamId: string) => getDrive(teamId));
   const intl = useIntl();
@@ -39,15 +39,12 @@ function DriveMenuItem(props: Readonly<DriveMenuItemProps>) {
       app.openLink(value.webUrl);
       return;
     }
-    setSnackbar({
-      intent: 'warning',
-      text: intl.formatMessage(messages.OpenLinkError)
-    });
+    dispatchToast(intl.formatMessage(messages.OpenLinkError), 'warning');
   }, [
     id,
     intl,
-    fetch,
-    setSnackbar
+    dispatchToast,
+    fetch
   ]);
 
   React.useEffect(() => {

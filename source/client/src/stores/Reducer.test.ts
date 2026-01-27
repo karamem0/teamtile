@@ -19,49 +19,49 @@ describe('setFilter', () => {
 
   it('should set the filter for the cards', () => {
     const param = {
+      data: 'foo',
       state: {
         cards: [
           {
             id: '1',
             team: {
-              id: '1',
+              description: 'foo',
               displayName: 'foo',
-              description: 'foo'
+              id: '1'
             },
             visible: true
           },
           {
             id: '2',
             team: {
-              id: '2',
+              description: 'bar',
               displayName: 'bar',
-              description: 'bar'
+              id: '2'
             },
             visible: true
           }
         ],
         filter: undefined,
         loading: false
-      },
-      data: 'foo'
+      }
     };
     const expected = {
       cards: [
         {
           id: '1',
           team: {
-            id: '1',
+            description: 'foo',
             displayName: 'foo',
-            description: 'foo'
+            id: '1'
           },
           visible: true
         },
         {
           id: '2',
           team: {
-            id: '2',
+            description: 'bar',
             displayName: 'bar',
-            description: 'bar'
+            id: '2'
           },
           visible: false
         }
@@ -75,49 +75,49 @@ describe('setFilter', () => {
 
   it('should clear the filter for the cards', () => {
     const param = {
+      data: undefined,
       state: {
         cards: [
           {
             id: '1',
             team: {
-              id: '1',
+              description: 'foo',
               displayName: 'foo',
-              description: 'foo'
+              id: '1'
             },
             visible: true
           },
           {
             id: '2',
             team: {
-              id: '2',
+              description: 'bar',
               displayName: 'bar',
-              description: 'bar'
+              id: '2'
             },
             visible: false
           }
         ],
         filter: 'foo',
         loading: false
-      },
-      data: undefined
+      }
     };
     const expected = {
       cards: [
         {
           id: '1',
           team: {
-            id: '1',
+            description: 'foo',
             displayName: 'foo',
-            description: 'foo'
+            id: '1'
           },
           visible: true
         },
         {
           id: '2',
           team: {
-            id: '2',
+            description: 'bar',
             displayName: 'bar',
-            description: 'bar'
+            id: '2'
           },
           visible: true
         }
@@ -135,27 +135,27 @@ describe('setCard', () => {
 
   it('should update the card in the state', () => {
     const param = {
+      data: {
+        id: '1',
+        team: {
+          description: 'bar',
+          displayName: 'bar',
+          id: '1'
+        }
+      },
       state: {
         cards: [
           {
             id: '1',
             team: {
-              id: '1',
+              description: 'foo',
               displayName: 'foo',
-              description: 'foo'
+              id: '1'
             }
           }
         ],
         filter: undefined,
         loading: false
-      },
-      data: {
-        id: '1',
-        team: {
-          id: '1',
-          displayName: 'bar',
-          description: 'bar'
-        }
       }
     };
     const expected = {
@@ -163,9 +163,9 @@ describe('setCard', () => {
         {
           id: '1',
           team: {
-            id: '1',
+            description: 'bar',
             displayName: 'bar',
-            description: 'bar'
+            id: '1'
           }
         }
       ],
@@ -178,30 +178,30 @@ describe('setCard', () => {
 
   it('should not update the state when the data is undefined', () => {
     const param = {
+      data: undefined,
       state: {
         cards: [
           {
             id: '1',
             team: {
-              id: '1',
+              description: 'foo',
               displayName: 'foo',
-              description: 'foo'
+              id: '1'
             }
           }
         ],
         filter: undefined,
         loading: false
-      },
-      data: undefined
+      }
     };
     const expected = {
       cards: [
         {
           id: '1',
           team: {
-            id: '1',
+            description: 'foo',
             displayName: 'foo',
-            description: 'foo'
+            id: '1'
           }
         }
       ],
@@ -218,48 +218,48 @@ describe('setCards', () => {
 
   it('should replace the cards in the state', () => {
     const param = {
+      data: [
+        {
+          id: '3',
+          team: {
+            description: 'baz',
+            displayName: 'baz',
+            id: '3'
+          }
+        }
+      ],
       state: {
         cards: [
           {
             id: '1',
             team: {
-              id: '1',
+              description: 'foo',
               displayName: 'foo',
-              description: 'foo'
+              id: '1'
             }
           },
           {
             id: '2',
             team: {
-              id: '2',
+              description: 'bar',
               displayName: 'bar',
-              description: 'bar'
+              id: '2'
             },
             visible: true
           }
         ],
         filter: undefined,
         loading: false
-      },
-      data: [
-        {
-          id: '3',
-          team: {
-            id: '3',
-            displayName: 'baz',
-            description: 'baz'
-          }
-        }
-      ]
+      }
     };
     const expected = {
       cards: [
         {
           id: '3',
           team: {
-            id: '3',
+            description: 'baz',
             displayName: 'baz',
-            description: 'baz'
+            id: '3'
           }
         }
       ],
@@ -272,47 +272,47 @@ describe('setCards', () => {
 
   it('should not update the state when the data is undefined', () => {
     const param = {
+      data: undefined,
       state: {
         cards: [
           {
             id: '1',
             team: {
-              id: '1',
+              description: 'foo',
               displayName: 'foo',
-              description: 'foo'
+              id: '1'
             }
           },
           {
             id: '2',
             team: {
-              id: '2',
+              description: 'bar',
               displayName: 'bar',
-              description: 'bar'
+              id: '2'
             },
             visible: true
           }
         ],
         filter: undefined,
         loading: false
-      },
-      data: undefined
+      }
     };
     const expected = {
       cards: [
         {
           id: '1',
           team: {
-            id: '1',
+            description: 'foo',
             displayName: 'foo',
-            description: 'foo'
+            id: '1'
           }
         },
         {
           id: '2',
           team: {
-            id: '2',
+            description: 'bar',
             displayName: 'bar',
-            description: 'bar'
+            id: '2'
           },
           visible: true
         }
@@ -330,12 +330,12 @@ describe('setLoading', () => {
 
   it('should update the loading state', () => {
     const param = {
+      data: true,
       state: {
         cards: [],
         filter: undefined,
         loading: false
-      },
-      data: true
+      }
     };
     const expected = {
       cards: [],
@@ -348,12 +348,12 @@ describe('setLoading', () => {
 
   it('should not update the state when the data is undefined', () => {
     const param = {
+      data: undefined,
       state: {
         cards: [],
         filter: undefined,
         loading: false
-      },
-      data: undefined
+      }
     };
     const expected = {
       cards: [],
@@ -370,33 +370,33 @@ describe('togglePin', () => {
 
   it('should toggle the pinned state of the card', () => {
     const param = {
+      data: '1',
       state: {
         cards: [
           {
             id: '1',
+            pinned: false,
             team: {
-              id: '1',
+              description: 'foo',
               displayName: 'foo',
-              description: 'foo'
-            },
-            pinned: false
+              id: '1'
+            }
           }
         ],
         filter: undefined,
         loading: false
-      },
-      data: '1'
+      }
     };
     const expected = {
       cards: [
         {
           id: '1',
+          pinned: true,
           team: {
-            id: '1',
+            description: 'foo',
             displayName: 'foo',
-            description: 'foo'
-          },
-          pinned: true
+            id: '1'
+          }
         }
       ],
       filter: undefined,
@@ -408,33 +408,33 @@ describe('togglePin', () => {
 
   it('should not update the state when the data is undefined', () => {
     const param = {
+      data: undefined,
       state: {
         cards: [
           {
             id: '1',
+            pinned: false,
             team: {
-              id: '1',
+              description: 'foo',
               displayName: 'foo',
-              description: 'foo'
-            },
-            pinned: false
+              id: '1'
+            }
           }
         ],
         filter: undefined,
         loading: false
-      },
-      data: undefined
+      }
     };
     const expected = {
       cards: [
         {
           id: '1',
+          pinned: false,
           team: {
-            id: '1',
+            description: 'foo',
             displayName: 'foo',
-            description: 'foo'
-          },
-          pinned: false
+            id: '1'
+          }
         }
       ],
       filter: undefined,

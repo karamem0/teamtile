@@ -8,18 +8,18 @@
 
 import React from 'react';
 
+import { css } from '@emotion/react';
 import {
   Button,
   Image,
   Link,
   Text
 } from '@fluentui/react-components';
-import { FormattedMessage, useIntl } from 'react-intl';
-import { EventHandler } from '../../../types/Event';
 import { GrGithub } from 'react-icons/gr';
-import { css } from '@emotion/react';
-import messages from '../messages';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { useTheme } from '../../../providers/ThemeProvider';
+import { EventHandler } from '../../../types/Event';
+import messages from '../messages';
 
 interface HomePageProps {
   onLinkClick?: EventHandler<string>

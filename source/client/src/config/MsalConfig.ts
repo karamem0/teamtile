@@ -15,8 +15,8 @@ export const msalConfig = {
     knownAuthorities: [
       import.meta.env.VITE_MSAL_AUTHORITY
     ],
-    redirectUri: `${window.location.origin}/auth/callback`,
-    navigateToLoginRequestUrl: false
+    navigateToLoginRequestUrl: false,
+    redirectUri: `${window.location.origin}/auth/callback`
   },
   cache: {
     cacheLocation: BrowserCacheLocation.SessionStorage

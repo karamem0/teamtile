@@ -30,8 +30,8 @@ function TeamsAuthenticator(props: Readonly<React.PropsWithChildren>) {
         }
       } catch (error) {
         app.notifyFailure({
-          reason: app.FailedReason.AuthFailed,
-          message: error instanceof Error ? error.message : Object.prototype.toString.call(error)
+          message: error instanceof Error ? error.message : Object.prototype.toString.call(error),
+          reason: app.FailedReason.AuthFailed
         });
       } finally {
         setLoading(false);

@@ -9,26 +9,26 @@
 import { Action, TeamCard } from '../types/Store';
 
 export const setFilter = (payload?: string): Action => ({
-  type: 'setFilter',
-  payload
+  payload,
+  type: 'setFilter'
 });
 
 export const setCard = (payload?: TeamCard): Action => ({
-  type: 'setCard',
-  payload
+  payload,
+  type: 'setCard'
 });
 
 export const setCards = (payload?: TeamCard[]): Action => ({
-  type: 'setCards',
-  payload
+  payload,
+  type: 'setCards'
 });
 
 export const setLoading = (payload?: boolean): Action => ({
-  type: 'setLoading',
-  payload
+  payload,
+  type: 'setLoading'
 });
 
 export const togglePin = (payload?: string): Action => ({
-  type: 'togglePin',
-  payload
+  payload,
+  type: 'togglePin'
 });

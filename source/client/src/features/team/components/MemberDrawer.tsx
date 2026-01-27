@@ -8,17 +8,17 @@
 
 import React from 'react';
 
+import { app } from '@microsoft/teams-js';
 import {
   useAsyncFn,
   useDebounce,
   useError
 } from 'react-use';
-import { Event } from '../../../types/Event';
-import { Member } from '../../../types/Entity';
-import { app } from '@microsoft/teams-js';
-import { getMembers } from '../managers/TeamManager';
-import { search } from '../../../utils/String';
 import { useDrawer } from '../../../common/providers/DrawerProvider';
+import { Member } from '../../../types/Entity';
+import { Event } from '../../../types/Event';
+import { search } from '../../../utils/String';
+import { getMembers } from '../managers/TeamManager';
 
 import Presenter from './MemberDrawer.presenter';
 

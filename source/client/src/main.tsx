@@ -10,28 +10,27 @@ import React from 'react';
 
 import ReactDOM from 'react-dom/client';
 
-import * as ress from 'ress';
+import { Global, css } from '@emotion/react';
+import { ErrorBoundary } from 'react-error-boundary';
 import {
   BrowserRouter,
   Route,
   Routes
 } from 'react-router-dom';
-import { Global, css } from '@emotion/react';
-import DrawerProvider from './common/providers/DrawerProvider';
-import Error404Page from './features/error/pages/Error404Page';
-import Error500Page from './features/error/pages/Error500Page';
-import { ErrorBoundary } from 'react-error-boundary';
-import HomePage from './features/home/pages/HomePage';
-import IntlProvider from './providers/IntlProvider';
-import LoginCallbackPage from './features/auth/pages/LoginCallbackPage';
-import LoginRedirectPage from './features/auth/pages/LoginRedirectPage';
-import MsalProvider from './providers/MsalProvider';
-import Snackbar from './common/components/Snackbar';
-import SnackbarProvider from './common/providers/SnackbarProvider';
-import StoreProvider from './providers/StoreProvider';
-import TeamPage from './features/team/pages/TeamPage';
+import * as ress from 'ress';
 import TeamsAuthenticator from './common/components/TeamsAuthenticator';
 import TeamsInitializer from './common/components/TeamsInitializer';
+import DrawerProvider from './common/providers/DrawerProvider';
+import ToastProvider from './common/providers/ToastProvider';
+import LoginCallbackPage from './features/auth/pages/LoginCallbackPage';
+import LoginRedirectPage from './features/auth/pages/LoginRedirectPage';
+import Error404Page from './features/error/pages/Error404Page';
+import Error500Page from './features/error/pages/Error500Page';
+import HomePage from './features/home/pages/HomePage';
+import TeamPage from './features/team/pages/TeamPage';
+import IntlProvider from './providers/IntlProvider';
+import MsalProvider from './providers/MsalProvider';
+import StoreProvider from './providers/StoreProvider';
 import TelemetryProvider from './providers/TelemetryProvider';
 import ThemeProvider from './providers/ThemeProvider';
 
@@ -67,12 +66,11 @@ ReactDOM
                                   `}>
                                     <TeamsAuthenticator>
                                       <StoreProvider>
-                                        <SnackbarProvider>
+                                        <ToastProvider>
                                           <DrawerProvider>
-                                            <Snackbar />
                                             <TeamPage />
                                           </DrawerProvider>
-                                        </SnackbarProvider>
+                                        </ToastProvider>
                                       </StoreProvider>
                                     </TeamsAuthenticator>
                                   </div>

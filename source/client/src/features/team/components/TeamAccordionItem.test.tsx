@@ -9,9 +9,9 @@
 import React from 'react';
 
 import { Accordion } from '@fluentui/react-components';
+import { render } from '@testing-library/react';
 import IntlProvider from '../../../providers/IntlProvider';
 import { VisibilityType } from '../../../types/Entity';
-import { render } from '@testing-library/react';
 
 import Presenter from './TeamAccordionItem.presenter';
 
@@ -29,13 +29,13 @@ it('should match the snapshot', () => {
     items: [
       {
         id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-        pinned: true,
         loading: false,
+        pinned: true,
         value: {
-          id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
           archived: false,
-          displayName: 'HR Taskforce',
           description: 'Welcome to the HR Taskforce team.',
+          displayName: 'HR Taskforce',
+          id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
           internalId: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
           sensitivityLabel: 'Restricted',
           visibility: 'private' as VisibilityType,

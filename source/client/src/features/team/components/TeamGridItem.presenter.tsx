@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import { css } from '@emotion/react';
 import {
   Button,
   Card,
@@ -25,22 +26,21 @@ import {
   PersonGuest16Regular,
   PersonRibbon16Regular
 } from '@fluentui/react-icons';
+import { useIntl } from 'react-intl';
+import { useTheme } from '../../../providers/ThemeProvider';
+import { EventHandler } from '../../../types/Event';
+import { TeamCard } from '../../../types/Store';
+import messages from '../messages';
 import AvatarIcon from './AvatarIcon';
 import CalendarMenuItem from './CalendarMenuItem';
 import ChannelMenuItem from './ChannelMenuItem';
 import DriveMenuItem from './DriveMenuItem';
-import { EventHandler } from '../../../types/Event';
 import MemberMenuItem from './MemberMenuItem';
 import PinMenuItem from './PinMenuItem';
 import SensitivityLabel from './SensitivityLabel';
 import SummaryIcon from './SummaryIcon';
 import TagMenuItem from './TagMenuItem';
-import { TeamCard } from '../../../types/Store';
 import VisibilityIcon from './VisibilityIcon';
-import { css } from '@emotion/react';
-import messages from '../messages';
-import { useIntl } from 'react-intl';
-import { useTheme } from '../../../providers/ThemeProvider';
 
 interface TeamGridItemProps {
   card: TeamCard,

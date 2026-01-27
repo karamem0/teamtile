@@ -8,10 +8,10 @@
 
 import React from 'react';
 
-import CenterLayout from '../../../common/components/CenterLayout';
 import { Spinner } from '@fluentui/react-components';
-import messages from '../messages';
 import { useIntl } from 'react-intl';
+import CenterLayout from '../../../common/components/CenterLayout';
+import messages from '../messages';
 
 function LoginCallbackPage() {
 

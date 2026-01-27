@@ -7,16 +7,14 @@
 //
 
 import {
-  Channel,
-  Drive,
-  Group,
-  Icon,
-  Member,
-  Tab,
-  Tag,
-  Team,
-  TeamInfo
-} from '../../../types/Entity';
+  createMap,
+  createMapper,
+  forMember,
+  fromValue,
+  ignore,
+  mapFrom
+} from '@automapper/core';
+import { PojosMetadataMap, pojos } from '@automapper/pojos';
 import {
   TeamsApp as GraphApp,
   Channel as GraphChannel,
@@ -31,26 +29,28 @@ import {
   AssociatedTeamInfo as GraphTeamInfo,
   TeamSummary as GraphTeamSummary
 } from '@microsoft/microsoft-graph-types';
-import { PojosMetadataMap, pojos } from '@automapper/pojos';
-import { TeamCard, TeamProps } from '../../../types/Store';
 import {
-  createMap,
-  createMapper,
-  forMember,
-  fromValue,
-  ignore,
-  mapFrom
-} from '@automapper/core';
+  Channel,
+  Drive,
+  Group,
+  Icon,
+  Member,
+  Tab,
+  Tag,
+  Team,
+  TeamInfo
+} from '../../../types/Entity';
+import { TeamCard, TeamProps } from '../../../types/Store';
 
 const mapper = createMapper({
   strategyInitializer: pojos()
 });
 
 PojosMetadataMap.create<Channel>('Channel', {
-  id: String,
   displayName: String,
-  primary: Boolean,
+  id: String,
   membershipType: String,
+  primary: Boolean,
   webUrl: String
 });
 
@@ -60,8 +60,8 @@ PojosMetadataMap.create<Drive>('Drive', {
 });
 
 PojosMetadataMap.create<Group>('Group', {
-  id: String,
   email: String,
+  id: String,
   sensitivityLabel: String
 });
 
@@ -71,40 +71,40 @@ PojosMetadataMap.create<Icon>('Icon', {
 });
 
 PojosMetadataMap.create<Member>('Member', {
-  id: String,
   displayName: String,
   email: String,
+  id: String,
   role: String,
   userId: String
 });
 
 PojosMetadataMap.create<Tab>('Tab', {
-  id: String,
   appId: String,
   displayName: String,
+  id: String,
   webUrl: String
 });
 
 PojosMetadataMap.create<Tag>('Tag', {
-  id: String,
   description: String,
   displayName: String,
+  id: String,
   memberCount: Number
 });
 
 PojosMetadataMap.create<Team>('Team', {
-  id: String,
   archived: Boolean,
   description: String,
   displayName: String,
+  id: String,
   internalId: String,
   visibility: String,
   webUrl: String
 });
 
 PojosMetadataMap.create<TeamInfo>('TeamInfo', {
-  id: String,
   displayName: String,
+  id: String,
   tenantId: String
 });
 
@@ -113,8 +113,8 @@ PojosMetadataMap.create<GraphApp>('GraphApp', {
 });
 
 PojosMetadataMap.create<GraphChannel>('GraphChannel', {
-  id: String,
   displayName: String,
+  id: String,
   membershipType: String,
   webUrl: String
 });
@@ -125,9 +125,9 @@ PojosMetadataMap.create<GraphDrive>('GraphDrive', {
 });
 
 PojosMetadataMap.create<GraphGroup>('GraphGroup', {
+  assignedLabels: [ 'GraphLabel' ],
   id: String,
-  mail: String,
-  assignedLabels: [ 'GraphLabel' ]
+  mail: String
 });
 
 PojosMetadataMap.create<GraphLabel>('GraphLabel', {
@@ -136,37 +136,37 @@ PojosMetadataMap.create<GraphLabel>('GraphLabel', {
 });
 
 PojosMetadataMap.create<GraphMember>('GraphMember', {
-  id: String,
   displayName: String,
   email: String,
+  id: String,
   userId: String
 });
 
 PojosMetadataMap.create<GraphTab>('GraphTab', {
-  id: String,
   displayName: String,
-  webUrl: String,
-  teamsApp: 'TeamsApp'
+  id: String,
+  teamsApp: 'TeamsApp',
+  webUrl: String
 });
 
 PojosMetadataMap.create<GraphTag>('GraphTag', {
-  id: String,
   description: String,
   displayName: String,
+  id: String,
   memberCount: Number
 });
 
 PojosMetadataMap.create<GraphTagMember>('GraphTagMember', {
-  id: String,
   displayName: String,
+  id: String,
   tenantId: String,
   userId: String
 });
 
 PojosMetadataMap.create<GraphTeam>('GraphTeam', {
-  id: String,
   description: String,
   displayName: String,
+  id: String,
   internalId: String,
   isArchived: Boolean,
   summary: 'GraphTeamSummary',
@@ -175,8 +175,8 @@ PojosMetadataMap.create<GraphTeam>('GraphTeam', {
 });
 
 PojosMetadataMap.create<GraphTeamInfo>('GraphTeamInfo', {
-  id: String,
   displayName: String,
+  id: String,
   tenantId: String
 });
 
@@ -187,18 +187,18 @@ PojosMetadataMap.create<GraphTeamSummary>('GraphTeamSummary', {
 });
 
 PojosMetadataMap.create<TeamCard>('TeamCard', {
-  team: 'TeamProps',
   loading: Boolean,
+  team: 'TeamProps',
   visible: Boolean
 });
 
 PojosMetadataMap.create<TeamProps>('TeamProps', {
-  id: String,
   archived: Boolean,
   description: String,
   displayName: String,
   email: String,
   guestsCount: Number,
+  id: String,
   internalId: String,
   membersCount: Number,
   ownersCount: Number,

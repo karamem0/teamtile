@@ -9,9 +9,9 @@
 import React from 'react';
 
 import { Accordion } from '@fluentui/react-components';
+import { render } from '@testing-library/react';
 import IntlProvider from '../../../providers/IntlProvider';
 import ThemeProvider from '../../../providers/ThemeProvider';
-import { render } from '@testing-library/react';
 
 import Presenter from './TagMemberAccordionItem.presenter';
 
@@ -20,16 +20,16 @@ it('should match the snapshot when the loading is true', () => {
     loading: true,
     members: [
       {
-        id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyNlYjY1M2Y5Mi04MzczLTRkZTYtYmZlYy01YjRkMjE2YjZhZGUjI2QzYjJiM2ViLWM0N2YtNDViOS05NWYyLWIyZjJlZjYyMTVjZQ==',
         displayName: 'Adele Vance',
+        id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyNlYjY1M2Y5Mi04MzczLTRkZTYtYmZlYy01YjRkMjE2YjZhZGUjI2QzYjJiM2ViLWM0N2YtNDViOS05NWYyLWIyZjJlZjYyMTVjZQ==',
         tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
         userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
       }
     ],
     tag: {
-      id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
-      displayName: 'Finance',
       description: 'Finance Team for Mach 8 Project',
+      displayName: 'Finance',
+      id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
       memberCount: 2
     }
   };
@@ -53,16 +53,16 @@ it('should match the snapshot when the loading is false', () => {
     loading: false,
     members: [
       {
-        id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyNlYjY1M2Y5Mi04MzczLTRkZTYtYmZlYy01YjRkMjE2YjZhZGUjI2QzYjJiM2ViLWM0N2YtNDViOS05NWYyLWIyZjJlZjYyMTVjZQ==',
         displayName: 'Adele Vance',
+        id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyNlYjY1M2Y5Mi04MzczLTRkZTYtYmZlYy01YjRkMjE2YjZhZGUjI2QzYjJiM2ViLWM0N2YtNDViOS05NWYyLWIyZjJlZjYyMTVjZQ==',
         tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
         userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
       }
     ],
     tag: {
-      id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
-      displayName: 'Finance',
       description: 'Finance Team for Mach 8 Project',
+      displayName: 'Finance',
+      id: 'MjQzMmI1N2ItMGFiZC00M2RiLWFhN2ItMTZlYWRkMTE1ZDM0IyM3ZDg4M2Q4Yi1hMTc5LTRkZDctOTNiMy1hOGQzZGUxYTIxMmUjI3RhY29VSjN2RGk==',
       memberCount: 2
     }
   };

@@ -8,16 +8,16 @@
 
 import React from 'react';
 
-import { FormattedMessage, useIntl } from 'react-intl';
-import { SearchBox, Text } from '@fluentui/react-components';
-import AvatarIcon from './AvatarIcon';
-import Drawer from '../../../common/components/Drawer';
-import { EventHandler } from '../../../types/Event';
-import { Member } from '../../../types/Entity';
-import MemberRoleIcon from './MemberRoleIcon';
 import { css } from '@emotion/react';
-import messages from '../messages';
+import { SearchBox, Text } from '@fluentui/react-components';
+import { FormattedMessage, useIntl } from 'react-intl';
+import Drawer from '../../../common/components/Drawer';
 import { useTheme } from '../../../providers/ThemeProvider';
+import { Member } from '../../../types/Entity';
+import { EventHandler } from '../../../types/Event';
+import messages from '../messages';
+import AvatarIcon from './AvatarIcon';
+import MemberRoleIcon from './MemberRoleIcon';
 
 interface MemberDrawerProps {
   items?: Member[],

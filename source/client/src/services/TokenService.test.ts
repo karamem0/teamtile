@@ -6,14 +6,14 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import { authentication } from '@microsoft/teams-js';
+import { jwtDecode } from 'jwt-decode';
+import { Mock } from 'vitest';
 import {
   getCachedToken,
   getClientToken,
   getServerToken
 } from './TokenService';
-import { Mock } from 'vitest';
-import { authentication } from '@microsoft/teams-js';
-import { jwtDecode } from 'jwt-decode';
 
 vi.mock('jwt-decode');
 vi.mock('@microsoft/teams-js');
@@ -46,8 +46,8 @@ describe('getServerToken', () => {
 
   it('should get a server token when the server responds with a "200" status code', async () => {
     const params = {
-      token: 'sample_token',
-      status: 200
+      status: 200,
+      token: 'sample_token'
     };
     const expected = {
       token: 'sample_token'
@@ -101,9 +101,9 @@ describe('getServerToken', () => {
 
   it('should get a server token when the server responds with a "403" status code', async () => {
     const params = {
-      token: 'sample_token',
+      error: 'invalid_grant',
       status: 403,
-      error: 'invalid_grant'
+      token: 'sample_token'
     };
     const expected = {
       token: 'sample_token'
@@ -160,9 +160,9 @@ describe('getServerToken', () => {
 
   it('should raise an error when the server responds with a "500" status code', async () => {
     const params = {
-      token: 'sample_token',
+      error: 'unknown_error',
       status: 500,
-      error: 'unknown_error'
+      token: 'sample_token'
     };
     const expected = {
       error: 'unknown_error'

@@ -9,10 +9,10 @@
 import React from 'react';
 
 import { Pin16Regular, PinOff16Regular } from '@fluentui/react-icons';
-import CardMenuItem from './CardMenuItem';
+import { useIntl } from 'react-intl';
 import { EventHandler } from '../../../types/Event';
 import messages from '../messages';
-import { useIntl } from 'react-intl';
+import CardMenuItem from './CardMenuItem';
 
 interface PinMenuItemProps {
   pinned?: boolean,

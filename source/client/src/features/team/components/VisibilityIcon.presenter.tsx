@@ -8,13 +8,13 @@
 
 import React from 'react';
 
-import { Globe16Regular, LockClosed16Regular } from '@fluentui/react-icons';
-import { Tooltip } from '@fluentui/react-components';
-import { VisibilityType } from '../../../types/Entity';
 import { css } from '@emotion/react';
-import messages from '../messages';
+import { Tooltip } from '@fluentui/react-components';
+import { Globe16Regular, LockClosed16Regular } from '@fluentui/react-icons';
 import { useIntl } from 'react-intl';
 import { useTheme } from '../../../providers/ThemeProvider';
+import { VisibilityType } from '../../../types/Entity';
+import messages from '../messages';
 
 interface VisibilityIconProps {
   type?: VisibilityType

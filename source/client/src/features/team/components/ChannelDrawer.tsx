@@ -8,17 +8,17 @@
 
 import React from 'react';
 
+import { app } from '@microsoft/teams-js';
 import {
   useAsyncFn,
   useDebounce,
   useError
 } from 'react-use';
+import { useDrawer } from '../../../common/providers/DrawerProvider';
 import { Channel } from '../../../types/Entity';
 import { Event } from '../../../types/Event';
-import { app } from '@microsoft/teams-js';
-import { getChannels } from '../managers/TeamManager';
 import { search } from '../../../utils/String';
-import { useDrawer } from '../../../common/providers/DrawerProvider';
+import { getChannels } from '../managers/TeamManager';
 
 import Presenter from './ChannelDrawer.presenter';
 

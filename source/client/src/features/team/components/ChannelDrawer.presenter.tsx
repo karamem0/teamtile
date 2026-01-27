@@ -8,16 +8,16 @@
 
 import React from 'react';
 
-import { FormattedMessage, useIntl } from 'react-intl';
+import { css } from '@emotion/react';
 import { SearchBox, Text } from '@fluentui/react-components';
-import { Channel } from '../../../types/Entity';
+import { FormattedMessage, useIntl } from 'react-intl';
 import Drawer from '../../../common/components/Drawer';
+import { useTheme } from '../../../providers/ThemeProvider';
+import { Channel } from '../../../types/Entity';
 import { EventHandler } from '../../../types/Event';
+import messages from '../messages';
 import MembershipIcon from './MembershipIcon';
 import PrimaryChannelIcon from './PrimaryChannelIcon';
-import { css } from '@emotion/react';
-import messages from '../messages';
-import { useTheme } from '../../../providers/ThemeProvider';
 
 interface ChannelDrawerProps {
   items?: Channel[],

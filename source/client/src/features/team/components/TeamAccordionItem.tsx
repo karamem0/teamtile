@@ -13,16 +13,16 @@ import { TeamCard } from '../../../types/Store';
 import Presenter from './TeamAccordionItem.presenter';
 
 interface TeamAccordionItemProps {
-  header?: React.ReactNode,
   cards?: TeamCard[],
+  header?: React.ReactNode,
   value?: unknown
 }
 
 function TeamAccordionItem(props: Readonly<TeamAccordionItemProps>) {
 
   const {
-    header,
     cards,
+    header,
     value
   } = props;
 

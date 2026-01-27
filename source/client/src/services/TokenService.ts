@@ -18,7 +18,6 @@ export async function getServerToken(token: string): Promise<string> {
   const response = await fetch(
     '/api/token',
     {
-      method: 'POST',
       body: JSON.stringify({
         scope: loginParams.scopes.join(' ')
       }),
@@ -26,6 +25,7 @@ export async function getServerToken(token: string): Promise<string> {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
+      method: 'POST',
       mode: 'cors'
     }
   );
@@ -35,9 +35,9 @@ export async function getServerToken(token: string): Promise<string> {
   }
   if (response.status === 403) {
     return await authentication.authenticate({
+      height: 535,
       url: `${window.location.origin}/auth/login`,
-      width: 600,
-      height: 535
+      width: 600
     });
   }
   throw new Error(json.error);

@@ -27,10 +27,10 @@ export function getConfig(): CacheConfig {
       groups: '&id, expired',
       icons: '&id, expired',
       members: '&id, expired',
-      pins: '&id',
       owners: '&id, expired',
-      tags: '&id, expired',
+      pins: '&id',
       tagmembers: '&id, expired',
+      tags: '&id, expired',
       teams: '&id, expired'
     });
   }

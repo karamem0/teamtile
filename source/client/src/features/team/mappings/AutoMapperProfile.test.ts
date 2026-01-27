@@ -6,6 +6,7 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import { TeamVisibilityType } from '@microsoft/microsoft-graph-types';
 import { MembershipType, VisibilityType } from '../../../types/Entity';
 import {
   mapCardFromGroup,
@@ -20,22 +21,21 @@ import {
   mapTeam,
   mapTeamInfo
 } from './AutoMapperProfile';
-import { TeamVisibilityType } from '@microsoft/microsoft-graph-types';
 
 describe('mapChannel', () => {
 
   it('should transform Channel', () => {
     const params = {
       value: {
-        id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
         displayName: 'General',
+        id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
         membershipType: 'standard' as MembershipType,
         webUrl: 'https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
       }
     };
     const expected = {
-      id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
       displayName: 'General',
+      id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
       membershipType: 'standard',
       primary: false,
       webUrl: 'https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
@@ -70,18 +70,18 @@ describe('mapMember', () => {
   it('should transform Member', () => {
     const params = {
       value: {
-        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
         displayName: 'Adele Vance',
         email: 'AdeleV@M365x214355.onmicrosoft.com',
+        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
         roles: [],
         tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
         userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
       }
     };
     const expected = {
-      id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
       displayName: 'Adele Vance',
       email: 'AdeleV@M365x214355.onmicrosoft.com',
+      id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
       role: 'member',
       tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
       userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
@@ -97,19 +97,19 @@ describe('mapTab', () => {
   it('should transform Tab', () => {
     const params = {
       value: {
-        id: 'caf5a7c7-15d6-470a-8275-8b392d7f98e5',
-        webUrl: 'https://teams.microsoft.com/l/channel/19%3A09fc54a3141a45d0bc769cf506d2e079%40thread.skype/tab%3a%3acaf5a7c7-15d6-470a-8275-8b392d7f98e5?label=Wiki&groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
         displayName: 'Wiki',
+        id: 'caf5a7c7-15d6-470a-8275-8b392d7f98e5',
         teamsApp: {
           id: 'com.microsoft.teamspace.tab.wiki'
-        }
+        },
+        webUrl: 'https://teams.microsoft.com/l/channel/19%3A09fc54a3141a45d0bc769cf506d2e079%40thread.skype/tab%3a%3acaf5a7c7-15d6-470a-8275-8b392d7f98e5?label=Wiki&groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
       }
     };
     const expected = {
-      id: 'caf5a7c7-15d6-470a-8275-8b392d7f98e5',
-      webUrl: 'https://teams.microsoft.com/l/channel/19%3A09fc54a3141a45d0bc769cf506d2e079%40thread.skype/tab%3a%3acaf5a7c7-15d6-470a-8275-8b392d7f98e5?label=Wiki&groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
       appId: 'com.microsoft.teamspace.tab.wiki',
-      displayName: 'Wiki'
+      displayName: 'Wiki',
+      id: 'caf5a7c7-15d6-470a-8275-8b392d7f98e5',
+      webUrl: 'https://teams.microsoft.com/l/channel/19%3A09fc54a3141a45d0bc769cf506d2e079%40thread.skype/tab%3a%3acaf5a7c7-15d6-470a-8275-8b392d7f98e5?label=Wiki&groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
     };
     const actual = mapTab(params.value);
     expect(actual).toStrictEqual(expected);
@@ -122,16 +122,16 @@ describe('mapTabMember', () => {
   it('should transform TabMember', () => {
     const params = {
       value: {
-        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
         displayName: 'Adele Vance',
+        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
         tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
         userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
       }
     };
     const expected = {
-      id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
       displayName: 'Adele Vance',
       email: undefined,
+      id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
       role: 'member',
       tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
       userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
@@ -147,11 +147,11 @@ describe('mapTeam', () => {
   it('should transform Team', () => {
     const params = {
       value: {
-        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-        isArchived: false,
-        displayName: 'HR Taskforce',
         description: 'Welcome to the HR Taskforce team.',
+        displayName: 'HR Taskforce',
+        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         internalId: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
+        isArchived: false,
         summary: {
           guestsCount: 2,
           membersCount: 5,
@@ -162,11 +162,11 @@ describe('mapTeam', () => {
       }
     };
     const expected = {
-      id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       archived: false,
-      displayName: 'HR Taskforce',
       description: 'Welcome to the HR Taskforce team.',
+      displayName: 'HR Taskforce',
       guestsCount: 2,
+      id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       internalId: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
       membersCount: 5,
       ownersCount: 1,
@@ -184,14 +184,14 @@ describe('mapTeamInfo', () => {
   it('should transform TeamInfo', () => {
     const params = {
       value: {
-        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         displayName: 'HR Taskforce',
+        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
       }
     };
     const expected = {
-      id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       displayName: 'HR Taskforce',
+      id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
     };
     const actual = mapTeamInfo(params.value);
@@ -205,16 +205,16 @@ describe('mapCardFromGroup', () => {
   it('should transform Group to TeamCard', () => {
     const params = {
       value: {
-        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         email: 'HRTaskforce@M365x214355.onmicrosoft.com',
+        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         sensitivityLabel: 'Restricted'
       }
     };
     const expected = {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       team: {
-        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         email: 'HRTaskforce@M365x214355.onmicrosoft.com',
+        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         sensitivityLabel: 'Restricted'
       }
     };
@@ -229,10 +229,10 @@ describe('mapCardFromTeam', () => {
   it('should transform Team to TeamCard', () => {
     const params = {
       value: {
-        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         archived: false,
-        displayName: 'HR Taskforce',
         description: 'Welcome to the HR Taskforce team.',
+        displayName: 'HR Taskforce',
+        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         internalId: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
         visibility: 'private' as VisibilityType,
         webUrl: 'https://teams.microsoft.com/l/team/19:09fc54a3141a45d0bc769cf506d2e079%40thread.skype/conversations?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
@@ -242,10 +242,10 @@ describe('mapCardFromTeam', () => {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       loading: false,
       team: {
-        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         archived: false,
-        displayName: 'HR Taskforce',
         description: 'Welcome to the HR Taskforce team.',
+        displayName: 'HR Taskforce',
+        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         internalId: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
         visibility: 'private',
         webUrl: 'https://teams.microsoft.com/l/team/19:09fc54a3141a45d0bc769cf506d2e079%40thread.skype/conversations?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
@@ -262,8 +262,8 @@ describe('mapCardFromTeamInfo', () => {
   it('should transform TeamInfo to TeamCard', () => {
     const params = {
       value: {
-        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         displayName: 'HR Taskforce',
+        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
       }
     };
@@ -272,8 +272,8 @@ describe('mapCardFromTeamInfo', () => {
       loading: true,
       pinned: false,
       team: {
-        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         displayName: 'HR Taskforce',
+        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
         tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
       },
       visible: true
@@ -289,15 +289,15 @@ describe('mapCardFromIcon', () => {
   it('should transform Icon to TeamCard', () => {
     const params = {
       value: {
-        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-        data: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII='
+        data: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII=',
+        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315'
       }
     };
     const expected = {
       id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
       team: {
-        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
-        icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII='
+        icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII=',
+        id: '02bd9fd6-8f93-4758-87c3-1fb73740a315'
       }
     };
     const actual = mapCardFromIcon(params.value);
@@ -311,14 +311,14 @@ describe('mapMemberFromIcon', () => {
   it('should transform Icon to Member', () => {
     const params = {
       value: {
-        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-        data: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII='
+        data: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII=',
+        id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
       }
     };
     const expected = {
+      icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII=',
       id: undefined,
-      userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-      icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII='
+      userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
     };
     const actual = mapMemberFromIcon(params.value);
     expect(actual).toStrictEqual(expected);

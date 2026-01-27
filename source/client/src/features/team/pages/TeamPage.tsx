@@ -8,10 +8,10 @@
 
 import React from 'react';
 
-import { setCards, setLoading } from '../../../stores/Action';
 import { useAsyncFn, useError } from 'react-use';
-import { getCards } from '../managers/TeamManager';
 import { useStore } from '../../../providers/StoreProvider';
+import { setCards, setLoading } from '../../../stores/Action';
+import { getCards } from '../managers/TeamManager';
 
 import Presenter from './TeamPage.presenter';
 

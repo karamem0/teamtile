@@ -11,6 +11,7 @@ import {
   BatchResponseContent,
   PageIterator
 } from '@microsoft/microsoft-graph-client';
+import { getConfig } from '../../../config/GraphConfig';
 import {
   Channel,
   Drive,
@@ -22,6 +23,7 @@ import {
   Team,
   TeamInfo
 } from '../../../types/Entity';
+import { compare } from '../../../utils/String';
 import {
   mapChannel,
   mapDrive,
@@ -33,8 +35,6 @@ import {
   mapTeam,
   mapTeamInfo
 } from '../mappings/AutoMapperProfile';
-import { compare } from '../../../utils/String';
-import { getConfig } from '../../../config/GraphConfig';
 
 export async function getChannels(teamId: string): Promise<Channel[]> {
   const { client } = getConfig();
@@ -142,13 +142,13 @@ export async function getMemberIcons(userIds: string[]): Promise<Icon[]> {
         const data = await response.text();
         const type = response.headers.get('Content-Type');
         values.push({
-          id: requestId,
-          data: `data:${type};base64,${data}`
+          data: `data:${type};base64,${data}`,
+          id: requestId
         });
       } else {
         values.push({
-          id: requestId,
-          data: undefined
+          data: undefined,
+          id: requestId
         });
       }
     }
@@ -290,13 +290,13 @@ export async function getTeamIcons(teamIds: string[]): Promise<Icon[]> {
         const data = await response.text();
         const type = response.headers.get('Content-Type');
         values.push({
-          id: requestId,
-          data: `data:${type};base64,${data}`
+          data: `data:${type};base64,${data}`,
+          id: requestId
         });
       } else {
         values.push({
-          id: requestId,
-          data: undefined
+          data: undefined,
+          id: requestId
         });
       }
     }

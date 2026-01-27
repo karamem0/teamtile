@@ -6,13 +6,13 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import { Mock } from 'vitest';
 import {
   getCachedToken,
   getClientToken,
   getServerToken,
   setCachedToken
 } from '../services/TokenService';
-import { Mock } from 'vitest';
 import { getAccessToken } from './TokenManager';
 
 vi.mock('../services/TokenService');

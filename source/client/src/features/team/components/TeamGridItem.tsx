@@ -8,8 +8,8 @@
 
 import React from 'react';
 
-import { TeamCard } from '../../../types/Store';
 import { app } from '@microsoft/teams-js';
+import { TeamCard } from '../../../types/Store';
 
 import Presenter from './TeamGridItem.presenter';
 

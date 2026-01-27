@@ -11,13 +11,13 @@ export interface Entity {
 }
 
 export interface ArrayEntity<T> {
-  id: string,
   expired: number,
+  id: string,
   values: T[]
 }
 
 export interface ValueEntity<T> {
-  id: string,
   expired: number,
+  id: string,
   value: T
 }

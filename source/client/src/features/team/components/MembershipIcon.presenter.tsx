@@ -8,13 +8,13 @@
 
 import React from 'react';
 
-import { ChannelShare16Regular, LockClosed16Regular } from '@fluentui/react-icons';
-import { Text, Tooltip } from '@fluentui/react-components';
-import { MembershipType } from '../../../types/Entity';
 import { css } from '@emotion/react';
-import messages from '../messages';
+import { Text, Tooltip } from '@fluentui/react-components';
+import { ChannelShare16Regular, LockClosed16Regular } from '@fluentui/react-icons';
 import { useIntl } from 'react-intl';
 import { useTheme } from '../../../providers/ThemeProvider';
+import { MembershipType } from '../../../types/Entity';
+import messages from '../messages';
 
 export interface MembershipIconProps {
   type?: MembershipType

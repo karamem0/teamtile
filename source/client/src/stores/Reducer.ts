@@ -14,32 +14,6 @@ import {
 import { search } from '../utils/String';
 
 const actions = {
-  setFilter: (state: State, payload: unknown) => {
-    const data = payload as string | undefined;
-    const { cards } = state;
-    return {
-      ...state,
-      filter: data,
-      cards: cards?.map((card) => {
-        if (data == null) {
-          return {
-            ...card,
-            visible: true
-          };
-        }
-        if (search(card.team.displayName, data) || search(card.team.description, data)) {
-          return {
-            ...card,
-            visible: true
-          };
-        }
-        return {
-          ...card,
-          visible: false
-        };
-      })
-    };
-  },
   setCard: (state: State, payload: unknown) => {
     const data = payload as TeamCard | undefined;
     if (data == null) {
@@ -60,6 +34,32 @@ const actions = {
     return {
       ...state,
       cards: data
+    };
+  },
+  setFilter: (state: State, payload: unknown) => {
+    const data = payload as string | undefined;
+    const { cards } = state;
+    return {
+      ...state,
+      cards: cards?.map((card) => {
+        if (data == null) {
+          return {
+            ...card,
+            visible: true
+          };
+        }
+        if (search(card.team.displayName, data) || search(card.team.description, data)) {
+          return {
+            ...card,
+            visible: true
+          };
+        }
+        return {
+          ...card,
+          visible: false
+        };
+      }),
+      filter: data
     };
   },
   setLoading: (state: State, payload: unknown) => {

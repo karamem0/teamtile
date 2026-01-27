@@ -18,7 +18,6 @@
     <Nullable>enable</Nullable>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    <UserSecretsId>2c26b03f-2d2e-49c9-9faf-4f4f9c29cdab</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

@@ -62,7 +62,7 @@ exports[`should match the snapshot when the items is an empty array 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+                  class="fui-Icon ___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
                   fill="currentColor"
                   height="1em"
                   viewBox="0 0 20 20"
@@ -92,7 +92,7 @@ exports[`should match the snapshot when the items is an empty array 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+                    class="fui-Icon ___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
                     fill="currentColor"
                     height="1em"
                     viewBox="0 0 20 20"
@@ -199,7 +199,7 @@ exports[`should match the snapshot when the items is not undefined 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+                  class="fui-Icon ___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
                   fill="currentColor"
                   height="1em"
                   viewBox="0 0 20 20"
@@ -229,7 +229,7 @@ exports[`should match the snapshot when the items is not undefined 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+                    class="fui-Icon ___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
                     fill="currentColor"
                     height="1em"
                     viewBox="0 0 20 20"

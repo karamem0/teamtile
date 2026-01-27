@@ -8,8 +8,8 @@
 
 import React from 'react';
 
-import IntlProvider from '../../../providers/IntlProvider';
 import { render } from '@testing-library/react';
+import IntlProvider from '../../../providers/IntlProvider';
 
 import Presenter from './TeamPanel.presenter';
 

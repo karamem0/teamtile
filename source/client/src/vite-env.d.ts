@@ -15,9 +15,9 @@ interface ImportMeta {
 }
 
 interface ImportMetaEnv {
-  VITE_TELEMETRY_CONNECTION_STRING: string,
+  VITE_CACHE_TIMEOUT: number,
+  VITE_CALENDAR_APP_ID: string,
   VITE_MSAL_AUTHORITY: string,
   VITE_MSAL_CLIENT_ID: string,
-  VITE_CACHE_TIMEOUT: number,
-  VITE_CALENDAR_APP_ID: string
+  VITE_TELEMETRY_CONNECTION_STRING: string
 }

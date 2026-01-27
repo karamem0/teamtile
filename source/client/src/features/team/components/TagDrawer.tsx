@@ -12,10 +12,10 @@ import {
   useAsyncFn,
   useError
 } from 'react-use';
-import { Event } from '../../../types/Event';
-import { Tag } from '../../../types/Entity';
-import { getTags } from '../managers/TeamManager';
 import { useDrawer } from '../../../common/providers/DrawerProvider';
+import { Tag } from '../../../types/Entity';
+import { Event } from '../../../types/Event';
+import { getTags } from '../managers/TeamManager';
 
 import Presenter from './TagDrawer.presenter';
 

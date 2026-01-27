@@ -8,10 +8,10 @@
 
 import React from 'react';
 
-import IntlProvider from '../../../providers/IntlProvider';
-import { MembershipType } from '../../../types/Entity';
-import ThemeProvider from '../../../providers/ThemeProvider';
 import { render } from '@testing-library/react';
+import IntlProvider from '../../../providers/IntlProvider';
+import ThemeProvider from '../../../providers/ThemeProvider';
+import { MembershipType } from '../../../types/Entity';
 
 import Presenter from './MembershipIcon.presenter';
 

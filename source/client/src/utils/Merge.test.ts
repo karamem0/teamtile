@@ -6,8 +6,8 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import { mergeCards, mergeMembers } from './Merge';
 import { VisibilityType } from '../types/Entity';
+import { mergeCards, mergeMembers } from './Merge';
 
 describe('mergeCards', () => {
 
@@ -19,8 +19,8 @@ describe('mergeCards', () => {
           loading: true,
           pinned: false,
           team: {
-            id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
             displayName: 'HR Taskforce',
+            id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
             tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
           },
           visible: true
@@ -31,10 +31,10 @@ describe('mergeCards', () => {
           id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
           loading: false,
           team: {
-            id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
             archived: false,
-            displayName: 'HR Taskforce',
             description: 'Welcome to the HR Taskforce team.',
+            displayName: 'HR Taskforce',
+            id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
             internalId: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
             visibility: 'private' as VisibilityType,
             webUrl: 'https://teams.microsoft.com/l/team/19:09fc54a3141a45d0bc769cf506d2e079%40thread.skype/conversations?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
@@ -48,10 +48,10 @@ describe('mergeCards', () => {
         loading: false,
         pinned: false,
         team: {
-          id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
           archived: false,
-          displayName: 'HR Taskforce',
           description: 'Welcome to the HR Taskforce team.',
+          displayName: 'HR Taskforce',
+          id: '02bd9fd6-8f93-4758-87c3-1fb73740a315',
           internalId: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
           tenantId: 'dcd219dd-bc68-4b9b-bf0b-4a33a796be35',
           visibility: 'private' as VisibilityType,
@@ -72,27 +72,27 @@ describe('mergeMembers', () => {
     const param = {
       source: [
         {
-          id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
           displayName: 'Adele Vance',
-          userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-          email: 'AdeleV@M365x214355.onmicrosoft.com'
+          email: 'AdeleV@M365x214355.onmicrosoft.com',
+          id: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
+          userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
         }
       ],
       target: [
         {
-          id: undefined,
           icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII=',
+          id: undefined,
           userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
         }
       ]
     };
     const expected = [
       {
-        id: undefined,
         displayName: 'Adele Vance',
+        email: 'AdeleV@M365x214355.onmicrosoft.com',
         icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII=',
-        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd',
-        email: 'AdeleV@M365x214355.onmicrosoft.com'
+        id: undefined,
+        userId: '87d349ed-44d7-43e1-9a83-5f2406dee5bd'
       }
     ];
     const actual = mergeMembers(param.source, param.target);

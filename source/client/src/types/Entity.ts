@@ -25,8 +25,8 @@ export type AccordionType =
   | 'pinned';
 
 export interface Channel {
-  id?: string,
   displayName?: string,
+  id?: string,
   membershipType?: MembershipType,
   primary?: boolean,
   webUrl?: string
@@ -38,47 +38,47 @@ export interface Drive {
 }
 
 export interface Group {
-  id?: string,
   email?: string,
+  id?: string,
   sensitivityLabel?: string
 }
 
 export interface Icon {
-  id?: string,
-  data?: string
+  data?: string,
+  id?: string
 }
 
 export interface Member {
-  id?: string,
   displayName?: string,
   email?: string,
   icon?: string,
+  id?: string,
   role?: MemberRoleType,
   tenantId?: string,
   userId?: string
 }
 
 export interface Tab {
-  id?: string,
   appId?: string,
   displayName?: string,
+  id?: string,
   webUrl?: string
 }
 
 export interface Tag {
-  id?: string,
   description?: string,
   displayName?: string,
+  id?: string,
   memberCount?: number
 }
 
 export interface Team {
-  id?: string,
   archived?: boolean,
   description?: string,
   displayName?: string,
   guestsCount?: number,
   icon?: string,
+  id?: string,
   internalId?: string,
   membersCount?: number,
   ownersCount?: number,
@@ -87,7 +87,7 @@ export interface Team {
 }
 
 export interface TeamInfo {
-  id?: string,
   displayName?: string,
+  id?: string,
   tenantId?: string
 }

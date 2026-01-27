@@ -8,12 +8,12 @@
 
 import React from 'react';
 
-import EmptyPanel from '../components/EmptyPanel';
+import { useIntl } from 'react-intl';
 import LoaderPanal from '../../../common/components/LoaderPanel';
 import { TeamCard } from '../../../types/Store';
+import EmptyPanel from '../components/EmptyPanel';
 import TeamPanel from '../components/TeamPanel';
 import messages from '../messages';
-import { useIntl } from 'react-intl';
 
 interface MainPageProps {
   cards?: TeamCard[],

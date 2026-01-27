@@ -39,12 +39,13 @@
       "problemMatcher": []
     },
     {
-      "label": "resharper",
+      "label": "cleanupcode",
       "type": "shell",
       "command": "jb",
       "args": [
         "cleanupcode",
-        "--profile=\"Built-in: Reformat Code\"",
+        "--profile='Built-in: Reformat Code'",
+        "--exclude='**/*.config'",
         "${workspaceFolder}/Karamem0.Teamtile.sln"
       ],
       "problemMatcher": []

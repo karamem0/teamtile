@@ -8,8 +8,8 @@
 
 import React from 'react';
 
-import { Text, Tooltip } from '@fluentui/react-components';
 import { css } from '@emotion/react';
+import { Text, Tooltip } from '@fluentui/react-components';
 
 interface SummaryIconProps {
   count?: number,
