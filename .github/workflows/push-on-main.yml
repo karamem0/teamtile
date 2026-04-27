@@ -1,4 +1,4 @@
-name: Trigger on main
+name: Push on main
 
 on:
   push:
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repos
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Test source
         uses: ./.github/actions/test-source
         env:
@@ -25,7 +25,7 @@ jobs:
     needs: test-source
     steps:
       - name: Checkout repos
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Build source
         uses: ./.github/actions/build-source
         env:
@@ -39,7 +39,7 @@ jobs:
     needs: build-source
     steps:
       - name: Checkout repos
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Deploy to Azure
         uses: ./.github/actions/deploy-to-azure
         env:
@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repos
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Build manifest
         uses: ./.github/actions/build-manifest
         env:

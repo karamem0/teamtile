@@ -16,7 +16,7 @@ runs:
       env:
         FILE_PATH: manifest/manifest.json
     - name: Upload artifatcs
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: manifest
         path: manifest

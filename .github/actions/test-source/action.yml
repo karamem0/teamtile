@@ -5,12 +5,10 @@ description: This GitHub Action tests sources and uploads reports
 runs:
   using: composite
   steps:
-    - name: Checkout repos
-      uses: actions/checkout@v4
     - name: Setup Node.js 22.x
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v5
       with:
-        node-version: 22.x
+        node-version: 22.22.1
     - name: Restore client
       shell: pwsh
       run: npm ci
