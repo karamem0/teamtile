@@ -2,7 +2,7 @@
 
 参加中のチームをタイルで表示することで素早くアクセスできます。
 
-[![.github/workflows/trigger-on-main.yml](https://github.com/karamem0/teamtile/actions/workflows/trigger-on-main.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/trigger-on-main.yml)
+[![.github/workflows/push-on-main.yml](https://github.com/karamem0/teamtile/actions/workflows/push-on-main.yml/badge.svg)](https://github.com/karamem0/teamtile/actions/workflows/push-on-main.yml)
 [![codecov](https://codecov.io/gh/karamem0/teamtile/graph/badge.svg?token=UY4ZU4E73I)](https://codecov.io/gh/karamem0/teamtile)
 [![license](https://img.shields.io/github/license/karamem0/teamtile.svg)](https://github.com/karamem0/teamtile/blob/main/LICENSE)
 

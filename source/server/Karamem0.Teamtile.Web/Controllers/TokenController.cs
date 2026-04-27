@@ -20,11 +20,7 @@ namespace Karamem0.Teamtile.Controllers;
 public partial class TokenController
 {
 
-    [GeneratedRegex(
-        @"^Bearer\s+(?<token>.+)$",
-        RegexOptions.IgnoreCase,
-        "ja-JP"
-    )]
+    [GeneratedRegex(@"^Bearer\s+(?<token>.+)$", RegexOptions.IgnoreCase)]
     private static partial Regex BearerAuthorizationRegex();
 
     public static async Task<IResult> PostAsync(
@@ -36,22 +32,26 @@ public partial class TokenController
     {
         try
         {
-            logger.ActionExecuting();
+            logger.MethodExecuting();
+            logger.MethodRequestData(request);
             var regex = BearerAuthorizationRegex();
             var match = regex.Match(authorization);
             if (match.Success)
             {
                 var accessToken = match.Groups["token"].Value;
                 var response = await tokenService.InvokeAsync(request, accessToken);
+                logger.MethodResponseData(response);
                 return Results.Ok(response);
             }
             else
             {
+                logger.AuthorizationFailed();
                 return Results.Unauthorized();
             }
         }
         catch (MsalException ex)
         {
+            logger.MethodFailed(ex);
             if (ex.ErrorCode is "invalid_grant" or "interaction_required")
             {
                 return Results.Forbid();
@@ -68,7 +68,7 @@ public partial class TokenController
         }
         finally
         {
-            logger.ActionExecuted();
+            logger.MethodExecuted();
         }
     }
 
