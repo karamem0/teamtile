@@ -6,9 +6,9 @@ runs:
   using: composite
   steps:
     - name: Setup Node.js 22.x
-      uses: actions/setup-node@v5
+      uses: actions/setup-node@v6
       with:
-        node-version: 22.22.1
+        node-version: 22.22.3
     - name: Restore client
       shell: pwsh
       run: npm ci
@@ -43,7 +43,7 @@ runs:
           source/server/test/**/*.xml
         check_name: Test results
     - name: Upload coverage reports
-      uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7
+      uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f
       if: always()
       with:
         fail_ci_if_error: true

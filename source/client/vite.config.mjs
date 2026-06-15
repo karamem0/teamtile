@@ -8,6 +8,7 @@
 
 import fs from 'fs';
 
+import babel from '@rolldown/plugin-babel';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
@@ -24,8 +25,8 @@ export default defineConfig({
     }
   },
   'plugins': [
-    react({
-      'babel': {
+    babel(
+      {
         'plugins': [
           '@emotion',
           [
@@ -36,7 +37,9 @@ export default defineConfig({
             }
           ]
         ]
-      },
+      }
+    ),
+    react({
       'jsxImportSource': '@emotion/react'
     })
   ],

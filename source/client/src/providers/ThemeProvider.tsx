@@ -84,15 +84,15 @@ function ThemeProvider(props: Readonly<React.PropsWithChildren>) {
   ]);
 
   React.useEffect(() => {
-    if (app.isInitialized()) {
-      (async () => {
+    (async () => {
+      if (app.isInitialized()) {
         const context = await app.getContext();
         handleThemeChange(context.app.theme);
         app.registerOnThemeChangeHandler(handleThemeChange);
-      })();
-    } else {
-      handleThemeChange('custom');
-    }
+      } else {
+        handleThemeChange('custom');
+      }
+    })();
   }, []);
 
   return (

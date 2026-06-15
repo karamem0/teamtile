@@ -30,9 +30,9 @@ function SummaryIcon(props: Readonly<SummaryIconProps>) {
       css={css`
         display: flex;
         flex-direction: row;
+        gap: 0.125rem;
         align-items: center;
         justify-content: left;
-        gap: 0.125rem;
       `}>
       <Tooltip
         content={tooltip ?? ''}

@@ -194,10 +194,10 @@ function TeamGridItem(props: Readonly<TeamGridItemProps>) {
                     flex-direction: row;
                     grid-row: 3 / 4;
                     grid-column: 1 / 3;
+                    gap: 0.5rem;
                     align-items: center;
                     justify-content: left;
                     height: 1.25rem;
-                    gap: 0.5rem;
                     color: ${theme.colorNeutralForeground4};
                   `}>
                   <SummaryIcon
