@@ -1,5 +1,9 @@
 # Changelog
 
+## [v2.6.7] - 2026-07-09
+
+- Dependency updates
+
 ## [v2.6.6] - 2026-06-15
 
 - Dependency updates
