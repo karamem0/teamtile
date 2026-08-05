@@ -13,6 +13,7 @@ exports[`should match the snapshot when the pinned is false 1`] = `
       <svg
         aria-hidden="true"
         class="fui-Icon ___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+        data-fui-icon=""
         fill="currentColor"
         height="16"
         viewBox="0 0 16 16"
@@ -47,6 +48,7 @@ exports[`should match the snapshot when the pinned is true 1`] = `
       <svg
         aria-hidden="true"
         class="fui-Icon ___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+        data-fui-icon=""
         fill="currentColor"
         height="16"
         viewBox="0 0 16 16"
@@ -81,6 +83,7 @@ exports[`should match the snapshot when the pinned is undefined 1`] = `
       <svg
         aria-hidden="true"
         class="fui-Icon ___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+        data-fui-icon=""
         fill="currentColor"
         height="16"
         viewBox="0 0 16 16"

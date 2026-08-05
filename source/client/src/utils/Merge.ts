@@ -15,7 +15,10 @@ export function mergeCards(source: TeamCard[], target: TeamCard[], options?: mer
   source.forEach((sourceItem, sourceIndex) => {
     const targetIndex = target.findIndex((targetItem) => targetItem.id === sourceItem.id);
     if (targetIndex >= 0) {
-      items[sourceIndex] = merge(sourceItem, target[targetIndex], options);
+      const targetItem = target[targetIndex];
+      if (targetItem != null) {
+        items[sourceIndex] = merge(sourceItem, targetItem, options);
+      }
     }
   });
   return items;
@@ -26,7 +29,10 @@ export function mergeMembers(source: Member[], target: Member[], options?: merge
   source.forEach((sourceItem, sourceIndex) => {
     const targetIndex = target.findIndex((targetItem) => targetItem.userId === sourceItem.userId);
     if (targetIndex >= 0) {
-      items[sourceIndex] = merge(sourceItem, target[targetIndex], options);
+      const targetItem = target[targetIndex];
+      if (targetItem != null) {
+        items[sourceIndex] = merge(sourceItem, targetItem, options);
+      }
     }
   });
   return items;

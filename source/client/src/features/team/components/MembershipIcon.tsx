@@ -6,8 +6,6 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import React from 'react';
-
 import { MembershipType } from '../../../types/Entity';
 
 import Presenter from './MembershipIcon.presenter';

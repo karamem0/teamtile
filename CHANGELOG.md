@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.7.0] - 2026-08-05
+
+- Dependency updates
+- Internal updates
+  - `tsconfig.json`
+  - `dependabot.yml`
+  - Babel to SWC
+
 ## [v2.6.7] - 2026-07-09
 
 - Dependency updates

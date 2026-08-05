@@ -6,8 +6,6 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import React from 'react';
-
 import { useStore } from '../../../providers/StoreProvider';
 
 import Presenter from './TeamGrid.presenter';

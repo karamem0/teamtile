@@ -11,5 +11,8 @@
       "name": "source/server",
       "path": "./source/server"
     }
-  ]
+  ],
+  "settings": {
+    "js/ts.tsdk.path": "source/client/node_modules/typescript/lib"
+  }
 }

@@ -6,8 +6,6 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import React from 'react';
-
 import { Accordion } from '@fluentui/react-components';
 import { render } from '@testing-library/react';
 import IntlProvider from '../../../providers/IntlProvider';

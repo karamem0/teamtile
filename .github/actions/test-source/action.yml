@@ -5,10 +5,10 @@ description: This GitHub Action tests sources and uploads reports
 runs:
   using: composite
   steps:
-    - name: Setup Node.js 22.x
+    - name: Setup Node.js
       uses: actions/setup-node@v6
       with:
-        node-version: 22.22.3
+        node-version: 24.18.0
     - name: Restore client
       shell: pwsh
       run: npm ci
@@ -35,7 +35,7 @@ runs:
           -- NUnit.TestOutputXml=${{github.workspace}}/source/server/test
       working-directory: source/server
     - name: Upload test results
-      uses: enricomi/publish-unit-test-result-action/linux@3a74b2957438d0b6e2e61d67b05318aa25c9e6c6
+      uses: enricomi/publish-unit-test-result-action/linux@d0a4676d0e0b938bc201470d88276b7c74c712b3
       if: always()
       with:
         files: |

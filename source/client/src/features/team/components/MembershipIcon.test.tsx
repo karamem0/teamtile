@@ -6,8 +6,6 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import React from 'react';
-
 import { render } from '@testing-library/react';
 import IntlProvider from '../../../providers/IntlProvider';
 import ThemeProvider from '../../../providers/ThemeProvider';
@@ -15,37 +13,9 @@ import { MembershipType } from '../../../types/Entity';
 
 import Presenter from './MembershipIcon.presenter';
 
-it('should match the snapshot when the type is shared', () => {
+it.each([ 'shared', 'standard', 'private' ] as MembershipType[])('should match the snapshot when the type is %s', (type) => {
   const params = {
-    type: 'shared' as MembershipType
-  };
-  const { asFragment } = render(
-    <IntlProvider>
-      <ThemeProvider>
-        <Presenter {...params} />
-      </ThemeProvider>
-    </IntlProvider>
-  );
-  expect(asFragment()).toMatchSnapshot();
-});
-
-it('should match the snapshot when the type is standard', () => {
-  const params = {
-    type: 'standard' as MembershipType
-  };
-  const { asFragment } = render(
-    <IntlProvider>
-      <ThemeProvider>
-        <Presenter {...params} />
-      </ThemeProvider>
-    </IntlProvider>
-  );
-  expect(asFragment()).toMatchSnapshot();
-});
-
-it('should match the snapshot when the type is private', () => {
-  const params = {
-    type: 'private' as MembershipType
+    type
   };
   const { asFragment } = render(
     <IntlProvider>

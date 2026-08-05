@@ -6,7 +6,7 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import React from 'react';
+import type { ReactNode } from 'react';
 
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -17,7 +17,7 @@ import { MembershipType } from '../../../types/Entity';
 import Presenter from './ChannelDrawer.presenter';
 
 vi.mock('../../../common/components/Drawer', () => ({
-  default: ({ children }: { children: React.ReactNode }) => (
+  default: ({ children }: { children: ReactNode }) => (
     <div data-testid="test-Drawer">
       <div data-testid="test-Children">
         {children}
@@ -78,15 +78,14 @@ it('should match the snapshot when the items is an empty array', () => {
 it('should raise onClick event when click an item', async () => {
   const user = userEvent.setup();
   const mock = vi.fn();
+  const item = {
+    displayName: 'General',
+    id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
+    membershipType: 'standard' as MembershipType,
+    webUrl: 'https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
+  };
   const params = {
-    items: [
-      {
-        displayName: 'General',
-        id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
-        membershipType: 'standard' as MembershipType,
-        webUrl: 'https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
-      }
-    ],
+    items: [ item ],
     onClick: mock
   };
   render(
@@ -96,22 +95,21 @@ it('should raise onClick event when click an item', async () => {
       </ThemeProvider>
     </IntlProvider>
   );
-  await user.click(screen.getByText(params.items[0].displayName));
-  expect(mock).toHaveBeenCalledWith(expect.anything(), params.items[0]);
+  await user.click(screen.getByText(item.displayName));
+  expect(mock).toHaveBeenCalledWith(expect.anything(), item);
 });
 
 it('should raise onFilterChange event when enter text in search box', async () => {
   const user = userEvent.setup();
   const mock = vi.fn();
+  const item = {
+    displayName: 'General',
+    id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
+    membershipType: 'standard' as MembershipType,
+    webUrl: 'https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
+  };
   const params = {
-    items: [
-      {
-        displayName: 'General',
-        id: '19:09fc54a3141a45d0bc769cf506d2e079@thread.skype',
-        membershipType: 'standard' as MembershipType,
-        webUrl: 'https://teams.microsoft.com/l/channel/19%3a09fc54a3141a45d0bc769cf506d2e079%40thread.skype/General?groupId=02bd9fd6-8f93-4758-87c3-1fb73740a315&tenantId=dcd219dd-bc68-4b9b-bf0b-4a33a796be35'
-      }
-    ],
+    items: [ item ],
     onFilterChange: mock
   };
   render(
@@ -122,6 +120,6 @@ it('should raise onFilterChange event when enter text in search box', async () =
     </IntlProvider>
   );
   await user.click(screen.getByPlaceholderText(/Search/));
-  await user.keyboard(params.items[0].displayName);
-  expect(mock).toHaveBeenCalledWith(expect.anything(), params.items[0].displayName);
+  await user.keyboard(item.displayName);
+  expect(mock).toHaveBeenCalledWith(expect.anything(), item.displayName);
 });

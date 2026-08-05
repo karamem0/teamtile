@@ -6,10 +6,8 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
+import react from '@vitejs/plugin-react-swc';
 import fs from 'fs';
-
-import babel from '@rolldown/plugin-babel';
-import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
@@ -25,22 +23,25 @@ export default defineConfig({
     }
   },
   'plugins': [
-    babel(
-      {
-        'plugins': [
-          '@emotion',
-          [
-            'formatjs',
-            {
-              'ast': true,
-              'idInterpolationPattern': '[sha512:contenthash:base64:6]'
-            }
-          ]
-        ]
-      }
-    ),
     react({
-      'jsxImportSource': '@emotion/react'
+      'jsxImportSource': '@emotion/react',
+      'plugins': [
+        [
+          '@swc/plugin-emotion',
+          {
+            'autoLabel': 'dev-only',
+            'labelFormat': '[local]',
+            'sourceMap': true
+          }
+        ],
+        [
+          '@swc/plugin-formatjs',
+          {
+            'ast': true,
+            'idInterpolationPattern': '[sha512:contenthash:base64:6]'
+          }
+        ]
+      ]
     })
   ],
   'server': {

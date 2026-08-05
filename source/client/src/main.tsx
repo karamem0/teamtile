@@ -16,7 +16,7 @@ import {
   BrowserRouter,
   Route,
   Routes
-} from 'react-router-dom';
+} from 'react-router';
 import * as ress from 'ress';
 import TeamsAuthenticator from './common/components/TeamsAuthenticator';
 import TeamsInitializer from './common/components/TeamsInitializer';

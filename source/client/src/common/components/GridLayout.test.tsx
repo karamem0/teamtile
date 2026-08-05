@@ -6,8 +6,6 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import React from 'react';
-
 import { render, screen } from '@testing-library/react';
 
 import Presenter from './GridLayout.presenter';

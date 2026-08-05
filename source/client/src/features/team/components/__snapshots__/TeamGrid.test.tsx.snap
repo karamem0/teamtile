@@ -15,7 +15,7 @@ exports[`should match the snapshot 1`] = `
 .emotion-2 {
   display: grid;
   grid-template-rows: 12.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fill,minmax(16rem,1fr));
   gap: 0.5rem;
 }
 
@@ -53,6 +53,7 @@ exports[`should match the snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   class="fui-Icon ___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+                  data-fui-icon=""
                   fill="currentColor"
                   height="1em"
                   style="transform: rotate(90deg); transition: transform 200ms ease-out;"
@@ -100,6 +101,7 @@ exports[`should match the snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   class="fui-Icon ___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+                  data-fui-icon=""
                   fill="currentColor"
                   height="1em"
                   style="transform: rotate(90deg); transition: transform 200ms ease-out;"
@@ -147,6 +149,7 @@ exports[`should match the snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   class="fui-Icon ___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+                  data-fui-icon=""
                   fill="currentColor"
                   height="1em"
                   style="transform: rotate(0deg); transition: transform 200ms ease-out;"
