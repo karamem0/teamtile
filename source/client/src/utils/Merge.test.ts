@@ -64,6 +64,33 @@ describe('mergeCards', () => {
     expect(actual).toStrictEqual(expected);
   });
 
+  it('should preserve source order and ignore unmatched targets', () => {
+    const source = [
+      { id: 'first', team: { displayName: 'First', id: 'first' } },
+      { id: 'second', pinned: true, team: { displayName: 'Second', id: 'second' } }
+    ];
+    const target = [
+      { id: 'second', team: { icon: 'new-icon', id: 'second' } },
+      { id: 'extra', team: { id: 'extra' } },
+      { id: 'second', team: { icon: 'duplicate-icon', id: 'second' } }
+    ];
+    const originalSource = structuredClone(source);
+    const originalTarget = structuredClone(target);
+    const actual = mergeCards(source, target);
+    expect(actual).toStrictEqual([
+      source[0],
+      {
+        id: 'second',
+        pinned: true,
+        team: { displayName: 'Second', icon: 'new-icon', id: 'second' }
+      }
+    ]);
+    expect(source).toStrictEqual(originalSource);
+    expect(target).toStrictEqual(originalTarget);
+    expect(mergeCards(source, [])).toStrictEqual(source);
+    expect(mergeCards([], target)).toStrictEqual([]);
+  });
+
 });
 
 describe('mergeMembers', () => {
@@ -97,6 +124,29 @@ describe('mergeMembers', () => {
     ];
     const actual = mergeMembers(param.source, param.target);
     expect(actual).toStrictEqual(expected);
+  });
+
+  it('should match by userId while preserving source order and unmatched members', () => {
+    const source = [
+      { displayName: 'First', id: 'first', userId: 'first-user' },
+      { displayName: 'Second', id: 'second', userId: 'second-user' }
+    ];
+    const target = [
+      { icon: 'new-icon', userId: 'second-user' },
+      { icon: 'extra-icon', userId: 'extra-user' },
+      { icon: 'duplicate-icon', userId: 'second-user' }
+    ];
+    const originalSource = structuredClone(source);
+    const originalTarget = structuredClone(target);
+    const actual = mergeMembers(source, target);
+    expect(actual).toStrictEqual([
+      source[0],
+      { displayName: 'Second', icon: 'new-icon', id: 'second', userId: 'second-user' }
+    ]);
+    expect(source).toStrictEqual(originalSource);
+    expect(target).toStrictEqual(originalTarget);
+    expect(mergeMembers(source, [])).toStrictEqual(source);
+    expect(mergeMembers([], target)).toStrictEqual([]);
   });
 
 });

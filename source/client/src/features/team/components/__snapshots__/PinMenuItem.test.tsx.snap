@@ -3,7 +3,7 @@
 exports[`should match the snapshot when the pinned is false 1`] = `
 <DocumentFragment>
   <div
-    class="fui-MenuItem rfoezjv"
+    class="fui-MenuItem r1rl95jx"
     role="menuitem"
     tabindex="0"
   >
@@ -38,7 +38,7 @@ exports[`should match the snapshot when the pinned is false 1`] = `
 exports[`should match the snapshot when the pinned is true 1`] = `
 <DocumentFragment>
   <div
-    class="fui-MenuItem rfoezjv"
+    class="fui-MenuItem r1rl95jx"
     role="menuitem"
     tabindex="0"
   >
@@ -73,7 +73,7 @@ exports[`should match the snapshot when the pinned is true 1`] = `
 exports[`should match the snapshot when the pinned is undefined 1`] = `
 <DocumentFragment>
   <div
-    class="fui-MenuItem rfoezjv"
+    class="fui-MenuItem r1rl95jx"
     role="menuitem"
     tabindex="0"
   >

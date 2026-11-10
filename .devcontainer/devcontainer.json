@@ -10,7 +10,7 @@
     },
     "ghcr.io/devcontainers/features/git-lfs:1": {},
     "ghcr.io/devcontainers/features/node:2": {
-      "version": "24.18.0"
+      "version": "26"
     }
   },
   "postCreateCommand": {
@@ -28,7 +28,8 @@
         "ms-dotnettools.csdevkit",
         "redhat.vscode-yaml",
         "redhat.vscode-xml",
-        "styled-components.vscode-styled-components"
+        "styled-components.vscode-styled-components",
+        "vitest.explorer"
       ]
     }
   }

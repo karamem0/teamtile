@@ -8,7 +8,7 @@ runs:
     - name: Setup Node.js
       uses: actions/setup-node@v6
       with:
-        node-version: 24.18.0
+        node-version: 26.x
     - name: Restore client
       shell: pwsh
       run: npm ci

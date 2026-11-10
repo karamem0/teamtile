@@ -15,11 +15,15 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import sonarjs from 'eslint-plugin-sonarjs';
 import testingLibrary from 'eslint-plugin-testing-library';
-import { defineConfig } from 'eslint/config';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import globals from 'globals';
 import ts from 'typescript-eslint';
 
 export default defineConfig(
+  globalIgnores([
+    'build/',
+    'coverage/'
+  ]),
   js.configs.recommended,
   ts.configs.recommended,
   {

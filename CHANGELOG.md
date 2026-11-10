@@ -1,5 +1,11 @@
 # Changelog
 
+## [v2.7.2] - 2026-11-10
+
+- Internal updates
+  - `deepmerge` to `@fastify/deepmerge`
+- Dependency updates
+
 ## [v2.7.1] - 2026-10-22
 
 - Dependency updates

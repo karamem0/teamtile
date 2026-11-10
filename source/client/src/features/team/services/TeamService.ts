@@ -6,7 +6,6 @@
 // https://github.com/karamem0/teamtile/blob/main/LICENSE
 //
 
-import merge from 'deepmerge';
 import {
   Channel,
   Drive,
@@ -16,6 +15,7 @@ import {
 } from '../../../types/Entity';
 import { TeamCard } from '../../../types/Store';
 import {
+  merge,
   mergeCards,
   mergeMembers
 } from '../../../utils/Merge';
@@ -84,24 +84,18 @@ export async function getCardsFromGraphGroup(items: TeamCard[]): Promise<TeamCar
   const ids = items.filter((item) => item.loading).map((item) => item.id);
   const values = await graphService.getGroups(ids);
   values.forEach(async (value) => value.id && await cacheService.setGroup(value.id, value));
-  return merge(
+  return mergeCards(
     items,
-    values.map((value) => mapCardFromGroup(value)),
-    {
-      arrayMerge: mergeCards
-    });
+    values.map((value) => mapCardFromGroup(value)));
 }
 
 export async function getCardsFromGraphTeam(items: TeamCard[]): Promise<TeamCard[]> {
   const ids = items.filter((item) => item.loading).map((item) => item.id);
   const values = await graphService.getTeams(ids);
   values.forEach(async (value) => value.id && await cacheService.setTeam(value.id, value));
-  return merge(
+  return mergeCards(
     items,
-    values.map((value) => mapCardFromTeam(value)),
-    {
-      arrayMerge: mergeCards
-    });
+    values.map((value) => mapCardFromTeam(value)));
 }
 
 export async function getMembersFromCache(teamId: string): Promise<Member[] | undefined> {
@@ -133,12 +127,9 @@ export async function getMemberIconsFromGraph(items: Member[]): Promise<Member[]
     .filter((id): id is Exclude<typeof id, undefined> => Boolean(id));
   const values = await graphService.getMemberIcons(ids);
   values.forEach(async (value) => value.id && await cacheService.setIcon(value.id, value));
-  return merge(
+  return mergeMembers(
     items,
-    values.map((value) => mapMemberFromIcon(value)),
-    {
-      arrayMerge: mergeMembers
-    });
+    values.map((value) => mapMemberFromIcon(value)));
 }
 
 export async function getPins(items: TeamCard[]): Promise<TeamCard[]> {
@@ -191,12 +182,9 @@ export async function getTeamIconsFromGraph(items: TeamCard[]): Promise<TeamCard
     .map((item) => item.id);
   const values = await graphService.getTeamIcons(ids);
   values.forEach(async (value) => value.id && await cacheService.setIcon(value.id, value));
-  return merge(
+  return mergeCards(
     items,
-    values.map((value) => mapCardFromIcon(value)),
-    {
-      arrayMerge: mergeCards
-    });
+    values.map((value) => mapCardFromIcon(value)));
 }
 
 export async function setPin(teamId: string, pinned: boolean): Promise<void> {

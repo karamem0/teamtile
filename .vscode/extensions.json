@@ -7,6 +7,7 @@
     "ms-dotnettools.csdevkit",
     "redhat.vscode-yaml",
     "redhat.vscode-xml",
-    "styled-components.vscode-styled-components"
+    "styled-components.vscode-styled-components",
+    "vitest.explorer"
   ]
 }
